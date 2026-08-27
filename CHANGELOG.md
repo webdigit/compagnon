@@ -10,6 +10,50 @@ qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.5.6] - 2026-08-27
+
+### Ajouté
+
+- **La mise à jour passe par le dépôt, et par une étiquette.** Nouvelle section « Se mettre à jour
+  depuis le dépôt » dans `MIGRATIONS.md` : où vit le clone (à côté de l'instance, jamais dedans, et
+  pourquoi c'est précisément ça qui rend `git fetch` inoffensif), l'alignement sur une **étiquette**
+  et non sur `main` par `git show <tag>:MIGRATIONS.md`, et la contrainte d'hôte. `main` est
+  l'atelier : il porte du travail non commité qui ne correspond à aucune version publiée. Une
+  instance qui s'y aligne lit une version qui n'existe pas.
+- **La procédure demande un shell, et ça se dit.** Elle appartient à une session outillée (Claude
+  Code, Cowork). Depuis un projet de chat, l'agent ne peut pas récupérer une version, et il ne doit
+  pas prétendre l'avoir fait. Sans cette phrase, quelqu'un essaie depuis le chat et conclut que la
+  méthode ne marche pas.
+- **Règle de publication : le diff de `template/` fait foi.** Une version dont
+  `git diff <ancienne>..<nouvelle> -- template/` n'est pas vide doit avoir une ligne de migration qui
+  en rend compte, sinon elle n'est pas publiable. Contrôle mécanique de ce que la règle du document
+  demandait jusqu'ici à la seule vigilance de l'auteur.
+- **Ligne de migration 0.5.5 → 0.5.6** : retrait de la troisième copie du NOYAU, et retrait de tout
+  numéro de version vivant ailleurs que dans `VERSION.md`.
+
+### Corrigé
+
+- **`INSTALLATION.md` étape 4 : la troisième copie.** Le guide disait déjà que déposer le NOYAU
+  comme *document* du projet ne suffit pas. Il ne disait pas qu'il ne faut pas non plus **l'y
+  laisser**. Une copie périmée dans la base de connaissances n'est pas inerte : elle est retrouvée
+  par recherche, elle contredit la bonne version sur les seuils de maturation, et l'agent n'a aucun
+  moyen de savoir laquelle fait foi.
+- Trouvé sur l'instance de référence : une copie du NOYAU datant de l'installation y décrivait
+  encore `Observation → Hypothèse → Règle` sans l'état `provisoire`, et le seuil « 3 occurrences OU
+  1 validation explicite ». Exactement ce que P9 et P10 avaient supprimé le jour même.
+- **Le NOYAU vit à deux endroits, le fichier et le champ injecté. Pas trois.**
+
+### La leçon
+
+La prose dit ce que l'auteur a pensé à écrire. Le diff dit ce qui a changé. Tant que la seule
+garantie qu'une version soit migrable était l'attention de celui qui la publie, quatre versions ont
+pu sortir sans ligne de migration. Le contrôle qui ferme ça ne peut pas être une résolution, il faut
+qu'il soit une commande.
+
+Corollaire, sur la distribution : ce que lit une instance doit être **nommable**. Un fichier lu dans
+un arbre de travail n'a pas de nom, donc pas de version, donc pas de migration vérifiable. Une
+étiquette en a un.
+
 ## [0.5.5] - 2026-08-27
 
 ### Ajouté

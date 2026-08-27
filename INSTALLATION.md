@@ -86,6 +86,12 @@ Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu i
 Attention au piège : déposer le NOYAU comme *document* du projet ne suffit pas. Un document est
 consultable, il n'est pas injecté au démarrage. Seul le champ **Instructions** l'est.
 
+Et **ne le laissez pas non plus** comme document « au cas où ». Cette copie-là ne sert à rien au
+démarrage, mais elle sera retrouvée par recherche, et elle divergera dès la première modification.
+Une version périmée du NOYAU qui traîne dans la base de connaissances est pire qu'absente : elle
+contredit la bonne, sur les seuils de maturation notamment, et l'agent n'a aucun moyen de savoir
+laquelle fait foi. Le NOYAU vit à **deux** endroits, le fichier et le champ injecté. Pas trois.
+
 ### Claude Code, Cowork, et hôtes lisant `CLAUDE.md`
 
 Placez à la racine du projet un `CLAUDE.md` qui impose la lecture et importe les fichiers :
