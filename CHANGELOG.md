@@ -41,11 +41,15 @@ Le dépôt devient publiable.
 - **Pas d'absence de licence.** Sans licence, personne n'a le droit de copier le gabarit, ce qui
   interdit le geste même qu'on veut provoquer.
 
-### Reste ouvert
+### Tranché
 
-La protection du **nom**, qui relève de la marque et non de la licence. « compagnon » est un terme
-courant du français, donc faible comme marque. À trancher : accepter que le nom ne soit pas
-défendable et miser sur la réputation, ou en changer.
+**Le nom reste `compagnon`, sans ambition de marque.** La question a été posée : « compagnon » est un
+terme courant du français, donc faible à déposer, et un dépôt de marque ne l'aurait pas beaucoup
+protégé. Décision de WEBDIGIT srl le 27/08/2026 : on garde le nom et on ne cherche pas à le protéger.
+
+Ce qui relie les copies à l'origine n'est donc pas le nom, c'est **l'attribution exigée par la
+licence**. C'est cohérent avec le reste : ici, ce qui se défend est la réputation et l'antériorité,
+pas un monopole.
 
 ## [0.4.0] - 2026-08-27
 
