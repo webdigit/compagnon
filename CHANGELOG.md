@@ -6,6 +6,28 @@ Format inspiré de Keep a Changelog. Versionnement sémantique.
 Ce que versionne ce numéro : **le gabarit et la doctrine**, pas les instances. Une instance
 déclare la version du gabarit dont elle est née, et ne la change qu'en migrant explicitement.
 
+## [0.4.0] - 2026-08-27
+
+Le gabarit existe. C'était la dernière pièce manquante du dépôt.
+
+### Ajouté
+
+- **`template/`** : dix fichiers, écrits depuis la doctrine et non copiés d'une instance en
+  exploitation. Zones à remplir marquées, gouvernance rappelée en tête de chaque fichier, et un
+  exemple **fictif** par fichier de mémoire pour montrer la forme attendue sans induire de contenu.
+  Les seuils P9 et P10 y sont intégrés d'origine : une règle y naît `provisoire`, une confiance sous
+  trois occurrences s'y écrit « non établie ».
+- Chaque fichier porte **où il se situe dans la gouvernance** : auto-écrit par l'agent, ou zone
+  manuelle où l'agent propose et l'opérateur dispose. C'est ce qui empêche un agent de s'accorder
+  ses propres capacités.
+- `operational-state.md` porte sa **règle de rotation** : un état qu'on ne lit plus en entier n'est
+  plus un état, c'est un journal.
+
+### Vérifié
+
+Stérilité du gabarit contrôlée : aucun nom de client, d'outil ou de personne réelle. La seule
+occurrence de « webdigit » est l'URL du dépôt lui-même dans `VERSION.md`.
+
 ## [0.3.0] - 2026-08-27
 
 De la doctrine vers l'installable, plus un principe validé par JC en cours de route.

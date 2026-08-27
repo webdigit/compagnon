@@ -57,10 +57,11 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version |
 | `CHANGELOG.md` | L'historique des versions |
-| `template/` | Le gabarit canonique, stérile, à instancier |
+| `template/` | Le gabarit canonique : dix fichiers, stériles, à instancier |
 
-> Le gabarit `template/` arrive en v1.0.0. Il est écrit **depuis la doctrine**, pas copié depuis
-> une instance en exploitation, pour qu'aucune donnée client ne s'y glisse.
+> `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
+> aucune donnée client ne peut s'y trouver. Les zones à remplir sont marquées, et chaque fichier
+> porte un exemple **fictif** signalé comme tel, à supprimer au premier vrai cas.
 
 ## État
 

@@ -3,7 +3,7 @@
 > Ce document est le cœur de la méthode. Le gabarit de dossiers n'en est que la mise en œuvre.
 > Qui lit la doctrine peut réimplémenter le gabarit. L'inverse est faux.
 
-_Doctrine 0.3.0. Trois questions restent ouvertes en fin de document : elles se tranchent avant la
+_Doctrine 0.4.0. Trois questions restent ouvertes en fin de document : elles se tranchent avant la
 1.0.0. Dernière révision : 27/08/2026._
 
 ---
