@@ -1,3 +1,16 @@
+> # ⚠️ CE FICHIER N'EST PAS PRÊT À ÊTRE COLLÉ
+>
+> **C'est le gabarit. Il contient des trous entre chevrons : `<NOM DE L'AGENT>`, `<OPÉRATEUR>`,
+> `<COMPÉTENCE 01>`. Un agent qui démarre sur ce texte ne saura ni qui il est, ni ce qu'il fait.**
+>
+> **Avant de coller quoi que ce soit dans les Instructions de votre projet :**
+> 1. copiez ce fichier dans le dossier `ai-memory/` de **votre** instance ;
+> 2. remplissez **tous** les trous entre chevrons ;
+> 3. **collez la version remplie**, jamais celle-ci.
+>
+> Vérifiez ensuite avec le test de l'étape 5 d'`INSTALLATION.md`. Si l'agent répond en s'appelant
+> `<NOM DE L'AGENT>`, c'est ce fichier-ci qui a été collé.
+
 # NOYAU — Mode d'emploi exécutoire de <NOM DE L'AGENT>
 
 > Ce texte transforme « des fichiers » en « un agent qui apprend ».

@@ -58,10 +58,21 @@ Listez aussi les **interdits absolus**, ceux qu'aucune montée de niveau ne déb
 **C'est l'étape critique.** Le NOYAU doit être lu par l'agent **au démarrage de chaque session**,
 avant qu'il travaille. Le mécanisme dépend de votre hôte.
 
+### ⚠️ D'abord : le bon fichier
+
+Il existe **deux** fichiers du même nom, et c'est le piège numéro un.
+
+| Fichier | À coller ? |
+|---|---|
+| `template/NOYAU-instructions-projet.md` | **NON.** C'est le gabarit, plein de trous entre chevrons |
+| `<votre projet>/ai-memory/NOYAU-instructions-projet.md` | **OUI.** C'est le vôtre, rempli |
+
+Si votre agent se présente comme `<NOM DE L'AGENT>`, vous avez collé le gabarit.
+
 ### Projet claude.ai
 
 Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu intégral de
-`ai-memory/NOYAU-instructions-projet.md`**.
+`ai-memory/NOYAU-instructions-projet.md` de votre instance**, celui que vous avez rempli.
 
 Attention au piège : déposer le NOYAU comme *document* du projet ne suffit pas. Un document est
 consultable, il n'est pas injecté au démarrage. Seul le champ **Instructions** l'est.
@@ -97,7 +108,9 @@ prouvé que l'agent les lit.**
 
 Ouvrez une session neuve et posez une question dont la réponse n'existe **que** dans le NOYAU :
 
-> « Quel est le rituel de session, et que dois-tu produire à la fin ? »
+> « Qui es-tu, quel est le rituel de session, et que dois-tu produire à la fin ? »
+
+S'il répond `<NOM DE L'AGENT>`, vous avez collé le gabarit et pas votre instance. Reprenez.
 
 Un agent qui a lu répond avec les étapes du rituel et cite le bloc de mise à jour mémoire de fin de
 session. Un agent qui n'a pas lu improvise une réponse plausible et générique. La différence est

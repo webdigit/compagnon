@@ -66,12 +66,13 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 ## État
 
-Version **0.5.0**. La doctrine est dégagée de trois instances en exploitation réelle chez
-WEBDIGIT srl. Trois questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md` : elles
-se tranchent avant la 1.0.0.
+Avant la 1.0.0. La doctrine est dégagée de trois instances en exploitation réelle chez WEBDIGIT srl.
+Trois questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md` : elles se tranchent
+avant la 1.0.0.
 
-Le numéro de version est porté par le `CHANGELOG.md` et les étiquettes git, et par eux seuls. Aucun
-autre fichier ne le duplique.
+**Le numéro de version courant se lit dans [`CHANGELOG.md`](CHANGELOG.md) et dans les étiquettes
+git, et nulle part ailleurs.** Aucun autre fichier ne le duplique, y compris celui-ci : c'est P7
+appliqué au dépôt lui-même, après l'avoir vu diverger en une seule journée.
 
 ## Licence
 

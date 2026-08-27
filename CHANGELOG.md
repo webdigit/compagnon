@@ -10,6 +10,38 @@ qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.5.2] - 2026-08-27
+
+Le piège des deux NOYAU homonymes, trouvé à la première installation réelle.
+
+### Corrigé
+
+- **Bandeau d'avertissement en tête de `template/NOYAU-instructions-projet.md`.** Le gabarit dit
+  désormais lui-même qu'il n'est pas prêt à être collé, et rappelle les trois gestes à faire avant.
+- **`INSTALLATION.md` étape 4** : un tableau qui oppose le fichier du gabarit et celui de l'instance,
+  avant toute autre instruction de l'étape.
+- **`INSTALLATION.md` étape 5** : la question de vérification devient « **Qui es-tu**, quel est le
+  rituel de session, et que dois-tu produire à la fin ? ». Un agent qui répond `<NOM DE L'AGENT>`
+  signale immédiatement le mauvais collage.
+
+### La leçon
+
+Un avertissement placé dans un fichier voisin ne protège pas un fichier qu'on copie seul. **Il doit
+voyager avec lui.** `INSTALLATION.md` disait déjà quel fichier coller ; ça n'a pas suffi, parce que
+le geste réel est « ouvrir le fichier, tout sélectionner, coller », et qu'à ce moment-là on ne lit
+plus le guide.
+
+Trouvé sur une installation faite par l'auteur de la méthode, sur sa propre instance. Un client
+l'aurait raté sans jamais savoir pourquoi son agent restait générique.
+
+## [0.5.1] - 2026-08-27
+
+### Décidé
+
+- **Le nom `compagnon` est conservé**, en minuscule, sans dépôt de marque. Il décrit la relation que
+  la méthode installe : quelqu'un qui accompagne et qui apprend de vous, pas un outil qu'on
+  configure. Le risque d'homonymie est réel et assumé, la valeur n'est pas dans le nom.
+
 ## [0.5.0] - 2026-08-27
 
 Le dépôt devient publiable.
