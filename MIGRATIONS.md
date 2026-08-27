@@ -44,6 +44,41 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.5.2 → 0.5.4
+
+**Un seul changement, dans le NOYAU de l'instance.**
+
+Ajoutez en tête du NOYAU une section **« Où vit le dossier »** portant le **chemin complet** du
+dossier du projet, puis **recollez le NOYAU** dans le champ que votre hôte injecte au démarrage.
+Modifier le fichier ne suffit pas : c'est la copie collée dans les Instructions qui est lue.
+
+Pourquoi : le NOYAU est la seule chose qu'une session neuve reçoit. S'il ne dit pas où est le
+dossier, une session qui démarre sans dossier connecté ne peut pas le lire, et va chercher
+l'information ailleurs, hors du projet. Rien d'autre ne change : aucun schéma, aucun seuil, aucune
+règle de gouvernance.
+
+---
+
+## 0.3.0 → 0.5.2
+
+**Rien à migrer côté instance.** Cette ligne existe pour que l'agent ne cherche pas.
+
+Ce qui a bougé entre la 0.3.0 et la 0.5.2 concerne le dépôt, pas les mémoires en service : le
+gabarit stérile `template/` (0.4.0), la licence et la déduplication du numéro de version (0.5.0), la
+décision sur le nom (0.5.1), le bandeau d'avertissement du NOYAU du gabarit et le tableau des deux
+fichiers homonymes (0.5.2). Aucun schéma d'entrée, aucun seuil, aucune règle de gouvernance n'a
+changé.
+
+Une instance née en 0.3.0 est donc **structurellement à jour en 0.5.2**. Mettez simplement à jour
+son `VERSION.md`, en notant que la migration a été une constatation et pas une transformation.
+
+> **Règle du document, à tenir.** Toute version publiée doit avoir sa ligne ici, **y compris quand
+> elle ne demande rien**. Un intervalle muet est indiscernable d'un intervalle oublié, et un agent
+> qui ne trouve pas sa version soit invente, soit abandonne. Les deux sont pires que « rien à
+> faire ». ← trouvé le 27/08/2026, quatre versions publiées sans ligne de migration.
+
+---
+
 ## 0.2.0 → 0.3.0
 
 **Ajouté : `ai-memory/VERSION.md`.** Créez le fichier, déclarez la version d'origine de l'instance et

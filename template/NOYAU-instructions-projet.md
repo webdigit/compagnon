@@ -5,7 +5,7 @@
 >
 > **Avant de coller quoi que ce soit dans les Instructions de votre projet :**
 > 1. copiez ce fichier dans le dossier `ai-memory/` de **votre** instance ;
-> 2. remplissez **tous** les trous entre chevrons ;
+> 2. remplissez **tous** les trous entre chevrons, **le chemin du dossier compris** ;
 > 3. **collez la version remplie**, jamais celle-ci.
 >
 > Vérifiez ensuite avec le test de l'étape 5 d'`INSTALLATION.md`. Si l'agent répond en s'appelant
@@ -18,6 +18,17 @@
 > ⚠️ **Il doit être chargé au démarrage de chaque session**, dans le champ que votre hôte injecte :
 > les Instructions du projet, un `CLAUDE.md` à la racine, ou l'équivalent. Voir `INSTALLATION.md`
 > étape 4. **Sans ça, ce dossier est inerte** : l'agent ne saura même pas qu'il existe.
+
+---
+
+## Où vit le dossier
+
+**`<CHEMIN COMPLET DU DOSSIER DU PROJET>`**
+
+Ce chemin est ici parce que ce texte est la **seule** chose qu'une session neuve reçoit au démarrage.
+Une session qui ne sait pas où est le dossier ne le lit pas, ou va le chercher dans une mémoire
+externe au projet, ce qui contredit la règle d'isolation. Si le dossier n'est pas accessible,
+demande l'accès à ce chemin et lis la mémoire avant toute autre chose.
 
 ---
 

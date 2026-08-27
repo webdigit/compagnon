@@ -69,6 +69,15 @@ Il existe **deux** fichiers du même nom, et c'est le piège numéro un.
 
 Si votre agent se présente comme `<NOM DE L'AGENT>`, vous avez collé le gabarit.
 
+### ⚠️ Ensuite : le chemin du dossier
+
+Le NOYAU est la **seule** chose qu'une session neuve reçoit. Si le chemin du dossier n'y est pas
+écrit, une session qui démarre sans dossier connecté ne sait pas où chercher : elle improvise, ou
+elle va le chercher dans une mémoire extérieure au projet, ce qui contredit la règle d'isolation.
+
+La section « Où vit le dossier » du NOYAU se remplit avec le **chemin complet**, pas un nom de
+projet. C'est le trou le plus facile à oublier parce qu'il paraît évident à celui qui installe.
+
 ### Projet claude.ai
 
 Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu intégral de

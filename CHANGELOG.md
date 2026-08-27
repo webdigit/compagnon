@@ -10,6 +10,38 @@ qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.5.4] - 2026-08-27
+
+Trouvé par le premier test de session neuve, sur l'instance de référence.
+
+### Ajouté
+
+- **Section « Où vit le dossier » en tête du NOYAU du gabarit**, avec le chemin complet du projet.
+  Le NOYAU est la seule chose qu'une session neuve reçoit. S'il ne dit pas où est le dossier, une
+  session qui démarre sans dossier connecté ne peut pas le lire : elle improvise, ou elle va
+  chercher l'information dans une mémoire extérieure au projet, ce qui **contredit la règle
+  d'isolation** que la méthode impose par ailleurs.
+- **`INSTALLATION.md` étape 4** : un avertissement dédié à ce chemin, juste après celui sur les
+  fichiers homonymes. C'est le trou le plus facile à oublier, parce qu'il paraît évident à celui
+  qui installe et qu'il ne manque qu'à quelqu'un d'autre.
+
+### La leçon
+
+Le test de l'étape 5 ne sert pas qu'à vérifier une installation : il **produit des correctifs**.
+Celui-ci a été trouvé en une seule session neuve, sur une instance dont l'installateur était
+convaincu qu'elle était complète. Trois occurrences du même défaut d'isolation avaient été mises au
+compte de la discipline de l'agent ; la cause était structurelle, et elle tenait en une ligne
+manquante.
+
+### Corrigé, dans la même livraison
+
+- **`MIGRATIONS.md` : l'intervalle 0.3.0 → 0.5.2 était muet.** Quatre versions publiées sans ligne
+  de migration, alors que la procédure demande à l'agent d'appliquer « toutes les migrations
+  postérieures à sa version ». Il n'en trouvait aucune et ne pouvait pas savoir si c'était parce
+  qu'il n'y avait rien à faire ou parce que rien n'avait été écrit.
+- **Règle ajoutée au document** : toute version publiée a sa ligne, **y compris quand elle ne
+  demande rien**. Un « rien à faire » explicite est une information ; un silence n'en est pas une.
+
 ## [0.5.2] - 2026-08-27
 
 Le piège des deux NOYAU homonymes, trouvé à la première installation réelle.
