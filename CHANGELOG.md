@@ -3,8 +3,49 @@
 Toutes les évolutions notables de **compagnon** sont consignées ici.
 Format inspiré de Keep a Changelog. Versionnement sémantique.
 
-Ce que versionne ce numéro : **le gabarit et la doctrine**, pas les instances. Une instance
-déclare la version du gabarit dont elle est née, et ne la change qu'en migrant explicitement.
+Ce que versionne ce numéro : **tout ce dépôt** — doctrine, gabarit, documentation, licence. Pas les
+instances : chacune déclare dans son `VERSION.md` la version dont elle est née, et ne la change
+qu'en migrant explicitement.
+
+**Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
+ne le duplique, pour qu'il ne puisse pas diverger (P7).
+
+## [0.5.0] - 2026-08-27
+
+Le dépôt devient publiable.
+
+### Ajouté
+
+- **`LICENSE` : Creative Commons Attribution 4.0 International.** Lecture, copie, adaptation et
+  redistribution libres, **y compris commercialement**, à condition de créditer.
+  Le raisonnement : ce qui se vend ici est l'accompagnement, pas le texte. Restreindre le texte
+  coûterait de l'adoption sans rien protéger, puisqu'une licence protège l'expression et jamais les
+  idées : n'importe qui peut reformuler une doctrine et la vendre, sous n'importe quelle licence.
+  L'attribution est le seul verrou qui serve : chaque copie renvoie à l'origine.
+- **Une clause de portée explicite.** Le contenu produit dans une instance appartient à celui qui
+  l'a écrit. Sans cette précision, un utilisateur peut craindre que son propre `learned-rules.md`
+  soit contaminé par la licence, et ne pas essayer.
+
+### Corrigé
+
+- **Le numéro de version n'est plus dupliqué.** `DOCTRINE.md` et le `README` portaient chacun le
+  leur, et ils avaient déjà divergé (0.4.0 contre 0.3.0) en une seule journée. Le `CHANGELOG` et les
+  étiquettes git sont désormais la seule source. C'est P7 appliqué au dépôt lui-même : chaque chose
+  a un seul propriétaire.
+
+### Écarté
+
+- **Pas de clause non commerciale.** « Commercial » est trop flou : un indépendant qui instancie la
+  méthode pour son propre travail facturé tomberait dans la zone grise, et c'est précisément le
+  public visé.
+- **Pas d'absence de licence.** Sans licence, personne n'a le droit de copier le gabarit, ce qui
+  interdit le geste même qu'on veut provoquer.
+
+### Reste ouvert
+
+La protection du **nom**, qui relève de la marque et non de la licence. « compagnon » est un terme
+courant du français, donc faible comme marque. À trancher : accepter que le nom ne soit pas
+défendable et miser sur la réputation, ou en changer.
 
 ## [0.4.0] - 2026-08-27
 

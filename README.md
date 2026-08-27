@@ -56,7 +56,8 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `DOCTRINE.md` | **Commencez ici.** Les onze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
 | `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version |
-| `CHANGELOG.md` | L'historique des versions |
+| `CHANGELOG.md` | L'historique des versions — **la seule source du numéro de version** |
+| `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
 | `template/` | Le gabarit canonique : dix fichiers, stériles, à instancier |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
@@ -65,10 +66,22 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 ## État
 
-Doctrine **0.3.0**, dégagée de trois instances en exploitation réelle chez WEBDIGIT srl. Trois
-questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md`. Elles se tranchent avant
-la 1.0.0, qui portera la doctrine et le gabarit ensemble.
+Version **0.5.0**. La doctrine est dégagée de trois instances en exploitation réelle chez
+WEBDIGIT srl. Trois questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md` : elles
+se tranchent avant la 1.0.0.
+
+Le numéro de version est porté par le `CHANGELOG.md` et les étiquettes git, et par eux seuls. Aucun
+autre fichier ne le duplique.
 
 ## Licence
 
-À définir.
+**Creative Commons Attribution 4.0 International (CC BY 4.0).** Voir [`LICENSE`](LICENSE).
+
+Vous pouvez lire, copier, adapter et redistribuer cette méthode, **y compris commercialement**, à
+condition de créditer WEBDIGIT srl et de fournir un lien vers la licence.
+
+**Ce que vous écrivez dans votre instance vous appartient.** Les règles que votre agent apprend, vos
+erreurs consignées, vos cas et vos décisions d'autonomie ne sont pas couverts par cette licence.
+Instancier le gabarit ne vous oblige à rien publier, et ne place aucune obligation sur votre travail
+quotidien. L'attribution ne concerne que la redistribution ou l'adaptation de la **méthode
+elle-même**.

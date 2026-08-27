@@ -1,0 +1,34 @@
+compagnon — méthode d'apprentissage supervisé pour agent
+Copyright (c) 2026 WEBDIGIT srl (Belgique)
+
+Cette œuvre est mise à disposition sous licence
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+Identifiant SPDX : CC-BY-4.0
+Texte intégral   : https://creativecommons.org/licenses/by/4.0/legalcode.fr
+Résumé lisible   : https://creativecommons.org/licenses/by/4.0/deed.fr
+
+Ce fichier incorpore par référence le texte intégral de la licence à l'adresse
+ci-dessus, qui seul fait foi.
+
+Vous êtes libre de partager et d'adapter cette œuvre, y compris à des fins
+commerciales, à condition de créditer l'auteur, d'indiquer si des modifications
+ont été apportées, et de fournir un lien vers la licence.
+
+-------------------------------------------------------------------------------
+PORTÉE
+
+Cette section précise ce que la licence couvre. Elle n'ajoute aucune restriction
+et ne modifie pas la licence.
+
+L'œuvre couverte est le contenu de ce dépôt : la doctrine, la documentation, et
+les fichiers du gabarit `template/`.
+
+Elle NE couvre PAS le contenu que vous produisez en utilisant le gabarit. Les
+règles que votre agent apprend, vos erreurs consignées, vos cas, votre état
+opérationnel et vos décisions d'autonomie sont votre propriété. Instancier ce
+gabarit ne place aucune obligation sur ce que vous écrivez dedans, et n'oblige
+personne à publier quoi que ce soit.
+
+Autrement dit : l'obligation de créditer s'applique si vous redistribuez ou
+adaptez la méthode elle-même. Elle ne s'applique pas à votre travail quotidien.
