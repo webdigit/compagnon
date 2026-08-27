@@ -1,0 +1,71 @@
+# compagnon
+
+**Une méthode pour qu'un agent apprenne de vous, et gagne son autonomie par preuves.**
+
+Pas un logiciel. Pas une dépendance. Un dossier de fichiers texte et une doctrine qui les fait
+vivre.
+
+---
+
+## Le problème
+
+Votre agent est compétent et amnésique. Vous le corrigez, il comprend, et à la session suivante il
+recommence. Le travail que vous investissez dans la correction ne s'accumule nulle part.
+
+Les mémoires existantes retiennent des **faits** : votre prénom, votre pile technique, vos
+préférences. Ce qu'il vous faut, ce sont des **jugements** : quoi vérifier avant d'affirmer, quel
+délai est tenable, ce qu'il ne faut jamais promettre à un client.
+
+Et il manque une seconde chose : rien ne borne ce que l'agent a le droit de faire. Il a vos accès,
+donc il peut écrire, envoyer, supprimer. La seule chose qui l'en empêche est votre vigilance, à
+chaque fois.
+
+## Ce que fait compagnon
+
+Il donne à l'agent un **cerveau de décision** relu à chaque session, et une **échelle d'autonomie**
+qui ne monte que sur décision datée de votre part.
+
+Concrètement, après quelques semaines d'usage réel :
+
+- un playbook de règles apprises, chacune avec son origine, son score et sa maturité ;
+- un journal d'erreurs qui nomme les causes racines et qui **bloque** les montées de niveau tant
+  qu'une erreur reste ouverte ;
+- des cas concrets réutilisables par analogie ;
+- un tableau de bord de l'état courant ;
+- et un catalogue de capacités où chaque ouverture porte votre nom et sa date.
+
+## Ce que ça n'est pas
+
+Ce n'est pas une garantie mécanique. L'agent écrit ses propres règles et note ses propres scores.
+La méthode ne rend pas la complaisance impossible, elle la rend **visible** à qui relit. Elle
+suppose que vous relisiez.
+
+Lisez [`DOCTRINE.md`](DOCTRINE.md) avant tout le reste, et notamment sa section « Ce que compagnon
+ne prétend pas ». C'est le document qui décide si la méthode vous convient.
+
+## Pour qui
+
+Un opérateur solo ou une petite équipe qui travaille tous les jours avec un agent sur un métier
+réel, et qui en a assez de réexpliquer la même chose. Il faut accepter deux choses : relire ce que
+l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
+
+## Ce qu'il y a dans le dépôt
+
+| Chemin | Contenu |
+|---|---|
+| `DOCTRINE.md` | **Commencez ici.** Les huit principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
+| `CHANGELOG.md` | L'historique des versions du gabarit |
+| `template/` | Le gabarit canonique, stérile, à instancier | 
+
+> Le gabarit `template/` arrive en v1.0.0. Il est écrit **depuis la doctrine**, pas copié depuis
+> une instance en exploitation, pour qu'aucune donnée client ne s'y glisse.
+
+## État
+
+Doctrine **0.2.0**, dégagée de trois instances en exploitation réelle chez WEBDIGIT srl. Trois
+questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md`. Elles se tranchent avant
+la 1.0.0, qui portera la doctrine et le gabarit ensemble.
+
+## Licence
+
+À définir.

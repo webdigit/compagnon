@@ -1,0 +1,14 @@
+# Instances de travail : elles contiennent des données métier, jamais dans ce dépôt.
+instances/
+*.local.md
+
+# Systèmes
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
