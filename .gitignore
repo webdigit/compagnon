@@ -2,6 +2,10 @@
 instances/
 *.local.md
 
+# Outillage de session et journaux d'exécution : ce dépôt ne livre que de la méthode.
+*.bat
+sortie-*.txt
+
 # Systèmes
 .DS_Store
 Thumbs.db
