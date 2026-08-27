@@ -3,7 +3,7 @@
 > Ce document est le cœur de la méthode. Le gabarit de dossiers n'en est que la mise en œuvre.
 > Qui lit la doctrine peut réimplémenter le gabarit. L'inverse est faux.
 
-_Doctrine 0.2.0. Trois questions restent ouvertes en fin de document : elles se tranchent avant la
+_Doctrine 0.3.0. Trois questions restent ouvertes en fin de document : elles se tranchent avant la
 1.0.0. Dernière révision : 27/08/2026._
 
 ---
@@ -35,7 +35,7 @@ Tout le reste en découle.
 
 ---
 
-## Les dix principes
+## Les onze principes
 
 ### P1. La seule fonction de récompense est l'humain
 
@@ -164,6 +164,32 @@ de plus.
 
 Toute formule qui rend une confiance élevée après une seule validation est fausse, et le symptôme se
 reconnaît facilement : quelqu'un finit par corriger le chiffre à la main parce qu'il sonne faux.
+
+### P11. Aucune écriture automatique dans la mémoire
+
+La mémoire ne se transforme jamais par un procédé qui ne l'a pas lue et qui ne peut pas dire ce
+qu'il a changé.
+
+Ça n'interdit pas à l'agent d'écrire : il lit, il raisonne, il écrit, et il **liste ce qu'il a
+écrit**. Ça interdit le script. Pas de script de migration, pas de script de consolidation, pas
+d'outil qui « nettoie » un fichier de règles, pas de tâche planifiée qui réindexe en silence.
+
+Trois raisons, dans l'ordre d'importance.
+
+**Une transformation qui ne rend pas compte est une réécriture.** Elle casse P5 et P6 en même temps :
+l'archive n'est plus fiable, et la généalogie ne l'est plus non plus, puisqu'on ne sait plus ce qui
+a été touché ni par quoi.
+
+**Un script ne comprend pas ce qu'il déplace.** Il peut renommer un statut correctement et détruire
+le raisonnement qui le justifiait, parce que la valeur de cette mémoire est dans la prose, pas dans
+les champs.
+
+**Et c'est la pente qui a déjà tué des tentatives outillées.** On commence par un petit script de
+migration, on ajoute un validateur, puis un moteur, et on se retrouve avec un système qui coûte cher
+à alimenter et dont le rendu n'est plus lisible par l'opérateur. Le coût d'écriture décide de tout.
+
+Conséquence exécutoire : une migration est **appliquée par un agent qui lit les notes de migration**,
+change ce qui doit l'être, et rend compte. Une migration silencieuse n'est pas une migration.
 
 ---
 

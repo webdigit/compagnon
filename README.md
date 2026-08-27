@@ -53,16 +53,18 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 | Chemin | Contenu |
 |---|---|
-| `DOCTRINE.md` | **Commencez ici.** Les huit principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
-| `CHANGELOG.md` | L'historique des versions du gabarit |
-| `template/` | Le gabarit canonique, stérile, à instancier | 
+| `DOCTRINE.md` | **Commencez ici.** Les onze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
+| `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
+| `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version |
+| `CHANGELOG.md` | L'historique des versions |
+| `template/` | Le gabarit canonique, stérile, à instancier |
 
 > Le gabarit `template/` arrive en v1.0.0. Il est écrit **depuis la doctrine**, pas copié depuis
 > une instance en exploitation, pour qu'aucune donnée client ne s'y glisse.
 
 ## État
 
-Doctrine **0.2.0**, dégagée de trois instances en exploitation réelle chez WEBDIGIT srl. Trois
+Doctrine **0.3.0**, dégagée de trois instances en exploitation réelle chez WEBDIGIT srl. Trois
 questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md`. Elles se tranchent avant
 la 1.0.0, qui portera la doctrine et le gabarit ensemble.
 

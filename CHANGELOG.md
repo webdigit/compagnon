@@ -6,6 +6,35 @@ Format inspiré de Keep a Changelog. Versionnement sémantique.
 Ce que versionne ce numéro : **le gabarit et la doctrine**, pas les instances. Une instance
 déclare la version du gabarit dont elle est née, et ne la change qu'en migrant explicitement.
 
+## [0.3.0] - 2026-08-27
+
+De la doctrine vers l'installable, plus un principe validé par JC en cours de route.
+
+### Ajouté
+
+- **P11 — Aucune écriture automatique dans la mémoire.** La mémoire ne se transforme jamais par un
+  procédé qui ne l'a pas lue et qui ne peut pas dire ce qu'il a changé. L'agent écrit, un script
+  jamais. Pas de script de migration, pas de script de consolidation, pas d'outil qui « nettoie ».
+  Décision de JC du 27/08/2026, prise en tranchant la conception des migrations.
+
+- **`INSTALLATION.md`** : le guide public. Il met en tête l'étape qui fait échouer les installations,
+  celle que l'agent ne peut pas faire lui-même : charger le NOYAU dans le champ que l'hôte injecte
+  au démarrage. Copier les fichiers ne suffit pas, et un test de vérification est fourni pour ne pas
+  se contenter d'un « oui j'ai bien lu ».
+- **`MIGRATIONS.md`** : comment une instance déjà en service rattrape une nouvelle version. La
+  migration touche la structure, jamais le contenu, et elle est appliquée par l'agent qui lit le
+  document. Il n'y aura pas de script : un script qui réécrit une mémoire est ce que P5 interdit.
+- **`ai-memory/VERSION.md`** dans les instances : déclare la version d'origine, l'historique des
+  migrations et les écarts assumés. Une instance sans ce fichier est antérieure à la 0.3.0.
+- **Étiquettes de version sur le dépôt** : `v0.2.0`, `v0.3.0`. Une instance peut désormais désigner
+  précisément ce dont elle est née.
+
+### Non publié
+
+Le protocole d'intervention reste hors du dépôt, sous `_prive/`. C'est ce qui se vend : l'ordre des
+blocs, les questions à poser pour choisir la première compétence et l'échelle d'autonomie, et ce
+qu'il faut refuser. Rendre le dépôt public ne coûte donc rien.
+
 ## [0.2.0] - 2026-08-27
 
 Deux questions de doctrine tranchées par JC, toutes deux au motif de la prudence.

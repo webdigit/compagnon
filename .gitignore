@@ -2,6 +2,9 @@
 instances/
 *.local.md
 
+# Documents d'intervention : c'est ce qui se vend, ça ne se publie pas.
+_prive/
+
 # Outillage de session et journaux d'exécution : ce dépôt ne livre que de la méthode.
 *.bat
 sortie-*.txt
