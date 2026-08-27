@@ -10,6 +10,21 @@ qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.5.5] - 2026-08-27
+
+### Ajouté
+
+- **Avertissement « le fichier et la copie collée sont deux objets distincts »** en tête du NOYAU du
+  gabarit. Modifier le NOYAU ne change rien aux sessions tant que la copie chargée par l'hôte n'a
+  pas été refaite. C'est l'oubli le plus courant **après** l'installation, et il ne se voit pas :
+  l'agent continue de tourner correctement, avec l'ancienne version.
+
+### La leçon
+
+Le piège de la 0.5.2 était de coller le mauvais fichier. Celui-ci est de croire qu'éditer le bon
+suffit. Les deux viennent de la même racine : **le NOYAU vit à deux endroits, et un seul est lu.**
+Le gabarit le dit maintenant lui-même, aux deux moments où ça compte.
+
 ## [0.5.4] - 2026-08-27
 
 Trouvé par le premier test de session neuve, sur l'instance de référence.

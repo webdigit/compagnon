@@ -18,6 +18,10 @@
 > ⚠️ **Il doit être chargé au démarrage de chaque session**, dans le champ que votre hôte injecte :
 > les Instructions du projet, un `CLAUDE.md` à la racine, ou l'équivalent. Voir `INSTALLATION.md`
 > étape 4. **Sans ça, ce dossier est inerte** : l'agent ne saura même pas qu'il existe.
+>
+> ⚠️ **Ce fichier et la copie chargée par l'hôte sont deux objets distincts.** Modifier celui-ci ne
+> change rien aux sessions tant que la copie n'a pas été refaite. **Toute modification du NOYAU se
+> termine par un recollage.** C'est l'oubli le plus courant après l'installation.
 
 ---
 

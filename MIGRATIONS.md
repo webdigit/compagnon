@@ -44,6 +44,17 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.5.4 → 0.5.5
+
+**Rien d'obligatoire côté instance.** La 0.5.5 ajoute un avertissement au NOYAU du gabarit ; le
+reporter dans le vôtre est utile mais facultatif.
+
+En revanche, retenez la règle qu'il énonce, parce qu'elle vaut pour **toutes** les migrations
+futures : le fichier `NOYAU-instructions-projet.md` et la copie chargée par votre hôte sont deux
+objets distincts. **Toute migration qui touche le NOYAU se termine par un recollage.**
+
+---
+
 ## 0.5.2 → 0.5.4
 
 **Un seul changement, dans le NOYAU de l'instance.**
