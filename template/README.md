@@ -2,7 +2,8 @@
 
 > **Commence ici.** Toute session lit **d'abord** ce README, **puis**
 > `NOYAU-instructions-projet.md`, **puis** les quatre mémoires d'apprentissage et
-> `operational-state.md`. Sans cette lecture, ce dossier est inerte.
+> `operational-state.md`, **puis** `report.md` s'il existe. Sans cette lecture, ce dossier est
+> inerte.
 >
 > ⚠️ **À REMPLIR** : remplacez `<NOM DE L'AGENT>`, `<OPÉRATEUR>` et `<COMPÉTENCE 01>` partout dans
 > ce dossier. Les exemples fictifs sont signalés, ils sont à remplacer par vos vrais cas.
@@ -49,6 +50,16 @@ Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
 | `objectives.md` | Les cibles de qualité | Cibles = **opérateur** · Progression = auto |
 | `capabilities.md` | Les actions autorisées par niveau | Catalogue = **opérateur** · Demandes = auto |
 
+**Couche INTERFACE**
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `report.md` | La **seule sortie publique** : ce que le travail donne, pour l'opérateur pressé ou un agent chapeau | Auto (agent) · **facultatif** |
+
+> `report.md` n'est pas une mémoire et n'est pas un journal : il ne porte que le dernier rapport, il
+> est daté, il périme, et il pointe vers les systèmes qui portent la donnée au lieu de la recopier.
+> Une instance dont personne ne lit la sortie n'a pas besoin de ce fichier.
+
 **Couche NOYAU**
 
 | Fichier | Rôle | Écriture |
@@ -59,13 +70,15 @@ Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
 ## La boucle
 
 ```
-Lire README → NOYAU → 4 mémoires + operational-state + objectives + capabilities
+Lire README → NOYAU → 4 mémoires + operational-state + objectives + capabilities + report
       ↓
 Faire le travail dans la limite du niveau d'autonomie · proposer le reste
       ↓
 L'opérateur valide ou corrige, en disant POURQUOI  →  reward (+2 … -3)
       ↓
 Mettre à jour la mémoire (observation → hypothèse → règle provisoire → règle active)
+      ↓
+Publier le rapport de sortie, si l'instance en produit un
       ↓
 Consolider périodiquement, sans jamais effacer
       ↓
@@ -82,5 +95,7 @@ Consolider périodiquement, sans jamais effacer
 5. **Auditabilité** : rien réécrit en silence, tout a une généalogie.
 6. **Les zones manuelles ne s'auto-écrivent pas** : l'agent propose, l'opérateur dispose.
 7. **`_archive/` ne s'édite jamais.**
+8. **La mémoire ne se lit pas de l'extérieur.** Ce qui sort d'ici est `report.md`, et rien d'autre.
+   Personne d'autre que cet agent n'écrit dans ce dossier.
 
 _Gabarit : **compagnon** (voir `VERSION.md`). Doctrine complète : `DOCTRINE.md` du dépôt._

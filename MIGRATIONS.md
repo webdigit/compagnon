@@ -99,6 +99,58 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.5.6 → 0.6.0
+
+**Migration facultative, et sans transformation de contenu.** Aucun schéma d'entrée, aucun seuil de
+maturation, aucune règle de gouvernance ne change. `principles.md`, `learned-rules.md`,
+`examples.md`, `mistakes.md`, `operational-state.md`, `objectives.md` et `capabilities.md` ne sont
+**pas touchés**. Une instance qui ne fait rien de cette version reste correcte et reste à jour sur
+tout le reste.
+
+Ce que la 0.6.0 ajoute : un fichier `report.md`, une couche **INTERFACE** dans le gabarit, et le
+principe **P12** qui la justifie — ce qui sort d'une instance est un rapport, jamais sa mémoire.
+
+### 1. Trancher : cette instance produit-elle un rapport ? (opérateur)
+
+Une seule question : **la sortie de cet agent est-elle lue par quelqu'un d'autre que son
+opérateur ?** Un agent chapeau qui arbitre entre plusieurs instances, une revue hebdomadaire, une
+autre équipe.
+
+- **Non** → il n'y a rien à faire. Inscrivez simplement dans l'historique de `VERSION.md` :
+  « 0.6.0 constatée, instance sans rapport de sortie ». Ce n'est pas un écart au gabarit : le fichier
+  y est déclaré facultatif. Ne l'inscrivez donc pas dans « Écarts assumés ».
+- **Oui** → appliquez les points 2 et 3.
+
+### 2. Poser le fichier
+
+Récupérez `template/report.md` **à l'étiquette** (`git show v0.6.0:template/report.md`), posez-le
+dans `ai-memory/`, remplissez les chevrons, créez `_archive/rapports/`.
+
+**N'écrivez aucun rapport rétroactif.** Le premier rapport se produit au prochain run réel. Un
+rapport reconstitué de mémoire n'a ni vérification ni généalogie, et il sera lu comme un état
+constaté (P5, P6).
+
+### 3. Reporter la section §5bis dans le NOYAU, puis **recoller**
+
+Ajoutez au NOYAU de l'instance la section **§5bis — Le rapport de sortie**, la ligne « Interface »
+dans la carte du cerveau, l'étape 7 du rituel de session, et la mention de `report.md` à l'étape 1.
+Le texte de référence est dans `template/NOYAU-instructions-projet.md` à l'étiquette.
+
+⚠️ **Puis recollez le NOYAU** dans le champ que votre hôte injecte au démarrage. Modifier le fichier
+ne change rien aux sessions tant que la copie n'a pas été refaite. C'est l'oubli le plus courant.
+
+Une instance qui ne produit pas de rapport **garde son NOYAU tel quel** : la section n'a pas d'objet,
+et son absence n'est pas une divergence à consigner.
+
+### Ce que cette migration ne fait pas
+
+Elle ne déplace **rien**. Si des sujets métier traînent dans la section « Points chauds » de
+`operational-state.md` — leur vraie place est désormais le rapport, cette section étant réservée à ce
+qui bloque l'agent lui-même — l'agent les **signale** à l'opérateur et ne les déplace pas d'office.
+C'est du contenu, il appartient à l'opérateur.
+
+---
+
 ## 0.5.5 → 0.5.6
 
 **Trois points : deux vérifications et une ligne à ajouter.** Aucun fichier de contenu n'est

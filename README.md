@@ -32,7 +32,9 @@ Concrètement, après quelques semaines d'usage réel :
   qu'une erreur reste ouverte ;
 - des cas concrets réutilisables par analogie ;
 - un tableau de bord de l'état courant ;
-- et un catalogue de capacités où chaque ouverture porte votre nom et sa date.
+- un catalogue de capacités où chaque ouverture porte votre nom et sa date ;
+- et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
+  par vous en trente secondes ou par un agent qui arbitre entre plusieurs de vos instances.
 
 ## Ce que ça n'est pas
 
@@ -53,12 +55,12 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 | Chemin | Contenu |
 |---|---|
-| `DOCTRINE.md` | **Commencez ici.** Les onze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
+| `DOCTRINE.md` | **Commencez ici.** Les douze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
 | `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version |
 | `CHANGELOG.md` | L'historique des versions — **la seule source du numéro de version** |
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
-| `template/` | Le gabarit canonique : dix fichiers, stériles, à instancier |
+| `template/` | Le gabarit canonique : onze fichiers, stériles, à instancier |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
 > aucune donnée client ne peut s'y trouver. Les zones à remplir sont marquées, et chaque fichier

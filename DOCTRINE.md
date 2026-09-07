@@ -36,7 +36,7 @@ Tout le reste en découle.
 
 ---
 
-## Les onze principes
+## Les douze principes
 
 ### P1. La seule fonction de récompense est l'humain
 
@@ -191,6 +191,38 @@ migration, on ajoute un validateur, puis un moteur, et on se retrouve avec un sy
 
 Conséquence exécutoire : une migration est **appliquée par un agent qui lit les notes de migration**,
 change ce qui doit l'être, et rend compte. Une migration silencieuse n'est pas une migration.
+
+### P12. Ce qui sort est un rapport, pas la mémoire
+
+Une instance expose **un seul** fichier vers l'extérieur : son rapport. Sa mémoire n'est pas une
+interface, et ne le devient jamais.
+
+Deux raisons, et la seconde est la vraie.
+
+**La mémoire est un laboratoire (P8).** Elle contient des hypothèses fragiles, des règles
+provisoires, des contradictions ouvertes. Ces états ont un sens pour qui connaît l'échelle de
+maturation ; lus de l'extérieur, ils n'en ont plus. Une règle provisoire ressemble en tout point à
+une décision, et c'est précisément ce que P9 refuse de lui accorder.
+
+**Ce qui se lit de l'extérieur finit par s'écrire de l'extérieur.** Un agent qui n'a assisté à
+aucune session n'a ni le feedback de l'opérateur (P1), ni la généalogie de ce qu'il écrirait (P6).
+Sa contribution serait indiscernable d'une règle apprise, et invérifiable. C'est exactement ce que
+P11 interdit à un script, pour les mêmes motifs : ne pas avoir lu, ne pas pouvoir rendre compte.
+
+Conséquences exécutoires :
+
+- Un agent chapeau, qui arbitre entre plusieurs instances, lit leurs **rapports** et rien d'autre.
+  Il n'ouvre aucune mémoire, il n'écrit dans aucune, et il produit son arbitrage chez lui.
+- Une instance qui reçoit une consigne d'un autre agent la traite comme une **proposition à son
+  opérateur**, jamais comme un ordre. Une hiérarchie entre agents ne crée aucune autorité : seul
+  l'humain en accorde (P3).
+- Un rapport est **daté et périssable** ; une mémoire est cumulative. On ne les mélange pas, sous
+  peine d'obtenir soit une mémoire qui gonfle de l'opérationnel du jour, soit un rapport que
+  quelqu'un lira comme encore vrai trois semaines plus tard.
+
+Ce principe est ce qui rend plusieurs instances composables sans qu'aucune ne perde son opérateur.
+Sans lui, la première IA de coordination qui « range » une mémoire annule tout ce que P5, P6 et P11
+protègent.
 
 ---
 

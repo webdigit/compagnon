@@ -45,6 +45,10 @@ remplir. Les fichiers arrivent vides de contenu métier, c'est voulu.
 Trois fichiers vous appartiennent et ne s'auto-écrivent jamais : `principles.md`, les cibles
 d'`objectives.md`, et le catalogue de `capabilities.md`. L'agent y *propose*, vous y *disposez*.
 
+Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent doit être lue par
+quelqu'un d'autre que vous — un autre agent qui arbitre entre plusieurs instances, une revue
+hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame.
+
 ## Étape 3 — Fixer l'échelle d'autonomie
 
 Dans `capabilities.md`. **Commencez en lecture seule intégrale.** Aucune écriture pré-autorisée,

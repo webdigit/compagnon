@@ -10,6 +10,45 @@ qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.6.0] - 2026-09-07
+
+### Ajouté
+
+- **Une couche INTERFACE, et un fichier : `report.md`.** Jusqu'ici, tout le dossier était tourné
+  vers l'intérieur : c'est le cerveau de l'agent. Rien n'était prévu pour être lu **d'ailleurs**. Un
+  lecteur extérieur — l'opérateur pressé, ou un agent qui arbitre entre plusieurs instances — n'avait
+  d'autre choix que d'ouvrir `operational-state.md`, qui parle de maturité d'apprentissage et de
+  règles provisoires, pas de ce qu'il y a à faire. Il lisait le mauvais fichier, et il en tirait des
+  décisions.
+- **`report.md` est daté, périssable et déclare son périmètre.** En-tête lisible par une machine avec
+  `arrêté_le`, `périmé_après`, `couvert` et `non_couvert`. Un rapport sans date de péremption finit
+  appliqué sur un état qui n'existe plus ; un rapport qui ne dit pas ce qu'il n'a **pas** regardé se
+  fait lire comme « rien à signaler ».
+- **Chaque ligne d'un rapport dit qui l'a validée.** Sans ça, un lecteur extérieur ne distingue pas
+  un avis d'agent d'une décision de l'opérateur, et le rituel « je propose, tu valides » saute d'un
+  cran sans que personne ne s'en aperçoive (P3).
+- **P12 — ce qui sort est un rapport, pas la mémoire.** Une instance expose un seul fichier ; sa
+  mémoire n'est pas une interface et ne le devient jamais. Un agent chapeau lit les rapports, n'ouvre
+  aucune mémoire, n'écrit dans aucune, et produit son arbitrage chez lui. Une consigne venue d'un
+  autre agent est une **proposition à l'opérateur**, jamais un ordre : une hiérarchie entre agents ne
+  crée aucune autorité.
+- **NOYAU §5bis** : quand produire un rapport (à la fin d'un run qui a un livrable, pas à chaque
+  session), dans quel ordre (après le bloc mémoire), et les huit règles qui le rendent lisible par
+  quelqu'un d'autre. Étape 7 du rituel de session.
+- **Ligne de migration 0.5.6 → 0.6.0**, explicitement **facultative** et sans transformation de
+  contenu.
+
+### La leçon
+
+Composer plusieurs instances est tentant, et c'est là que la méthode pouvait se perdre : la première
+IA de coordination qui « range » une mémoire annule d'un coup ce que P5, P6 et P11 protègent. Ce
+qu'il fallait ajouter n'était donc pas un canal de communication entre agents, mais une **frontière**
+— une sortie publique, et l'interdiction de lire ou d'écrire au-delà.
+
+Corollaire, sur le coût : un rapport qui coûte cher à écrire ne sera pas écrit, et un fichier qu'on
+n'écrit plus est pire qu'un fichier absent, parce qu'on continue de le lire. D'où cinq sections, pas
+douze, et le caractère facultatif du fichier lui-même.
+
 ## [0.5.6] - 2026-08-27
 
 ### Ajouté
