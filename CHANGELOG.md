@@ -3,12 +3,30 @@
 Toutes les évolutions notables de **compagnon** sont consignées ici.
 Format inspiré de Keep a Changelog. Versionnement sémantique.
 
-Ce que versionne ce numéro : **tout ce dépôt** — doctrine, gabarit, documentation, licence. Pas les
-instances : chacune déclare dans son `VERSION.md` la version dont elle est née, et ne la change
-qu'en migrant explicitement.
+Ce que versionne ce numéro : **tout ce dépôt**, soit la doctrine, le gabarit, la documentation et la
+licence. Pas les instances : chacune déclare dans son `VERSION.md` la version dont elle est née, et
+ne la change qu'en migrant explicitement.
 
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
+
+## [0.6.1] - 2026-09-07
+
+### Modifié
+
+- **Passe typographique : plus un seul tiret cadratin dans le dépôt.** Les quatre-vingts occurrences
+  sont remplacées par un deux-points, une virgule ou une parenthèse, selon ce que la phrase
+  demandait. Aucun mot de doctrine, aucun seuil, aucune structure ne change.
+- Motif : le tiret cadratin est devenu une signature d'IA reconnaissable à l'œil nu, et ce dépôt est
+  la première chose qu'un lecteur voit de la méthode. Le geste est cosmétique, ce qu'il évite ne
+  l'est pas.
+- La passe s'est faite à la main, occurrence par occurrence : aucun remplacement mécanique ne
+  choisit entre un deux-points, une virgule et une parenthèse.
+
+### Migration
+
+Aucune action. La ligne 0.6.0 → 0.6.1 de `MIGRATIONS.md` existe parce que `template/` a bougé et que
+la règle de publication l'exige, pas parce qu'une instance doit faire quelque chose.
 
 ## [0.6.0] - 2026-09-07
 
@@ -16,7 +34,7 @@ ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
 - **Une couche INTERFACE, et un fichier : `report.md`.** Jusqu'ici, tout le dossier était tourné
   vers l'intérieur : c'est le cerveau de l'agent. Rien n'était prévu pour être lu **d'ailleurs**. Un
-  lecteur extérieur — l'opérateur pressé, ou un agent qui arbitre entre plusieurs instances — n'avait
+  lecteur extérieur (l'opérateur pressé, ou un agent qui arbitre entre plusieurs instances) n'avait
   d'autre choix que d'ouvrir `operational-state.md`, qui parle de maturité d'apprentissage et de
   règles provisoires, pas de ce qu'il y a à faire. Il lisait le mauvais fichier, et il en tirait des
   décisions.
@@ -27,7 +45,7 @@ ne le duplique, pour qu'il ne puisse pas diverger (P7).
 - **Chaque ligne d'un rapport dit qui l'a validée.** Sans ça, un lecteur extérieur ne distingue pas
   un avis d'agent d'une décision de l'opérateur, et le rituel « je propose, tu valides » saute d'un
   cran sans que personne ne s'en aperçoive (P3).
-- **P12 — ce qui sort est un rapport, pas la mémoire.** Une instance expose un seul fichier ; sa
+- **P12 : ce qui sort est un rapport, pas la mémoire.** Une instance expose un seul fichier ; sa
   mémoire n'est pas une interface et ne le devient jamais. Un agent chapeau lit les rapports, n'ouvre
   aucune mémoire, n'écrit dans aucune, et produit son arbitrage chez lui. Une consigne venue d'un
   autre agent est une **proposition à l'opérateur**, jamais un ordre : une hiérarchie entre agents ne
@@ -42,8 +60,8 @@ ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
 Composer plusieurs instances est tentant, et c'est là que la méthode pouvait se perdre : la première
 IA de coordination qui « range » une mémoire annule d'un coup ce que P5, P6 et P11 protègent. Ce
-qu'il fallait ajouter n'était donc pas un canal de communication entre agents, mais une **frontière**
-— une sortie publique, et l'interdiction de lire ou d'écrire au-delà.
+qu'il fallait ajouter n'était donc pas un canal de communication entre agents, mais une
+**frontière** : une sortie publique, et l'interdiction de lire ou d'écrire au-delà.
 
 Corollaire, sur le coût : un rapport qui coûte cher à écrire ne sera pas écrit, et un fichier qu'on
 n'écrit plus est pire qu'un fichier absent, parce qu'on continue de le lire. D'où cinq sections, pas
@@ -241,7 +259,7 @@ De la doctrine vers l'installable, plus un principe validé par JC en cours de r
 
 ### Ajouté
 
-- **P11 — Aucune écriture automatique dans la mémoire.** La mémoire ne se transforme jamais par un
+- **P11 : Aucune écriture automatique dans la mémoire.** La mémoire ne se transforme jamais par un
   procédé qui ne l'a pas lue et qui ne peut pas dire ce qu'il a changé. L'agent écrit, un script
   jamais. Pas de script de migration, pas de script de consolidation, pas d'outil qui « nettoie ».
   Décision de JC du 27/08/2026, prise en tranchant la conception des migrations.
@@ -270,12 +288,12 @@ Deux questions de doctrine tranchées par JC, toutes deux au motif de la prudenc
 
 ### Ajouté
 
-- **P9 — Une règle naît provisoire, jamais mûre.** L'échelle de statut devient
+- **P9 : Une règle naît provisoire, jamais mûre.** L'échelle de statut devient
   `hypothèse → provisoire → active → en consolidation → archivée`. Une validation explicite unique
   crée une règle **provisoire**, qui s'applique mais qui ne peut pas être citée à l'appui d'une
   demande d'autonomie. Deux usages supplémentaires sans contradiction la rendent active ; une
   contradiction la renvoie à l'état d'hypothèse.
-- **P10 — La confiance ne s'établit pas sous trois occurrences.** Sous ce seuil, la confiance n'est
+- **P10 : La confiance ne s'établit pas sous trois occurrences.** Sous ce seuil, la confiance n'est
   pas basse, elle est **non établie**, et ne s'écrit pas comme un chiffre. Au-delà, c'est une mesure
   glissante du feedback récent, pas une probabilité.
 

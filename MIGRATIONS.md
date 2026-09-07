@@ -1,4 +1,4 @@
-# compagnon — Migrations
+# compagnon : Migrations
 
 Comment une instance déjà en service rattrape une nouvelle version du gabarit.
 
@@ -99,6 +99,18 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.6.0 → 0.6.1
+
+**Rien à faire.** Édition typographique du dépôt : les tirets cadratins ont été remplacés par des
+deux-points, des virgules ou des parenthèses. Aucun mot de doctrine, aucun seuil, aucune structure ne
+change.
+
+Cette ligne existe parce que `template/` a bougé et que la règle de publication l'exige. Si vous
+alignez votre instance sur cette étiquette, vous pouvez passer la même revue sur vos propres
+fichiers, ou ne rien faire : le gabarit ne l'impose pas.
+
+---
+
 ## 0.5.6 → 0.6.0
 
 **Migration facultative, et sans transformation de contenu.** Aucun schéma d'entrée, aucun seuil de
@@ -108,7 +120,7 @@ maturation, aucune règle de gouvernance ne change. `principles.md`, `learned-ru
 tout le reste.
 
 Ce que la 0.6.0 ajoute : un fichier `report.md`, une couche **INTERFACE** dans le gabarit, et le
-principe **P12** qui la justifie — ce qui sort d'une instance est un rapport, jamais sa mémoire.
+principe **P12** qui la justifie : ce qui sort d'une instance est un rapport, jamais sa mémoire.
 
 ### 1. Trancher : cette instance produit-elle un rapport ? (opérateur)
 
@@ -132,7 +144,7 @@ constaté (P5, P6).
 
 ### 3. Reporter la section §5bis dans le NOYAU, puis **recoller**
 
-Ajoutez au NOYAU de l'instance la section **§5bis — Le rapport de sortie**, la ligne « Interface »
+Ajoutez au NOYAU de l'instance la section **§5bis « Le rapport de sortie »**, la ligne « Interface »
 dans la carte du cerveau, l'étape 7 du rituel de session, et la mention de `report.md` à l'étape 1.
 Le texte de référence est dans `template/NOYAU-instructions-projet.md` à l'étiquette.
 
@@ -145,8 +157,8 @@ et son absence n'est pas une divergence à consigner.
 ### Ce que cette migration ne fait pas
 
 Elle ne déplace **rien**. Si des sujets métier traînent dans la section « Points chauds » de
-`operational-state.md` — leur vraie place est désormais le rapport, cette section étant réservée à ce
-qui bloque l'agent lui-même — l'agent les **signale** à l'opérateur et ne les déplace pas d'office.
+`operational-state.md` (leur vraie place est désormais le rapport, cette section étant réservée à ce
+qui bloque l'agent lui-même), l'agent les **signale** à l'opérateur et ne les déplace pas d'office.
 C'est du contenu, il appartient à l'opérateur.
 
 ---
@@ -266,7 +278,7 @@ Rien d'autre ne change dans les fichiers de mémoire. La 0.3.0 ajoute de la docu
 
 Cette migration a du mordant : elle **déclasse** des règles. C'est voulu.
 
-**P9 — l'échelle de statut des règles change.** Elle passe de quatre à cinq états :
+**P9 : l'échelle de statut des règles change.** Elle passe de quatre à cinq états :
 `hypothèse → provisoire → active → en consolidation → archivée`.
 
 À faire dans `learned-rules.md` :
@@ -279,7 +291,7 @@ Cette migration a du mordant : elle **déclasse** des règles. C'est voulu.
 - Inscrivez la conséquence exécutoire : **une règle provisoire ne peut pas être citée à l'appui d'une
   demande d'autonomie.**
 
-**P10 — la confiance ne s'affiche plus sous trois occurrences.**
+**P10 : la confiance ne s'affiche plus sous trois occurrences.**
 
 - Toute règle à moins de trois occurrences : remplacez la confiance chiffrée par **« non établie »**.
   Pas par un chiffre bas. « Non établie » et « faible » appellent des décisions opposées.

@@ -29,7 +29,7 @@ les notes, jamais par un script (P11). Puis mettre ce fichier à jour, y compris
 
 | Date | De → vers | Ce qui a été fait |
 |---|---|---|
-| `<jj/mm/aaaa>` | — → `<version>` | Pose initiale de l'instance. |
+| `<jj/mm/aaaa>` | (aucune) → `<version>` | Pose initiale de l'instance. |
 
 ## Écarts assumés par rapport au gabarit
 

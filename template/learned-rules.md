@@ -1,4 +1,4 @@
-# learned-rules.md — Le playbook de décision
+# learned-rules.md : Le playbook de décision
 
 > **Statut : mémoire AUTO-ÉCRITE.** L'agent crée et met à jour les règles ici, selon le NOYAU. Toute
 > écriture est listée en fin de session et relue par l'opérateur.
@@ -10,7 +10,7 @@ Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** von
 ## Schéma d'une règle
 
 ```
-## R### — <titre court et actionnable>
+## R### : <titre court et actionnable>
 Domaine      : <vos domaines : qualification | rédaction | vérification | engagement | transverse>
 Contexte     : quand cette règle s'applique.
 Règle        : quoi faire, formulé de façon générique et non au cas particulier.
@@ -41,7 +41,7 @@ contredit. `en-consolidation → archivé` : remplacée, avec lien, date et moti
 
 > _Exemple fictif, à supprimer à la première vraie règle. Il montre la forme attendue._
 
-## R001 — Vérifier la disponibilité réelle avant d'annoncer un délai *(exemple fictif)*
+## R001 : Vérifier la disponibilité réelle avant d'annoncer un délai *(exemple fictif)*
 Domaine      : engagement
 Contexte     : un client demande sous quel délai un article peut être obtenu.
 Règle        : ouvrir l'état réel du stock et le délai fournisseur **avant** d'annoncer quoi que ce
@@ -57,7 +57,7 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 
 ---
 
-# B. Hypothèses — non validées
+# B. Hypothèses : non validées
 
 > Ce qui pointe vers un motif sans avoir encore la preuve. Une hypothèse oriente, elle n'autorise
 > rien. Elle sort d'ici sur cas réels, jamais par conviction.
@@ -68,17 +68,17 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 
 ---
 
-# C. Acquis importés — non appris ici, non scorés
+# C. Acquis importés : non appris ici, non scorés
 
 > Éléments repris d'une documentation qui fait autorité ailleurs. **Ce ne sont pas des
 > apprentissages de l'agent** : pas de reward, pas de maturation. En cas de divergence, la source
 > fait foi. Ne recopiez pas la source, **référencez-la**.
 
-- `<élément>` — source : `<document qui fait autorité>`
+- `<élément>`, source : `<document qui fait autorité>`
 
 ---
 
-# D. Contradictions ouvertes — à trancher par l'opérateur
+# D. Contradictions ouvertes : à trancher par l'opérateur
 
 | ID | Objet | État |
 |---|---|---|

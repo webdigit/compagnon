@@ -58,7 +58,7 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `DOCTRINE.md` | **Commencez ici.** Les douze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
 | `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version |
-| `CHANGELOG.md` | L'historique des versions — **la seule source du numéro de version** |
+| `CHANGELOG.md` | L'historique des versions, **la seule source du numéro de version** |
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
 | `template/` | Le gabarit canonique : onze fichiers, stériles, à instancier |
 

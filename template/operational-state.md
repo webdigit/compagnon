@@ -1,4 +1,4 @@
-# operational-state.md — Tableau de bord vivant
+# operational-state.md : Tableau de bord vivant
 
 > **Statut : mémoire AUTO-ÉCRITE.** État courant, relu au démarrage de chaque session.
 > **Ce n'est pas un journal** : ce qui est clos en sort. Sans cette discipline, le fichier grossit
@@ -23,7 +23,7 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 | Fichier | Contenu |
 |---|---|
 | `learned-rules.md` | `<n>` règles (`<n>` provisoires, `<n>` actives), `<n>` hypothèses, `<n>` contradictions ouvertes |
-| `mistakes.md` | `<n>` entrées — `<n>` ouvertes, `<n>` résolues |
+| `mistakes.md` | `<n>` entrées, dont `<n>` ouvertes et `<n>` résolues |
 | `examples.md` | `<n>` exemples |
 | `objectives.md` | `<n>` cibles, `<n>` validées |
 | `capabilities.md` | N1, `<n>` écritures ouvertes |
@@ -38,7 +38,7 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 - **Fin de session** : bloc `🧠 MISE À JOUR MÉMOIRE` obligatoire. **C'est le maillon faible connu :
   rien ne force l'agent à le produire.**
 
-## Points chauds — ce qui attend une décision
+## Points chauds : ce qui attend une décision
 
 | # | Sujet | Attente |
 |---|---|---|

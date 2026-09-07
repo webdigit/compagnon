@@ -1,4 +1,4 @@
-# <NOM DE L'AGENT> — Cerveau de l'agent (index du dossier)
+# <NOM DE L'AGENT> : Cerveau de l'agent (index du dossier)
 
 > **Commence ici.** Toute session lit **d'abord** ce README, **puis**
 > `NOYAU-instructions-projet.md`, **puis** les quatre mémoires d'apprentissage et
@@ -17,7 +17,7 @@ mémoire, et fait mieux la fois suivante. Il gagne en autonomie à mesure qu'il 
 ⚠️ Les objectifs sont de la **qualité opérationnelle**, pas des indicateurs d'activité. Voir
 `objectives.md`.
 
-## 🗺️ Carte des supports — où vit quoi
+## 🗺️ Carte des supports : où vit quoi
 
 Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
 
@@ -40,7 +40,7 @@ Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
 | `principles.md` | La constitution : mission, garde-fous durs, échelle d'autonomie | **Manuelle (opérateur)** |
 | `learned-rules.md` | Le playbook : règles apprises, statut, score, maturation | Auto (agent) |
 | `examples.md` | Cas concrets réutilisables par analogie | Auto (agent) |
-| `mistakes.md` | Journal des erreurs de jugement — le frein de l'autonomie | Auto (agent) |
+| `mistakes.md` | Journal des erreurs de jugement, le frein de l'autonomie | Auto (agent) |
 
 **Couche PILOTAGE**
 
@@ -64,7 +64,7 @@ Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
 
 | Fichier | Rôle | Écriture |
 |---|---|---|
-| `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration | **Manuelle** — à charger au démarrage |
+| `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration | **Manuelle**, à charger au démarrage |
 | `VERSION.md` | La version du gabarit et l'historique des migrations | Auto, sur migration |
 
 ## La boucle

@@ -1,4 +1,4 @@
-# examples.md — Cas concrets réutilisables par analogie
+# examples.md : Cas concrets réutilisables par analogie
 
 > **Statut : mémoire AUTO-ÉCRITE.** Un exemple sert à raisonner « ce cas ressemble à E00X ». Il garde
 > le détail que la règle a dû abandonner en se généralisant.
@@ -6,7 +6,7 @@
 ## Schéma d'une entrée
 
 ```
-## E### — <titre du cas>
+## E### : <titre du cas>
 Contexte     : qui, quoi, quand, ce qui arrivait.
 Ce que j'ai fait : la démarche réelle, dans l'ordre.
 Retour       : ce que l'opérateur a corrigé, validé, ignoré. Reward appliqué.
@@ -19,7 +19,7 @@ Date         : jj/mm/aaaa.
 
 > _Exemple fictif, à supprimer au premier vrai cas._
 
-## E001 — Demande de délai sur un article en rupture *(exemple fictif)*
+## E001 : Demande de délai sur un article en rupture *(exemple fictif)*
 
 Contexte     : `<jj/mm/aaaa>`. Un client demande sous quel délai un article peut être obtenu.
                Premier cas réel de la compétence 01.

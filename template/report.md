@@ -14,7 +14,7 @@ non_couvert:
   - <ce qui ne l'a pas été, et pourquoi>
 ---
 
-# report.md — Rapport de sortie
+# report.md : Rapport de sortie
 
 > **Statut : SORTIE PUBLIQUE, auto-écrite.** C'est le **seul** fichier de ce dossier destiné à être
 > lu de l'extérieur : par l'opérateur pressé, ou par un agent chapeau qui arbitre entre plusieurs
@@ -57,18 +57,18 @@ interne.>`
 
 | # | Objet | Référence | Vérifié par | Validé par |
 |---|---|---|---|---|
-| 01 | `<ce qui a été produit ou changé>` | `<ID dans le système qui le porte>` | `<le constat fait, pas l'accusé reçu>` | `<OPÉRATEUR>` / `—` |
+| 01 | `<ce qui a été produit ou changé>` | `<ID dans le système qui le porte>` | `<le constat fait, pas l'accusé reçu>` | `<OPÉRATEUR>` ou `non` |
 | _ex._ | _Réponse postée au client_ | _Ticket #412_ | _Relu sur le ticket après envoi_ | _<OPÉRATEUR>_ |
 
-## À faire — proposé, non arbitré
+## À faire : proposé, non arbitré
 
 > L'agent ne classe **pas** ses items par rapport à ceux des autres instances : il n'en sait rien.
 > Il donne une échéance et ce que coûte le report. L'arbitrage appartient à qui lit.
 
 | # | Objet | Référence | Échéance | Si c'est repoussé | Validé par |
 |---|---|---|---|---|---|
-| 01 | `<ce qu'il reste>` | `<ID>` | `<AAAA-MM-JJ ou —>` | `<la conséquence concrète, en une ligne>` | `<OPÉRATEUR>` / `—` |
-| _ex._ | _Relancer le devis_ | _Lead 118_ | _2026-09-12_ | _Le client relance un concurrent, cité en réunion_ | _—_ |
+| 01 | `<ce qu'il reste>` | `<ID>` | `<AAAA-MM-JJ, ou vide>` | `<la conséquence concrète, en une ligne>` | `<OPÉRATEUR>` ou `non` |
+| _ex._ | _Relancer le devis_ | _Lead 118_ | _2026-09-12_ | _Le client relance un concurrent, cité en réunion_ | _non_ |
 
 ## En attente d'une décision de <OPÉRATEUR>
 

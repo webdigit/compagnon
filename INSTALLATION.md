@@ -1,4 +1,4 @@
-# compagnon — Installation
+# compagnon : Installation
 
 > Lisez [`DOCTRINE.md`](DOCTRINE.md) avant celui-ci. Installer sans avoir compris la doctrine
 > produit un dossier de fichiers que personne n'applique.
@@ -26,7 +26,7 @@ prend trente secondes. L'étape 4 ci-dessous ne se saute pas.
 
 ---
 
-## Étape 1 — Décider de la première compétence
+## Étape 1 : Décider de la première compétence
 
 Une seule. Pas « m'assister au quotidien », c'est trop vaste pour être prouvé.
 
@@ -37,7 +37,7 @@ bonne, et où une erreur ne coûte pas cher.
 Écrivez en trois lignes : ce qui est dans le périmètre, ce qui n'y est pas, et à quoi ressemble un
 travail bien fait.
 
-## Étape 2 — Poser le dossier
+## Étape 2 : Poser le dossier
 
 Copiez `template/` dans votre projet, sous le nom `ai-memory/`, et remplissez ce qui est marqué à
 remplir. Les fichiers arrivent vides de contenu métier, c'est voulu.
@@ -46,10 +46,10 @@ Trois fichiers vous appartiennent et ne s'auto-écrivent jamais : `principles.md
 d'`objectives.md`, et le catalogue de `capabilities.md`. L'agent y *propose*, vous y *disposez*.
 
 Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent doit être lue par
-quelqu'un d'autre que vous — un autre agent qui arbitre entre plusieurs instances, une revue
+quelqu'un d'autre que vous : un autre agent qui arbitre entre plusieurs instances, une revue
 hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame.
 
-## Étape 3 — Fixer l'échelle d'autonomie
+## Étape 3 : Fixer l'échelle d'autonomie
 
 Dans `capabilities.md`. **Commencez en lecture seule intégrale.** Aucune écriture pré-autorisée,
 dans aucun outil. C'est frustrant et c'est le bon départ : vous ouvrirez au fur et à mesure, sur
@@ -57,7 +57,7 @@ preuves, et chaque ouverture portera votre nom et sa date.
 
 Listez aussi les **interdits absolus**, ceux qu'aucune montée de niveau ne débloquera jamais.
 
-## Étape 4 — Allumer le système
+## Étape 4 : Allumer le système
 
 **C'est l'étape critique.** Le NOYAU doit être lu par l'agent **au démarrage de chaque session**,
 avant qu'il travaille. Le mécanisme dépend de votre hôte.
@@ -120,7 +120,7 @@ règles, un prompt système de projet. Le principe est le même : **le NOYAU doi
 
 ---
 
-## Étape 5 — Vérifier que ça a pris
+## Étape 5 : Vérifier que ça a pris
 
 **Une installation n'est pas finie quand les fichiers sont copiés. Elle est finie quand vous avez
 prouvé que l'agent les lit.**
@@ -143,7 +143,7 @@ S'il ne sait pas répondre, l'étape 4 a échoué. Reprenez-la.
 
 ---
 
-## Étape 6 — La première semaine
+## Étape 6 : La première semaine
 
 Le dossier est posé, il est vide, et il ne vaut encore rien. Ce qui le remplit, c'est du travail
 réel, pas de la configuration.

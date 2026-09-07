@@ -1,4 +1,4 @@
-# compagnon — Doctrine
+# compagnon : la doctrine
 
 > Ce document est le cœur de la méthode. Le gabarit de dossiers n'en est que la mise en œuvre.
 > Qui lit la doctrine peut réimplémenter le gabarit. L'inverse est faux.
@@ -18,7 +18,7 @@ oublié. Vous réexpliquez le contexte. Vous refaites la même correction. Vous 
 maladresse pour la troisième fois. Le travail que vous avez investi dans la correction ne
 s'accumule nulle part.
 
-Les fonctions de mémoire existantes ne règlent pas ça. Elles retiennent des **faits** — votre
+Les fonctions de mémoire existantes ne règlent pas ça. Elles retiennent des **faits** : votre
 prénom, votre pile technique, vos préférences de format. Ce dont vous avez besoin est différent :
 que l'agent retienne des **jugements**. Comment trancher, quoi vérifier avant d'affirmer, quel
 délai est tenable, quel canal utilise ce client, ce qu'il ne faut jamais promettre.
@@ -138,8 +138,8 @@ L'échelle de statut d'une règle est donc :
 hypothèse  →  provisoire  →  active  →  en consolidation  →  archivée
 ```
 
-- **Provisoire** : née d'une validation explicite unique. Elle s'applique — il faut bien travailler
-  en attendant — mais elle est marquée comme telle. Deux usages supplémentaires sans contradiction
+- **Provisoire** : née d'une validation explicite unique. Elle s'applique (il faut bien travailler
+  en attendant), mais elle est marquée comme telle. Deux usages supplémentaires sans contradiction
   la font passer active. Une contradiction la renvoie au statut d'hypothèse, pas en consolidation :
   ce qui n'a jamais été mûr ne se consolide pas, il se remet en question.
 - **Active** : trois occurrences confirmantes au moins, sans contradiction.
@@ -241,8 +241,8 @@ Cela veut dire, sans détour :
 - Rien n'empêche techniquement de réécrire l'histoire en silence, seul P5 l'interdit.
 
 Ce n'est pas un défaut d'implémentation, c'est la nature de l'objet. Une méthode n'est pas un
-mécanisme de contrainte. Si vous avez besoin d'une garantie machine — parce que l'agent va agir
-seul sur quelque chose d'irréversible — il vous faut autre chose, en plus, pas à la place.
+mécanisme de contrainte. Si vous avez besoin d'une garantie machine (parce que l'agent va agir
+seul sur quelque chose d'irréversible), il vous faut autre chose, en plus, pas à la place.
 
 Ce que compagnon apporte contre ces risques n'est pas une barrière, c'est de la **visibilité** :
 tout est en texte lisible, daté, chaîné. Un journal d'erreurs complaisant se voit. Une note qui ne
@@ -276,7 +276,7 @@ que soit l'hôte.
 
 ---
 
-## À trancher — questions ouvertes de doctrine
+## À trancher : questions ouvertes de doctrine
 
 Ces points existent dans les instances qui tournent, mais leur valeur n'est pas justifiée. Tant
 qu'elle ne l'est pas, ce sont des conventions, pas de la doctrine.
