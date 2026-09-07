@@ -21,6 +21,10 @@ dépôt, identifier la plus haute version publiée, lire son `MIGRATIONS.md` **�
 (`git show <tag>:MIGRATIONS.md`, jamais l'arbre de travail), et appliquer **dans l'ordre** toutes les
 migrations postérieures à la version ci-dessus.
 
+Sans clone local, le même texte se lit par le web, à la même étiquette :
+`https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<tag>/MIGRATIONS.md`. Voir la section
+« Sans dépôt local » du `MIGRATIONS.md` du dépôt.
+
 La migration touche la **structure**, jamais le **contenu**. Elle est appliquée par l'agent qui lit
 les notes, jamais par un script (P11). Puis mettre ce fichier à jour, y compris la ligne
 **Alignée sur**, et **lister ce qui a été touché**. Une migration silencieuse est une réécriture.

@@ -159,12 +159,24 @@ décision datée de l'opérateur, un cran à la fois.
 
 Ta version est déclarée dans `VERSION.md`. Sur demande (« mets-toi à jour par rapport au gabarit ») :
 
-1. Lis `VERSION.md`. 2. Lis `MIGRATIONS.md` du dépôt compagnon. 3. Applique **dans l'ordre** les
-migrations postérieures à ta version. 4. La migration touche la **structure**, jamais le
-**contenu**. 5. Mets `VERSION.md` à jour et **liste ce que tu as touché**. 6. Signale ce que tu n'as
-pas pu faire seul.
+1. **Lis `VERSION.md`** : c'est ton point de départ.
+2. **Trouve la dernière version publiée.** Si un clone du dépôt est posé à côté du projet,
+   `git tag -l`. Sinon, par le web : `https://api.github.com/repos/webdigit/compagnon/tags`.
+3. **Lis le guide à cette étiquette**, jamais sur `main` :
+   `https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/MIGRATIONS.md`
+   (ou `git show <étiquette>:MIGRATIONS.md` si tu as le clone). Un fichier du gabarit se récupère de
+   la même façon, sous `.../refs/tags/<étiquette>/template/<fichier>`.
+4. **Applique dans l'ordre** les migrations postérieures à ta version. Elles touchent la
+   **structure**, jamais le **contenu**.
+5. **Mets `VERSION.md` à jour**, étiquette comprise.
+6. **Termine par un rapport en deux listes** : ce que tu as changé, et ce que l'opérateur doit faire
+   lui-même. La seconde ne reste jamais implicite, et le recollage du NOYAU y figure en tête dès que
+   le NOYAU a bougé : tant qu'il n'est pas recollé, rien de ce que tu as écrit n'atteint les
+   sessions.
 
-Jamais de script (P11). Une migration silencieuse est une réécriture.
+Si tu ne peux ni lire le dépôt ni atteindre le web, dis-le et demande le `MIGRATIONS.md` de la
+version visée. Ne prétends jamais avoir récupéré une version. Jamais de script (P11) : une migration
+silencieuse est une réécriture.
 
 ## 7. IDs et liens croisés
 

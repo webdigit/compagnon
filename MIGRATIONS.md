@@ -21,7 +21,18 @@ Chaque instance porte un fichier `ai-memory/VERSION.md` qui déclare la version 
 est née, et l'historique de ses migrations. Une instance sans ce fichier est antérieure à la 0.3.0 :
 traitez-la comme une **0.2.0** et appliquez tout ce qui suit.
 
-## Se mettre à jour depuis le dépôt
+## Se mettre à jour
+
+Trois routes, par ordre de préférence. Une seule suffit.
+
+| Route | Pour quel hôte | Ce qu'elle donne |
+|---|---|---|
+| **Le dépôt cloné** | Un hôte avec un shell : Claude Code, Cowork, un terminal | Le texte à l'étiquette, plus le commit exact, donc un rapport vérifiable |
+| **Le web** | Un hôte qui sait lire une URL, un projet de chat par exemple | Le même texte, à la même étiquette, sans rien installer |
+| **L'opérateur colle** | Un hôte qui n'a ni shell ni accès web | Le texte, sans traçabilité automatique |
+
+La plupart des instances n'auront jamais de clone : la route web est la voie normale, la première
+est celle de qui développe le gabarit.
 
 ### Où vit le clone
 
@@ -56,12 +67,48 @@ git show v0.5.6:MIGRATIONS.md       # le texte exact de cette version
 d'après. Le rapport de migration cite alors l'étiquette et le commit, ce qui le rend vérifiable par
 quelqu'un d'autre que celui qui l'a écrit.
 
+### Sans dépôt local : la route web
+
+Le dépôt est public. N'importe quel hôte capable de lire une URL peut donc lire le même texte, à la
+même étiquette, sans rien cloner ni installer. Aucune authentification.
+
+**1. Trouver la dernière version publiée.**
+
+```
+https://api.github.com/repos/webdigit/compagnon/tags
+```
+
+La première entrée porte l'étiquette la plus récente. Deux replis si cette adresse est inaccessible :
+la page `https://github.com/webdigit/compagnon/tags`, ou le premier titre `## [x.y.z]` de
+`https://raw.githubusercontent.com/webdigit/compagnon/main/CHANGELOG.md`.
+
+Ce dernier repli lit `main`, ce que la section précédente interdit. La nuance tient en une phrase :
+on y prend un **numéro**, jamais un contenu. Et si l'étiquette annoncée par le changelog ne répond
+pas à l'étape 2, c'est qu'elle n'est pas publiée : prenez la précédente.
+
+**2. Lire le guide à cette étiquette.**
+
+```
+https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/MIGRATIONS.md
+```
+
+C'est ce fichier-ci, au mot près, tel qu'il était à la publication de cette version.
+
+**3. Récupérer un fichier du gabarit, si la migration en demande un.**
+
+```
+https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/template/<fichier>.md
+```
+
+Rien d'autre ne passe par cette route. En particulier, **aucune écriture ne vient du web** : l'agent
+lit un texte, décide, applique lui-même et rend compte. C'est P11, et la provenance du texte n'y
+change rien.
+
 ### Ce que l'hôte doit fournir
 
-Cette procédure demande un **shell**. Elle appartient donc à une session outillée : Claude Code,
-Cowork, ou tout hôte capable de lancer `git` sur le dossier. Depuis un projet de chat, l'agent ne
-peut que lire ce qu'on lui donne. Il ne peut pas récupérer une version, et il ne doit pas prétendre
-l'avoir fait : dans ce cas c'est l'opérateur qui lui fournit le `MIGRATIONS.md` de la version visée.
+Une des trois routes, pas davantage. Ce que l'agent ne fait **jamais**, c'est prétendre avoir
+récupéré une version. S'il n'a pas pu lire le `MIGRATIONS.md` de la version visée, il le dit et
+demande qu'on le lui fournisse. Une migration appliquée de mémoire n'est pas une migration.
 
 ### La procédure
 
@@ -72,8 +119,8 @@ Dites à votre agent, en session :
 Ce qu'il doit faire, dans cet ordre :
 
 1. Lire `ai-memory/VERSION.md` pour connaître sa version courante.
-2. Récupérer les étiquettes du dépôt et identifier la plus haute version publiée.
-3. Lire le `MIGRATIONS.md` **à cette étiquette**, jamais celui de l'arbre de travail.
+2. Identifier la plus haute version publiée, par le dépôt cloné ou par le web.
+3. Lire le `MIGRATIONS.md` **à cette étiquette**, jamais celui de `main` ni d'un arbre de travail.
 4. Appliquer **dans l'ordre** toutes les migrations postérieures à sa version.
 5. Pour chaque migration : appliquer le changement de structure, laisser le contenu intact, et
    **lister ce qui a été touché**.
@@ -81,9 +128,20 @@ Ce qu'il doit faire, dans cet ordre :
 7. Signaler ce qu'il **n'a pas** pu faire seul : les zones manuelles de l'opérateur, et tout ce qui
    se passe hors du disque, c'est-à-dire le champ d'instructions de l'hôte et sa base de
    connaissances.
+8. **Terminer par un rapport de migration en deux listes** : ce qu'il a changé, et ce que
+   l'opérateur doit faire lui-même. La seconde liste n'est jamais implicite, et le recollage du
+   NOYAU y figure en tête chaque fois que le NOYAU a bougé.
 
 Une migration ne se fait jamais en silence. Si l'agent ne peut pas dire précisément ce qu'il a
 changé, il n'a pas migré, il a réécrit.
+
+> **Format d'une ligne de migration, à tenir.** Toute ligne comporte quatre blocs, dans cet ordre :
+> **ce qui change**, **ce que l'agent fait seul**, **ce que l'opérateur doit faire lui-même** (avec
+> « rien » écrit noir sur blanc quand c'est rien), et **comment vérifier que c'est fait**.
+>
+> Le troisième bloc est celui qu'on oublie, et c'est celui qui décide si la migration prend effet :
+> un NOYAU modifié mais non recollé ne change rien aux sessions. Un agent qui lit une ligne sans ce
+> bloc n'a aucun moyen de deviner ce qui reste à faire hors du disque. <- posé le 07/09/2026.
 
 > **Règle de publication, à tenir.** Avant de publier une version, comparer le gabarit stérile entre
 > l'ancienne étiquette et la nouvelle :
@@ -99,6 +157,39 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.6.1 → 0.7.0
+
+### Ce qui change
+
+La mise à jour ne demande plus de dépôt cloné. Le dépôt étant public, un hôte qui sait lire une URL
+lit le guide à l'étiquette, ce qui met la procédure à portée d'un projet de chat. Le NOYAU porte
+désormais cette adresse, et toute ligne de migration dit explicitement ce qui reste à faire à la
+main.
+
+### Ce que l'agent fait seul
+
+Remplacer la section **§6bis** du NOYAU de l'instance par sa version à cette étiquette
+(`.../refs/tags/v0.7.0/template/NOYAU-instructions-projet.md`, section « 6bis »).
+
+Ajouter aussi, dans le `VERSION.md` de l'instance, sous « Comment se mettre à jour », le renvoi à la
+route web (deux phrases, même source). C'est tout. Aucun autre fichier n'est touché, aucun schéma,
+aucun seuil, aucune règle de gouvernance.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller le NOYAU** dans le champ que son hôte injecte au démarrage. C'est le seul geste, et sans
+lui la migration ne produit rien : les sessions continuent de lire l'ancienne copie.
+
+### Comment vérifier
+
+Ouvrez une session neuve et demandez : « d'où vas-tu chercher le guide de mise à jour du gabarit ? »
+
+- Il cite une adresse `raw.githubusercontent.com/webdigit/compagnon/refs/tags/...` : c'est collé.
+- Il parle d'un dépôt local, ou répond qu'il ne peut pas aller le chercher : le recollage n'a pas
+  été fait, ou l'a été sur l'ancien texte.
+
+---
+
 ## 0.6.0 → 0.6.1
 
 **Rien à faire.** Édition typographique du dépôt : les tirets cadratins ont été remplacés par des
@@ -108,6 +199,10 @@ change.
 Cette ligne existe parce que `template/` a bougé et que la règle de publication l'exige. Si vous
 alignez votre instance sur cette étiquette, vous pouvez passer la même revue sur vos propres
 fichiers, ou ne rien faire : le gabarit ne l'impose pas.
+
+**Ce que l'opérateur doit faire lui-même : rien.** Le NOYAU n'a pas bougé, il n'y a rien à recoller.
+
+**Comment vérifier : rien à vérifier.**
 
 ---
 
@@ -153,6 +248,20 @@ ne change rien aux sessions tant que la copie n'a pas été refaite. C'est l'oub
 
 Une instance qui ne produit pas de rapport **garde son NOYAU tel quel** : la section n'a pas d'objet,
 et son absence n'est pas une divergence à consigner.
+
+### Ce que l'opérateur doit faire lui-même
+
+- Trancher le point 1 : cette instance produit-elle un rapport, oui ou non.
+- Si oui, **recoller le NOYAU** après l'ajout du §5bis. C'est le geste qui décide de tout : un NOYAU
+  modifié mais non recollé ne change rien aux sessions.
+
+### Comment vérifier
+
+Si l'instance produit un rapport : ouvrez une session neuve et demandez « que fais-tu en fin de run
+qui a un livrable ? ». S'il cite `report.md`, le recollage a pris. Sinon, la copie injectée est
+encore l'ancienne.
+
+Si l'instance n'en produit pas : rien à vérifier, l'historique de `VERSION.md` suffit.
 
 ### Ce que cette migration ne fait pas
 

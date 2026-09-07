@@ -10,6 +10,38 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.7.0] - 2026-09-07
+
+### Ajouté
+
+- **La mise à jour ne demande plus de dépôt cloné.** Nouvelle section « Sans dépôt local : la route
+  web » dans `MIGRATIONS.md` : trouver la dernière étiquette publiée, lire le guide **à cette
+  étiquette** par `raw.githubusercontent.com`, et récupérer un fichier du gabarit de la même façon.
+  Le dépôt est public, aucune authentification n'est nécessaire.
+- **C'est le point qui manquait pour que la méthode soit distribuable.** Le clone est la situation de
+  celui qui développe le gabarit, pas celle des instances. Une instance qui vit dans un projet de
+  chat ne clonera jamais rien, et jusqu'ici la doctrine lui répondait « demande à ton opérateur de te
+  coller le fichier ». Une méthode qui s'arrête à la première mise à jour ne se distribue pas.
+- **Un repli sur `main`, pour le numéro et rien d'autre.** Si les étiquettes ne sont pas
+  interrogeables, le premier titre du `CHANGELOG.md` de `main` donne le numéro de la dernière
+  version. Le **texte**, lui, se lit toujours à l'étiquette. Et une version annoncée dont l'étiquette
+  ne répond pas n'est pas publiée : on prend la précédente.
+- **Format d'une ligne de migration : quatre blocs.** Ce qui change, ce que l'agent fait seul, ce que
+  l'opérateur doit faire lui-même, comment vérifier que c'est fait. Le troisième bloc est celui qu'on
+  oublie, et c'est celui qui décide si la migration prend effet : un NOYAU modifié mais non recollé
+  ne change rien aux sessions.
+- **NOYAU §6bis réécrit** : les adresses en dur, les trois routes, et un rapport de migration final
+  en deux listes dont celle de ce qui reste à faire à la main.
+- Les lignes 0.5.6 → 0.6.0 et 0.6.0 → 0.6.1 reçoivent rétroactivement les deux blocs manquants, dont
+  une vérification concrète : ouvrir une session neuve et demander à l'agent ce qu'il fait en fin de
+  run. S'il ne cite pas le rapport, la copie injectée est encore l'ancienne.
+
+### La leçon
+
+Le bon test d'une méthode n'est pas « est-ce que je sais migrer mon instance ». C'est « est-ce qu'un
+inconnu, dans un projet de chat, peut migrer la sienne sans rien installer et sans me le demander ».
+Tant que la réponse est non, ce qui est distribué est un dossier, pas une méthode.
+
 ## [0.6.1] - 2026-09-07
 
 ### Modifié
