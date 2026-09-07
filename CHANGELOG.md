@@ -10,6 +10,25 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.8.0] - 2026-09-07
+
+### Ajouté
+
+- **« Mets-toi à jour » suffit.** Le §6bis du NOYAU nomme son déclencheur et tranche l'ambiguïté qui
+  restait : dans ce système, « mise à jour » désignait déjà le bloc `🧠 MISE À JOUR MÉMOIRE` de fin
+  de session. Un agent qui recevait la formule courte pouvait raisonnablement comprendre l'autre, et
+  répondre à côté sans que personne ne voie le malentendu. La consigne est maintenant explicite, et
+  l'agent a interdiction de demander laquelle des deux on voulait dire.
+- **L'agent signale les nouvelles versions de lui-même.** Au balayage mensuel du §4, si son hôte
+  atteint le web, il regarde s'il existe une version plus récente que la sienne et la signale. Il ne
+  migre jamais de son propre chef : il propose, l'opérateur décide (P3).
+
+### La leçon
+
+Une procédure qui suppose que l'opérateur retienne la bonne formulation est une procédure qui échoue
+au deuxième mois. Le vocabulaire interne d'un système est ce qui rend ses propres consignes
+ambiguës, et c'est au système de lever l'ambiguïté, pas à celui qui s'en sert.
+
 ## [0.7.0] - 2026-09-07
 
 ### Ajouté

@@ -157,6 +157,39 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.7.0 → 0.8.0
+
+### Ce qui change
+
+L'opérateur n'a plus de formule à retenir. « **Mets-toi à jour** », sans autre précision, désigne
+désormais la mise à jour du gabarit, et le NOYAU le dit explicitement pour que l'agent ne confonde
+pas avec le bloc de mise à jour mémoire du §5. L'agent signale aussi, au balayage mensuel,
+l'existence d'une version plus récente.
+
+### Ce que l'agent fait seul
+
+Remplacer la section **§6bis** du NOYAU de l'instance par sa version à cette étiquette
+(`.../refs/tags/v0.8.0/template/NOYAU-instructions-projet.md`). Deux ajouts : le paragraphe
+**Déclencheur** en tête, et le paragraphe **Sans qu'on te le demande** en fin de section. Les six
+étapes ne changent pas.
+
+Rien d'autre n'est touché : aucun autre fichier, aucun schéma, aucun seuil, aucune règle de
+gouvernance.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller le NOYAU.** Seul geste, et sans lui la migration ne produit rien.
+
+### Comment vérifier
+
+Ouvrez une session neuve et dites exactement : « Mets-toi à jour. »
+
+- Il part chercher la version du gabarit : c'est collé.
+- Il vous propose d'écrire son bloc mémoire, ou il demande ce que vous voulez dire : la copie
+  injectée est encore l'ancienne.
+
+---
+
 ## 0.6.1 → 0.7.0
 
 ### Ce qui change

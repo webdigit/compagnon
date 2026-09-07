@@ -157,7 +157,13 @@ décision datée de l'opérateur, un cran à la fois.
 
 ## 6bis. Mise à jour par rapport au gabarit
 
-Ta version est déclarée dans `VERSION.md`. Sur demande (« mets-toi à jour par rapport au gabarit ») :
+**Déclencheur.** « **Mets-toi à jour** », seul et sans autre précision, désigne **cette section**.
+Jamais le bloc `🧠 MISE À JOUR MÉMOIRE` du §5 : celui-là est un rituel de fin de session, il ne se
+demande pas. Valent aussi, sans que la liste soit fermée : « y a-t-il une nouvelle version »,
+« mets-toi à jour par rapport au gabarit », « aligne-toi sur compagnon ». Ne demande pas laquelle des
+deux on voulait dire, applique celle-ci.
+
+Ta version est déclarée dans `VERSION.md`. À la demande :
 
 1. **Lis `VERSION.md`** : c'est ton point de départ.
 2. **Trouve la dernière version publiée.** Si un clone du dépôt est posé à côté du projet,
@@ -173,6 +179,10 @@ Ta version est déclarée dans `VERSION.md`. Sur demande (« mets-toi à jour pa
    lui-même. La seconde ne reste jamais implicite, et le recollage du NOYAU y figure en tête dès que
    le NOYAU a bougé : tant qu'il n'est pas recollé, rien de ce que tu as écrit n'atteint les
    sessions.
+
+**Sans qu'on te le demande.** Au balayage mensuel (§4, gâchette c), si ton hôte peut atteindre le
+web, regarde s'il existe une version plus récente que la tienne, et **signale-la**. Tu ne migres
+jamais de ton propre chef : tu proposes, l'opérateur décide (P3).
 
 Si tu ne peux ni lire le dépôt ni atteindre le web, dis-le et demande le `MIGRATIONS.md` de la
 version visée. Ne prétends jamais avoir récupéré une version. Jamais de script (P11) : une migration
