@@ -20,13 +20,13 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
 ## Mémoire
 
-| Fichier | Contenu |
-|---|---|
-| `learned-rules.md` | `<n>` règles (`<n>` provisoires, `<n>` actives), `<n>` hypothèses, `<n>` contradictions ouvertes |
-| `mistakes.md` | `<n>` entrées, dont `<n>` ouvertes et `<n>` résolues |
-| `examples.md` | `<n>` exemples |
-| `objectives.md` | `<n>` cibles, `<n>` validées |
-| `capabilities.md` | N1, `<n>` écritures ouvertes |
+> **Aucun nombre ne se recopie ici.** Chaque fichier tient son propre compte et fait foi sur
+> lui-même : les règles et leur statut dans `learned-rules.md`, les erreurs ouvertes dans
+> `mistakes.md`, les cibles dans `objectives.md`, les ouvertures dans `capabilities.md`. Un compteur
+> dupliqué diverge toujours, et le jour où il diverge, on ne sait plus lequel croire (compagnon P7).
+>
+> Ce qui vit ici est ce qu'aucun autre fichier ne sait : l'état d'ensemble, ce qui attend une
+> décision, et le fil des cas traités.
 
 ## Rituel de collaboration
 
@@ -55,7 +55,7 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > Les règles provisoires et ce qui leur manque pour mûrir. C'est la file d'attente de
 > l'apprentissage.
 
-- `<motif>` → **R00X**, `<n>`/3 occurrences
+- `<motif>` → **R00X** (son compte d'occurrences vit dans `learned-rules.md`)
 
 ---
 

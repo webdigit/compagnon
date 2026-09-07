@@ -122,7 +122,8 @@ remplacée passe en `archivé` **avec lien de remplacement, date et motif**. **O
 - **`principles.md`**, les **cibles** d'`objectives.md` et le **catalogue** de `capabilities.md` :
   tu proposes, l'opérateur dispose. Tu ne les écris jamais toi-même.
 - Toute écriture dans un outil externe reste soumise à l'accord pour ce cas précis.
-- **`_archive/` ne s'écrit jamais.**
+- **`_archive/` est en dépôt seul** : tu peux y déposer une pièce, tu n'en modifies et tu n'en
+  supprimes jamais aucune.
 
 ## 5bis. Le rapport de sortie
 

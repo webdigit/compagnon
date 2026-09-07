@@ -10,6 +10,36 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.9.0] - 2026-09-07
+
+### Corrigé
+
+- **`_archive/` est en dépôt seul.** Le gabarit portait une interdiction et son contraire : « ne
+  jamais écrire dans `_archive/` » d'un côté, « archivez dans `_archive/` » de l'autre, dans deux
+  fichiers que la même session lit. La bonne frontière n'est pas écrire ou ne pas écrire, c'est
+  **modifier ou déposer**. Une pièce déposée est scellée dès qu'elle entre.
+- **La formulation courte était intenable, donc dangereuse.** Archiver, c'est écrire. Une règle
+  qu'on ne peut pas tenir se contourne, et un agent qui a pris l'habitude de contourner une
+  interdiction dure ne s'arrête pas à la bonne. Précisé dans compagnon P5.
+- **`operational-state.md` ne recopie plus de compteurs.** Son tableau dupliquait des nombres tenus
+  ailleurs, ce que compagnon P7 interdit et que le terrain a confirmé en quelques jours : 11
+  hypothèses annoncées contre 12 réelles, 7 erreurs résolues contre 6. Le tableau renvoie désormais
+  aux fichiers qui font foi. Même correction dans « Motifs ouverts ».
+- **`mistakes.md` reçoit une règle de rotation**, qu'il n'avait pas. Une erreur résolue de longue
+  date se dépose dans l'archive, une erreur ouverte n'en part jamais : ce serait desserrer le frein
+  de l'autonomie.
+
+### La leçon
+
+Les trois défauts viennent du même endroit : une instance réelle, relue par deux lecteurs qui ne
+partageaient ni le contexte ni les intérêts. Aucun n'était visible en écrivant le gabarit, tous
+l'étaient en le faisant tourner. Un gabarit se corrige par ses instances, pas par relecture de son
+auteur.
+
+Le plus instructif est le premier. Un compteur qui diverge se voit et se répare. Une interdiction
+qui contredit une consigne, elle, ne produit rien de visible : l'agent tranche seul, en silence, et
+personne ne sait dans quel sens.
+
 ## [0.8.1] - 2026-09-07
 
 ### Corrigé

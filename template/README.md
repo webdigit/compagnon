@@ -26,7 +26,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | **`ai-memory/` (ce dossier)** | Le **cerveau de décision** : comment l'agent qualifie, décide, rédige, vérifie | Auto (agent) + zones manuelles |
 | **`<vos procédures d'outil>`** | Le **comment** technique : requêtes, chemins, identifiants | Manuelle |
 | **`<vos documents de référence>`** | Le contexte métier stable, daté | Manuelle |
-| **`_archive/`** | L'**historique scellé** | **Ne se modifie jamais** |
+| **`_archive/`** | L'**historique scellé** | **Dépôt seul** : on ajoute, on ne modifie ni ne supprime |
 
 > Frontière nette : une **règle de décision** vit ici. Une **procédure d'outil** vit dans votre
 > documentation d'outil. On ne mélange pas.
@@ -94,7 +94,7 @@ Consolider périodiquement, sans jamais effacer
 4. **Anti-silo** : un seul propriétaire par information.
 5. **Auditabilité** : rien réécrit en silence, tout a une généalogie.
 6. **Les zones manuelles ne s'auto-écrivent pas** : l'agent propose, l'opérateur dispose.
-7. **`_archive/` ne s'édite jamais.**
+7. **`_archive/` est en dépôt seul** : on y ajoute, on n'y modifie et on n'en supprime rien.
 8. **La mémoire ne se lit pas de l'extérieur.** Ce qui sort d'ici est `report.md`, et rien d'autre.
    Personne d'autre que cet agent n'écrit dans ce dossier.
 

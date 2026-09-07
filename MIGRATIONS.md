@@ -157,6 +157,55 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.8.1 → 0.9.0
+
+Trois corrections, toutes trouvées sur une instance en service. Aucune ne touche à une règle apprise,
+à une erreur, à un exemple ni à une cible.
+
+### Ce qui change
+
+1. **`_archive/` passe en dépôt seul.** Le gabarit disait à la fois « ne jamais écrire dans
+   `_archive/` » (P006, règle d'or 7) et « archivez dans `_archive/` » (rotation de
+   `operational-state.md`, archivage des rapports du §5bis). Une interdiction et son contraire. Ce
+   qu'il faut interdire, c'est **modifier et supprimer**, pas déposer : archiver, c'est écrire.
+2. **`operational-state.md` ne recopie plus aucun compteur.** Son tableau « Mémoire » dupliquait des
+   nombres qui vivent dans les autres fichiers. Deux sources pour un même nombre, donc divergence
+   garantie, et c'est bien ce qu'on a observé sur le terrain : 11 hypothèses annoncées contre 12
+   réelles, 7 erreurs résolues contre 6. Ce n'était pas de la négligence, c'était un piège du
+   gabarit (compagnon P7).
+3. **`mistakes.md` reçoit une règle de rotation.** Il n'en avait aucune, alors que c'est le fichier
+   qui grossit le plus et qui se lit en entier à chaque session. Une erreur **résolue** de longue
+   date se dépose dans `_archive/` ; une erreur **ouverte** ne part jamais, ce serait desserrer le
+   frein de l'autonomie.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : remplacer la ligne `_archive/` du §5 par la formulation « dépôt seul », et remplacer le
+  §5bis, la carte du cerveau et le §6bis par leurs versions à cette étiquette si elles diffèrent.
+- **`operational-state.md`** : retirer les nombres du tableau « Mémoire » et les remplacer par le
+  bloc de renvoi de cette étiquette ; dans « Motifs ouverts », retirer le compte d'occurrences et
+  laisser le renvoi vers `learned-rules.md`. **Ce n'est pas un effacement** : aucun de ces nombres
+  n'était une source, ils étaient tous recopiés d'ailleurs.
+- **`mistakes.md`** : ajouter le bandeau de rotation. Ne déplacer **aucune** entrée dans la foulée :
+  la rotation se fait à la consolidation, sur décision, pas pendant une migration.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Trancher les deux zones qui t'appartiennent.** L'agent te **propose** le nouveau P006 de
+  `principles.md` et la ligne P006 de `capabilities.md`, il ne les écrit pas lui-même. Tant que tu
+  n'as pas tranché, l'instance garde l'ancienne formulation et la contradiction avec elle.
+- **Recoller le NOYAU.**
+
+### Comment vérifier
+
+- Le NOYAU ne contient plus « `_archive/` ne s'écrit jamais ».
+- Le tableau « Mémoire » d'`operational-state.md` ne contient plus un seul chiffre.
+- En session neuve : « as-tu le droit d'archiver un rapport ? ». La réponse doit être oui, sans
+  hésitation et sans demander d'arbitrage. S'il hésite ou s'il invoque P006, la contradiction est
+  encore là.
+
+---
+
 ## 0.8.0 → 0.8.1
 
 ### Ce qui change

@@ -103,6 +103,12 @@ son résultat, et voici les trois gestes qui l'auraient évité » en a.
 Une règle remplacée passe en archive, avec le lien vers ce qui la remplace, la date et le motif.
 Une preuve fausse se corrige par un document additionnel, jamais par une réécriture.
 
+L'archive est donc en **dépôt seul** : on y ajoute, on n'y modifie et on n'en supprime jamais rien.
+Une pièce y est scellée à la seconde où elle y entre. La formulation courte, « ne jamais écrire dans
+l'archive », est plus facile à énoncer et impossible à tenir : archiver, c'est écrire. Une règle
+intenable se contourne, et un agent qui a pris l'habitude de contourner une interdiction dure ne
+s'arrête pas à la bonne.
+
 C'est ce qui rend le système réversible et auditable. « Cette règle apprise il y a trois mois était
 trop simpliste, les cinq derniers cas imposent la suivante » est une phrase qu'on ne peut écrire
 que si l'ancienne existe encore.

@@ -4,6 +4,13 @@
 > à écrire. Il se remplit quand même, en nommant la **cause racine**, pas le symptôme.
 >
 > **C'est le frein de l'autonomie** : une erreur ouverte bloque toute demande de montée de niveau.
+>
+> **Rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui lui donne son effet,
+> et c'est ce qui le condamne s'il grossit sans fin. Une erreur **résolue** depuis longtemps, qui
+> n'éclaire plus aucune décision, se dépose dans `_archive/` avec sa date, et une ligne ici dit
+> qu'elle y est. Une erreur **ouverte** ne part jamais : ce serait desserrer le frein.
+>
+> Rien ne s'efface (compagnon P5) : déposer dans l'archive n'est pas supprimer.
 
 ## Schéma d'une entrée
 
