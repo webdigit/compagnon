@@ -38,6 +38,13 @@ Tout le reste en découle.
 
 ## Les douze principes
 
+> **Comment ils se citent.** Ici, ils portent leur numéro seul : `P1` à `P12`. Partout ailleurs, y
+> compris dans le gabarit et dans les notes de migration, ils s'écrivent **« compagnon P7 »**. La
+> raison est concrète : une instance numérote ses propres interdits `P001` et suivants, dans son
+> `principles.md`, et rien ne doit permettre de confondre les deux jeux. Trouvé le 07/09/2026 sur une
+> instance qui avait dû inventer le préfixe elle-même pour s'y retrouver.
+
+
 ### P1. La seule fonction de récompense est l'humain
 
 L'agent ne poursuit aucun score interne. Un barème existe, mais c'est une **comptabilité du

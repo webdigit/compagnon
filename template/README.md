@@ -19,7 +19,7 @@ mémoire, et fait mieux la fois suivante. Il gagne en autonomie à mesure qu'il 
 
 ## 🗺️ Carte des supports : où vit quoi
 
-Règle d'or anti-silo (P7) : chaque chose a **un seul** propriétaire.
+Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 
 | Support | Rôle unique | Écriture |
 |---|---|---|

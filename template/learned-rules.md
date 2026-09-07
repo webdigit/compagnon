@@ -3,7 +3,7 @@
 > **Statut : mémoire AUTO-ÉCRITE.** L'agent crée et met à jour les règles ici, selon le NOYAU. Toute
 > écriture est listée en fin de session et relue par l'opérateur.
 
-Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont ailleurs (P7).
+Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont ailleurs (compagnon P7).
 
 ---
 
@@ -27,7 +27,7 @@ Dernière conf: date.
 **Barème** : `+2` validée explicitement · `+1` utilisée sans correction · `0` aucune info ·
 `-1` correction mineure · `-2` mauvaise décision · `-3` violation d'un principe.
 
-**Seuils** (P9) : `hypothèse → provisoire` sur 1 validation explicite. `provisoire → active` sur
+**Seuils** (compagnon P9) : `hypothèse → provisoire` sur 1 validation explicite. `provisoire → active` sur
 2 usages de plus sans contradiction. `provisoire → hypothèse` sur une contradiction.
 `active → en-consolidation` si confiance < 0,35, ou 2 des 3 derniers usages ≤ -1, ou un exemple la
 contredit. `en-consolidation → archivé` : remplacée, avec lien, date et motif.

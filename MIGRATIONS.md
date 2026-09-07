@@ -12,7 +12,7 @@ Une migration touche la structure et **ne touche jamais au contenu**. Elle ne se
 écrasement de fichiers : elle se fait en appliquant, un par un, les changements décrits ci-dessous.
 
 C'est l'agent qui l'applique, en lisant ce document. **Il n'y a pas de script, et il n'y en aura
-jamais** : c'est P11. Un procédé qui transforme une mémoire sans l'avoir lue et sans pouvoir dire ce
+jamais** : c'est compagnon P11. Un procédé qui transforme une mémoire sans l'avoir lue et sans pouvoir dire ce
 qu'il a changé n'est pas une migration, c'est une réécriture.
 
 ## Comment une instance connaît sa version
@@ -48,7 +48,7 @@ Projects/
 C'est cette séparation, et rien d'autre, qui rend un `git fetch` inoffensif : `ai-memory/` n'est
 versioné par aucun dépôt, donc aucune opération git sur le clone ne peut atteindre votre contenu.
 Un clone posé à l'intérieur du projet supprime cette garantie. La première mise à jour devient
-capable d'écraser une mémoire, et on retombe exactement sur ce que P11 interdit.
+capable d'écraser une mémoire, et on retombe exactement sur ce que compagnon P11 interdit.
 
 ### S'aligner sur une étiquette, pas sur `main`
 
@@ -101,7 +101,7 @@ https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/temp
 ```
 
 Rien d'autre ne passe par cette route. En particulier, **aucune écriture ne vient du web** : l'agent
-lit un texte, décide, applique lui-même et rend compte. C'est P11, et la provenance du texte n'y
+lit un texte, décide, applique lui-même et rend compte. C'est compagnon P11, et la provenance du texte n'y
 change rien.
 
 ### Ce que l'hôte doit fournir
@@ -154,6 +154,38 @@ changé, il n'a pas migré, il a réécrit.
 > n'est pas publiable. La prose dit ce que l'auteur a pensé à écrire ; le diff dit ce qui a
 > réellement changé. Les quatre versions publiées sans ligne de migration auraient été arrêtées par
 > ce contrôle. <- posé le 27/08/2026.
+
+---
+
+## 0.8.0 → 0.8.1
+
+### Ce qui change
+
+Le gabarit cite désormais les principes de la doctrine sous la forme **« compagnon P7 »**. Une
+instance numérote ses propres interdits `P001` et suivants dans son `principles.md` : les deux jeux
+partageaient la lettre P, et c'était au lecteur de deviner lequel était visé.
+
+### Ce que l'agent fait seul
+
+Dans le NOYAU de l'instance, préfixer « compagnon » devant les renvois aux principes du gabarit
+(P3, P5, P7, P9, P10, P11, P12).
+
+**Ne touchez à aucun `P001` et suivants.** Ce sont les interdits de l'instance, donc du contenu, et
+le contenu ne se migre pas. C'est d'ailleurs pourquoi c'est la doctrine qui se préfixe et pas
+l'inverse : renuméroter les interdits d'une instance serait une réécriture (compagnon P5).
+
+Si l'instance avait déclaré cette adaptation dans les « Écarts assumés » de son `VERSION.md`, elle
+peut l'y retirer : ce n'est plus un écart, c'est la règle.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller le NOYAU**, puisqu'il a changé. Rien d'autre.
+
+### Comment vérifier
+
+Cherchez dans le NOYAU de l'instance un « P » suivi d'un ou deux chiffres qui ne soit pas précédé de
+« compagnon ». Il ne doit plus en rester. Les `P001` et suivants, eux, sont à trois chiffres et ne
+bougent pas.
 
 ---
 
@@ -248,7 +280,7 @@ maturation, aucune règle de gouvernance ne change. `principles.md`, `learned-ru
 tout le reste.
 
 Ce que la 0.6.0 ajoute : un fichier `report.md`, une couche **INTERFACE** dans le gabarit, et le
-principe **P12** qui la justifie : ce qui sort d'une instance est un rapport, jamais sa mémoire.
+principe **compagnon P12** qui la justifie : ce qui sort d'une instance est un rapport, jamais sa mémoire.
 
 ### 1. Trancher : cette instance produit-elle un rapport ? (opérateur)
 
@@ -268,7 +300,7 @@ dans `ai-memory/`, remplissez les chevrons, créez `_archive/rapports/`.
 
 **N'écrivez aucun rapport rétroactif.** Le premier rapport se produit au prochain run réel. Un
 rapport reconstitué de mémoire n'a ni vérification ni généalogie, et il sera lu comme un état
-constaté (P5, P6).
+constaté (compagnon P5 et P6).
 
 ### 3. Reporter la section §5bis dans le NOYAU, puis **recoller**
 
@@ -334,7 +366,7 @@ Parcourez les fichiers de l'instance et retirez tout numéro de version du gabar
 dans `VERSION.md`, notamment en pied de `ai-memory/README.md`. Remplacez-le par un renvoi :
 `voir VERSION.md`.
 
-C'est P7. Un numéro dupliqué finit toujours par diverger, et une instance qui s'annonce en 0.3.0
+C'est compagnon P7. Un numéro dupliqué finit toujours par diverger, et une instance qui s'annonce en 0.3.0
 alors que son `VERSION.md` dit 0.5.5 fait échouer sa propre migration suivante : l'agent qui cherche
 son point de départ en trouve deux.
 
@@ -420,7 +452,7 @@ Rien d'autre ne change dans les fichiers de mémoire. La 0.3.0 ajoute de la docu
 
 Cette migration a du mordant : elle **déclasse** des règles. C'est voulu.
 
-**P9 : l'échelle de statut des règles change.** Elle passe de quatre à cinq états :
+**compagnon P9 : l'échelle de statut des règles change.** Elle passe de quatre à cinq états :
 `hypothèse → provisoire → active → en consolidation → archivée`.
 
 À faire dans `learned-rules.md` :
@@ -433,7 +465,7 @@ Cette migration a du mordant : elle **déclasse** des règles. C'est voulu.
 - Inscrivez la conséquence exécutoire : **une règle provisoire ne peut pas être citée à l'appui d'une
   demande d'autonomie.**
 
-**P10 : la confiance ne s'affiche plus sous trois occurrences.**
+**compagnon P10 : la confiance ne s'affiche plus sous trois occurrences.**
 
 - Toute règle à moins de trois occurrences : remplacez la confiance chiffrée par **« non établie »**.
   Pas par un chiffre bas. « Non établie » et « faible » appellent des décisions opposées.

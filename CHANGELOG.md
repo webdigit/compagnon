@@ -10,6 +10,26 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.8.1] - 2026-09-07
+
+### Corrigé
+
+- **Deux jeux de numéros partageaient la lettre P.** La doctrine numérote ses principes `P1` à `P12`,
+  une instance numérote ses interdits durs `P001` et suivants. Un renvoi « (P7) » dans le gabarit
+  était donc ambigu pour qui lisait depuis une instance. Le gabarit et les notes de migration citent
+  désormais **« compagnon P7 »**, et `DOCTRINE.md` porte la convention en tête de ses principes.
+- **Le côté changé est celui de la doctrine, pas celui des instances.** Renuméroter les interdits
+  d'une instance reviendrait à réécrire du contenu, ce que compagnon P5 interdit. Le gabarit se
+  préfixe, les mémoires ne bougent pas.
+
+### La leçon
+
+Le défaut a été trouvé par une instance en migration réelle, qui avait dû inventer le préfixe
+elle-même et l'avait déclaré comme adaptation. Une adaptation déclarée sur une instance est le
+meilleur signal de défaut qu'un gabarit puisse recevoir : c'est une correction déjà faite et déjà
+éprouvée, il ne reste qu'à la remonter. Encore faut-il que le gabarit oblige à les déclarer, ce que
+fait la section « Écarts assumés » de `VERSION.md`.
+
 ## [0.8.0] - 2026-09-07
 
 ### Ajouté

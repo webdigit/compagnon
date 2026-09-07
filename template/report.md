@@ -18,14 +18,14 @@ non_couvert:
 
 > **Statut : SORTIE PUBLIQUE, auto-écrite.** C'est le **seul** fichier de ce dossier destiné à être
 > lu de l'extérieur : par l'opérateur pressé, ou par un agent chapeau qui arbitre entre plusieurs
-> instances. Tout le reste du dossier est le cerveau de l'agent et ne se lit pas d'ailleurs (P12).
+> instances. Tout le reste du dossier est le cerveau de l'agent et ne se lit pas d'ailleurs (compagnon P12).
 >
 > **Ce n'est pas une mémoire.** Aucune règle, aucun reward, aucun score n'entre ici. Ce qui
 > s'apprend va dans `learned-rules.md`. Ce qui décrit **l'agent** va dans `operational-state.md`.
 > Ce qui décrit **le travail** vient ici.
 >
 > **Ce n'est pas un journal.** Ce fichier ne porte que le **dernier** rapport. Le précédent part
-> d'abord dans `_archive/rapports/<AAAA-MM-JJ>-<run>.md`, tel quel, sans être modifié (P5).
+> d'abord dans `_archive/rapports/<AAAA-MM-JJ>-<run>.md`, tel quel, sans être modifié (compagnon P5).
 >
 > **Ce fichier est facultatif.** Une instance dont personne ne lit la sortie n'en a pas besoin, et
 > son absence n'est pas un manquement.
@@ -43,7 +43,7 @@ Pour qui lit ce fichier sans connaître le reste du dossier :
 4. **Les références font foi, pas ce fichier.** Un identifiant renvoie au système qui porte la
    donnée. En cas d'écart, c'est le système source qui a raison.
 5. **Ce fichier se lit, il ne s'écrit pas de l'extérieur.** Personne d'autre que l'agent de cette
-   instance n'y touche, et personne ne touche au reste du dossier (P12).
+   instance n'y touche, et personne ne touche au reste du dossier (compagnon P12).
 
 ## En un paragraphe
 
@@ -74,7 +74,7 @@ interne.>`
 
 > Ce qui est bloqué **côté métier**, et par qui. Ce qui bloque l'agent lui-même (sa méthode, son
 > niveau d'autonomie, une règle contradictoire) n'est pas ici : c'est dans `operational-state.md`,
-> section « Points chauds ». Deux files distinctes, deux lecteurs distincts (P7).
+> section « Points chauds ». Deux files distinctes, deux lecteurs distincts (compagnon P7).
 
 | # | Sujet | Ce qui manque pour trancher |
 |---|---|---|

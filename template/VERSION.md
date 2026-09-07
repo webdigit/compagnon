@@ -26,7 +26,7 @@ Sans clone local, le même texte se lit par le web, à la même étiquette :
 « Sans dépôt local » du `MIGRATIONS.md` du dépôt.
 
 La migration touche la **structure**, jamais le **contenu**. Elle est appliquée par l'agent qui lit
-les notes, jamais par un script (P11). Puis mettre ce fichier à jour, y compris la ligne
+les notes, jamais par un script (compagnon P11). Puis mettre ce fichier à jour, y compris la ligne
 **Alignée sur**, et **lister ce qui a été touché**. Une migration silencieuse est une réécriture.
 
 ## Historique
