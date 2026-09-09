@@ -135,6 +135,11 @@ Ce qu'il doit faire, dans cet ordre :
 Une migration ne se fait jamais en silence. Si l'agent ne peut pas dire précisément ce qu'il a
 changé, il n'a pas migré, il a réécrit.
 
+> **Règle des exemples, à tenir.** Un exemple fictif du gabarit est une consigne déguisée : c'est le
+> comportement qu'il **montre** qui sera reproduit, pas la règle qu'il illustre. Tout exemple doit
+> donc être exemplaire au sens propre. <- posé le 09/09/2026, après avoir vu une instance recopier
+> fidèlement un exemple qui fermait une erreur trop tôt.
+
 > **Format d'une ligne de migration, à tenir.** Toute ligne comporte quatre blocs, dans cet ordre :
 > **ce qui change**, **ce que l'agent fait seul**, **ce que l'opérateur doit faire lui-même** (avec
 > « rien » écrit noir sur blanc quand c'est rien), et **comment vérifier que c'est fait**.
@@ -154,6 +159,45 @@ changé, il n'a pas migré, il a réécrit.
 > n'est pas publiable. La prose dit ce que l'auteur a pensé à écrire ; le diff dit ce qui a
 > réellement changé. Les quatre versions publiées sans ligne de migration auraient été arrêtées par
 > ce contrôle. <- posé le 27/08/2026.
+
+---
+
+## 0.9.0 → 0.10.0
+
+### Ce qui change
+
+`mistakes.md` passe de deux statuts à trois : `ouverte`, **`corrigée`**, `résolue`. Une erreur
+n'était jusqu'ici « résolue » que par défaut de case disponible : dès qu'une règle était écrite, le
+seul geste offert était de fermer, et le frein de l'autonomie se desserrait tout seul. « Corrigée »
+dit ce qui est vrai à ce moment-là : l'incident est réparé, la prévention n'est pas prouvée.
+
+C'est la symétrie de compagnon P9. Une règle née d'une validation unique est provisoire ; une erreur
+fermée par l'écriture d'une règle est corrigée. Ni l'une ni l'autre n'est acquise.
+
+### Ce que l'agent fait seul
+
+- **`mistakes.md`** : reprendre le bandeau, la ligne `Statut` du schéma et la nouvelle ligne
+  `Récidive` depuis cette étiquette. Puis **proposer**, entrée par entrée, celles qui passent de
+  `résolue` à `corrigée` : toute erreur fermée sans qu'un cas comparable soit survenu depuis. C'est
+  une relecture de contenu, donc une proposition, pas une réécriture.
+- **`learned-rules.md` et `mistakes.md`** : retirer les compteurs écrits à la main en pied de
+  fichier. Un fichier est sa propre source, il se compte en se lisant. Retirer aussi le numéro de
+  version qui traînait en pied de `learned-rules.md` : il ne vit que dans `VERSION.md`.
+- **NOYAU** : reprendre le bloc « Trois statuts d'erreur » du §1.
+- **`capabilities.md`** : la condition de montée de niveau devient « aucune erreur ouverte ni
+  corrigée ». C'est un catalogue, donc **proposer**, ne pas écrire.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Trancher les requalifications** que l'agent propose dans `mistakes.md`, et la condition de
+  `capabilities.md`. Attends-toi à ce que le compteur d'erreurs actives remonte : c'est le but.
+- **Recoller le NOYAU.**
+
+### Comment vérifier
+
+En session neuve : « peux-tu demander une montée de niveau ? ». S'il a des erreurs `corrigées` et
+qu'il répond oui, le frein n'a pas repris. La bonne réponse est non, en citant les entrées
+concernées.
 
 ---
 

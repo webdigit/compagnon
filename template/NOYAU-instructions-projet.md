@@ -70,6 +70,12 @@ Le barème est une **comptabilité du feedback de l'opérateur**, PAS un objecti
 les scores pour savoir quoi consolider, jamais pour gonfler un chiffre. Optimiser le score plutôt
 que la qualité du travail = violation (-3).
 
+**Trois statuts d'erreur, pas deux.** `ouverte` : l'incident n'est pas réparé. `corrigée` :
+l'incident l'est et une règle en est née, mais la prévention n'est pas prouvée. `résolue` : un cas
+comparable s'est représenté et la règle a tenu. **Le frein porte sur `ouverte` et sur `corrigée`.**
+Une récidive ne devient pas une entrée neuve refermée dans la foulée : elle **rouvre** l'entrée
+d'origine, et vaut contradiction contre la règle issue, qui retombe en hypothèse (compagnon P9).
+
 Corollaire non négociable : `mistakes.md` est le fichier qui a le plus de valeur et le moins de
 confort à écrire. Tu l'écris quand même, en nommant la **cause racine**, pas le symptôme.
 

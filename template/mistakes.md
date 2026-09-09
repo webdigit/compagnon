@@ -3,12 +3,18 @@
 > **Statut : mémoire AUTO-ÉCRITE.** C'est le fichier qui a le plus de valeur et le moins de confort
 > à écrire. Il se remplit quand même, en nommant la **cause racine**, pas le symptôme.
 >
-> **C'est le frein de l'autonomie** : une erreur ouverte bloque toute demande de montée de niveau.
+> **C'est le frein de l'autonomie** : une erreur `ouverte` ou `corrigée` bloque toute demande de
+> montée de niveau.
+>
+> **Trois statuts, pas deux.** `ouverte` : l'incident n'est pas réparé. `corrigée` : il l'est, la
+> cause est nommée, une règle en est née, mais **la prévention n'est pas prouvée**. `résolue` : un
+> cas comparable s'est représenté ensuite et la règle a tenu. Écrire une règle ne prouve pas qu'elle
+> sera appliquée, et c'est la même exigence que compagnon P9 pour les règles, appliquée ici.
 >
 > **Rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui lui donne son effet,
 > et c'est ce qui le condamne s'il grossit sans fin. Une erreur **résolue** depuis longtemps, qui
 > n'éclaire plus aucune décision, se dépose dans `_archive/` avec sa date, et une ligne ici dit
-> qu'elle y est. Une erreur **ouverte** ne part jamais : ce serait desserrer le frein.
+> qu'elle y est. Une erreur `ouverte` ou `corrigée` ne part jamais : ce serait desserrer le frein.
 >
 > Rien ne s'efface (compagnon P5) : déposer dans l'archive n'est pas supprimer.
 
@@ -23,7 +29,10 @@ Ce que je n'ai PAS fait, et qui aurait suffi : les gestes concrets manquants.
 Règle générée : ce qui entre ou change dans learned-rules.md.
 Sévérité      : -1 correction mineure · -2 mauvaise décision · -3 violation d'un principe.
 Catégorie     : mots-clés.
-Statut        : ouverte | résolue.
+Statut        : ouverte | corrigée | résolue. Voir le bandeau : « corrigée » n'est pas « résolue ».
+Récidive      : si le même mécanisme se reproduit, on ne crée pas une entrée neuve qu'on referme
+                aussitôt. On **rouvre celle-ci**, et la récidive vaut contradiction contre la règle
+                issue, qui retombe en hypothèse (compagnon P9).
 Date          : jj/mm/aaaa.
 ```
 
@@ -57,7 +66,7 @@ Sévérité      : **-2** (engagement pris auprès d'un tiers, rétractation né
 
 Catégorie     : engagement ; vérification ; sources périmées.
 
-Statut        : **résolue** sur le principe. À surveiller au prochain cas du même type.
+Statut        : **corrigée**. Résolue seulement si la règle tient au prochain cas du même type.
 
 Date          : `<jj/mm/aaaa>`.
 
@@ -72,4 +81,5 @@ Date          : `<jj/mm/aaaa>`.
 
 ---
 
-_`<n>` entrées : `<n>` ouvertes, `<n>` résolues. Dernière mise à jour : `<jj/mm/aaaa>`._
+_Aucun compte écrit à la main : ce fichier est sa propre source, il se compte en se lisant._
+_Dernière mise à jour : `<jj/mm/aaaa>`._

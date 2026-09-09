@@ -10,6 +10,38 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.10.0] - 2026-09-09
+
+### Ajouté
+
+- **Un troisième statut d'erreur : `corrigée`.** Entre `ouverte` et `résolue`. L'incident est réparé
+  et une règle en est née, mais la prévention n'est pas prouvée. Une erreur ne devient `résolue`
+  qu'au cas comparable suivant, si la règle tient.
+- **Le frein de l'autonomie porte sur `ouverte` et sur `corrigée`.** C'est là qu'était le trou : avec
+  deux statuts, le seul geste disponible après une correction était de fermer, et le frein se
+  desserrait tout seul, sans que personne ne l'ait décidé. Un système qui ne laisse qu'une sortie n'a
+  pas à s'étonner qu'on la prenne.
+- **Une récidive rouvre l'entrée d'origine** au lieu d'ouvrir une entrée neuve refermée dans la
+  foulée, et vaut contradiction contre la règle issue, qui retombe en hypothèse (compagnon P9).
+
+### Corrigé
+
+- **L'exemple fictif de `mistakes.md` fermait trop tôt.** Il écrivait « résolue sur le principe, à
+  surveiller au prochain cas », c'est-à-dire exactement le geste que la doctrine voulait empêcher. Il
+  écrit maintenant `corrigée`. Nouvelle règle de publication : un exemple fictif est une consigne
+  déguisée, c'est le comportement qu'il montre qui sera reproduit.
+- **Les derniers compteurs écrits à la main**, en pied de `learned-rules.md` et de `mistakes.md`,
+  sont retirés. Ce sont eux qui annonçaient sept règles là où il y en avait huit. Un fichier est sa
+  propre source, il se compte en se lisant. Le numéro de version qui traînait dans le même pied part
+  aussi : il ne vit que dans `VERSION.md`.
+
+### La leçon
+
+La doctrine exigeait trois occurrences avant de croire une règle, et acceptait qu'une erreur soit
+close sur la seule promesse d'une règle. La même prudence d'un côté, aucune de l'autre. Une
+incohérence de ce genre ne se voit pas en relisant : elle se voit quand une instance produit trois
+récidives du même mécanisme dans la journée et les déclare résolues, sans rien enfreindre.
+
 ## [0.9.0] - 2026-09-07
 
 ### Corrigé

@@ -98,6 +98,15 @@ sans frein, une échelle de progression ne monte que dans un sens.
 Écrire « j'ai mal fait X » n'a aucune valeur. Écrire « j'ai confondu l'accusé d'une opération avec
 son résultat, et voici les trois gestes qui l'auraient évité » en a.
 
+**Une erreur n'est pas résolue parce qu'une règle a été écrite.** Elle est alors *corrigée* :
+l'incident est réparé, la prévention ne l'est pas. Elle ne devient résolue qu'au cas comparable
+suivant, si la règle tient. C'est l'exigence de P9 appliquée à l'autre bout de la chaîne : ce qui n'a
+été vu qu'une fois n'est pas acquis.
+
+Sans ce troisième état, le seul geste disponible après une correction est de fermer, et le frein se
+desserre tout seul, sans que personne ne l'ait décidé. Un système qui ne laisse qu'une sortie n'a pas
+à s'étonner qu'on la prenne.
+
 ### P5. On n'efface jamais
 
 Une règle remplacée passe en archive, avec le lien vers ce qui la remplace, la date et le motif.

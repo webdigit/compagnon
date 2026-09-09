@@ -86,5 +86,5 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 
 ---
 
-_`<n>` règles. Aucune archivée à ce jour. Gabarit : compagnon `<version>`._
+_Aucun compte écrit à la main : ce fichier est sa propre source. Gabarit : voir `VERSION.md`._
 _Dernière mise à jour : `<jj/mm/aaaa>`._

@@ -35,7 +35,7 @@ Légende : `✅ OUVERT` · `🔓 DEMANDÉ` (attend une décision) · `🔒 VERRO
 
 | Capacité | Ce que ça permet | Condition | Statut |
 |---|---|---|---|
-| `<capacité>` | `<ce que ça permet>` | `<condition chiffrée>` · 0 erreur ouverte · accord | 🔒 VERROUILLÉ |
+| `<capacité>` | `<ce que ça permet>` | `<condition chiffrée>` · aucune erreur ouverte ni corrigée · accord | 🔒 VERROUILLÉ |
 
 ## Niveau 3 et au-delà
 
