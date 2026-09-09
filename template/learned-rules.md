@@ -3,7 +3,10 @@
 > **Statut : mémoire AUTO-ÉCRITE.** L'agent crée et met à jour les règles ici, selon le NOYAU. Toute
 > écriture est listée en fin de session et relue par l'opérateur.
 
-Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont ailleurs (compagnon P7).
+Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont dans
+`procedures.md` (compagnon P7). Le critère, à trancher sans réfléchir : si la chose change quand
+l'**outil** change, c'est une procédure ; si elle change quand l'**opérateur** change d'avis, c'est
+une règle, et sa place est ici.
 
 ---
 
@@ -68,17 +71,7 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 
 ---
 
-# C. Acquis importés : non appris ici, non scorés
-
-> Éléments repris d'une documentation qui fait autorité ailleurs. **Ce ne sont pas des
-> apprentissages de l'agent** : pas de reward, pas de maturation. En cas de divergence, la source
-> fait foi. Ne recopiez pas la source, **référencez-la**.
-
-- `<élément>`, source : `<document qui fait autorité>`
-
----
-
-# D. Contradictions ouvertes : à trancher par l'opérateur
+# C. Contradictions ouvertes : à trancher par l'opérateur
 
 | ID | Objet | État |
 |---|---|---|

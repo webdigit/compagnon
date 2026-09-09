@@ -132,12 +132,28 @@ devient un tas d'affirmations qu'on ne peut ni vérifier ni contredire.
 
 ### P7. Chaque chose a un seul propriétaire
 
-Une **règle de décision** vit dans la mémoire. Une **procédure d'outil** vit dans la documentation
-de l'outil. Un **historique scellé** vit dans l'archive. On ne duplique pas.
+Une **règle de décision** vit dans la mémoire. Une **procédure d'outil** vit là où l'outil est
+documenté. Un **historique scellé** vit dans l'archive. On ne duplique pas.
 
 Deux sources qui disent la même chose avec des mots différents ne sont pas une redondance utile,
 c'est une contradiction en attente. Ajouter un support sans retirer ce qu'il remplace crée une
 ambiguïté, pas une sécurité.
+
+**Quand le propriétaire désigné n'existe pas, l'instance l'est.** La formule « la procédure vit dans
+la documentation de l'outil » suppose que cette documentation existe et que quelqu'un la tienne. Ce
+n'est pas toujours vrai : une instance qui exécute une chaîne technique montée pour elle est souvent
+la seule à en connaître le mode opératoire, et personne d'autre ne l'écrira jamais. Elle en est donc
+propriétaire, et elle l'écrit chez elle, dans un fichier que son rituel de session atteint.
+
+Le principe n'est pas affaibli, il est complété : un seul propriétaire, toujours, et l'instance
+compte parmi les propriétaires possibles. Ce qui reste interdit est de recopier une procédure que
+quelqu'un d'autre tient déjà. Quand la documentation existe ailleurs, l'entrée locale la
+**référence** et s'arrête là.
+
+Le manque a été trouvé le 09/09/2026 sur une instance qui, faute d'emplacement prévu, avait le choix
+entre polluer ses règles de jugement et ne rien écrire. Un agent placé devant ce choix prend la
+seconde option, et le travail d'une session est perdu à la suivante : exactement le problème que
+cette méthode existe pour résoudre.
 
 ### P8. Le laboratoire n'est pas la doctrine
 

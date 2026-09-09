@@ -2,8 +2,8 @@
 
 > **Commence ici.** Toute session lit **d'abord** ce README, **puis**
 > `NOYAU-instructions-projet.md`, **puis** les quatre mémoires d'apprentissage et
-> `operational-state.md`, **puis** `report.md` s'il existe. Sans cette lecture, ce dossier est
-> inerte.
+> `operational-state.md`, **puis** l'**index** de `procedures.md` et `report.md`, s'ils existent.
+> Sans cette lecture, ce dossier est inerte.
 >
 > ⚠️ **À REMPLIR** : remplacez `<NOM DE L'AGENT>`, `<OPÉRATEUR>` et `<COMPÉTENCE 01>` partout dans
 > ce dossier. Les exemples fictifs sont signalés, ils sont à remplacer par vos vrais cas.
@@ -24,12 +24,15 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | Support | Rôle unique | Écriture |
 |---|---|---|
 | **`ai-memory/` (ce dossier)** | Le **cerveau de décision** : comment l'agent qualifie, décide, rédige, vérifie | Auto (agent) + zones manuelles |
-| **`<vos procédures d'outil>`** | Le **comment** technique : requêtes, chemins, identifiants | Manuelle |
+| **`<vos procédures d'outil>`**, si elles existent | Le **comment** technique déjà tenu par quelqu'un | Manuelle |
+| **`procedures.md` (ici)** | Le **comment** technique que personne d'autre ne tient | Auto (agent) |
 | **`<vos documents de référence>`** | Le contexte métier stable, daté | Manuelle |
 | **`_archive/`** | L'**historique scellé** | **Dépôt seul** : on ajoute, on ne modifie ni ne supprime |
 
-> Frontière nette : une **règle de décision** vit ici. Une **procédure d'outil** vit dans votre
-> documentation d'outil. On ne mélange pas.
+> Frontière nette : une **règle de décision** vit ici, dans `learned-rules.md`. Une **procédure
+> d'outil** vit là où l'outil est documenté ; quand personne ne le documente, elle vit dans
+> `procedures.md` et l'instance en est propriétaire. Ce qui est documenté ailleurs se **référence**,
+> jamais ne se recopie (compagnon P7).
 
 ## Carte des fichiers
 
@@ -49,6 +52,15 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | `operational-state.md` | Tableau de bord vivant : état, points chauds | Auto (agent) |
 | `objectives.md` | Les cibles de qualité | Cibles = **opérateur** · Progression = auto |
 | `capabilities.md` | Les actions autorisées par niveau | Catalogue = **opérateur** · Demandes = auto |
+
+**Couche EXÉCUTION**
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `procedures.md` | Les modes opératoires : le **comment** technique, avec son niveau d'autonomie et sa péremption | Auto (agent) · **facultatif** |
+
+> Pas de reward, pas de maturation : une procédure est juste ou périmée, jamais provisoire. Son
+> **index** est lu à chaque session, ses **corps** seulement quand un déclencheur se présente.
 
 **Couche INTERFACE**
 
@@ -70,7 +82,8 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 ## La boucle
 
 ```
-Lire README → NOYAU → 4 mémoires + operational-state + objectives + capabilities + report
+Lire README → NOYAU → 4 mémoires + operational-state + objectives + capabilities
+                      + index de procedures + report
       ↓
 Faire le travail dans la limite du niveau d'autonomie · proposer le reste
       ↓
@@ -97,5 +110,7 @@ Consolider périodiquement, sans jamais effacer
 7. **`_archive/` est en dépôt seul** : on y ajoute, on n'y modifie et on n'en supprime rien.
 8. **La mémoire ne se lit pas de l'extérieur.** Ce qui sort d'ici est `report.md`, et rien d'autre.
    Personne d'autre que cet agent n'écrit dans ce dossier.
+9. **Chaque chose s'écrit là où elle sera relue au moment où elle servira**, pas à l'endroit qui la
+   décrit le mieux.
 
 _Gabarit : **compagnon** (voir `VERSION.md`). Doctrine complète : `DOCTRINE.md` du dépôt._

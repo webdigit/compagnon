@@ -33,6 +33,8 @@ Concrètement, après quelques semaines d'usage réel :
 - des cas concrets réutilisables par analogie ;
 - un tableau de bord de l'état courant ;
 - un catalogue de capacités où chaque ouverture porte votre nom et sa date ;
+- des **modes opératoires** pour les chaînes techniques que personne d'autre ne documente, avec leur
+  niveau d'autonomie et leur date de péremption ;
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
   par vous en trente secondes ou par un agent qui arbitre entre plusieurs de vos instances.
 
@@ -60,7 +62,8 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version, avec ou sans dépôt local |
 | `CHANGELOG.md` | L'historique des versions, **la seule source du numéro de version** |
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
-| `template/` | Le gabarit canonique : onze fichiers, stériles, à instancier |
+| `PUBLICATION.md` | Les règles d'écriture du gabarit, pour qui le fait évoluer |
+| `template/` | Le gabarit canonique : les fichiers stériles, à instancier |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
 > aucune donnée client ne peut s'y trouver. Les zones à remplir sont marquées, et chaque fichier

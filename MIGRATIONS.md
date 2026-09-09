@@ -135,30 +135,79 @@ Ce qu'il doit faire, dans cet ordre :
 Une migration ne se fait jamais en silence. Si l'agent ne peut pas dire précisément ce qu'il a
 changé, il n'a pas migré, il a réécrit.
 
-> **Règle des exemples, à tenir.** Un exemple fictif du gabarit est une consigne déguisée : c'est le
-> comportement qu'il **montre** qui sera reproduit, pas la règle qu'il illustre. Tout exemple doit
-> donc être exemplaire au sens propre. <- posé le 09/09/2026, après avoir vu une instance recopier
-> fidèlement un exemple qui fermait une erreur trop tôt.
+> **Les règles d'écriture du gabarit ne sont pas ici.** Trois d'entre elles vivaient dans ce
+> fichier, que seules les instances ouvrent : la règle des exemples, le format en quatre blocs d'une
+> ligne de migration, et le contrôle du diff de `template/` avant publication. Elles s'adressent à
+> qui écrit le gabarit, et elles sont désormais rassemblées dans `PUBLICATION.md`, à la racine du
+> dépôt. <- déplacées le 09/09/2026, en 0.11.0.
 
-> **Format d'une ligne de migration, à tenir.** Toute ligne comporte quatre blocs, dans cet ordre :
-> **ce qui change**, **ce que l'agent fait seul**, **ce que l'opérateur doit faire lui-même** (avec
-> « rien » écrit noir sur blanc quand c'est rien), et **comment vérifier que c'est fait**.
->
-> Le troisième bloc est celui qu'on oublie, et c'est celui qui décide si la migration prend effet :
-> un NOYAU modifié mais non recollé ne change rien aux sessions. Un agent qui lit une ligne sans ce
-> bloc n'a aucun moyen de deviner ce qui reste à faire hors du disque. <- posé le 07/09/2026.
+---
 
-> **Règle de publication, à tenir.** Avant de publier une version, comparer le gabarit stérile entre
-> l'ancienne étiquette et la nouvelle :
->
-> ```
-> git diff v0.5.5..v0.5.6 -- template/
-> ```
->
-> Si `template/` a bougé et que la version n'a pas de ligne de migration qui en rend compte, elle
-> n'est pas publiable. La prose dit ce que l'auteur a pensé à écrire ; le diff dit ce qui a
-> réellement changé. Les quatre versions publiées sans ligne de migration auraient été arrêtées par
-> ce contrôle. <- posé le 27/08/2026.
+## 0.10.0 → 0.11.0
+
+### Ce qui change
+
+**Une cinquième couche : EXÉCUTION, portée par `procedures.md`.** Le gabarit renvoyait tout le
+comment technique vers « votre documentation d'outil », c'est-à-dire hors du dossier et hors du
+rituel de session. Quand cette documentation n'existe pas, et elle n'existe pas pour une chaîne
+montée sur mesure, l'instance n'avait aucun endroit **relu** où poser son mode opératoire. Restaient
+deux mauvaises sorties : polluer `learned-rules.md`, que son propre bandeau lui interdit, ou ne rien
+écrire et tout reperdre à la session suivante.
+
+compagnon P7 est complété en conséquence : quand le propriétaire désigné d'une procédure n'existe
+pas, l'instance l'est. Ce qui est documenté ailleurs se référence toujours, jamais ne se recopie.
+
+**Une passe de contrôle : NOYAU §4bis.** Le §4 relisait les règles une par une. Rien ne regardait le
+dossier dans son ensemble : liens morts, règle qui contredit un principe, deux règles qui se
+contredisent, erreur `corrigée` qui maintient le frein sans que personne ne l'ait décidé, demande
+d'ouverture oubliée depuis des semaines. La passe est lancée par l'agent, jamais par un script
+(compagnon P11), et se termine par un compte rendu daté.
+
+**Une règle de rangement, dans le §5.** Écrire la chose là où elle sera relue au moment où elle
+servira, pas à l'endroit qui la décrit le mieux.
+
+**Une ligne `ÉCART` dans le bloc de fin de session.** Les « écarts assumés » vivent dans
+`VERSION.md`, ouvert seulement en migration, alors que l'écart se constate en session ordinaire.
+C'est ce qui vient de se passer : l'instance qui a trouvé le manque de procédures l'a noté dans son
+`operational-state.md`, faute de croiser le bon fichier au bon moment.
+
+### Ce que l'agent fait seul
+
+- **Poser `procedures.md`** depuis cette étiquette, si l'instance exécute une chaîne technique. Sinon
+  ne pas le poser : le fichier est facultatif et un fichier vide se met à mentir.
+- **Rapatrier la section C de `learned-rules.md`** (« Acquis importés : non appris ici, non scorés »)
+  vers `procedures.md`, puis retirer la section. C'est le même objet sous un autre nom : un renvoi
+  vers une documentation qui fait autorité ailleurs. **Rien ne se perd** : chaque élément devient une
+  entrée `Référence` avant que la section ne disparaisse. L'ancienne section D devient C.
+- **Reprendre les bandeaux** de `learned-rules.md` (critère outil/opérateur) et du README de
+  l'instance (carte des supports, couche EXÉCUTION, ordre de lecture, règle d'or 9) depuis cette
+  étiquette.
+- **Ajouter la section « Entretien »** à `operational-state.md`, avec la date du dernier balayage à
+  **jamais** si aucun n'a eu lieu. Ne pas inventer une date passée pour faire propre.
+- **NOYAU** : reprendre le §0 (points 3bis et 3ter), le §4bis, le §5 et le §7bis depuis cette
+  étiquette.
+- **Proposer**, si des procédures dorment déjà dans `learned-rules.md` sous forme de règles, leur
+  déplacement vers `procedures.md`. C'est une relecture de contenu, donc une proposition, jamais une
+  réécriture.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU.** Il a bougé sur quatre sections. Tant qu'il n'est pas recollé, rien de ce qui
+  précède n'atteint les sessions.
+- **Trancher les déplacements** que l'agent propose entre `learned-rules.md` et `procedures.md`.
+- **Régler la péremption des procédures** pour le métier. Trois mois est un défaut, pas une vérité.
+- **Renseigner le niveau d'autonomie** attendu sur les premières procédures écrites, en le croisant
+  avec `capabilities.md`.
+
+### Comment vérifier
+
+En session neuve, demander une tâche qui relève d'une procédure documentée. L'agent doit citer son
+identifiant `PR###` avant d'agir, sans qu'on lui rappelle que le fichier existe : c'est l'index lu au
+§0 qui le lui a appris. S'il improvise la chaîne technique, l'index n'est pas lu, ou le NOYAU n'a pas
+été recollé.
+
+Second contrôle : demander « quand as-tu fait ton dernier balayage ? ». La réponse doit être une date
+ou « jamais », lue dans `operational-state.md`, pas une estimation.
 
 ---
 

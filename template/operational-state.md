@@ -38,6 +38,12 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 - **Fin de session** : bloc `🧠 MISE À JOUR MÉMOIRE` obligatoire. **C'est le maillon faible connu :
   rien ne force l'agent à le produire.**
 
+## Entretien
+
+- **Dernier balayage complet (NOYAU §4bis)** : `<jj/mm/aaaa>`, ou **jamais**.
+- Au-delà d'un mois, l'agent le signale en ouverture de session et **propose** la passe. Il ne la
+  lance pas de son chef : elle prend du temps qui appartient à l'opérateur.
+
 ## Points chauds : ce qui attend une décision
 
 | # | Sujet | Attente |

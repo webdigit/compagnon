@@ -10,6 +10,61 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.11.0] - 2026-09-09
+
+### Ajouté
+
+- **Une couche EXÉCUTION : `procedures.md`.** Le gabarit renvoyait le comment technique vers « votre
+  documentation d'outil », hors du dossier et hors du rituel de session. Quand personne ne tient
+  cette documentation, l'instance n'avait aucun endroit relu où poser son mode opératoire. Son index
+  est lu à chaque session, ses corps seulement quand un déclencheur se présente.
+- **compagnon P7 traite le cas du propriétaire inexistant.** Quand personne d'autre ne documente
+  l'outil, l'instance en est propriétaire et l'écrit chez elle. Ce qui est documenté ailleurs se
+  référence, jamais ne se recopie. Le principe n'est pas affaibli, il est complété.
+- **Trois garde-fous sur les procédures**, parce qu'une procédure fausse ne conseille pas, elle
+  s'exécute : chaque entrée porte le niveau d'autonomie que son exécution demande, une entrée périmée
+  se relit **avant** d'être suivie, et une panne d'outil ne compte pas comme une erreur de jugement.
+  Ce qui entre dans `mistakes.md`, c'est d'avoir suivi une procédure périmée sans la relire.
+- **Une passe de contrôle : NOYAU §4bis.** Le §4 relisait les règles une par une, rien ne regardait
+  le dossier dans son ensemble. Sept vérifications, dont l'erreur `corrigée` qui maintient le frein
+  sans que personne ne l'ait décidé, et la demande d'ouverture oubliée depuis des semaines. Lancée
+  par l'agent, jamais par un script (compagnon P11), et terminée par un compte rendu daté.
+- **`PUBLICATION.md`**, les règles d'écriture du gabarit. Trois d'entre elles vivaient dans
+  `MIGRATIONS.md`, que seules les instances ouvrent, et deux autres n'existaient que dans les
+  sections « La leçon » de ce changelog.
+- **Une règle de rangement, côté agent** (NOYAU §5) : écrire la chose là où elle sera relue au moment
+  où elle servira, pas à l'endroit qui la décrit le mieux.
+
+### Corrigé
+
+- **Les « écarts assumés » n'étaient jamais atteints au bon moment.** Ils vivent dans `VERSION.md`,
+  ouvert seulement en migration, alors qu'un écart se constate en session ordinaire. Le bloc de fin
+  de session porte désormais une ligne `ÉCART`. C'est précisément ce qui vient d'arriver : l'instance
+  qui a trouvé le manque de procédures l'a noté dans son `operational-state.md`.
+- **La section « Acquis importés » de `learned-rules.md` disparaît**, rapatriée dans
+  `procedures.md`. C'était le même objet sous un autre nom, dans un fichier dont le bandeau interdit
+  pourtant les procédures d'outil.
+- **Le README du dépôt annonçait « onze fichiers ».** Compteur recopié, faux dès l'ajout d'un
+  douzième. Troisième correction du même motif après `operational-state.md` en 0.9.0 et les pieds de
+  fichiers en 0.10.0 : la règle est maintenant écrite dans `PUBLICATION.md` pour qu'il n'y ait pas de
+  quatrième.
+
+### La leçon
+
+Les trois derniers défauts publiés n'en font qu'un. `_archive/` portait une interdiction et son
+contraire dans deux fichiers lus par la même session. Les écarts assumés attendaient dans un fichier
+ouvert une fois par trimestre. Les procédures étaient renvoyées hors du rituel. Chaque fois, la
+consigne était juste et arrivait au mauvais instant.
+
+Une consigne ne réduit les erreurs que si elle est présente **au moment où la décision se prend**.
+C'est devenu la première règle de `PUBLICATION.md`, avec sa nuance : « au bon moment » ne veut pas
+dire « au démarrage ». Une consigne chargée au §0 pour un geste qui viendra quarante mille jetons
+plus loin est au bon endroit et au mauvais instant.
+
+Ce défaut-ci a été trouvé par une instance qui a préféré signaler le manque plutôt que de le
+contourner en silence. C'est le comportement que compagnon P3 et la section « écarts assumés »
+existent pour produire, et c'est la deuxième fois qu'il paie.
+
 ## [0.10.0] - 2026-09-09
 
 ### Ajouté
