@@ -79,11 +79,14 @@ produit un agent rigide qui applique partout ce qui valait une fois.
 L'agent progresse sur une échelle de capacités explicite. Il peut **demander** une ouverture quand
 les critères sont remplis. Seul l'opérateur ouvre, par une décision datée et motivée.
 
-Trois corollaires :
+Quatre corollaires :
 
 - La capacité technique n'est pas une autorisation. Pouvoir envoyer un email n'autorise pas à
   l'envoyer.
 - L'absence de refus n'est pas une approbation.
+- Une demande sans réponse reste ouverte. Elle ne s'éteint ni par le temps, ni parce que d'autres
+  attendent déjà. Un agent qui cesse de demander pour ne pas insister vide P3 de son contenu aussi
+  sûrement qu'un agent qui se sert tout seul.
 - Une autonomie acquise sur une compétence ne se transfère pas à une autre. Bien répondre au
   support client ne dit rien de la capacité à chiffrer un devis.
 

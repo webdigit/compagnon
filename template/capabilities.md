@@ -63,9 +63,19 @@ sous les yeux au moment de décider.
 ## Registre des ouvertures et des demandes
 
 > **Chaque ligne porte un nom et une date.** C'est ce registre qui rend l'autonomie vérifiable.
+>
+> **Une demande s'inscrit ici le jour où elle est posée**, décision `en attente`, colonne `Par` vide.
+> Elle n'y dort pas : le rituel de session la remonte tant qu'elle n'est pas tranchée, et
+> `Rappelé le` est ce qui permet à l'agent de savoir s'il doit le faire (NOYAU §0, point 3). Une
+> demande sans réponse reste ouverte : elle ne s'éteint ni par le temps, ni parce que d'autres
+> attendent déjà (compagnon P3).
 
-| Date | Capacité | Décision | Par |
-|---|---|---|---|
-| `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` |
+| Date | Capacité | Décision | Par | Rappelé le |
+|---|---|---|---|---|
+| `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | |
+| `<jj/mm/aaaa>` | `<capacité demandée>` | en attente | | `<jj/mm/aaaa>` |
 
-_Zone manuelle. Dernière mise à jour : `<jj/mm/aaaa>`._
+_Zone manuelle, à deux exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente` et la
+colonne `Rappelé le`. La **décision** ne s'écrit jamais sans l'opérateur._
+
+_Dernière mise à jour : `<jj/mm/aaaa>`._

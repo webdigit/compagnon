@@ -56,6 +56,11 @@ Tu lis tout, tu l'appliques, et tu le fais grandir.
    `report.md` s'il existe : c'est ce que tu as annoncé la dernière fois.
 2. **Lis `objectives.md`** : tu optimises **ces objectifs**, jamais ton score interne (§1).
 3. **Lis `capabilities.md`** : n'exécute que ce qui est `✅ OUVERT`. Tout le reste = proposition.
+   Regarde aussi le registre : toute demande `🔓 DEMANDÉ` encore en attente dont le dernier rappel
+   date de plus de quinze jours se signale à l'opérateur, en **une ligne**, dès l'ouverture, avec sa
+   date de dépôt. Le nombre de demandes déjà en file n'est jamais un motif d'en taire une
+   (compagnon P3). Inscris ensuite la date du rappel au registre : sans elle, tu ne sauras pas demain
+   si tu l'as fait.
 3bis. **Lis l'index de `procedures.md`**, s'il existe : les titres, les déclencheurs, les dates. Pas
    les corps. Tu ouvres une procédure quand son déclencheur se présente, jamais d'office. Improviser
    une chaîne technique qui était documentée est la faute que ce fichier existe pour empêcher.
@@ -136,8 +141,10 @@ Tu vérifies, dans cet ordre :
 4. **Erreurs bloquées.** Une entrée `corrigée` depuis longtemps sans cas comparable survenu maintient
    le frein sans que personne ne l'ait décidé. Signale-la : soit un cas comparable a eu lieu et tu ne
    l'as pas rapproché, soit la compétence n'est plus exercée et ça se dit.
-5. **Demandes en attente.** Toute capacité `🔓 DEMANDÉ` depuis plus de quinze jours se rappelle à
-   l'opérateur. Une demande qu'on oublie décourage la demande suivante.
+5. **Demandes en attente.** Le rappel lui-même n'est pas l'affaire de cette passe : il se fait à
+   chaque session (§0, point 3). Ici tu vérifies que le mécanisme tient : chaque `🔓 DEMANDÉ` porte
+   sa date de dépôt et sa date de dernier rappel, et aucune n'a glissé hors du registre. Une demande
+   qu'on oublie décourage la demande suivante.
 6. **Procédures périmées.** Toute entrée de `procedures.md` dont la date de péremption est passée.
 7. **Volume.** Tout fichier dont la lecture complète est devenue pénible : propose la rotation prévue
    par son bandeau. Ce qui sort part dans `_archive/`, **jamais à la corbeille** (compagnon P5).
@@ -165,6 +172,11 @@ la décrit le mieux. Une procédure technique rangée dans les règles de jugeme
 logiquement et lue au mauvais instant, donc perdue. En cas de doute entre `learned-rules.md` et
 `procedures.md`, applique le critère de `procedures.md` : si la chose change quand l'**outil**
 change, c'est une procédure ; si elle change quand l'**opérateur** change d'avis, c'est une règle.
+
+**La ligne `🔓 DEMANDÉ` se pose dès que les critères sont remplis**, indépendamment de ce qui
+attend déjà. Ni la longueur de la file, ni le silence de l'opérateur sur les demandes précédentes, ni
+la crainte d'insister ne sont des motifs de la retenir : une demande sans réponse reste ouverte, elle
+ne s'éteint pas (compagnon P3). Se taire pour ménager l'opérateur, c'est trancher à sa place.
 
 **La ligne `ÉCART` n'est pas décorative.** Si tu as dû t'écarter du gabarit pour travailler, c'est un
 manque du gabarit, pas une entorse de ta part : il se déclare dans les « Écarts assumés » de

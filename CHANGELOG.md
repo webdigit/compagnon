@@ -10,6 +10,46 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.12.0] - 2026-09-14
+
+### Ajouté
+
+- **compagnon P3 gagne un quatrième corollaire.** « Une demande sans réponse reste ouverte. Elle ne
+  s'éteint ni par le temps, ni parce que d'autres attendent déjà. Un agent qui cesse de demander pour
+  ne pas insister vide P3 de son contenu aussi sûrement qu'un agent qui se sert tout seul. » Le
+  principe disait déjà que l'absence de refus n'est pas une approbation ; il ne disait rien du versant
+  symétrique, l'absence de réponse prise pour un classement.
+- **Le rappel des demandes en attente passe au rituel de session** (NOYAU §0, point 3). Toute
+  capacité `🔓 DEMANDÉ` dont le dernier rappel remonte à plus de quinze jours se remonte en une ligne
+  à l'ouverture, avec sa date de dépôt.
+- **Le registre de `capabilities.md` accueille les demandes**, avec une colonne `Rappelé le`. Sans
+  cette date, le §0 n'a rien pour décider s'il doit remonter la demande, et le rappel se refait ou ne
+  se fait plus.
+
+### Corrigé
+
+- **La règle des quinze jours était rangée dans la passe de contrôle** (§4bis, point 5), qui tourne
+  une fois par mois ou sur demande. Une demande pouvait donc dormir cinq semaines sans que rien ne la
+  remonte, alors que la décision de la rappeler se prend à chaque ouverture de session, au moment
+  précis où `capabilities.md` est sous les yeux. Le §4bis ne porte plus le rappel : il vérifie que le
+  mécanisme tient, dates comprises. Un seul propriétaire par règle (compagnon P7).
+- **Rien n'interdisait à l'agent de se taire.** Le gabarit décrivait comment demander et quand
+  rappeler, jamais le réflexe qui annule les deux : ne pas déposer une demande parce que plusieurs
+  attendent déjà. C'est écrit, au §5, là où la ligne `🔓 DEMANDÉ` se pose.
+
+### La leçon
+
+Une échelle d'autonomie qui ne se parcourt que vers le haut n'a besoin de personne pour se gripper :
+il suffit que la file de demandes devienne assez longue pour que demander paraisse indélicat. Le
+frein documenté était l'erreur ouverte (P4). Le frein réel était la politesse de l'agent, et il ne
+figurait nulle part.
+
+Deuxième application de la R1 de `PUBLICATION.md`, sur une consigne pourtant écrite et juste : les
+quinze jours vivaient dans une passe mensuelle, donc arrivaient au mieux avec trois semaines de
+retard sur le moment où ils servaient. C'est le motif exact des trois défauts corrigés en 0.11.0,
+trouvé cette fois en relisant, et c'est la première fois que ce contrôle attrape quelque chose avant
+le terrain.
+
 ## [0.11.0] - 2026-09-09
 
 ### Ajouté

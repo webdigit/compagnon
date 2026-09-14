@@ -143,6 +143,62 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.11.0 → 0.12.0
+
+### Ce qui change
+
+**compagnon P3 gagne un quatrième corollaire.** Une demande sans réponse reste ouverte : elle ne
+s'éteint ni par le temps, ni parce que d'autres attendent déjà. Le principe couvrait l'opérateur qui
+ne refuse pas (« l'absence de refus n'est pas une approbation ») et laissait à découvert le versant
+agent : l'absence de réponse lue comme un classement, et le silence poli qui s'ensuit.
+
+**Le rappel des demandes descend de la passe mensuelle au rituel de session.** Il vivait au §4bis,
+point 5, avec son délai de quinze jours. Le §4bis tourne une fois par mois : une demande pouvait
+attendre cinq semaines avant que quoi que ce soit ne la remonte, alors que la décision de rappeler se
+prend à chaque ouverture, quand `capabilities.md` est sous les yeux (§0, point 3). Le §4bis garde le
+contrôle du mécanisme, plus le rappel lui-même : un seul propriétaire par règle (compagnon P7).
+
+**Le §5 interdit le silence.** La ligne `🔓 DEMANDÉ` se pose dès que les critères sont remplis,
+quelle que soit la longueur de la file et quel que soit le silence de l'opérateur sur les
+précédentes.
+
+**Le registre de `capabilities.md` accueille les demandes**, avec une colonne `Rappelé le`. Sans
+cette date, le §0 n'a rien à comparer et le rappel se refait à chaque session ou ne se fait plus.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : reprendre le §0 (point 3), le §4bis (point 5) et le §5 depuis cette étiquette.
+- **`capabilities.md`** : ajouter la colonne `Rappelé le` au registre des ouvertures et des demandes,
+  et reprendre son bandeau depuis cette étiquette. **Les lignes existantes ne se touchent pas** : la
+  colonne reste vide sur les ouvertures déjà décidées, qui n'ont plus rien à attendre.
+- **Inscrire au registre les demandes déjà en cours.** Toute capacité marquée `🔓 DEMANDÉ` dans les
+  tableaux de niveau qui ne figure pas au registre y entre, décision `en attente`, avec sa date de
+  dépôt si elle est connue et `inconnue` sinon. Ne pas inventer une date pour faire propre.
+- **Remonter ces demandes à l'opérateur dès la première session après la migration**, sans attendre
+  les quinze jours : par construction, elles les ont déjà dépassés.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU.** Il a bougé sur trois sections. Tant qu'il n'est pas recollé, rien de ce qui
+  précède n'atteint les sessions.
+- **Trancher les demandes que la migration fait remonter.** C'est l'effet recherché, et il tombe en
+  une fois : une instance ancienne peut en sortir plusieurs d'un coup. Ouvrir ou refuser, les deux
+  ferment la ligne ; la laisser en attente la fera revenir dans quinze jours, ce qui est le
+  comportement voulu.
+
+### Comment vérifier
+
+Poser au registre une demande fictive datée de plus de quinze jours, `Rappelé le` vide, puis ouvrir
+une session neuve. L'agent doit la mentionner de lui-même, en une ligne, avant qu'on lui parle
+d'autonomie. S'il ne dit rien, le NOYAU n'a pas été recollé. S'il en fait un paragraphe, c'est le
+point 3 du §0 qui a été recopié de travers : une ligne, pas un plaidoyer.
+
+Second contrôle, à la session suivante : la même demande ne doit **pas** revenir, `Rappelé le` ayant
+été inscrit au passage. Si elle revient chaque jour, l'agent rappelle sans dater, et le rappel
+deviendra du bruit que l'opérateur apprendra à sauter.
+
+---
+
 ## 0.10.0 → 0.11.0
 
 ### Ce qui change
