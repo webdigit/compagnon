@@ -18,7 +18,10 @@ Domaine      : <vos domaines : qualification | rédaction | vérification | enga
 Contexte     : quand cette règle s'applique.
 Règle        : quoi faire, formulé de façon générique et non au cas particulier.
 Origine      : d'où elle vient (correction / validation, date) + liens ← [O###, E###, M###]
-Statut       : hypothèse | provisoire | actif | en-consolidation | archivé
+Statut       : hypothèse | provisoire | actif | en-consolidation | archivé,
+               suivi de « depuis le <jj/mm/aaaa> ». Cette date est celle du **dernier changement
+               de statut**, pas celle de la création : elle se réécrit quand le statut change, et
+               à ce moment-là seulement. C'est elle qui dit si une règle mûrit ou si elle stagne.
 Score cumul  : somme brute des rewards.
 Score récent : moyenne des ≤10 derniers usages.
 Confiance    : **non établie** sous 3 occurrences. Au-delà : clamp01((score_récent + 3) / 5).
@@ -37,6 +40,10 @@ contredit. `en-consolidation → archivé` : remplacée, avec lien, date et moti
 
 > ⚠️ **Une règle provisoire s'applique, mais ne prouve rien.** Elle ne peut pas être citée à l'appui
 > d'une demande de montée d'autonomie.
+>
+> ⚠️ **Une règle provisoire depuis longtemps n'est pas une règle jeune.** C'est le signe qu'aucun
+> cas comparable ne s'est représenté, donc que le motif n'est pas là où on le croyait. La date du
+> statut est ce qui rend cette différence visible.
 
 ---
 
@@ -54,7 +61,7 @@ Règle        : ouvrir l'état réel du stock et le délai fournisseur **avant**
 Origine      : correction explicite de l'opérateur le `<jj/mm/aaaa>` : un délai de deux jours avait
                été annoncé depuis une fiche produit, alors que le fournisseur était en rupture.
                ← [E001]
-Statut       : **provisoire** (1 validation explicite)
+Statut       : **provisoire** depuis le `<jj/mm/aaaa>` (1 validation explicite)
 Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occurrence sur 3) ·
                Occurrences : 1 conf / 0 corr · Dernière conf : `<jj/mm/aaaa>`
 

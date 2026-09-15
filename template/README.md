@@ -72,6 +72,18 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 > est daté, il périme, et il pointe vers les systèmes qui portent la donnée au lieu de la recopier.
 > Une instance dont personne ne lit la sortie n'a pas besoin de ce fichier.
 
+**Couche ÉCRAN** (hors de ce dossier, à la racine du projet)
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `../compagnon.html` | L'écran de lecture : ce dossier rendu lisible d'un double-clic | **Vient du dépôt**, remplacé en migrant · **facultatif** |
+| `../_ecran/etat.js` | Le transport : les fichiers ci-dessus recopiés entiers, pour que l'écran puisse les lire | Auto (agent), en fin de session |
+
+> L'écran est un **accessoire de lecture, pas un organe** : une instance sans lui fonctionne à
+> l'identique. Il n'écrit rien, par aucun chemin, et ce qu'il affiche est calculé depuis les
+> fichiers : en cas d'écart, le fichier a raison. L'agent n'y produit jamais de code, seulement des
+> données (NOYAU §5ter).
+
 **Couche NOYAU**
 
 | Fichier | Rôle | Écriture |

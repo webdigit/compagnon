@@ -13,6 +13,7 @@ partir.
 | **Instance** | `<nom de l'agent>`, `<opérateur>`, `<organisation>` |
 | **Posée le** | `<jj/mm/aaaa>` |
 | **Alignée sur** | `<étiquette, ex. v0.5.6>` au commit `<sha court>` |
+| **Écran** | `posé, version <x.y.z>` ou `non posé` |
 
 ## Comment se mettre à jour
 

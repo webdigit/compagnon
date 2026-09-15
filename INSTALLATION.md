@@ -49,6 +49,18 @@ Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent
 quelqu'un d'autre que vous : un autre agent qui arbitre entre plusieurs instances, une revue
 hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame.
 
+### L'écran de lecture, si vous en voulez un
+
+Copiez `ecran/compagnon.html` à la **racine de votre projet**, à côté de `ai-memory/`. C'est tout :
+ni dossier à créer, ni fichier à copier en plus, rien à installer. L'agent écrira `_ecran/etat.js`
+de lui-même à la fin de sa première session.
+
+Ouvert avant cela, l'écran affiche qu'il n'a pas encore d'état et pourquoi. Ce n'est pas une panne,
+et c'est écrit sur la page pour que personne ne le prenne pour telle.
+
+Si vous n'en voulez pas, ne copiez rien. Une instance sans écran fonctionne à l'identique, et aucun
+autre fichier ne le réclame.
+
 ## Étape 3 : Fixer l'échelle d'autonomie
 
 Dans `capabilities.md`. **Commencez en lecture seule intégrale.** Aucune écriture pré-autorisée,
@@ -170,6 +182,7 @@ qui vous évite un agent rigide qui applique partout ce qui valait une fois.
 - [ ] **Le test de l'étape 5 est passé sur une session neuve**
 - [ ] Un premier cas réel a été traité, corrigé et consigné
 - [ ] Le bloc de fin de session a été produit au moins une fois
+- [ ] Si vous avez posé l'écran : il s'ouvre et affiche l'instance après la première session
 
 Tant que les deux lignes en gras ne sont pas cochées, l'installation n'est pas faite.
 

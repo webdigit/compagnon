@@ -10,6 +10,63 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.13.0] - 2026-09-15
+
+### Ajouté
+
+- **Un écran de lecture, facultatif** (`ecran/`). Une page à ouvrir d'un double-clic, sans rien
+  installer, qui affiche une instance en mettant en tête ce qui attend une décision : capacités
+  demandées, erreurs qui freinent, règles à confirmer, contradictions, points chauds, arbitrages
+  métier. Elle lit la mémoire, elle n'écrit rien, par aucun chemin, et elle ne sort pas du dossier.
+  **Une instance sans écran fonctionne à l'identique** : accessoire de lecture, pas organe.
+- **`FORMAT.md`**, à la racine. La part du format que l'écran interprète, donc ce qu'on ne peut plus
+  changer sans le savoir. Tout le reste demeure libre, et le contrat existe pour que l'accessoire ne
+  devienne jamais une raison de ne pas faire évoluer le gabarit.
+- **P12 gagne sa frontière.** « L'opérateur n'est pas l'extérieur. » Le principe interdisait que la
+  mémoire devienne une interface ; il ne disait pas où l'extérieur commence. Un écran local qui
+  montre la mémoire à celui dont elle porte les décisions ne crée pas un lecteur de plus. Trois
+  conditions l'y tiennent : il ne sort pas de l'instance, il n'écrit rien, il ne fait pas autorité.
+- **La date suit le statut** (NOYAU §3). `Statut : **provisoire** depuis le 27/08/2026`, dans
+  `learned-rules.md` comme dans `mistakes.md`. Elle ne se valide pas : elle ne fait que constater le
+  changement que l'agent vient d'inscrire.
+- **NOYAU §5ter**, l'écran : ce que l'agent régénère en fin de session, et les six règles qui
+  l'encadrent. La première est la seule qui compte : il recopie, il ne résume pas.
+- **`VERSION.md` gagne une ligne `Écran`.** Sans elle, la migration suivante ne sait pas s'il y a un
+  écran à mettre à jour, et une migration qui devine est une réécriture.
+
+### Corrigé
+
+- **Le gabarit demandait trois décisions fondées sur la durée sans écrire la durée.** Une règle qui
+  mûrit contre une règle qui stagne, une erreur assez ancienne pour partir à l'archive, une demande
+  qui attend depuis trop longtemps : trois jugements sur le temps, dont aucun n'avait de date à
+  comparer. Ils se refaisaient de mémoire à chaque lecture, ce qui revient à ne pas les faire.
+- **La colonne `Rappelé le` ne disait pas si elle gardait un rappel ou tous.** Elle devient
+  `Rappels` et s'allonge : chaque rappel ajoute sa date, aucune ne s'efface. Le nombre de rappels
+  sans réponse est ce qui mesure l'attente d'une demande, et c'est la seule trace de ce qu'elle a
+  coûté. Aucune colonne ne les compte : le compte se lit en les comptant (P7).
+
+### La leçon
+
+Le gabarit a été corrigé par un lecteur mécanique, et c'est nouveau.
+
+R3 de `PUBLICATION.md` dit qu'un gabarit se corrige par ses instances, jamais par relecture de son
+auteur. Trois défauts sont pourtant sortis en une journée, sans qu'aucune instance ne trébuche :
+il a suffi d'écrire un programme qui lit le format sans rien deviner. Un lecteur humain reconstruit
+une date depuis le contexte de la phrase d'origine sans même s'apercevoir qu'il la reconstruit. Une
+machine, non : elle bute, et là où elle bute il manquait quelque chose.
+
+C'est donc un second mode de correction, complémentaire du terrain : **faire lire le gabarit par
+quelque chose qui n'a pas de bon sens.** Ce qu'on ne peut pas lui faire lire est ce que le gabarit
+demande à ses lecteurs de deviner.
+
+L'autre leçon est un risque assumé. compagnon se définit par l'absence de code, et cette version en
+introduit. La frontière qui le tient n'est ni un principe ni une intention : elle est dans
+l'arborescence. Le code vit dans `ecran/`, séparé de `template/`, et l'agent n'y écrit jamais que
+des données. Le jour où l'écran devient nécessaire au fonctionnement, ou le jour où quelque chose y
+écrit, la frontière est franchie et il faut le voir tout de suite.
+
+---
+
 ## [0.12.0] - 2026-09-14
 
 ### Ajouté

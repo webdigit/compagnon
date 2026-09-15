@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poste de supervision compagnon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #ECEDF0; --surface: #F8F9FB; --surface-sunk: #E3E5EB;
+    --ink: #15171D; --ink-2: #565C6B; --ink-3: #7D8494;
+    --rule: #D1D4DE; --rule-strong: #B4B9C8;
+    --accent: #3D4C8C; --accent-soft: #E0E3F2;
+    --brique: #9E3B2E; --brique-soft: #F4E2DE;
+    --ambre: #8A5E0B; --ambre-soft: #F5E9D2;
+    --vert: #3B6740; --vert-soft: #E0EBE0;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --slab: "Zilla Slab", "IBM Plex Serif", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #14161B; --surface: #1C1F26; --surface-sunk: #24282F;
+      --ink: #E7E9EF; --ink-2: #A2A9B8; --ink-3: #7B8292;
+      --rule: #2F343E; --rule-strong: #434A57;
+      --accent: #93A0E4; --accent-soft: #232842;
+      --brique: #DE8878; --brique-soft: #3A241F;
+      --ambre: #D9A63C; --ambre-soft: #362B14;
+      --vert: #85B98A; --vert-soft: #1E2C20;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #14161B; --surface: #1C1F26; --surface-sunk: #24282F;
+    --ink: #E7E9EF; --ink-2: #A2A9B8; --ink-3: #7B8292;
+    --rule: #2F343E; --rule-strong: #434A57;
+    --accent: #93A0E4; --accent-soft: #232842;
+    --brique: #DE8878; --brique-soft: #3A241F;
+    --ambre: #D9A63C; --ambre-soft: #362B14;
+    --vert: #85B98A; --vert-soft: #1E2C20;
+  }
+
+  * { box-sizing: border-box; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; padding-block: 0 72px; }
+  h1, h2, h3 { font-family: var(--slab); font-weight: 600; text-wrap: balance; margin: 0; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  code { font-family: var(--mono); font-size: .92em; background: var(--surface-sunk); padding: 1px 4px; border-radius: 2px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0; }
+
+  /* cartouche */
+  .cartouche { border-bottom: 1px solid var(--rule); padding-block: 34px 26px; display: flex; flex-wrap: wrap; gap: 26px 40px; align-items: flex-end; justify-content: space-between; }
+  .cartouche h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.05; letter-spacing: -.015em; }
+  .cartouche .sub { color: var(--ink-2); margin: 6px 0 0; max-width: 46ch; }
+  .meta { display: grid; grid-template-columns: auto auto; gap: 2px 18px; font-size: 12.5px; margin: 0; }
+  .meta dt { color: var(--ink-3); font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; align-self: center; }
+  .meta dd { margin: 0; font-family: var(--mono); font-size: 12.5px; }
+  .demo-note { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 12.5px; color: var(--ink-2); background: var(--surface-sunk); border: 1px dashed var(--rule-strong); padding: 5px 11px; border-radius: 2px; }
+
+  /* barre d'état */
+  .etat { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ground); border-bottom: 1px solid var(--rule); margin-inline: -20px; padding-inline: 20px; }
+  .etat-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: stretch; }
+  .frein { flex: 1 1 300px; display: flex; gap: 12px; align-items: flex-start; padding: 13px 20px 13px 0; border-right: 1px solid var(--rule); }
+  .frein .pastille { flex: none; width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; background: var(--brique); box-shadow: 0 0 0 3px var(--brique-soft); }
+  .frein.libre .pastille { background: var(--vert); box-shadow: 0 0 0 3px var(--vert-soft); }
+  .frein strong { font-family: var(--slab); font-size: 16px; display: block; }
+  .frein p { margin: 2px 0 0; font-size: 13px; color: var(--ink-2); }
+  .files { display: flex; flex-wrap: wrap; }
+  .file-lien { display: flex; flex-direction: column; justify-content: center; padding: 11px 16px; text-decoration: none; color: inherit; border-right: 1px solid var(--rule); min-width: 92px; }
+  .file-lien:last-child { border-right: 0; }
+  .file-lien:hover { background: var(--surface); }
+  .file-lien .n { font-family: var(--mono); font-size: 21px; font-weight: 500; line-height: 1.1; }
+  .file-lien .l { font-size: 11.5px; color: var(--ink-2); line-height: 1.3; }
+  .file-lien.zero .n, .file-lien.zero .l { color: var(--ink-3); }
+
+  /* sections */
+  section.bloc { padding-top: 50px; scroll-margin-top: 108px; }
+  .titre-section { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
+  .titre-section h2 { font-size: 21px; letter-spacing: -.01em; }
+  .titre-section .note { font-size: 13px; color: var(--ink-2); }
+  .titre-section .pousse { margin-left: auto; }
+  .intro { color: var(--ink-2); max-width: 68ch; margin: 14px 0 0; font-size: 14px; }
+
+  .grille { display: grid; gap: 18px; margin-top: 22px; }
+  @media (min-width: 900px) { .grille.deux { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+  .fiche { background: var(--surface); border: 1px solid var(--rule); border-radius: 3px; padding: 17px 19px 19px; display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 108px; }
+  .fiche > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .fiche h3 { font-size: 16px; }
+  .fiche .compte { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+  .fiche .pousse { margin-left: auto; }
+
+  .item { border-top: 1px solid var(--rule); padding-top: 12px; }
+  .item:first-of-type { border-top: 0; padding-top: 0; }
+  .item .ligne1 { display: flex; gap: 9px; align-items: baseline; flex-wrap: wrap; }
+  .item .id { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+  .item .obj { font-weight: 500; }
+  .item .det { margin: 5px 0 0; font-size: 13.5px; color: var(--ink-2); }
+  .item .det em { font-style: normal; color: var(--ink); }
+  .vide-msg { font-size: 13.5px; color: var(--ink-3); font-style: italic; }
+
+  .st { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; white-space: nowrap; font-weight: 500; }
+  .st.rouge { background: var(--brique-soft); color: var(--brique); }
+  .st.ambre { background: var(--ambre-soft); color: var(--ambre); }
+  .st.vert { background: var(--vert-soft); color: var(--vert); }
+  .st.bleu { background: var(--accent-soft); color: var(--accent); }
+  .st.gris { background: var(--surface-sunk); color: var(--ink-3); }
+
+  .occ { display: inline-flex; gap: 3px; align-items: center; vertical-align: -1px; }
+  .occ i { width: 7px; height: 7px; border-radius: 50%; background: var(--ambre); display: block; }
+  .occ i.vide { background: transparent; box-shadow: inset 0 0 0 1.5px var(--rule-strong); }
+  .conf { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+
+  .tableau-enveloppe { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 460px; }
+  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 500; border-bottom-color: var(--rule-strong); }
+  td.date, td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+
+  .regle { border-left: 3px solid var(--rule-strong); padding-left: 16px; }
+  .regle.prov { border-left-color: var(--ambre); }
+  .regle.act { border-left-color: var(--vert); }
+  .regle.cons { border-left-color: var(--brique); }
+  .regle h3 { font-size: 15.5px; font-family: var(--sans); font-weight: 600; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .regle .corps { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
+  .regle .pied { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 7px 18px; align-items: center; font-size: 12.5px; color: var(--ink-3); }
+
+  .erreur { background: var(--surface); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+  .erreur > .bandeau { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 11px 18px; border-bottom: 1px solid var(--rule); }
+  .erreur.rouge > .bandeau { background: var(--brique-soft); }
+  .erreur.ambre > .bandeau { background: var(--ambre-soft); }
+  .erreur.vert > .bandeau { background: var(--vert-soft); }
+  .erreur h3 { font-size: 15.5px; font-family: var(--sans); font-weight: 600; }
+  .erreur .corps { padding: 14px 18px 16px; display: grid; gap: 10px; margin: 0; }
+  .champ { display: grid; grid-template-columns: 148px 1fr; gap: 12px; align-items: baseline; }
+  .champ dt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); }
+  .champ dd { margin: 0; font-size: 13.5px; }
+  .champ.racine dd { font-weight: 500; }
+  @media (max-width: 620px) { .champ { grid-template-columns: 1fr; gap: 2px; } }
+
+  .niveau { margin-top: 22px; }
+  .niveau > header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .niveau h3 { font-size: 15px; font-family: var(--mono); font-weight: 600; }
+  .niveau .quoi { color: var(--ink-2); font-size: 14px; }
+
+  .interdits { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 7px; }
+  .interdits li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; font-size: 13.5px; align-items: baseline; }
+  .interdits .ref { font-family: var(--mono); font-size: 12px; color: var(--brique); }
+
+  .puces { margin: 10px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-2); }
+  .puces li { margin-bottom: 4px; }
+
+  .src-btn { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; background: transparent; border: 1px solid var(--rule-strong); color: var(--ink-2); padding: 4px 10px; border-radius: 2px; cursor: pointer; white-space: nowrap; }
+  .src-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  .panneau { position: fixed; inset: 0 0 0 auto; width: min(680px, 100%); background: var(--surface); border-left: 1px solid var(--rule-strong); box-shadow: -18px 0 50px rgba(0,0,0,.18); display: flex; flex-direction: column; z-index: 60; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .panneau > header { display: flex; align-items: center; gap: 12px; padding: 13px 18px; border-bottom: 1px solid var(--rule); }
+  .panneau h2 { font-size: 15px; font-family: var(--mono); font-weight: 600; }
+  .panneau .fermer { margin-left: auto; background: transparent; border: 0; cursor: pointer; color: var(--ink-2); font-size: 24px; line-height: 1; padding: 0 6px; }
+  .panneau .avert { font-size: 12.5px; color: var(--ink-2); padding: 10px 18px; background: var(--surface-sunk); border-bottom: 1px solid var(--rule); margin: 0; }
+  .panneau pre { margin: 0; padding: 16px 18px 40px; overflow: auto; flex: 1; font-family: var(--mono); font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .voile { position: fixed; inset: 0; background: rgba(21,23,29,.42); z-index: 50; border: 0; }
+
+  .alerte { margin-top: 22px; border: 1px solid var(--brique); background: var(--brique-soft); color: var(--brique); border-radius: 3px; padding: 14px 18px; font-size: 14px; }
+  .alerte strong { display: block; font-family: var(--slab); font-size: 16px; margin-bottom: 3px; }
+
+  footer.pied { margin-top: 62px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 12.5px; color: var(--ink-3); display: grid; gap: 6px; }
+  footer.pied .transport { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .file-lien, .src-btn { transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app">
+  <header class="cartouche">
+    <div>
+      <p class="eyebrow">Instance compagnon</p>
+      <h1>Chargement</h1>
+      <p class="sub">Lecture de l'état transporté.</p>
+    </div>
+  </header>
+</div>
+
+<button class="voile" id="voile" hidden aria-label="Fermer le panneau"></button>
+<aside class="panneau" id="panneau" hidden aria-labelledby="panneau-titre">
+  <header>
+    <h2 id="panneau-titre">source</h2>
+    <button class="fermer" id="fermer" aria-label="Fermer">&times;</button>
+  </header>
+  <p class="avert">Le texte brut du fichier de mémoire, tel qu'il a été recopié. L'écran se calcule depuis ce texte : s'ils divergent, c'est le fichier qui a raison.</p>
+  <pre id="panneau-src"></pre>
+</aside>
+
+<!-- ================================================================
+     PARSE : lecture du markdown. Aucune dépendance au DOM.
+     ================================================================ -->
+<script>
+/* == PARSE:debut == */
+var PARSE = (function () {
+  "use strict";
+
+  /* --- outils de texte ------------------------------------------- */
+
+  function normEsp(s) {
+    return String(s == null ? "" : s).replace(/\s*\n\s*/g, " ").replace(/[ \t]{2,}/g, " ").trim();
+  }
+
+  function sansGras(s) {
+    return String(s == null ? "" : s).replace(/\*\*/g, "").replace(/`/g, "").trim();
+  }
+
+  /* Lit une date en jj/mm/aaaa ou aaaa-mm-jj. Retourne un Date ou null. */
+  function date(s) {
+    var t = String(s == null ? "" : s);
+    var a = t.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+    if (a) return new Date(+a[3], +a[2] - 1, +a[1]);
+    var b = t.match(/(\d{4})-(\d{2})-(\d{2})/);
+    if (b) return new Date(+b[1], +b[2] - 1, +b[3]);
+    return null;
+  }
+
+  /* La mention « depuis le <date> » accolée à un statut. Retourne la date telle
+     qu'elle est écrite, ou null si l'entrée est antérieure à la convention. */
+  function depuis(valeur) {
+    var m = String(valeur == null ? "" : valeur).match(/depuis\s+le\s+(\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})/i);
+    return m ? m[1] : null;
+  }
+
+  /* Nombre de jours entre deux dates écrites, ou null si l'une manque. */
+  function joursEntre(debut, reference) {
+    var a = date(debut), b = date(reference);
+    if (!a || !b) return null;
+    return Math.max(0, Math.round((b - a) / 86400000));
+  }
+
+  /* Découpe un fichier en sections, une par titre de niveau 1 ou 2.
+     Retourne [{niveau, titre, corps}]. Le préambule avant le premier
+     titre sort sous le titre vide. */
+  function sections(md) {
+    var lignes = String(md || "").split(/\r?\n/);
+    var out = [{ niveau: 0, titre: "", corps: [] }];
+    var dansBloc = false;
+    for (var i = 0; i < lignes.length; i++) {
+      var l = lignes[i];
+      if (/^\s*```/.test(l)) dansBloc = !dansBloc;
+      var m = dansBloc ? null : l.match(/^(#{1,3})\s+(.*)$/);
+      if (m) out.push({ niveau: m[1].length, titre: m[2].trim(), corps: [] });
+      else out[out.length - 1].corps.push(l);
+    }
+    return out.map(function (s) { s.corps = s.corps.join("\n"); return s; });
+  }
+
+  function sectionDont(secs, motif) {
+    for (var i = 0; i < secs.length; i++) {
+      if (motif.test(secs[i].titre)) return secs[i];
+    }
+    return null;
+  }
+
+  /* Extrait le premier tableau markdown trouvé dans un texte.
+     Retourne {entetes:[], lignes:[[]]} ou null. */
+  function tableau(texte) {
+    var lignes = String(texte || "").split(/\r?\n/);
+    var i = 0, entetes = null, corps = [];
+    for (; i < lignes.length; i++) {
+      var l = lignes[i].trim();
+      if (l.indexOf("|") !== 0) { if (entetes) break; else continue; }
+      var cellules = l.replace(/^\|/, "").replace(/\|$/, "").split("|").map(function (c) { return c.trim(); });
+      if (/^[\s|:-]+$/.test(l)) continue;             // ligne de séparation
+      if (!entetes) entetes = cellules; else corps.push(cellules);
+    }
+    if (!entetes) return null;
+    return { entetes: entetes, lignes: corps };
+  }
+
+  /* Tous les tableaux d'un texte, dans l'ordre. */
+  function tableaux(texte) {
+    var blocs = String(texte || "").split(/\n(?=\s*[^|\s])/);
+    var out = [];
+    for (var i = 0; i < blocs.length; i++) {
+      var t = tableau(blocs[i]);
+      if (t && t.lignes.length) out.push(t);
+    }
+    return out;
+  }
+
+  /* Une cellule qui n'est qu'un emplacement à remplir du gabarit : `<...>`,
+     <...>, ou un libellé d'exemple. Une vraie donnée n'a jamais cette forme. */
+  function estPlaceholder(cellule) {
+    var v = String(cellule == null ? "" : cellule).replace(/`/g, "").trim();
+    if (!v) return false;
+    if (/^_ex/i.test(v)) return true;
+    return /^<[^>]*>$/.test(v);
+  }
+
+  /* Une ligne de tableau est une ligne d'exemple dès qu'une de ses cellules
+     est un emplacement à remplir. Sans ce filtre, une instance fraîchement
+     posée affiche les exemples du gabarit comme s'ils étaient les siens. */
+  function estExemple(cellules) {
+    for (var i = 0; i < cellules.length; i++) {
+      if (estPlaceholder(cellules[i])) return true;
+    }
+    return false;
+  }
+
+  /* Puces de premier niveau d'un texte. */
+  function puces(texte) {
+    var out = [], lignes = String(texte || "").split(/\r?\n/);
+    for (var i = 0; i < lignes.length; i++) {
+      var m = lignes[i].match(/^\s*[-*]\s+(.*)$/);
+      if (!m) continue;
+      if (/^\s*>/.test(lignes[i])) continue;
+      out.push(m[1].trim());
+    }
+    return out;
+  }
+
+  /* Découpe un bloc « Clé : valeur » sur une liste de clés connues.
+     Une clé n'est reconnue qu'en début de ligne ou après un point médian,
+     ce qui permet plusieurs clés sur la même ligne sans confondre avec
+     les deux-points d'une phrase. */
+  function champs(texte, cles) {
+    var echap = cles.map(function (c) { return c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); });
+    var re = new RegExp("(?:^[ \\t]*|·[ \\t]*)(" + echap.join("|") + ")[ \\t]*:[ \\t]*", "gm");
+    var trouves = [], m;
+    while ((m = re.exec(texte)) !== null) {
+      trouves.push({ cle: m[1], debut: m.index + m[0].length, borne: m.index });
+      if (re.lastIndex === m.index) re.lastIndex++;
+    }
+    var out = {};
+    for (var i = 0; i < trouves.length; i++) {
+      var fin = (i + 1 < trouves.length) ? trouves[i + 1].borne : texte.length;
+      var brut = texte.slice(trouves[i].debut, Math.max(trouves[i].debut, fin));
+      out[trouves[i].cle] = normEsp(brut.replace(/·\s*$/, ""));
+    }
+    return out;
+  }
+
+  /* --- learned-rules.md ------------------------------------------- */
+
+  var CLES_REGLE = ["Domaine", "Contexte", "Règle", "Origine", "Statut",
+                    "Score cumul", "Score récent", "Confiance", "Occurrences", "Dernière conf"];
+
+  var STATUTS_REGLE = ["hypothèse", "provisoire", "active", "actif", "en-consolidation", "archivé", "archivée"];
+
+  function lireConfiance(valeur) {
+    var v = String(valeur || "");
+    if (/non\s+établie/i.test(v)) {
+      var m = v.match(/(\d+)\s*occurrences?\s*sur\s*(\d+)/i);
+      return { etablie: false, faites: m ? +m[1] : null, requises: m ? +m[2] : 3, texte: "non établie" };
+    }
+    var n = v.match(/(\d+[.,]\d+|\d+)/);
+    return { etablie: true, valeur: n ? parseFloat(n[1].replace(",", ".")) : null, texte: sansGras(v) };
+  }
+
+  function lireStatutRegle(valeur) {
+    var v = sansGras(valeur).toLowerCase().replace(/^\s*/, "");
+    for (var i = 0; i < STATUTS_REGLE.length; i++) {
+      if (v.indexOf(STATUTS_REGLE[i]) === 0) return STATUTS_REGLE[i];
+    }
+    return null;
+  }
+
+  function regles(md) {
+    var secs = sections(md);
+    var out = { regles: [], hypotheses: [], contradictions: [], lisible: false };
+
+    for (var i = 0; i < secs.length; i++) {
+      var m = secs[i].titre.match(/^(R\d+)\s*:\s*(.+)$/);
+      if (!m) continue;
+      var c = champs(secs[i].corps, CLES_REGLE);
+      out.regles.push({
+        id: m[1],
+        titre: sansGras(m[2].replace(/\*\(.*?\)\*/g, "")).trim(),
+        domaine: c["Domaine"] || null,
+        contexte: c["Contexte"] || null,
+        regle: c["Règle"] || null,
+        origine: c["Origine"] || null,
+        statut: lireStatutRegle(c["Statut"]),
+        statutDepuis: depuis(c["Statut"]),
+        statutBrut: c["Statut"] || null,
+        scoreRecent: c["Score récent"] || null,
+        scoreCumul: c["Score cumul"] || null,
+        confiance: c["Confiance"] ? lireConfiance(c["Confiance"]) : null,
+        occurrences: c["Occurrences"] || null,
+        derniereConf: c["Dernière conf"] || null
+      });
+    }
+
+    var sH = sectionDont(secs, /hypoth[èe]ses/i);
+    if (sH) {
+      var tH = tableau(sH.corps);
+      if (tH) {
+        out.hypotheses = tH.lignes.filter(function (l) { return !estExemple(l); })
+          .map(function (l) { return { id: l[0], texte: l[1], origine: l[2], occurrences: l[3] }; });
+      }
+    }
+
+    var sC = sectionDont(secs, /contradictions/i);
+    if (sC) {
+      var tC = tableau(sC.corps);
+      if (tC) {
+        out.contradictions = tC.lignes.filter(function (l) { return !estExemple(l); })
+          .map(function (l) {
+            return { id: l[0], objet: l[1], etat: sansGras(l[2] || ""), ouverte: /ouverte/i.test(l[2] || "") };
+          });
+      }
+    }
+
+    out.lisible = out.regles.length > 0 || out.hypotheses.length > 0 || out.contradictions.length > 0;
+    return out;
+  }
+
+  /* --- mistakes.md ------------------------------------------------- */
+
+  var CLES_ERREUR = ["Fait", "Pourquoi faux", "Cause racine",
+                     "Ce que je n'ai PAS fait, et qui aurait suffi",
+                     "Règle générée", "Sévérité", "Catégorie", "Statut", "Récidive", "Date"];
+
+  var STATUTS_ERREUR = ["ouverte", "corrigée", "résolue"];
+
+  function lireStatutErreur(valeur) {
+    var v = sansGras(valeur).toLowerCase();
+    for (var i = 0; i < STATUTS_ERREUR.length; i++) {
+      if (v.indexOf(STATUTS_ERREUR[i]) === 0) return STATUTS_ERREUR[i];
+    }
+    return null;
+  }
+
+  function erreurs(md) {
+    var secs = sections(md);
+    var out = { erreurs: [], lisible: false };
+    for (var i = 0; i < secs.length; i++) {
+      var m = secs[i].titre.match(/^(M\d+)\s*:\s*(.+)$/);
+      if (!m) continue;
+      var c = champs(secs[i].corps, CLES_ERREUR);
+      var sev = (c["Sévérité"] || "").match(/-\s*([123])/);
+      out.erreurs.push({
+        id: m[1],
+        titre: sansGras(m[2].replace(/\*\(.*?\)\*/g, "")).trim(),
+        fait: c["Fait"] || null,
+        pourquoi: c["Pourquoi faux"] || null,
+        racine: c["Cause racine"] || null,
+        manque: c["Ce que je n'ai PAS fait, et qui aurait suffi"] || null,
+        regle: c["Règle générée"] || null,
+        severite: sev ? -parseInt(sev[1], 10) : null,
+        categorie: c["Catégorie"] || null,
+        statut: lireStatutErreur(c["Statut"]),
+        statutDepuis: depuis(c["Statut"]),
+        statutBrut: c["Statut"] || null,
+        date: c["Date"] ? c["Date"].replace(/\.$/, "") : null
+      });
+    }
+    out.lisible = out.erreurs.length > 0;
+    return out;
+  }
+
+  /* --- capabilities.md --------------------------------------------- */
+
+  function lireStatutCapacite(cellule) {
+    var v = String(cellule || "");
+    if (/OUVERT/i.test(v)) return "ouvert";
+    if (/DEMAND/i.test(v)) return "demandé";
+    if (/SUR ACCORD/i.test(v)) return "sur accord";
+    if (/VERROUIL/i.test(v)) return "verrouillé";
+    return null;
+  }
+
+  function capacites(md) {
+    var secs = sections(md);
+    var out = { niveaux: [], interdits: [], registre: [], lisible: false };
+
+    for (var i = 0; i < secs.length; i++) {
+      var m = secs[i].titre.match(/^Niveau\s+(\d+)\s*:\s*(.+)$/i);
+      if (!m) continue;
+      var t = tableau(secs[i].corps);
+      var lignes = t ? t.lignes.filter(function (l) { return l[0] && !estExemple(l); }) : [];
+      out.niveaux.push({
+        numero: +m[1],
+        titre: m[2].replace(/\*.*$/, "").trim(),
+        capacites: lignes.map(function (l) {
+          return { nom: l[0], permet: l[1], condition: l[2], statut: lireStatutCapacite(l[3]), statutBrut: l[3] };
+        })
+      });
+    }
+
+    var sI = sectionDont(secs, /interdits/i);
+    if (sI) {
+      out.interdits = puces(sI.corps).map(function (p) {
+        var m2 = p.match(/^\*\*(P\d+)\*\*\s*:\s*(.+)$/);
+        return m2 ? { ref: m2[1], texte: m2[2].trim() } : { ref: null, texte: p };
+      }).filter(function (x) { return x.ref; });
+    }
+
+    var sR = sectionDont(secs, /registre/i);
+    if (sR) {
+      var tR = tableau(sR.corps);
+      if (tR) {
+        out.registre = tR.lignes.filter(function (l) { return !estExemple(l); }).map(function (l) {
+          var rappels = (l[4] || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+          return {
+            date: l[0], capacite: l[1], decision: l[2], par: l[3] || null,
+            rappels: rappels,
+            enAttente: /en\s+attente/i.test(l[2] || "")
+          };
+        });
+      }
+    }
+
+    out.lisible = out.niveaux.length > 0 || out.registre.length > 0;
+    return out;
+  }
+
+  /* --- operational-state.md ---------------------------------------- */
+
+  function etat(md) {
+    var secs = sections(md);
+    var out = { autonomie: null, identite: [], pointsChauds: [], journal: [], motifs: [], balayage: null, arreteLe: null, lisible: false };
+
+    var pre = secs[0] ? secs[0].corps : "";
+    var tout = String(md || "");
+    var ma = tout.match(/État arrêté au\s+([^.\n_]+)/i);
+    if (ma) out.arreteLe = ma[1].trim();
+
+    var sI = sectionDont(secs, /identité/i);
+    if (sI) {
+      out.identite = puces(sI.corps);
+      var mn = sI.corps.match(/Autonomie\s*:\s*\*{0,2}\s*N(\d)/i);
+      if (mn) out.autonomie = "N" + mn[1];
+    }
+
+    var sE = sectionDont(secs, /entretien/i);
+    if (sE) {
+      var mb = sE.corps.match(/balayage[^:]*:\s*\*{0,2}([^.\n]+)/i);
+      if (mb) out.balayage = sansGras(mb[1]).replace(/,$/, "").trim();
+    }
+
+    var sP = sectionDont(secs, /points\s+chauds/i);
+    if (sP) {
+      var tP = tableau(sP.corps);
+      if (tP) out.pointsChauds = tP.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { num: l[0], sujet: l[1], attente: l[2] }; });
+    }
+
+    var sJ = sectionDont(secs, /journal\s+des\s+cas/i);
+    if (sJ) {
+      var tJ = tableau(sJ.corps);
+      if (tJ) out.journal = tJ.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { num: l[0], date: l[1], sujet: l[2], corrections: l[3], trace: l[4] }; });
+    }
+
+    var sM = sectionDont(secs, /motifs\s+ouverts/i);
+    if (sM) out.motifs = puces(sM.corps).filter(function (p) { return !estPlaceholder(p.split("→")[0]); });
+
+    out.lisible = !!(out.autonomie || out.pointsChauds.length || out.journal.length);
+    return out;
+  }
+
+  /* --- VERSION.md --------------------------------------------------- */
+
+  function version(md) {
+    var secs = sections(md);
+    var out = { champs: {}, ecarts: [], historique: [], lisible: false };
+    var pre = secs[0] ? secs[0].corps : "";
+    for (var i = 0; i < secs.length; i++) {
+      if (secs[i].niveau === 1 && !secs[i].titre) continue;
+      if (/^Version du gabarit/i.test(secs[i].titre) || secs[i].niveau === 1) pre += "\n" + secs[i].corps;
+    }
+    var t = tableau(pre);
+    if (t) {
+      var toutes = [t.entetes].concat(t.lignes);
+      for (var j = 0; j < toutes.length; j++) {
+        var cle = sansGras(toutes[j][0] || ""), val = sansGras(toutes[j][1] || "");
+        if (cle && val) out.champs[cle] = val;
+      }
+    }
+    var sE = sectionDont(secs, /écarts/i);
+    if (sE) {
+      var tE = tableau(sE.corps);
+      if (tE) out.ecarts = tE.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { ref: l[0], ecart: l[1], raison: l[2] }; });
+    }
+    var sH = sectionDont(secs, /historique/i);
+    if (sH) {
+      var tH = tableau(sH.corps);
+      if (tH) out.historique = tH.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { date: l[0], versions: l[1], quoi: l[2] }; });
+    }
+    out.lisible = Object.keys(out.champs).length > 0;
+    return out;
+  }
+
+  /* --- report.md ----------------------------------------------------- */
+
+  function frontMatter(md) {
+    var m = String(md || "").match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!m) return null;
+    var out = {}, cleListe = null;
+    var lignes = m[1].split(/\r?\n/);
+    for (var i = 0; i < lignes.length; i++) {
+      var li = lignes[i];
+      var mi = li.match(/^\s+-\s+(.*)$/);
+      if (mi && cleListe) { out[cleListe].push(mi[1].trim()); continue; }
+      var mc = li.match(/^([^:\s][^:]*)\s*:\s*(.*)$/);
+      if (!mc) continue;
+      var cle = mc[1].trim(), val = mc[2].trim();
+      if (val === "") { cleListe = cle; out[cle] = []; }
+      else { cleListe = null; out[cle] = val; }
+    }
+    return out;
+  }
+
+  function rapport(md) {
+    var out = { front: null, fait: [], aFaire: [], attente: [], nonCouvert: null, resume: null, lisible: false };
+    if (!md) return out;
+    out.front = frontMatter(md);
+    var secs = sections(md);
+
+    var sR = sectionDont(secs, /en\s+un\s+paragraphe/i);
+    if (sR) out.resume = normEsp(sR.corps.replace(/^`|`$/g, ""));
+
+    var sF = sectionDont(secs, /^Fait$/i);
+    if (sF) {
+      var tF = tableau(sF.corps);
+      if (tF) out.fait = tF.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { num: l[0], objet: l[1], reference: l[2], verifie: l[3], valide: l[4] }; });
+    }
+
+    var sA = sectionDont(secs, /à\s+faire/i);
+    if (sA) {
+      var tA = tableau(sA.corps);
+      if (tA) out.aFaire = tA.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { num: l[0], objet: l[1], reference: l[2], echeance: l[3], sinon: l[4], valide: l[5] }; });
+    }
+
+    var sD = sectionDont(secs, /en\s+attente\s+d[’']une\s+décision/i);
+    if (sD) {
+      var tD = tableau(sD.corps);
+      if (tD) out.attente = tD.lignes
+        .filter(function (l) { return !estExemple(l); })
+        .map(function (l) { return { num: l[0], sujet: l[1], manque: l[2] }; });
+    }
+
+    var sN = sectionDont(secs, /non\s+couvert/i);
+    if (sN) out.nonCouvert = normEsp(sN.corps);
+
+    out.lisible = !!(out.front || out.fait.length || out.attente.length);
+    return out;
+  }
+
+  /* --- synthèse ------------------------------------------------------- */
+
+  function synthese(p) {
+    var freins = (p.erreurs && p.erreurs.erreurs || []).filter(function (e) {
+      return e.statut === "ouverte" || e.statut === "corrigée";
+    });
+    var provisoires = (p.regles && p.regles.regles || []).filter(function (r) { return r.statut === "provisoire"; });
+    var contradictions = (p.regles && p.regles.contradictions || []).filter(function (c) { return c.ouverte; });
+    var demandes = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente; });
+    var chauds = (p.etat && p.etat.pointsChauds) || [];
+    var metier = (p.rapport && p.rapport.attente) || [];
+    function file(cle, liste, sing, plur) {
+      return { cle: cle, n: liste.length, label: liste.length > 1 ? plur : sing };
+    }
+    return {
+      freins: freins,
+      gele: freins.length > 0,
+      files: [
+        file("capacites-demandees", demandes, "capacité<br>demandée", "capacités<br>demandées"),
+        file("freins", freins, "erreur<br>qui freine", "erreurs<br>qui freinent"),
+        file("a-confirmer", provisoires, "règle à<br>confirmer", "règles à<br>confirmer"),
+        file("contradictions", contradictions, "contradiction<br>ouverte", "contradictions<br>ouvertes"),
+        file("points-chauds", chauds, "point<br>chaud", "points<br>chauds"),
+        file("metier", metier, "arbitrage<br>métier", "arbitrages<br>métier")
+      ],
+      provisoires: provisoires,
+      contradictions: contradictions,
+      demandes: demandes,
+      chauds: chauds,
+      metier: metier
+    };
+  }
+
+  function tout(fichiers) {
+    var f = fichiers || {};
+    var p = {
+      regles: f["learned-rules.md"] ? regles(f["learned-rules.md"]) : null,
+      erreurs: f["mistakes.md"] ? erreurs(f["mistakes.md"]) : null,
+      capacites: f["capabilities.md"] ? capacites(f["capabilities.md"]) : null,
+      etat: f["operational-state.md"] ? etat(f["operational-state.md"]) : null,
+      version: f["VERSION.md"] ? version(f["VERSION.md"]) : null,
+      rapport: f["report.md"] ? rapport(f["report.md"]) : null,
+      principes: f["principles.md"] || null,
+      objectifs: f["objectives.md"] || null
+    };
+    p.synthese = synthese(p);
+    return p;
+  }
+
+  return {
+    sections: sections, tableau: tableau, tableaux: tableaux, puces: puces,
+    champs: champs, frontMatter: frontMatter,
+    date: date, depuis: depuis, joursEntre: joursEntre,
+    estPlaceholder: estPlaceholder, estExemple: estExemple,
+    regles: regles, erreurs: erreurs, capacites: capacites,
+    etat: etat, version: version, rapport: rapport,
+    synthese: synthese, tout: tout
+  };
+})();
+/* == PARSE:fin == */
+if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
+</script>
+
+<!-- ================================================================
+     Chargement de l'état, puis rendu.
+     ================================================================ -->
+<script>
+(function () {
+  "use strict";
+
+  var CHEMINS = ["_ecran/etat.js", "etat.js"];
+
+  function charger(i) {
+    if (i >= CHEMINS.length) { rendreAmorcage(); return; }
+    var s = document.createElement("script");
+    s.src = CHEMINS[i];
+    s.onload = function () {
+      if (window.COMPAGNON_ETAT) demarrer(window.COMPAGNON_ETAT, CHEMINS[i]);
+      else charger(i + 1);
+    };
+    s.onerror = function () { charger(i + 1); };
+    document.head.appendChild(s);
+  }
+
+  /* --- rendu ------------------------------------------------------ */
+
+  function e(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function inl(s) {
+    return e(s)
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>")
+      .replace(/←/g, "&larr;");
+  }
+
+  function pastilleRegle(statut) {
+    var c = statut === "provisoire" ? "ambre"
+          : (statut === "active" || statut === "actif") ? "vert"
+          : statut === "en-consolidation" ? "rouge" : "gris";
+    return '<span class="st ' + c + '">' + e(statut || "statut illisible") + "</span>";
+  }
+
+  function pastilleErreur(statut) {
+    var c = statut === "ouverte" ? "rouge" : statut === "corrigée" ? "ambre"
+          : statut === "résolue" ? "vert" : "gris";
+    return '<span class="st ' + c + '">' + e(statut || "statut illisible") + "</span>";
+  }
+
+  function pastilleCapacite(statut) {
+    var c = statut === "ouvert" ? "vert" : statut === "demandé" ? "bleu"
+          : statut === "sur accord" ? "ambre" : "gris";
+    return '<span class="st ' + c + '">' + e(statut || "statut illisible") + "</span>";
+  }
+
+  function points(faites, requises) {
+    var h = '<span class="occ" role="img" aria-label="' + e(faites) + " sur " + e(requises) + '">';
+    for (var i = 0; i < requises; i++) h += '<i' + (i < faites ? "" : ' class="vide"') + "></i>";
+    return h + "</span>";
+  }
+
+  function btnSrc(fichier) {
+    return '<button class="src-btn" data-src="' + e(fichier) + '">' + e(fichier) + "</button>";
+  }
+
+  function absent(fichier, etat) {
+    return '<p class="vide-msg">' + e(fichier) + " n'a pas été transporté" +
+      (etat.non_transportes && etat.non_transportes.indexOf(fichier) >= 0 ? ", par choix du gabarit." : ".") + "</p>";
+  }
+
+  function illisible(fichier) {
+    return '<p class="vide-msg">' + e(fichier) + " a été transporté mais l'écran n'a rien su y lire. " +
+      "Le fichier fait foi : ouvrez la source.</p>";
+  }
+
+  function rendreAmorcage() {
+    document.getElementById("app").innerHTML =
+      '<header class="cartouche"><div><p class="eyebrow">Instance compagnon</p>' +
+      "<h1>Rien à afficher</h1>" +
+      '<p class="sub">Aucun état n\'a été trouvé. L\'agent ne l\'a pas encore régénéré, ' +
+      "ou le fichier n'est pas à côté de cette page.</p></div></header>" +
+      '<div class="alerte"><strong>Ce n\'est pas une panne</strong>' +
+      "Une instance fraîchement posée n'a pas encore d'état transporté. Demandez à l'agent de " +
+      "mettre son écran à jour en fin de session : il écrira <code>_ecran/etat.js</code> à côté " +
+      "de cette page.</div>";
+  }
+
+  function demarrer(etat, chemin) {
+    var p = PARSE.tout(etat.fichiers);
+    var s = p.synthese;
+    var h = [];
+
+    /* cartouche */
+    var v = p.version && p.version.champs || {};
+    h.push('<header class="cartouche"><div>');
+    h.push('<p class="eyebrow">Instance compagnon</p>');
+    h.push("<h1>" + e(etat.instance || "sans nom") + "</h1>");
+    var comp = p.rapport && p.rapport.front && p.rapport.front["compétence"];
+    h.push('<p class="sub">Agent supervisé de ' + e(etat.operateur || "son opérateur") +
+      (comp ? ". Compétence en cours : " + e(comp) : "") + ".</p>");
+    if (/exemple|fictif|Comptoir/i.test(etat.instance || "")) {
+      h.push('<p class="demo-note">État d\'exemple. Instance fictive, aucune mémoire réelle.</p>');
+    }
+    h.push("</div><dl class=\"meta\">");
+    h.push("<dt>Opérateur</dt><dd>" + e(etat.operateur) + "</dd>");
+    if (p.etat && p.etat.autonomie) h.push("<dt>Autonomie</dt><dd>" + e(p.etat.autonomie) + "</dd>");
+    h.push("<dt>Gabarit</dt><dd>compagnon " + e(etat.gabarit || v["Version courante"] || "?") + "</dd>");
+    if (p.version && p.version.ecarts.length) {
+      h.push("<dt>Écarts</dt><dd>" + p.version.ecarts.map(function (x) { return e(x.ref); }).join(", ") + "</dd>");
+    }
+    h.push("<dt>Arrêté le</dt><dd>" + e(etat.arrete_le || "inconnu") + "</dd>");
+    h.push("</dl></header>");
+
+    /* barre d'état */
+    h.push('<div class="etat"><div class="etat-inner">');
+    h.push('<div class="frein' + (s.gele ? "" : " libre") + '"><span class="pastille" aria-hidden="true"></span><div>');
+    if (s.gele) {
+      var o = s.freins.filter(function (x) { return x.statut === "ouverte"; }).length;
+      var c = s.freins.length - o;
+      h.push("<strong>Autonomie " + e(p.etat && p.etat.autonomie || "?") + ", gelée</strong>");
+      h.push("<p>" + (o ? o + " erreur" + (o > 1 ? "s" : "") + " ouverte" + (o > 1 ? "s" : "") : "") +
+        (o && c ? " et " : "") +
+        (c ? c + " corrigée" + (c > 1 ? "s" : "") + " non prouvée" + (c > 1 ? "s" : "") : "") +
+        " bloque" + (s.freins.length > 1 ? "nt" : "") + " toute montée de niveau.</p>");
+    } else {
+      h.push("<strong>Autonomie " + e(p.etat && p.etat.autonomie || "?") + ", libre</strong>");
+      h.push("<p>Aucune erreur ouverte ni corrigée. Le frein ne s'applique pas.</p>");
+    }
+    h.push("</div></div><nav class=\"files\" aria-label=\"Ce qui attend une décision\">");
+    s.files.forEach(function (f) {
+      h.push('<a class="file-lien' + (f.n ? "" : " zero") + '" href="#' + f.cle + '">' +
+        '<span class="n">' + f.n + '</span><span class="l">' + f.label + "</span></a>");
+    });
+    h.push("</nav></div></div>");
+
+    /* ---- décisions ---- */
+    h.push('<section class="bloc" id="decisions"><div class="titre-section">');
+    h.push("<h2>Ce qui attend votre décision</h2>");
+    h.push('<span class="note pousse">L\'agent ne tranche rien de ceci. Il attend.</span></div>');
+    h.push('<p class="intro">Six files, six gestes différents. Aucune ne se vide toute seule : une ' +
+      "demande sans réponse reste ouverte, elle ne s'éteint ni par le temps, ni parce qu'une autre " +
+      "attend déjà.</p>");
+    h.push('<div class="grille deux">');
+
+    /* capacités demandées */
+    h.push('<article class="fiche" id="capacites-demandees"><header><h3>Capacités demandées</h3>');
+    h.push('<span class="compte">' + s.demandes.length + '</span><span class="pousse">' + btnSrc("capabilities.md") + "</span></header>");
+    if (!p.capacites) h.push(absent("capabilities.md", etat));
+    else if (!p.capacites.lisible) h.push(illisible("capabilities.md"));
+    else if (!s.demandes.length) h.push('<p class="vide-msg">Aucune demande en attente.</p>');
+    else s.demandes.forEach(function (d) {
+      h.push('<div class="item"><div class="ligne1"><span class="st bleu">en attente</span>' +
+        '<span class="obj">' + inl(d.capacite) + "</span></div>");
+      h.push('<p class="det">Demandée le <span class="mono">' + e(d.date) + "</span>" +
+        (d.rappels.length ? ", rappelée <span class=\"mono\">" + d.rappels.length + " fois</span>, dernier rappel le <span class=\"mono\">" + e(d.rappels[d.rappels.length - 1]) + "</span>" : ", jamais rappelée") +
+        ". Aucune décision inscrite.</p></div>");
+    });
+    h.push("</article>");
+
+    /* erreurs qui freinent */
+    h.push('<article class="fiche" id="freins"><header><h3>Erreurs qui freinent</h3>');
+    h.push('<span class="compte">' + s.freins.length + '</span><span class="pousse">' + btnSrc("mistakes.md") + "</span></header>");
+    if (!p.erreurs) h.push(absent("mistakes.md", etat));
+    else if (!p.erreurs.lisible) h.push(illisible("mistakes.md"));
+    else if (!s.freins.length) h.push('<p class="vide-msg">Aucune erreur ouverte ni corrigée.</p>');
+    else s.freins.forEach(function (x) {
+      h.push('<div class="item"><div class="ligne1"><span class="id">' + e(x.id) + "</span>" +
+        pastilleErreur(x.statut) + '<span class="obj">' + inl(x.titre) + "</span></div>");
+      var ancE = anciennete(x.statutDepuis, etat.arrete_le);
+      h.push('<p class="det">' + (x.statut === "ouverte"
+        ? "L'incident n'est pas réparé."
+        : "Cause nommée, règle écrite, mais la prévention n'est pas prouvée.") +
+        (ancE ? " " + e(x.statut) + " " + e(ancE) + "." : "") +
+        (x.severite ? ' Gravité <span class="mono">' + x.severite + "</span>." : "") +
+        (x.date ? ' Incident du <span class="mono">' + e(x.date) + "</span>" : "") + "</p></div>");
+    });
+    h.push("</article>");
+
+    /* règles à confirmer */
+    h.push('<article class="fiche" id="a-confirmer"><header><h3>Règles à confirmer</h3>');
+    h.push('<span class="compte">' + s.provisoires.length + ' provisoire' + (s.provisoires.length > 1 ? "s" : "") +
+      '</span><span class="pousse">' + btnSrc("learned-rules.md") + "</span></header>");
+    if (!p.regles) h.push(absent("learned-rules.md", etat));
+    else if (!p.regles.lisible) h.push(illisible("learned-rules.md"));
+    else if (!s.provisoires.length) h.push('<p class="vide-msg">Aucune règle provisoire.</p>');
+    else {
+      s.provisoires.forEach(function (r) {
+        var anc = anciennete(r.statutDepuis, etat.arrete_le);
+        h.push('<div class="item"><div class="ligne1"><span class="id">' + e(r.id) + "</span>" +
+          pastilleRegle(r.statut) + '<span class="obj">' + inl(r.titre) + "</span>" +
+          (anc ? '<span class="conf">' + e(anc) + "</span>" : "") + "</div>");
+        h.push('<p class="det">' + confianceTexte(r) + "</p></div>");
+      });
+      h.push('<p class="det" style="color:var(--ink-3)">Une règle provisoire s\'applique, mais ne ' +
+        "prouve rien. Elle ne peut pas être citée à l'appui d'une demande de montée d'autonomie.</p>");
+    }
+    h.push("</article>");
+
+    /* contradictions */
+    h.push('<article class="fiche" id="contradictions"><header><h3>Contradictions ouvertes</h3>');
+    h.push('<span class="compte">' + s.contradictions.length + '</span><span class="pousse">' + btnSrc("learned-rules.md") + "</span></header>");
+    if (!p.regles) h.push(absent("learned-rules.md", etat));
+    else if (!s.contradictions.length) h.push('<p class="vide-msg">Aucune contradiction ouverte.</p>');
+    else s.contradictions.forEach(function (c) {
+      h.push('<div class="item"><div class="ligne1"><span class="id">' + e(c.id) + "</span>" +
+        '<span class="st rouge">ouverte</span></div><p class="det">' + inl(c.objet) + "</p></div>");
+    });
+    h.push("</article>");
+
+    /* points chauds */
+    h.push('<article class="fiche" id="points-chauds"><header><h3>Points chauds</h3>');
+    h.push('<span class="compte">ce qui bloque l\'agent</span><span class="pousse">' + btnSrc("operational-state.md") + "</span></header>");
+    if (!p.etat) h.push(absent("operational-state.md", etat));
+    else if (!s.chauds.length) h.push('<p class="vide-msg">Aucun point chaud déclaré.</p>');
+    else s.chauds.forEach(function (c) {
+      h.push('<div class="item"><p class="det" style="margin-top:0">' + inl(c.sujet) +
+        '</p><p class="det" style="color:var(--ink-3)">À trancher par <em>' + e(c.attente) + "</em></p></div>");
+    });
+    h.push("</article>");
+
+    /* métier */
+    h.push('<article class="fiche" id="metier"><header><h3>Arbitrages métier</h3>');
+    h.push('<span class="compte">depuis le dernier rapport</span><span class="pousse">' + btnSrc("report.md") + "</span></header>");
+    if (!p.rapport) h.push(absent("report.md", etat));
+    else if (!s.metier.length) h.push('<p class="vide-msg">Rien en attente côté métier.</p>');
+    else s.metier.forEach(function (m) {
+      h.push('<div class="item"><p class="det" style="margin-top:0"><em>' + inl(m.sujet) +
+        '</em></p><p class="det">Ce qui manque pour trancher : ' + inl(m.manque) + "</p></div>");
+    });
+    h.push("</article>");
+
+    h.push("</div></section>");
+
+    /* ---- ce qu'il a appris ---- */
+    h.push('<section class="bloc" id="savoir"><div class="titre-section"><h2>Ce que l\'agent a appris</h2>');
+    h.push('<span class="pousse">' + btnSrc("learned-rules.md") + "</span></div>");
+    h.push('<p class="intro">Des règles de jugement, pas des procédures d\'outil. Chacune porte son ' +
+      "origine, son statut et ce qui lui manque pour mûrir.</p>");
+    if (!p.regles) h.push('<div class="grille">' + absent("learned-rules.md", etat) + "</div>");
+    else {
+      h.push('<div class="grille" style="margin-top:26px; gap:24px">');
+      var ordre = { "provisoire": 0, "en-consolidation": 1, "active": 2, "actif": 2, "hypothèse": 3 };
+      p.regles.regles.slice().sort(function (a, b) {
+        return (ordre[a.statut] == null ? 9 : ordre[a.statut]) - (ordre[b.statut] == null ? 9 : ordre[b.statut]);
+      }).forEach(function (r) {
+        var cls = r.statut === "provisoire" ? "prov"
+          : (r.statut === "active" || r.statut === "actif") ? "act"
+          : r.statut === "en-consolidation" ? "cons" : "";
+        h.push('<article class="regle ' + cls + '"><h3><span class="mono" style="color:var(--ink-3);font-size:12px">' +
+          e(r.id) + "</span>" + inl(r.titre) + pastilleRegle(r.statut) + "</h3>");
+        h.push('<p class="corps">' + inl(r.regle || "règle non lue dans le fichier") + "</p>");
+        h.push('<div class="pied">');
+        var ancR = anciennete(r.statutDepuis, etat.arrete_le);
+        if (ancR) h.push("<span>" + e(r.statut || "statut") + " " + e(ancR) + "</span>");
+        if (r.origine) h.push("<span>Origine : " + inl(r.origine) + "</span>");
+        h.push("<span>" + confianceTexte(r) + "</span>");
+        if (r.occurrences) h.push("<span>" + inl(r.occurrences) + "</span>");
+        if (r.derniereConf) h.push("<span>Dernière confirmation " + '<span class="mono">' + e(r.derniereConf) + "</span></span>");
+        h.push("</div></article>");
+      });
+      if (p.regles.hypotheses.length) {
+        p.regles.hypotheses.forEach(function (hy) {
+          h.push('<article class="regle"><h3><span class="mono" style="color:var(--ink-3);font-size:12px">' +
+            e(hy.id) + "</span>" + inl(hy.texte) + '<span class="st gris">hypothèse</span></h3>');
+          h.push('<div class="pied"><span>Origine : ' + inl(hy.origine) + "</span><span>" +
+            inl(hy.occurrences) + " occurrence(s)</span></div></article>");
+        });
+      }
+      h.push("</div>");
+    }
+    h.push("</section>");
+
+    /* ---- droits ---- */
+    h.push('<section class="bloc" id="droits"><div class="titre-section"><h2>Ce qu\'il a le droit de faire</h2>');
+    h.push('<span class="pousse">' + btnSrc("capabilities.md") + "</span></div>");
+    h.push('<p class="intro">Le catalogue et les conditions sont fixés par l\'opérateur. L\'agent peut ' +
+      "demander, jamais accorder. Une promotion avance d'un cran à la fois.</p>");
+    if (!p.capacites) h.push(absent("capabilities.md", etat));
+    else {
+      p.capacites.niveaux.forEach(function (n) {
+        var ouverts = n.capacites.filter(function (c) { return c.statut === "ouvert"; }).length;
+        var dem = n.capacites.filter(function (c) { return c.statut === "demandé"; }).length;
+        h.push('<div class="niveau"><header><h3>Niveau ' + n.numero + "</h3>" +
+          '<span class="quoi">' + e(n.titre) + "</span>" +
+          '<span class="pousse">' + (dem ? '<span class="st bleu">' + dem + " en attente</span>"
+            : ouverts === n.capacites.length && ouverts ? '<span class="st vert">ouvert</span>'
+            : '<span class="st gris">verrouillé</span>') + "</span></header>");
+        h.push('<div class="tableau-enveloppe"><table><thead><tr><th>Capacité</th><th>Ce que ça permet</th><th>Condition</th><th>Statut</th></tr></thead><tbody>');
+        n.capacites.forEach(function (c) {
+          h.push("<tr><td>" + inl(c.nom) + "</td><td>" + inl(c.permet) + "</td><td>" + inl(c.condition) +
+            "</td><td>" + pastilleCapacite(c.statut) + "</td></tr>");
+        });
+        h.push("</tbody></table></div></div>");
+      });
+      if (p.capacites.interdits.length) {
+        h.push('<div class="niveau"><header><h3>Interdits absolus</h3>' +
+          '<span class="quoi">jamais débloqués par une montée de niveau</span></header><ul class="interdits">');
+        p.capacites.interdits.forEach(function (i2) {
+          h.push('<li><span class="ref">' + e(i2.ref) + "</span><span>" + inl(i2.texte) + "</span></li>");
+        });
+        h.push("</ul></div>");
+      }
+      if (p.capacites.registre.length) {
+        h.push('<div class="niveau"><header><h3>Registre</h3><span class="quoi">chaque ligne porte un nom et une date</span></header>');
+        h.push('<div class="tableau-enveloppe"><table><thead><tr><th>Date</th><th>Capacité</th><th>Décision</th><th>Par</th><th>Rappels</th></tr></thead><tbody>');
+        p.capacites.registre.forEach(function (r) {
+          h.push('<tr><td class="date">' + e(r.date) + "</td><td>" + inl(r.capacite) + "</td><td>" +
+            (r.enAttente ? '<span class="st bleu">en attente</span>' : inl(r.decision)) + "</td><td>" +
+            e(r.par || "") + '</td><td class="num">' + (r.rappels.length || "") + "</td></tr>");
+        });
+        h.push("</tbody></table></div></div>");
+      }
+    }
+    h.push("</section>");
+
+    /* ---- erreurs ---- */
+    h.push('<section class="bloc" id="erreurs"><div class="titre-section"><h2>Journal des erreurs</h2>');
+    h.push('<span class="note">Trois statuts, pas deux. « Corrigée » n\'est pas « résolue ».</span>');
+    h.push('<span class="pousse">' + btnSrc("mistakes.md") + "</span></div>");
+    if (!p.erreurs) h.push(absent("mistakes.md", etat));
+    else if (!p.erreurs.lisible) h.push(illisible("mistakes.md"));
+    else {
+      h.push('<div class="grille" style="margin-top:22px">');
+      p.erreurs.erreurs.forEach(function (x) {
+        var c = x.statut === "ouverte" ? "rouge" : x.statut === "corrigée" ? "ambre" : "vert";
+        h.push('<article class="erreur ' + c + '"><div class="bandeau">' +
+          '<span class="mono" style="color:var(--ink-3);font-size:12px">' + e(x.id) + "</span>" +
+          "<h3>" + inl(x.titre) + "</h3>" +
+          '<span class="pousse">' + pastilleErreur(x.statut) + "</span>" +
+          '<span class="mono" style="font-size:12px;color:var(--ink-2)">' +
+          (x.severite ? x.severite + " &middot; " : "") + e(x.date || "") +
+          (anciennete(x.statutDepuis, etat.arrete_le) ? " &middot; " + e(anciennete(x.statutDepuis, etat.arrete_le)) : "") +
+          "</span></div><dl class=\"corps\">");
+        if (x.fait) h.push('<div class="champ"><dt>Fait</dt><dd>' + inl(x.fait) + "</dd></div>");
+        if (x.racine) h.push('<div class="champ racine"><dt>Cause racine</dt><dd>' + inl(x.racine) + "</dd></div>");
+        if (x.manque) h.push('<div class="champ"><dt>Ce qui aurait suffi</dt><dd>' + inl(x.manque) + "</dd></div>");
+        if (x.regle) h.push('<div class="champ"><dt>Règle générée</dt><dd>' + inl(x.regle) + "</dd></div>");
+        h.push("</dl></article>");
+      });
+      h.push("</div>");
+    }
+    h.push("</section>");
+
+    /* ---- entretien ---- */
+    h.push('<section class="bloc" id="entretien"><div class="titre-section"><h2>Entretien et version</h2>');
+    h.push('<span class="pousse">' + btnSrc("VERSION.md") + "</span></div>");
+    h.push('<div class="grille deux" style="margin-top:22px">');
+
+    h.push('<article class="fiche"><header><h3>Rapport de sortie</h3><span class="pousse">' + btnSrc("report.md") + "</span></header>");
+    if (!p.rapport) h.push(absent("report.md", etat));
+    else {
+      var fr = p.rapport.front || {};
+      h.push('<div class="item">');
+      if (p.rapport.resume) h.push('<p class="det" style="margin-top:0">' + inl(p.rapport.resume) + "</p>");
+      h.push('<p class="det"><em>Run</em> <span class="mono">' + e(fr["run"] || "?") + "</span>, statut <em>" +
+        e(fr["statut"] || "?") + '</em>, arrêté le <span class="mono">' + e(fr["arrêté_le"] || "?") + "</span>.</p>");
+      if (fr["périmé_après"]) {
+        h.push('<p class="det">Périmé après le <span class="mono">' + e(fr["périmé_après"]) +
+          "</span>. Passé cette date, il décrit un état qui n'existe plus : il se refait, il ne se déduit pas.</p>");
+      }
+      if (fr["non_couvert"] && fr["non_couvert"].length) {
+        h.push('<p class="det"><em>Non couvert</em></p><ul class="puces">');
+        fr["non_couvert"].forEach(function (n) { h.push("<li>" + inl(n) + "</li>"); });
+        h.push("</ul>");
+      }
+      h.push("</div>");
+    }
+    h.push("</article>");
+
+    h.push('<article class="fiche"><header><h3>Balayage et gabarit</h3></header><div class="item">');
+    if (p.etat && p.etat.balayage) {
+      h.push('<p class="det" style="margin-top:0"><em>Dernier balayage complet</em> le <span class="mono">' +
+        e(p.etat.balayage) + "</span>. Au-delà d'un mois, l'agent le signale et propose la passe, " +
+        "il ne la lance pas de son chef.</p>");
+    }
+    if (p.version) {
+      h.push('<p class="det"><em>Gabarit</em> compagnon <span class="mono">' +
+        e(v["Version courante"] || etat.gabarit) + "</span>, alignée sur " +
+        '<span class="mono">' + e(v["Alignée sur"] || "?") + "</span>. Posée le " +
+        '<span class="mono">' + e(v["Posée le"] || "?") + "</span>.</p>");
+      p.version.ecarts.forEach(function (x) {
+        h.push('<p class="det"><em>Écart assumé ' + e(x.ref) + "</em> : " + inl(x.ecart) + "</p>");
+      });
+    }
+    h.push("</div></article></div></section>");
+
+    /* pied */
+    h.push('<footer class="pied">');
+    h.push('<div class="transport"><span>Transportés : ' +
+      (etat.transportes || []).map(function (f) { return e(f); }).join(", ") + "</span></div>");
+    if (etat.non_transportes && etat.non_transportes.length) {
+      h.push('<div class="transport"><span>Non transportés, par choix du gabarit : ' +
+        etat.non_transportes.map(function (f) { return e(f); }).join(", ") + "</span></div>");
+    }
+    h.push("<div class=\"transport\"><span>Écran de lecture. Il n'écrit rien, jamais.</span>" +
+      "<span>Une instance sans cet écran fonctionne à l'identique.</span>" +
+      '<span class="mono">état lu depuis ' + e(chemin) + "</span></div>");
+    h.push("</footer>");
+
+    document.getElementById("app").innerHTML = h.join("");
+    brancherSources(etat);
+  }
+
+  /* « depuis 19 jours », mesuré par rapport à l'instant où l'état a été arrêté,
+     pas par rapport à maintenant : l'écran décrit un moment figé. */
+  function anciennete(dateStatut, reference) {
+    if (!dateStatut) return "";
+    var j = PARSE.joursEntre(dateStatut, reference);
+    if (j === null) return "";
+    if (j === 0) return "depuis aujourd'hui";
+    if (j === 1) return "depuis hier";
+    return "depuis " + j + " jours";
+  }
+
+  function confianceTexte(r) {
+    if (!r.confiance) return "Confiance non lue.";
+    if (r.confiance.etablie) {
+      return 'Confiance <span class="conf">' + e(r.confiance.valeur != null ? String(r.confiance.valeur).replace(".", ",") : r.confiance.texte) + "</span>";
+    }
+    var f = r.confiance.faites == null ? 0 : r.confiance.faites;
+    var q = r.confiance.requises || 3;
+    return 'Confiance <span class="conf">non établie</span> ' + points(f, q) +
+      ' <span class="conf">' + f + " occurrence" + (f > 1 ? "s" : "") + " sur " + q + "</span>";
+  }
+
+  /* --- panneau source --------------------------------------------- */
+
+  function brancherSources(etat) {
+    var panneau = document.getElementById("panneau");
+    var voile = document.getElementById("voile");
+    var pre = document.getElementById("panneau-src");
+    var titre = document.getElementById("panneau-titre");
+    var fermerBtn = document.getElementById("fermer");
+    var dernier = null;
+
+    function ouvrir(fichier, decl) {
+      var txt = etat.fichiers && etat.fichiers[fichier];
+      pre.textContent = txt ? txt.trim() : "Ce fichier n'a pas été transporté.";
+      titre.textContent = "ai-memory/" + fichier;
+      panneau.hidden = false; voile.hidden = false;
+      dernier = decl || null;
+      fermerBtn.focus();
+    }
+    function fermer() {
+      panneau.hidden = true; voile.hidden = true;
+      if (dernier) { dernier.focus(); dernier = null; }
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll(".src-btn"), function (b) {
+      b.addEventListener("click", function () { ouvrir(b.getAttribute("data-src"), b); });
+    });
+    voile.addEventListener("click", fermer);
+    fermerBtn.addEventListener("click", fermer);
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && !panneau.hidden) fermer();
+    });
+  }
+
+  charger(0);
+})();
+</script>
+</body>
+</html>

@@ -38,6 +38,10 @@ Concrètement, après quelques semaines d'usage réel :
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
   par vous en trente secondes ou par un agent qui arbitre entre plusieurs de vos instances.
 
+Et si les fichiers texte vous lassent, un **écran de lecture** facultatif : une page qu'on ouvre
+d'un double-clic, sans rien installer, qui montre en tête ce qui attend votre décision. Il ne
+remplace rien et n'écrit rien. Une instance sans lui fonctionne à l'identique.
+
 ## Ce que ça n'est pas
 
 Ce n'est pas une garantie mécanique. L'agent écrit ses propres règles et note ses propres scores.
@@ -63,7 +67,9 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `CHANGELOG.md` | L'historique des versions, **la seule source du numéro de version** |
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
 | `PUBLICATION.md` | Les règles d'écriture du gabarit, pour qui le fait évoluer |
+| `FORMAT.md` | La part du format que l'écran de lecture interprète, donc ce qu'on ne casse pas sans le savoir |
 | `template/` | Le gabarit canonique : les fichiers stériles, à instancier |
+| `ecran/` | L'écran de lecture, **facultatif** : un fichier à ouvrir d'un double-clic, qui affiche l'instance |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
 > aucune donnée client ne peut s'y trouver. Les zones à remplir sont marquées, et chaque fichier

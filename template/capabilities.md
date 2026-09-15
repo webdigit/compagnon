@@ -66,16 +66,21 @@ sous les yeux au moment de décider.
 >
 > **Une demande s'inscrit ici le jour où elle est posée**, décision `en attente`, colonne `Par` vide.
 > Elle n'y dort pas : le rituel de session la remonte tant qu'elle n'est pas tranchée, et
-> `Rappelé le` est ce qui permet à l'agent de savoir s'il doit le faire (NOYAU §0, point 3). Une
+> `Rappels` est ce qui permet à l'agent de savoir s'il doit le faire (NOYAU §0, point 3). Une
 > demande sans réponse reste ouverte : elle ne s'éteint ni par le temps, ni parce que d'autres
 > attendent déjà (compagnon P3).
+>
+> **`Rappels` s'allonge, il ne se remplace pas.** Chaque rappel y ajoute sa date, la plus récente
+> en dernier, séparées par des virgules. Le nombre de rappels sans réponse est une information à
+> part entière, et l'écraser revient à effacer la trace de ce que la demande a coûté. Aucune
+> colonne ne compte ces dates : le compte se lit en les comptant (compagnon P7).
 
-| Date | Capacité | Décision | Par | Rappelé le |
+| Date | Capacité | Décision | Par | Rappels |
 |---|---|---|---|---|
 | `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | |
-| `<jj/mm/aaaa>` | `<capacité demandée>` | en attente | | `<jj/mm/aaaa>` |
+| `<jj/mm/aaaa>` | `<capacité demandée>` | en attente | | `<jj/mm/aaaa>`, `<jj/mm/aaaa>` |
 
 _Zone manuelle, à deux exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente` et la
-colonne `Rappelé le`. La **décision** ne s'écrit jamais sans l'opérateur._
+colonne `Rappels`. La **décision** ne s'écrit jamais sans l'opérateur._
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._

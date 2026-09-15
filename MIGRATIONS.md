@@ -143,6 +143,89 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.12.0 → 0.13.0
+
+### Ce qui change
+
+**Le gabarit gagne un écran de lecture, et il est facultatif.** Une page à ouvrir d'un double-clic,
+qui affiche l'instance en mettant en tête ce qui attend une décision. Elle n'écrit rien, par aucun
+chemin, et elle ne sort pas du dossier. **Une instance sans écran fonctionne à l'identique** : c'est
+un accessoire de lecture, pas un organe, et c'est la seule chose à retenir si vous n'en voulez pas.
+
+**P12 gagne sa frontière.** Le principe disait que la mémoire n'est pas une interface. Il ne disait
+pas où s'arrête l'extérieur. Un écran qui montre la mémoire à l'opérateur dont elle porte les
+décisions ne crée pas un lecteur de plus : il rend commode ce que P1 exige déjà. Trois conditions
+l'y tiennent, et elles sont écrites dans `DOCTRINE.md`.
+
+**La date suit le statut.** Dans `learned-rules.md` comme dans `mistakes.md`, la ligne `Statut`
+porte désormais « depuis le <jj/mm/aaaa> » : la date du dernier changement, pas celle de la
+création. Le gabarit demandait déjà trois décisions fondées sur la durée (une règle qui mûrit ou qui
+stagne, une erreur résolue depuis assez longtemps pour partir à l'archive) sans jamais écrire cette
+durée nulle part. Elle se rejugeait de mémoire à chaque lecture.
+
+**La colonne `Rappelé le` devient `Rappels` et s'allonge au lieu de s'écraser.** Le nombre de
+rappels sans réponse est ce qui mesure l'attente d'une demande, et l'écraser efface la seule trace
+de ce qu'elle a coûté. Aucune colonne ne les compte : le compte se lit en les comptant (compagnon P7).
+
+**Le NOYAU gagne un §5ter**, l'écran, et trois retouches : le §0 point 3 (les rappels s'ajoutent), un
+§0 point 8 (régénérer l'état, en dernier), et le §3 (la date suit le statut, sans validation
+puisqu'elle ne fait que constater).
+
+**`VERSION.md` gagne une ligne `Écran`**, sans quoi la migration suivante ne saura pas s'il y en a un
+à mettre à jour, et une migration qui devine est une réécriture.
+
+**`FORMAT.md` apparaît à la racine du dépôt.** Il liste la part du format que l'écran interprète,
+donc ce qu'on ne peut plus changer sans le savoir. Tout ce qui n'y est pas reste libre.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : reprendre le §0 (points 3 et 8), le §3, le §5 et le nouveau §5ter depuis cette
+  étiquette.
+- **`learned-rules.md`** : reprendre le schéma d'une règle et le bandeau depuis cette étiquette.
+  **Ne datez aucune règle existante.** Une date inventée pour faire propre est pire que pas de date :
+  elle dira qu'une règle est jeune alors qu'elle traîne depuis six semaines. Chaque règle se datera
+  à son prochain changement de statut, et pas avant.
+- **`mistakes.md`** : même chose, même interdit. Les erreurs déjà closes restent sans date de statut.
+- **`capabilities.md`** : renommer l'en-tête `Rappelé le` en `Rappels`, reprendre le bandeau. Les
+  dates déjà présentes restent où elles sont, elles deviennent le premier élément de la liste.
+- **`VERSION.md`** : ajouter la ligne `Écran`, valeur `non posé` tant que l'opérateur n'a rien copié.
+- **Si l'écran est posé** : régénérer `_ecran/etat.js` à la fin de la première session qui suit, et
+  le dire dans le bloc de fin de session.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU.** Il a bougé sur quatre sections. Tant qu'il n'est pas recollé, rien de ce qui
+  précède n'atteint les sessions.
+- **Décider s'il veut l'écran.** Si oui : copier `ecran/compagnon.html` à la racine du projet, à côté
+  de `ai-memory/`. C'est tout, il n'y a rien d'autre à installer et rien à créer. Si non : ne rien
+  copier, et la ligne `Écran` de `VERSION.md` reste à `non posé`.
+
+Aucune donnée ne bouge dans cette migration. Aucun contenu n'est réécrit, aucune date n'est ajoutée
+rétroactivement.
+
+### Comment vérifier
+
+**La convention de date** : faire changer un statut, n'importe lequel. La ligne `Statut` doit porter
+« depuis le » suivi de la date du jour. Si l'agent demande votre validation pour cette date, le §3 a
+été recopié de travers : elle ne fait que constater le changement qu'il vient d'inscrire.
+
+**Les rappels** : laisser une demande dépasser les quinze jours deux fois de suite. La colonne doit
+porter **deux** dates, pas une. Si la seconde a remplacé la première, le §0 point 3 n'a pas été
+repris.
+
+**L'écran, s'il a été posé** : l'ouvrir avant toute session. Il doit dire qu'il n'a pas encore
+d'état, et pourquoi. Une page blanche ou un message d'erreur signifie que `compagnon.html` n'est pas
+au bon endroit.
+
+**Le test qui compte vraiment** : ajoutez à la main une erreur `ouverte` dans `mistakes.md`, sans
+lancer de session. Rouvrez l'écran. Il ne doit **pas** la montrer, et la date d'arrêt affichée en
+tête doit trahir qu'il date d'avant. Lancez une session, laissez l'agent régénérer, rouvrez :
+l'erreur apparaît et l'autonomie passe gelée. Un écran qui aurait affiché l'erreur sans régénération
+devinerait ; un écran qui ne l'affiche toujours pas après régénération ment. Ni l'un ni l'autre n'est
+acceptable, et ce test attrape les deux.
+
+---
+
 ## 0.11.0 → 0.12.0
 
 ### Ce qui change

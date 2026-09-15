@@ -265,6 +265,25 @@ Ce principe est ce qui rend plusieurs instances composables sans qu'aucune ne pe
 Sans lui, la première IA de coordination qui « range » une mémoire annule tout ce que P5, P6 et P11
 protègent.
 
+**Où P12 s'arrête : l'opérateur n'est pas l'extérieur.** Un écran de lecture posé dans le dossier,
+qui affiche la mémoire à celui dont elle porte les décisions, ne franchit aucune frontière. Il ne
+crée pas un lecteur de plus : il rend commode ce que P1 exige déjà, que l'opérateur relise. Trois
+conditions le tiennent de ce côté de la ligne, et elles ne sont pas négociables.
+
+- **Il ne sort pas de l'instance.** Il lit les fichiers de son propre dossier, pas ceux d'une autre.
+- **Il n'écrit rien, par aucun chemin.** La deuxième raison de P12, ce qui se lit de l'extérieur
+  finit par s'écrire de l'extérieur, ne s'ouvre que s'il existe un canal d'écriture. Il n'y en a
+  pas, et il ne doit jamais y en avoir un.
+- **Il ne fait pas autorité.** Ce qu'il affiche est calculé depuis les fichiers, et il le dit :
+  en cas d'écart, le fichier a raison. Un écran qui deviendrait la référence remplacerait la
+  mémoire au lieu de la montrer.
+
+Reste que le fichier de transport qu'un tel écran utilise est autoportant, donc qu'il **peut**
+sortir. S'il sort, il n'emporte aucune des garanties du rapport : ni date de péremption, ni
+distinction entre proposé et validé. C'est un geste de l'opérateur, sous sa responsabilité, et le
+gabarit ne le prévoit pas. C'est aussi pourquoi ce transport laisse de côté ce qu'une instance a de
+plus spécifique.
+
 ---
 
 ## Ce que compagnon ne prétend pas

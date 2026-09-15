@@ -12,7 +12,9 @@
 > sera appliquée, et c'est la même exigence que compagnon P9 pour les règles, appliquée ici.
 >
 > **Rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui lui donne son effet,
-> et c'est ce qui le condamne s'il grossit sans fin. Une erreur **résolue** depuis longtemps, qui
+> et c'est ce qui le condamne s'il grossit sans fin. La date portée par le statut est ce qui rend
+> « depuis longtemps » lisible au lieu de se rejuger à chaque lecture. Une erreur **résolue**
+> depuis longtemps, qui
 > n'éclaire plus aucune décision, se dépose dans `_archive/` avec sa date, et une ligne ici dit
 > qu'elle y est. Une erreur `ouverte` ou `corrigée` ne part jamais : ce serait desserrer le frein.
 >
@@ -29,7 +31,9 @@ Ce que je n'ai PAS fait, et qui aurait suffi : les gestes concrets manquants.
 Règle générée : ce qui entre ou change dans learned-rules.md.
 Sévérité      : -1 correction mineure · -2 mauvaise décision · -3 violation d'un principe.
 Catégorie     : mots-clés.
-Statut        : ouverte | corrigée | résolue. Voir le bandeau : « corrigée » n'est pas « résolue ».
+Statut        : ouverte | corrigée | résolue, suivi de « depuis le <jj/mm/aaaa> ». Voir le bandeau :
+                « corrigée » n'est pas « résolue ». La date est celle du **dernier changement de
+                statut**, pas celle de l'incident, qui vit à la ligne `Date`.
 Récidive      : si le même mécanisme se reproduit, on ne crée pas une entrée neuve qu'on referme
                 aussitôt. On **rouvre celle-ci**, et la récidive vaut contradiction contre la règle
                 issue, qui retombe en hypothèse (compagnon P9).
@@ -66,7 +70,8 @@ Sévérité      : **-2** (engagement pris auprès d'un tiers, rétractation né
 
 Catégorie     : engagement ; vérification ; sources périmées.
 
-Statut        : **corrigée**. Résolue seulement si la règle tient au prochain cas du même type.
+Statut        : **corrigée** depuis le `<jj/mm/aaaa>`. Résolue seulement si la règle tient au
+                prochain cas du même type.
 
 Date          : `<jj/mm/aaaa>`.
 
