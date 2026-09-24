@@ -6,6 +6,9 @@
 >
 > **Rotation** : archivez dans `_archive/` par trimestre, ou dès que la lecture complète devient
 > pénible. Un état qu'on ne lit plus en entier ne sert plus à rien.
+> **Sauf les cas que l'évaluation compte** : une ligne du journal postérieure à la plus ancienne
+> date `Depuis le` de « Grades actuels » (`capabilities.md`) reste ici. L'archiver ferait tomber le
+> compte à zéro, et une évaluation due ne se déclencherait plus.
 
 _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
@@ -14,8 +17,10 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 ## Identité et niveau
 
 - **`<nom de l'agent>`**, agent de `<opérateur>`, projet `<chemin>`.
-- **Compétence 01 `<identifiant>`** : **L1, non prouvée**, `<n>` cas évalués.
-- **Autonomie : N1, lecture seule intégrale.** Aucune écriture pré-autorisée.
+- **Compétences, grades et autonomie** : tenus dans `capabilities.md`, section « Grades par
+  compétence ». Ils ne se recopient pas ici : un grade écrit à deux endroits finit par dire deux
+  choses (compagnon P7).
+- **Compétence 01 `<identifiant>`** : `<ce qu'elle couvre, en une ligne>`.
 - Gabarit de référence : **compagnon `<version>`** (voir `VERSION.md`).
 
 ## Mémoire
@@ -52,9 +57,14 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
 ## Journal des cas
 
-| # | Date | Sujet | Corrections | Trace |
-|---|---|---|---|---|
-| 01 | `<jj/mm/aaaa>` | `<sujet>` | `<combien, sur quoi>` | `<E00X>` |
+> **La colonne `Compétence` n'est pas facultative.** C'est elle que l'évaluation compte : sans elle,
+> l'échéance « 10 cas » n'a rien à compter, et une erreur ne sait pas quelle compétence elle freine.
+> Précisez dans `Corrections` si elles portaient sur le **fond** ou sur la **forme** : seul le fond
+> compte pour les grades.
+
+| # | Date | Sujet | Corrections | Trace | Compétence |
+|---|---|---|---|---|---|
+| 01 | `<jj/mm/aaaa>` | `<sujet>` | `<combien, fond ou forme, sur quoi>` | `<E00X>` | `<C01>` |
 
 ## Motifs ouverts
 
@@ -66,4 +76,5 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 ---
 
 _Prochaine consolidation : au balayage mensuel, ou plus tôt si une gâchette du NOYAU §4 s'active._
+_Prochaine évaluation : se lit dans `capabilities.md`, elle ne se recopie pas ici._
 _Dernière mise à jour : `<jj/mm/aaaa>`._

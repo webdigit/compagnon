@@ -9,7 +9,9 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **1**, introduite avec compagnon 0.13.0.
+Version du contrat : **2**, introduite avec compagnon 0.14.0. La version 1 (0.13.0) reste lue sans
+erreur : tout ce que la 2 ajoute est facultatif, et un fichier qui ne le porte pas s'affiche comme
+avant.
 
 ---
 
@@ -49,7 +51,7 @@ personne n'y voie une panne.
 |---|---|---|
 | `learned-rules.md` | oui | règles, hypothèses, contradictions |
 | `mistakes.md` | oui | erreurs et frein de l'autonomie |
-| `capabilities.md` | oui | niveaux, interdits, registre |
+| `capabilities.md` | oui | grades, niveaux, interdits, registre |
 | `operational-state.md` | oui | niveau courant, points chauds, journal |
 | `principles.md` | oui | socle, court |
 | `objectives.md` | oui | compétences visées |
@@ -108,6 +110,9 @@ Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
 | Date d'un statut | la mention `depuis le <jj/mm/aaaa>` accolée au statut | l'écran en tire l'ancienneté, mesurée par rapport à `arrete_le` et non par rapport à maintenant : il décrit un moment figé |
 | Statut d'une capacité | le mot `OUVERT`, `DEMANDÉ`, `VERROUILLÉ` ou `SUR ACCORD` | lu sur le mot, pas sur l'emoji : les emoji peuvent changer sans rien casser |
 | Décision au registre | la mention `en attente` | tout autre texte est affiché tel quel |
+| Évaluation au registre | la cellule `Capacité` commence par `Évaluation`, suivie de l'identifiant de la compétence | la ligne va dans la file « Évaluations dues » au lieu de « Capacités demandées » |
+| Grade | `stagiaire`, `junior`, `medior`, `senior`, `expert`, ou `non évaluée` | premier mot de la cellule, gras ou non ; le grade est relié à la grille par ce mot |
+| Cadence d'un grade | « `<n>` jours, semaines, mois ou ans » et « `<n>` cas », dans n'importe quel ordre | l'écran calcule la prochaine échéance ; une partie absente ne déclenche rien |
 | État d'une contradiction | la mention `Ouverte` | |
 
 **Le cas le plus important du contrat : la confiance.** Le champ a deux formes, et deux seulement.
@@ -133,12 +138,14 @@ L'écran lit les tableaux **par position de colonne**, pas par intitulé. Les in
 
 | Où | Colonnes, dans l'ordre |
 |---|---|
-| `capabilities.md`, un niveau | capacité, ce que ça permet, condition, statut |
+| `capabilities.md`, la grille | grade, pour y accéder, permet de demander, évaluation suivante |
+| `capabilities.md`, grades actuels | compétence, grade, depuis le, accordé par |
+| `capabilities.md`, un niveau | capacité, ce que ça permet, condition, statut, compétence (facultative) |
 | `capabilities.md`, registre | date, capacité, décision, par, rappels (plusieurs dates séparées par des virgules) |
 | `learned-rules.md`, hypothèses | id, hypothèse, origine, occurrences |
 | `learned-rules.md`, contradictions | id, objet, état |
 | `operational-state.md`, points chauds | numéro, sujet, attente |
-| `operational-state.md`, journal des cas | numéro, date, sujet, corrections, trace |
+| `operational-state.md`, journal des cas | numéro, date, sujet, corrections, trace, compétence |
 | `VERSION.md`, écarts | référence, écart, raison |
 | `VERSION.md`, historique | date, de vers, ce qui a été fait |
 | `report.md`, fait | numéro, objet, référence, vérifié par, validé par |
@@ -161,7 +168,21 @@ Repérés par **mot contenu**, pas par égalité stricte, ce qui laisse la formu
 réservés : `Identité`, `Entretien`, `Points chauds`, `Journal des cas`, `Motifs ouverts`,
 `Hypothèses`, `Contradictions`, `Interdits`, `Registre`, `Écarts`, `Historique`, `En un
 paragraphe`, `Fait`, `À faire`, `En attente d'une décision`, `Non couvert`, et
-`Niveau <n> : <titre>`.
+`Niveau <n> : <titre>`, et depuis la version 2 du contrat `La grille` (en début de titre) et
+`Grades actuels`.
+
+## 8bis. Les compétences
+
+Une compétence se reconnaît à **son premier mot**, jusqu'à l'espace, aux deux-points ou au point
+médian : `C01 : revue de presse` et `C01` désignent la même. C'est ce premier mot qui relie « Grades
+actuels », la colonne `Compétence` du journal des cas, celle des capacités et les lignes
+`Évaluation · C01` du registre. La casse est indifférente.
+
+**Ce que l'écran calcule, et ce qu'il ne décide pas.** Pour chaque compétence, il compte les cas du
+journal postérieurs à `Depuis le` et ajoute la durée de la grille à cette date. Il en tire la
+prochaine échéance, et il signale une évaluation que la grille dit due mais que le registre ne porte
+pas. Il ne déclare jamais une évaluation faite, ni un grade changé : seul le registre le fait.
+Quand le journal a été archivé en partie, le compte peut être trop bas ; le fichier fait foi.
 
 ## 9. Les identifiants
 

@@ -483,9 +483,42 @@ var PARSE = (function () {
     return null;
   }
 
+  /* « 2 semaines ou 5 cas » : la cadence d'un grade, en jours et en cas.
+     Une partie absente reste null : elle ne déclenche rien. */
+  function cadence(texte) {
+    var t = sansGras(texte).toLowerCase(), out = { jours: null, cas: null, texte: sansGras(texte) };
+    var md = t.match(/(\d+)\s*(jour|semaine|mois|an)/);
+    if (md) out.jours = +md[1] * ({ jour: 1, semaine: 7, mois: 30, an: 365 })[md[2]];
+    var mc = t.match(/(\d+)\s*cas\b/);
+    if (mc) out.cas = +mc[1];
+    return out;
+  }
+
+  /* L'identifiant court d'une compétence : « C01 : revue de presse » → « c01 ».
+     C'est lui qui relie « Grades actuels » au journal des cas. */
+  function cleCompetence(s) {
+    var m = sansGras(s).match(/^[^\s:·,]+/);
+    return m ? m[0].toLowerCase() : "";
+  }
+
   function capacites(md) {
     var secs = sections(md);
-    var out = { niveaux: [], interdits: [], registre: [], lisible: false };
+    var out = { niveaux: [], interdits: [], registre: [], grille: [], grades: [], lisible: false };
+
+    var sG = sectionDont(secs, /^La grille/i);
+    if (sG) {
+      var tG = tableau(sG.corps);
+      if (tG) out.grille = tG.lignes.filter(function (l) { return l[0] && !estExemple(l); }).map(function (l) {
+        return { grade: sansGras(l[0]).toLowerCase(), criteres: l[1], permet: l[2], cadence: cadence(l[3] || "") };
+      });
+    }
+    var sA = sectionDont(secs, /grades\s+actuels/i);
+    if (sA) {
+      var tA = tableau(sA.corps);
+      if (tA) out.grades = tA.lignes.filter(function (l) { return l[0] && !estExemple(l); }).map(function (l) {
+        return { competence: l[0], cle: cleCompetence(l[0]), grade: sansGras(l[1]).toLowerCase(), depuis: sansGras(l[2]), par: l[3] || null };
+      });
+    }
 
     for (var i = 0; i < secs.length; i++) {
       var m = secs[i].titre.match(/^Niveau\s+(\d+)\s*:\s*(.+)$/i);
@@ -496,7 +529,7 @@ var PARSE = (function () {
         numero: +m[1],
         titre: m[2].replace(/\*.*$/, "").trim(),
         capacites: lignes.map(function (l) {
-          return { nom: l[0], permet: l[1], condition: l[2], statut: lireStatutCapacite(l[3]), statutBrut: l[3] };
+          return { nom: l[0], permet: l[1], condition: l[2], statut: lireStatutCapacite(l[3]), statutBrut: l[3], competence: l[4] || null };
         })
       });
     }
@@ -518,14 +551,49 @@ var PARSE = (function () {
           return {
             date: l[0], capacite: l[1], decision: l[2], par: l[3] || null,
             rappels: rappels,
+            evaluation: /^\W*évaluation/i.test(l[1] || ""),
             enAttente: /en\s+attente/i.test(l[2] || "")
           };
         });
       }
     }
 
-    out.lisible = out.niveaux.length > 0 || out.registre.length > 0;
+    out.lisible = out.niveaux.length > 0 || out.registre.length > 0 || out.grades.length > 0;
     return out;
+  }
+
+  /* L'échéance de chaque compétence, calculée depuis la grille, « Grades actuels »
+     et le journal des cas, à l'instant où l'état a été arrêté. L'écran ne décide
+     pas qu'une évaluation est due : il montre ce que la grille en dit, et ce que
+     le registre en porte. En cas d'écart, les fichiers ont raison. */
+  function echeances(cap, et, reference) {
+    if (!cap || !cap.grades.length) return [];
+    var journal = (et && et.journal) || [];
+    var ref = date(reference);
+    return cap.grades.map(function (g) {
+      var ligne = null;
+      for (var i = 0; i < cap.grille.length; i++) if (cap.grille[i].grade === g.grade) ligne = cap.grille[i];
+      var d0 = date(g.depuis);
+      var cas = journal.filter(function (c) {
+        if (cleCompetence(c.competence || "") !== g.cle) return false;
+        var dc = date(c.date);
+        return !d0 || (dc && dc > d0);
+      }).length;
+      var out = { competence: g.competence, cle: g.cle, grade: g.grade, depuis: g.depuis, par: g.par,
+                  cas: cas, dateDue: null, casRestants: null, due: false, motif: null };
+      if (/non\s+évalu/.test(g.grade)) { out.due = true; out.motif = "jamais évaluée"; return out; }
+      if (!ligne || !d0) return out;
+      if (ligne.cadence.jours != null) {
+        out.dateDue = new Date(d0.getTime() + ligne.cadence.jours * 86400000);
+        if (ref && ref >= out.dateDue) { out.due = true; out.motif = "échéance de date"; }
+      }
+      if (ligne.cadence.cas != null) {
+        out.casRestants = Math.max(0, ligne.cadence.cas - cas);
+        if (!out.due && out.casRestants === 0) { out.due = true; out.motif = "échéance de volume"; }
+      }
+      if (out.due && cas === 0 && out.motif !== "jamais évaluée") { out.due = false; out.motif = "non exercée depuis"; }
+      return out;
+    });
   }
 
   /* --- operational-state.md ---------------------------------------- */
@@ -565,7 +633,7 @@ var PARSE = (function () {
       var tJ = tableau(sJ.corps);
       if (tJ) out.journal = tJ.lignes
         .filter(function (l) { return !estExemple(l); })
-        .map(function (l) { return { num: l[0], date: l[1], sujet: l[2], corrections: l[3], trace: l[4] }; });
+        .map(function (l) { return { num: l[0], date: l[1], sujet: l[2], corrections: l[3], trace: l[4], competence: l[5] || null }; });
     }
 
     var sM = sectionDont(secs, /motifs\s+ouverts/i);
@@ -679,7 +747,13 @@ var PARSE = (function () {
     });
     var provisoires = (p.regles && p.regles.regles || []).filter(function (r) { return r.statut === "provisoire"; });
     var contradictions = (p.regles && p.regles.contradictions || []).filter(function (c) { return c.ouverte; });
-    var demandes = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente; });
+    var demandes = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente && !r.evaluation; });
+    var evalInscrites = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente && r.evaluation; });
+    var ech = p.echeances || [];
+    var evalNonInscrites = ech.filter(function (x) {
+      if (!x.due) return false;
+      return !evalInscrites.some(function (r) { return cleCompetence(String(r.capacite).replace(/^\W*évaluation\s*·?\s*/i, "")) === x.cle; });
+    });
     var chauds = (p.etat && p.etat.pointsChauds) || [];
     var metier = (p.rapport && p.rapport.attente) || [];
     function file(cle, liste, sing, plur) {
@@ -689,6 +763,7 @@ var PARSE = (function () {
       freins: freins,
       gele: freins.length > 0,
       files: [
+        file("evaluations", evalInscrites.concat(evalNonInscrites), "évaluation<br>due", "évaluations<br>dues"),
         file("capacites-demandees", demandes, "capacité<br>demandée", "capacités<br>demandées"),
         file("freins", freins, "erreur<br>qui freine", "erreurs<br>qui freinent"),
         file("a-confirmer", provisoires, "règle à<br>confirmer", "règles à<br>confirmer"),
@@ -699,12 +774,15 @@ var PARSE = (function () {
       provisoires: provisoires,
       contradictions: contradictions,
       demandes: demandes,
+      evalInscrites: evalInscrites,
+      evalNonInscrites: evalNonInscrites,
+      echeances: ech,
       chauds: chauds,
       metier: metier
     };
   }
 
-  function tout(fichiers) {
+  function tout(fichiers, arreteLe) {
     var f = fichiers || {};
     var p = {
       regles: f["learned-rules.md"] ? regles(f["learned-rules.md"]) : null,
@@ -716,6 +794,7 @@ var PARSE = (function () {
       principes: f["principles.md"] || null,
       objectifs: f["objectives.md"] || null
     };
+    p.echeances = echeances(p.capacites, p.etat, arreteLe);
     p.synthese = synthese(p);
     return p;
   }
@@ -726,6 +805,7 @@ var PARSE = (function () {
     date: date, depuis: depuis, joursEntre: joursEntre,
     estPlaceholder: estPlaceholder, estExemple: estExemple,
     regles: regles, erreurs: erreurs, capacites: capacites,
+    cadence: cadence, cleCompetence: cleCompetence, echeances: echeances,
     etat: etat, version: version, rapport: rapport,
     synthese: synthese, tout: tout
   };
@@ -822,7 +902,7 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
   }
 
   function demarrer(etat, chemin) {
-    var p = PARSE.tout(etat.fichiers);
+    var p = PARSE.tout(etat.fichiers, etat.arrete_le);
     var s = p.synthese;
     var h = [];
 
@@ -839,7 +919,11 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
     }
     h.push("</div><dl class=\"meta\">");
     h.push("<dt>Opérateur</dt><dd>" + e(etat.operateur) + "</dd>");
-    if (p.etat && p.etat.autonomie) h.push("<dt>Autonomie</dt><dd>" + e(p.etat.autonomie) + "</dd>");
+    if (s.echeances.length) {
+      h.push("<dt>Grades</dt><dd>" + s.echeances.map(function (g) {
+        return e(g.cle.toUpperCase()) + " " + e(g.grade);
+      }).join(", ") + "</dd>");
+    } else if (p.etat && p.etat.autonomie) h.push("<dt>Autonomie</dt><dd>" + e(p.etat.autonomie) + "</dd>");
     h.push("<dt>Gabarit</dt><dd>compagnon " + e(etat.gabarit || v["Version courante"] || "?") + "</dd>");
     if (p.version && p.version.ecarts.length) {
       h.push("<dt>Écarts</dt><dd>" + p.version.ecarts.map(function (x) { return e(x.ref); }).join(", ") + "</dd>");
@@ -853,13 +937,15 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
     if (s.gele) {
       var o = s.freins.filter(function (x) { return x.statut === "ouverte"; }).length;
       var c = s.freins.length - o;
-      h.push("<strong>Autonomie " + e(p.etat && p.etat.autonomie || "?") + ", gelée</strong>");
+      h.push("<strong>" + (p.etat && p.etat.autonomie ? "Autonomie " + e(p.etat.autonomie) + ", gelée" : "Frein serré") + "</strong>");
       h.push("<p>" + (o ? o + " erreur" + (o > 1 ? "s" : "") + " ouverte" + (o > 1 ? "s" : "") : "") +
         (o && c ? " et " : "") +
         (c ? c + " corrigée" + (c > 1 ? "s" : "") + " non prouvée" + (c > 1 ? "s" : "") : "") +
-        " bloque" + (s.freins.length > 1 ? "nt" : "") + " toute montée de niveau.</p>");
+        " bloque" + (s.freins.length > 1 ? "nt" : "") + (s.echeances.length
+          ? " les montées sur la compétence où elle" + (s.freins.length > 1 ? "s ont" : " a") + " été commise" + (s.freins.length > 1 ? "s" : "") + ".</p>"
+          : " toute montée de niveau.</p>"));
     } else {
-      h.push("<strong>Autonomie " + e(p.etat && p.etat.autonomie || "?") + ", libre</strong>");
+      h.push("<strong>" + (p.etat && p.etat.autonomie ? "Autonomie " + e(p.etat.autonomie) + ", libre" : "Frein libre") + "</strong>");
       h.push("<p>Aucune erreur ouverte ni corrigée. Le frein ne s'applique pas.</p>");
     }
     h.push("</div></div><nav class=\"files\" aria-label=\"Ce qui attend une décision\">");
@@ -873,10 +959,33 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
     h.push('<section class="bloc" id="decisions"><div class="titre-section">');
     h.push("<h2>Ce qui attend votre décision</h2>");
     h.push('<span class="note pousse">L\'agent ne tranche rien de ceci. Il attend.</span></div>');
-    h.push('<p class="intro">Six files, six gestes différents. Aucune ne se vide toute seule : une ' +
+    h.push('<p class="intro">Sept files, sept gestes différents. Aucune ne se vide toute seule : une ' +
       "demande sans réponse reste ouverte, elle ne s'éteint ni par le temps, ni parce qu'une autre " +
       "attend déjà.</p>");
     h.push('<div class="grille deux">');
+
+    /* évaluations dues */
+    h.push('<article class="fiche" id="evaluations"><header><h3>Évaluations dues</h3>');
+    h.push('<span class="compte">' + (s.evalInscrites.length + s.evalNonInscrites.length) + '</span><span class="pousse">' + btnSrc("capabilities.md") + "</span></header>");
+    if (!p.capacites) h.push(absent("capabilities.md", etat));
+    else if (!s.evalInscrites.length && !s.evalNonInscrites.length) {
+      h.push('<p class="vide-msg">' + (s.echeances.length ? "Aucune évaluation due." : "Cette instance ne tient pas encore de grades.") + "</p>");
+    } else {
+      s.evalInscrites.forEach(function (d) {
+        h.push('<div class="item"><div class="ligne1"><span class="st bleu">en attente</span>' +
+          '<span class="obj">' + inl(d.capacite) + "</span></div>");
+        h.push('<p class="det">Inscrite le <span class="mono">' + e(d.date) + "</span>" +
+          (d.rappels.length ? ", rappelée <span class=\"mono\">" + d.rappels.length + " fois</span>, dernier rappel le <span class=\"mono\">" + e(d.rappels[d.rappels.length - 1]) + "</span>" : ", jamais rappelée") +
+          ". Aucune décision inscrite : le grade ne bouge pas tant que vous n'avez pas tranché.</p></div>");
+      });
+      s.evalNonInscrites.forEach(function (x) {
+        h.push('<div class="item"><div class="ligne1"><span class="st ambre">non inscrite</span>' +
+          '<span class="obj">Évaluation · ' + inl(x.competence) + "</span></div>");
+        h.push('<p class="det">La grille la dit due (' + e(x.motif) + "), mais le registre ne la porte pas. " +
+          "Soit l'agent ne l'a pas encore vue, soit l'écran lit mal : le fichier fait foi.</p></div>");
+      });
+    }
+    h.push("</article>");
 
     /* capacités demandées */
     h.push('<article class="fiche" id="capacites-demandees"><header><h3>Capacités demandées</h3>');
@@ -1013,6 +1122,19 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
       "demander, jamais accorder. Une promotion avance d'un cran à la fois.</p>");
     if (!p.capacites) h.push(absent("capabilities.md", etat));
     else {
+      if (s.echeances.length) {
+        h.push('<div class="niveau"><header><h3>Grades par compétence</h3><span class="quoi">accordés par l\'opérateur, jamais pris</span></header>');
+        h.push('<div class="tableau-enveloppe"><table><thead><tr><th>Compétence</th><th>Grade</th><th>Depuis le</th><th>Accordé par</th><th>Prochaine évaluation</th></tr></thead><tbody>');
+        s.echeances.forEach(function (g) {
+          var prochaine = g.due ? '<span class="st bleu">due, ' + e(g.motif) + "</span>"
+            : g.motif === "non exercée depuis" ? '<span class="st gris">non exercée depuis</span>'
+            : [g.dateDue ? 'le <span class="mono">' + e(("0" + g.dateDue.getDate()).slice(-2) + "/" + ("0" + (g.dateDue.getMonth() + 1)).slice(-2) + "/" + g.dateDue.getFullYear()) + "</span>" : null,
+               g.casRestants != null ? "dans " + g.casRestants + " cas" : null].filter(Boolean).join(" ou ") || "grille illisible";
+          h.push("<tr><td>" + inl(g.competence) + '</td><td><span class="st ' + (/non/.test(g.grade) ? "ambre" : "vert") + '">' + e(g.grade) +
+            '</span></td><td class="date">' + e(g.depuis) + "</td><td>" + inl(g.par || "") + "</td><td>" + prochaine + "</td></tr>");
+        });
+        h.push("</tbody></table></div></div>");
+      }
       p.capacites.niveaux.forEach(function (n) {
         var ouverts = n.capacites.filter(function (c) { return c.statut === "ouvert"; }).length;
         var dem = n.capacites.filter(function (c) { return c.statut === "demandé"; }).length;
@@ -1021,10 +1143,12 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
           '<span class="pousse">' + (dem ? '<span class="st bleu">' + dem + " en attente</span>"
             : ouverts === n.capacites.length && ouverts ? '<span class="st vert">ouvert</span>'
             : '<span class="st gris">verrouillé</span>') + "</span></header>");
-        h.push('<div class="tableau-enveloppe"><table><thead><tr><th>Capacité</th><th>Ce que ça permet</th><th>Condition</th><th>Statut</th></tr></thead><tbody>');
+        var avecComp = n.capacites.some(function (c) { return c.competence; });
+        h.push('<div class="tableau-enveloppe"><table><thead><tr><th>Capacité</th><th>Ce que ça permet</th><th>Condition</th><th>Statut</th>' +
+          (avecComp ? "<th>Compétence</th>" : "") + "</tr></thead><tbody>");
         n.capacites.forEach(function (c) {
           h.push("<tr><td>" + inl(c.nom) + "</td><td>" + inl(c.permet) + "</td><td>" + inl(c.condition) +
-            "</td><td>" + pastilleCapacite(c.statut) + "</td></tr>");
+            "</td><td>" + pastilleCapacite(c.statut) + "</td>" + (avecComp ? "<td>" + inl(c.competence || "") + "</td>" : "") + "</tr>");
         });
         h.push("</tbody></table></div></div>");
       });

@@ -7,7 +7,7 @@ run: <AAAA-MM-JJ-nn>
 arrêté_le: <AAAA-MM-JJ HH:MM>
 périmé_après: <AAAA-MM-JJ HH:MM>
 statut: complet | partiel | bloqué
-autonomie: N<n>
+autonomie: <grade sur cette compétence, ex. junior>
 couvert:
   - <ce qui a réellement été balayé>
 non_couvert:

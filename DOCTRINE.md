@@ -36,9 +36,9 @@ Tout le reste en découle.
 
 ---
 
-## Les douze principes
+## Les treize principes
 
-> **Comment ils se citent.** Ici, ils portent leur numéro seul : `P1` à `P12`. Partout ailleurs, y
+> **Comment ils se citent.** Ici, ils portent leur numéro seul : `P1` à `P13`. Partout ailleurs, y
 > compris dans le gabarit et dans les notes de migration, ils s'écrivent **« compagnon P7 »**. La
 > raison est concrète : une instance numérote ses propres interdits `P001` et suivants, dans son
 > `principles.md`, et rien ne doit permettre de confondre les deux jeux. Trouvé le 07/09/2026 sur une
@@ -284,6 +284,45 @@ distinction entre proposé et validé. C'est un geste de l'opérateur, sous sa r
 gabarit ne le prévoit pas. C'est aussi pourquoi ce transport laisse de côté ce qu'une instance a de
 plus spécifique.
 
+### P13. Le point revient à échéance
+
+Chaque compétence est évaluée à intervalles réguliers, comme on évalue quelqu'un qu'on forme.
+L'agent fait revenir l'évaluation et prépare le dossier. L'opérateur accorde, maintient ou retire un
+grade : stagiaire, junior, medior, senior, expert.
+
+Tout le reste de la méthode attend un geste humain : une règle provisoire attend d'être confirmée,
+une erreur corrigée attend un cas comparable, une demande attend une réponse. P3 empêche que ces
+gestes soient pris à la place de l'opérateur ; rien, jusqu'ici, ne garantissait qu'ils soient faits.
+Un opérateur qui ne fait jamais le point n'a rien refusé, et pourtant son agent n'évolue plus. Un
+système qui n'avance que quand on y pense n'avance pas.
+
+**Le grade se porte par compétence, jamais par agent.** Un grade global serait une moyenne sans
+usage : il dirait qu'un agent est medior quand il est senior sur ce qu'il fait tous les jours et
+stagiaire sur ce qu'on lui a confié hier. C'est le dernier corollaire de P3 rendu exécutable :
+une autonomie acquise sur une compétence ne se transfère pas à une autre.
+
+Conséquences exécutoires :
+
+- **Le grade résume, il ne compte pas.** Ses critères se lisent dans les fichiers qui tiennent déjà
+  leurs comptes : les cas, les règles actives, les erreurs par statut. Il n'ajoute qu'une chose, la
+  décision datée de quelqu'un qui a regardé ces preuves (P7).
+- **Il s'accorde, il ne se prend pas** (P3). Il avance d'un cran à la fois. Il peut redescendre, et
+  une récidive rend l'évaluation due sur-le-champ : sans rétrogradation possible, une échelle ne
+  monte que dans un sens, exactement ce que P4 refuse.
+- **Il ouvre le droit de demander, jamais la capacité.** Chaque ouverture reste une décision à part.
+- **La cadence dépend du grade**, et l'évaluation tombe à la première de deux échéances : une durée
+  ou un nombre de cas. L'usage d'une instance est irrégulier, et un rendez-vous qui ne se compte
+  qu'en jours arrive trop tôt pour qui travaille peu et trop tard pour qui travaille beaucoup.
+- **Le silence n'est pas une décision.** Une évaluation due et non faite se rappelle à chaque
+  session. Le grade ne change pas en attendant, dans aucun sens, et le travail continue : le retard
+  ne bloque rien, il ne se laisse simplement pas oublier.
+- **Une boucle qui n'a jamais tourné n'est pas prouvée.** Le grade intermédiaire exige une erreur
+  résolue, pas zéro erreur. Un agent qui ne s'est jamais trompé n'a pas montré qu'il sait apprendre
+  de ses erreurs ; celui qui s'est trompé, en a tiré une règle et l'a vue tenir, si.
+
+P13 ne change pas ce que la méthode ne prétend pas : si personne ne relit, rien ne mûrit. Il rend
+seulement cette absence de relecture impossible à ne pas voir.
+
 ---
 
 ## Ce que compagnon ne prétend pas
@@ -309,7 +348,8 @@ tout est en texte lisible, daté, chaîné. Un journal d'erreurs complaisant se 
 correspond à rien se voit. Un chaînage qui pointe dans le vide se voit. La méthode ne rend pas la
 tricherie impossible, elle la rend apparente à qui lit.
 
-Et elle suppose que vous lisiez. Si personne ne relit jamais, compagnon est un dossier inerte.
+Et elle suppose que vous lisiez. Si personne ne relit jamais, compagnon est un dossier inerte. L'évaluation
+périodique (P13) ne vous remplace pas : elle vient vous chercher.
 
 ---
 

@@ -10,6 +10,57 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.14.0] - 2026-09-24
+
+### Ajouté
+
+- **compagnon P13 : le point revient à échéance.** Chaque compétence est évaluée à intervalles
+  réguliers, comme quelqu'un qu'on forme. L'agent fait revenir l'évaluation et prépare le dossier ;
+  l'opérateur accorde, maintient ou retire un grade. Cinq grades : stagiaire, junior, medior,
+  senior, expert.
+- **Le grade se porte par compétence, jamais par agent.** Un grade global serait une moyenne sans
+  usage. C'est le dernier corollaire de P3, qui existait depuis le début et que `capabilities.md` ne
+  permettait pas de tenir : une autonomie acquise sur une compétence ne se transfère pas à une autre.
+- **La grille**, dans `capabilities.md` : pour chaque grade, ce qu'il faut pour y accéder, le niveau
+  de capacités qu'il permet de demander, et la cadence de l'évaluation suivante, en durée **ou** en
+  nombre de cas, la première des deux. Valeurs par défaut, zone manuelle.
+- **NOYAU §6ter**, l'évaluation : quand elle est due, le dossier, qui décide, et trois interdits.
+  L'agent ne la lance pas seul, ne s'accorde jamais un grade, et ne saute pas de cran.
+- **Une récidive rend l'évaluation due sur-le-champ.** Sans rétrogradation possible, une échelle ne
+  monte que dans un sens.
+- **Colonne `Compétence`** en fin des tableaux de niveau et du journal des cas.
+- **L'écran lit les grades** (contrat de format 2) : une septième file, « Évaluations dues », en tête
+  de tout ; les grades dans le cartouche ; la prochaine échéance de chaque compétence.
+
+### Changé
+
+- **Le frein porte sur la compétence de l'erreur.** Une erreur `ouverte` ou `corrigée` bloque les
+  montées sur la compétence où elle a été commise. Une violation de principe les bloque toutes.
+  C'est un assouplissement : en 0.13.0, toute erreur bloquait toute montée.
+- **`L1, non prouvée` et `Autonomie : N1` disparaissent d'`operational-state.md`.** Deux niveaux
+  écrits, dont aucun ne disait comment on en changeait. Le grade vit dans `capabilities.md`, et
+  seulement là.
+
+### La leçon
+
+La méthode supposait un lecteur, et elle le disait : « si personne ne relit jamais, compagnon est un
+dossier inerte ». C'était honnête, et c'était une démission. Tout ce qui fait mûrir un agent attendait
+un geste humain, et P3 garantissait que personne ne le ferait à la place de l'opérateur. Rien ne
+garantissait qu'il le fasse.
+
+Ce que la 0.14.0 ajoute n'est pas un contrôle de plus, c'est un **rendez-vous**. La même idée qu'en
+0.12.0 pour les demandes, prise un cran plus haut : ce qui attend une décision ne se tait pas, et ce
+qui ne se tait pas finit par être décidé. Un agent qui prépare son évaluation et la rappelle à chaque
+session ne force rien. Il rend seulement l'absence de décision visible, jour après jour, jusqu'à ce
+qu'elle coûte plus que la décision.
+
+L'autre leçon est venue en relisant le gabarit : le grade par compétence **existait déjà**. P3 le
+posait, `operational-state.md` portait « Compétence 01 : L1 ». Mais rien ne disait ce qu'est un L2,
+qui le décide, ni quand. Une étiquette sans règle de passage n'est pas un niveau, c'est une
+décoration, et elle était là depuis la première version.
+
+---
+
 ## [0.13.0] - 2026-09-15
 
 ### Ajouté

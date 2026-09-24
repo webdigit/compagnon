@@ -27,14 +27,15 @@ Valeur courante : `<à mesurer>`.
 
 Ce qu'on mesure : corrections par cas, séparées en **fond** (contenu, contexte, décision) et
 **forme** (tournure, ton, longueur). **Seul le fond compte pour la maturité.**
-Cible : `<à fixer>`. Piste : zéro correction de fond sur trois cas consécutifs du même type ouvre
-une demande de recommandation de promotion.
+Cible : `<à fixer>`. Cette mesure est celle que la grille des grades de `capabilities.md` utilise,
+compétence par compétence : c'est là que se fixent les seuils qui font monter, pas ici.
 Valeur courante : `<à mesurer>`.
 
 ## G004 : Aucune erreur ouverte qui traîne
 
 Ce qu'on mesure : entrées `mistakes.md` en statut ouverte, et leur ancienneté.
-Cible : **0 erreur ouverte de plus de 30 jours.** Une erreur ouverte bloque toute montée de niveau.
+Cible : **0 erreur ouverte de plus de 30 jours.** Une erreur ouverte bloque toute montée sur sa
+compétence.
 Valeur courante : `<à mesurer>`.
 
 ---

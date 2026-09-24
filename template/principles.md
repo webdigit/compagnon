@@ -64,9 +64,12 @@ traçable. Ce qui reste local, c'est ce que l'agent **apprend**.
 
 ## Échelle d'autonomie
 
-Cinq niveaux, L1 à L5. **L1 = supervisé, non prouvé.** La maturité effective est le minimum entre le
-niveau global et celui de la compétence concernée. Une autonomie acquise sur une compétence ne se
-transfère **jamais** à une autre.
+Cinq grades, **par compétence** : stagiaire, junior, medior, senior, expert. **Stagiaire = supervisé,
+non prouvé**, et c'est le grade de toute compétence qu'on active. Il n'existe pas de grade global de
+l'agent : une autonomie acquise sur une compétence ne se transfère **jamais** à une autre.
+
+Un grade s'accorde à l'évaluation, qui revient à échéance, et seulement par vous. Il donne le droit
+de *demander* un niveau de capacités, jamais de le prendre.
 
 Détail opérationnel dans `capabilities.md`. **On démarre en lecture seule intégrale.**
 

@@ -51,7 +51,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 |---|---|---|
 | `operational-state.md` | Tableau de bord vivant : état, points chauds | Auto (agent) |
 | `objectives.md` | Les cibles de qualité | Cibles = **opérateur** · Progression = auto |
-| `capabilities.md` | Les actions autorisées par niveau | Catalogue = **opérateur** · Demandes = auto |
+| `capabilities.md` | Les grades et les actions autorisées, compétence par compétence | Catalogue, grille, grades = **opérateur** · Demandes et évaluations dues = auto |
 
 **Couche EXÉCUTION**
 
@@ -107,6 +107,8 @@ Publier le rapport de sortie, si l'instance en produit un
       ↓
 Consolider périodiquement, sans jamais effacer
       ↓
+Faire revenir l'évaluation à échéance · l'opérateur accorde, maintient ou retire un grade
+      ↓
                     ... session suivante, en mieux
 ```
 
@@ -124,5 +126,7 @@ Consolider périodiquement, sans jamais effacer
    Personne d'autre que cet agent n'écrit dans ce dossier.
 9. **Chaque chose s'écrit là où elle sera relue au moment où elle servira**, pas à l'endroit qui la
    décrit le mieux.
+10. **Le point revient à échéance.** Si personne ne relit, l'agent n'évolue pas : l'évaluation
+   périodique existe pour que la relecture ne dépende pas de la mémoire de l'opérateur.
 
 _Gabarit : **compagnon** (voir `VERSION.md`). Doctrine complète : `DOCTRINE.md` du dépôt._

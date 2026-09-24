@@ -33,6 +33,9 @@ Concrètement, après quelques semaines d'usage réel :
 - des cas concrets réutilisables par analogie ;
 - un tableau de bord de l'état courant ;
 - un catalogue de capacités où chaque ouverture porte votre nom et sa date ;
+- des **évaluations périodiques**, compétence par compétence, de stagiaire à expert : l'agent les
+  fait revenir à échéance et prépare son dossier, vous accordez le grade. Le point se fait même si
+  vous n'y pensez pas ;
 - des **modes opératoires** pour les chaînes techniques que personne d'autre ne documente, avec leur
   niveau d'autonomie et leur date de péremption ;
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,

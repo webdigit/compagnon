@@ -21,11 +21,11 @@
 window.COMPAGNON_ETAT = {
 
   schema: "compagnon/etat/1",
-  gabarit: "0.13.0",
+  gabarit: "0.14.0",
   instance: "Comptoir",
   operateur: "L. Marchal",
   projet: "C:\\Comptoir",
-  arrete_le: "2026-09-15 08:10",
+  arrete_le: "2026-09-24 08:10",
 
   transportes: [
     "learned-rules.md",
@@ -228,42 +228,63 @@ _Dernière mise à jour : 15/09/2026._
 `,
 
 /* ================================================================ */
-"capabilities.md": `# capabilities.md : Les actions autorisées par niveau d'autonomie
+"capabilities.md": `# capabilities.md : Les grades et les actions autorisées, compétence par compétence
 
-> **Gouvernance :** le **catalogue et les conditions sont fixés par l'opérateur** (zone MANUELLE).
-> Le statut \`✅ OUVERT\` ne bascule que par lui. L'agent peut seulement passer une capacité en
-> \`🔓 DEMANDÉ\` quand il a rempli les critères. Il *mérite et demande*, l'opérateur *accorde*.
+> **Gouvernance :** le **catalogue, les conditions et la grille des grades sont fixés par
+> l'opérateur** (zone MANUELLE). Le statut \`✅ OUVERT\` ne bascule que par lui, et un grade ne
+> s'accorde que par lui. L'agent *mérite et demande*, l'opérateur *accorde*.
+
+---
+
+## Grades par compétence
+
+### La grille
+
+| Grade | Pour y accéder | Permet de demander | Évaluation suivante |
+|---|---|---|---|
+| **stagiaire** | Activation de la compétence | Niveau 1, ouvert d'office | 2 semaines ou 5 cas |
+| **junior** | 10 cas évalués · 3 cas consécutifs sans correction de fond · 1 règle active · aucune erreur ouverte ni corrigée | Niveau 2 | 1 mois ou 10 cas |
+| **medior** | 25 cas · au moins une erreur résolue · 3 règles actives · aucune correction de fond sur les 5 derniers cas | Niveau 3 | 6 semaines ou 15 cas |
+| **senior** | 50 cas · au plus 1 correction de fond sur les 10 derniers · aucune récidive depuis la dernière évaluation | Niveau 4 | 3 mois ou 25 cas |
+| **expert** | Senior tenu sur deux évaluations · une règle proposée par l'agent devenue active | Au-delà, selon l'opérateur | 6 mois ou 40 cas |
+
+### Grades actuels
+
+| Compétence | Grade | Depuis le | Accordé par |
+|---|---|---|---|
+| C01 : réponse-disponibilité | junior | 17/09/2026 | L. Marchal |
+| C02 : relance-fournisseur | stagiaire | 08/09/2026 | activation |
 
 ---
 
 ## Niveau 1 : Lire, préparer, proposer
 
-| Capacité | Ce que ça permet | Condition | Statut |
-|---|---|---|---|
-| Lecture des sources | Lire, croiser, reconstituer l'état réel d'un dossier | de base · lecture seule | ✅ OUVERT |
-| Réunion du contexte | Réunir d'office ce qu'il faut avant de produire | de base | ✅ OUVERT |
-| Production de brouillons | Produire, non envoyés, non déposés, avec ses incertitudes déclarées | de base | ✅ OUVERT |
-| Variantes | Proposer 2 ou 3 formulations sur un sujet à enjeu | de base | ✅ OUVERT |
-| Propositions d'action | Proposer une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT |
-| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles | de base | ✅ OUVERT |
-| Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée | de base | ✅ OUVERT |
+| Capacité | Ce que ça permet | Condition | Statut | Compétence |
+|---|---|---|---|---|
+| Lecture des sources | Lire, croiser, reconstituer l'état réel d'un dossier | de base · lecture seule | ✅ OUVERT | toutes |
+| Réunion du contexte | Réunir d'office ce qu'il faut avant de produire | de base | ✅ OUVERT | toutes |
+| Production de brouillons | Produire, non envoyés, non déposés, avec ses incertitudes déclarées | de base | ✅ OUVERT | toutes |
+| Variantes | Proposer 2 ou 3 formulations sur un sujet à enjeu | de base | ✅ OUVERT | toutes |
+| Propositions d'action | Proposer une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT | toutes |
+| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles | de base | ✅ OUVERT | toutes |
+| Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée | de base | ✅ OUVERT | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers
 
-| Capacité | Ce que ça permet | Condition | Statut |
-|---|---|---|---|
-| Déposer un brouillon dans le CRM | Poser la réponse préparée là où elle sera trouvée | 12 brouillons consécutifs sans correction de fond · aucune erreur ouverte ni corrigée · accord | 🔓 DEMANDÉ |
-| Créer une trace interne de suivi | Ouvrir une note de suivi interne sur un dossier | 20 cas traités · confiance moyenne des règles actives au-dessus de 0,60 · accord | 🔒 VERROUILLÉ |
+| Capacité | Ce que ça permet | Condition | Statut | Compétence |
+|---|---|---|---|---|
+| Déposer un brouillon dans le CRM | Poser la réponse préparée là où elle sera trouvée | grade junior · 12 brouillons consécutifs sans correction de fond · aucune erreur ouverte ni corrigée sur la compétence · accord | 🔓 DEMANDÉ | C01 |
+| Créer une trace interne de suivi | Ouvrir une note de suivi interne sur un dossier | grade junior · 20 cas traités · accord | 🔒 VERROUILLÉ | C01 |
 
 ## Niveau 3 : Écriture visible du tiers
 
-| Capacité | Ce que ça permet | Condition | Statut |
-|---|---|---|---|
-| Répondre seul sur les demandes transactionnelles | Envoyer une réponse de suivi sans relecture préalable | niveau 2 ouvert depuis 3 mois · 50 cas · aucune erreur ouverte | 🔒 SUR ACCORD |
+| Capacité | Ce que ça permet | Condition | Statut | Compétence |
+|---|---|---|---|---|
+| Répondre seul sur les demandes transactionnelles | Envoyer une réponse de suivi sans relecture préalable | grade medior · niveau 2 ouvert depuis 3 mois · aucune erreur ouverte | 🔒 SUR ACCORD | C01 |
 
 ---
 
-## Interdits absolus : jamais débloqués par une montée de niveau
+## Interdits absolus : jamais débloqués par une montée de niveau ni de grade
 
 - **P001** : envoyer sans accord pour ce message précis.
 - **P002** : engager un délai, un prix, un périmètre, une date.
@@ -276,12 +297,9 @@ _Dernière mise à jour : 15/09/2026._
 
 ---
 
-## Registre des ouvertures et des demandes
+## Registre des ouvertures, des demandes et des évaluations
 
 > **Chaque ligne porte un nom et une date.** C'est ce registre qui rend l'autonomie vérifiable.
->
-> **Une demande s'inscrit ici le jour où elle est posée**, décision \`en attente\`, colonne \`Par\`
-> vide. Elle n'y dort pas : le rituel de session la remonte tant qu'elle n'est pas tranchée.
 >
 > **\`Rappels\` s'allonge, il ne se remplace pas.** Chaque rappel y ajoute sa date, la plus
 > récente en dernier. Aucune colonne ne les compte : le compte se lit en les comptant.
@@ -289,28 +307,31 @@ _Dernière mise à jour : 15/09/2026._
 | Date | Capacité | Décision | Par | Rappels |
 |---|---|---|---|---|
 | 18/08/2026 | Ensemble du niveau 1 | Ouvert à la pose du dossier | L. Marchal | |
-| 02/09/2026 | Déposer un brouillon dans le CRM | en attente | | 05/09/2026, 09/09/2026, 14/09/2026 |
-| 07/09/2026 | Créer une trace interne de suivi | refusé, condition non atteinte | L. Marchal | |
+| 02/09/2026 | Déposer un brouillon dans le CRM · C01 | en attente | | 05/09/2026, 09/09/2026, 14/09/2026, 23/09/2026 |
+| 07/09/2026 | Créer une trace interne de suivi · C01 | refusé, condition non atteinte | L. Marchal | |
+| 17/09/2026 | Évaluation · C01 (première évaluation, migration 0.14.0) | junior accordé ← R001, R002, M001 résolue | L. Marchal | |
+| 22/09/2026 | Évaluation · C02 (échéance de date) | en attente | | 22/09/2026, 23/09/2026, 24/09/2026 |
 
-_Zone manuelle, à deux exceptions que l'agent tient lui-même : le dépôt d'une ligne \`en attente\` et
-la colonne \`Rappels\`. La **décision** ne s'écrit jamais sans l'opérateur._
+_Zone manuelle, à trois exceptions que l'agent tient lui-même : le dépôt d'une ligne \`en attente\`,
+la colonne \`Rappels\`, et « Grades actuels » sous la dictée d'une décision inscrite au registre._
 
-_Dernière mise à jour : 14/09/2026._
+_Dernière mise à jour : 24/09/2026._
 `,
 
 /* ================================================================ */
 "operational-state.md": `# operational-state.md : Tableau de bord vivant
 
-_État arrêté au 15/09/2026, 08:10._
+_État arrêté au 24/09/2026, 08:10._
 
 ---
 
 ## Identité et niveau
 
 - **Comptoir**, agent de L. Marchal, projet C:\\Comptoir.
-- **Compétence 01 réponse-disponibilité** : **L1, non prouvée**, 23 cas évalués.
-- **Autonomie : N1, lecture seule intégrale.** Aucune écriture pré-autorisée.
-- Gabarit de référence : **compagnon 0.13.0** (voir \`VERSION.md\`).
+- **Compétences, grades et autonomie** : tenus dans \`capabilities.md\`. Ils ne se recopient pas ici.
+- **C01 réponse-disponibilité** : les demandes de disponibilité et de délai.
+- **C02 relance-fournisseur** : les relances de commandes en retard, activée le 08/09/2026.
+- Gabarit de référence : **compagnon 0.14.0** (voir \`VERSION.md\`).
 
 ## Rituel de collaboration
 
@@ -332,11 +353,13 @@ _État arrêté au 15/09/2026, 08:10._
 
 ## Journal des cas
 
-| # | Date | Sujet | Corrections | Trace |
-|---|---|---|---|---|
-| 21 | 11/09/2026 | Délai sur référence importée | 0 | E012 |
-| 22 | 12/09/2026 | Note de suivi non enregistrée | 1, sur la vérification | M002 |
-| 23 | 14/09/2026 | Relance urgente vendredi | 0 | E014 |
+| # | Date | Sujet | Corrections | Trace | Compétence |
+|---|---|---|---|---|---|
+| 21 | 11/09/2026 | Délai sur référence importée | 0 | E012 | C01 |
+| 22 | 12/09/2026 | Note de suivi non enregistrée | 1 de fond, sur la vérification | M002 | C02 |
+| 23 | 14/09/2026 | Relance urgente vendredi | 0 | E014 | C02 |
+| 24 | 18/09/2026 | Délai d'une référence en réassort | 1 de forme, sur le ton | E015 | C01 |
+| 25 | 21/09/2026 | Disponibilité en entrepôt secondaire | 0 | E016 | C01 |
 
 ## Motifs ouverts
 
@@ -411,12 +434,12 @@ correction de forme ne compte pas comme un échec.
 | | |
 |---|---|
 | **Gabarit** | compagnon |
-| **Version courante** | **0.13.0** |
+| **Version courante** | **0.14.0** |
 | **Dépôt de référence** | \`https://github.com/webdigit/compagnon.git\` |
 | **Instance** | Comptoir, L. Marchal, Comptoir srl |
 | **Posée le** | 18/08/2026 |
-| **Alignée sur** | \`v0.13.0\` au commit \`a3f19c2\` |
-| **Écran** | posé, version 0.13.0 |
+| **Alignée sur** | \`v0.14.0\` au commit \`b7e20d4\` |
+| **Écran** | posé, version 0.14.0 |
 
 ## Historique
 
@@ -425,6 +448,7 @@ correction de forme ne compte pas comme un échec.
 | 18/08/2026 | (aucune) → 0.11.0 | Pose initiale de l'instance. |
 | 09/09/2026 | 0.11.0 → 0.12.0 | Rappel des demandes en attente au rituel de session. |
 | 15/09/2026 | 0.12.0 → 0.13.0 | Pose de l'écran de lecture, création de _ecran/. |
+| 17/09/2026 | 0.13.0 → 0.14.0 | Grades par compétence. C01 évaluée le jour même : junior accordé. Colonne Compétence au journal. |
 
 ## Écarts assumés par rapport au gabarit
 

@@ -69,6 +69,15 @@ preuves, et chaque ouverture portera votre nom et sa date.
 
 Listez aussi les **interdits absolus**, ceux qu'aucune montée de niveau ne débloquera jamais.
 
+Puis la **grille des grades**, dans le même fichier. Le gabarit en propose une, de stagiaire à
+expert, avec la cadence d'évaluation de chaque grade. Gardez-la telle quelle si vous n'avez pas
+d'avis : ses chiffres sont raisonnables, et vous les ajusterez à la première évaluation qui vous
+paraîtra trop tôt ou trop tard. Inscrivez la compétence 01 dans « Grades actuels », au grade
+stagiaire, datée du jour.
+
+L'évaluation est ce qui fait évoluer l'agent même si vous oubliez d'y penser : il la fera revenir à
+échéance, vous proposera un grade avec ses preuves, et vous trancherez.
+
 ## Étape 4 : Allumer le système
 
 **C'est l'étape critique.** Le NOYAU doit être lu par l'agent **au démarrage de chaque session**,
