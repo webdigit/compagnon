@@ -144,6 +144,14 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 > accordé, maintenu ou retiré, suivi des preuves principales (`← M003 résolue, R004, R007`). Le
 > dossier d'évaluation ne se stocke pas ; la décision et ses preuves, si.
 >
+> **Une ligne dit qui a décidé quoi, et quand. Pas davantage.** Une phrase par cellule, et un
+> renvoi : les mots de l'opérateur, tels quels, et le détail de ce qu'il a posé vont dans
+> « Décisions de l'opérateur » du fichier de journal de la session (NOYAU §5), et la ligne y renvoie
+> (`← journal/<fichier>, D1`). **Les conditions d'une capacité s'écrivent dans sa colonne
+> `Condition`, au catalogue ci-dessus** : c'est là qu'on les lit au moment d'agir. Une décision qui
+> les pose ou les change met la ligne du catalogue à jour, et le registre ne les recopie pas
+> (compagnon P7).
+>
 > **`Rappels` s'allonge, il ne se remplace pas.** Chaque rappel y ajoute sa date, la plus récente
 > en dernier, séparées par des virgules. Le nombre de rappels sans réponse est une information à
 > part entière, et l'écraser revient à effacer la trace de ce que la demande a coûté. Aucune
@@ -153,7 +161,7 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 |---|---|---|---|---|
 | `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | |
 | `<jj/mm/aaaa>` | `<capacité demandée> · <C01>` | en attente | | `<jj/mm/aaaa>`, `<jj/mm/aaaa>` |
-| `<jj/mm/aaaa>` | `Évaluation · <C01> (échéance de volume)` | `junior accordé ← <M001 résolue, R001, R004>` | `<opérateur>` | `<jj/mm/aaaa>` |
+| `<jj/mm/aaaa>` | `Évaluation · <C01> (échéance de volume)` | `junior accordé ← <M001 résolue, R001, R004> · journal/<fichier>, D1` | `<opérateur>` | `<jj/mm/aaaa>` |
 
 _Zone manuelle, à trois exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente`, la
 colonne `Rappels`, et la mise à jour de « Grades actuels » **sous la dictée** d'une décision de

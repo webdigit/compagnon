@@ -1,8 +1,9 @@
 # operational-state.md : Tableau de bord vivant
 
 > **Statut : mémoire AUTO-ÉCRITE.** État courant, relu au démarrage de chaque session.
-> **Ce n'est pas un journal** : ce qui est clos en sort. Sans cette discipline, le fichier grossit
-> jusqu'à ne plus être relu, et cesse d'être un état.
+> **Ce n'est pas un journal** : ce qui est clos en sort, **dans l'écriture même qui le clôt**, et
+> sa trace va dans « Clos » du fichier de journal de la session (NOYAU §5). Sans cette discipline,
+> le fichier grossit jusqu'à ne plus être relu, et cesse d'être un état.
 >
 > **Rotation** : archivez dans `_archive/` par trimestre, ou dès que la lecture complète devient
 > pénible. Un état qu'on ne lit plus en entier ne sert plus à rien.
@@ -51,6 +52,11 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
 ## Points chauds : ce qui attend une décision
 
+> **Un point tranché sort d'ici tout de suite.** Pas de ligne barrée, pas de « à retirer au
+> prochain passage » : il sort dans l'écriture qui le clôt, et une ligne dans « Clos » du journal
+> de la session dit ce qui l'a clos. Une ligne, un sujet : le contexte va dans « Détails » du
+> journal, et la ligne y renvoie. Les numéros ne se réutilisent pas.
+
 | # | Sujet | Attente |
 |---|---|---|
 | 1 | `<ce qui bloque>` | `<qui doit trancher>` |
@@ -62,6 +68,16 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > cas »). Ici ne reste que le repère qui évite de relire tout le dossier.
 
 - **Dernier cas inscrit** : `<#>`, dans `journal/<nom du fichier>`.
+
+## Observations
+
+> Les faits notables qui n'ont pas encore rejoint un motif (NOYAU §3). **Une ligne chacune** : le
+> fait, et d'où il vient. Le récit, s'il en faut un, va dans « Détails » du journal de la session,
+> sous le même identifiant. Quand des observations convergent en hypothèse, elles sortent d'ici
+> dans la même écriture : l'hypothèse garde `← [O001, O002]`, et « Clos » du journal reçoit leurs
+> lignes.
+
+- `<O001 (jj/mm) : le fait, en une phrase ← [cas #, pièce]>`
 
 ## Motifs ouverts
 

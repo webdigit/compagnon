@@ -628,9 +628,14 @@ var PARSE = (function () {
         .map(function (l) { return { num: l[0], sujet: l[1], attente: l[2] }; });
     }
 
-    var sJ = sectionDont(secs, /journal\s+des\s+cas/i);
+    /* Le fichier de journal (0.17.0) s'ouvre sur un titre « Journal des cas : <date> » sans
+       tableau, suivi de la section « Journal des cas » qui porte le tableau : on prend la
+       première section de ce nom qui en a un (correctif 0.18.0). */
+    var sJ = null, tJ = null;
+    for (var iJ = 0; iJ < secs.length && !tJ; iJ++) {
+      if (/journal\s+des\s+cas/i.test(secs[iJ].titre)) { sJ = secs[iJ]; tJ = tableau(sJ.corps); }
+    }
     if (sJ) {
-      var tJ = tableau(sJ.corps);
       if (tJ) out.journal = tJ.lignes
         .filter(function (l) { return !estExemple(l); })
         .map(function (l) { return { num: l[0], date: l[1], sujet: l[2], corrections: l[3], trace: l[4], competence: l[5] || null }; });

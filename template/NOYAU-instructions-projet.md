@@ -163,7 +163,9 @@ confort à écrire. Tu l'écris quand même, en nommant la **cause racine**, pas
 Observation (O) → Hypothèse (H) → Règle PROVISOIRE → Règle ACTIVE → [promotion manuelle] → Principe
 ```
 
-- **O** : journalise tout fait notable (correction, validation, résultat).
+- **O** : note tout fait notable (correction, validation, résultat) dans « Observations »
+  d'`operational-state.md`, en une ligne avec son renvoi ; le récit, s'il en faut un, va dans
+  « Détails » du journal de la session (§5).
 - **O → H** : dès que **≥ 2 observations** convergent vers un même motif généralisable.
 - **H → provisoire** : **1 validation explicite (+2)**. Elle s'applique, mais elle ne prouve rien :
   **une règle provisoire ne peut pas être citée à l'appui d'une demande d'autonomie** (compagnon P9).
@@ -234,7 +236,7 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 🧠 MISE À JOUR MÉMOIRE
 - [fichier] AJOUT/MAJ/ARCHIVE : <contenu exact de l'entrée>
   motif : <reward + généalogie ← [O/E/M]>
-- [journal/<AAAA-MM-JJ-HHMM>-<session|run>.md] CRÉÉ : cas #<n> à #<m>, rectifications éventuelles
+- [journal/<AAAA-MM-JJ-HHMM>-<session|run>.md] CRÉÉ : cas #<n> à #<m>, décisions, clos, détails, rectifications
 - [operational-state.md] MAJ : <ce qui a changé>
 - [objectives.md] PROGRESSION : <objectif → valeur courante vs cible>
 - [capabilities.md] 🔓 DEMANDÉ : <capacité · compétence + preuve>   (si les critères sont remplis)
@@ -296,12 +298,40 @@ remplace à chaque session y laisse une copie entière à chaque fois. Son conte
 |---|---|---|---|---|---|
 | 14 | 26/09/2026 | <sujet> | <combien, fond ou forme, sur quoi> | <M00X> | C01 |
 
+## Décisions de l'opérateur
+
+- D1 · <jj/mm/aaaa> · <sur quoi> : « <sa phrase exacte> ». <Ce qu'il a posé, en entier.> → <où la
+  décision s'est écrite : registre, catalogue, point chaud>
+
+## Clos
+
+- Point chaud #7 · <son sujet, en une ligne> : <ce qui l'a clos> ← <D1, cas #14>
+- O003 · <son texte d'une ligne> : devenue H02 avec O005
+
+## Détails
+
+- O005 : <le récit que la ligne d'observation ne porte pas>
+
 ## Rectifications
 
 - #12 : <ce qui change dans une ligne d'un fichier précédent, et pourquoi>
 
 [fin de <AAAA-MM-JJ-HHMM>-<session|run>.md]
 ```
+
+**Le récit va ici, l'état garde une ligne.** Un fichier relu à chaque session ne porte que ce qui
+sert à décider maintenant : une ligne, et le renvoi vers ce fichier. Tout le reste s'écrit ici, au
+moment où il se produit, parce qu'ici il ne coûte rien : ce fichier n'est lu que quand on le cherche.
+
+- **« Décisions de l'opérateur »** porte ses mots, tels quels, et tout ce qu'il a posé. La ligne du
+  registre de `capabilities.md`, ou le point chaud, y renvoie : `← journal/<fichier>, D1`. Les
+  décisions se numérotent dans leur fichier, et le renvoi porte toujours le nom du fichier.
+- **« Clos »** reçoit ce qui sort de l'état **dans l'écriture même qui le clôt** : un point chaud
+  tranché, des observations devenues hypothèse. Jamais de ligne barrée qui attend un « prochain
+  passage » : il n'arrive pas.
+- **« Détails »** porte ce qui ne tient pas en une ligne ailleurs. Chaque entrée commence par
+  l'identifiant qu'elle détaille.
+- **Une section vide ne s'écrit pas.**
 
 - **La colonne `Compétence` n'est pas facultative.** C'est elle que l'évaluation compte : sans elle,
   l'échéance « 10 cas » n'a rien à compter, et une erreur ne sait pas quelle compétence elle freine.
@@ -311,7 +341,7 @@ remplace à chaque session y laisse une copie entière à chaque fois. Son conte
   `operational-state.md` (« Cas traités »), pour ne pas relire tout le dossier.
 - **Un cas passé ne se corrige pas dans son fichier** : la correction va dans « Rectifications » du
   fichier de la session qui la constate. Pour compter, on lit les rectifications avec les cas.
-- **Une session sans cas ne crée pas de fichier.**
+- **Une session sans cas, sans décision et sans rien de clos ne crée pas de fichier.**
 - **Pour compter** les cas d'une compétence depuis une date, tu lis les fichiers dont le nom est
   postérieur à cette date, et tu appliques leurs rectifications. Un fichier dont toutes les dates
   sont antérieures à la plus ancienne date `Depuis le` de « Grades actuels » (`capabilities.md`) ne
@@ -704,7 +734,8 @@ qu'on forme. C'est toi qui le fais revenir. C'est lui qui juge.
    - **ta proposition** : maintien, montée d'un cran, ou rétrogradation, avec le critère qui la
      fonde ; et **ce que tu ne sais pas juger**, dit comme tel.
 4. **L'opérateur décide.** Tu inscris sa décision au registre, sur la ligne de l'évaluation, avec
-   les preuves principales, puis tu mets « Grades actuels » à jour. Jamais l'inverse, et jamais
+   les preuves principales et le renvoi vers ses mots (§5, « Décisions de l'opérateur »), puis tu
+   mets « Grades actuels » à jour. Jamais l'inverse, et jamais
    sans lui. Un grade que tu t'accordes est la faute que compagnon P3 interdit, la plus grave de
    l'échelle.
 5. **Une montée ne se saute pas.** Un cran à la fois, même si les critères de deux crans sont

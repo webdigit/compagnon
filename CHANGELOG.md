@@ -10,6 +10,42 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.18.0] - 2026-09-26
+
+### Changé
+
+- **Le récit va au journal, l'état garde une ligne** (NOYAU §5). Le fichier de journal d'une
+  session gagne trois sections facultatives : « Décisions de l'opérateur » (ses mots, tels quels,
+  numérotés D1, D2… dans leur fichier), « Clos » (ce qui sort de l'état) et « Détails » (le récit
+  qu'une ligne ne porte pas). Une session sans cas mais avec une décision ou un point clos crée
+  donc son fichier.
+- **Un point chaud tranché sort d'`operational-state.md` dans l'écriture qui le clôt**, avec une
+  ligne dans « Clos ». Plus de ligne barrée « à retirer au prochain passage ».
+- **Les observations ont une place** : section « Observations » d'`operational-state.md`, une ligne
+  chacune avec son renvoi (NOYAU §3). Elles en sortent quand elles deviennent une hypothèse.
+- **Le registre de `capabilities.md` ne porte plus que la décision** : une phrase par cellule et un
+  renvoi vers les mots de l'opérateur au journal. Les conditions d'une capacité vivent dans sa
+  colonne `Condition`, au catalogue, et le registre ne les recopie pas.
+- **L'évaluation** renvoie aussi aux mots de l'opérateur (NOYAU §6ter point 4).
+
+### Corrigé
+
+- **Écran : les cas de `journal/` n'étaient pas comptés.** Un fichier de journal s'ouvre sur un
+  titre « Journal des cas : <date> » sans tableau ; l'écran s'arrêtait à ce titre et ne voyait pas
+  le tableau de la section suivante, donc aucun cas, et des échéances d'évaluation fausses. Il prend
+  désormais la première section de ce nom qui porte un tableau. Contrat inchangé (4).
+
+### La leçon
+
+Sur Pilote, au bout de deux jours, 12 points chauds sur 22 étaient barrés en attendant un passage
+qui ne vient jamais. Une seule décision du registre pesait 1,5 Ko, et 14 observations racontaient
+leur histoire dans « Motifs ouverts », faute d'autre place. Rien n'y était faux : le récit était
+simplement rangé là où l'on relit à chaque session, au lieu de là où l'on ne va que quand on le
+cherche. Alléger une mémoire, ce n'est pas la résumer (compagnon P11) : c'est ranger chaque chose à
+l'endroit où elle sera relue au moment où elle servira.
+
+---
+
 ## [0.17.0] - 2026-09-26
 
 ### Changé

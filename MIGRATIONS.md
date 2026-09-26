@@ -147,6 +147,88 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.17.0 → 0.18.0
+
+### Ce qui change
+
+**Le récit va au journal, l'état garde une ligne.** Le fichier de journal d'une session (0.17.0)
+gagne trois sections : « Décisions de l'opérateur », « Clos » et « Détails ». Un point chaud tranché
+sort de l'état tout de suite. Les observations reçoivent une section à elles dans
+`operational-state.md`, une ligne chacune. Le registre de `capabilities.md` ne garde que la décision
+et un renvoi, et les conditions restent au catalogue.
+
+Aucun fichier nouveau dans le gabarit, aucune section retirée. L'écran garde le contrat 4, mais
+il est corrigé : depuis la 0.17.0, il ne comptait pas les cas des fichiers de `journal/`.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §3 (ligne **O**), §5 (bloc de fin de session, format du fichier de
+  journal, « Le récit va ici, l'état garde une ligne », session sans cas), §6ter point 4.
+- **`operational-state.md`** : reporter les bandeaux de cette étiquette (en-tête, « Points chauds »)
+  et ajouter la section « Observations » avant « Motifs ouverts ». Structure seulement.
+- **`capabilities.md`** : reporter le paragraphe « Une ligne dit qui a décidé quoi » dans le
+  bandeau du registre. Structure seulement.
+- **`README.md`** : reporter les deux lignes du tableau des fichiers (`operational-state.md`,
+  `journal/`).
+- **Si l'instance a un écran** : remplacer `compagnon.html` par celui de cette étiquette, et mettre
+  la ligne `Écran` de `VERSION.md` à jour. `etat.js` ne change pas de forme.
+
+### Le rangement : l'agent propose, l'opérateur valide
+
+C'est la seule partie de cette migration qui déplace du contenu. Elle ne se fait ni par script ni
+sans accord (compagnon P11), et **rien ne se reformule sans que le texte d'origine soit conservé
+intact** au journal.
+
+1. **Lire en entier**, marqueur compris, par la voie brute : `operational-state.md` et
+   `capabilities.md`.
+2. **Préparer le fichier de journal de la session de migration** (format du NOYAU §5), sans le
+   créer encore :
+   - dans « Clos », chaque point chaud déjà tranché (barré, « fait », « clos », « à retirer »),
+     **texte d'origine complet** ;
+   - dans « Décisions de l'opérateur », pour chaque ligne du registre dont une cellule dépasse une
+     phrase, **la ligne d'origine complète**, sous un numéro D ;
+   - dans « Détails », pour chaque observation qui dépasse une ligne, **son texte d'origine
+     complet**, sous son identifiant.
+3. **Préparer les nouvelles versions** : l'état sans les points clos, avec ses observations sur
+   une ligne chacune (renvoi vers « Détails ») dans la section « Observations » ; le registre avec
+   des lignes courtes qui renvoient à leur D. Une condition qui n'était écrite qu'au registre monte
+   dans la colonne `Condition` de sa capacité, au catalogue.
+4. **Montrer à l'opérateur**, avant toute écriture : chaque ligne du registre, avant et après, **une
+   par une**, puisque c'est une zone manuelle ; puis la liste des points clos et des observations
+   raccourcies. Il valide, corrige ou refuse ligne par ligne. Une ligne refusée reste telle quelle.
+5. Sur son accord : **créer** le fichier de journal, le **relire** par la voie brute et vérifier que
+   chaque texte retiré s'y retrouve à l'identique, et que son marqueur est la dernière ligne.
+6. **Seulement alors**, remplacer `operational-state.md` et `capabilities.md` (§5quater, nom
+   provisoire sur un hôte en création seule), en un lot. Les anciennes versions partent dans
+   l'archive.
+7. Le bloc de fin de session dit combien de points sont sortis, combien de lignes du registre ont
+   été raccourcies, combien d'observations, et le nom du fichier de journal.
+
+Si un texte retiré ne se retrouve pas à l'étape 5, on s'arrête : rien n'est remplacé, le fichier de
+journal reste pour comparaison, et l'opérateur tranche.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier le marqueur `[fin de noyau-local.md]`.
+- **Valider le rangement**, ligne par ligne pour le registre (étape 4 ci-dessus).
+
+### Comment vérifier
+
+**Le rangement** : « Points chauds » ne porte plus aucune ligne barrée ni close ; chaque ligne du
+registre tient en une phrase par cellule, et son renvoi D se retrouve dans le fichier de journal ;
+chaque observation tient sur une ligne. `operational-state.md` et `capabilities.md` sont plus courts
+qu'avant, et rien de ce qui en est sorti n'a disparu : tout est au journal ou dans l'archive.
+
+**L'écran**, s'il est posé : le nombre de cas qu'il affiche pour une compétence est celui du
+journal.
+
+**La suite** : à la prochaine décision de l'opérateur, ses mots entrent au journal de la session et
+la ligne du registre y renvoie. Au prochain point chaud tranché, il sort de l'état dans la même
+écriture.
+
+---
+
 ## 0.16.1 → 0.17.0
 
 ### Ce qui change
