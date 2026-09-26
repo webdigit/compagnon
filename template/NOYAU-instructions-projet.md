@@ -253,6 +253,12 @@ Ce n'est pas une balise, c'est du texte, pour qu'aucun outil ne la fasse dispara
 « nettoyant ». Elle est la preuve qu'un fichier a été lu en entier et écrit en entier. Sans elle, on
 ne peut pas distinguer un fichier complet d'un fichier coupé.
 
+- **Le marqueur dit aussi quel fichier c'est.** Un fichier de mémoire introuvable sous son nom ne
+  s'appelle pas « absent » tout de suite : un stockage synchronisé peut l'afficher sous un autre nom
+  (`mistakes (1).md`). Tu cherches le fichier dont la dernière ligne est `[fin de mistakes.md]`. Si tu
+  le trouves, c'est lui, tu le lis comme tel, et tu signales le nom qu'il porte : c'est à l'opérateur
+  de le rétablir. **Tu ne recrées jamais un fichier de mémoire que tu ne trouves pas** : un fichier
+  neuf et vide sous le bon nom cacherait le vrai, et la mémoire repartirait de rien.
 - **Tu écris toujours avant le marqueur, jamais après.** Un outil qui ajoute « à la fin du fichier »
   écrit après lui : sur ces fichiers, tu ne t'en sers pas. Un fichier dont le marqueur n'est plus la
   dernière ligne est suspect au même titre qu'un fichier sans marqueur.
@@ -382,22 +388,49 @@ ouverte pour toutes les compétences, et **c'est la technique par défaut** d'un
 
 ### Le remplacement
 
-Tu écris une **nouvelle version** du fichier sous le même nom, et l'ancienne part dans
-`_archive/ai-memory/`, horodatée. L'ordre est imposé, et il ne se réorganise pas :
+Tu écris une **nouvelle version** du fichier, et l'ancienne part dans `_archive/ai-memory/`,
+horodatée. **À aucun moment deux fichiers ne portent le même nom dans ton dossier** : un stockage
+synchronisé règle un doublon de nom à sa façon (un suffixe « (1) » sur un poste), et le fichier
+devient introuvable sous son nom pour la session suivante. La nouvelle version naît donc sous un
+**nom provisoire**, `<nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>` (`mistakes.nouveau-2026-09-26-2130.md`),
+et ne prend le vrai nom qu'une fois l'ancienne sortie. L'ordre est imposé, et il ne se réorganise
+pas :
 
 0. **lire l'ancienne en entier**, par la voie brute, marqueur compris. Si le marqueur n'arrive pas,
    tu ne remplaces pas : tu déposes ;
-1. **créer** la nouvelle version, à partir de cette lecture et d'elle seule ;
+1. **créer** la nouvelle version **sous le nom provisoire**, à partir de cette lecture et d'elle
+   seule. Son marqueur porte le **vrai** nom (`[fin de mistakes.md]`), jamais le nom provisoire ;
 2. **la relire par la voie brute**, et vérifier les contrôles 3 et 4 du « marqueur de fin » (§5) :
    son marqueur est la dernière ligne, chaque ligne de l'ancienne s'y retrouve, et seul l'ajout est
    nouveau. **Ne compare jamais deux lectures faites par une voie qui peut couper** : elles perdraient
    la même fin, et la comparaison dirait « identique » ;
-3. **seulement alors archiver** l'ancienne ;
-4. **vérifier** qu'il ne reste qu'un fichier de ce nom dans `ai-memory/`, et que la version archivée
-   porte toujours son marqueur.
+3. **seulement alors archiver** l'ancienne (la renommer `<nom>-avant-<AAAA-MM-JJ-HHMM>.<ext>` et la
+   déplacer dans `_archive/ai-memory/`) ;
+4. **renommer la nouvelle** à son vrai nom ;
+5. **vérifier** qu'il y a exactement un fichier du vrai nom dans `ai-memory/`, qu'il ne reste aucun
+   fichier provisoire, et que la version archivée porte toujours son marqueur.
 
-On n'archive jamais une version avant que la suivante existe et soit vérifiée. C'est ce qui empêche
-de finir avec deux versions d'un fichier, ou aucune.
+**Cet ordre vaut pour tout fichier que tu remplaces sur un tel hôte**, pas seulement la mémoire :
+`report.md`, et `_ecran/etat.js` et `_ecran/attente.js`, que l'écran charge par leur nom et qu'un
+suffixe rendrait muets. Un fichier sans marqueur (le `.js` de l'écran) se vérifie à l'étape 2 par
+sa taille et par sa dernière ligne, comparées à ce que tu as écrit.
+
+On n'archive jamais une version avant que la suivante existe et soit vérifiée, et on ne donne
+jamais son nom à la suivante avant que l'ancienne l'ait libéré. C'est ce qui empêche de finir avec
+deux versions d'un fichier, ou aucune. **Si ton hôte ne sait pas renommer**, tu ne remplaces pas :
+tu déposes.
+
+**Un remplacement interrompu se reconnaît** à un fichier provisoire resté dans ton dossier :
+
+- **le vrai nom existe encore** (arrêt avant l'étape 3) : c'est lui la mémoire. Le provisoire n'est
+  qu'une tentative, tu ne t'en sers pas ;
+- **le vrai nom n'existe plus** (arrêt entre 3 et 4) : le provisoire est la mémoire, **s'il porte
+  son marqueur**. Tu le lis comme tel. Sans marqueur, la mémoire est la dernière version archivée.
+
+Dans les deux cas, tu ne termines ni ne répares rien seul et tu ne recrées aucun fichier : tu
+signales, et c'est la session avec l'opérateur qui achève (renommer) ou range (le provisoire
+abandonné part dans `_archive/ai-memory/` sous `<nom>-abandonne-<AAAA-MM-JJ-HHMM>.<ext>`). Tant
+qu'un provisoire traîne, aucun autre remplacement de ce fichier.
 
 ### Laquelle, et quand
 
@@ -411,10 +444,16 @@ de finir avec deux versions d'un fichier, ou aucune.
   peut écrire le journal des cas, les observations, l'état opérationnel. Créer une règle ou changer
   son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
   **toujours** en dépôt, à quelque niveau que ce soit.
+- **Un remplacement ne se fait pas pour une ligne : il se fait par lot.** Chaque remplacement laisse
+  une copie entière de l'ancienne version dans l'archive, et un fichier qui grossit, remplacé
+  souvent, la fait grossir d'autant. Tu cumules les changements d'un même fichier et tu le remplaces
+  **une fois par point d'étape** : en fin de session, avant une pause, ou quand la suite du travail
+  doit relire ce que tu viens d'y mettre. Sans opérateur : **une fois par run au plus**, en fin de
+  run.
 - **Au moindre doute, repli sur le dépôt.** Une version qui n'apparaît pas, une relecture qui ne
-  concorde pas, un marqueur absent, deux fichiers du même nom : tu arrêtes le remplacement, tu déposes, et tu écris
-  l'incident dans le dépôt. Se replier ne demande l'accord de personne, puisque c'est reprendre moins
-  d'autonomie. L'incident entre ensuite dans `mistakes.md` ; la capacité ne se referme que par
+  concorde pas, un marqueur absent, deux fichiers du même nom, un fichier provisoire qui traîne :
+  tu arrêtes le remplacement, tu déposes, et tu écris l'incident dans le dépôt. Se replier ne
+  demande l'accord de personne, puisque c'est reprendre moins d'autonomie. L'incident entre ensuite dans `mistakes.md` ; la capacité ne se referme que par
   l'opérateur.
 - **Et tu rends compte.** Un run qui a écrit en direct crée quand même son dépôt, avec la partie 3
   remplie : la session suivante saura ce que la nuit a touché. Une écriture dont personne n'entend
@@ -453,7 +492,8 @@ Un run qui n'a pas pu réécrire `_ecran/etat.js` le laisse périmé. Si ton ins
 `_ecran/attente.js` n'existe pas, crée-le, avec une seule ligne :
 `window.COMPAGNON_ATTENTE = { depuis: "<AAAA-MM-JJ HH:MM>" };`. L'écran dira qu'il n'est pas à jour.
 La session qui intègre réécrit ce fichier en `window.COMPAGNON_ATTENTE = null;` après avoir régénéré
-l'état. S'il existe déjà, n'y touche pas : il porte déjà la date la plus ancienne, qui est la bonne.
+l'état, par le remplacement ci-dessus si l'hôte ne réécrit pas. S'il existe déjà, n'y touche pas :
+il porte déjà la date la plus ancienne, qui est la bonne.
 
 ## 5quinquies. Travailler sans poste
 
@@ -485,9 +525,11 @@ Avant tout travail, et dans cet ordre. Chaque point se note dans ton dépôt de 
    qu'après elle. Tu notes combien d'éléments tu as vus.
 5. **Ta mémoire en entier**, marqueurs compris (§0, point 1 ; §5). Une lecture incomplète te met en
    proposition seule pour tout le run.
-6. **Personne d'autre n'écrit.** Deux fichiers de mémoire du même nom, un fichier de mémoire modifié
-   il y a quelques minutes, un dépôt tout frais dans `_a-integrer/` : une autre session travaille en
-   même temps que toi. Tu ne remplaces alors **rien** de la mémoire pendant tout le run : tu déposes.
+6. **Personne d'autre n'écrit.** Deux fichiers de mémoire du même nom, un fichier provisoire
+   (`<nom>.nouveau-…`, §5quater), un fichier de mémoire modifié il y a quelques minutes, un dépôt
+   tout frais dans `_a-integrer/` : une autre session travaille en même temps que toi, ou une
+   précédente s'est arrêtée en route. Tu ne remplaces alors **rien** de la mémoire pendant tout le
+   run : tu déposes.
    Deux écritures simultanées ne se voient pas l'une l'autre, et la relecture préalable ne protège pas
    d'une écriture qui arrive dix secondes après elle.
 
@@ -521,6 +563,8 @@ ne demande l'accord de personne, puisqu'il rend de l'autonomie au lieu d'en pren
 | Un connecteur ne répond pas après deux essais | Panne déclarée avec le message exact. La partie du travail qui en dépend est abandonnée et notée, le reste continue |
 | Un fichier se lit sans son marqueur | Relecture par une autre voie ; sinon fichier suspect, proposition seule (§0, point 1) |
 | Une autre session écrit en même temps | Aucun remplacement de la mémoire : tout part en dépôt |
+| Un fichier provisoire traîne dans `ai-memory/` | Remplacement interrompu (§5quater) : lire la bonne version, rien terminer, déposer et signaler |
+| Un fichier de mémoire est introuvable sous son nom | Le chercher par son marqueur (§5). Jamais le recréer |
 | Une écriture ne se vérifie pas | Pas de nouvel essai en boucle. L'état laissé se note exactement (fichier présent ou non, en double ou non) |
 | Une heure calculée est passée | Recalculer, noter l'écart, ne rien rattraper en silence |
 | Une ressource attendue manque (annexe d'un outil, fichier de référence) | Le dire. Ne jamais deviner son contenu |

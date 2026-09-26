@@ -10,6 +10,44 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.16.1] - 2026-09-26
+
+### Corrigé
+
+- **Le remplacement ne crée plus jamais deux fichiers du même nom.** L'ordre de 0.15.0 créait la
+  nouvelle version sous le nom de l'ancienne, puis archivait l'ancienne. Sur Google Drive, le
+  doublon passager suffit : Google Drive pour ordinateur affiche la nouvelle version en local sous
+  `<nom> (1).md` et ne retire plus le suffixe. Le titre sur le Drive est juste, mais une session
+  locale ne trouve plus `mistakes.md`, et l'écran ne charge plus `_ecran/etat.js`. Constaté chez
+  Pilote sur six fichiers le 26/09/2026. La nouvelle version naît désormais sous un **nom
+  provisoire** (`<nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>`) et ne prend le vrai nom qu'après
+  l'archivage de l'ancienne (NOYAU §5quater). L'ordre vaut pour tout fichier remplacé, écran et
+  rapport compris.
+- **Un remplacement interrompu se reconnaît et ne se répare pas seul** : un fichier provisoire
+  resté dans `ai-memory/` dit où l'arrêt a eu lieu et quelle version est la mémoire. La prise en
+  charge le détecte (§5quinquies, point 6), le repli a sa ligne.
+
+### Ajouté
+
+- **Le marqueur dit quel fichier c'est** (NOYAU §5). Un fichier de mémoire introuvable sous son nom
+  se cherche par son marqueur avant d'être déclaré absent. Un fichier de mémoire introuvable ne se
+  recrée jamais : un fichier neuf sous le bon nom cacherait le vrai.
+- **Le remplacement se fait par lot** (NOYAU §5quater) : une fois par point d'étape, une fois par
+  run au plus sans opérateur. Chaque remplacement archive une copie entière de l'ancienne version ;
+  chez Pilote, 19 versions d'`operational-state` en une journée avaient fait de l'archive le premier
+  poste de stockage.
+- **`hotes/google-drive.md`** : procédure de remplacement réécrite dans le nouvel ordre, piège 7
+  (l'archive qui enfle), cause du suffixe « (1) » expliquée, tests T20 et T21 à faire.
+
+### La leçon
+
+Le suffixe « (1) » était déjà noté en 0.16.0, comme une curiosité d'affichage : « en local, se fier
+au contenu ». C'était une conséquence de notre propre ordre d'écriture, et elle cassait la seule
+chose qui compte, retrouver sa mémoire par son nom. Un défaut rangé dans « fragile » au lieu d'être
+corrigé reste un défaut.
+
+---
+
 ## [0.16.0] - 2026-09-26
 
 ### Ajouté

@@ -147,6 +147,58 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.16.0 → 0.16.1
+
+### Ce qui change
+
+**Un remplacement ne fait plus jamais coexister deux fichiers du même nom.** La nouvelle version
+naît sous un nom provisoire, `<nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>`, l'ancienne est archivée, puis
+seulement la nouvelle prend le vrai nom. Sans cela, un stockage synchronisé renomme la nouvelle
+version en local (`mistakes (1).md`) et la session suivante ne la trouve plus.
+
+**Un fichier introuvable se cherche par son marqueur, et ne se recrée jamais.**
+
+**Le remplacement se fait par lot**, pour que l'archive ne grossisse pas d'une copie entière à chaque
+ligne ajoutée.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §5 (« Le marqueur de fin », premier point), §5quater (« Le remplacement »
+  et « Laquelle, et quand »), §5quater « L'écran », §5quinquies (point 6 de la prise en charge,
+  tableau du repli).
+- **Si l'instance a une procédure de remplacement** dans `procedures.md` (celle du guide Google
+  Drive, par exemple) : **proposer** à l'opérateur de la réécrire dans le nouvel ordre, d'après
+  `hotes/google-drive.md` de cette étiquette, en gardant ses propres lignes « Fragile » et
+  « Dernière exécution vérifiée ». Rien ne s'y écrit sans lui.
+- **Chercher les fichiers déjà touchés**, en lecture seule : dans `ai-memory/`, `_ecran/` et à la
+  racine, tout fichier dont le nom porte un suffixe « (1) », « (2) »… et tout fichier
+  `*.nouveau-*`. Pour chacun : quel est son marqueur (ou, pour un `.js`, à quel fichier il
+  correspond), existe-t-il aussi sous son vrai nom. **Ne rien renommer, ne rien recréer** : le
+  signaler à l'opérateur dans l'état des lieux, fichier par fichier.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier le marqueur `[fin de noyau-local.md]`.
+- **Si des fichiers portent un suffixe « (1) » en local** : vérifier d'abord sur le Drive (site web)
+  que le fichier y porte bien son vrai nom. Puis, en local, renommer `<nom> (1).md` en `<nom>.md`,
+  seulement s'il n'existe aucun autre `<nom>.md` dans le dossier. Revérifier ensuite sur le Drive
+  que le titre et le fichier sont inchangés. Ce geste n'est pas encore prouvé (guide Google Drive,
+  test T21) : le faire d'abord sur un seul fichier.
+- **Pour un écran** : si `_ecran/etat (1).js` existe, l'écran ne se met plus à jour tant qu'il ne
+  s'appelle pas `etat.js`. Même geste.
+
+### Comment vérifier
+
+**Le nouvel ordre** : faites faire un remplacement par le connecteur (en session, opérateur présent).
+Pendant qu'il tourne, le dossier ne doit jamais montrer deux fichiers du même nom ; à la fin, le
+fichier doit apparaître en local sous son vrai nom, sans suffixe (test T20).
+
+**Le fichier introuvable** : en session locale, demandez à l'agent de lire un fichier de mémoire dont
+le nom local porte « (1) ». Il doit le trouver par son marqueur, le dire, et ne rien créer.
+
+---
+
 ## 0.15.2 → 0.16.0
 
 ### Ce qui change
