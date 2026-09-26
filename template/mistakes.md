@@ -90,3 +90,5 @@ Date          : `<jj/mm/aaaa>`.
 
 _Aucun compte écrit à la main : ce fichier est sa propre source, il se compte en se lisant._
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de mistakes.md]

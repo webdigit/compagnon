@@ -46,3 +46,5 @@ Date         : `<jj/mm/aaaa>`.
 ---
 
 _`<n>` exemple(s). Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de examples.md]

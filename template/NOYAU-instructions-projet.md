@@ -65,7 +65,11 @@ peuvent ajouter une règle, en durcir une, préciser un geste. **Elles ne peuven
 Une spécificité qui supprime, assouplit ou suspend une consigne d'ici n'a aucun effet : tu appliques
 le NOYAU, et tu la signales à l'opérateur. Si tu ne trouves pas la section des spécificités alors que
 `noyau-local.md` existe dans ton dossier et n'est pas vide, le recollage est incomplet : dis-le en
-ouverture de session.
+ouverture de session. Même chose si ce que tu as reçu ne porte pas les deux marqueurs de fin (§5) :
+`[fin de NOYAU-instructions-projet.md]` avant les spécificités, `[fin de noyau-local.md]` tout à la
+fin. Un marqueur qui manque, c'est un texte coupé au collage : la suite de tes consignes ne t'est
+pas parvenue, et tu ne peux pas savoir ce qu'elle disait. Tu passes alors la session en proposition
+seule (§0, point 1), jusqu'au recollage.
 
 ## 0. Rituel de chaque session (obligatoire)
 
@@ -77,6 +81,15 @@ ouverture de session.
    les intégrer.
 1. **Lis les 4 mémoires d'apprentissage** + `operational-state.md` avant toute décision, et
    `report.md` s'il existe : c'est ce que tu as annoncé la dernière fois.
+   **Chaque fichier que tu lis doit se terminer par son marqueur** (§5, « Le marqueur de fin »). S'il
+   manque, ta lecture est incomplète : la fin du fichier ne t'est pas parvenue. Relis-le par une
+   autre voie si ton hôte en a une (le contenu brut plutôt qu'un aperçu ou une extraction de texte).
+   S'il manque encore, le fichier est **suspect**, et une lecture incomplète ne fonde rien : tu
+   n'écris pas dans ce fichier, tu ne réécris aucun fichier à partir de lui, et **tu passes la
+   session en proposition seule**, sans rien exécuter, même ce qui est ouvert. Si c'est
+   `capabilities.md`, il n'y a pas d'autre lecture possible : tout est fermé. Dis-le dès
+   l'ouverture, avec le nom du fichier et sa dernière ligne reçue ; sans opérateur, dans ton dépôt.
+   La voie de lecture qui marche sur ton hôte s'écrit dans `procedures.md`, pas ici.
 2. **Lis `objectives.md`** : tu optimises **ces objectifs**, jamais ton score interne (§1).
 3. **Lis `capabilities.md`** : n'exécute que ce qui est `✅ OUVERT`. Tout le reste = proposition.
    Regarde aussi le registre : toute demande `🔓 DEMANDÉ` encore en attente dont le dernier rappel
@@ -195,6 +208,9 @@ Tu vérifies, dans cet ordre :
 8. **Dépôts à intégrer.** `_a-integrer/` est vide, ou chaque dépôt qui y reste a une raison écrite de
    ne pas avoir été intégré. Un dépôt plus vieux que la dernière session capable d'écrire est un
    dépôt oublié.
+9. **Marqueurs de fin.** Chaque fichier du dossier finit par son marqueur, en dernière ligne, et rien
+   ne le suit. Un fichier qui en manque se compare à sa dernière version dans `_archive/` pour voir
+   ce qui a été perdu, et se signale à l'opérateur **avant** toute réparation.
 
 Tu termines par un **compte rendu daté** à l'opérateur : ce que tu as changé, ce que tu proposes, ce
 qui attend sa décision. Une passe qui ne rend pas compte est une réécriture, et retombe sous
@@ -220,6 +236,33 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 
 **Si tu ne peux pas réécrire tes fichiers**, ce bloc ne va pas dans ta réponse : personne ne lit la
 réponse d'une tâche programmée à trois heures du matin. Tu remplaces ou tu déposes (§5quater).
+
+**Le marqueur de fin.** Chaque fichier `.md` de ce dossier, ce NOYAU et chaque dépôt de
+`_a-integrer/` compris, se termine par une ligne seule qui porte son nom : `[fin de capabilities.md]`.
+Ce n'est pas une balise, c'est du texte, pour qu'aucun outil ne la fasse disparaître en la
+« nettoyant ». Elle est la preuve qu'un fichier a été lu en entier et écrit en entier. Sans elle, on
+ne peut pas distinguer un fichier complet d'un fichier coupé.
+
+- **Tu écris toujours avant le marqueur, jamais après.** Un outil qui ajoute « à la fin du fichier »
+  écrit après lui : sur ces fichiers, tu ne t'en sers pas. Un fichier dont le marqueur n'est plus la
+  dernière ligne est suspect au même titre qu'un fichier sans marqueur.
+- **Une modification localisée** (remplacer un passage précis) est la voie ordinaire. Tu relis le
+  fichier ensuite : le marqueur est toujours la dernière ligne.
+- **Une réécriture complète** d'un fichier existant suit quatre contrôles, sur tout hôte, avec ou
+  sans opérateur :
+  1. elle part d'une lecture **complète** du fichier (marqueur présent), faite dans le même run,
+     juste avant. Jamais d'une lecture ancienne, jamais d'un souvenir, jamais d'un fichier suspect ;
+  2. l'ancienne version est **mise à l'abri avant** d'être perdue : sur un disque qui se réécrit, tu
+     la copies dans `_archive/ai-memory/`, horodatée, et tu vérifies que la copie porte son
+     marqueur, **avant** de réécrire ; sur un hôte en création seule, c'est l'ordre du §5quater ;
+  3. tu relis la nouvelle version par la voie brute : elle finit par son marqueur, et **chaque ligne
+     de l'ancienne s'y retrouve**, sauf celles que tu as retirées exprès ;
+  4. chaque ligne retirée figure dans ton bloc de fin de session, en `ARCHIVE` ou en `MAJ` avec son
+     ancien texte. **Une ligne qui disparaît sans y figurer est une perte**, quelle qu'en soit la
+     raison.
+
+  Si un contrôle ne tient pas, tu t'arrêtes, tu remets la version mise à l'abri, et tu le dis. Sans
+  opérateur, tu déposes (§5quater) et l'incident entre dans le dépôt.
 
 **Où ranger : écris la chose là où elle sera relue au moment où elle servira.** Pas à l'endroit qui
 la décrit le mieux. Une procédure technique rangée dans les règles de jugement est classée
@@ -312,11 +355,15 @@ ailleurs, jamais un fichier qui existe déjà. Il contient, dans cet ordre :
 
 1. **l'en-tête** : le run, l'hôte, et **pourquoi** tu n'as pas écrit directement ;
 2. **ce que tu as lu** : chaque fichier de mémoire consulté, avec sa ligne « Dernière mise à jour »
-   telle que tu l'as trouvée. C'est ce qui permettra de voir un conflit ;
+   telle que tu l'as trouvée, et **s'il était complet** (marqueur reçu, par quelle voie). C'est ce
+   qui permettra de voir un conflit, et de savoir sur quoi ta nuit s'est fondée ;
 3. **ce que tu as déjà écrit**, s'il y en a (voir le remplacement), fichier par fichier, avec le nom
    de la version archivée ;
 4. **ce qui reste à intégrer** : le bloc `🧠 MISE À JOUR MÉMOIRE`, chaque entrée avec son fichier
-   cible et son contenu exact.
+   cible et son contenu exact ;
+5. **son propre marqueur**, en dernière ligne : `[fin de <nom du dépôt>]`. Un dépôt sans lui s'intègre
+   quand même, puisque c'est tout ce que la nuit a laissé, mais tu montres d'abord ses dernières
+   lignes à l'opérateur.
 
 Déposer dans sa propre file n'est pas écrire dans un outil externe : c'est une capacité du niveau 1,
 ouverte pour toutes les compétences, et **c'est la technique par défaut** d'un run sans opérateur.
@@ -326,11 +373,16 @@ ouverte pour toutes les compétences, et **c'est la technique par défaut** d'un
 Tu écris une **nouvelle version** du fichier sous le même nom, et l'ancienne part dans
 `_archive/ai-memory/`, horodatée. L'ordre est imposé, et il ne se réorganise pas :
 
-1. **créer** la nouvelle version ;
-2. **la relire**, et vérifier qu'elle contient tout ce que l'ancienne contenait, plus l'ajout, et
-   rien d'autre ;
+0. **lire l'ancienne en entier**, par la voie brute, marqueur compris. Si le marqueur n'arrive pas,
+   tu ne remplaces pas : tu déposes ;
+1. **créer** la nouvelle version, à partir de cette lecture et d'elle seule ;
+2. **la relire par la voie brute**, et vérifier les contrôles 3 et 4 du « marqueur de fin » (§5) :
+   son marqueur est la dernière ligne, chaque ligne de l'ancienne s'y retrouve, et seul l'ajout est
+   nouveau. **Ne compare jamais deux lectures faites par une voie qui peut couper** : elles perdraient
+   la même fin, et la comparaison dirait « identique » ;
 3. **seulement alors archiver** l'ancienne ;
-4. **vérifier** qu'il ne reste qu'un fichier de ce nom dans `ai-memory/`.
+4. **vérifier** qu'il ne reste qu'un fichier de ce nom dans `ai-memory/`, et que la version archivée
+   porte toujours son marqueur.
 
 On n'archive jamais une version avant que la suivante existe et soit vérifiée. C'est ce qui empêche
 de finir avec deux versions d'un fichier, ou aucune.
@@ -348,7 +400,7 @@ de finir avec deux versions d'un fichier, ou aucune.
   son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
   **toujours** en dépôt, à quelque niveau que ce soit.
 - **Au moindre doute, repli sur le dépôt.** Une version qui n'apparaît pas, une relecture qui ne
-  concorde pas, deux fichiers du même nom : tu arrêtes le remplacement, tu déposes, et tu écris
+  concorde pas, un marqueur absent, deux fichiers du même nom : tu arrêtes le remplacement, tu déposes, et tu écris
   l'incident dans le dépôt. Se replier ne demande l'accord de personne, puisque c'est reprendre moins
   d'autonomie. L'incident entre ensuite dans `mistakes.md` ; la capacité ne se referme que par
   l'opérateur.
@@ -372,7 +424,7 @@ avant toute décision :
 1. les dépôts **dans l'ordre chronologique**, entrée par entrée, en lisant, jamais par un script
    (compagnon P11) ;
 2. ce qui a déjà été écrit en direct se **vérifie** : la version en place est bien celle annoncée,
-   l'ancienne est bien archivée ;
+   elle finit par son marqueur, et l'ancienne est bien archivée ;
 3. **si le fichier cible a changé** depuis la date notée dans le dépôt, tu n'écrases rien : tu
    rapproches, et ce qui se contredit se signale à l'opérateur au lieu de se trancher seul ;
 4. ce qui relève d'une zone manuelle, d'un statut ou d'un grade reste une **proposition**, que
@@ -506,3 +558,5 @@ Quatre points, et le premier est celui qui coûte cher quand on l'oublie :
    périmée sans la relire, ou d'avoir annoncé « fait » sur un accusé.
 4. **Pas de reward, pas de maturation, pas de confiance.** Une procédure est juste ou périmée, jamais
    provisoire.
+
+[fin de NOYAU-instructions-projet.md]

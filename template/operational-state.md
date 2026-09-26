@@ -79,3 +79,5 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 _Prochaine consolidation : au balayage mensuel, ou plus tôt si une gâchette du NOYAU §4 s'active._
 _Prochaine évaluation : se lit dans `capabilities.md`, elle ne se recopie pas ici._
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de operational-state.md]

@@ -83,3 +83,5 @@ approbation.
 ---
 
 _Zone manuelle. Dernière modification : `<jj/mm/aaaa>`._
+
+[fin de principles.md]

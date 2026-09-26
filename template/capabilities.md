@@ -160,3 +160,5 @@ colonne `Rappels`, et la mise à jour de « Grades actuels » **sous la dictée*
 l'opérateur inscrite au registre. La **décision** ne s'écrit jamais sans l'opérateur._
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de capabilities.md]

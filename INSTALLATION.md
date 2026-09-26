@@ -172,6 +172,11 @@ Deuxième contrôle, une fois que le dossier contient quelque chose :
 
 S'il ne sait pas répondre, l'étape 4 a échoué. Reprenez-la.
 
+Troisième contrôle, sans rien demander à l'agent : **le texte collé se termine par
+`[fin de noyau-local.md]`**, et contient `[fin de NOYAU-instructions-projet.md]` juste avant les
+spécificités. Certains champs d'instructions coupent un texte trop long sans prévenir. Un marqueur
+absent, c'est la fin de vos consignes qui n'est jamais arrivée.
+
 ---
 
 ## Étape 6 : La première semaine
@@ -199,6 +204,7 @@ qui vous évite un agent rigide qui applique partout ce qui valait une fois.
 - [ ] `capabilities.md` démarre en lecture seule, interdits absolus listés
 - [ ] **Le NOYAU est dans le champ injecté au démarrage** (pas seulement dans un fichier du projet)
 - [ ] **Le test de l'étape 5 est passé sur une session neuve**
+- [ ] Le texte collé se termine par `[fin de noyau-local.md]`
 - [ ] Un premier cas réel a été traité, corrigé et consigné
 - [ ] Le bloc de fin de session a été produit au moins une fois
 - [ ] Si vous avez posé l'écran : il s'ouvre et affiche l'instance après la première session

@@ -130,5 +130,9 @@ Faire revenir l'évaluation à échéance · l'opérateur accorde, maintient ou 
    décrit le mieux.
 10. **Le point revient à échéance.** Si personne ne relit, l'agent n'évolue pas : l'évaluation
    périodique existe pour que la relecture ne dépende pas de la mémoire de l'opérateur.
+11. **Chaque fichier finit par son marqueur** (`[fin de <fichier>]`). Sans lui, le fichier est lu
+   incomplet, et une lecture incomplète ne fonde ni une décision ni une écriture.
 
 _Gabarit : **compagnon** (voir `VERSION.md`). Doctrine complète : `DOCTRINE.md` du dépôt._
+
+[fin de README.md]

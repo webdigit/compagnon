@@ -40,3 +40,5 @@ les notes, jamais par un script (compagnon P11). Puis mettre ce fichier à jour,
 
 Aucun à ce jour. Si cette instance diverge volontairement du gabarit sur un point, il se note ici,
 avec sa raison. **Un écart non écrit est un écart qui sera écrasé à la prochaine migration.**
+
+[fin de VERSION.md]

@@ -147,6 +147,92 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.15.1 → 0.15.2
+
+### Ce qui change
+
+**Une lecture incomplète ne fonde plus rien.** Un outil de lecture peut rendre un fichier amputé de
+sa fin sans le signaler : un aperçu, une extraction de texte, un champ d'instructions trop court. Le
+fichier est intact, mais l'agent ne le sait pas. S'il décide sur ce texte, il décide sur une logique
+tronquée ; s'il réécrit le fichier à partir de lui, la nouvelle version perd la fin, l'ancienne part
+en archive, et la perte est scellée. Le contrôle du remplacement (0.15.0) ne la voyait pas : il
+comparait deux lectures faites par la même voie, qui perdaient la même ligne, et concluait
+« identique ». Le défaut a été trouvé par une instance en service, sur un run de nuit.
+
+**Chaque fichier finit par un marqueur** qui porte son nom, seul sur sa dernière ligne :
+`[fin de capabilities.md]`. Du texte, pas une balise, pour qu'aucun outil ne le retire. C'est la
+seule chose qui distingue un fichier complet d'un fichier coupé.
+
+**À la lecture** (NOYAU §0, point 1) : un fichier sans marqueur se relit par une autre voie. S'il en
+manque encore, il est suspect : l'agent n'y écrit pas, ne réécrit rien à partir de lui, et passe la
+session en proposition seule. Si c'est `capabilities.md`, tout est fermé.
+
+**À l'écriture** (NOYAU §5, « Le marqueur de fin ») : on écrit avant le marqueur, jamais après. Une
+réécriture complète part d'une lecture complète faite juste avant, met l'ancienne version à l'abri
+avant de la perdre, se relit par la voie brute, et retrouve chaque ligne de l'ancienne ; toute
+ligne retirée figure dans le bloc de fin de session. Le remplacement du §5quater gagne une étape 0
+(lire l'ancienne en entier) et son étape 2 devient ce contrôle.
+
+**Au collage** : le texte chargé par l'hôte doit porter `[fin de NOYAU-instructions-projet.md]`
+avant les spécificités et `[fin de noyau-local.md]` à la fin. Sinon il a été coupé.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique. Le
+  point 1bis du §6bis garantit qu'il ne porte plus rien de local. Les passages qui changent : le
+  paragraphe « Tes spécificités », le §0 point 1, le §4bis point 9, le §5 « Le marqueur de fin », le
+  §5quater (dépôt points 2 et 5, remplacement étapes 0, 2 et 4, repli, intégration point 2), et le
+  marqueur final.
+- **Poser les marqueurs**, fichier par fichier, dans `ai-memory/` : `README.md`, `VERSION.md`, les
+  mémoires, le pilotage, `procedures.md` et `report.md` s'ils existent. Pour chacun, dans cet ordre :
+  1. le lire **par la voie brute**, en entier ;
+  2. vérifier que sa fin est intacte : la dernière ligne a la forme de celle du gabarit à cette
+     étiquette (en général « Dernière mise à jour »), et elle ne s'arrête pas au milieu d'une phrase
+     ou d'un tableau. En cas de doute, **s'arrêter** : montrer à l'opérateur les cinq dernières
+     lignes et les comparer à la dernière version du fichier dans `_archive/`. Rien ne se pose sur
+     une fin douteuse ;
+  3. ajouter une ligne vide puis `[fin de <nom du fichier>]` ;
+  4. relire : le marqueur est la dernière ligne, et rien d'autre n'a bougé.
+- **`principles.md` et `noyau-local.md`** sont des zones manuelles, et aucune migration ne touche à
+  `noyau-local.md` : pour ces deux-là, l'agent **propose** le marqueur et ne l'écrit qu'avec l'accord
+  explicite de l'opérateur, comme n'importe quelle ligne de ces fichiers.
+- **Hôte en création seule** (Google Drive par exemple) : poser un marqueur, c'est remplacer le
+  fichier. Ça se fait dans une session avec l'opérateur, par le remplacement du §5quater, jamais de
+  nuit.
+- **`README.md`** de l'instance : ajouter la règle d'or 11.
+- **`procedures.md`** : si l'hôte a une voie de lecture qui coupe (un aperçu, une extraction de
+  texte) et une voie qui ne coupe pas, l'écrire : c'est une procédure d'outil.
+- **Ne pas toucher** à `_archive/` (dépôt seul) ni aux dépôts déjà présents dans `_a-integrer/` :
+  ils s'intègrent tels quels, en montrant leurs dernières lignes à l'opérateur.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Accorder ou non le marqueur** de `principles.md` et de `noyau-local.md`.
+- **Examiner chaque fin douteuse** que l'agent présente, avant qu'il pose quoi que ce soit.
+- **Recoller, NOYAU puis spécificités**, puis vérifier que le texte collé **se termine par
+  `[fin de noyau-local.md]`**. S'il ne s'y termine pas, le champ d'instructions a coupé : il faut le
+  savoir maintenant, pas le jour où la consigne manquante aurait servi.
+
+### Comment vérifier
+
+**Les marqueurs** : ouvrez trois fichiers de `ai-memory/` au hasard. La dernière ligne de chacun est
+`[fin de <son nom>]`, et rien ne la suit.
+
+**Le collage** : dernière ligne des Instructions du projet, `[fin de noyau-local.md]`.
+
+**Le test qui compte vraiment** : retirez à la main le marqueur d'`examples.md`, puis ouvrez une
+session. L'agent doit le dire dès l'ouverture, nommer le fichier, annoncer qu'il passe en
+proposition seule, et ne rien écrire dans `examples.md`. S'il travaille normalement, la règle de
+lecture n'est pas lue, et une nuit qui lit mal agira sur ce qu'elle a mal lu. Remettez ensuite le
+marqueur vous-même.
+
+### Ce que cette migration ne fait pas
+
+Elle ne répare aucun fichier. Si une fin manque déjà, c'est l'opérateur qui décide, au vu de
+l'archive, de ce qui doit être restauré.
+
+---
+
 ## 0.15.0 → 0.15.1
 
 ### Ce qui change

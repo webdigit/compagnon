@@ -123,3 +123,5 @@ Origine      : ← [E00X]
 ---
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de procedures.md]

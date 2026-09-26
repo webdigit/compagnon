@@ -10,6 +10,48 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.15.2] - 2026-09-26
+
+### Ajouté
+
+- **Le marqueur de fin.** Chaque fichier d'une instance se termine par `[fin de <son nom>]`, seul
+  sur sa dernière ligne : le NOYAU, les spécificités, chaque mémoire, chaque dépôt. Du texte, pas
+  une balise. C'est la preuve qu'un fichier a été lu en entier et écrit en entier.
+- **NOYAU §0, point 1 : une lecture incomplète ne fonde rien.** Un fichier reçu sans son marqueur se
+  relit par une autre voie ; s'il en manque encore, l'agent n'y écrit pas, ne réécrit rien à partir
+  de lui, et passe la session en proposition seule. `capabilities.md` illisible : tout est fermé.
+- **NOYAU §5, « Le marqueur de fin »** : on écrit avant lui, jamais après. Une réécriture complète
+  part d'une lecture complète faite juste avant, met l'ancienne à l'abri avant de la perdre, se
+  relit par la voie brute et retrouve chaque ligne de l'ancienne. Une ligne qui disparaît sans
+  figurer au bloc de fin de session est une perte.
+- **Le recollage se vérifie** : le texte chargé doit porter les deux marqueurs, NOYAU et
+  spécificités. Un champ d'instructions qui coupe se voit à l'installation (troisième contrôle de
+  l'étape 5), et l'agent le dit en ouverture.
+- **§4bis, point 9** : la passe de contrôle vérifie les marqueurs.
+- **Corollaire de compagnon P5** : une lecture incomplète ne fonde rien.
+
+### Corrigé
+
+- **Le contrôle du remplacement (§5quater, étape 2) validait la perte qu'il devait empêcher.** Il
+  comparait la nouvelle version à l'ancienne, mais relue par la même voie : si cette voie coupait la
+  dernière ligne, elle la coupait des deux côtés, et la comparaison concluait « identique ». Il
+  compare désormais des lectures brutes, marqueur compris, et une étape 0 interdit de remplacer un
+  fichier qu'on n'a pas lu en entier.
+
+### La leçon
+
+Un fichier intact et un fichier lu en entier sont deux choses différentes, et rien ne les
+distinguait. Une instance de nuit a constaté que son outil de lecture rendait `capabilities.md` et
+son NOYAU sans leur dernière ligne, alors que le téléchargement brut les donnait complets. Aucun
+fichier n'était abîmé ; mais la première réécriture fondée sur cette lecture l'aurait été, et le
+contrôle prévu pour l'empêcher l'aurait approuvée.
+
+On ne peut pas empêcher un outil de couper. On peut rendre la coupure visible à coup sûr, et
+interdire qu'elle serve de base à quoi que ce soit. C'est ce que fait une ligne de texte à la fin
+de chaque fichier. C'est encore R3 et R4 de `PUBLICATION.md` : trouvé en service, déclaré, remonté.
+
+---
+
 ## [0.15.1] - 2026-09-26
 
 ### Ajouté

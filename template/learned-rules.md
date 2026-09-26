@@ -88,3 +88,5 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 
 _Aucun compte écrit à la main : ce fichier est sa propre source. Gabarit : voir `VERSION.md`._
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de learned-rules.md]

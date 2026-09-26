@@ -46,3 +46,5 @@ _Origine : `<qui l'a demandée, quand, et pourquoi>`. Ajoutée le `<jj/mm/aaaa>`
 ---
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de noyau-local.md]

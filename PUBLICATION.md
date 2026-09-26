@@ -120,3 +120,5 @@ _Posée le 09/09/2026._
 4. Chaque exemple fictif touché est exemplaire dans son comportement (R2).
 5. Aucun nombre recopié n'est entré dans le dépôt (R7).
 6. Le `CHANGELOG.md` porte l'entrée, sa leçon, et le numéro n'est écrit que là.
+7. Chaque fichier de `template/` finit par `[fin de <son nom>]`, en dernière ligne, rien après. Un
+   fichier ajouté au gabarit naît avec le sien (0.15.2).

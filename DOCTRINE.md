@@ -130,6 +130,12 @@ C'est ce qui rend le système réversible et auditable. « Cette règle apprise 
 trop simpliste, les cinq derniers cas imposent la suivante » est une phrase qu'on ne peut écrire
 que si l'ancienne existe encore.
 
+Corollaire : **une lecture incomplète ne fonde rien.** On efface aussi en réécrivant un fichier à
+partir d'une lecture qui en a perdu la fin : la dernière ligne disparaît de la nouvelle version,
+l'ancienne part en archive, et personne ne le voit. Chaque fichier se termine donc par un marqueur
+qui porte son nom. Sans marqueur, le fichier est suspect : il ne sert de base ni à une écriture ni
+à une décision, et l'agent repasse en proposition seule jusqu'à ce que l'opérateur ait regardé.
+
 ### P6. Tout a une généalogie
 
 Chaque entrée cite ses origines. Une règle pointe vers les observations et les erreurs qui l'ont

@@ -50,3 +50,5 @@ Valeur courante : `<à mesurer>`.
 ---
 
 _Zone manuelle pour les cibles. Progression auto. Dernière mise à jour : `<jj/mm/aaaa>`._
+
+[fin de objectives.md]
