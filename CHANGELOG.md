@@ -10,6 +10,33 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.16.0] - 2026-09-26
+
+### Ajouté
+
+- **NOYAU §5quinquies : travailler sans poste.** Quatre temps. La **prise en charge** (heure réelle,
+  accès par identifiant, connecteurs revérifiés avant d'être déclarés en panne, dossier lu jusqu'à la
+  dernière page, mémoire lue en entier, et personne d'autre en train d'écrire). Le **travail** (fichiers
+  neufs seulement, vérification à la source, jalons, heure calculée juste avant l'appel, aucune
+  décision hors autonomie la nuit). Le **repli** (faire moins, jamais faire autrement, avec une table
+  incident par incident). Le **retour** (compte rendu en tête du dépôt, notification, et la session
+  suivante qui commence par lui).
+- **`hotes/`** : les guides d'hôte, hors gabarit. `google-drive.md` et `claude-taches-programmees.md`,
+  écrits à partir des essais de l'instance Pilote, chaque affirmation avec son statut.
+- **« Où vit le dossier »** gagne la ligne « Stockage partagé ».
+- **`INSTALLATION.md`, étape 7** : le mode sans poste, et sa recette en quatre essais.
+
+### La leçon
+
+Tout ce qui est ici a été trouvé en deux nuits par une instance dont le métier était de le chercher.
+Pilote a tourné en cloud, ordinateurs éteints, avec pour compétence de consigner ses propres essais :
+tâches longues, pauses, réveils, connecteurs en panne, tâches qui en programment d'autres, écritures
+simultanées. La plupart des règles de ce §5quinquies sont des incidents réels, pas des précautions
+imaginées. Ce qui n'a pas encore été vu est marqué comme tel dans les guides, et se complétera de la
+même façon.
+
+---
+
 ## [0.15.2] - 2026-09-26
 
 ### Ajouté

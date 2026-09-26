@@ -197,6 +197,53 @@ qui vous évite un agent rigide qui applique partout ce qui valait une fois.
 
 ---
 
+## Étape 7 : Le mode sans poste (facultatif)
+
+Pour qu'un agent travaille **la nuit, ordinateurs éteints**, et vous rende compte au réveil. Ne
+l'installez qu'après la première semaine : un agent qui n'a encore rien appris avec vous n'a rien à
+faire seul.
+
+### Ce qu'il faut
+
+- **Un dossier partagé** (Google Drive, OneDrive, Dropbox…) qui porte tout le projet, `ai-memory/`
+  compris, et un **connecteur** de ce service dans Claude.
+- **Un planificateur** qui tourne sans ordinateur : les tâches programmées de Claude, créées dans le
+  cloud.
+- **Un guide d'hôte pour chacun** dans `hotes/`. S'il n'en existe pas pour votre service, le mode sans
+  poste n'est pas encore installable proprement : il faut d'abord le tester et écrire le guide.
+
+### La mise en place
+
+1. **Remplir la ligne « Stockage partagé »** de « Où vit le dossier », dans le NOYAU : le service et
+   l'**identifiant** du dossier (pas son nom). Recoller.
+2. **Recopier les procédures** des deux guides dans `procedures.md`, avec les identifiants réels.
+3. **Créer `_a-integrer/`** à côté de `_archive/`, s'il n'existe pas.
+4. **Ne rien ouvrir au registre.** Un run de nuit dépose, il ne remplace pas. « Remplacement sans
+   opérateur » se demandera plus tard, sur preuves.
+
+### La recette : quatre essais avant de lui confier une vraie nuit
+
+Chaque essai se lance depuis une conversation du projet, en tâche programmée **dans le cloud**, et
+se contrôle le lendemain sur ce qui a été laissé, pas sur ce que la notification affirme.
+
+1. **Le premier pas.** Une tâche qui liste le dossier et crée un seul fichier horodaté. Contrôle : le
+   fichier existe, en texte (pas converti), et il dit combien d'éléments ont été vus, toutes pages
+   lues.
+2. **Une nuit complète.** Un vrai petit travail. Contrôle : un dépôt dans `_a-integrer/` qui s'ouvre
+   sur son compte rendu (fait, échoué, à décider, incidents), aucun fichier de `ai-memory/` modifié,
+   et une notification qui nomme le dépôt. À la session suivante, l'agent vous dit ce compte rendu
+   **avant** toute autre chose, puis intègre.
+3. **Le conflit.** Dans la journée, modifiez à la main un fichier que le dépôt de la nuit vise aussi.
+   À l'intégration, l'agent doit voir le conflit et vous le soumettre, pas l'écraser.
+4. **Deux sessions en même temps.** Lancez deux tâches à la même minute sur le même dossier. Contrôle :
+   aucune n'a remplacé un fichier de mémoire, les deux ont déposé, et au moins une signale l'autre
+   dans ses incidents.
+
+Tant que ces quatre essais ne sont pas passés, le mode sans poste n'est pas installé : il est en
+essai.
+
+---
+
 ## Checklist
 
 - [ ] La première compétence est écrite : périmètre, hors périmètre, définition du travail bien fait
@@ -205,6 +252,7 @@ qui vous évite un agent rigide qui applique partout ce qui valait une fois.
 - [ ] **Le NOYAU est dans le champ injecté au démarrage** (pas seulement dans un fichier du projet)
 - [ ] **Le test de l'étape 5 est passé sur une session neuve**
 - [ ] Le texte collé se termine par `[fin de noyau-local.md]`
+- [ ] Mode sans poste, si vous l'installez : les quatre essais de l'étape 7 sont passés
 - [ ] Un premier cas réel a été traité, corrigé et consigné
 - [ ] Le bloc de fin de session a été produit au moins une fois
 - [ ] Si vous avez posé l'écran : il s'ouvre et affiche l'instance après la première session

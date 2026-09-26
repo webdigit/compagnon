@@ -147,6 +147,62 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.15.2 → 0.16.0
+
+### Ce qui change
+
+**Un agent peut travailler la nuit, ordinateurs éteints, et rendre compte au réveil.** Jusqu'ici,
+compagnon savait quoi faire de ce qu'une nuit ne peut pas écrire (0.15.0) et de ce qu'elle lit mal
+(0.15.2). Il ne disait pas comment tenir un run entier sans personne : comment démarrer, quoi faire
+quand un connecteur tombe ou qu'une autre session écrit en même temps, comment laisser un retour que
+l'opérateur lit en une minute. C'est l'objet du nouveau NOYAU §5quinquies, en quatre temps : la prise
+en charge, le travail, le repli, le retour.
+
+**Le générique dans le NOYAU, le concret dans des guides d'hôte.** Le NOYAU dit quoi faire pour tout
+service. Le nouveau dossier `hotes/` du dépôt dit comment, service par service (Google Drive, tâches
+programmées de Claude), avec pour chaque affirmation un statut : prouvé, constaté une fois, non
+prouvé. Ses procédures se recopient dans `procedures.md` à l'installation du mode sans poste.
+
+**Le dépôt de nuit s'ouvre sur un compte rendu**, et la session suivante commence par le dire à
+l'opérateur, avant d'intégrer.
+
+**« Où vit le dossier » gagne une ligne** : le stockage partagé et l'identifiant du dossier. C'est la
+seule chose qu'un run de nuit a pour trouver sa mémoire.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique. Le
+  nouveau trou « Stockage partagé » se remplit avec ce que l'instance sait déjà (un identifiant de
+  dossier déclaré dans `noyau-local.md`, par exemple), sinon `aucun`. Les passages qui changent :
+  « Où vit le dossier », §0 point 0, §5quater (point 0 du dépôt), et le nouveau §5quinquies.
+- **Si l'instance travaille déjà sans poste** : comparer ses procédures au guide d'hôte de cette
+  étiquette, et **proposer** à l'opérateur ce qui y manque, sans rien retirer de ce qu'elle a
+  constaté elle-même. Ce qu'elle sait et que le guide ne dit pas se signale : c'est une remontée
+  (`PUBLICATION.md`, R4).
+- **Si `noyau-local.md` porte un ordre d'accès** ou des règles de travail sur dossier partagé, relire
+  ce complément contre le §5quinquies et signaler ce qui fait double emploi. Rien ne s'y écrit sans
+  l'opérateur.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier le marqueur `[fin de noyau-local.md]`.
+- **Décider** si l'instance passe en mode sans poste. Si oui : `INSTALLATION.md`, étape 7, recette
+  comprise. Sinon : rien d'autre.
+
+### Comment vérifier
+
+**La prise en charge** : lancez une tâche programmée dans le cloud. Son dépôt doit commencer par un
+compte rendu, et noter l'heure réelle, l'accès utilisé, l'état des connecteurs, le nombre d'éléments
+listés et l'absence (ou la présence) d'une autre session.
+
+**Le retour** : à la session suivante, l'agent doit vous dire ce compte rendu avant toute autre
+chose.
+
+**Le test qui compte vraiment** : lancez deux tâches à la même minute sur le même dossier. Aucune ne
+doit remplacer un fichier de mémoire. Si l'une le fait, le point 6 de la prise en charge n'est pas lu.
+
+---
+
 ## 0.15.1 → 0.15.2
 
 ### Ce qui change

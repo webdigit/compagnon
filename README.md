@@ -72,6 +72,7 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `PUBLICATION.md` | Les règles d'écriture du gabarit, pour qui le fait évoluer |
 | `FORMAT.md` | La part du format que l'écran de lecture interprète, donc ce qu'on ne casse pas sans le savoir |
 | `template/` | Le gabarit canonique : les fichiers stériles, à instancier |
+| `hotes/` | Les guides d'hôte : comment travailler sans poste allumé, service par service (Google Drive, tâches programmées de Claude). Recopiés dans `procedures.md` à l'installation |
 | `ecran/` | L'écran de lecture, **facultatif** : un fichier à ouvrir d'un double-clic, qui affiche l'instance |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
