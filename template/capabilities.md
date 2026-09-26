@@ -88,6 +88,7 @@ rendre un jugement sans évaluation._
 | Propositions d'action | *Proposer* une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT | toutes |
 | Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles | de base | ✅ OUVERT | toutes |
 | Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | ✅ OUVERT | toutes |
+| Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | ✅ OUVERT | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers *(demandable à partir de junior)*
 
@@ -95,11 +96,13 @@ rendre un jugement sans évaluation._
 > déposer un brouillon là où il sera trouvé, créer une trace interne.
 >
 > **Une ligne par compétence.** La même capacité ouverte sur deux compétences fait deux lignes, et
-> chacune a sa propre décision au registre.
+> chacune a sa propre décision au registre. Une capacité qui porte sur la mémoire elle-même, et non
+> sur une compétence, porte `mémoire`.
 
 | Capacité | Ce que ça permet | Condition | Statut | Compétence |
 |---|---|---|---|---|
 | `<capacité>` | `<ce que ça permet>` | grade junior · `<condition chiffrée>` · aucune erreur ouverte ni corrigée sur la compétence · accord | 🔒 VERROUILLÉ | `<C01>` |
+| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct par remplacement (NOYAU §5quater) **le journal des cas, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | 🔒 VERROUILLÉ | mémoire |
 
 ## Niveau 3 et au-delà
 

@@ -60,7 +60,8 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > **La colonne `Compétence` n'est pas facultative.** C'est elle que l'évaluation compte : sans elle,
 > l'échéance « 10 cas » n'a rien à compter, et une erreur ne sait pas quelle compétence elle freine.
 > Précisez dans `Corrections` si elles portaient sur le **fond** ou sur la **forme** : seul le fond
-> compte pour les grades.
+> compte pour les grades. Un cas traité sans opérateur (tâche de nuit, run programmé) porte
+> `non relu` : il compte pour le volume, jamais comme un cas sans correction (NOYAU §5quater).
 
 | # | Date | Sujet | Corrections | Trace | Compétence |
 |---|---|---|---|---|---|

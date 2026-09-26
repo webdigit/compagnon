@@ -1259,6 +1259,28 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
 
     document.getElementById("app").innerHTML = h.join("");
     brancherSources(etat);
+    verifierAttente(chemin, etat);
+  }
+
+  /* Un run qui n'a pas pu réécrire l'état (tâche de nuit, hôte en création
+     seule) pose _ecran/attente.js. L'écran le cherche à côté de son état et,
+     s'il porte une date, dit qu'il n'est pas à jour. Absent ou nul : rien. */
+  function verifierAttente(chemin, etat) {
+    var s = document.createElement("script");
+    s.src = chemin.replace(/etat\.js$/, "attente.js");
+    s.onload = function () {
+      var a = window.COMPAGNON_ATTENTE;
+      if (!a || !a.depuis) return;
+      var div = document.createElement("div");
+      div.className = "alerte";
+      div.innerHTML = "<strong>Cet écran n'est pas à jour</strong>Des mises à jour attendent d'être " +
+        "intégrées depuis le <span class=\"mono\">" + e(a.depuis) + "</span>, après l'arrêt de cet " +
+        "état (<span class=\"mono\">" + e(etat.arrete_le || "?") + "</span>). Elles sont dans " +
+        "<code>_a-integrer/</code> ; la prochaine session avec l'opérateur les intègre et régénère l'écran.";
+      var app = document.getElementById("app");
+      app.insertBefore(div, app.firstChild);
+    };
+    document.head.appendChild(s);
   }
 
   /* « depuis 19 jours », mesuré par rapport à l'instant où l'état a été arrêté,

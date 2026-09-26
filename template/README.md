@@ -28,6 +28,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | **`procedures.md` (ici)** | Le **comment** technique que personne d'autre ne tient | Auto (agent) |
 | **`<vos documents de référence>`** | Le contexte métier stable, daté | Manuelle |
 | **`_archive/`** | L'**historique scellé** | **Dépôt seul** : on ajoute, on ne modifie ni ne supprime |
+| **`_a-integrer/`** | Les **mises à jour à intégrer** d'une session qui ne pouvait pas, ou ne devait pas, réécrire ses fichiers seule | Créées par l'agent, intégrées avec l'opérateur puis archivées |
 
 > Frontière nette : une **règle de décision** vit ici, dans `learned-rules.md`. Une **procédure
 > d'outil** vit là où l'outil est documenté ; quand personne ne le documente, elle vit dans

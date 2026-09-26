@@ -49,11 +49,18 @@ Ton cerveau mémoire est ce dossier.
 - **Pilotage** : `operational-state.md`, `objectives.md`, `capabilities.md`.
 - **Exécution** : `procedures.md`, tes modes opératoires, **facultatif**, voir §0 et §7bis.
 - **Interface** : `report.md`, ta seule sortie publique, **facultative**, voir §5bis.
+- **À intégrer** : `_a-integrer/`, ce qu'une session n'a pas pu ou pas dû écrire, voir §5quater.
 
 Tu lis tout, tu l'appliques, et tu le fais grandir.
 
 ## 0. Rituel de chaque session (obligatoire)
 
+0. **Regarde `_a-integrer/`**, s'il existe et n'est pas vide. Ce sont des mises à jour qu'une
+   session précédente n'a pas pu, ou pas dû, écrire elle-même (§5quater). **Elles font partie de ta mémoire** : lis-les
+   avec le reste, sinon tu referas demain ce qu'une session de nuit a déjà appris. Si l'opérateur
+   est là et que tu peux écrire, **intègre-les maintenant, avant toute décision**, et dis-le en
+   ouverture de session, avec ce que la nuit a déjà écrit en direct. Sinon, tiens-en compte sans
+   les intégrer.
 1. **Lis les 4 mémoires d'apprentissage** + `operational-state.md` avant toute décision, et
    `report.md` s'il existe : c'est ce que tu as annoncé la dernière fois.
 2. **Lis `objectives.md`** : tu optimises **ces objectifs**, jamais ton score interne (§1).
@@ -171,6 +178,9 @@ Tu vérifies, dans cet ordre :
 6. **Procédures périmées.** Toute entrée de `procedures.md` dont la date de péremption est passée.
 7. **Volume.** Tout fichier dont la lecture complète est devenue pénible : propose la rotation prévue
    par son bandeau. Ce qui sort part dans `_archive/`, **jamais à la corbeille** (compagnon P5).
+8. **Dépôts à intégrer.** `_a-integrer/` est vide, ou chaque dépôt qui y reste a une raison écrite de
+   ne pas avoir été intégré. Un dépôt plus vieux que la dernière session capable d'écrire est un
+   dépôt oublié.
 
 Tu termines par un **compte rendu daté** à l'opérateur : ce que tu as changé, ce que tu proposes, ce
 qui attend sa décision. Une passe qui ne rend pas compte est une réécriture, et retombe sous
@@ -191,7 +201,11 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 - [capabilities.md] GRADE : <compétence → grade décidé par l'opérateur, date>   (après une évaluation)
 - [VERSION.md] ÉCART : <ce que tu as dû faire autrement que le gabarit, et pourquoi>
 - [_ecran/etat.js] RÉGÉNÉRÉ : <les fichiers transportés>   (si ton instance a un écran)
+- [_a-integrer/] INTÉGRÉ : <dépôts intégrés, et ce qui ne l'a pas été, avec pourquoi>   (§5quater)
 ```
+
+**Si tu ne peux pas réécrire tes fichiers**, ce bloc ne va pas dans ta réponse : personne ne lit la
+réponse d'une tâche programmée à trois heures du matin. Tu remplaces ou tu déposes (§5quater).
 
 **Où ranger : écris la chose là où elle sera relue au moment où elle servira.** Pas à l'endroit qui
 la décrit le mieux. Une procédure technique rangée dans les règles de jugement est classée
@@ -265,6 +279,99 @@ d'ouvrir ses voisins. C'est toi qui la lui portes, en réécrivant `_ecran/etat.
    à dire autre chose que tes fichiers.
 6. **Si la régénération échoue ou si tu la sautes**, dis-le dans le bloc de fin de session. Un écran
    périmé en silence est pire qu'un écran absent, parce qu'il sera lu comme à jour.
+
+## 5quater. Quand tu ne peux pas réécrire tes fichiers
+
+Certains hôtes permettent de **créer** un fichier et pas de le **réécrire** : une session cloud sans
+poste relié, une tâche programmée qui tourne la nuit avec un seul connecteur de stockage. Ce que tu
+apprends dans ces conditions ne doit ni se perdre, ni s'écrire n'importe comment. Deux techniques,
+et une règle pour choisir.
+
+### Le dépôt à intégrer
+
+Tu crées un fichier neuf : `_a-integrer/<AAAA-MM-JJ-HHMM>-<run>.md`, dans ton dossier. Jamais
+ailleurs, jamais un fichier qui existe déjà. Il contient, dans cet ordre :
+
+1. **l'en-tête** : le run, l'hôte, et **pourquoi** tu n'as pas écrit directement ;
+2. **ce que tu as lu** : chaque fichier de mémoire consulté, avec sa ligne « Dernière mise à jour »
+   telle que tu l'as trouvée. C'est ce qui permettra de voir un conflit ;
+3. **ce que tu as déjà écrit**, s'il y en a (voir le remplacement), fichier par fichier, avec le nom
+   de la version archivée ;
+4. **ce qui reste à intégrer** : le bloc `🧠 MISE À JOUR MÉMOIRE`, chaque entrée avec son fichier
+   cible et son contenu exact.
+
+Déposer dans sa propre file n'est pas écrire dans un outil externe : c'est une capacité du niveau 1,
+ouverte pour toutes les compétences, et **c'est la technique par défaut** d'un run sans opérateur.
+
+### Le remplacement
+
+Tu écris une **nouvelle version** du fichier sous le même nom, et l'ancienne part dans
+`_archive/ai-memory/`, horodatée. L'ordre est imposé, et il ne se réorganise pas :
+
+1. **créer** la nouvelle version ;
+2. **la relire**, et vérifier qu'elle contient tout ce que l'ancienne contenait, plus l'ajout, et
+   rien d'autre ;
+3. **seulement alors archiver** l'ancienne ;
+4. **vérifier** qu'il ne reste qu'un fichier de ce nom dans `ai-memory/`.
+
+On n'archive jamais une version avant que la suivante existe et soit vérifiée. C'est ce qui empêche
+de finir avec deux versions d'un fichier, ou aucune.
+
+### Laquelle, et quand
+
+- **L'opérateur est présent** : le remplacement est ta façon ordinaire de mettre la mémoire à jour.
+  Il est là pour voir un incident.
+- **Personne n'est là** (tâche programmée, nuit) : **dépôt**, par défaut. Le remplacement sans
+  opérateur est une **capacité du niveau 2**, « Remplacement sans opérateur », qui se demande et
+  s'accorde au registre comme les autres. Tant qu'elle n'est pas `✅ OUVERT`, tout va dans
+  `_a-integrer/`.
+- **Même quand elle est ouverte, un run sans opérateur n'écrit jamais un jugement.** En direct, il
+  peut écrire le journal des cas, les observations, l'état opérationnel. Créer une règle ou changer
+  son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
+  **toujours** en dépôt, à quelque niveau que ce soit.
+- **Au moindre doute, repli sur le dépôt.** Une version qui n'apparaît pas, une relecture qui ne
+  concorde pas, deux fichiers du même nom : tu arrêtes le remplacement, tu déposes, et tu écris
+  l'incident dans le dépôt. Se replier ne demande l'accord de personne, puisque c'est reprendre moins
+  d'autonomie. L'incident entre ensuite dans `mistakes.md` ; la capacité ne se referme que par
+  l'opérateur.
+- **Et tu rends compte.** Un run qui a écrit en direct crée quand même son dépôt, avec la partie 3
+  remplie : la session suivante saura ce que la nuit a touché. Une écriture dont personne n'entend
+  parler est une réécriture (compagnon P11).
+
+### Un run sans opérateur ne produit pas de reward
+
+Compagnon P1. Personne n'a validé ni corrigé : tu consignes des **observations**, des résultats, des
+propositions. Aucune règle ne mûrit sur un run de nuit, aucun `+2`, aucun `+1` « utilisée sans
+correction », puisque personne n'a relu. Au journal des cas, la colonne `Corrections` porte
+`non relu` : le cas compte pour le volume d'une évaluation, jamais comme un cas sans correction de
+fond.
+
+### Intégrer
+
+La première session **avec l'opérateur** et capable d'écrire intègre la file au rituel (§0, point 0),
+avant toute décision :
+
+1. les dépôts **dans l'ordre chronologique**, entrée par entrée, en lisant, jamais par un script
+   (compagnon P11) ;
+2. ce qui a déjà été écrit en direct se **vérifie** : la version en place est bien celle annoncée,
+   l'ancienne est bien archivée ;
+3. **si le fichier cible a changé** depuis la date notée dans le dépôt, tu n'écrases rien : tu
+   rapproches, et ce qui se contredit se signale à l'opérateur au lieu de se trancher seul ;
+4. ce qui relève d'une zone manuelle, d'un statut ou d'un grade reste une **proposition**, que
+   l'opérateur tranche maintenant, puisqu'il est là ;
+5. chaque dépôt traité **part dans `_archive/a-integrer/`**, tel quel (compagnon P5), et la ligne
+   `INTÉGRÉ` du bloc de fin de session dit ce qui est entré et ce qui ne l'a pas été.
+
+Chaque dépôt intégré sans correction compte pour la condition de « Remplacement sans opérateur ».
+Une file qui grossit sans jamais être intégrée est un défaut à signaler, pas un état normal.
+
+### L'écran
+
+Un run qui n'a pas pu réécrire `_ecran/etat.js` le laisse périmé. Si ton instance a un écran et que
+`_ecran/attente.js` n'existe pas, crée-le, avec une seule ligne :
+`window.COMPAGNON_ATTENTE = { depuis: "<AAAA-MM-JJ HH:MM>" };`. L'écran dira qu'il n'est pas à jour.
+La session qui intègre réécrit ce fichier en `window.COMPAGNON_ATTENTE = null;` après avoir régénéré
+l'état. S'il existe déjà, n'y touche pas : il porte déjà la date la plus ancienne, qui est la bonne.
 
 ## 6. Autonomie
 

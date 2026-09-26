@@ -57,6 +57,11 @@ violation, la plus grave de l'échelle.
 C'est le principe qui empêche le système de dériver. Un agent qui s'auto-évalue et qui poursuit sa
 propre métrique finit par optimiser la métrique.
 
+Corollaire : **un run sans opérateur ne produit pas de reward.** Une tâche programmée qui tourne la
+nuit observe, produit, propose ; personne ne valide ni ne corrige. Elle ne peut donc faire mûrir
+aucune règle, et un cas qu'elle traite n'est pas un cas « sans correction » : c'est un cas que
+personne n'a relu. Le compter comme une validation, c'est laisser le silence noter l'agent.
+
 ### P2. Une correction isolée ne fait jamais une règle
 
 L'apprentissage suit une chaîne ordonnée, sans raccourci :

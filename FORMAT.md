@@ -9,9 +9,9 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **2**, introduite avec compagnon 0.14.0. La version 1 (0.13.0) reste lue sans
-erreur : tout ce que la 2 ajoute est facultatif, et un fichier qui ne le porte pas s'affiche comme
-avant.
+Version du contrat : **3**, introduite avec compagnon 0.15.0. Les versions 1 (0.13.0) et 2 (0.14.0)
+restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
+le porte pas s'affiche comme avant.
 
 ---
 
@@ -67,6 +67,16 @@ pense. Autant qu'il ne contienne ni le NOYAU ni les procédures.
 
 L'écran affiche en pied de page ce qu'il a reçu et ce qu'il n'a pas reçu, pour qu'une absence se
 voie au lieu de disparaître en silence.
+
+### Le témoin d'attente (contrat 3)
+
+`_ecran/attente.js`, à côté de `etat.js`, est **facultatif** et tient en une ligne :
+`window.COMPAGNON_ATTENTE = { depuis: "<AAAA-MM-JJ HH:MM>" };`, ou `= null;`. Un run qui n'a pas pu
+régénérer l'état le crée s'il n'existe pas (NOYAU §5quater) ; la session qui intègre le remet à
+`null`. S'il porte une date, l'écran affiche en tête qu'il n'est pas à jour, depuis quand, et où
+attendent les mises à jour. Absent, nul ou illisible : l'écran n'affiche rien de plus. Ce fichier
+existe parce qu'un hôte en création seule ne peut pas réécrire `etat.js` : sans lui, un écran périmé
+aurait l'air à jour, exactement ce que le §5ter veut empêcher.
 
 ## 4. Règle d'échappement de `etat.js`
 

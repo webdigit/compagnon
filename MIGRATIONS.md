@@ -143,6 +143,86 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.14.0 → 0.15.0
+
+### Ce qui change
+
+**Ce qu'une session ne peut pas écrire ne se perd plus.** Certains hôtes permettent de créer un
+fichier et pas de le réécrire : une session cloud sans poste relié, une tâche programmée de nuit avec
+un seul connecteur de stockage. Jusqu'ici, le bloc de fin de session finissait dans la réponse, et
+personne ne lit la réponse d'une tâche de 3 h du matin. Ce qui avait été appris la nuit était perdu.
+Le défaut a été trouvé sur une instance en service, qui l'a déclaré comme écart : c'est R4 de
+`PUBLICATION.md` qui fonctionne.
+
+**Deux techniques, décrites au nouveau NOYAU §5quater.**
+
+- **Le dépôt à intégrer** : un fichier neuf dans `_a-integrer/`, qui dit ce qui a été lu, ce qui a
+  déjà été écrit et ce qui reste à intégrer. C'est une capacité du niveau 1, ouverte d'office.
+- **Le remplacement** : une nouvelle version du fichier sous le même nom, l'ancienne dans
+  `_archive/ai-memory/`, dans un ordre imposé (créer, relire, archiver, vérifier).
+
+**La règle pour choisir.** Opérateur présent : le remplacement est la façon ordinaire d'écrire.
+Personne n'est là : dépôt par défaut. Le remplacement sans opérateur devient une **capacité du niveau
+2**, qui se mérite (dépôts intégrés sans correction) et s'accorde au registre. Même ouverte, elle
+n'écrit jamais un jugement : règles et statuts, erreurs, zones manuelles, grades et demandes vont
+toujours en dépôt. Au moindre doute, l'agent se replie sur le dépôt sans rien demander.
+
+**Un run sans opérateur ne produit pas de reward.** C'est un nouveau corollaire de compagnon P1. Un
+cas traité la nuit porte `non relu` au journal : il compte pour le volume d'une évaluation, jamais
+comme un cas sans correction.
+
+**L'intégration se fait au rituel** (NOYAU §0, nouveau point 0), avec l'opérateur, avant toute
+décision. Les dépôts traités partent dans `_archive/a-integrer/`.
+
+**L'écran** passe au contrat de format 3 : s'il trouve `_ecran/attente.js` avec une date, il dit en
+tête qu'il n'est pas à jour et depuis quand.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : reprendre depuis cette étiquette la liste des couches, le §0 point 0, le §4bis point 8,
+  la fin du bloc du §5 et la phrase qui le suit, et le nouveau §5quater.
+- **`capabilities.md`** : ajouter au niveau 1 la ligne « Dépôt à intégrer », `✅ OUVERT`, `toutes`.
+  Ajouter au niveau 2 la ligne « Remplacement sans opérateur », **`🔒 VERROUILLÉ`**, compétence
+  `mémoire`, avec la condition du gabarit. Reprendre le bandeau du niveau 2.
+- **`operational-state.md`** : reprendre le bandeau du journal des cas (`non relu`).
+- **`README.md`** de l'instance : ajouter la ligne `_a-integrer/` à la carte des fichiers.
+- **Créer le dossier `_a-integrer/`**, vide, à côté de `_archive/`.
+- **Si l'instance avait déjà un mécanisme local** déclaré en écart (autre nom de dossier, procédure
+  de remplacement propre), l'aligner sur le gabarit, puis retirer l'écart de `VERSION.md` en
+  indiquant qu'il est couvert par la 0.15.0. Les dépôts déjà créés s'intègrent normalement ; le
+  dossier précédent, une fois vide, se signale à l'opérateur, qui le supprime lui-même.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU.** Tant qu'il n'est pas recollé, une tâche de nuit continue de perdre ce
+  qu'elle apprend.
+- **Vérifier que les tâches programmées lisent bien le NOYAU.** Une tâche de nuit dont la consigne
+  ne charge pas les Instructions du projet ne connaîtra jamais le §5quater.
+- **Ne rien accorder tout de suite.** « Remplacement sans opérateur » part verrouillé, même si une
+  instance faisait déjà autrement. Il se demande quand la condition est remplie, et vous tranchez
+  alors.
+- **Si l'écran est posé** : remplacer `compagnon.html` par celui de cette étiquette.
+
+### Comment vérifier
+
+**Le dépôt** : lancez une tâche programmée sans poste relié. Au matin, `_a-integrer/` doit contenir
+un fichier daté, et aucun fichier de `ai-memory/` ne doit avoir changé. Si un fichier a changé, la
+capacité de niveau 2 a été prise sans être accordée : c'est une erreur de principe.
+
+**Le jugement** : si la tâche de nuit a rencontré un cas qui confirme une règle, le dépôt doit le
+consigner comme observation, sans `+1` ni `+2`, et la règle ne doit pas avoir changé de statut.
+
+**L'intégration** : ouvrez une session. L'agent doit annoncer le dépôt avant toute autre chose,
+l'intégrer, dire ce qui est entré et ce qui attend votre décision, puis le déplacer dans
+`_archive/a-integrer/`.
+
+**Le test qui compte vraiment** : modifiez à la main, dans la journée, un fichier que le dépôt de la
+nuit vise aussi. À l'intégration, l'agent doit voir le conflit, grâce à la date notée dans le dépôt,
+et vous le soumettre. S'il écrase votre modification ou la sienne sans rien dire, la partie 2 du
+dépôt n'est pas remplie ou pas lue.
+
+---
+
 ## 0.13.0 → 0.14.0
 
 ### Ce qui change

@@ -21,7 +21,7 @@
 window.COMPAGNON_ETAT = {
 
   schema: "compagnon/etat/1",
-  gabarit: "0.14.0",
+  gabarit: "0.15.0",
   instance: "Comptoir",
   operateur: "L. Marchal",
   projet: "C:\\Comptoir",
@@ -268,6 +268,7 @@ _Dernière mise à jour : 15/09/2026._
 | Propositions d'action | Proposer une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT | toutes |
 | Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles | de base | ✅ OUVERT | toutes |
 | Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée | de base | ✅ OUVERT | toutes |
+| Dépôt à intégrer | Créer un dépôt dans _a-integrer/ quand la mémoire ne peut pas être réécrite, ou que personne n'est là | de base | ✅ OUVERT | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers
 
@@ -331,7 +332,7 @@ _État arrêté au 24/09/2026, 08:10._
 - **Compétences, grades et autonomie** : tenus dans \`capabilities.md\`. Ils ne se recopient pas ici.
 - **C01 réponse-disponibilité** : les demandes de disponibilité et de délai.
 - **C02 relance-fournisseur** : les relances de commandes en retard, activée le 08/09/2026.
-- Gabarit de référence : **compagnon 0.14.0** (voir \`VERSION.md\`).
+- Gabarit de référence : **compagnon 0.15.0** (voir \`VERSION.md\`).
 
 ## Rituel de collaboration
 
@@ -434,12 +435,12 @@ correction de forme ne compte pas comme un échec.
 | | |
 |---|---|
 | **Gabarit** | compagnon |
-| **Version courante** | **0.14.0** |
+| **Version courante** | **0.15.0** |
 | **Dépôt de référence** | \`https://github.com/webdigit/compagnon.git\` |
 | **Instance** | Comptoir, L. Marchal, Comptoir srl |
 | **Posée le** | 18/08/2026 |
-| **Alignée sur** | \`v0.14.0\` au commit \`b7e20d4\` |
-| **Écran** | posé, version 0.14.0 |
+| **Alignée sur** | \`v0.15.0\` au commit \`c41a9e7\` |
+| **Écran** | posé, version 0.15.0 |
 
 ## Historique
 
@@ -449,6 +450,7 @@ correction de forme ne compte pas comme un échec.
 | 09/09/2026 | 0.11.0 → 0.12.0 | Rappel des demandes en attente au rituel de session. |
 | 15/09/2026 | 0.12.0 → 0.13.0 | Pose de l'écran de lecture, création de _ecran/. |
 | 17/09/2026 | 0.13.0 → 0.14.0 | Grades par compétence. C01 évaluée le jour même : junior accordé. Colonne Compétence au journal. |
+| 23/09/2026 | 0.14.0 → 0.15.0 | Dossier _a-integrer/ créé, vide. Remplacement sans opérateur non demandé. |
 
 ## Écarts assumés par rapport au gabarit
 

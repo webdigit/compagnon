@@ -10,6 +10,39 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.15.0] - 2026-09-26
+
+### Ajouté
+
+- **NOYAU §5quater : quand tu ne peux pas réécrire tes fichiers.** Deux techniques. Le **dépôt à
+  intégrer**, un fichier neuf dans `_a-integrer/` qui dit ce qui a été lu, ce qui a déjà été écrit et
+  ce qui reste à intégrer. Le **remplacement**, une nouvelle version sous le même nom et l'ancienne
+  archivée, dans un ordre qui ne se réorganise pas : créer, relire, archiver, vérifier.
+- **Une règle pour choisir.** Opérateur présent : remplacement. Personne : dépôt, sauf capacité
+  accordée. « Remplacement sans opérateur » est une capacité du niveau 2, qui se mérite sur des dépôts
+  intégrés sans correction. Même accordée, elle n'écrit jamais un jugement.
+- **Corollaire de compagnon P1 : un run sans opérateur ne produit pas de reward.** Personne n'a
+  relu : un cas de nuit est `non relu`, pas « sans correction ».
+- **NOYAU §0 point 0** : la file se lit avec la mémoire, et s'intègre avec l'opérateur avant toute
+  décision.
+- **Le témoin d'attente de l'écran** (contrat de format 3) : `_ecran/attente.js`, créé par un run
+  qui n'a pas pu régénérer l'état. L'écran dit alors qu'il n'est pas à jour.
+
+### La leçon
+
+Le défaut n'était pas visible depuis le poste de l'auteur, et il ne pouvait pas l'être. Toutes les
+instances jusqu'ici tournaient avec un opérateur devant l'écran et un disque qui se réécrit. La
+première à tourner la nuit, sur un stockage en création seule, a perdu en une semaine ce qu'elle
+apprenait, l'a vu, et l'a déclaré comme écart. C'est R3 et R4 de `PUBLICATION.md`, dans l'ordre.
+
+L'autre leçon est dans le choix. L'instance proposait trois options ; l'opérateur en a retenu une
+quatrième, qui n'était sur aucune liste : **écrire seul est une capacité comme une autre.** Au début
+tout passe par le dépôt ; une fois la confiance faite, l'écriture directe s'accorde ; au moindre
+doute, on revient au dépôt. Ce n'était pas un problème de stockage à résoudre, c'était un cran de
+plus sur l'échelle, et la méthode avait déjà tout ce qu'il fallait pour le gérer.
+
+---
+
 ## [0.14.0] - 2026-09-24
 
 ### Ajouté
