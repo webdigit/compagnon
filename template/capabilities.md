@@ -26,7 +26,7 @@ Légende : `✅ OUVERT` · `🔓 DEMANDÉ` (attend une décision) · `🔒 VERRO
 ## Grades par compétence
 
 > **Un grade résume ce que les autres fichiers prouvent déjà.** Il ne compte rien lui-même : les cas
-> sont au journal d'`operational-state.md`, les règles et leur statut dans `learned-rules.md`, les
+> sont au journal des cas (`journal/`), les règles et leur statut dans `learned-rules.md`, les
 > erreurs dans `mistakes.md` (compagnon P7). Ce qu'il ajoute est une **décision** : l'opérateur a
 > regardé ces preuves, à une date, et il en a conclu quelque chose.
 >
@@ -102,7 +102,7 @@ rendre un jugement sans évaluation._
 | Capacité | Ce que ça permet | Condition | Statut | Compétence |
 |---|---|---|---|---|
 | `<capacité>` | `<ce que ça permet>` | grade junior · `<condition chiffrée>` · aucune erreur ouverte ni corrigée sur la compétence · accord | 🔒 VERROUILLÉ | `<C01>` |
-| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct par remplacement (NOYAU §5quater) **le journal des cas, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | 🔒 VERROUILLÉ | mémoire |
+| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct (NOYAU §5quater) **son fichier de journal, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | 🔒 VERROUILLÉ | mémoire |
 
 ## Niveau 3 et au-delà
 

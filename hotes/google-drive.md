@@ -53,9 +53,13 @@ pas de troisième voie.
    Un fichier qui grossit, remplacé souvent, fait croître l'archive bien plus vite que lui. Chez
    Pilote, en un jour et demi : environ 1 Mo et 70 fichiers, dont 19 versions d'`operational-state`
    en une seule journée (de 3,5 à 20 Ko, parfois à cinq minutes d'écart) et 13 versions d'une
-   synthèse de 4 à 52 Ko. Ces deux fichiers faisaient près de 60 % de l'archive. Remède : remplacer
-   par lot (NOYAU §5quater, une fois par point d'étape, une fois par run sans opérateur). Prouvé
-   (constat du 26/09/2026).
+   synthèse de 4 à 52 Ko. Ces deux fichiers faisaient près de 60 % de l'archive. Remèdes : remplacer
+   par lot (NOYAU §5quater, une fois par point d'étape, une fois par run sans opérateur, depuis
+   0.16.1) ; sortir de l'état ce qui ne fait que s'ajouter, le journal des cas (`journal/`, un
+   fichier par session, depuis 0.17.0). Un document de travail qui grossit (une synthèse, un
+   compte rendu cumulatif) suit la même logique : un complément daté plutôt qu'une nouvelle version
+   entière, et une consolidation rare, en séance avec l'opérateur. Constat prouvé (26/09/2026) ;
+   effet des remèdes non encore mesuré.
 
 ### Côté poste (quand un ordinateur est relié)
 
@@ -140,7 +144,7 @@ Préconditions : prise en charge tenue (NOYAU §5quinquies), en particulier le p
 3. Éditer une copie par script (jamais retaper un fichier de mémoire de tête), avant le marqueur. Le marqueur garde le vrai nom.
 4. Heure : TZ=<fuseau> date '+%Y-%m-%d-%H%M'. create_file sous le nom provisoire <nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>, même parent, conversion désactivée.
 5. Vérifier avant tout archivage : le provisoire est à la bonne taille ; téléchargement brut identique octet pour octet à la copie éditée ; diff avec l'ancien : seules les lignes voulues changent, le marqueur est la dernière ligne.
-6. update_file de l'ancien : titre <nom>-avant-<AAAA-MM-JJ-HHMM>.<ext>, parent = _archive/ai-memory/.
+6. update_file de l'ancien : titre <nom>-avant-<AAAA-MM-JJ-HHMM>.<ext>, parent = _archive/ai-memory/<AAAA-MM>/ (dossier du mois créé s'il manque : create_file, mimeType dossier).
 7. Relister : plus aucun fichier du vrai nom dans le dossier. Sinon : arrêt, dépôt, rien renommer.
 8. update_file du provisoire : titre <nom>.<ext>.
 9. Relister : exactement un fichier du vrai nom (l'ID du provisoire), aucun provisoire ; l'ancien est dans l'archive avec son marqueur.

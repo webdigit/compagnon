@@ -10,6 +10,34 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.17.0] - 2026-09-26
+
+### Changé
+
+- **Le journal des cas quitte `operational-state.md`** pour `ai-memory/journal/`, un fichier par
+  session qui a traité des cas, créé en fin de session et jamais réécrit (NOYAU §5, « Le journal des
+  cas »). Les numéros se suivent d'un fichier à l'autre ; un cas passé se corrige dans les
+  « Rectifications » de la session qui le constate. `operational-state.md` redevient un état court :
+  à sa place, la section « Cas traités » ne garde que le dernier numéro inscrit.
+- **L'évaluation compte les cas dans `journal/`** (NOYAU §0 point 3, `capabilities.md`,
+  `mistakes.md`). Un fichier qui ne compte plus pour aucune évaluation peut partir dans
+  `_archive/journal/<AAAA-MM>/` par simple déplacement.
+- **L'archive se range par mois** : tout nouveau dépôt va dans le sous-dossier `<AAAA-MM>` de sa
+  rubrique. Ce qui y est déjà reste où il est.
+- **Écran, contrat 4** : `etat.js` transporte tous les fichiers de `journal/`, et l'écran y compte
+  les cas en plus de ceux qu'`operational-state.md` porterait encore. Les contrats 1 à 3 restent
+  lus.
+- **Intégrer un dépôt** : ses cas entrent dans le journal de la session qui intègre (§5quater).
+
+### La leçon
+
+L'archive enflait parce que l'état portait son historique. Un fichier qui ne fait que s'allonger
+n'a rien à faire dans un fichier qu'on remplace : chaque remplacement recopiait tout le passé. Sur
+un stockage en création seule, la forme naturelle d'un historique est une suite de fichiers créés
+une fois.
+
+---
+
 ## [0.16.1] - 2026-09-26
 
 ### Corrigé

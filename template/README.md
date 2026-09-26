@@ -51,6 +51,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | Fichier | Rôle | Écriture |
 |---|---|---|
 | `operational-state.md` | Tableau de bord vivant : état, points chauds | Auto (agent) |
+| `journal/` | Les cas traités, un fichier par session, créé une fois et jamais réécrit | Auto (agent), création seule |
 | `objectives.md` | Les cibles de qualité | Cibles = **opérateur** · Progression = auto |
 | `capabilities.md` | Les grades et les actions autorisées, compétence par compétence | Catalogue, grille, grades = **opérateur** · Demandes et évaluations dues = auto |
 

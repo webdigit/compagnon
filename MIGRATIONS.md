@@ -147,6 +147,73 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.16.1 → 0.17.0
+
+### Ce qui change
+
+**Le journal des cas sort d'`operational-state.md`.** Il vit désormais dans `ai-memory/journal/`,
+un fichier par session, créé une fois et jamais réécrit. `operational-state.md` redevient un état
+court, et son remplacement ne recopie plus tout l'historique dans l'archive. L'évaluation compte
+les cas dans `journal/`.
+
+**L'archive se range par mois**, pour ce qui y entre désormais.
+
+**L'écran passe au contrat 4** : il lit les cas dans `journal/`.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 3 (compte des cas), §5 (bloc de fin de session, « Le journal des
+  cas », `_archive/` par mois), §5ter point 2, §5quater (sous-dossiers du mois, « Intégrer »
+  point 3bis, « Laquelle, et quand »).
+- **`capabilities.md`, `mistakes.md`, `README.md`** : reporter les phrases qui renvoyaient au
+  « journal d'`operational-state.md` » (texte de cette étiquette). Structure seulement.
+- **Si l'instance a un écran** : remplacer `compagnon.html` par celui de cette étiquette ; à la
+  prochaine régénération, transporter aussi chaque fichier de `journal/`.
+
+### Le transfert du journal : l'agent propose, l'opérateur valide
+
+C'est la seule partie de cette migration qui déplace du contenu. Elle ne se fait donc ni par script
+ni sans accord (compagnon P11).
+
+1. **Lire `operational-state.md` en entier**, marqueur compris, par la voie brute.
+2. **Préparer** `ai-memory/journal/<AAAA-MM-JJ-HHMM>-reprise.md`, au format du NOYAU §5 : toutes
+   les lignes du journal des cas, **telles quelles**, dans leur ordre, sans rien renuméroter ni
+   reformuler. En tête, une ligne dit d'où elles viennent et à quelle date.
+3. **Montrer à l'opérateur** : le nombre de lignes, le premier et le dernier numéro, et le fichier
+   préparé. Rien ne s'écrit avant son accord.
+4. Sur son accord : **créer** le fichier de reprise, le **relire** par la voie brute et vérifier que
+   chaque ligne du journal d'origine s'y retrouve à l'identique, et que son marqueur est la dernière
+   ligne.
+5. **Seulement alors**, remplacer `operational-state.md` (§5quater, nom provisoire sur un hôte en
+   création seule) par une version où la section « Journal des cas » devient « Cas traités » (texte
+   de cette étiquette), avec le dernier numéro et le nom du fichier de reprise. Le reste du fichier
+   ne change pas. L'ancienne version part dans l'archive : c'est elle qui garde la preuve.
+6. Le bloc de fin de session liste le transfert : combien de lignes, de quel numéro à quel numéro.
+
+Si une ligne ne se retrouve pas à l'étape 4, on s'arrête : `operational-state.md` n'est pas touché,
+le fichier de reprise reste pour comparaison, et l'opérateur tranche.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier le marqueur `[fin de noyau-local.md]`.
+- **Valider le transfert du journal** (étape 3 ci-dessus).
+- **Ne rien déplacer dans `_archive/`** : l'ancien reste où il est, seul ce qui entre désormais se
+  range par mois.
+
+### Comment vérifier
+
+**Le transfert** : `operational-state.md` ne porte plus de tableau de cas, sa section « Cas
+traités » nomme le fichier de reprise, et ce fichier contient toutes les lignes d'avant.
+
+**La suite** : après une session qui traite un cas, un nouveau fichier apparaît dans `journal/`,
+et `operational-state.md` n'a été remplacé qu'une fois pour cette session.
+
+**Les grades** : demandez où en est l'évaluation d'une compétence. Le nombre de cas annoncé doit
+être le même qu'avant la migration.
+
+---
+
 ## 0.16.0 → 0.16.1
 
 ### Ce qui change

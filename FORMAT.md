@@ -9,8 +9,8 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **3**, introduite avec compagnon 0.15.0. Les versions 1 (0.13.0) et 2 (0.14.0)
-restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
+Version du contrat : **4**, introduite avec compagnon 0.17.0. Les versions 1 (0.13.0), 2 (0.14.0)
+et 3 (0.15.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
 le porte pas s'affiche comme avant.
 
 ---
@@ -52,7 +52,8 @@ personne n'y voie une panne.
 | `learned-rules.md` | oui | règles, hypothèses, contradictions |
 | `mistakes.md` | oui | erreurs et frein de l'autonomie |
 | `capabilities.md` | oui | grades, niveaux, interdits, registre |
-| `operational-state.md` | oui | niveau courant, points chauds, journal |
+| `operational-state.md` | oui | niveau courant, points chauds, et le journal des instances d'avant 0.17.0 |
+| `journal/*.md` (contrat 4) | oui, **tous**, sous la clé `journal/<nom>` | le journal des cas, un fichier par session |
 | `principles.md` | oui | socle, court |
 | `objectives.md` | oui | compétences visées |
 | `VERSION.md` | oui | version du gabarit et écarts |
@@ -156,7 +157,7 @@ L'écran lit les tableaux **par position de colonne**, pas par intitulé. Les in
 | `learned-rules.md`, hypothèses | id, hypothèse, origine, occurrences |
 | `learned-rules.md`, contradictions | id, objet, état |
 | `operational-state.md`, points chauds | numéro, sujet, attente |
-| `operational-state.md`, journal des cas | numéro, date, sujet, corrections, trace, compétence |
+| `operational-state.md` (avant 0.17.0) et chaque `journal/*.md`, journal des cas | numéro, date, sujet, corrections, trace, compétence |
 | `VERSION.md`, écarts | référence, écart, raison |
 | `VERSION.md`, historique | date, de vers, ce qui a été fait |
 | `report.md`, fait | numéro, objet, référence, vérifié par, validé par |
@@ -193,7 +194,10 @@ actuels », la colonne `Compétence` du journal des cas, celle des capacités et
 journal postérieurs à `Depuis le` et ajoute la durée de la grille à cette date. Il en tire la
 prochaine échéance, et il signale une évaluation que la grille dit due mais que le registre ne porte
 pas. Il ne déclare jamais une évaluation faite, ni un grade changé : seul le registre le fait.
-Quand le journal a été archivé en partie, le compte peut être trop bas ; le fichier fait foi.
+Depuis le contrat 4, les cas sont lus dans tous les fichiers `journal/` transportés, en plus de ceux
+qu'`operational-state.md` porterait encore ; un même numéro n'est compté qu'une fois. Les
+rectifications ne sont pas appliquées par l'écran. Quand le journal a été archivé en partie, ou
+qu'une rectification change un cas, le compte peut différer ; les fichiers font foi.
 
 ## 9. Les identifiants
 

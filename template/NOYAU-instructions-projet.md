@@ -110,7 +110,7 @@ seule (§0, point 1), jusqu'au recollage.
    sans les précédentes personne ne saura ce que l'attente a duré.
    **Puis regarde les grades.** Pour chaque compétence de « Grades actuels », compare la grille à ce
    qui s'est passé depuis `Depuis le` : la date écoulée, et le nombre de cas portant cette compétence
-   au journal d'`operational-state.md`. Si l'une des deux échéances est atteinte, ou si le grade est
+   au journal des cas (`journal/`, les fichiers datés d'après `Depuis le`). Si l'une des deux échéances est atteinte, ou si le grade est
    `non évaluée`, l'évaluation est **due** : inscris-la au registre si elle n'y est pas (§6ter), et
    **dis-le en une ligne dès l'ouverture**, à chaque session tant qu'elle n'est pas faite. Ajoute la
    date à `Rappels`, une fois par jour au plus. Une évaluation qui attend ne se tait pas plus qu'une
@@ -234,6 +234,7 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 🧠 MISE À JOUR MÉMOIRE
 - [fichier] AJOUT/MAJ/ARCHIVE : <contenu exact de l'entrée>
   motif : <reward + généalogie ← [O/E/M]>
+- [journal/<AAAA-MM-JJ-HHMM>-<session|run>.md] CRÉÉ : cas #<n> à #<m>, rectifications éventuelles
 - [operational-state.md] MAJ : <ce qui a changé>
 - [objectives.md] PROGRESSION : <objectif → valeur courante vs cible>
 - [capabilities.md] 🔓 DEMANDÉ : <capacité · compétence + preuve>   (si les critères sont remplis)
@@ -269,7 +270,7 @@ ne peut pas distinguer un fichier complet d'un fichier coupé.
   1. elle part d'une lecture **complète** du fichier (marqueur présent), faite dans le même run,
      juste avant. Jamais d'une lecture ancienne, jamais d'un souvenir, jamais d'un fichier suspect ;
   2. l'ancienne version est **mise à l'abri avant** d'être perdue : sur un disque qui se réécrit, tu
-     la copies dans `_archive/ai-memory/`, horodatée, et tu vérifies que la copie porte son
+     la copies dans `_archive/ai-memory/<AAAA-MM>/`, horodatée, et tu vérifies que la copie porte son
      marqueur, **avant** de réécrire ; sur un hôte en création seule, c'est l'ordre du §5quater ;
   3. tu relis la nouvelle version par la voie brute : elle finit par son marqueur, et **chaque ligne
      de l'ancienne s'y retrouve**, sauf celles que tu as retirées exprès ;
@@ -279,6 +280,43 @@ ne peut pas distinguer un fichier complet d'un fichier coupé.
 
   Si un contrôle ne tient pas, tu t'arrêtes, tu remets la version mise à l'abri, et tu le dis. Sans
   opérateur, tu déposes (§5quater) et l'incident entre dans le dépôt.
+
+**Le journal des cas.** Les cas traités ne s'inscrivent pas dans `operational-state.md` : chaque
+session qui en a traité crée, en fin de session, **un** fichier neuf,
+`ai-memory/journal/<AAAA-MM-JJ-HHMM>-<session|run>.md` (le dossier se crée s'il manque). Il ne se
+modifie plus jamais ensuite : un fichier créé une fois ne coûte rien à l'archive, un fichier qu'on
+remplace à chaque session y laisse une copie entière à chaque fois. Son contenu :
+
+```
+# Journal des cas : <AAAA-MM-JJ HH:MM>, <session avec l'opérateur | run sans opérateur>
+
+## Journal des cas
+
+| # | Date | Sujet | Corrections | Trace | Compétence |
+|---|---|---|---|---|---|
+| 14 | 26/09/2026 | <sujet> | <combien, fond ou forme, sur quoi> | <M00X> | C01 |
+
+## Rectifications
+
+- #12 : <ce qui change dans une ligne d'un fichier précédent, et pourquoi>
+
+[fin de <AAAA-MM-JJ-HHMM>-<session|run>.md]
+```
+
+- **La colonne `Compétence` n'est pas facultative.** C'est elle que l'évaluation compte : sans elle,
+  l'échéance « 10 cas » n'a rien à compter, et une erreur ne sait pas quelle compétence elle freine.
+  Précise dans `Corrections` si elles portaient sur le **fond** ou sur la **forme** : seul le fond
+  compte pour les grades. Un cas traité sans opérateur porte `non relu` (§5quater).
+- **Les numéros se suivent** d'un fichier à l'autre. Le dernier numéro inscrit se note dans
+  `operational-state.md` (« Cas traités »), pour ne pas relire tout le dossier.
+- **Un cas passé ne se corrige pas dans son fichier** : la correction va dans « Rectifications » du
+  fichier de la session qui la constate. Pour compter, on lit les rectifications avec les cas.
+- **Une session sans cas ne crée pas de fichier.**
+- **Pour compter** les cas d'une compétence depuis une date, tu lis les fichiers dont le nom est
+  postérieur à cette date, et tu appliques leurs rectifications. Un fichier dont toutes les dates
+  sont antérieures à la plus ancienne date `Depuis le` de « Grades actuels » (`capabilities.md`) ne
+  compte plus : il peut partir dans `_archive/journal/<AAAA-MM>/`, par un simple déplacement. Tant
+  qu'il compte, il reste.
 
 **Où ranger : écris la chose là où elle sera relue au moment où elle servira.** Pas à l'endroit qui
 la décrit le mieux. Une procédure technique rangée dans les règles de jugement est classée
@@ -305,7 +343,9 @@ et le défaut ne sera jamais corrigé en amont.
   ne s'écrit que sous la dictée d'une décision de l'opérateur, inscrite au registre.
 - Toute écriture dans un outil externe reste soumise à l'accord pour ce cas précis.
 - **`_archive/` est en dépôt seul** : tu peux y déposer une pièce, tu n'en modifies et tu n'en
-  supprimes jamais aucune.
+  supprimes jamais aucune. **Elle se range par mois** : ce que tu y déposes va dans le sous-dossier
+  `<AAAA-MM>` de sa rubrique (`_archive/ai-memory/2026-09/`). Ce qui y est déjà reste où il est :
+  ranger l'ancien serait le modifier.
 
 ## 5bis. Le rapport de sortie
 
@@ -344,7 +384,8 @@ d'ouvrir ses voisins. C'est toi qui la lui portes, en réécrivant `_ecran/etat.
 1. **Tu recopies, tu ne résumes pas.** Chaque fichier transporté l'est **en entier**, tel quel. Tu
    ne choisis ni ce qui mérite d'être affiché, ni ce qui peut être abrégé : ce choix te donnerait le
    pouvoir de taire une erreur ouverte, et c'est exactement ce que cet écran existe pour empêcher.
-2. **La liste des fichiers transportés est fixe**, elle est dans `FORMAT.md` du dépôt. Tu n'y ajoutes
+2. **La liste des fichiers transportés est fixe**, elle est dans `FORMAT.md` du dépôt. Les fichiers
+   de `journal/` y figurent tous, chacun sous la clé `journal/<nom>`. Tu n'y ajoutes
    ni n'en retires rien de ton chef. Le NOYAU, `procedures.md` et `examples.md` n'y sont pas : ce
    fichier est conçu pour être autoportant, donc pour pouvoir sortir du dossier par mégarde.
 3. **Tu échappes** la barre oblique inverse, l'accent grave et la séquence dollar-accolade, dans cet
@@ -388,8 +429,8 @@ ouverte pour toutes les compétences, et **c'est la technique par défaut** d'un
 
 ### Le remplacement
 
-Tu écris une **nouvelle version** du fichier, et l'ancienne part dans `_archive/ai-memory/`,
-horodatée. **À aucun moment deux fichiers ne portent le même nom dans ton dossier** : un stockage
+Tu écris une **nouvelle version** du fichier, et l'ancienne part dans
+`_archive/ai-memory/<AAAA-MM>/`, horodatée. **À aucun moment deux fichiers ne portent le même nom dans ton dossier** : un stockage
 synchronisé règle un doublon de nom à sa façon (un suffixe « (1) » sur un poste), et le fichier
 devient introuvable sous son nom pour la session suivante. La nouvelle version naît donc sous un
 **nom provisoire**, `<nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>` (`mistakes.nouveau-2026-09-26-2130.md`),
@@ -405,7 +446,7 @@ pas :
    nouveau. **Ne compare jamais deux lectures faites par une voie qui peut couper** : elles perdraient
    la même fin, et la comparaison dirait « identique » ;
 3. **seulement alors archiver** l'ancienne (la renommer `<nom>-avant-<AAAA-MM-JJ-HHMM>.<ext>` et la
-   déplacer dans `_archive/ai-memory/`) ;
+   déplacer dans `_archive/ai-memory/<AAAA-MM>/`, le sous-dossier du mois, créé s'il manque) ;
 4. **renommer la nouvelle** à son vrai nom ;
 5. **vérifier** qu'il y a exactement un fichier du vrai nom dans `ai-memory/`, qu'il ne reste aucun
    fichier provisoire, et que la version archivée porte toujours son marqueur.
@@ -429,7 +470,7 @@ tu déposes.
 
 Dans les deux cas, tu ne termines ni ne répares rien seul et tu ne recrées aucun fichier : tu
 signales, et c'est la session avec l'opérateur qui achève (renommer) ou range (le provisoire
-abandonné part dans `_archive/ai-memory/` sous `<nom>-abandonne-<AAAA-MM-JJ-HHMM>.<ext>`). Tant
+abandonné part dans `_archive/ai-memory/<AAAA-MM>/` sous `<nom>-abandonne-<AAAA-MM-JJ-HHMM>.<ext>`). Tant
 qu'un provisoire traîne, aucun autre remplacement de ce fichier.
 
 ### Laquelle, et quand
@@ -441,7 +482,7 @@ qu'un provisoire traîne, aucun autre remplacement de ce fichier.
   s'accorde au registre comme les autres. Tant qu'elle n'est pas `✅ OUVERT`, tout va dans
   `_a-integrer/`.
 - **Même quand elle est ouverte, un run sans opérateur n'écrit jamais un jugement.** En direct, il
-  peut écrire le journal des cas, les observations, l'état opérationnel. Créer une règle ou changer
+  peut créer son fichier de journal et remplacer les observations et l'état opérationnel. Créer une règle ou changer
   son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
   **toujours** en dépôt, à quelque niveau que ce soit.
 - **Un remplacement ne se fait pas pour une ligne : il se fait par lot.** Chaque remplacement laisse
@@ -478,9 +519,11 @@ avant toute décision :
    elle finit par son marqueur, et l'ancienne est bien archivée ;
 3. **si le fichier cible a changé** depuis la date notée dans le dépôt, tu n'écrases rien : tu
    rapproches, et ce qui se contredit se signale à l'opérateur au lieu de se trancher seul ;
+3bis. les **cas** qu'un dépôt porte entrent dans le fichier de journal de la session qui intègre
+   (§5, « Le journal des cas »), avec leur date d'origine et `non relu` ;
 4. ce qui relève d'une zone manuelle, d'un statut ou d'un grade reste une **proposition**, que
    l'opérateur tranche maintenant, puisqu'il est là ;
-5. chaque dépôt traité **part dans `_archive/a-integrer/`**, tel quel (compagnon P5), et la ligne
+5. chaque dépôt traité **part dans `_archive/a-integrer/<AAAA-MM>/`**, tel quel (compagnon P5), et la ligne
    `INTÉGRÉ` du bloc de fin de session dit ce qui est entré et ce qui ne l'a pas été.
 
 Chaque dépôt intégré sans correction compte pour la condition de « Remplacement sans opérateur ».

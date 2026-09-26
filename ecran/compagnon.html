@@ -794,6 +794,26 @@ var PARSE = (function () {
       principes: f["principles.md"] || null,
       objectifs: f["objectives.md"] || null
     };
+    /* Contrat 4 (compagnon 0.17.0) : le journal des cas vit dans journal/, un fichier par
+       session. Les cas de ces fichiers s'ajoutent à ceux qu'operational-state.md porterait
+       encore ; un même numéro n'est compté qu'une fois. Les rectifications ne sont pas
+       appliquées : l'écran compte, les fichiers font foi. */
+    var cles = Object.keys(f).filter(function (k) { return /^journal\//.test(k); }).sort();
+    if (cles.length) {
+      if (!p.etat) p.etat = { autonomie: null, identite: [], pointsChauds: [], journal: [], motifs: [], balayage: null, arreteLe: null, lisible: false };
+      var vus = {};
+      p.etat.journal.forEach(function (c) { vus[String(c.num).trim()] = true; });
+      cles.forEach(function (k) {
+        var j = etat(f[k]).journal;
+        j.forEach(function (c) {
+          var n = String(c.num).trim();
+          if (vus[n]) return;
+          vus[n] = true;
+          p.etat.journal.push(c);
+        });
+      });
+      p.journalFichiers = cles;
+    }
     p.echeances = echeances(p.capacites, p.etat, arreteLe);
     p.synthese = synthese(p);
     return p;

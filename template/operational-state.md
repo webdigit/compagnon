@@ -6,9 +6,9 @@
 >
 > **Rotation** : archivez dans `_archive/` par trimestre, ou dès que la lecture complète devient
 > pénible. Un état qu'on ne lit plus en entier ne sert plus à rien.
-> **Sauf les cas que l'évaluation compte** : une ligne du journal postérieure à la plus ancienne
-> date `Depuis le` de « Grades actuels » (`capabilities.md`) reste ici. L'archiver ferait tomber le
-> compte à zéro, et une évaluation due ne se déclencherait plus.
+> **Le journal des cas ne vit plus ici** (depuis compagnon 0.17.0) : il vit dans `journal/`, un
+> fichier par session. Un état qui porte son historique grossit à chaque session, et chaque
+> remplacement recopie tout cet historique dans l'archive.
 
 _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
@@ -55,17 +55,13 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 |---|---|---|
 | 1 | `<ce qui bloque>` | `<qui doit trancher>` |
 
-## Journal des cas
+## Cas traités
 
-> **La colonne `Compétence` n'est pas facultative.** C'est elle que l'évaluation compte : sans elle,
-> l'échéance « 10 cas » n'a rien à compter, et une erreur ne sait pas quelle compétence elle freine.
-> Précisez dans `Corrections` si elles portaient sur le **fond** ou sur la **forme** : seul le fond
-> compte pour les grades. Un cas traité sans opérateur (tâche de nuit, run programmé) porte
-> `non relu` : il compte pour le volume, jamais comme un cas sans correction (NOYAU §5quater).
+> Les cas ne s'écrivent pas ici : chacun va dans le fichier de journal de sa session,
+> `ai-memory/journal/<AAAA-MM-JJ-HHMM>-<session|run>.md` (format : NOYAU §5, « Le journal des
+> cas »). Ici ne reste que le repère qui évite de relire tout le dossier.
 
-| # | Date | Sujet | Corrections | Trace | Compétence |
-|---|---|---|---|---|---|
-| 01 | `<jj/mm/aaaa>` | `<sujet>` | `<combien, fond ou forme, sur quoi>` | `<E00X>` | `<C01>` |
+- **Dernier cas inscrit** : `<#>`, dans `journal/<nom du fichier>`.
 
 ## Motifs ouverts
 

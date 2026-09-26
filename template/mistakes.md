@@ -5,7 +5,7 @@
 >
 > **C'est le frein de l'autonomie** : une erreur `ouverte` ou `corrigée` bloque toute demande de
 > capacité et toute montée de grade **sur la compétence où elle a été commise**, celle du cas qui la
-> porte au journal d'`operational-state.md`. Une violation de principe (`-3`) les bloque sur toutes.
+> porte au journal des cas (`journal/`). Une violation de principe (`-3`) les bloque sur toutes.
 > Une récidive rend due, tout de suite, l'évaluation de la compétence (NOYAU §6ter).
 >
 > **Trois statuts, pas deux.** `ouverte` : l'incident n'est pas réparé. `corrigée` : il l'est, la

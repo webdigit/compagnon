@@ -40,7 +40,8 @@ travail bien fait.
 ## Étape 2 : Poser le dossier
 
 Copiez `template/` dans votre projet, sous le nom `ai-memory/`, et remplissez ce qui est marqué à
-remplir. Les fichiers arrivent vides de contenu métier, c'est voulu.
+remplir. Les fichiers arrivent vides de contenu métier, c'est voulu. Le sous-dossier
+`ai-memory/journal/` n'est pas livré : l'agent le crée à la première session qui traite un cas.
 
 Trois fichiers vous appartiennent et ne s'auto-écrivent jamais : `principles.md`, les cibles
 d'`objectives.md`, et le catalogue de `capabilities.md`. L'agent y *propose*, vous y *disposez*.
