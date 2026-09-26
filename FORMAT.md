@@ -58,6 +58,7 @@ personne n'y voie une panne.
 | `VERSION.md` | oui | version du gabarit et écarts |
 | `report.md` | oui, s'il existe | rapport de sortie, facultatif |
 | `NOYAU-instructions-projet.md` | **non** | volumineux, et le plus spécifique du métier |
+| `noyau-local.md` | **non** | même raison que le NOYAU, dont il est la suite |
 | `procedures.md` | **non** | chemins, comptes, parfois des identifiants |
 | `examples.md` | **non** | non affiché |
 

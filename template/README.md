@@ -89,7 +89,8 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 
 | Fichier | Rôle | Écriture |
 |---|---|---|
-| `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration | **Manuelle**, à charger au démarrage |
+| `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration. **Le texte du gabarit, trous remplis, rien d'autre** | **Manuelle**, à charger au démarrage |
+| `noyau-local.md` | Les **spécificités** de l'instance, rangées par section du NOYAU. Complètent ou durcissent, ne desserrent jamais | **Opérateur** (l'agent propose), chargé à la suite du NOYAU, **jamais touché par une migration** |
 | `VERSION.md` | La version du gabarit et l'historique des migrations | Auto, sur migration |
 
 ## La boucle

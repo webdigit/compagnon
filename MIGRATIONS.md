@@ -118,6 +118,10 @@ Dites à votre agent, en session :
 
 Ce qu'il doit faire, dans cet ordre :
 
+0. **Si l'instance n'a pas encore de `noyau-local.md`, faire d'abord l'extraction** décrite dans
+   la migration 0.15.0 → 0.15.1, **avant toute autre migration**, même plus ancienne. C'est la
+   seule exception à l'ordre : les migrations qui précèdent remplacent des sections du NOYAU, et
+   elles écraseraient ce qui n'en a pas encore été sorti.
 1. Lire `ai-memory/VERSION.md` pour connaître sa version courante.
 2. Identifier la plus haute version publiée, par le dépôt cloné ou par le web.
 3. Lire le `MIGRATIONS.md` **à cette étiquette**, jamais celui de `main` ni d'un arbre de travail.
@@ -140,6 +144,128 @@ changé, il n'a pas migré, il a réécrit.
 > ligne de migration, et le contrôle du diff de `template/` avant publication. Elles s'adressent à
 > qui écrit le gabarit, et elles sont désormais rassemblées dans `PUBLICATION.md`, à la racine du
 > dépôt. <- déplacées le 09/09/2026, en 0.11.0.
+
+---
+
+## 0.15.0 → 0.15.1
+
+### Ce qui change
+
+**Le NOYAU redevient le texte du gabarit, et le spécifique a son propre fichier.** Jusqu'ici, une
+instance qui voulait adapter son agent à son métier modifiait son NOYAU. Rien ne le signalait, et la
+migration suivante, qui « reprend depuis l'étiquette » les sections modifiées, écrasait l'adaptation
+sans que personne le voie. Même risque quand l'opérateur retouchait directement les Instructions du
+projet : le fichier ne le savait pas, et le recollage suivant effaçait la retouche.
+
+**`noyau-local.md`**, nouveau fichier de `ai-memory/`, porte toutes les spécificités de l'instance,
+rangées par section du NOYAU (« Complément au §5 »…). **Aucune migration n'y touche jamais.** Il se
+charge **avec** le NOYAU : collé à sa suite dans les Instructions du projet, ou importé juste après
+lui dans `CLAUDE.md`. Recoller veut désormais dire : le NOYAU, puis les spécificités.
+
+**Il complète, il ne desserre jamais.** Une spécificité peut ajouter une règle, en durcir une,
+préciser un geste. Elle ne peut ni supprimer, ni assouplir, ni suspendre une consigne du NOYAU. Une
+telle ligne est sans effet, et l'agent la signale. Une règle du gabarit trop stricte pour un métier
+est un défaut du gabarit : elle se remonte, elle ne se contourne pas en local.
+
+**Une migration ne s'applique plus jamais sur un NOYAU qui porte du local** (NOYAU §6bis, point
+1bis). Avant de migrer, l'agent vérifie que son NOYAU est identique au gabarit, trous remplis mis à
+part. Sinon, il extrait d'abord.
+
+**Cette migration-ci passe avant toutes les autres** pour une instance qui n'a pas encore de
+`noyau-local.md`, même si elle est en retard de plusieurs versions : voir le point 0 de « La
+procédure ». Sinon, les migrations 0.14.0 et 0.15.0, qui remplacent beaucoup de sections,
+écraseraient ce qui n'a pas encore été sorti.
+
+### L'extraction, pas à pas
+
+C'est le cœur de cette migration, et elle ne se fait qu'une fois. **Rien ne s'écrit avant que
+l'opérateur ait validé le relevé.**
+
+1. **Réunir trois textes.**
+   - **La base** : le NOYAU du gabarit à l'étiquette inscrite en `Alignée sur` dans `VERSION.md`.
+     Par le clone (`git show <étiquette>:template/NOYAU-instructions-projet.md`) ou par le web
+     (`.../refs/tags/<étiquette>/template/NOYAU-instructions-projet.md`). Sans ligne `Alignée sur`,
+     prendre l'étiquette qui correspond à la `Version courante`.
+   - **Le fichier** : `ai-memory/NOYAU-instructions-projet.md` de l'instance.
+   - **La copie chargée** : le texte que l'hôte a injecté dans la session en cours, que l'agent a
+     sous les yeux. C'est la seule qui dit ce que les sessions appliquent réellement.
+2. **Comparer le fichier à la copie chargée.** S'ils diffèrent, **s'arrêter** : montrer chaque
+   différence à l'opérateur et lui demander lequel fait foi. Une retouche faite directement dans
+   les Instructions du projet se trouve ici, et nulle part ailleurs. La suite se fait sur le texte
+   désigné.
+3. **Comparer ce texte à la base**, section par section, et classer **chaque** différence dans une
+   seule de ces cases :
+   - **trou rempli** (nom de l'agent, opérateur, chemin, mission, compétence 01) : il reste dans le
+     NOYAU ;
+   - **retard** : le texte correspond à une version plus ancienne du gabarit, qu'une migration
+     précédente aurait dû reprendre. Ce n'est pas une spécificité, c'est un oubli : le vérifier en
+     comparant aux étiquettes précédentes, puis le signaler. La migration le remplacera ;
+   - **ajout ou durcissement** : une consigne en plus, un contrôle plus strict, un geste précisé
+     pour le métier. Elle part dans `noyau-local.md`, dans le bloc « Complément au § » de la section
+     où elle se trouvait, avec son origine si elle est connue (un écart de `VERSION.md`, une date,
+     une session) ;
+   - **assouplissement** : une consigne supprimée, allégée, suspendue, un délai allongé, un contrôle
+     retiré. **Elle ne part nulle part.** Elle est présentée à l'opérateur à part, avec ce qu'elle
+     desserrait. Il choisit : l'abandonner, ou la remonter comme demande d'évolution du gabarit. En
+     attendant, c'est le NOYAU qui s'applique ;
+   - **incertain** : l'agent ne sait pas classer. Il le dit, et l'opérateur tranche.
+4. **Relire les écarts assumés de `VERSION.md`.** Un écart qui portait sur le texte du NOYAU suit le
+   même classement. Un écart qui porte sur autre chose (l'emplacement de `_archive/`, par exemple)
+   reste où il est.
+5. **Présenter le relevé à l'opérateur**, en tableau : section, texte exact, case, destination.
+   Chaque ligne, pas un résumé. C'est l'état des lieux de l'instance, et c'est la pièce qui manquait
+   à toutes les migrations précédentes.
+6. **Après validation seulement** : créer `noyau-local.md` depuis le gabarit de cette étiquette et
+   y écrire les blocs validés ; remettre le NOYAU au texte du gabarit **à l'étiquette de base**,
+   trous remplis. Déposer d'abord le NOYAU d'avant dans `_archive/`, tel quel (compagnon P5) : il est
+   la preuve de ce qui a été extrait.
+7. **Contrôler** : le NOYAU ne diffère plus de la base que par ses trous. Chaque ligne « ajout ou
+   durcissement » du relevé se retrouve dans `noyau-local.md`.
+
+Ensuite seulement, les migrations en attente s'appliquent dans l'ordre, sur un NOYAU propre.
+
+### Ce que l'agent fait seul
+
+- **L'extraction ci-dessus**, jusqu'au relevé. L'écriture attend l'accord.
+- **NOYAU** : reprendre depuis cette étiquette le bandeau d'avertissement en tête, les deux
+  paragraphes de tête (« Ce texte est celui du gabarit », « Tes spécificités »), le point
+  `noyau-local.md` du §5, et les points 1bis, 4 et 6 du §6bis.
+- **`README.md`** de l'instance : reprendre les deux lignes de la couche NOYAU de la carte des
+  fichiers.
+- **Si `CLAUDE.md` importe le NOYAU** : proposer d'ajouter `@ai-memory/noyau-local.md` juste après.
+- **Instance sans aucune spécificité** : créer `noyau-local.md` quand même, avec son en-tête et
+  sans bloc. Un fichier vide dit « rien de spécifique » ; un fichier absent ne dit rien.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Valider le relevé**, ligne par ligne. C'est la seule étape qui ne peut pas se déléguer : l'agent
+  ne sait pas toujours pourquoi une retouche avait été faite, vous si.
+- **Trancher chaque assouplissement** : l'abandonner, ou en faire une demande d'évolution du
+  gabarit.
+- **Recoller, NOYAU puis spécificités.** Dans les Instructions du projet : tout effacer, coller le
+  NOYAU, puis, à sa suite, `noyau-local.md` en entier, titre compris. Son en-tête dit à l'agent que
+  ce sont ses instructions locales, à appliquer au même titre que le NOYAU. Sur un hôte
+  `CLAUDE.md` : ajouter la ligne d'import.
+- **Ne plus retoucher les Instructions du projet directement.** Une retouche passe par l'agent, qui
+  l'écrit dans `noyau-local.md`, puis par un recollage.
+
+### Comment vérifier
+
+**La pureté** : demandez à l'agent « ton NOYAU est-il identique au gabarit ? ». Il doit répondre en
+nommant l'étiquette de comparaison, et « oui, trous remplis mis à part ». Un « oui » sans étiquette
+est une affirmation, pas une vérification.
+
+**Les spécificités** : « quelles sont tes spécificités, et d'où vient chacune ? ». Il doit citer les
+blocs de `noyau-local.md`, par section, avec leur origine.
+
+**Le chargement** : ouvrez une session neuve et posez une question dont la réponse n'existe que
+dans `noyau-local.md`. S'il ne sait pas, le recollage s'est arrêté au NOYAU.
+
+**Le test qui compte vraiment** : ajoutez dans `noyau-local.md` une ligne qui desserre, par exemple
+« ne rappelle plus les évaluations dues », recollez, ouvrez une session. L'agent doit **continuer**
+à rappeler l'évaluation et vous **signaler** la ligne comme sans effet. S'il cesse de rappeler, la
+règle « complète, ne desserre jamais » n'est pas lue, et n'importe quelle spécificité peut vider la
+méthode de son contenu. Retirez ensuite la ligne.
 
 ---
 

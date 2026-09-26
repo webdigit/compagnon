@@ -91,6 +91,12 @@ Il existe **deux** fichiers du même nom, et c'est le piège numéro un.
 |---|---|
 | `template/NOYAU-instructions-projet.md` | **NON.** C'est le gabarit, plein de trous entre chevrons |
 | `<votre projet>/ai-memory/NOYAU-instructions-projet.md` | **OUI.** C'est le vôtre, rempli |
+| `<votre projet>/ai-memory/noyau-local.md` | **OUI, à la suite.** Vos spécificités, même s'il est encore vide |
+
+**Ne modifiez jamais le NOYAU pour l'adapter à votre métier.** Remplissez ses trous, et rien d'autre.
+Ce qui est propre à votre instance (une règle de plus, un geste précisé, un contrôle durci) s'écrit
+dans `noyau-local.md`. C'est ce qui permet aux mises à jour de remplacer le NOYAU sans rien perdre.
+Et une spécificité ne peut que compléter ou durcir : jamais desserrer.
 
 Si votre agent se présente comme `<NOM DE L'AGENT>`, vous avez collé le gabarit.
 
@@ -106,7 +112,10 @@ projet. C'est le trou le plus facile à oublier parce qu'il paraît évident à 
 ### Projet claude.ai
 
 Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu intégral de
-`ai-memory/NOYAU-instructions-projet.md` de votre instance**, celui que vous avez rempli.
+`ai-memory/NOYAU-instructions-projet.md` de votre instance**, celui que vous avez rempli, **puis, à
+sa suite**, le contenu intégral de `ai-memory/noyau-local.md`, titre compris : son en-tête dit à
+l'agent que ce sont les instructions propres à l'instance, à appliquer au même titre que le NOYAU.
+Le NOYAU d'abord, les spécificités ensuite : c'est cet ensemble que l'on appelle « recoller ».
 
 Attention au piège : déposer le NOYAU comme *document* du projet ne suffit pas. Un document est
 consultable, il n'est pas injecté au démarrage. Seul le champ **Instructions** l'est.
@@ -129,6 +138,7 @@ Placez à la racine du projet un `CLAUDE.md` qui impose la lecture et importe le
 @AGENTS.md
 @ai-memory/README.md
 @ai-memory/NOYAU-instructions-projet.md
+@ai-memory/noyau-local.md
 
 Le cerveau courant du projet est `ai-memory/`, et c'est la seule source normative.
 ```

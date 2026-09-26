@@ -10,6 +10,44 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.15.1] - 2026-09-26
+
+### Ajouté
+
+- **`noyau-local.md`**, dans le gabarit : les spécificités d'une instance, rangées par section du
+  NOYAU. Il se colle à la suite du NOYAU, titre compris, et son en-tête dit à l'agent que ce sont
+  ses instructions au même titre que le NOYAU. **Aucune migration n'y touche jamais.**
+- **« Complète, ne desserre jamais. »** Une spécificité peut ajouter, durcir, préciser. Elle ne peut
+  ni supprimer, ni assouplir, ni suspendre : une telle ligne est sans effet, et l'agent la signale.
+  Une règle trop stricte pour un métier se remonte au gabarit, elle ne se contourne pas en local.
+- **NOYAU §6bis, point 1bis** : avant toute migration, l'agent vérifie que son NOYAU est le texte du
+  gabarit, en comparant la base, le fichier et la copie chargée. Une migration ne s'applique plus
+  jamais sur un NOYAU qui porte du local.
+- **L'extraction**, décrite dans `MIGRATIONS.md` : une seule fois, chaque différence entre le NOYAU
+  en place et le gabarit est classée (trou rempli, retard, ajout ou durcissement, assouplissement,
+  incertain), présentée à l'opérateur, et seulement ensuite déplacée. Elle passe avant toutes les
+  autres migrations pour une instance qui n'a pas encore de `noyau-local.md`.
+
+### Corrigé
+
+- **Une migration pouvait écraser une adaptation locale sans que personne le voie.** Les migrations
+  « reprennent depuis l'étiquette » des sections entières du NOYAU. Une retouche non déclarée dans
+  une de ces sections disparaissait, et une retouche faite directement dans les Instructions du
+  projet n'existait même pas dans le fichier que la migration lisait.
+
+### La leçon
+
+C'est compagnon P7 appliqué au NOYAU lui-même : deux propriétaires dans un seul texte. Le gabarit
+écrivait le NOYAU, l'instance aussi, et rien ne disait quelle ligne était à qui. Tant que les deux
+se mélangent, une mise à jour ne peut être que prudente ou destructrice. Une fois séparés, elle
+peut être les deux choses à la fois qu'on attend d'elle : complète et sans risque.
+
+La question est venue de l'opérateur, pas d'une instance, au moment de lancer deux migrations
+lourdes sur six instances : « est-ce que tu lis d'abord le noyau en place ? ». La réponse honnête
+était non. Il fallait la poser avant, pas après.
+
+---
+
 ## [0.15.0] - 2026-09-26
 
 ### Ajouté
