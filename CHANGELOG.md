@@ -10,6 +10,32 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.19.0] - 2026-09-28
+
+### Changé
+
+- **Une évaluation sans issue ne mobilise plus l'opérateur** (NOYAU §6ter, points 1bis et 1ter,
+  §0 point 3). Quand le compte montre qu'aucune montée, aucune rétrogradation et aucune fermeture
+  de capacité ne sont possibles, l'évaluation due se constate en une ligne, s'inscrit `sans issue :
+  <critère bloquant>` au registre, et se recompte en silence à chaque session jusqu'au jour où elle
+  a une issue. Pas de dossier, pas de séance, pas d'accusé demandé. `Depuis le` ne bouge pas : un
+  constat n'est pas une décision (compagnon P3), et il ne tient pas lieu d'évaluation (compagnon
+  P13). Une récidive sur une compétence junior ou au-delà n'est jamais sans issue.
+- **Échéances de volume par défaut relevées** pour stagiaire, junior et medior : elles couvrent
+  désormais l'écart de cas jusqu'au grade suivant. Consigne de calibrage sur le volume réel dans la
+  grille.
+- **Écran, contrat 5** : une évaluation `sans issue` s'affiche en veille, hors de la file
+  « Évaluations dues ».
+
+### La leçon
+
+Sur Vincent, deux compétences évaluées le matin ont atteint l'échéance stagiaire le soir même, à
+six cas chacune. L'agent a monté deux dossiers complets et fait tenir deux séances, alors qu'il
+savait d'avance qu'aucune ne pouvait rien changer : la montée demandait dix cas, il n'y a rien sous
+stagiaire, et aucune capacité n'était ouverte au-dessus du niveau 1. Deux « maintenu stagiaire » qui
+n'étaient pas des décisions. P13 faisait revenir une séance ; ce qu'il devait faire revenir, c'est
+une décision possible.
+
 ## [0.18.0] - 2026-09-26
 
 ### Changé

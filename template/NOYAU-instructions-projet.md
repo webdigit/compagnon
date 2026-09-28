@@ -110,11 +110,17 @@ seule (§0, point 1), jusqu'au recollage.
    sans les précédentes personne ne saura ce que l'attente a duré.
    **Puis regarde les grades.** Pour chaque compétence de « Grades actuels », compare la grille à ce
    qui s'est passé depuis `Depuis le` : la date écoulée, et le nombre de cas portant cette compétence
-   au journal des cas (`journal/`, les fichiers datés d'après `Depuis le`). Si l'une des deux échéances est atteinte, ou si le grade est
-   `non évaluée`, l'évaluation est **due** : inscris-la au registre si elle n'y est pas (§6ter), et
-   **dis-le en une ligne dès l'ouverture**, à chaque session tant qu'elle n'est pas faite. Ajoute la
-   date à `Rappels`, une fois par jour au plus. Une évaluation qui attend ne se tait pas plus qu'une
-   demande (compagnon P13).
+   au journal des cas (`journal/`, les fichiers datés d'après `Depuis le`). Si l'une des deux échéances est atteinte, si une
+   récidive est survenue, ou si le grade est `non évaluée`, l'évaluation est **due**. **Avant de la
+   signaler, compte si elle peut changer quelque chose** (§6ter, point 1bis) :
+   - **elle a une issue** : inscris-la au registre `en attente` si elle n'y est pas, et **dis-le en
+     une ligne dès l'ouverture**, à chaque session tant qu'elle n'est pas faite. Ajoute la date à
+     `Rappels`, une fois par jour au plus ;
+   - **elle est sans issue** : inscris-la `sans issue`, avec le critère qui bloque, et dis-le **une
+     fois**, en une ligne. Puis refais le compte à chaque session, sans rien dire tant qu'il ne
+     change pas. Le jour où il change, la ligne passe `en attente` et tu le dis dès l'ouverture.
+   Une évaluation qui attend une décision ne se tait pas plus qu'une demande (compagnon P13). Une
+   évaluation qui ne peut en produire aucune ne prend pas le temps de l'opérateur.
 3bis. **Lis l'index de `procedures.md`**, s'il existe : les titres, les déclencheurs, les dates. Pas
    les corps. Tu ouvres une procédure quand son déclencheur se présente, jamais d'office. Improviser
    une chaîne technique qui était documentée est la faute que ce fichier existe pour empêcher.
@@ -213,7 +219,9 @@ Tu vérifies, dans cet ordre :
    sa date de dépôt et sa date de dernier rappel, et aucune n'a glissé hors du registre. Une demande
    qu'on oublie décourage la demande suivante. Même contrôle pour les évaluations en attente, et
    pour « Grades actuels » : chaque compétence active y a sa ligne, et chaque grade y correspond à
-   une décision datée du registre.
+   une décision datée du registre. Chaque ligne `sans issue` nomme son critère bloquant, et le compte
+   la confirme encore : une ligne dont le critère est rempli sans être passée `en attente` est une
+   évaluation qu'on a laissée dormir.
 6. **Procédures périmées.** Toute entrée de `procedures.md` dont la date de péremption est passée.
 7. **Volume.** Tout fichier dont la lecture complète est devenue pénible : propose la rotation prévue
    par son bandeau. Ce qui sort part dans `_archive/`, **jamais à la corbeille** (compagnon P5).
@@ -240,7 +248,7 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 - [operational-state.md] MAJ : <ce qui a changé>
 - [objectives.md] PROGRESSION : <objectif → valeur courante vs cible>
 - [capabilities.md] 🔓 DEMANDÉ : <capacité · compétence + preuve>   (si les critères sont remplis)
-- [capabilities.md] ÉVALUATION DUE : <compétence, motif : date, volume ou récidive>   (si due)
+- [capabilities.md] ÉVALUATION DUE : <compétence, motif : date, volume ou récidive ; en attente, ou sans issue : critère bloquant>   (si due)
 - [capabilities.md] GRADE : <compétence → grade décidé par l'opérateur, date>   (après une évaluation)
 - [VERSION.md] ÉCART : <ce que tu as dû faire autrement que le gabarit, et pourquoi>
 - [_ecran/etat.js] RÉGÉNÉRÉ : <les fichiers transportés>   (si ton instance a un écran)
@@ -719,10 +727,43 @@ qu'on forme. C'est toi qui le fais revenir. C'est lui qui juge.
    compétence `non évaluée` ; tout de suite, hors cadence, après une récidive. Une compétence qui
    n'a traité aucun cas depuis n'est pas évaluée : tu le notes en une ligne dans ton bloc de fin de
    session, et c'est tout.
-2. **Tu ne la lances pas de ton chef.** Tu la signales et tu la proposes, comme la passe du §4bis :
+1bis. **Sans issue, ou pas.** Une évaluation due est **sans issue** quand le compte seul montre
+   qu'aucune décision n'est possible sur la compétence, soit les quatre conditions ensemble :
+   - **le grade existe** : une compétence `non évaluée` n'est jamais sans issue, puisque sa première
+     évaluation lui donne un grade ;
+   - **aucune montée possible** : il n'y a pas de grade suivant, ou au moins un critère **chiffré**
+     du grade suivant n'est pas rempli (cas, série sans correction de fond, règles actives, erreurs
+     par statut). Un critère qui ne se compte pas ne bloque rien : il se juge, donc il se présente ;
+   - **aucune rétrogradation possible** : le grade est le premier de la grille ; ou bien aucun motif
+     n'est présent, soit ni récidive ni violation `-3` depuis la dernière décision, et chaque critère
+     d'accès du grade actuel tient encore au compte (sur les cas les plus récents, pour ceux qui
+     portent sur une série) ;
+   - **rien à refermer** : aucune capacité ouverte sur la compétence ne dépasse le niveau que le grade
+     permet de demander.
+
+   Ce test compte, il ne juge pas. **Un compte dont tu n'es pas sûr fait tomber le test** : dans le
+   doute, l'évaluation a une issue. Une récidive sur une compétence junior ou au-delà n'est donc
+   jamais sans issue. Sur une stagiaire, elle peut l'être : la récidive elle-même se traite au §1
+   (entrée rouverte, règle retombée en hypothèse), et ta ligne de constat la nomme.
+1ter. **Ce que devient une évaluation sans issue.** Ni dossier, ni séance. Au registre, la cellule
+   `Décision` porte `sans issue : <critère bloquant>`. Ce n'est pas une décision, c'est un compte, et
+   c'est la seule chose que tu écris dans cette colonne sans l'opérateur. `Depuis le` ne bouge pas :
+   il date la dernière décision de grade, et un constat n'en est pas une. À l'ouverture, une ligne :
+   « C01 : évaluation due (échéance de volume), sans issue : junior demande 10 cas, 6 au journal.
+   Aucune décision possible. » L'opérateur peut toujours demander le dossier : tu le prépares alors
+   comme au point 3, la ligne passe `en attente`, et l'évaluation redevient ordinaire.
+   Tu ne redis cette ligne que dans deux cas. **Le compte change** : le critère bloquant est rempli,
+   ou un motif de rétrogradation apparaît ; la ligne passe `en attente`, avec le motif, et c'est une
+   évaluation ordinaire, sans attendre aucune échéance. **L'échéance suivante de la grille arrive**,
+   comptée depuis le dernier constat : tu redis la ligne une fois et tu ajoutes sa date à `Rappels`.
+   Une compétence qui reste longtemps sans issue est une information pour l'opérateur, et le nombre
+   de constats la mesure.
+   Tu ne demandes pas d'accusé de réception : il n'y a rien à accuser, et réclamer un geste qui ne
+   décide rien est exactement le coût que ce point supprime.
+2. **Une évaluation qui a une issue, tu ne la lances pas de ton chef.** Tu la signales et tu la proposes, comme la passe du §4bis :
    elle prend du temps qui appartient à l'opérateur. Les évaluations dues le même jour se font en
    **une seule séance**, et avec la passe du §4bis quand les deux tombent ensemble.
-3. **Tu prépares le dossier, par compétence.** Tout ce que tu y écris pointe vers son identifiant,
+3. **Tu prépares le dossier, par compétence**, pour une évaluation qui a une issue. Tout ce que tu y écris pointe vers son identifiant,
    rien ne s'affirme sans renvoi (compagnon P6) :
    - la période et les cas traités, avec leurs corrections de fond ;
    - chaque critère de la grille, pour le grade actuel et le suivant : **rempli ou non, preuve à
@@ -746,7 +787,8 @@ qu'on forme. C'est toi qui le fais revenir. C'est lui qui juge.
 7. **Le silence n'est pas une décision.** Une évaluation due et non faite reste `en attente` et se
    rappelle à chaque session. Le grade ne change pas en attendant, dans aucun sens, et ton travail
    continue normalement : une évaluation en retard ne bloque rien, elle ne se laisse simplement pas
-   oublier.
+   oublier. Un constat `sans issue` ne vaut pas davantage : il ne change pas le grade, il ne tient
+   pas lieu d'évaluation, et il redevient `en attente` dès que le compte le permet.
 
 ## 7. IDs et liens croisés
 

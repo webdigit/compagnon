@@ -9,8 +9,8 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **4**, introduite avec compagnon 0.17.0. Les versions 1 (0.13.0), 2 (0.14.0)
-et 3 (0.15.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
+Version du contrat : **5**, introduite avec compagnon 0.19.0. Les versions 1 (0.13.0), 2 (0.14.0),
+3 (0.15.0) et 4 (0.17.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
 le porte pas s'affiche comme avant.
 
 ---
@@ -121,7 +121,7 @@ Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
 | Statut d'une erreur | `ouverte`, `corrigée`, `résolue` | idem |
 | Date d'un statut | la mention `depuis le <jj/mm/aaaa>` accolée au statut | l'écran en tire l'ancienneté, mesurée par rapport à `arrete_le` et non par rapport à maintenant : il décrit un moment figé |
 | Statut d'une capacité | le mot `OUVERT`, `DEMANDÉ`, `VERROUILLÉ` ou `SUR ACCORD` | lu sur le mot, pas sur l'emoji : les emoji peuvent changer sans rien casser |
-| Décision au registre | la mention `en attente` | tout autre texte est affiché tel quel |
+| Décision au registre | la mention `en attente` ; depuis le contrat 5, une cellule qui commence par `sans issue` | `sans issue` : l'évaluation est inscrite mais n'attend aucune décision ; elle ne compte pas dans « Évaluations dues » et n'est pas signalée comme non inscrite. Tout autre texte est affiché tel quel |
 | Évaluation au registre | la cellule `Capacité` commence par `Évaluation`, suivie de l'identifiant de la compétence | la ligne va dans la file « Évaluations dues » au lieu de « Capacités demandées » |
 | Grade | `stagiaire`, `junior`, `medior`, `senior`, `expert`, ou `non évaluée` | premier mot de la cellule, gras ou non ; le grade est relié à la grille par ce mot |
 | Cadence d'un grade | « `<n>` jours, semaines, mois ou ans » et « `<n>` cas », dans n'importe quel ordre | l'écran calcule la prochaine échéance ; une partie absente ne déclenche rien |
@@ -193,7 +193,9 @@ actuels », la colonne `Compétence` du journal des cas, celle des capacités et
 **Ce que l'écran calcule, et ce qu'il ne décide pas.** Pour chaque compétence, il compte les cas du
 journal postérieurs à `Depuis le` et ajoute la durée de la grille à cette date. Il en tire la
 prochaine échéance, et il signale une évaluation que la grille dit due mais que le registre ne porte
-pas. Il ne déclare jamais une évaluation faite, ni un grade changé : seul le registre le fait.
+pas. Une ligne `sans issue` compte comme portée (contrat 5) : l'écran la montre en veille, avec son
+critère bloquant, et ne refait pas le test du NOYAU §6ter, qui demande de juger ce qu'un critère
+compte. Il ne déclare jamais une évaluation faite, ni un grade changé : seul le registre le fait.
 Depuis le contrat 4, les cas sont lus dans tous les fichiers `journal/` transportés, en plus de ceux
 qu'`operational-state.md` porterait encore ; un même numéro n'est compté qu'une fois. Les
 rectifications ne sont pas appliquées par l'écran. Quand le journal a été archivé en partie, ou

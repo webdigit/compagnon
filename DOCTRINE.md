@@ -327,6 +327,11 @@ Conséquences exécutoires :
 - **Le silence n'est pas une décision.** Une évaluation due et non faite se rappelle à chaque
   session. Le grade ne change pas en attendant, dans aucun sens, et le travail continue : le retard
   ne bloque rien, il ne se laisse simplement pas oublier.
+- **Une évaluation qui ne peut rien changer ne se tient pas.** Ce qui revient à échéance, c'est une
+  décision possible, pas une séance. Quand le compte montre qu'aucune montée, aucune rétrogradation
+  et aucune fermeture ne sont possibles, l'agent le constate en une ligne et refait le compte à
+  chaque session, jusqu'au jour où il y a quelque chose à décider. Ce constat n'est pas une
+  décision : il ne change rien et ne tient lieu de rien.
 - **Une boucle qui n'a jamais tourné n'est pas prouvée.** Le grade intermédiaire exige une erreur
   résolue, pas zéro erreur. Un agent qui ne s'est jamais trompé n'a pas montré qu'il sait apprendre
   de ses erreurs ; celui qui s'est trompé, en a tiré une règle et l'a vue tenir, si.

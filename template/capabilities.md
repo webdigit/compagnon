@@ -35,17 +35,26 @@ Légende : `✅ OUVERT` · `🔓 DEMANDÉ` (attend une décision) · `🔒 VERRO
 >
 > **Une montée avance d'un cran à la fois. Une rétrogradation est possible**, et une récidive
 > déclenche une évaluation immédiate de la compétence concernée.
+>
+> **Une évaluation qui ne peut rien changer ne mobilise pas l'opérateur.** Quand le compte montre
+> qu'aucune montée, aucune rétrogradation et aucune fermeture n'est possible, elle est `sans issue` :
+> une ligne de constat, pas de dossier (NOYAU §6ter, points 1bis et 1ter).
 
 ### La grille
 
 Valeurs par défaut du gabarit. Ajustez-les pour votre métier : c'est une zone manuelle, et ce sont
 vos chiffres qui feront foi. Tous les critères se comptent **sur la compétence évaluée**.
 
+**Calibrez l'échéance sur votre volume réel.** Par défaut, l'échéance de volume d'un grade couvre
+l'écart de cas qui le sépare du grade suivant : plus courte, elle ne produirait que des constats sans
+issue. L'échéance de date sert l'instance qui travaille peu. Si la vôtre atteint l'échéance de volume
+en une journée, c'est l'échéance qui est trop courte, pas l'agent qui va trop vite : relevez-la.
+
 | Grade | Pour y accéder | Permet de demander | Évaluation suivante |
 |---|---|---|---|
-| **stagiaire** | Activation de la compétence | Niveau 1, ouvert d'office | 2 semaines ou 5 cas |
-| **junior** | 10 cas évalués · 3 cas consécutifs sans correction de fond · 1 règle active · aucune erreur `ouverte` ni `corrigée` | Niveau 2 | 1 mois ou 10 cas |
-| **medior** | 25 cas · au moins **une erreur `résolue`** · 3 règles actives · aucune correction de fond sur les 5 derniers cas | Niveau 3 | 6 semaines ou 15 cas |
+| **stagiaire** | Activation de la compétence | Niveau 1, ouvert d'office | 2 semaines ou 10 cas |
+| **junior** | 10 cas évalués · 3 cas consécutifs sans correction de fond · 1 règle active · aucune erreur `ouverte` ni `corrigée` | Niveau 2 | 1 mois ou 15 cas |
+| **medior** | 25 cas · au moins **une erreur `résolue`** · 3 règles actives · aucune correction de fond sur les 5 derniers cas | Niveau 3 | 6 semaines ou 25 cas |
 | **senior** | 50 cas · au plus 1 correction de fond sur les 10 derniers · aucune récidive depuis la dernière évaluation | Niveau 4 | 3 mois ou 25 cas |
 | **expert** | Senior tenu sur deux évaluations · au moins une règle **proposée par l'agent**, et non née d'une correction, devenue active | Au-delà, selon l'opérateur | 6 mois ou 40 cas |
 
@@ -144,6 +153,12 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 > accordé, maintenu ou retiré, suivi des preuves principales (`← M003 résolue, R004, R007`). Le
 > dossier d'évaluation ne se stocke pas ; la décision et ses preuves, si.
 >
+> **Une évaluation sans issue s'inscrit aussi**, mais sa cellule `Décision` porte `sans issue :
+> <critère bloquant>` (`sans issue : junior demande 10 cas, 6`). Ce n'est pas une décision : c'est un
+> compte, que l'agent écrit et qu'il refait à chaque session. Le jour où il change, la même ligne
+> passe `en attente`. Un nouveau constat à l'échéance suivante ajoute sa date à `Rappels`.
+> `Depuis le`, dans « Grades actuels », ne bouge pas.
+>
 > **Une ligne dit qui a décidé quoi, et quand. Pas davantage.** Une phrase par cellule, et un
 > renvoi : les mots de l'opérateur, tels quels, et le détail de ce qu'il a posé vont dans
 > « Décisions de l'opérateur » du fichier de journal de la session (NOYAU §5), et la ligne y renvoie
@@ -162,10 +177,12 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 | `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | |
 | `<jj/mm/aaaa>` | `<capacité demandée> · <C01>` | en attente | | `<jj/mm/aaaa>`, `<jj/mm/aaaa>` |
 | `<jj/mm/aaaa>` | `Évaluation · <C01> (échéance de volume)` | `junior accordé ← <M001 résolue, R001, R004> · journal/<fichier>, D1` | `<opérateur>` | `<jj/mm/aaaa>` |
+| `<jj/mm/aaaa>` | `Évaluation · <C02> (échéance de date)` | `sans issue : <junior demande 3 cas consécutifs sans correction de fond, 1>` | | `<jj/mm/aaaa>` |
 
-_Zone manuelle, à trois exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente`, la
-colonne `Rappels`, et la mise à jour de « Grades actuels » **sous la dictée** d'une décision de
-l'opérateur inscrite au registre. La **décision** ne s'écrit jamais sans l'opérateur._
+_Zone manuelle, à quatre exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente`, le
+constat `sans issue` d'une évaluation et son passage à `en attente`, la colonne `Rappels`, et la mise
+à jour de « Grades actuels » **sous la dictée** d'une décision de l'opérateur inscrite au registre.
+La **décision** ne s'écrit jamais sans l'opérateur._
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._
 

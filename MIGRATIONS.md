@@ -147,6 +147,79 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.18.0 → 0.19.0
+
+### Ce qui change
+
+**Une évaluation qui ne peut rien changer ne mobilise plus l'opérateur.** Jusqu'ici, toute
+évaluation due produisait le même dossier et la même séance, y compris quand le compte montrait
+d'avance qu'aucune montée, aucune rétrogradation et aucune fermeture n'étaient possibles. Le NOYAU
+définit désormais l'évaluation **sans issue** (§6ter, point 1bis), sur quatre conditions qui se
+comptent, et ce qu'elle devient (point 1ter) : une ligne de constat, une cellule `sans issue :
+<critère bloquant>` au registre, un compte refait en silence à chaque session, et le passage à
+`en attente` le jour où il change. `Depuis le` ne bouge pas. Le rituel (§0, point 3) applique ce
+test avant de signaler, et la passe de contrôle (§4bis, point 5) vérifie qu'aucune ligne sans issue
+ne dort.
+
+**Les échéances de volume par défaut sont relevées** : stagiaire, junior et medior couvrent
+désormais l'écart de cas jusqu'au grade suivant. La grille gagne une consigne de calibrage sur le
+volume réel.
+
+**L'écran** passe au contrat 5 : une évaluation `sans issue` s'affiche en veille, hors de la file
+« Évaluations dues ».
+
+Aucun fichier nouveau, aucune section retirée.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 3 (le test avant de signaler), §4bis point 5, §5 (ligne
+  `ÉVALUATION DUE` du bloc de fin de session), §6ter points 1bis et 1ter (nouveaux), 2, 3 et 7.
+- **`noyau-local.md`** : ne pas y toucher. Si une spécificité complète le §0 point 3 ou le §6ter,
+  la relire contre le nouveau texte et la signaler à l'opérateur si elle n'a plus de sens. Un
+  complément qui **durcit** l'évaluation (par exemple, un dossier complet exigé même sans issue)
+  reste valable et l'emporte : le local peut durcir, jamais desserrer.
+- **`capabilities.md`**, structure seulement : reporter le paragraphe « Une évaluation qui ne peut
+  rien changer » dans le bandeau des grades, le paragraphe « Une évaluation sans issue s'inscrit
+  aussi » dans le bandeau du registre, et la ligne de pied qui passe de trois à quatre exceptions.
+  **Ne pas toucher aux valeurs de la grille**, ni aux lignes du registre existantes.
+- **La grille, proposée et non écrite.** C'est une zone manuelle. Comparer la colonne « Évaluation
+  suivante » de l'instance à celle de cette étiquette, et montrer à l'opérateur, grade par grade :
+  sa valeur, celle du gabarit, et le volume réel de la compétence (cas au journal par semaine). Si
+  l'instance a déjà ajusté ses valeurs, les siennes restent : on les montre, on ne propose rien de
+  plus que la comparaison. La consigne de calibrage entre dans le texte au-dessus du tableau, elle,
+  puisque c'est de la structure.
+- **Les évaluations en attente**, au registre. Pour chaque ligne `Évaluation · … en attente`, faire
+  le test du §6ter point 1bis. Une évaluation qui s'avère sans issue est **montrée à l'opérateur**
+  avec son critère bloquant ; sur son accord, sa cellule passe à `sans issue : <critère>`. Sans son
+  accord, elle reste `en attente`. Aucune ligne ne change de statut en silence.
+- **Si l'instance a un écran** : remplacer `compagnon.html` par celui de cette étiquette, et mettre
+  la ligne `Écran` de `VERSION.md` à jour. `etat.js` ne change pas de forme.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier le marqueur `[fin de noyau-local.md]`. Tant
+  que ce n'est pas fait, les sessions continuent de préparer un dossier pour chaque évaluation due.
+- **Trancher la grille** : garder ses échéances ou reprendre celles du gabarit, grade par grade.
+- **Valider** le passage à `sans issue` des évaluations déjà en attente, ligne par ligne.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé porte les points 1bis et 1ter au §6ter ; `capabilities.md` porte
+les deux paragraphes et le pied à quatre exceptions ; la grille porte les valeurs que l'opérateur a
+choisies, et pas d'autres.
+
+**La suite** : à la prochaine évaluation due dont le compte bloque la montée, sur une compétence
+stagiaire sans capacité au-dessus du niveau 1, l'agent dit une ligne au lieu de préparer un dossier,
+et le registre porte `sans issue : <critère>`. À la session suivante, il n'en reparle pas. Le jour
+où le critère est rempli, la ligne passe `en attente` et le dossier est préparé. Une récidive sur
+une compétence junior ou au-delà produit toujours un dossier.
+
+**L'écran**, s'il est posé : la ligne sans issue apparaît en veille sous « Évaluations dues », et
+n'est comptée ni dans la file ni comme non inscrite.
+
+---
+
 ## 0.17.0 → 0.18.0
 
 ### Ce qui change

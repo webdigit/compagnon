@@ -552,7 +552,8 @@ var PARSE = (function () {
             date: l[0], capacite: l[1], decision: l[2], par: l[3] || null,
             rappels: rappels,
             evaluation: /^\W*évaluation/i.test(l[1] || ""),
-            enAttente: /en\s+attente/i.test(l[2] || "")
+            enAttente: /en\s+attente/i.test(l[2] || ""),
+            sansIssue: /^\W*sans\s+issue/i.test(l[2] || "")
           };
         });
       }
@@ -754,10 +755,12 @@ var PARSE = (function () {
     var contradictions = (p.regles && p.regles.contradictions || []).filter(function (c) { return c.ouverte; });
     var demandes = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente && !r.evaluation; });
     var evalInscrites = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.enAttente && r.evaluation; });
+    /* contrat 5 : une évaluation « sans issue » est inscrite, mais n'attend aucune décision. */
+    var evalVeille = (p.capacites && p.capacites.registre || []).filter(function (r) { return r.sansIssue && r.evaluation; });
     var ech = p.echeances || [];
     var evalNonInscrites = ech.filter(function (x) {
       if (!x.due) return false;
-      return !evalInscrites.some(function (r) { return cleCompetence(String(r.capacite).replace(/^\W*évaluation\s*·?\s*/i, "")) === x.cle; });
+      return !evalInscrites.concat(evalVeille).some(function (r) { return cleCompetence(String(r.capacite).replace(/^\W*évaluation\s*·?\s*/i, "")) === x.cle; });
     });
     var chauds = (p.etat && p.etat.pointsChauds) || [];
     var metier = (p.rapport && p.rapport.attente) || [];
@@ -781,6 +784,7 @@ var PARSE = (function () {
       demandes: demandes,
       evalInscrites: evalInscrites,
       evalNonInscrites: evalNonInscrites,
+      evalVeille: evalVeille,
       echeances: ech,
       chauds: chauds,
       metier: metier
@@ -1008,6 +1012,16 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
           '<span class="obj">Évaluation · ' + inl(x.competence) + "</span></div>");
         h.push('<p class="det">La grille la dit due (' + e(x.motif) + "), mais le registre ne la porte pas. " +
           "Soit l'agent ne l'a pas encore vue, soit l'écran lit mal : le fichier fait foi.</p></div>");
+      });
+    }
+    if (p.capacites && s.evalVeille.length) {
+      h.push('<p class="det">En veille, sans issue : aucune décision possible tant que le compte ne change pas.</p>');
+      s.evalVeille.forEach(function (d) {
+        h.push('<div class="item"><div class="ligne1"><span class="st">sans issue</span>' +
+          '<span class="obj">' + inl(d.capacite) + "</span></div>");
+        h.push('<p class="det">' + inl(d.decision) + ". Constatée le <span class=\"mono\">" + e(d.date) + "</span>" +
+          (d.rappels.length ? ", " + d.rappels.length + " constat" + (d.rappels.length > 1 ? "s" : "") + " depuis" : "") +
+          ".</p></div>");
       });
     }
     h.push("</article>");
