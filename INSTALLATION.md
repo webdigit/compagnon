@@ -1,7 +1,12 @@
 # compagnon : Installation
 
-> Lisez [`DOCTRINE.md`](DOCTRINE.md) avant celui-ci. Installer sans avoir compris la doctrine
-> produit un dossier de fichiers que personne n'applique.
+> **Ce fichier décrit l'installation à la main**, étape par étape. Si vous préférez que votre agent
+> installe à votre place, c'est la méthode 1 du [`README.md`](README.md) : il suit
+> [`INSTALLATION-ASSISTEE.md`](INSTALLATION-ASSISTEE.md), qui renvoie ici pour tout ce qui fait foi.
+> L'étape 4 reste la vôtre dans les deux cas.
+>
+> Lisez [`DOCTRINE.md`](DOCTRINE.md) avant de confier un vrai travail à l'agent. Installer sans
+> avoir compris la doctrine produit un dossier de fichiers que personne n'applique.
 
 Comptez vingt minutes pour l'installation, et une semaine d'usage réel avant que le système
 commence à valoir quelque chose.
@@ -110,7 +115,7 @@ elle va le chercher dans une mémoire extérieure au projet, ce qui contredit la
 La section « Où vit le dossier » du NOYAU se remplit avec le **chemin complet**, pas un nom de
 projet. C'est le trou le plus facile à oublier parce qu'il paraît évident à celui qui installe.
 
-### Projet claude.ai
+### Projet claude.ai (Cowork compris)
 
 Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu intégral de
 `ai-memory/NOYAU-instructions-projet.md` de votre instance**, celui que vous avez rempli, **puis, à
@@ -127,7 +132,7 @@ Une version périmée du NOYAU qui traîne dans la base de connaissances est pir
 contredit la bonne, sur les seuils de maturation notamment, et l'agent n'a aucun moyen de savoir
 laquelle fait foi. Le NOYAU vit à **deux** endroits, le fichier et le champ injecté. Pas trois.
 
-### Claude Code, Cowork, et hôtes lisant `CLAUDE.md`
+### Claude Code, et hôtes lisant `CLAUDE.md`
 
 Placez à la racine du projet un `CLAUDE.md` qui impose la lecture et importe les fichiers :
 
@@ -143,6 +148,8 @@ Placez à la racine du projet un `CLAUDE.md` qui impose la lecture et importe le
 
 Le cerveau courant du projet est `ai-memory/`, et c'est la seule source normative.
 ```
+
+Si votre projet n'a pas d'`AGENTS.md`, retirez les deux lignes qui le nomment.
 
 ### Autres hôtes
 

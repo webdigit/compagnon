@@ -10,6 +10,44 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.19.1] - 2026-10-02
+
+Documentation seulement. `template/` ne change pas.
+
+### Ajouté
+
+- **`INSTALLATION-ASSISTEE.md`** : la procédure que suit un agent quand on lui demande d'installer
+  compagnon dans le dossier de son projet. Elle s'adresse à l'agent, pas à l'opérateur. Récupérer le
+  gabarit à la dernière étiquette (git, adresses brutes, ou ZIP déposé par l'opérateur), poser les
+  questions une à la fois, écrire `ai-memory/` sous validation, vérifier les marqueurs de fin,
+  **préparer l'allumage sans le faire**, puis faire passer le test dans une conversation neuve. Pour
+  tout ce qui fait foi, elle renvoie à `INSTALLATION.md` au lieu de le recopier (compagnon P7).
+
+### Changé
+
+- **`README.md` s'ouvre sur « Installer »** : deux méthodes en quelques lignes chacune. La méthode 1
+  donne la consigne exacte à coller dans une conversation ; la méthode 2 résume l'installation à la
+  main et renvoie au détail.
+- **`DOCTRINE.md` n'est plus un préalable à l'installation**, mais à la confiance : on la lit avant
+  de confier un vrai travail à l'agent. Même nuance en tête d'`INSTALLATION.md`, qui renvoie aussi à
+  la méthode assistée.
+- **`INSTALLATION.md` étape 4** : Cowork est rangé avec les projets claude.ai (Instructions du
+  projet), et non plus avec les hôtes qui lisent `CLAUDE.md`. Le modèle de `CLAUDE.md` dit quoi faire
+  quand le projet n'a pas d'`AGENTS.md`.
+
+### Corrigé
+
+- **Le README annonçait « douze principes »** alors que la doctrine en compte davantage depuis la
+  0.14.0. Le nombre est retiré plutôt que corrigé (règle R7 de `PUBLICATION.md`).
+
+### La leçon
+
+Le dépôt a été donné à des participants d'une formation avec la promesse d'une installation facile.
+Arrivés sur la page, ils trouvaient le problème, la méthode, la licence, et le chemin de
+l'installation dans une ligne de tableau, à mi-page, vers un document qui commençait par « lisez
+d'abord un autre document ». Le README avait été écrit pour qui est déjà convaincu de lire. Celui
+qui arrive par un lien veut d'abord savoir quoi faire.
+
 ## [0.19.0] - 2026-09-28
 
 ### Changé

@@ -7,6 +7,49 @@ vivre.
 
 ---
 
+## Installer
+
+Deux méthodes. La première ne demande ni git ni manipulation de fichiers : c'est votre agent qui
+installe.
+
+### Méthode 1 : laisser l'IA installer (recommandée)
+
+1. **Créez un dossier vide** sur votre ordinateur, par exemple `Documents/mon-agent`.
+2. **Créez un projet** dans l'application Claude, et choisissez ce dossier comme dossier du projet.
+3. **Ouvrez une conversation** dans ce projet et collez-y cette consigne :
+
+   ```
+   Installe compagnon dans ce dossier.
+   Suis pas à pas la procédure de ce fichier, sans sauter d'étape :
+   https://raw.githubusercontent.com/webdigit/compagnon/main/INSTALLATION-ASSISTEE.md
+   Si tu ne peux pas lire cette adresse, dis-le-moi : je téléchargerai le dépôt dans ce dossier.
+   ```
+
+4. **Répondez à ses questions**, une à la fois : qui vous êtes, ce que l'agent doit apprendre en
+   premier, ce qu'il ne doit jamais faire. Il écrit le dossier `ai-memory/` à partir de vos réponses.
+5. **Faites l'étape qu'il ne peut pas faire à votre place.** À la fin, il vous demande de coller un
+   texte dans les **Instructions du projet**. C'est ce qui fait que l'agent relit sa mémoire à chaque
+   nouvelle conversation. Sans ce geste, le dossier existe mais personne ne le lit.
+6. **Vérifiez**, dans une **nouvelle** conversation du même projet : « Qui es-tu, quel est le rituel
+   de session, et que dois-tu produire à la fin ? ». L'agent doit répondre sous le nom choisi et
+   décrire son rituel. S'il reste vague, l'étape 5 n'a pas pris.
+
+### Méthode 2 : à la main
+
+1. **Téléchargez le dépôt** : bouton vert **Code** en haut de cette page, puis **Download ZIP**, et
+   décompressez-le.
+2. **Copiez `template/`** dans le dossier de votre projet, sous le nom `ai-memory/`, et remplissez ce
+   qui est marqué à remplir.
+3. **Collez le NOYAU rempli**, puis `noyau-local.md` à sa suite, dans les Instructions du projet
+   (ou importez-les depuis un `CLAUDE.md`, selon votre outil).
+4. **Vérifiez** avec la même question, dans une conversation neuve.
+
+Le détail de chaque étape, les autres outils et les pièges connus sont dans
+[`INSTALLATION.md`](INSTALLATION.md). Comptez vingt minutes pour installer, et une semaine d'usage
+réel avant que le système commence à valoir quelque chose.
+
+---
+
 ## Le problème
 
 Votre agent est compétent et amnésique. Vous le corrigez, il comprend, et à la session suivante il
@@ -51,8 +94,9 @@ Ce n'est pas une garantie mécanique. L'agent écrit ses propres règles et note
 La méthode ne rend pas la complaisance impossible, elle la rend **visible** à qui relit. Elle
 suppose que vous relisiez.
 
-Lisez [`DOCTRINE.md`](DOCTRINE.md) avant tout le reste, et notamment sa section « Ce que compagnon
-ne prétend pas ». C'est le document qui décide si la méthode vous convient.
+Lisez [`DOCTRINE.md`](DOCTRINE.md) avant de confier un vrai travail à votre agent, et notamment sa
+section « Ce que compagnon ne prétend pas ». C'est le document qui décide si la méthode vous
+convient.
 
 ## Pour qui
 
@@ -64,8 +108,9 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 | Chemin | Contenu |
 |---|---|
-| `DOCTRINE.md` | **Commencez ici.** Les douze principes, ce que la méthode ne prétend pas, et pourquoi c'est du texte |
-| `INSTALLATION.md` | Comment installer, et l'étape qui fait échouer les installations |
+| `DOCTRINE.md` | **La méthode.** Les principes, ce qu'elle ne prétend pas, et pourquoi c'est du texte |
+| `INSTALLATION.md` | Comment installer à la main, et l'étape qui fait échouer les installations |
+| `INSTALLATION-ASSISTEE.md` | La procédure que suit l'agent quand on lui demande d'installer (méthode 1). Écrite pour lui, pas pour vous |
 | `MIGRATIONS.md` | Comment une instance en service rattrape une nouvelle version, avec ou sans dépôt local |
 | `CHANGELOG.md` | L'historique des versions, **la seule source du numéro de version** |
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
