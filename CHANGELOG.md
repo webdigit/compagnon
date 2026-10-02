@@ -10,6 +10,18 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.20.1] - 2026-10-02
+
+Documentation seulement. `template/` ne change pas.
+
+### Ajouté
+
+- **README : « Bien s'en servir ».** Le README disait comment installer, rien sur l'usage de tous
+  les jours. Sept gestes : clôturer chaque conversation par le bloc de fin, clôturer avant que la
+  conversation déborde, reprendre dans une conversation neuve, un sujet par conversation, corriger
+  en disant pourquoi, trancher ce qui attend, « Mets-toi à jour ». Le seul conseil d'usage existant
+  (exiger le bloc de fin) était enfoui dans l'étape 6 d'`INSTALLATION.md`.
+
 ## [0.20.0] - 2026-10-02
 
 ### Ajouté

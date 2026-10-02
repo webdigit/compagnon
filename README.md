@@ -53,6 +53,28 @@ réel avant que le système commence à valoir quelque chose.
 
 ---
 
+## Bien s'en servir
+
+- **Clôturez chaque conversation.** Avant de la quitter, dites « clôture ». L'agent produit son bloc
+  `🧠 MISE À JOUR MÉMOIRE` : ce qu'il a appris, ce qu'il a écrit, ce qui attend votre décision. Une
+  conversation fermée sans ce bloc n'a rien appris. Relisez-le : c'est là que la complaisance se
+  voit.
+- **Clôturez avant que la conversation déborde.** Quand une conversation s'allonge, l'outil résume
+  les anciens échanges pour faire de la place, et ce qui n'a pas été écrit se perd. Clôturez, puis
+  ouvrez une conversation neuve dans le même projet.
+- **Pour reprendre, ouvrez une nouvelle conversation, pas l'ancienne.** Inutile de recoller
+  l'historique : l'agent relit sa mémoire à l'ouverture et repart de ce qui est écrit, pas de ce qui
+  a été dit. Un travail resté en plan, redites-le-lui en une phrase.
+- **Un sujet par conversation.** Deux sujets mêlés donnent un bloc de fin confus et des règles mal
+  rangées.
+- **Corrigez en disant pourquoi.** « Non » ne produit rien. « Non, parce que… » produit une règle.
+- **Tranchez ce qui attend.** L'agent rappelle les décisions en attente à chaque ouverture. Tant que
+  vous ne répondez pas, rien ne monte, mais rien n'est refusé non plus.
+- **Pour mettre à jour, dites « Mets-toi à jour. »** dans une conversation neuve. L'agent rattrape la
+  dernière version publiée et vous dit ce qui reste à faire de votre côté.
+
+---
+
 ## Le problème
 
 Votre agent est compétent et amnésique. Vous le corrigez, il comprend, et à la session suivante il
