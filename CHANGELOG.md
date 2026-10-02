@@ -10,6 +10,17 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.19.2] - 2026-10-02
+
+Documentation seulement. `template/` ne change pas.
+
+### Corrigé
+
+- **La méthode 1 du README ne disait pas où la lancer.** « Créez un projet dans l'application
+  Claude » laissait croire qu'un projet claude.ai suffisait. L'agent doit pouvoir écrire dans un
+  dossier de l'ordinateur : c'est le mode Cowork de l'application de bureau, ou Claude Code. Sans
+  cela, la méthode 2.
+
 ## [0.19.1] - 2026-10-02
 
 Documentation seulement. `template/` ne change pas.

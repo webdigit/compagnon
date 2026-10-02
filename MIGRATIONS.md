@@ -147,6 +147,28 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.19.1 → 0.19.2
+
+### Ce qui change
+
+Rien dans `template/`. Le `README.md` du dépôt précise où lancer l'installation assistée.
+
+### Ce que l'agent fait seul
+
+- **`VERSION.md`** : passer la version courante à 0.19.2, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique (« documentation du dépôt seulement, rien à migrer »).
+- Rien d'autre.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Le NOYAU n'a pas changé : pas de recollage.
+
+### Comment vérifier
+
+`VERSION.md` porte 0.19.2 et son étiquette ; aucun autre fichier de `ai-memory/` n'a été modifié.
+
+---
+
 ## 0.19.0 → 0.19.1
 
 ### Ce qui change

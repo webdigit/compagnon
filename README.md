@@ -10,12 +10,15 @@ vivre.
 ## Installer
 
 Deux méthodes. La première ne demande ni git ni manipulation de fichiers : c'est votre agent qui
-installe.
+installe. Il lui faut pour cela le droit d'écrire dans un dossier de votre ordinateur : le mode
+**Cowork** de l'application Claude de bureau, ou Claude Code. Une conversation sur claude.ai, dans le
+navigateur, ne le peut pas : prenez alors la méthode 2.
 
 ### Méthode 1 : laisser l'IA installer (recommandée)
 
 1. **Créez un dossier vide** sur votre ordinateur, par exemple `Documents/mon-agent`.
-2. **Créez un projet** dans l'application Claude, et choisissez ce dossier comme dossier du projet.
+2. **Ouvrez l'application Claude de bureau en mode Cowork**, créez un projet, et choisissez ce
+   dossier comme dossier du projet.
 3. **Ouvrez une conversation** dans ce projet et collez-y cette consigne :
 
    ```
