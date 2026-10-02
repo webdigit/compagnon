@@ -147,6 +147,51 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.19.2 → 0.20.0
+
+### Ce qui change
+
+**Une certitude se gagne contre sa contre-preuve** (compagnon P14, nouveau principe). Le NOYAU porte
+la consigne là où l'agent affirme : §0, point 5, un paragraphe ajouté. Avant d'affirmer une chose
+comme certaine, l'agent cherche ce qui la contredirait, par un autre chemin que sa première
+recherche ; sans contre-preuve cherchée, il écrit ce qu'il a constaté et par quelle recherche, pas la
+conclusion. Le §5bis, point 2, y renvoie pour la vérification d'une ligne « Fait ».
+
+Aucun fichier nouveau, aucune section retirée. Les autres fichiers de `ai-memory/` ne changent pas.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 5 (un paragraphe ajouté), §5bis point 2 (une phrase ajoutée).
+- **`noyau-local.md`** : ne pas y toucher. Si une spécificité traite déjà de la vérification avant
+  d'affirmer (une règle maison sur les recherches dans une boîte mail, par exemple), la relire contre
+  le nouveau texte et la signaler à l'opérateur si elle fait doublon. Une spécificité qui **durcit**
+  (exiger deux contre-recherches, ou une source précise) reste valable et l'emporte : le local peut
+  durcir, jamais desserrer.
+- **`learned-rules.md`** : ne rien réécrire. Si une règle de l'instance dit déjà la même chose pour
+  un domaine, la signaler à l'opérateur : elle reste, et elle peut désormais citer compagnon P14 dans
+  son origine à la prochaine écriture qui la touche.
+- **`VERSION.md`** : passer la version courante à 0.20.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+`[fin de noyau-local.md]`. Tant que ce n'est pas fait, les sessions n'ont pas la consigne sous les
+yeux au moment d'affirmer.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé porte au §0, point 5, le paragraphe qui commence par « Avant
+d'affirmer quoi que ce soit comme certain », et au §5bis, point 2, la phrase « Vérifier, c'est
+chercher l'échec ». `VERSION.md` porte 0.20.0.
+
+**La suite** : la prochaine fois que l'agent conclut qu'une chose n'existe pas, ou qu'une action a
+réussi, il dit quelle contre-recherche il a faite ; ou, s'il n'en a pas fait, il écrit « rien trouvé
+avec <telle recherche> » au lieu de « n'existe pas ».
+
+---
+
 ## 0.19.1 → 0.19.2
 
 ### Ce qui change

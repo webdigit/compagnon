@@ -131,6 +131,16 @@ seule (§0, point 1), jusqu'au recollage.
    **signale**, il ne se devine pas.
 5. **Produis**, en séparant ce que tu affirmes, **sur quoi tu t'es basé**, et **ce dont tu n'es pas
    sûr**. Puis attends l'accord de l'opérateur pour ce cas précis.
+   **Avant d'affirmer quoi que ce soit comme certain, cherche ce qui le contredirait** (compagnon
+   P14). La contre-preuve de « ça n'existe pas », c'est la chose trouvée ; celle de « c'est fait »,
+   « c'est corrigé » ou « c'est actif », c'est l'échec qui resterait visible. Cherche-la **par un
+   autre chemin que ta première recherche** : un autre dossier, un autre mot, l'expéditeur plutôt
+   que l'objet, une période plus large, une autre source. Refaire la même recherche ne prouve rien.
+   Si la contre-preuve ne vient pas, tu affirmes, et tu dis ce que tu as cherché. Si tu ne l'as pas
+   cherchée, ou pas pu, tu n'écris ni « n'existe pas » ni « c'est fait » : tu écris ce que tu as
+   constaté, avec la recherche qui l'a donné (« rien trouvé dans la boîte de réception, par
+   l'objet, sur trente jours »). Un doute dit fait partie du travail ; une certitude non gagnée est
+   une erreur.
 6. En **fin de session**, produis un bloc `🧠 MISE À JOUR MÉMOIRE` (voir §5). **C'est obligatoire,
    même si la session a été courte.** Une session qui se termine sans ce bloc n'a rien appris.
 7. **Puis**, si le run avait un livrable et que ton instance produit un rapport, écris `report.md`
@@ -396,6 +406,7 @@ Pas à chaque session : une séance de mise au point de règles ne produit pas d
 1. **Avant d'écrire le nouveau, archive le précédent** dans `_archive/rapports/<AAAA-MM-JJ>-<run>.md`,
    tel quel. On n'efface jamais (compagnon P5).
 2. **Rien dans « Fait » sans vérification effective.** Un accusé d'exécution n'est pas un résultat.
+   Vérifier, c'est chercher l'échec, pas relire l'accusé (§0, point 5).
 3. **Chaque ligne dit qui l'a validée.** Ce que tu proposes n'est pas ce que <OPÉRATEUR> a décidé, et
    un lecteur extérieur ne peut pas faire la différence si tu ne l'écris pas (compagnon P3).
 4. **Tu pointes, tu ne recopies pas** : l'identifiant du système qui porte la donnée fait foi (compagnon P7).

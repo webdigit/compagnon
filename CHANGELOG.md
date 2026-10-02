@@ -10,6 +10,35 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.20.0] - 2026-10-02
+
+### Ajouté
+
+- **compagnon P14 : une certitude a survécu à sa contre-preuve** (`DOCTRINE.md`). Avant d'affirmer
+  une chose comme certaine, l'agent cherche ce qui la rendrait fausse, par un autre chemin que sa
+  première recherche. Si la contre-preuve ne vient pas, l'affirmation tient. Sinon elle tombe avant
+  d'atteindre l'opérateur. Vaut pour « n'existe pas » comme pour « c'est fait », « c'est actif » ou
+  « personne n'a répondu ».
+- **La consigne au moment où l'agent affirme** (NOYAU §0, point 5) : chercher la contre-preuve
+  avant d'affirmer, par un autre chemin ; sans elle, écrire ce qui a été constaté et par quelle
+  recherche, jamais la conclusion.
+
+### Changé
+
+- **NOYAU §5bis, point 2** : la vérification qui autorise une ligne « Fait » est la contre-preuve du
+  §0 point 5, chercher l'échec et pas relire l'accusé.
+- **`DOCTRINE.md` ne compte plus ses principes** dans son titre ni dans sa note de citation
+  (règle R7 de `PUBLICATION.md`).
+
+### La leçon
+
+L'opérateur l'a constaté à répétition : un agent annonce, presque sûr de lui, qu'un email n'existe
+pas, alors qu'il est bien dans la boîte. La recherche était juste trop étroite, et rien dans la
+méthode ne distinguait « je n'ai rien trouvé » de « ça n'existe pas ». Le remède observé tient en une
+question : quelle serait la preuve du contraire, et l'a-t-on cherchée ? La méthode faisait déjà ce
+geste pour deux cas isolés, l'accusé d'exécution (compagnon P4) et le fichier introuvable sous son
+nom (0.16.1). Elle ne l'avait pas érigé en règle générale.
+
 ## [0.19.2] - 2026-10-02
 
 Documentation seulement. `template/` ne change pas.
