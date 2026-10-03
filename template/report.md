@@ -6,23 +6,32 @@ compétence: <identifiant de la compétence couverte>
 run: <AAAA-MM-JJ-nn>
 arrêté_le: <AAAA-MM-JJ HH:MM>
 périmé_après: <AAAA-MM-JJ HH:MM>
-statut: complet | partiel | bloqué
+statut: complet | partiel | bloqué | jamais tourné
 autonomie: <grade sur cette compétence, ex. junior>
 couvert:
   - <ce qui a réellement été balayé>
 non_couvert:
   - <ce qui ne l'a pas été, et pourquoi>
+gabarit: <version que déclare VERSION.md, ex. 0.22.0>
+relancé_par: <ligne d'en-tête de la consigne de relance> | aucun
+demandes_en_attente:
+  - <capacité · compétence · déposée le jj/mm/aaaa>, ou « aucune »
+évaluations_dues:
+  - <compétence · motif · en attente | sans issue : critère>, ou « aucune »
 ---
 
 # report.md : Rapport de sortie
 
 > **Statut : SORTIE PUBLIQUE, auto-écrite.** C'est le **seul** fichier de ce dossier destiné à être
-> lu de l'extérieur : par l'opérateur pressé, ou par un agent chapeau qui arbitre entre plusieurs
+> lu de l'extérieur : par l'opérateur pressé, ou par un agent coordinateur qui suit plusieurs
 > instances. Tout le reste du dossier est le cerveau de l'agent et ne se lit pas d'ailleurs (compagnon P12).
 >
 > **Ce n'est pas une mémoire.** Aucune règle, aucun reward, aucun score n'entre ici. Ce qui
 > s'apprend va dans `learned-rules.md`. Ce qui décrit **l'agent** va dans `operational-state.md`.
-> Ce qui décrit **le travail** vient ici.
+> Ce qui décrit **le travail** vient ici. Une seule exception, dans l'en-tête : quatre clés de
+> **relevé** sur l'agent (`gabarit`, `relancé_par`, `demandes_en_attente`, `évaluations_dues`),
+> recopiées au moment d'écrire pour qu'un coordinateur n'ait jamais à ouvrir la mémoire (compagnon
+> P16). Elles périment avec le rapport, et en cas d'écart c'est la mémoire qui a raison.
 >
 > **Ce n'est pas un journal.** Ce fichier ne porte que le **dernier** rapport. Le précédent part
 > d'abord dans `_archive/rapports/<AAAA-MM-JJ>-<run>.md`, tel quel, sans être modifié (compagnon P5).
@@ -44,6 +53,9 @@ Pour qui lit ce fichier sans connaître le reste du dossier :
    donnée. En cas d'écart, c'est le système source qui a raison.
 5. **Ce fichier se lit, il ne s'écrit pas de l'extérieur.** Personne d'autre que l'agent de cette
    instance n'y touche, et personne ne touche au reste du dossier (compagnon P12).
+6. **`statut: jamais tourné` n'est pas une panne** : l'agent n'a pas encore travaillé. Un rapport
+   encore plein de trous entre chevrons se lit de la même façon. **`relancé_par`** dit si ce run a
+   été déclenché par un coordinateur, et avec quelle consigne.
 
 ## En un paragraphe
 

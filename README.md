@@ -107,7 +107,10 @@ Concrètement, après quelques semaines d'usage réel :
 - des **modes opératoires** pour les chaînes techniques que personne d'autre ne documente, avec leur
   niveau d'autonomie et leur date de péremption ;
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
-  par vous en trente secondes ou par un agent qui arbitre entre plusieurs de vos instances.
+  par vous en trente secondes ou par un agent qui coordonne plusieurs de vos instances ;
+- si vous avez plusieurs agents, un **module équipe** facultatif : l'un d'eux lit les rapports des
+  autres, vous signale qui n'a pas tourné ou attend votre décision, et propose de les relancer. Il
+  ne lit jamais leur mémoire, et relancer seul est une autonomie qu'il gagne, agent par agent.
 
 Et si les fichiers texte vous lassent, un **écran de lecture** facultatif : une page qu'on ouvre
 d'un double-clic, sans rien installer, qui montre en tête ce qui attend votre décision. Il ne

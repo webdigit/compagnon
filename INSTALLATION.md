@@ -59,7 +59,13 @@ valeur, laissez la ligne « Aucune valeur déclarée » : rien ne change.
 
 Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent doit être lue par
 quelqu'un d'autre que vous : un autre agent qui arbitre entre plusieurs instances, une revue
-hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame.
+hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame. Si un autre de vos agents doit
+suivre celui-ci, gardez-le : c'est la seule chose que ce coordinateur lira.
+
+Un autre fichier ne se copie pas : `equipe.md`. Il n'existe que chez un agent qui en **coordonne**
+d'autres : il lit leurs rapports, signale qui n'a pas tourné ou attend une décision, et propose de
+les relancer (compagnon P16). Il se pose à part, une fois l'installation faite, en suivant « À part :
+poser le module équipe » d'`INSTALLATION-ASSISTEE.md`, ou en le demandant à l'agent.
 
 ### L'écran de lecture, si vous en voulez un
 
@@ -120,6 +126,9 @@ elle va le chercher dans une mémoire extérieure au projet, ce qui contredit la
 
 La section « Où vit le dossier » du NOYAU se remplit avec le **chemin complet**, pas un nom de
 projet. C'est le trou le plus facile à oublier parce qu'il paraît évident à celui qui installe.
+
+La même section porte « Coordonné par » : le nom de l'agent qui suivra celui-ci, s'il y en a un.
+Sinon, `aucun`.
 
 ### Projet claude.ai (Cowork compris)
 

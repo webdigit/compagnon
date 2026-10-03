@@ -121,6 +121,10 @@ sienne avant de passer à la suivante.
    qu'on lui soumette avant d'agir. Une question, une réponse libre, que tu remets en forme.
 8. **L'écran de lecture** : une page qu'il ouvrira d'un double-clic pour voir où en est l'agent.
    Facultatif. Demande-lui s'il le veut.
+9. **Un coordinateur** : un autre de ses agents suivra-t-il celui-ci, parmi d'autres ? Le plus
+   souvent, non : on écrit `aucun`, et la question est close. Si oui, son nom, tel que ce
+   coordinateur se présente. Si c'est **celui-ci** qui doit en suivre d'autres, ce n'est pas cette
+   question : c'est le module équipe, à poser après l'installation (« À part », en fin de document).
 
 **Ce que tu ne demandes pas**, et que tu remplis toi-même :
 
@@ -128,8 +132,9 @@ sienne avant de passer à la suivante.
   confirmation, en entier. C'est le trou le plus souvent mal rempli (INSTALLATION.md, étape 4) ;
 - **le stockage partagé** : `aucun`. Le mode sans poste s'installe plus tard, après la première
   semaine (INSTALLATION.md, étape 7) ;
-- **`report.md`** : ne le pose pas. Il ne sert qu'à qui fait lire la sortie de l'agent par un
-  tiers, et l'opérateur l'ajoutera s'il en a l'usage ;
+- **`report.md`** : ne le pose pas, **sauf si la question 9 a nommé un coordinateur** : son rapport
+  est alors la seule chose que ce coordinateur lira. Sinon, il ne sert qu'à qui fait lire la sortie
+  de l'agent par un tiers, et l'opérateur l'ajoutera s'il en a l'usage ;
 - **la grille des grades et le niveau d'autonomie** : ceux du gabarit, tels quels. Lecture seule
   intégrale au départ, niveau 1 ouvert, rien d'autre (INSTALLATION.md, étape 3).
 
@@ -140,10 +145,11 @@ Avant d'écrire, montre à l'opérateur un récapitulatif court de ses réponses
 Puis :
 
 1. **Crée `ai-memory/`** à la racine du dossier du projet, et copies-y les fichiers de `template/`,
-   sauf `report.md`. Ne crée pas `journal/` : il naîtra à la première session qui traite un cas.
+   sauf `report.md` et `equipe.md`. Ne crée pas `journal/` : il naîtra à la première session qui traite un cas.
 2. **Remplis les trous d'identité, partout dans `ai-memory/`**, en majuscules comme en minuscules :
    `<NOM DE L'AGENT>`, `<OPÉRATEUR>`, `<organisation>`, `<COMPÉTENCE 01>` et ses variantes, la
-   mission, le chemin complet du dossier (`<CHEMIN COMPLET…>`, `<chemin>`), le stockage partagé.
+   mission, le chemin complet du dossier (`<CHEMIN COMPLET…>`, `<chemin>`), le stockage partagé,
+   le coordinateur (`<NOM DU COORDINATEUR…>`, ou `aucun`).
    Les fichiers qui en portent : le NOYAU, `README.md`, `principles.md`, `capabilities.md`,
    `operational-state.md` et `VERSION.md`. Cherche-les tous, ne te fie pas à cette liste. S'il n'a
    pas d'organisation, retire `, <organisation>` plutôt que de laisser un trou.
@@ -167,6 +173,10 @@ Puis :
 7. **`noyau-local.md`** : n'y ajoute rien. Il reste vide de spécificités, et c'est normal.
 8. **L'écran, s'il le veut** : copie `ecran/compagnon.html`, de la même étiquette, à la **racine du
    dossier du projet**, à côté de `ai-memory/`, pas dedans.
+9. **Si la question 9 a nommé un coordinateur** : copie aussi `report.md` dans `ai-memory/`, remplis
+   ses trous d'identité (`agent`, `opérateur`, `compétence`), et écris `statut: jamais tourné`. Le
+   reste de l'en-tête et du corps garde ses modèles : le premier vrai run les remplacera. Un
+   coordinateur qui lit `jamais tourné` sait qu'il n'y a pas de panne.
 
 **Ce que tu laisses tel quel** : tout ce qui, entre chevrons, décrit un format plutôt qu'une
 identité. Les `<jj/mm/aaaa>`, `<AAAA-MM-JJ HH:MM>`, `<fichier>` ou `<étiquette>` des schémas
@@ -246,3 +256,79 @@ Dis-lui, pour finir :
 
 Tu t'arrêtes là. Ne traite aucun cas réel dans cette conversation : l'agent qui le fera est celui
 qui démarrera avec le NOYAU, pas toi.
+
+## À part : poser le module équipe
+
+Cette procédure ne fait pas partie de l'installation ordinaire. Elle se suit quand l'opérateur veut
+qu'un agent **en suive d'autres** : à l'installation de cet agent, ou plus tard, sur une instance
+déjà en service. Les cinq règles du début valent ici aussi, à commencer par une question à la fois.
+
+**Avant tout, deux vérifications**, et une seule réponse négative arrête la procédure :
+
+- **Cet agent n'est lui-même suivi par personne** : sa ligne « Coordonné par » porte `aucun`. Un
+  coordinateur ne coordonne pas d'autres coordinateurs (compagnon P16).
+- **L'opérateur sait ce qu'il pose** : explique-lui en trois lignes qu'il s'agit d'un agent qui lit
+  les rapports des autres, les signale, et propose de les relancer ; qu'il ne lira jamais leur
+  mémoire et n'y écrira jamais ; et que relancer seul est une autonomie qui se gagne, membre par
+  membre.
+
+### Les questions
+
+1. **Quels agents il suit.** Propose la liste à partir des projets ou des dossiers que tu vois, puis
+   **lis le `report.md` de chacun** pour vérifier qu'il en a un. C'est la seule chose que tu lis chez
+   eux. Un agent sans `report.md` ne peut pas être suivi : il faut d'abord le lui poser, dans sa
+   propre session. Demande aussi à l'opérateur de confirmer qu'aucun d'eux n'est lui-même
+   coordinateur.
+2. **Pour chaque membre, sa tâche programmée.** Liste les tâches du compte et propose la
+   correspondance ; l'opérateur confirme. « Aucune » est une réponse : le membre sera lu, pas
+   relancé.
+3. **Le passage attendu de chaque membre**, en clair (« chaque jour avant 9h30 »).
+4. **Les membres relançables.** Par défaut, `oui` pour chaque membre qui a une tâche programmée.
+   L'opérateur peut en mettre à `non`. Rappelle-lui que `oui` veut dire « le coordinateur peut
+   proposer de le relancer », pas « il le relancera seul ».
+5. **Ce que le coordinateur lui remonte**, et ce qu'il garde pour lui.
+6. **Sa cadence**, et la tâche programmée qui la portera. Elle se crée depuis le projet du
+   coordinateur, dans le cloud (`hotes/claude-taches-programmees.md`). Ne la crée pas toi-même :
+   propose-la, il la crée ou te demande de le faire.
+
+### Ce que tu écris, chez le coordinateur seulement
+
+1. **`equipe.md`**, depuis le gabarit de la même étiquette, rempli de ses réponses. Zone manuelle :
+   tu écris sous sa dictée.
+2. **`report.md`**, s'il n'existe pas encore : son rapport sera l'état de l'équipe (NOYAU §5septies,
+   point 7).
+3. **`capabilities.md`** :
+   - dans « Grades actuels », une ligne pour la compétence de coordination (par exemple `C0x :
+     coordination de l'équipe`), **stagiaire**, datée du jour, `activation` ;
+   - au niveau 1, deux lignes pour cette compétence :
+
+     | Capacité | Ce que ça permet | Condition | Statut | Compétence |
+     |---|---|---|---|---|
+     | État de l'équipe | Lire le `report.md` de chaque membre de `equipe.md` et l'état de sa tâche programmée tel que l'hôte l'expose. Signaler qui n'a pas tourné, qui est périmé, partiel, en retard de version ou attend une décision. **Rien d'autre n'est lu chez un membre** | de base | ✅ OUVERT | `<C0x>` |
+     | Proposition de relance | Rédiger la consigne de relance d'un membre et la soumettre à l'opérateur. **Proposer, jamais déclencher** | de base | ✅ OUVERT | `<C0x>` |
+
+   - au niveau 2, **une ligne par membre relançable**, verrouillée :
+
+     | Capacité | Ce que ça permet | Condition | Statut | Compétence |
+     |---|---|---|---|---|
+     | Relance seule · `<membre>` | Déclencher la tâche programmée de `<membre>` sans demander, avec une consigne à l'en-tête fixe, dans les limites du NOYAU §5septies | grade junior sur `<C0x>` · 5 relances de ce membre proposées et acceptées sans correction de fond · aucune erreur ouverte ni corrigée sur `<C0x>` · accord | 🔒 VERROUILLÉ | `<C0x>` |
+
+   - dans « Interdits absolus », ces lignes, sous un intertitre « Coordination » : écrire quoi que ce
+     soit dans le dossier d'un membre ; lire chez un membre autre chose que son rapport ; créer,
+     modifier, désactiver ou supprimer la tâche programmée d'un membre ; relancer un agent absent
+     de `equipe.md` ou marqué `non` ; coordonner un autre coordinateur.
+4. **`VERSION.md`** : une ligne d'historique, « module équipe posé », datée.
+
+Relis chaque fichier depuis le disque, marqueur de fin compris (Étape 5).
+
+### Ce que tu n'écris pas : chez les membres
+
+Aucun agent n'écrit chez un autre, et tu ne fais pas exception. Pour chaque membre, **rédige le texte
+que l'opérateur collera dans une session de ce membre** :
+
+> « Ton coordinateur est désormais <nom du coordinateur>. Remplis la ligne « Coordonné par » de ton
+> NOYAU avec ce nom, vérifie que ton `report.md` porte les clés de relevé de la version en cours,
+> puis rappelle-moi de recoller le NOYAU et les spécificités. »
+
+L'opérateur le fait membre par membre, puis recolle. Tant qu'un membre n'a pas fait ce geste, il
+ne reconnaîtra pas une relance : le coordinateur peut le lire, il ne doit pas le relancer. Dis-le.

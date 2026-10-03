@@ -58,6 +58,7 @@ personne n'y voie une panne.
 | `objectives.md` | oui | compétences visées |
 | `VERSION.md` | oui | version du gabarit et écarts |
 | `report.md` | oui, s'il existe | rapport de sortie, facultatif |
+| `equipe.md` | **non** | lu par le coordinateur seul ; l'écran ne l'affiche pas (0.22.0) |
 | `NOYAU-instructions-projet.md` | **non** | volumineux, et le plus spécifique du métier |
 | `noyau-local.md` | **non** | même raison que le NOYAU, dont il est la suite |
 | `procedures.md` | **non** | chemins, comptes, parfois des identifiants |
@@ -212,6 +213,11 @@ de première cellule de tableau.
 `report.md` s'ouvre sur un bloc entre deux lignes de trois tirets, en clés simples et listes à
 puces indentées. Clés lues : `run`, `statut`, `arrêté_le`, `périmé_après`, `compétence`,
 `autonomie`, `couvert`, `non_couvert`.
+
+Depuis la 0.22.0, l'en-tête porte quatre clés de relevé : `gabarit`, `relancé_par`,
+`demandes_en_attente`, `évaluations_dues`, et `statut` peut valoir `jamais tourné`. L'écran ne les
+interprète pas : elles servent au coordinateur (NOYAU §5septies). Une valeur peut contenir deux-points
+(`relancé_par` porte une heure) : seul le premier sépare la clé de la valeur.
 
 ## 11. Ce que la construction de l'écran a révélé
 

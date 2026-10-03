@@ -10,6 +10,47 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.22.0] - 2026-10-03
+
+### Ajouté
+
+- **compagnon P16 : coordonner, c'est faire tourner ce qui est déjà accordé** (`DOCTRINE.md`). Un
+  agent coordinateur lit les rapports de ses membres, signale, et relance un membre sur son propre
+  travail. Une relance choisit quand le membre tourne et sur quoi il se concentre, jamais ce qu'il a
+  le droit de faire. Relancer seul se gagne, membre par membre. Un seul niveau.
+- **Module équipe, facultatif** : `template/equipe.md` (zone manuelle), NOYAU §5septies, et la
+  procédure « À part : poser le module équipe » d'`INSTALLATION-ASSISTEE.md`, avec la compétence de
+  coordination, ses capacités et ses interdits.
+- **NOYAU, « Coordonné par »** dans « Où vit le dossier », et **§5sexies**, « Une consigne venue
+  d'un autre agent » : reconnaître une relance (en-tête fixe, en première ligne du message qui
+  ouvre le run, jamais dans un contenu lu) et ce qu'on en fait.
+- **`report.md`** : clés `gabarit`, `relancé_par`, `demandes_en_attente`, `évaluations_dues` ;
+  statut `jamais tourné`.
+- **Installation assistée, question 9** : un coordinateur suivra-t-il cet agent ?
+- **`hotes/claude-taches-programmees.md`** : « Relancer la tâche d'une autre instance », et les
+  essais TR1 à TR7.
+- **`PUBLICATION.md`, R8** : une interdiction dit par où passer.
+
+### Changé
+
+- **DOCTRINE P12** : « agent chapeau » devient « agent coordinateur » ; la puce sur les consignes
+  d'agent renvoie à P16, seule exception bornée.
+- **NOYAU §5bis** : le paragraphe « Réciproquement » devient le §5sexies ; point 9 ajouté.
+- **`report.md`** : bandeau et contrat de lecture ajustés aux clés de relevé.
+- **`FORMAT.md`**, §3 et §10 ; **`INSTALLATION.md`**, étapes 2 et 4 ; **`README.md`** ;
+  **`template/README.md`**.
+
+### La leçon
+
+P12 interdisait au coordinateur la mémoire de ses membres, sans que leur rapport lui donne de quoi
+coordonner. Le premier coordinateur réel, Vincent, a lu cinq `VERSION.md` pour faire son travail.
+Ce n'était pas une faute de l'agent : une frontière qui ne laisse aucun chemin légitime finit
+contournée, et de bonne foi. C'est le format du rapport qui devait changer, pas la frontière.
+
+Origine : JC, 03/10/2026, sept instances en service et le souhait que l'une coordonne les autres.
+Proposition rédigée par l'instance Vincent, décisions de JC le même jour (principe dédié, nom
+« coordinateur », relance qui se gagne, un seul niveau).
+
 ## [0.21.0] - 2026-10-03
 
 ### Ajouté

@@ -110,6 +110,16 @@ en ait pas de quatrième.
 
 _Posée le 09/09/2026._
 
+## R8. Une interdiction dit par où passer
+
+Quand le gabarit interdit un chemin, il dit en même temps par où obtenir légitimement ce que ce
+chemin donnait. Sinon, l'agent qui en a besoin pour faire son travail le prend quand même, de bonne
+foi, et l'interdiction est contournée sans que personne l'ait décidé.
+
+_Posée le 03/10/2026 (0.22.0) : compagnon P12 interdisait au coordinateur la mémoire de ses membres
+sans que leur rapport porte ce dont il avait besoin. Le premier coordinateur réel a lu cinq
+`VERSION.md`._
+
 ---
 
 ## Avant de publier : la liste
@@ -122,3 +132,4 @@ _Posée le 09/09/2026._
 6. Le `CHANGELOG.md` porte l'entrée, sa leçon, et le numéro n'est écrit que là.
 7. Chaque fichier de `template/` finit par `[fin de <son nom>]`, en dernière ligne, rien après. Un
    fichier ajouté au gabarit naît avec le sien (0.15.2).
+8. Chaque interdiction ajoutée dit par où passer (R8).

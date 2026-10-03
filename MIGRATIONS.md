@@ -147,6 +147,80 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.21.0 → 0.22.0
+
+### Ce qui change
+
+**Le module équipe** (compagnon P16, nouveau principe). Un agent peut en **coordonner** d'autres :
+lire leurs rapports, signaler qui n'a pas tourné, qui est en retard ou attend une décision, et
+proposer de relancer leur tâche programmée avec une consigne. Relancer **seul** est une capacité qui
+se gagne, membre par membre. Un seul niveau : un coordinateur n'en coordonne pas d'autres.
+
+Pour toutes les instances, coordonnées ou non :
+
+- **NOYAU, « Où vit le dossier »** : une ligne de plus, « Coordonné par », avec son paragraphe.
+- **NOYAU §0, point 0** : une phrase, qui renvoie au §5sexies quand le premier message d'un run
+  commence par `[consigne de`.
+- **NOYAU §5bis** : le paragraphe « Réciproquement » sort de la section et devient le **§5sexies**,
+  « Une consigne venue d'un autre agent » : reconnaître une relance, et ce qu'on en fait. Un point 9
+  ajouté : remplir le relevé de l'en-tête du rapport.
+- **NOYAU §5septies**, « Coordonner une équipe » : ne s'applique que si `equipe.md` existe.
+- **`report.md`** : quatre clés de relevé dans l'en-tête (`gabarit`, `relancé_par`,
+  `demandes_en_attente`, `évaluations_dues`), une valeur de plus pour `statut` (`jamais tourné`), le
+  bandeau et le contrat de lecture ajustés.
+- **Vocabulaire** : « agent chapeau » devient « agent coordinateur » partout.
+
+Pour un coordinateur seulement : `equipe.md`, nouveau fichier du gabarit, zone manuelle.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Nouveau trou : « Coordonné par ». Y écrire `aucun`, sauf si l'opérateur nomme un coordinateur
+  pendant la migration. Passages qui changent : « Où vit le dossier », la liste des couches, §0
+  point 0, §5bis (point 9, et la fin de section), §5sexies et §5septies (nouveaux).
+- **`noyau-local.md`** : ne pas y toucher. Si une spécificité complète le paragraphe
+  « Réciproquement » de l'ancien §5bis, la relire contre le nouveau §5sexies et signaler ce qui ne
+  tient plus. **Si une spécificité fait déjà coordonner d'autres instances à cet agent**, le
+  signaler à l'opérateur et lui proposer de poser le module équipe (« À part » en fin
+  d'`INSTALLATION-ASSISTEE.md`), en y reportant ce que la spécificité disait. Si cette spécificité
+  fait lire autre chose que des rapports chez les autres instances, le dire aussi : c'est contraire
+  à compagnon P12, et le module ne le reprendra pas.
+- **`report.md`**, s'il existe : ajouter les quatre clés et la valeur `jamais tourné` **au prochain
+  rapport** écrit, sans réécrire le rapport en place. S'il est encore au gabarit (trous entre
+  chevrons), y écrire `statut: jamais tourné`.
+- **`README.md`** de l'instance : dans la ligne `report.md` de la carte des fichiers, remplacer
+  « agent chapeau » par « agent coordinateur », et ajouter le bloc « Couche COORDINATION » de cette
+  étiquette après la couche INTERFACE.
+- **`equipe.md`** : ne pas le poser. Il ne se pose que par la procédure du module équipe.
+- **`VERSION.md`** : passer la version courante à 0.22.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+`[fin de noyau-local.md]`.
+
+**Décider s'il veut un coordinateur**, et lequel. Rien n'est à faire s'il n'en veut pas. S'il en
+veut un : poser le module chez lui (« À part : poser le module équipe »), puis coller chez chaque
+membre le texte que l'agent lui aura préparé, et recoller chez chacun.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé porte la ligne « Coordonné par » dans « Où vit le dossier », et les
+sections §5sexies et §5septies. `VERSION.md` porte 0.22.0.
+
+**La suite** : le rapport suivant porte `gabarit` et `relancé_par`. Chez un coordinateur,
+`equipe.md` existe, chaque membre y a sa ligne, et la spécificité locale reprise est retirée de
+`noyau-local.md` avec une ligne d'origine.
+
+### Ce que cette migration ne fait pas
+
+Elle ne pose aucun coordinateur d'office, et n'ouvre aucune relance. **Tant que les essais TR1 et
+TR7 de `hotes/claude-taches-programmees.md` ne sont pas passés, un coordinateur propose ses
+relances : il ne les fait pas, même si la capacité était ouverte.**
+
+---
+
 ## 0.20.1 → 0.21.0
 
 ### Ce qui change

@@ -68,11 +68,20 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 
 | Fichier | Rôle | Écriture |
 |---|---|---|
-| `report.md` | La **seule sortie publique** : ce que le travail donne, pour l'opérateur pressé ou un agent chapeau | Auto (agent) · **facultatif** |
+| `report.md` | La **seule sortie publique** : ce que le travail donne, pour l'opérateur pressé ou un agent coordinateur | Auto (agent) · **facultatif** |
 
 > `report.md` n'est pas une mémoire et n'est pas un journal : il ne porte que le dernier rapport, il
 > est daté, il périme, et il pointe vers les systèmes qui portent la donnée au lieu de la recopier.
 > Une instance dont personne ne lit la sortie n'a pas besoin de ce fichier.
+
+**Couche COORDINATION** (le coordinateur seul)
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `equipe.md` | Les agents que celui-ci suit : leur rapport, leur tâche programmée, s'ils peuvent être relancés | **Opérateur** (zone manuelle) · **facultatif** |
+
+> Ce fichier n'existe que chez un agent qui en coordonne d'autres (NOYAU §5septies). De ses
+> membres, il ne lit que le rapport. Il ne leur écrit jamais (compagnon P12, P16).
 
 **Couche ÉCRAN** (hors de ce dossier, à la racine du projet)
 
