@@ -12,7 +12,8 @@ couvert:
   - <ce qui a réellement été balayé>
 non_couvert:
   - <ce qui ne l'a pas été, et pourquoi>
-gabarit: <version que déclare VERSION.md, ex. 0.22.0>
+gabarit: <version que déclare VERSION.md, ex. 0.22.1>
+coordonné_par: <nom inscrit à « Coordonné par » dans le NOYAU> | aucun
 relancé_par: <ligne d'en-tête de la consigne de relance> | aucun
 demandes_en_attente:
   - <capacité · compétence · déposée le jj/mm/aaaa>, ou « aucune »
@@ -28,8 +29,9 @@ demandes_en_attente:
 >
 > **Ce n'est pas une mémoire.** Aucune règle, aucun reward, aucun score n'entre ici. Ce qui
 > s'apprend va dans `learned-rules.md`. Ce qui décrit **l'agent** va dans `operational-state.md`.
-> Ce qui décrit **le travail** vient ici. Une seule exception, dans l'en-tête : quatre clés de
-> **relevé** sur l'agent (`gabarit`, `relancé_par`, `demandes_en_attente`, `évaluations_dues`),
+> Ce qui décrit **le travail** vient ici. Une seule exception, dans l'en-tête : cinq clés de
+> **relevé** sur l'agent (`gabarit`, `coordonné_par`, `relancé_par`, `demandes_en_attente`,
+> `évaluations_dues`),
 > recopiées au moment d'écrire pour qu'un coordinateur n'ait jamais à ouvrir la mémoire (compagnon
 > P16). Elles périment avec le rapport, et en cas d'écart c'est la mémoire qui a raison.
 >
@@ -54,8 +56,9 @@ Pour qui lit ce fichier sans connaître le reste du dossier :
 5. **Ce fichier se lit, il ne s'écrit pas de l'extérieur.** Personne d'autre que l'agent de cette
    instance n'y touche, et personne ne touche au reste du dossier (compagnon P12).
 6. **`statut: jamais tourné` n'est pas une panne** : l'agent n'a pas encore travaillé. Un rapport
-   encore plein de trous entre chevrons se lit de la même façon. **`relancé_par`** dit si ce run a
-   été déclenché par un coordinateur, et avec quelle consigne.
+   encore plein de trous entre chevrons se lit de la même façon. **Sans clé `gabarit`**, l'agent est
+   antérieur à la 0.22.0. **`coordonné_par`** dit quel coordinateur l'agent reconnaît ;
+   **`relancé_par`**, si ce run a été déclenché par lui, et avec quelle consigne.
 
 ## En un paragraphe
 

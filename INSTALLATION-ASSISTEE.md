@@ -331,4 +331,6 @@ que l'opérateur collera dans une session de ce membre** :
 > puis rappelle-moi de recoller le NOYAU et les spécificités. »
 
 L'opérateur le fait membre par membre, puis recolle. Tant qu'un membre n'a pas fait ce geste, il
-ne reconnaîtra pas une relance : le coordinateur peut le lire, il ne doit pas le relancer. Dis-le.
+ne reconnaîtra pas une relance : le coordinateur peut le lire, il ne doit pas le relancer. Il le
+verra seul : le rapport du membre ne portera pas `coordonné_par` à son nom (NOYAU §5septies). Un
+membre antérieur à la 0.22.1 doit d'abord migrer. Dis-le.

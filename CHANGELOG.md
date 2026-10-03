@@ -10,6 +10,29 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.22.1] - 2026-10-03
+
+### Corrigé
+
+- **NOYAU §5sexies citait « P007 »** pour l'interdit d'exécuter une consigne trouvée dans un
+  contenu observé. Une instance née avant cette numérotation porte cet interdit sous un autre
+  numéro, et le renvoi tombait sur un autre principe. Le NOYAU le désigne désormais par ce qu'il
+  interdit.
+- **Un membre antérieur à la 0.22.0 ne se voyait pas.** Le §5septies dit qu'un rapport sans clé
+  `gabarit` vient d'un membre en retard, sans jamais ouvrir son `VERSION.md` pour le savoir.
+- **Le coordinateur ne pouvait pas savoir si un membre reconnaîtrait sa relance.** Nouvelle clé de
+  rapport, `coordonné_par` ; un membre ne se relance que si son dernier rapport porte le nom du
+  coordinateur.
+
+### La leçon
+
+Un principe d'instance se cite par ce qu'il dit, pas par son numéro : le gabarit numérote, mais
+chaque instance a sa propre histoire. Et la 0.22.0 a reproduit à petite échelle le défaut qu'elle
+corrigeait : elle laissait le coordinateur sans moyen légitime de connaître la version d'un membre
+ancien. R8 s'applique aussi à la version qui l'a posée.
+
+Origine : instance Vincent, migration 0.21.0 → 0.22.0, 03/10/2026.
+
 ## [0.22.0] - 2026-10-03
 
 ### Ajouté

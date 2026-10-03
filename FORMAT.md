@@ -214,8 +214,9 @@ de première cellule de tableau.
 puces indentées. Clés lues : `run`, `statut`, `arrêté_le`, `périmé_après`, `compétence`,
 `autonomie`, `couvert`, `non_couvert`.
 
-Depuis la 0.22.0, l'en-tête porte quatre clés de relevé : `gabarit`, `relancé_par`,
-`demandes_en_attente`, `évaluations_dues`, et `statut` peut valoir `jamais tourné`. L'écran ne les
+Depuis la 0.22.0, l'en-tête porte des clés de relevé : `gabarit`, `relancé_par`,
+`demandes_en_attente`, `évaluations_dues`, et `coordonné_par` depuis la 0.22.1 ; `statut` peut
+valoir `jamais tourné`. L'écran ne les
 interprète pas : elles servent au coordinateur (NOYAU §5septies). Une valeur peut contenir deux-points
 (`relancé_par` porte une heure) : seul le premier sépare la clé de la valeur.
 

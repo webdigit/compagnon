@@ -147,6 +147,48 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.22.0 → 0.22.1
+
+### Ce qui change
+
+Deux défauts de la 0.22.0, trouvés par l'instance Vincent en migrant (PUBLICATION R3).
+
+- **Un renvoi par numéro qui tombait à côté.** Le §5sexies citait « P007 » pour l'interdit
+  d'exécuter une consigne trouvée dans un contenu observé. C'est son numéro dans le gabarit, pas
+  forcément dans une instance née avant cette numérotation. Le NOYAU désigne désormais ce principe
+  par ce qu'il interdit.
+- **Un membre trop ancien ne se voyait pas.** Sans clé `gabarit` dans son rapport, le coordinateur
+  n'avait aucun moyen légitime de savoir qu'un membre était en retard, ni s'il reconnaîtrait une
+  relance. Le §5septies dit maintenant quoi en conclure, et le rapport gagne une clé,
+  `coordonné_par` : un membre ne se relance que si son dernier rapport porte le nom du coordinateur.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §5bis point 9, §5sexies (premier cas de « Reconnaître une relance »),
+  §5septies points 3 et 5.
+- **`noyau-local.md`** : si une spécificité fait la correspondance entre « P007 » et le numéro local
+  de cet interdit, elle n'a plus d'objet. Proposer à l'opérateur de la retirer, avec une ligne
+  d'origine.
+- **`report.md`**, s'il existe : ajouter `coordonné_par` **au prochain rapport** écrit, sans réécrire
+  le rapport en place.
+- **`VERSION.md`** : passer la version courante à 0.22.1, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+`[fin de noyau-local.md]`.
+
+### Comment vérifier
+
+**Le texte** : le §5sexies du NOYAU recollé ne cite plus « P007 ». Le §5septies, point 5, commence
+par la condition `coordonné_par`. `VERSION.md` porte 0.22.1.
+
+**La suite** : le rapport suivant porte `coordonné_par`.
+
+---
+
 ## 0.21.0 → 0.22.0
 
 ### Ce qui change
