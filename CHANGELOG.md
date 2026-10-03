@@ -10,6 +10,36 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.21.0] - 2026-10-03
+
+### Ajouté
+
+- **compagnon P15 : une valeur s'instruit par une situation** (`DOCTRINE.md`). L'opérateur peut
+  déclarer deux ou trois valeurs (la bienveillance, le partage, la rentabilité…) que le travail de
+  l'agent doit porter quand rien d'autre ne tranche. Facultatives, classées, chacune ancrée dans une
+  situation concrète du métier. Elles départagent, elles ne lèvent rien : ni un principe dur, ni
+  une règle apprise.
+- **`principles.md` : section « Valeurs »**, vide par défaut (« Aucune valeur déclarée »).
+- **La consigne au moment où l'agent produit** (NOYAU §0, point 5) : quand rien ne tranche, pencher
+  du côté des valeurs, dans leur ordre ; dire en une ligne quand une valeur a fait pencher ; proposer
+  de reformuler une valeur souvent corrigée, sans jamais la réécrire.
+- **Installation assistée, question 6 : les valeurs.** Aucune, et on passe à la suite. Sinon, une à
+  la fois : ce qu'elle veut dire, puis une mise en situation tirée de la première compétence. Puis
+  la hiérarchie : la plus importante, la moins importante, et ce classement éprouvé sur une
+  situation où deux valeurs se contredisent. Une valeur que l'opérateur ne
+  sait pas mettre en situation n'est pas retenue.
+
+### Changé
+
+- **NOYAU §4bis, point 2** : une règle qui contredit une valeur ne se tranche pas d'office, elle se
+  signale.
+- **`INSTALLATION-ASSISTEE.md`** : questions renumérotées (« Comment il travaille » devient la 7,
+  l'écran la 8). **`INSTALLATION.md`**, étape 2, et **`template/README.md`** mentionnent la section.
+
+Origine : demande de JC, 03/10/2026, sur l'idée d'instaurer quelques valeurs dans un agent dès son
+installation, en mettant l'opérateur en situation pour qu'il dise concrètement ce qu'elles veulent
+dire.
+
 ## [0.20.1] - 2026-10-02
 
 Documentation seulement. `template/` ne change pas.

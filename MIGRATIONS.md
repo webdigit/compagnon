@@ -147,6 +147,57 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.20.1 → 0.21.0
+
+### Ce qui change
+
+**Des valeurs, facultatives** (compagnon P15, nouveau principe). `principles.md` gagne une section
+« Valeurs », entre « Comment l'opérateur travaille » et « Échelle d'autonomie » : deux ou trois
+valeurs au plus, classées, chacune avec ce qu'elle veut dire pour l'opérateur et au moins une
+situation concrète de son métier. Le NOYAU porte la consigne là où l'agent produit (§0, point 5, un
+paragraphe ajouté) : quand rien ne tranche, pencher du côté des valeurs, dans leur ordre, et dire
+quand une valeur a fait pencher. Le §4bis, point 2, traite la règle qui contredit une valeur.
+`INSTALLATION-ASSISTEE.md` pose la question à l'installation, avec mise en situation.
+
+Sans valeur déclarée, rien ne change dans le comportement de l'agent.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 5 (un paragraphe ajouté), §4bis point 2 (deux phrases ajoutées).
+- **`principles.md`** : c'est une zone manuelle, mais l'ajout d'une section vide est de la
+  structure. Y insérer la section « Valeurs » de cette étiquette, **encadré et ligne « Aucune valeur
+  déclarée » compris**, entre « Comment l'opérateur travaille » et « Échelle d'autonomie », sans
+  toucher à une seule autre ligne. Si l'instance n'a pas ces deux sections, l'insérer juste avant la
+  ligne de pied de page, et le signaler.
+- **`noyau-local.md`** : ne pas y toucher. Si une spécificité dit déjà comment arbitrer, ou porte
+  quelque chose qui ressemble à une valeur (« toujours privilégier la relation client »), la
+  signaler à l'opérateur : c'est peut-être une valeur qui s'ignore, et il décide où elle vit.
+- **`VERSION.md`** : passer la version courante à 0.21.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+`[fin de noyau-local.md]`.
+
+**Décider s'il veut des valeurs.** L'agent le lui propose en une ligne à la fin de la migration,
+sans insister : « aucune » est une réponse complète. S'il en veut, l'agent mène l'entretien de
+l'étape 3, question 6, d'`INSTALLATION-ASSISTEE.md` (une valeur à la fois, mise en situation sur
+une compétence active, hiérarchie donnée puis éprouvée sur une situation de conflit), propose le texte, et l'écrit dans
+`principles.md` sous sa dictée, une fois le texte validé.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé porte au §0, point 5, le paragraphe qui commence par « Quand rien ne
+tranche entre deux façons de faire ». `principles.md` porte la section « Valeurs », et rien d'autre
+n'y a bougé. `VERSION.md` porte 0.21.0.
+
+**La suite**, si des valeurs ont été déclarées : la première fois qu'une valeur fait pencher un
+travail, l'agent l'écrit en une ligne (« V1 a tranché : … »).
+
+---
+
 ## 0.20.0 → 0.20.1
 
 ### Ce qui change

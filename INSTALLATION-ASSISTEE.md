@@ -94,9 +94,32 @@ sienne avant de passer à la suivante.
    principes durs déjà écrits dans `principles.md` (ne jamais envoyer, ne jamais engager…), puis
    demande-lui ce qu'il ajouterait pour son métier. Deux suffisent pour commencer ; aucun, c'est
    permis, et on le note.
-6. **Comment il travaille** : langue, tutoiement ou vouvoiement, niveau de concision, ce qu'il veut
+6. **Ses valeurs**, facultatives. Demande-lui s'il y a deux ou trois choses qu'il veut voir
+   portées par le travail de l'agent quand rien d'autre ne tranche : la bienveillance, le partage,
+   la rentabilité, ou autre chose. **S'il n'en a pas, tu passes à la suite** : c'est une réponse
+   complète, et l'agent fonctionnera à l'identique. S'il en a, **une valeur à la fois**, trois au
+   plus :
+   - **Ce qu'elle veut dire pour lui**, concrètement. Une réponse vague (« être sympa ») appelle
+     une relance : « à quoi verrais-tu qu'il l'a respectée ? ».
+   - **La mise en situation.** Tire de la compétence 01 une situation précise et réaliste, où la
+     valeur pèse vraiment : celle où elle coûte quelque chose (du temps, de la marge, de la
+     fermeté). Décris-la en deux ou trois lignes et demande-lui ce qu'il attend que l'agent y
+     fasse, et pourquoi. Sa réponse devient la ligne « En situation ». S'il ne sait pas répondre,
+     la valeur n'est pas mûre : propose de ne pas la retenir pour l'instant, il pourra l'ajouter
+     plus tard.
+   - **La hiérarchie**, s'il en a donné plusieurs. Demande-lui d'abord laquelle est la plus
+     importante, et, s'il y en a trois, laquelle l'est le moins. Puis **mets ce classement à
+     l'épreuve** : construis une situation où les deux premières tirent dans deux sens, et
+     demande-lui ce qu'il attend. S'il y en a trois, fais de même pour la deuxième et la
+     troisième. Si une réponse contredit le classement qu'il vient de donner, dis-le-lui
+     simplement et laisse-le trancher : c'est lui qui fixe l'ordre, la situation sert à vérifier
+     qu'il tient. Chaque situation de conflit retenue s'ajoute à la valeur qui l'emporte.
+
+   Puis remets chaque valeur en forme (`principles.md`, section « Valeurs ») et soumets-lui le
+   texte : ce sont ses mots, tu ne fais que les ranger.
+7. **Comment il travaille** : langue, tutoiement ou vouvoiement, niveau de concision, ce qu'il veut
    qu'on lui soumette avant d'agir. Une question, une réponse libre, que tu remets en forme.
-7. **L'écran de lecture** : une page qu'il ouvrira d'un double-clic pour voir où en est l'agent.
+8. **L'écran de lecture** : une page qu'il ouvrira d'un double-clic pour voir où en est l'agent.
    Facultatif. Demande-lui s'il le veut.
 
 **Ce que tu ne demandes pas**, et que tu remplis toi-même :
@@ -125,7 +148,9 @@ Puis :
    `operational-state.md` et `VERSION.md`. Cherche-les tous, ne te fie pas à cette liste. S'il n'a
    pas d'organisation, retire `, <organisation>` plutôt que de laisser un trou.
 3. **`principles.md`** : la mission, ses interdits métier en P008, P009 (retire la ligne de ceux
-   qu'il n'a pas donnés, et la ligne d'exemple en italique sous P008), sa façon de travailler. C'est
+   qu'il n'a pas donnés, et la ligne d'exemple en italique sous P008), ses valeurs s'il en a donné
+   (dans l'ordre fixé, ligne « Aucune valeur déclarée » retirée ; sinon, tu la laisses), sa façon
+   de travailler. C'est
    une zone manuelle : tu y écris **sous sa dictée**, le texte qu'il a validé, et rien de plus.
 4. **`capabilities.md`** : remplace la ligne modèle de « Grades actuels » par celle de la compétence
    01 (un identifiant court, par exemple `C01 : <la compétence en quelques mots>`), au grade
@@ -135,7 +160,7 @@ Puis :
    par ses P008 et P009, ou retire la ligne s'il n'en a donné aucun. Ne touche ni à la grille ni
    au reste du catalogue, dont les lignes modèles entre chevrons restent telles quelles.
 5. **`operational-state.md`** : la section « Identité et niveau », et « Rituel de collaboration »
-   à partir de sa réponse à la question 6. Le reste se remplira à la première vraie session.
+   à partir de sa réponse à la question 7. Le reste se remplira à la première vraie session.
 6. **`VERSION.md`** : la version installée, l'étiquette et son commit court s'il est connu, la date
    de pose, l'instance, la ligne `Écran`, et la première ligne de l'historique. `Copie locale` :
    `aucune`. La copie temporaire de l'étape 1 n'en est pas une.

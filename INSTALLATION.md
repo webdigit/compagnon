@@ -51,6 +51,12 @@ remplir. Les fichiers arrivent vides de contenu métier, c'est voulu. Le sous-do
 Trois fichiers vous appartiennent et ne s'auto-écrivent jamais : `principles.md`, les cibles
 d'`objectives.md`, et le catalogue de `capabilities.md`. L'agent y *propose*, vous y *disposez*.
 
+Dans `principles.md`, la section **Valeurs** est facultative. Si vous voulez que le travail de
+l'agent porte deux ou trois valeurs (la bienveillance, le partage, la rentabilité…), écrivez pour
+chacune ce qu'elle veut dire chez vous et une situation concrète de votre métier avec ce que vous
+attendez qu'il y fasse, puis classez-les. Une valeur sans situation n'instruit pas l'agent. Sans
+valeur, laissez la ligne « Aucune valeur déclarée » : rien ne change.
+
 Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent doit être lue par
 quelqu'un d'autre que vous : un autre agent qui arbitre entre plusieurs instances, une revue
 hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame.

@@ -62,6 +62,33 @@ traçable. Ce qui reste local, c'est ce que l'agent **apprend**.
 - `<vos interdits typographiques>`
 - `<le rituel de validation : que faut-il vous soumettre, et comment>`
 
+## Valeurs
+
+> **Facultatif.** Ce que vous voulez voir porté par le travail de l'agent quand aucun principe,
+> aucune règle apprise et aucune consigne de votre part ne tranche : la bienveillance, le partage,
+> la rentabilité, ou autre chose. **Aucune, c'est permis** : laissez la ligne « Aucune valeur
+> déclarée », et rien ne change dans le comportement de l'agent.
+>
+> **Une valeur sans situation n'est pas retenue.** « Bienveillance » seule ne dit rien à un agent.
+> Chaque valeur porte ce qu'elle veut dire chez vous, dans vos mots, et au moins une situation
+> tirée de votre métier, avec ce que vous attendez qu'il y fasse. C'est la situation qui
+> l'instruit, pas le mot.
+>
+> **Trois au plus, hiérarchisées.** V1 est la plus importante, la dernière la moins importante. Le
+> jour où deux valeurs tirent dans deux sens, celle qui est au-dessus passe. Sans hiérarchie,
+> elles se taisent justement là où on en a besoin.
+>
+> **Une valeur départage, elle ne lève rien.** Elle ne passe jamais devant un principe dur ni une
+> règle apprise : elle tranche ce qu'ils laissent ouvert (NOYAU, §0 point 5).
+>
+> **La forme**, une valeur par paragraphe, et la ligne « Aucune valeur déclarée » retirée :
+>
+> **V1 : `<la valeur, en un ou deux mots>`.** `<ce qu'elle veut dire ici, dans vos mots>`
+> *En situation : `<une situation concrète de la compétence>` → `<ce que vous attendez que l'agent
+> y fasse>`.*
+
+_Aucune valeur déclarée._
+
 ## Échelle d'autonomie
 
 Cinq grades, **par compétence** : stagiaire, junior, medior, senior, expert. **Stagiaire = supervisé,

@@ -423,6 +423,34 @@ lisible par une machine seule est un état que personne ne contredit.
 panne. Ça fonctionne partout où un agent sait lire des fichiers, quel que soit le modèle et quel
 que soit l'hôte.
 
+### P15. Une valeur s'instruit par une situation
+
+Un opérateur ne veut pas seulement un travail juste : il veut un travail qui lui ressemble. Une
+partie de cette ressemblance s'apprend, correction après correction (P2). Une autre se déclare
+d'emblée : ce qu'il veut voir porté quand rien d'autre ne tranche, la bienveillance, le partage, la
+rentabilité. Les règles mûrissent lentement ; entre-temps, l'agent arbitre seul des cas que rien ne
+couvre. Une valeur lui donne un sens dans lequel pencher.
+
+Mais un mot n'instruit pas un agent. « Bienveillance » se lit de dix façons, et l'agent choisira
+celle qui l'arrange. Ce qui instruit, c'est une situation tirée du métier et ce que l'opérateur y
+attend : celle où la valeur coûte quelque chose, du temps, de la marge, de la fermeté. Une valeur
+qu'on ne sait pas mettre en situation n'est pas encore une valeur pour l'agent.
+
+Conséquences exécutoires :
+
+- **Facultatives.** Aucune valeur, c'est une instance complète, qui fonctionne à l'identique.
+- **Trois au plus, hiérarchisées.** Deux valeurs finissent toujours par tirer dans deux sens. Sans
+  hiérarchie, elles se taisent au seul moment où elles servent. L'opérateur dit laquelle compte le
+  plus et laquelle le moins, puis le classement s'éprouve sur une situation de conflit : un ordre
+  qui ne résiste pas à son premier cas n'est pas encore le sien.
+- **Elles départagent, elles ne lèvent rien.** Une valeur ne passe ni devant un principe dur ni
+  devant une règle apprise. Une règle qui contredit une valeur dit que l'une des deux est mal
+  écrite : l'opérateur tranche.
+- **Elles se voient.** Quand une valeur a fait pencher un travail, l'agent le dit, pour que
+  l'opérateur puisse corriger l'arbitrage autant que le résultat (P1).
+- **Elles appartiennent à l'opérateur.** Elles vivent dans `principles.md`, zone manuelle. L'agent
+  propose de reformuler une valeur que les corrections contredisent, il ne la réécrit jamais.
+
 ---
 
 ## À trancher : questions ouvertes de doctrine

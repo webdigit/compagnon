@@ -41,7 +41,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 
 | Fichier | Rôle | Écriture |
 |---|---|---|
-| `principles.md` | La constitution : mission, garde-fous durs, échelle d'autonomie | **Manuelle (opérateur)** |
+| `principles.md` | La constitution : mission, garde-fous durs, valeurs (facultatives), échelle d'autonomie | **Manuelle (opérateur)** |
 | `learned-rules.md` | Le playbook : règles apprises, statut, score, maturation | Auto (agent) |
 | `examples.md` | Cas concrets réutilisables par analogie | Auto (agent) |
 | `mistakes.md` | Journal des erreurs de jugement, le frein de l'autonomie | Auto (agent) |
