@@ -147,6 +147,28 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.25.1 → 0.25.2
+
+### Ce qui change
+
+Documentation seulement, `template/` inchangé. Le README gagne une section « Aller plus loin » : les
+tâches planifiées et le coordinateur d'une équipe d'agents.
+
+### Ce que l'agent fait seul
+
+- **`VERSION.md`** : passer la version courante à 0.25.2, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique. Rien d'autre.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Aucun recollage.
+
+### Comment vérifier
+
+`VERSION.md` porte 0.25.2.
+
+---
+
 ## 0.25.0 → 0.25.1
 
 ### Ce qui change

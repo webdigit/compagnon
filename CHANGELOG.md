@@ -10,6 +10,25 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.25.2] - 2026-10-04
+
+### Ajouté
+
+- **README, « Aller plus loin »** : les deux modules facultatifs expliqués à qui arrive. Les tâches
+  planifiées (ce que l'agent fait sans vous, ce qu'il vous laisse, les deux modes, où créer la tâche,
+  où se trouve la mise en place). Le coordinateur et ses membres (ce qu'il lit et ne lit pas, la
+  relance qui se gagne membre par membre, la seule consigne qu'un membre accepte, un seul niveau, la
+  première relance autonome du 04/10/2026, la mise en place). Les deux puces de « Ce que fait
+  compagnon » y renvoient.
+
+### La leçon
+
+Une capacité que le README ne nomme pas n'existe pas pour qui découvre la méthode. Le module équipe
+et le travail sans opérateur étaient décrits pour l'agent qui les applique, pas pour l'opérateur qui
+se demande s'il en a besoin.
+
+Origine : remarque de JC, 04/10/2026, après la publication de la 0.25.1.
+
 ## [0.25.1] - 2026-10-04
 
 ### Changé

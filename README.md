@@ -90,6 +90,56 @@ réel avant que le système commence à valoir quelque chose.
 
 ---
 
+## Aller plus loin
+
+Deux modules facultatifs, à poser une fois que l'agent a fait ses preuves avec vous. Ni l'un ni
+l'autre ne lui donne d'autonomie : il travaille dans ce que vous lui avez déjà accordé.
+
+### Faire travailler l'agent sans vous : les tâches planifiées
+
+Une **tâche planifiée** lance l'agent à heure fixe : un tri chaque matin, une veille la nuit, un
+relevé chaque lundi. Il lit sa mémoire comme dans n'importe quelle conversation, fait sa tâche, et
+vous laisse ce qu'il a fait : son rapport, et un **dépôt** pour ce qu'il n'a pas le droit d'écrire
+seul dans sa mémoire. À votre retour, il ouvre la conversation sur ce compte rendu : ce qui a été
+fait, ce qui a échoué, ce qui attend votre décision. Puis il intègre avec vous.
+
+- **Personne ne regarde, donc il en fait moins**, pas plus : un run sans vous ne lui rapporte aucun
+  point, il dépose au lieu de réécrire sa mémoire tant que vous ne lui avez pas ouvert ce droit, et
+  au moindre doute il se replie sur le dépôt.
+- **Deux modes, à ne pas confondre.** Sans poste : ordinateur éteint, avec les tâches programmées de
+  Claude dans le cloud et un dossier partagé (Google Drive). Sur le poste : ordinateur allumé et
+  application ouverte, avec les automations de Codex, encore à l'essai.
+- **Créez la tâche depuis une conversation de l'agent lui-même**, jamais depuis une autre : c'est là
+  qu'elle tournera, avec sa mémoire.
+- **Mise en place** : [`INSTALLATION.md`](INSTALLATION.md), étape 7, après une première semaine, avec
+  quatre essais avant de lui confier une vraie nuit.
+
+### Une équipe d'agents et son coordinateur
+
+Si vous avez plusieurs agents, un par métier (le tri des emails, le planning, le support), l'un
+d'eux peut **coordonner** les autres, ses **membres**. À chaque passage, il lit le rapport de chacun,
+et rien d'autre, et vous fait un topo : qui n'a pas tourné, qui est périmé, qui attend votre
+décision, ce qui presse.
+
+- **Il ne lit jamais leur mémoire, et n'y écrit jamais.** Chaque membre reste maître chez lui, et ne
+  publie que son rapport.
+- **Relancer un membre se gagne.** Un membre n'a pas tourné : au début, le coordinateur vous propose
+  de le relancer. Puis, membre par membre et grade après grade, vous pouvez lui ouvrir le droit de le
+  relancer seul et de faire une tâche de test, puis de suspendre et réactiver sa tâche, puis d'en
+  modifier le texte. Jamais de la supprimer, et jamais de retoucher ses propres consignes.
+- **Une relance est la seule consigne d'un autre agent qu'un membre accepte**, et seulement de son
+  coordinateur. Elle peut lui faire refaire sa tâche, ou s'y concentrer ; elle ne peut ni l'étendre,
+  ni lui ouvrir quoi que ce soit.
+- **Un seul niveau** : un coordinateur ne coordonne pas d'autres coordinateurs.
+- **Ça a tourné** : le 04/10/2026, un coordinateur a relancé seul un membre en retard, ordinateur
+  éteint, et le membre a rendu son rapport en indiquant qui l'avait relancé.
+- **Mise en place** : demandez à l'agent choisi de « poser le module équipe de compagnon »
+  ([`INSTALLATION-ASSISTEE.md`](INSTALLATION-ASSISTEE.md), « À part : poser le module équipe »).
+  Chaque membre doit ensuite apprendre qui le coordonne : l'agent vous donne une phrase à coller
+  dans une conversation de chaque membre.
+
+---
+
 ## Le problème
 
 Votre agent est compétent et amnésique. Vous le corrigez, il comprend, et à la session suivante il
@@ -124,12 +174,11 @@ Concrètement, après quelques semaines d'usage réel :
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
   par vous en trente secondes ou par un agent qui coordonne plusieurs de vos instances ;
 - un **travail sans vous**, facultatif : à heure fixe, l'agent fait sa tâche, dépose ce qu'il n'a pas
-  le droit d'écrire seul, et vous rend compte à votre retour. Ordinateur éteint, avec les tâches
-  programmées de Claude sur un dossier partagé ; poste allumé, avec les automations de Codex, encore
-  en essai ;
+  le droit d'écrire seul, et vous rend compte à votre retour (voir « Aller plus loin ») ;
 - si vous avez plusieurs agents, un **module équipe** facultatif : l'un d'eux lit les rapports des
   autres, vous signale qui n'a pas tourné ou attend votre décision, et propose de les relancer. Il
-  ne lit jamais leur mémoire, et relancer seul est une autonomie qu'il gagne, agent par agent.
+  ne lit jamais leur mémoire, et relancer seul est une autonomie qu'il gagne, agent par agent (voir
+  « Aller plus loin »).
 
 **Il n'appartient à aucun outil.** La mémoire est la même sous Claude ou sous Codex : un point
 d'entrée par outil, une fiche qui dit ce que chacun sait faire et ne sait pas faire, et un
