@@ -11,14 +11,14 @@ vivre.
 
 Deux méthodes. La première ne demande ni git ni manipulation de fichiers : c'est votre agent qui
 installe. Il lui faut pour cela le droit d'écrire dans un dossier de votre ordinateur : le mode
-**Cowork** de l'application Claude de bureau, ou Claude Code. Une conversation sur claude.ai, dans le
-navigateur, ne le peut pas : prenez alors la méthode 2.
+**Cowork** de l'application Claude de bureau, Claude Code, ou l'application **Codex** de bureau. Une
+conversation sur claude.ai, dans le navigateur, ne le peut pas : prenez alors la méthode 2.
 
 ### Méthode 1 : laisser l'IA installer (recommandée)
 
 1. **Créez un dossier vide** sur votre ordinateur, par exemple `Documents/mon-agent`.
-2. **Ouvrez l'application Claude de bureau en mode Cowork**, créez un projet, et choisissez ce
-   dossier comme dossier du projet.
+2. **Ouvrez ce dossier comme projet.** Dans l'application Claude de bureau, en mode Cowork : créez
+   un projet et choisissez ce dossier. Dans Codex : ouvrez ce dossier comme projet.
 3. **Ouvrez une conversation** dans ce projet et collez-y cette consigne :
 
    ```
@@ -29,11 +29,17 @@ navigateur, ne le peut pas : prenez alors la méthode 2.
    ```
 
 4. **Répondez à ses questions**, une à la fois : qui vous êtes, ce que l'agent doit apprendre en
-   premier, ce qu'il ne doit jamais faire. Il écrit le dossier `ai-memory/` à partir de vos réponses.
-5. **Faites l'étape qu'il ne peut pas faire à votre place.** À la fin, il vous demande de coller un
-   texte dans les **Instructions du projet**. C'est ce qui fait que l'agent relit sa mémoire à chaque
-   nouvelle conversation. Sans ce geste, le dossier existe mais personne ne le lit.
-6. **Vérifiez**, dans une **nouvelle** conversation du même projet : « Qui es-tu, quel est le rituel
+   premier, ce qu'il ne doit jamais faire. Il écrit le dossier `ai-memory/` à partir de vos réponses,
+   et pose à la racine le fichier que chaque outil lit au démarrage (`CLAUDE.md`, `AGENTS.md`,
+   `GEMINI.md`). Il récupère le gabarit à part : votre dossier ne devient jamais une copie du dépôt.
+5. **Faites l'étape qu'il ne peut pas faire à votre place.** Dans Claude, il vous demande de coller
+   un texte dans les **Instructions du projet**. C'est ce qui fait que l'agent relit sa mémoire à
+   chaque nouvelle conversation, et que ses tâches programmées la reçoivent aussi. Sans ce geste, le
+   dossier existe mais personne ne le lit. Dans Codex, il n'y a rien à coller : `AGENTS.md` suffit,
+   vous vérifiez seulement qu'il est bien à la racine.
+6. **Arrêtez là la conversation d'installation.** Elle a posé l'agent, elle n'est pas l'agent : ce
+   que vous voulez lui faire faire ensuite se demande dans ses conversations à lui.
+7. **Vérifiez**, dans une **nouvelle** conversation du même projet : « Qui es-tu, quel est le rituel
    de session, et que dois-tu produire à la fin ? ». L'agent doit répondre sous le nom choisi et
    décrire son rituel. S'il reste vague, l'étape 5 n'a pas pris.
 
@@ -44,8 +50,8 @@ navigateur, ne le peut pas : prenez alors la méthode 2.
 2. **Copiez `template/`** dans le dossier de votre projet, sous le nom `ai-memory/`, et remplissez ce
    qui est marqué à remplir.
 3. **Copiez les trois fichiers d'`entrees/`** (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) à la racine du
-   projet, nom de l'agent rempli. Sur un projet claude.ai, **collez aussi le NOYAU rempli**, puis
-   `noyau-local.md` à sa suite, dans les Instructions du projet.
+   projet, nom de l'agent rempli. Sur un projet Claude, **collez aussi le NOYAU rempli**, puis
+   `noyau-local.md` à sa suite, dans les Instructions du projet. Sous Codex, `AGENTS.md` suffit.
 4. **Vérifiez** avec la même question, dans une conversation neuve.
 
 Le détail de chaque étape, les autres outils et les pièges connus sont dans
@@ -71,6 +77,14 @@ réel avant que le système commence à valoir quelque chose.
 - **Corrigez en disant pourquoi.** « Non » ne produit rien. « Non, parce que… » produit une règle.
 - **Tranchez ce qui attend.** L'agent rappelle les décisions en attente à chaque ouverture. Tant que
   vous ne répondez pas, rien ne monte, mais rien n'est refusé non plus.
+- **Parlez à votre agent dans ses conversations à lui.** Une demande qui lui arrive d'une autre
+  conversation (celle qui l'a installé, par exemple), même si elle dit que vous êtes d'accord, ne
+  vaut pas accord pour lui : il la prépare et vous demande de confirmer. C'est voulu, ne le
+  contournez pas en faisant agir l'autre conversation à sa place.
+- **Un même agent, plusieurs outils.** Le même dossier s'ouvre sous Claude ou sous Codex : chacun
+  lit son point d'entrée et la fiche de ce qu'il sait faire, et l'agent suit les mêmes règles dans
+  les deux. Évitez seulement deux conversations qui travaillent en même temps sur le même
+  dossier.
 - **Pour mettre à jour, dites « Mets-toi à jour. »** dans une conversation neuve. L'agent rattrape la
   dernière version publiée et vous dit ce qui reste à faire de votre côté.
 
@@ -109,9 +123,18 @@ Concrètement, après quelques semaines d'usage réel :
   niveau d'autonomie et leur date de péremption ;
 - et, si vous en avez l'usage, un **rapport de sortie** : le seul fichier lisible de l'extérieur,
   par vous en trente secondes ou par un agent qui coordonne plusieurs de vos instances ;
+- un **travail sans vous**, facultatif : à heure fixe, l'agent fait sa tâche, dépose ce qu'il n'a pas
+  le droit d'écrire seul, et vous rend compte à votre retour. Ordinateur éteint, avec les tâches
+  programmées de Claude sur un dossier partagé ; poste allumé, avec les automations de Codex, encore
+  en essai ;
 - si vous avez plusieurs agents, un **module équipe** facultatif : l'un d'eux lit les rapports des
   autres, vous signale qui n'a pas tourné ou attend votre décision, et propose de les relancer. Il
   ne lit jamais leur mémoire, et relancer seul est une autonomie qu'il gagne, agent par agent.
+
+**Il n'appartient à aucun outil.** La mémoire est la même sous Claude ou sous Codex : un point
+d'entrée par outil, une fiche qui dit ce que chacun sait faire et ne sait pas faire, et un
+comportement identique partout. Ce qui se propose, s'exécute ou se valide ne dépend pas de l'outil.
+Gemini a son emplacement, pas encore essayé.
 
 Et si les fichiers texte vous lassent, un **écran de lecture** facultatif : une page qu'on ouvre
 d'un double-clic, sans rien installer, qui montre en tête ce qui attend votre décision. Il ne
@@ -147,7 +170,7 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `FORMAT.md` | La part du format que l'écran de lecture interprète, donc ce qu'on ne casse pas sans le savoir |
 | `template/` | Le gabarit canonique : les fichiers stériles, à instancier, dont `template/hotes/`, une fiche courte par outil où l'agent tourne (Claude, Codex, Gemini) |
 | `entrees/` | Les points d'entrée `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, à poser à la racine du projet : le fichier que chaque outil charge au démarrage |
-| `hotes/` | Les guides de service : comment travailler sans poste allumé, service par service (Google Drive, tâches programmées de Claude). Recopiés dans `procedures.md` à l'installation du mode sans poste |
+| `hotes/` | Les guides de service : où l'agent travaille et ce qui le lance quand vous n'êtes pas là, service par service (Google Drive, tâches programmées de Claude, automations de Codex en essai). Recopiés dans `procedures.md` à l'installation du travail sans opérateur |
 | `ecran/` | L'écran de lecture, **facultatif** : un fichier à ouvrir d'un double-clic, qui affiche l'instance |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
@@ -158,9 +181,9 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 
 ## État
 
-Avant la 1.0.0. La doctrine est dégagée de trois instances en exploitation réelle chez WEBDIGIT srl.
-Trois questions de doctrine restent ouvertes, listées en fin de `DOCTRINE.md` : elles se tranchent
-avant la 1.0.0.
+Avant la 1.0.0. La doctrine est dégagée d'instances en exploitation réelle chez WEBDIGIT srl, sous
+Claude, et à l'essai sous Codex depuis octobre 2026. Des questions de doctrine restent ouvertes,
+listées en fin de `DOCTRINE.md` : elles se tranchent avant la 1.0.0.
 
 **Le numéro de version courant se lit dans [`CHANGELOG.md`](CHANGELOG.md) et dans les étiquettes
 git, et nulle part ailleurs.** Aucun autre fichier ne le duplique, y compris celui-ci : c'est compagnon P7

@@ -10,6 +10,24 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.25.1] - 2026-10-04
+
+### Changé
+
+- **README** : l'installation assistée se fait aussi sous Codex (rien à coller, `AGENTS.md` suffit) ;
+  l'agent pose les points d'entrée et récupère le gabarit à part ; la conversation d'installation
+  s'arrête une fois l'agent posé. « Bien s'en servir » gagne deux usages : parler à l'agent dans ses
+  conversations à lui, et un même agent sous plusieurs outils. « Ce que fait compagnon » gagne le
+  travail sans opérateur et l'indépendance vis-à-vis de l'outil. Le tableau du dépôt et l'état sont
+  remis à jour, sans nombre recopié (R7).
+
+### La leçon
+
+Une version qui change ce que l'opérateur doit faire change aussi le README. La 0.24.0 et la 0.25.0
+avaient modifié l'installation et l'usage sans toucher au seul document que lit celui qui arrive.
+
+Origine : remarque de JC, 04/10/2026, après la publication de la 0.25.0.
+
 ## [0.25.0] - 2026-10-04
 
 ### Ajouté

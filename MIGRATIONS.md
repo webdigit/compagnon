@@ -147,6 +147,30 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.25.0 → 0.25.1
+
+### Ce qui change
+
+Documentation seulement, `template/` inchangé. Le README dit ce que les versions 0.24.0 et 0.25.0 ont
+ajouté : l'installation sous Codex, les points d'entrée, la conversation d'installation qui s'arrête,
+la demande faite à l'agent dans ses conversations à lui, un même agent sous plusieurs outils, le
+travail sans opérateur.
+
+### Ce que l'agent fait seul
+
+- **`VERSION.md`** : passer la version courante à 0.25.1, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique. Rien d'autre.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Aucun recollage.
+
+### Comment vérifier
+
+`VERSION.md` porte 0.25.1.
+
+---
+
 ## 0.24.0 → 0.25.0
 
 ### Ce qui change
