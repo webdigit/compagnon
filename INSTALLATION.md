@@ -149,30 +149,39 @@ Une version périmée du NOYAU qui traîne dans la base de connaissances est pir
 contredit la bonne, sur les seuils de maturation notamment, et l'agent n'a aucun moyen de savoir
 laquelle fait foi. Le NOYAU vit à **deux** endroits, le fichier et le champ injecté. Pas trois.
 
-### Claude Code, et hôtes lisant `CLAUDE.md`
+### Les points d'entrée : `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`
 
-Placez à la racine du projet un `CLAUDE.md` qui impose la lecture et importe les fichiers :
+Copiez à la **racine du projet**, à côté d'`ai-memory/`, les trois fichiers du dossier `entrees/` du
+dépôt, et remplissez le nom de l'agent dans leur titre. Rien d'autre. Chaque hôte charge le sien au
+démarrage :
 
-```markdown
-# <Nom de l'agent>
+- **`CLAUDE.md`** : Claude sur un dossier (Cowork, Claude Code). Il désigne `ai-memory/README.md`, le
+  NOYAU, `noyau-local.md` et la fiche `ai-memory/hotes/claude.md`, et les importe aussi par des
+  lignes `@` là où Claude le permet.
+- **`AGENTS.md`** : Codex. Il désigne les mêmes fichiers dans le même ordre, et nomme
+  `ai-memory/hotes/codex.md`.
+- **`GEMINI.md`** : Gemini, même texte, fiche `ai-memory/hotes/gemini.md`. Aucune instance n'y a
+  encore tourné : la fiche est un emplacement.
 
-**Lis `AGENTS.md` en premier, puis `ai-memory/` en entier, avant toute action.**
+Posez les trois même si vous n'utilisez qu'un outil aujourd'hui : le jour où vous ouvrez le projet
+dans un autre, l'agent y trouve sa mémoire. **N'y écrivez rien de propre à votre instance** (une
+mission, une règle, une liste de documents) : cela va dans `noyau-local.md`, que tous les hôtes
+lisent. Un point d'entrée qui porte du propre finit par ne plus dire la même chose que les autres,
+et chaque outil charge alors un agent différent (`entrees/README.md`).
 
-@AGENTS.md
-@ai-memory/README.md
-@ai-memory/NOYAU-instructions-projet.md
-@ai-memory/noyau-local.md
-
-Le cerveau courant du projet est `ai-memory/`, et c'est la seule source normative.
-```
-
-Si votre projet n'a pas d'`AGENTS.md`, retirez les deux lignes qui le nomment.
+Sur un projet claude.ai, les Instructions du projet restent ce qui charge le NOYAU ; le `CLAUDE.md`
+sert quand le projet est ouvert sur son dossier, et les deux ensemble ne se gênent pas.
 
 ### Autres hôtes
 
-Cherchez le fichier ou le champ que votre hôte injecte au démarrage : `AGENTS.md`, un fichier de
-règles, un prompt système de projet. Le principe est le même : **le NOYAU doit s'y trouver, ou y
-être importé.**
+Un hôte qui n'a ni point d'entrée dans `entrees/` ni fiche dans `template/hotes/` n'est pas encore
+pris en charge par le gabarit. Cherchez le fichier ou le champ qu'il injecte au démarrage (un fichier
+de règles, un prompt système de projet), et faites-y désigner les mêmes fichiers, dans le même ordre,
+sur le modèle d'`AGENTS.md`, avec sa propre ligne `Hôte` et sa propre fiche, créée dans
+`ai-memory/hotes/` sur le modèle de `gemini.md`. Déclarez-le dans les « Écarts assumés » de
+`VERSION.md` : c'est un manque du gabarit, qui doit remonter (`PUBLICATION.md`, R4). Tant qu'il
+n'est pas dans `entrees/`, aucune migration ne le contrôle : relisez-le vous-même à chaque mise à
+jour.
 
 ---
 
@@ -275,6 +284,7 @@ essai.
 - [ ] `ai-memory/` est en place, `principles.md` relu et amendé de votre main
 - [ ] `capabilities.md` démarre en lecture seule, interdits absolus listés
 - [ ] **Le NOYAU est dans le champ injecté au démarrage** (pas seulement dans un fichier du projet)
+- [ ] Les trois points d'entrée d'`entrees/` sont à la racine du projet, nom de l'agent rempli, rien d'autre
 - [ ] **Le test de l'étape 5 est passé sur une session neuve**
 - [ ] Le texte collé se termine par `[fin de noyau-local.md]`
 - [ ] Mode sans poste, si vous l'installez : les quatre essais de l'étape 7 sont passés

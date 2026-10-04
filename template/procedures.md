@@ -24,6 +24,12 @@ Le critère tient en une question, et il se tranche sans réfléchir :
 « Le champ à interroger s'appelle `date_creation` » change si l'outil change : procédure. « On ne
 relance pas un client deux fois la même semaine » change si l'opérateur change d'avis : règle.
 
+**Ce qui touche toute session sur un hôte ne va pas ici** : l'outil qui lit un fichier en entier,
+celui qui écrit, ce que l'hôte n'expose pas. Cela va dans la fiche de l'hôte (`hotes/`), lue
+d'office. Ici, la recette d'une tâche. Une procédure qui ne vaut que sur un hôte le dit dans son
+déclencheur (« session sous Codex »), et elle ne fige jamais un chemin de montage ou un nom de
+dossier que l'hôte peut changer : elle dit comment le retrouver.
+
 **Quand la procédure existe déjà ailleurs, on la référence, on ne la recopie pas** (compagnon P7).
 Une entrée peut donc tenir en trois lignes qui pointent vers une documentation d'outil, une skill ou
 un manuel. Ce qui est interdit, c'est d'en faire une seconde copie qui divergera.

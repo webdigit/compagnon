@@ -1,9 +1,9 @@
 # <NOM DE L'AGENT> : Cerveau de l'agent (index du dossier)
 
 > **Commence ici.** Toute session lit **d'abord** ce README, **puis**
-> `NOYAU-instructions-projet.md`, **puis** les quatre mémoires d'apprentissage et
-> `operational-state.md`, **puis** l'**index** de `procedures.md` et `report.md`, s'ils existent.
-> Sans cette lecture, ce dossier est inerte.
+> `NOYAU-instructions-projet.md` et `noyau-local.md`, **puis** la fiche de son hôte dans `hotes/`,
+> **puis** les quatre mémoires d'apprentissage et `operational-state.md`, **puis** l'**index** de
+> `procedures.md` et `report.md`, s'ils existent. Sans cette lecture, ce dossier est inerte.
 >
 > ⚠️ **À REMPLIR** : remplacez `<NOM DE L'AGENT>`, `<OPÉRATEUR>` et `<COMPÉTENCE 01>` partout dans
 > ce dossier. Les exemples fictifs sont signalés, ils sont à remplacer par vos vrais cas.
@@ -94,6 +94,28 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 > l'identique. Il n'écrit rien, par aucun chemin, et ce qu'il affiche est calculé depuis les
 > fichiers : en cas d'écart, le fichier a raison. L'agent n'y produit jamais de code, seulement des
 > données (NOYAU §5ter).
+
+**Couche HÔTE**
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `hotes/claude.md`, `hotes/codex.md`, `hotes/gemini.md` | Ce que chaque outil où l'agent peut tourner sait faire et ne sait pas faire : chargement, lecture complète, écriture, ce qui lui manque. Chaque ligne a son statut (prouvé, constaté une fois, non prouvé) | « Du gabarit » : **vient du dépôt**, remplacée en migrant · « Constaté ici » : auto (agent) · lue d'office, **la fiche de son hôte seulement** |
+
+> Une fiche dit ce que l'hôte **est** ; `procedures.md` dit comment faire une **tâche**. Une fiche
+> ne porte aucun jugement, et ne desserre jamais le NOYAU : quand proposer, quand exécuter et ce qui
+> se valide sont les mêmes sur tous les hôtes. Chaque point d'entrée nomme sa fiche ; un agent
+> n'applique pas celle d'un autre hôte, dont les recettes ne marchent pas chez lui.
+
+**Couche ENTRÉE** (hors de ce dossier, à la racine du projet)
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `../CLAUDE.md`, `../AGENTS.md`, `../GEMINI.md` | Le fichier que chaque hôte charge au démarrage : il désigne ce dossier, dans l'ordre, et nomme la fiche de l'hôte. Aucune consigne propre | **Vient du dépôt** (`entrees/`), nom de l'agent rempli, rien d'autre · contrôlé à chaque migration |
+
+> Les trois disent la même chose, à la ligne `Hôte`, à la fiche nommée et aux imports `@` de
+> `CLAUDE.md` près. Ce qui
+> est propre à l'instance va dans `noyau-local.md`, lu par tous les hôtes, jamais dans un point
+> d'entrée, qui n'atteindrait que le sien.
 
 **Couche NOYAU**
 

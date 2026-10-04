@@ -4,6 +4,11 @@
 > allumé** : une tâche programmée de nuit, dans le cloud, sur un dossier partagé. Une instance ne le
 > lit pas en session : elle lit son `procedures.md`, dans lequel ces recettes ont été recopiées.
 
+**À ne pas confondre avec `template/hotes/`.** Ici, un guide détaillé par **service** (un stockage,
+un planificateur), recopié dans `procedures.md` à l'installation du mode sans poste. Là, une fiche
+courte par **outil où l'agent tourne** (Claude, Codex, Gemini), posée dans `ai-memory/hotes/` et lue
+d'office à chaque session sur cet outil. Les deux tiennent le même système de statuts.
+
 Le NOYAU (§5quinquies) dit **quoi** faire sans poste : la prise en charge, le travail, le repli, le
 retour. Il le dit pour tous les services. Ce dossier dit **comment**, service par service : les noms
 d'outils, leurs pièges, les gestes qui marchent. C'est le critère de `procedures.md` : ce qui change

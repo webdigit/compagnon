@@ -43,8 +43,9 @@ navigateur, ne le peut pas : prenez alors la méthode 2.
    décompressez-le.
 2. **Copiez `template/`** dans le dossier de votre projet, sous le nom `ai-memory/`, et remplissez ce
    qui est marqué à remplir.
-3. **Collez le NOYAU rempli**, puis `noyau-local.md` à sa suite, dans les Instructions du projet
-   (ou importez-les depuis un `CLAUDE.md`, selon votre outil).
+3. **Copiez les trois fichiers d'`entrees/`** (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`) à la racine du
+   projet, nom de l'agent rempli. Sur un projet claude.ai, **collez aussi le NOYAU rempli**, puis
+   `noyau-local.md` à sa suite, dans les Instructions du projet.
 4. **Vérifiez** avec la même question, dans une conversation neuve.
 
 Le détail de chaque étape, les autres outils et les pièges connus sont dans
@@ -144,12 +145,15 @@ l'agent écrit, et accorder l'autonomie vous-même, un cran à la fois.
 | `LICENSE` | CC BY 4.0, et ce que la licence couvre exactement |
 | `PUBLICATION.md` | Les règles d'écriture du gabarit, pour qui le fait évoluer |
 | `FORMAT.md` | La part du format que l'écran de lecture interprète, donc ce qu'on ne casse pas sans le savoir |
-| `template/` | Le gabarit canonique : les fichiers stériles, à instancier |
-| `hotes/` | Les guides d'hôte : comment travailler sans poste allumé, service par service (Google Drive, tâches programmées de Claude). Recopiés dans `procedures.md` à l'installation |
+| `template/` | Le gabarit canonique : les fichiers stériles, à instancier, dont `template/hotes/`, une fiche courte par outil où l'agent tourne (Claude, Codex, Gemini) |
+| `entrees/` | Les points d'entrée `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, à poser à la racine du projet : le fichier que chaque outil charge au démarrage |
+| `hotes/` | Les guides de service : comment travailler sans poste allumé, service par service (Google Drive, tâches programmées de Claude). Recopiés dans `procedures.md` à l'installation du mode sans poste |
 | `ecran/` | L'écran de lecture, **facultatif** : un fichier à ouvrir d'un double-clic, qui affiche l'instance |
 
 > `template/` est écrit **depuis la doctrine**, jamais copié depuis une instance en exploitation :
-> aucune donnée client ne peut s'y trouver. Les zones à remplir sont marquées, et chaque fichier
+> aucune donnée client ne peut s'y trouver. Seule la partie « Du gabarit » des fiches de
+> `template/hotes/` rapporte ce que des instances ont constaté sur un outil, sans nom ni donnée,
+> avec la date. Les zones à remplir sont marquées, et chaque fichier
 > porte un exemple **fictif** signalé comme tel, à supprimer au premier vrai cas.
 
 ## État

@@ -133,3 +133,6 @@ sans que leur rapport porte ce dont il avait besoin. Le premier coordinateur ré
 7. Chaque fichier de `template/` finit par `[fin de <son nom>]`, en dernière ligne, rien après. Un
    fichier ajouté au gabarit naît avec le sien (0.15.2).
 8. Chaque interdiction ajoutée dit par où passer (R8).
+9. Les trois points d'entrée d'`entrees/` sont identiques, une fois retirées les lignes `@`, la
+   ligne `Hôte` et la ligne de la liste qui nomme la fiche (`entrees/README.md`). Ils partent dans les instances
+   sans passer par `template/` : leur diff compte comme celui de `template/` (R6).

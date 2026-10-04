@@ -10,7 +10,9 @@ te l'a demandé. Dans ce fichier, elle s'appelle **l'opérateur**.
 
 Tu fais pour lui les étapes 1 à 3 d'[`INSTALLATION.md`](INSTALLATION.md) : choisir la première
 compétence, poser le dossier, fixer l'autonomie. Tu ne peux pas faire l'étape 4, et tu ne fais pas
-semblant : tu la lui prépares, tu lui expliques, et tu t'arrêtes.
+semblant : tu la lui prépares, tu lui expliques, et tu t'arrêtes. Seule exception : les trois points
+d'entrée de la racine, que tu poses toi-même (étape 4, point 10). Ils désignent la mémoire, mais
+c'est l'opérateur qui vérifie qu'ils sont là, et qui colle le NOYAU là où l'hôte l'exige.
 
 ---
 
@@ -21,8 +23,8 @@ semblant : tu la lui prépares, tu lui expliques, et tu t'arrêtes.
 2. **Tu proposes, il valide.** Rien de ce qui parle de lui, de son métier ou de ses interdits ne
    s'écrit sans qu'il ait vu le texte et dit oui.
 3. **Tu n'écris que dans le dossier du projet**, et seulement ce que cette procédure nomme :
-   `ai-memory/`, plus `compagnon.html` à la racine s'il veut l'écran, plus `CLAUDE.md` si ton hôte
-   le lit (étape 6). Rien d'autre, nulle part ailleurs. Seule exception : la copie du gabarit que tu
+   `ai-memory/`, plus, à la racine, `compagnon.html` s'il veut l'écran et les trois points d'entrée
+   d'`entrees/` (étape 4, point 10). Rien d'autre, nulle part ailleurs. Seule exception : la copie du gabarit que tu
    récupères à l'étape 1, si elle ne peut pas être posée ailleurs. Elle est temporaire, et elle part
    à l'étape 8.
 4. **Tu ne réécris pas le gabarit.** Tu remplis ses trous et tu recopies le reste tel quel, octet
@@ -39,14 +41,16 @@ semblant : tu la lui prépares, tu lui expliques, et tu t'arrêtes.
 `https://api.github.com/repos/webdigit/compagnon/tags`. Si cette adresse ne répond pas, applique les
 replis de la section « Sans dépôt local » de [`MIGRATIONS.md`](MIGRATIONS.md), étape 1.
 
-**Puis récupère le dossier `template/` à cette étiquette**, par la première route qui marche :
+**Puis récupère les dossiers `template/` (sous-dossier `hotes/` compris) et `entrees/` à cette
+étiquette**, par la première route qui marche :
 
 - **Route A, si tu as un shell avec git** : clone le dépôt **hors du dossier du projet** si ton hôte
   le permet (`git clone --branch <étiquette> --depth 1 https://github.com/webdigit/compagnon.git`).
   Note aussi le commit court de l'étiquette (`git rev-list -n 1 <étiquette>`).
 - **Route B, si tu peux lire des adresses web brutes** : liste les fichiers par
-  `https://api.github.com/repos/webdigit/compagnon/contents/template?ref=<étiquette>`, puis lis
-  chacun par `https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/template/<fichier>`.
+  `https://api.github.com/repos/webdigit/compagnon/contents/template?ref=<étiquette>` (puis
+  `template/hotes` et `entrees` de la même façon), et lis chacun par
+  `https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/<dossier>/<fichier>`.
   ⚠️ **Il te faut le texte exact.** Un outil qui résume, reformule ou abrège la page ne convient
   pas, même s'il en donne l'essentiel : le gabarit recopié serait faux sans que rien ne le montre.
   Si c'est le seul outil web que tu as, passe à la route C.
@@ -57,8 +61,9 @@ replis de la section « Sans dépôt local » de [`MIGRATIONS.md`](MIGRATIONS.md
   version. **Pas le bouton vert « Code », puis « Download ZIP »** : il donne `main`, qui peut porter
   une version pas encore publiée.
 
-**Contrôle avant d'aller plus loin** : chaque fichier de `template/` que tu as en main se termine
-par une ligne `[fin de <son nom>]`, et rien après. Un fichier sans cette ligne a été coupé en route.
+**Contrôle avant d'aller plus loin** : chaque fichier de `template/` que tu as en main, ceux de
+`template/hotes/` compris, se termine par une ligne `[fin de <son nom>]`, et rien après. Les points
+d'entrée d'`entrees/` n'en portent pas : ils vivent hors d'`ai-memory/`. Un fichier sans cette ligne a été coupé en route.
 Relis-le par une autre voie ; s'il manque encore, arrête-toi et dis-le à l'opérateur. On ne pose pas
 une instance sur un gabarit amputé.
 
@@ -145,7 +150,8 @@ Avant d'écrire, montre à l'opérateur un récapitulatif court de ses réponses
 Puis :
 
 1. **Crée `ai-memory/`** à la racine du dossier du projet, et copies-y les fichiers de `template/`,
-   sauf `report.md` et `equipe.md`. Ne crée pas `journal/` : il naîtra à la première session qui traite un cas.
+   sauf `report.md` et `equipe.md`, avec le sous-dossier `hotes/` et ses trois fiches telles
+   quelles. Ne crée pas `journal/` : il naîtra à la première session qui traite un cas.
 2. **Remplis les trous d'identité, partout dans `ai-memory/`**, en majuscules comme en minuscules :
    `<NOM DE L'AGENT>`, `<OPÉRATEUR>`, `<organisation>`, `<COMPÉTENCE 01>` et ses variantes, la
    mission, le chemin complet du dossier (`<CHEMIN COMPLET…>`, `<chemin>`), le stockage partagé,
@@ -170,7 +176,8 @@ Puis :
 6. **`VERSION.md`** : la version installée, l'étiquette et son commit court s'il est connu, la date
    de pose, l'instance, la ligne `Écran`, et la première ligne de l'historique. `Copie locale` :
    `aucune`. La copie temporaire de l'étape 1 n'en est pas une.
-7. **`noyau-local.md`** : n'y ajoute rien. Il reste vide de spécificités, et c'est normal.
+7. **`noyau-local.md`** : n'y ajoute rien. Il reste vide de spécificités, et c'est normal. Une
+   seule exception, au point 10 : du propre trouvé dans un point d'entrée déjà présent.
 8. **L'écran, s'il le veut** : copie `ecran/compagnon.html`, de la même étiquette, à la **racine du
    dossier du projet**, à côté de `ai-memory/`, pas dedans.
 9. **Si la question 9 a nommé un coordinateur** : copie aussi `report.md` dans `ai-memory/`, remplis
@@ -180,6 +187,13 @@ Puis :
    premier run, alors que c'est justement un run qu'il voudra déclencher. Le reste de l'en-tête et
    du corps garde ses modèles : le premier vrai run les remplacera. Un coordinateur qui lit
    `jamais tourné` sait qu'il n'y a pas de panne.
+10. **Les points d'entrée** : copie `entrees/CLAUDE.md`, `entrees/AGENTS.md` et `entrees/GEMINI.md`
+   à la **racine du dossier du projet**, et remplis le nom de l'agent dans leur titre. Rien d'autre :
+   ce qui est propre à l'instance va dans `noyau-local.md`. Si un de ces fichiers existe déjà à la
+   racine, ne l'écrase pas : suis les branches du NOYAU, §6bis point 1ter (conforme, ancien modèle,
+   porteur de propre). Le propre se range dans `noyau-local.md` sur l'accord de l'opérateur, et
+   l'ancien fichier part dans `_archive/racine/<AAAA-MM>/`, vérifié par son empreinte, avant que tu
+   poses le modèle.
 
 **Ce que tu laisses tel quel** : tout ce qui, entre chevrons, décrit un format plutôt qu'une
 identité. Les `<jj/mm/aaaa>`, `<AAAA-MM-JJ HH:MM>`, `<fichier>` ou `<étiquette>` des schémas
@@ -195,6 +209,7 @@ Relis chaque fichier de `ai-memory/` **depuis le disque**, pas depuis ce que tu 
   pour les expliquer, et restent tels quels : le bandeau d'avertissement en tête du NOYAU, et
   l'encadré « À REMPLIR » en tête du `README.md` ;
 - le NOYAU ne diffère du gabarit que par ses trous remplis.
+- les trois points d'entrée de la racine ne diffèrent d'`entrees/` que par le nom de l'agent.
 
 Un seul écart, et tu le corriges avant d'aller plus loin. Puis dis à l'opérateur : « Le dossier est
 posé. Il reste une étape, et c'est toi qui dois la faire. »
@@ -217,10 +232,10 @@ demande-lui ce qu'il voit à l'écran.
   suite**, la même chose avec `ai-memory/noyau-local.md`, titre compris. Il enregistre.
   Ne lui propose pas de fichier tout prêt à coller qui réunirait les deux : ce serait une troisième
   copie du NOYAU, qui divergerait à la première modification (INSTALLATION.md, étape 4).
-- **Un hôte qui lit `CLAUDE.md` à la racine** (Claude Code, par exemple) : tu peux l'écrire toi-même,
-  avec le contenu donné à l'étape 4 d'INSTALLATION.md. Si le dossier n'a pas d'`AGENTS.md`, retire
-  les deux lignes qui le nomment. Montre-le-lui ensuite : c'est lui qui vérifie
-  qu'il est bien là, à la racine.
+- **Un hôte qui lit un point d'entrée à la racine** (Cowork sur un dossier ou Claude Code :
+  `CLAUDE.md` ; Codex : `AGENTS.md` ; Gemini : `GEMINI.md`, non prouvé) : il est déjà posé (étape 4,
+  point 10). Montre-le à
+  l'opérateur : c'est lui qui vérifie qu'il est bien là, à la racine.
 - **Un autre hôte** : cherche avec lui le champ ou le fichier que l'hôte injecte au démarrage
   (INSTALLATION.md, étape 4, « Autres hôtes »).
 

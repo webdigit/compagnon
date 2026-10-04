@@ -62,6 +62,7 @@ personne n'y voie une panne.
 | `NOYAU-instructions-projet.md` | **non** | volumineux, et le plus spécifique du métier |
 | `noyau-local.md` | **non** | même raison que le NOYAU, dont il est la suite |
 | `procedures.md` | **non** | chemins, comptes, parfois des identifiants |
+| `hotes/*.md` | **non** | outils et chemins du poste ; rien que l'écran affiche (0.24.0) |
 | `examples.md` | **non** | non affiché |
 
 Le motif du tri n'est pas le poids : `etat.js` complet reste indolore. Le motif est l'exposition.

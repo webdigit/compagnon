@@ -147,6 +147,97 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.23.0 → 0.24.0
+
+### Ce qui change
+
+Le premier essai d'une instance sous un autre hôte que Claude (Codex, instance Vincent, 04/10/2026)
+a montré que la méthode passe d'un outil à l'autre, mais pas ce qui l'allume ni ce qui dépend de
+l'outil : le point d'entrée de Codex datait d'un mois et ne nommait pas `noyau-local.md`, et une
+procédure écrite pour un hôte en aurait égaré un autre.
+
+- **Un point d'entrée par hôte, les trois identiques** : `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, à la
+  racine, depuis le nouveau dossier `entrees/` du dépôt. Ils ne portent rien de propre à l'instance.
+- **Une fiche par hôte**, `ai-memory/hotes/claude.md`, `codex.md`, `gemini.md` : ce que l'outil sait
+  faire et ne sait pas faire. Chaque hôte ne lit que la sienne, d'office.
+- **Trois consignes rappelées au moment où elles servent** : le périmètre du marqueur (§0 point 1),
+  le contrat de `report.md` (§0 point 7, §5bis point 10), la ligne du repère des cas (§5).
+- **Le journal porte l'hôte** de la session, pour comparer.
+
+### Ce que l'agent fait seul
+
+- **D'abord, avant de remplacer quoi que ce soit : les points d'entrée.** C'est un préalable, comme
+  l'extraction du NOYAU (§6bis, point 1bis), et pour la même raison : une migration ne s'applique pas
+  sur un fichier qui porte du propre. Le NOYAU que tu suis en migrant est encore celui de 0.23.0,
+  qui ne connaît pas ce contrôle : tu le fais d'après le point 1ter du NOYAU de **cette** étiquette.
+  Pour chacun des trois, à la racine du projet, comparé au modèle d'`entrees/` à cette étiquette,
+  lignes `@`, ligne `Hôte` et fiche nommée retirées :
+  - **absent** : le poser depuis `entrees/`, nom de l'agent rempli ;
+  - **conforme** : n'y rien changer ;
+  - **divergent sans rien de propre**, c'est-à-dire l'ancien `CLAUDE.md` du gabarit (« Lis
+    `AGENTS.md` en premier », `@AGENTS.md`) : l'archiver, puis poser le modèle. Le nouveau
+    n'importe plus `AGENTS.md`, devenu le point d'entrée de Codex : l'importer ferait lire à Claude
+    le nom de la fiche de Codex ;
+  - **porteur de propre** (mission, règle d'isolation, interdits, liste de documents, façon de
+    travailler) : lister ce propre, **proposer** de le ranger dans `noyau-local.md`, dans le bloc de
+    la section du NOYAU qu'il complète, et attendre l'accord. Avec l'extraction du NOYAU
+    (§6bis, point 1bis), ce sont les deux seules écritures dans `noyau-local.md` de cette migration,
+    faites avant elle. Puis
+    archiver l'ancien fichier et poser le modèle.
+
+  L'archive va dans `_archive/racine/<AAAA-MM>/<nom>-avant-<AAAA-MM-JJ-HHMM>.md`. Un point d'entrée
+  n'a pas de marqueur : la copie se vérifie par son empreinte, identique à l'original, **avant** de
+  le remplacer.
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : bandeau d'en-tête, liste du cerveau, « Ta fiche d'hôte » (nouveau), §0
+  points 1 et 7, §5 (ligne `Hôte` du journal, repère des cas), §5bis point 10, §5septies point 2,
+  §6bis points 1ter et 3, §7bis.
+- **`hotes/`** : créer le dossier dans `ai-memory/` et y copier les trois fiches de
+  `template/hotes/`, telles quelles. Puis relire `procedures.md` et la section « Écarts assumés » de
+  `VERSION.md` : ce qui touche **toute** session sur un hôte (l'outil qui lit en entier, un chemin de
+  montage, l'outil qui écrit, un outil absent) appartient à la fiche de cet hôte, sous son titre
+  « Constaté ici ». **Proposer** la liste des déplacements, avec le statut de chaque ligne, et ne
+  déplacer qu'après accord. Une procédure qui fige un nom de montage ou de dossier se signale : elle
+  doit dire comment le retrouver.
+- **`operational-state.md`** : si le dernier numéro de cas est noté ailleurs que sur la ligne
+  `Dernier cas inscrit` de « Cas traités », l'y ramener, l'ancien en « Précédent », et retirer la
+  section qui le portait. Reprendre depuis le gabarit le bandeau de « Cas traités ».
+- **`procedures.md`** : reprendre depuis le gabarit le paragraphe « Ce qui touche toute session sur
+  un hôte ne va pas ici ».
+- **`README.md`** de l'instance : reprendre depuis le gabarit l'encadré « Commence ici » et les
+  couches HÔTE et ENTRÉE.
+- **`report.md`**, s'il existe : rien maintenant. Le prochain rapport suit le §5bis point 10 : si
+  l'actuel porte une clé ou un titre hors gabarit, le signaler en une ligne.
+- **`_ecran/etat.js`**, s'il existe : `hotes/*.md` s'ajoute à `non_transportes`.
+- **`VERSION.md`** : passer la version courante à 0.24.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique. Un écart déclaré qui n'était qu'un constat d'hôte et qui est parti
+  dans une fiche se marque résolu, avec le renvoi.
+
+**Aux migrations suivantes**, une fiche d'hôte ne se remplace jamais en entier : seule sa partie
+« Du gabarit » suit l'étiquette, « Constaté ici » appartient à l'instance et n'est pas touchée.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, dans les Instructions de chaque projet claude.ai, et vérifier
+que le texte collé finit par `[fin de noyau-local.md]`. Les points d'entrée de la racine, eux, se
+lisent depuis le disque : rien à coller.
+
+**Valider ou non** chaque ligne proposée pour `noyau-local.md` (le propre d'un ancien point d'entrée)
+et pour les fiches d'hôte (ce qui sort de `procedures.md` ou de `VERSION.md`).
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « Ta fiche d'hôte ». `VERSION.md` porte 0.24.0.
+`ai-memory/hotes/claude.md`, `codex.md` et `gemini.md` finissent par leur marqueur. À la racine,
+`CLAUDE.md`, `AGENTS.md` et `GEMINI.md`, lignes `@`, ligne `Hôte` et fiche nommée retirées, sont
+identiques.
+
+**La suite** : à la session suivante, l'agent nomme sa fiche d'hôte en ouverture, et le journal porte
+la ligne `Hôte`. Sous un autre hôte que Claude, il nomme la fiche de cet hôte, et ce que le NOYAU
+demande et que cet hôte ne permet pas apparaît comme non fait, avec la raison, jamais comme fait.
+
+---
+
 ## 0.22.1 → 0.23.0
 
 ### Ce qui change

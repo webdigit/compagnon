@@ -10,6 +10,66 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.24.0] - 2026-10-04
+
+### Ajouté
+
+- **`entrees/` : un point d'entrée par hôte**, `CLAUDE.md` (Claude sur un dossier), `AGENTS.md`
+  (Codex), `GEMINI.md` (Gemini, non prouvé), à poser à la racine du projet. Les trois désignent les
+  mêmes fichiers dans le même ordre et nomment la fiche de leur hôte. Ils ne portent rien de propre
+  à l'instance : ce propre va dans `noyau-local.md`, lu par tous les hôtes.
+- **`template/hotes/` : une fiche par hôte**, posée dans `ai-memory/hotes/`. Elle dit ce que l'hôte
+  est : comment il est chargé, comment il lit un fichier en entier, comment il écrit, ce qu'il
+  n'expose pas, chaque ligne avec son statut. Deux parties : « Du gabarit », remplacée en migrant,
+  et « Constaté ici », tenue par l'instance et jamais touchée. Fiche Claude d'après les instances
+  en service, fiche Codex d'après la première session sous Codex, fiche Gemini vide.
+- **NOYAU, « Ta fiche d'hôte »** : la sienne se lit d'office, avant le rituel ; celle d'un autre
+  hôte ne s'applique jamais, elle ne s'ouvre que pour être tenue. Elle complète le NOYAU pour un outil et ne le desserre jamais ; elle ne porte aucun
+  jugement. Ce que le NOYAU demande et que l'hôte ne permet pas s'écrit non fait, avec la raison.
+- **NOYAU §5bis, point 10** : l'en-tête et les titres de `report.md` sont un contrat. Toutes les
+  clés du gabarit, aucune autre, `statut` dans ses valeurs ; les titres et les colonnes du gabarit,
+  que l'écran et le coordinateur lisent par leurs mots et leur place. Le gabarit de `report.md` se
+  lit à l'étiquette de `VERSION.md` ; à défaut, l'en-tête du rapport précédent s'il est conforme.
+- **NOYAU §6bis, point 1ter** : avant chaque migration, les trois points d'entrée sont comparés au
+  modèle, branche par branche (absent, conforme, ancien modèle, porteur de propre) ; le propre part
+  dans `noyau-local.md` sur accord, l'ancien fichier dans `_archive/racine/`, vérifié par empreinte.
+  §6bis point 3 dit où lire un point d'entrée à l'étiquette.
+- **Journal des cas** : une ligne `Hôte` sous le titre.
+- **`PUBLICATION.md`**, point 9 de la liste : les trois points d'entrée sont identiques, et leur diff
+  compte comme celui de `template/`.
+
+### Changé
+
+- **NOYAU §0, point 1** : le périmètre du marqueur est rappelé là où il se contrôle. Les `.md`
+  d'`ai-memory/`, sous-dossiers compris, le NOYAU et les dépôts ; rien hors du dossier.
+- **NOYAU §0, point 7** : relire l'en-tête et les titres du gabarit avant d'écrire `report.md`.
+- **NOYAU §5** : le dernier numéro de cas se tient sur la ligne `Dernier cas inscrit` de « Cas
+  traités », mise à jour en place, jamais dans une autre section.
+- **NOYAU §5septies, point 2** : un hôte qui ne liste aucune tâche ne relance aucun membre, et le dit.
+- **NOYAU §7bis et `procedures.md`** : la fiche dit ce que l'hôte est, la procédure comment faire une
+  tâche ; une procédure propre à un hôte le dit dans son déclencheur, et ne fige jamais un chemin de
+  montage.
+- **Le modèle de `CLAUDE.md` n'importe plus `AGENTS.md`**, devenu le point d'entrée de Codex.
+- **`INSTALLATION.md` étape 4, `INSTALLATION-ASSISTEE.md` étapes 1, 4, 5 et 6, README** : les trois
+  points d'entrée et le dossier `hotes/` s'installent avec le reste.
+- **`FORMAT.md`** : `hotes/*.md` n'est pas transporté par l'écran.
+
+### La leçon
+
+Une méthode écrite en texte passe d'un outil à l'autre ; ce qui l'allume et ce qui dépend de l'outil,
+non. Sous Codex, l'agent a suivi le rituel, cherché ses contre-preuves et rien exécuté sans accord :
+le jugement a tenu. Ce qui a dérivé, ce sont les contrats implicites (l'en-tête du rapport, l'endroit
+du repère des cas) et ce que personne ne relisait (un point d'entrée resté un mois en arrière). Et
+une procédure écrite sur un hôte aurait égaré l'autre : un chemin de montage noté « constaté » sur
+l'un désignait, sur l'autre, un dossier vide. Ce qui dépend de l'hôte se range par hôte, et chacun ne
+lit que le sien.
+
+Origine : instance Vincent, session sous Codex du 04/10/2026, relue par Claude le même jour.
+Décisions de JC le même jour : point d'entrée et outils par hôte, le comportement reste commun ;
+chaque point d'entrée renvoie à sa propre fiche ; Claude et Codex écrits, Gemini en emplacement ;
+corrections du NOYAU dans la même version ; points d'entrée et fiches posés dans toutes les
+instances.
+
 ## [0.23.0] - 2026-10-04
 
 ### Ajouté

@@ -65,9 +65,12 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
 > Les cas ne s'écrivent pas ici : chacun va dans le fichier de journal de sa session,
 > `ai-memory/journal/<AAAA-MM-JJ-HHMM>-<session|run>.md` (format : NOYAU §5, « Le journal des
-> cas »). Ici ne reste que le repère qui évite de relire tout le dossier.
+> cas »). Ici ne reste que le repère qui évite de relire tout le dossier. **Cette ligne se met à
+> jour en place**, à chaque session qui inscrit un cas : le numéro qu'elle portait passe en
+> « Précédent ». Un repère écrit dans une autre section n'est pas lu.
 
-- **Dernier cas inscrit** : `<#>`, dans `journal/<nom du fichier>`.
+- **Dernier cas inscrit** : `<#>`, dans `journal/<nom du fichier>`. Précédent : `<#>`, dans
+  `journal/<nom du fichier>`.
 
 ## Observations
 
