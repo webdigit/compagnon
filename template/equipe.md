@@ -11,8 +11,15 @@
 >
 > **`Relançable` dit si un membre peut être relancé, pas qui en décide.** `oui` : le coordinateur
 > peut proposer une relance, et la faire seul si la capacité « Relance seule » de ce membre est
-> ouverte dans `capabilities.md`. `non` : il se lit, il ne se relance pas. Un membre sans tâche
-> programmée est toujours `non`.
+> ouverte dans `capabilities.md`. Même chose pour les autres actions sur sa tâche (test, suspension,
+> texte), chacune avec sa capacité. `non` : il se lit, il ne se relance pas. Un membre sans tâche
+> programmée est toujours `non`, et de même un membre dont l'hôte ne liste pas la tâche (une tâche
+> locale à l'application de bureau, par exemple) : elle ne se déclenche pas d'ailleurs.
+>
+> **La colonne `Tâche programmée` porte l'identifiant tel que la liste des tâches le donne.** C'est
+> de là que le coordinateur le tire pour déclencher : un nom ne suffit pas, deux tâches peuvent le
+> porter. Le dossier se donne de même par son identifiant de stockage quand il n'a pas de chemin
+> lisible depuis le cloud.
 
 ## Les membres
 

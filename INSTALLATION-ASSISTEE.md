@@ -174,9 +174,12 @@ Puis :
 8. **L'écran, s'il le veut** : copie `ecran/compagnon.html`, de la même étiquette, à la **racine du
    dossier du projet**, à côté de `ai-memory/`, pas dedans.
 9. **Si la question 9 a nommé un coordinateur** : copie aussi `report.md` dans `ai-memory/`, remplis
-   ses trous d'identité (`agent`, `opérateur`, `compétence`), et écris `statut: jamais tourné`. Le
-   reste de l'en-tête et du corps garde ses modèles : le premier vrai run les remplacera. Un
-   coordinateur qui lit `jamais tourné` sait qu'il n'y a pas de panne.
+   ses trous d'identité (`agent`, `opérateur`, `compétence`), écris `statut: jamais tourné`, et
+   remplis dès maintenant deux clés de relevé : `gabarit` (la version installée) et `coordonné_par`
+   (le nom du coordinateur). Sans elles, le coordinateur ne peut pas relancer cet agent avant son
+   premier run, alors que c'est justement un run qu'il voudra déclencher. Le reste de l'en-tête et
+   du corps garde ses modèles : le premier vrai run les remplacera. Un coordinateur qui lit
+   `jamais tourné` sait qu'il n'y a pas de panne.
 
 **Ce que tu laisses tel quel** : tout ce qui, entre chevrons, décrit un format plutôt qu'une
 identité. Les `<jj/mm/aaaa>`, `<AAAA-MM-JJ HH:MM>`, `<fichier>` ou `<étiquette>` des schémas
@@ -288,8 +291,26 @@ déjà en service. Les cinq règles du début valent ici aussi, à commencer par
    proposer de le relancer », pas « il le relancera seul ».
 5. **Ce que le coordinateur lui remonte**, et ce qu'il garde pour lui.
 6. **Sa cadence**, et la tâche programmée qui la portera. Elle se crée depuis le projet du
-   coordinateur, dans le cloud (`hotes/claude-taches-programmees.md`). Ne la crée pas toi-même :
-   propose-la, il la crée ou te demande de le faire.
+   coordinateur, dans le cloud (`hotes/claude-taches-programmees.md`). Ne la crée pas de ton
+   initiative : propose-la, avec son texte, il la crée ou te demande de le faire avec ce texte, mot
+   pour mot. **Son texte est celui-ci**, à adapter seulement pour le nom et la cadence :
+
+   > Passage de coordination de <NOM DU COORDINATEUR>. Lis ta mémoire (« Où vit le dossier »), puis
+   > fais ton passage selon le NOYAU §5septies.
+   > Actions sur les tâches programmées de tes membres (relance, tâche de test, suspension, texte) :
+   > `capabilities.md` fait foi. Ce qu'il t'ouvre pour un membre, et dont les conditions sont
+   > remplies, tu le fais toi-même, dans les limites du NOYAU §5septies, puis tu le vérifies dans la
+   > liste des tâches. Le reste, tu le proposes.
+   > Tu ne modifies jamais le texte de tes propres tâches programmées.
+   > Termine par ton `report.md` et une réponse finale de trois lignes (NOYAU §5quinquies, « Le
+   > retour »).
+
+   Explique-lui pourquoi ce texte ne dit ni « tu proposes » ni « tu déclenches » : **le texte d'une
+   tâche l'emporte sur `capabilities.md` quand il est plus restrictif** (NOYAU §6). Un texte qui
+   interdirait de déclencher rendrait muette toute capacité qu'il ouvrira plus tard. Celui-ci se
+   pose une fois, et chaque ouverture suivante se décide au registre, sans y retoucher. Et dis-lui
+   que si ce texte doit un jour changer, c'est lui qui le changera, dans les réglages de la tâche :
+   tu ne modifies pas les consignes de ta propre tâche.
 
 ### Ce que tu écris, chez le coordinateur seulement
 
@@ -307,16 +328,36 @@ déjà en service. Les cinq règles du début valent ici aussi, à commencer par
      | État de l'équipe | Lire le `report.md` de chaque membre de `equipe.md` et l'état de sa tâche programmée tel que l'hôte l'expose. Signaler qui n'a pas tourné, qui est périmé, partiel, en retard de version ou attend une décision. **Rien d'autre n'est lu chez un membre** | de base | ✅ OUVERT | `<C0x>` |
      | Proposition de relance | Rédiger la consigne de relance d'un membre et la soumettre à l'opérateur. **Proposer, jamais déclencher** | de base | ✅ OUVERT | `<C0x>` |
 
-   - au niveau 2, **une ligne par membre relançable**, verrouillée :
+   - au niveau 2, **deux lignes par membre relançable**, verrouillées :
 
      | Capacité | Ce que ça permet | Condition | Statut | Compétence |
      |---|---|---|---|---|
      | Relance seule · `<membre>` | Déclencher la tâche programmée de `<membre>` sans demander, avec une consigne à l'en-tête fixe, dans les limites du NOYAU §5septies | grade junior sur `<C0x>` · 5 relances de ce membre proposées et acceptées sans correction de fond · aucune erreur ouverte ni corrigée sur `<C0x>` · accord | 🔒 VERROUILLÉ | `<C0x>` |
+     | Tâche de test · `<membre>` | Créer une copie de la tâche de `<membre>` en exécution unique, nommée comme un test, pour vérifier un réglage. Aucune exception de test ne passe en production (NOYAU §5septies, point 8) | grade junior sur `<C0x>` · 3 tâches de test de ce membre proposées et acceptées sans correction de fond · accord | 🔒 VERROUILLÉ | `<C0x>` |
+
+   - au niveau 3, **une ligne par membre relançable**, verrouillée :
+
+     | Capacité | Ce que ça permet | Condition | Statut | Compétence |
+     |---|---|---|---|---|
+     | Suspension · `<membre>` | Suspendre ou réactiver la tâche programmée de `<membre>`, avec le motif dans le rapport. Jamais la supprimer | grade medior sur `<C0x>` · « Relance seule » ouverte pour ce membre · accord | 🔒 VERROUILLÉ | `<C0x>` |
+
+   - au niveau 4, **une ligne par membre relançable**, verrouillée :
+
+     | Capacité | Ce que ça permet | Condition | Statut | Compétence |
+     |---|---|---|---|---|
+     | Texte de tâche · `<membre>` | Modifier le texte de la tâche programmée de `<membre>` : cadence, périmètre, formulation. **Jamais son renvoi vers ses Instructions et son `capabilities.md`, et rien que son registre ne lui ouvre pas** (NOYAU §5septies, point 8) | grade senior sur `<C0x>` · « Suspension » ouverte pour ce membre · accord | 🔒 VERROUILLÉ | `<C0x>` |
+
+     Ces grades sont ceux à partir desquels le coordinateur peut **demander** la capacité. Rappelle
+     à l'opérateur qu'il peut en ouvrir une **hors grade**, par décision datée et sous conditions
+     (`capabilities.md`, « Grades par compétence ») : c'est la voie pour aller vite sur un membre
+     qu'il connaît bien.
 
    - dans « Interdits absolus », ces lignes, sous un intertitre « Coordination » : écrire quoi que ce
-     soit dans le dossier d'un membre ; lire chez un membre autre chose que son rapport ; créer,
-     modifier, désactiver ou supprimer la tâche programmée d'un membre ; relancer un agent absent
-     de `equipe.md` ou marqué `non` ; coordonner un autre coordinateur.
+     soit dans le dossier d'un membre ; lire chez un membre autre chose que son rapport ; supprimer
+     la tâche programmée d'un membre ; dans le texte de la tâche d'un membre, toucher à son renvoi
+     vers ses Instructions et son `capabilities.md` ou y écrire ce que son registre ne lui ouvre
+     pas ; modifier le texte de ses propres tâches programmées ; relancer un agent absent de
+     `equipe.md` ou marqué `non` ; coordonner un autre coordinateur.
 4. **`VERSION.md`** : une ligne d'historique, « module équipe posé », datée.
 
 Relis chaque fichier depuis le disque, marqueur de fin compris (Étape 5).
@@ -334,3 +375,42 @@ L'opérateur le fait membre par membre, puis recolle. Tant qu'un membre n'a pas 
 ne reconnaîtra pas une relance : le coordinateur peut le lire, il ne doit pas le relancer. Il le
 verra seul : le rapport du membre ne portera pas `coordonné_par` à son nom (NOYAU §5septies). Un
 membre antérieur à la 0.22.1 doit d'abord migrer. Dis-le.
+
+### Rendre la relance effective
+
+Poser le module ne suffit pas à ce qu'une relance parte un jour sans l'opérateur. Il faut cinq
+conditions réunies, et aucune ne suffit seule : le membre et le coordinateur tournent sans poste ;
+le rapport du membre nomme son coordinateur ; la capacité est ouverte ; le texte de la tâche du
+coordinateur délègue à son registre ; et c'est l'opérateur qui a posé ce texte. Le 04/10/2026, la
+première relance autonome (Vincent relançant Triage) les a découvertes une à une, par l'échec.
+
+Déroule avec l'opérateur, **membre par membre et dans cet ordre**. Chaque étape se vérifie avant la
+suivante.
+
+1. **Le membre tourne sans poste.** Son dossier est sur un stockage partagé, sa tâche programmée
+   tourne dans le cloud, en approbation automatique, et lit sa mémoire par l'identifiant du
+   dossier (`hotes/`). *Vérifier* : sa tâche figure dans la liste des tâches de l'hôte. Une tâche
+   qui n'y figure pas ne se relance pas : elle est à recréer.
+2. **Le membre nomme son coordinateur** (le texte de la section précédente). *Vérifier* : son
+   `report.md` porte `gabarit` et `coordonné_par` au nom du coordinateur.
+3. **`equipe.md` le porte** : identifiant de sa tâche tel que la liste le donne, identifiant de son
+   dossier, `Relançable : oui`.
+4. **Le texte de la tâche du coordinateur** est celui de la question 6, posé par l'opérateur
+   lui-même. Si une tâche existe déjà avec un autre texte, c'est lui qui le remplace, dans les
+   réglages de la tâche. *Vérifier* : le coordinateur relit le texte dans la liste des tâches et le
+   compare mot pour mot.
+5. **L'ouverture de « Relance seule · `<membre>` »**, si l'opérateur le décide, au grade ou hors
+   grade, avec ses conditions dans la colonne `Condition` et la décision au registre. Sans elle, le
+   coordinateur propose chaque relance et l'opérateur valide : c'est la voie normale tant que rien
+   n'est ouvert.
+6. **La mémoire du membre au repos.** Rien ne s'écrit dans son dossier dans les 30 minutes qui
+   précèdent un passage ou un test, **y compris le geste de l'étape 2** : sinon le membre se replie
+   (NOYAU §5quinquies, point 6). Le 04/10/2026, une relance partie une minute après ce geste a
+   produit un repli, pas un rapport.
+7. **Le test, sans poste.** Une copie de la tâche du coordinateur en exécution unique, au moins 30
+   minutes plus tard, sur un membre dont le rapport est périmé. Fermer l'application de bureau
+   suffit à couper le poste. *Vérifier au retour* : un déclenchement du membre postérieur à celui du
+   coordinateur, un `report.md` neuf dont `relancé_par` recopie la consigne au caractère près, et le
+   rapport du coordinateur qui consigne la relance.
+8. **La copie de test s'éteint**, supprimée ou expirée. Une exception écrite pour le test (la limite
+   d'une relance par jour levée, par exemple) ne passe jamais dans la tâche de production.

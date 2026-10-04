@@ -6,7 +6,7 @@ compétence: <identifiant de la compétence couverte>
 run: <AAAA-MM-JJ-nn>
 arrêté_le: <AAAA-MM-JJ HH:MM>
 périmé_après: <AAAA-MM-JJ HH:MM>
-statut: complet | partiel | bloqué | jamais tourné
+statut: complet | partiel | bloqué | repli | jamais tourné
 autonomie: <grade sur cette compétence, ex. junior>
 couvert:
   - <ce qui a réellement été balayé>
@@ -56,7 +56,9 @@ Pour qui lit ce fichier sans connaître le reste du dossier :
 5. **Ce fichier se lit, il ne s'écrit pas de l'extérieur.** Personne d'autre que l'agent de cette
    instance n'y touche, et personne ne touche au reste du dossier (compagnon P12).
 6. **`statut: jamais tourné` n'est pas une panne** : l'agent n'a pas encore travaillé. Un rapport
-   encore plein de trous entre chevrons se lit de la même façon. **Sans clé `gabarit`**, l'agent est
+   encore plein de trous entre chevrons se lit de la même façon. **`statut: repli`** non plus : le
+   travail a été fait, mais une autre session écrivait dans la mémoire de l'agent, et ce que le run
+   a appris attend en dépôt (`non_couvert` dit lequel). Le rapport vaut jusqu'à son `périmé_après`. **Sans clé `gabarit`**, l'agent est
    antérieur à la 0.22.0. **`coordonné_par`** dit quel coordinateur l'agent reconnaît ;
    **`relancé_par`**, si ce run a été déclenché par lui, et avec quelle consigne.
 

@@ -216,7 +216,7 @@ puces indentées. Clés lues : `run`, `statut`, `arrêté_le`, `périmé_après`
 
 Depuis la 0.22.0, l'en-tête porte des clés de relevé : `gabarit`, `relancé_par`,
 `demandes_en_attente`, `évaluations_dues`, et `coordonné_par` depuis la 0.22.1 ; `statut` peut
-valoir `jamais tourné`. L'écran ne les
+valoir `jamais tourné`, et `repli` depuis la 0.23.0. L'écran ne les
 interprète pas : elles servent au coordinateur (NOYAU §5septies). Une valeur peut contenir deux-points
 (`relancé_par` porte une heure) : seul le premier sépare la clé de la valeur.
 

@@ -33,6 +33,11 @@ Légende : `✅ OUVERT` · `🔓 DEMANDÉ` (attend une décision) · `🔒 VERRO
 > **Un grade ouvre le droit de demander, jamais la capacité elle-même.** Chaque ouverture reste une
 > décision de l'opérateur, ligne par ligne.
 >
+> **L'opérateur, lui, peut ouvrir hors grade et sans demande.** C'est une voie légitime, pas un
+> passe-droit : une décision datée au registre, comme les autres, et des conditions qui s'écrivent
+> dans la colonne `Condition` du catalogue (`ouverte hors grade le <jj/mm/aaaa> · <conditions>`),
+> là où l'agent les lit au moment d'agir. L'agent, lui, ne demande que ce que son grade lui permet.
+>
 > **Une montée avance d'un cran à la fois. Une rétrogradation est possible**, et une récidive
 > déclenche une évaluation immédiate de la compétence concernée.
 >

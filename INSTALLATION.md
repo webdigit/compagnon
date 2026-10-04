@@ -60,7 +60,9 @@ valeur, laissez la ligne « Aucune valeur déclarée » : rien ne change.
 Un fichier est **facultatif** : `report.md`. Gardez-le si la sortie de cet agent doit être lue par
 quelqu'un d'autre que vous : un autre agent qui arbitre entre plusieurs instances, une revue
 hebdomadaire. Sinon, supprimez-le : rien ailleurs ne le réclame. Si un autre de vos agents doit
-suivre celui-ci, gardez-le : c'est la seule chose que ce coordinateur lira.
+suivre celui-ci, gardez-le : c'est la seule chose que ce coordinateur lira. Remplissez alors dès
+maintenant `gabarit` (la version installée) et `coordonné_par` (le nom du coordinateur) dans son
+en-tête : sans elles, le coordinateur ne pourra pas le relancer avant son premier run.
 
 Un autre fichier ne se copie pas : `equipe.md`. Il n'existe que chez un agent qui en **coordonne**
 d'autres : il lit leurs rapports, signale qui n'a pas tourné ou attend une décision, et propose de

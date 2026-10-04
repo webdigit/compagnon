@@ -10,6 +10,57 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.23.0] - 2026-10-04
+
+### Ajouté
+
+- **NOYAU §6 : ce qui te donne tes consignes, tu ne le modifies jamais toi-même** (les Instructions
+  du projet, le texte de tes tâches). L'agent propose le texte, l'opérateur l'applique, l'agent le
+  relit et le compare. Et quand le texte d'une tâche ferme ce que `capabilities.md` ouvre, c'est le
+  plus restrictif qui s'applique : l'agent le signale et propose un texte qui délègue au registre.
+- **NOYAU §5septies, point 8 : les autres actions sur la tâche d'un membre** (tâche de test,
+  suspension, texte), chacune capacité par membre, avec deux bornes fixes : un test ne passe pas en
+  production, et le texte d'une tâche de membre ne lui ouvre jamais rien.
+- **Statut de rapport `repli`** : le travail est fait, la mémoire est en dépôt.
+- **`INSTALLATION-ASSISTEE.md`** : le texte de la tâche du coordinateur, à poser une fois par
+  l'opérateur ; les capacités Tâche de test (N2), Suspension (N3) et Texte de tâche (N4) par membre ;
+  « Rendre la relance effective », en huit étapes vérifiées.
+- **`hotes/claude-taches-programmees.md`** : ce que la première relance autonome a établi, et « Le
+  texte d'une tâche ». TR1 et TR3 constatés, TR2 partiel, TR7 non tranché.
+- **`capabilities.md`** : l'ouverture par l'opérateur hors grade et sans demande, sous conditions,
+  est une voie légitime.
+
+### Changé
+
+- **NOYAU §5quinquies, point 6** : « modifié il y a quelques minutes » devient **30 minutes**, une
+  valeur qu'une instance peut allonger, jamais raccourcir. `report.md` sort du calcul.
+- **NOYAU, « Le repli »** : un run replié remplace quand même son `report.md`, sauf si c'est lui
+  qui vient d'être modifié.
+- **NOYAU §5septies** : une relance seule part d'un run de la tâche du coordinateur, jamais d'une
+  conversation ; elle se vérifie tout de suite dans la liste des tâches, puis au rapport suivant ;
+  un rapport `repli` n'est pas périmé ; une tâche que l'hôte ne liste pas ne se relance pas. Les
+  interdits de coordination ne gardent que la suppression d'une tâche de membre, son renvoi au
+  registre, et le texte des tâches du coordinateur lui-même.
+- **NOYAU §5bis, point 6** : `arrêté_le` se prend au shell. **§5sexies, point 4** : `relancé_par`
+  recopie la consigne telle quelle.
+- **DOCTRINE P16** : le coordinateur peut piloter la tâche d'un membre par capacités ouvertes ;
+  aucun agent ne réécrit ses propres consignes.
+- **Installation** : un `report.md` posé pour un coordinateur porte `gabarit` et `coordonné_par`
+  dès le départ.
+
+### La leçon
+
+Une règle juste ne produit rien si l'outil qui l'exécute la contredit. Le NOYAU permettait la
+relance seule depuis la 0.22.0 ; le texte de la tâche du coordinateur, plus ancien, disait « tu ne
+déclenches jamais », et il primait. La première relance autonome a demandé cinq conditions, trouvées
+une à une par l'échec, dont deux hors du dossier : le rapport du membre et le texte de la tâche.
+Un gabarit qui pose une capacité doit aussi poser le chemin par lequel elle s'exécute (R8).
+
+Origine : instance Vincent et instance Triage, 04/10/2026, brief de JC « relances de tâches
+programmées par un agent coordinateur ». Décisions de JC le même jour : rapport remplacé en repli,
+30 minutes, consignes jamais modifiées par l'agent lui-même, actions sur les tâches des membres
+gagnées par capacités, grille N2 à N4.
+
 ## [0.22.1] - 2026-10-03
 
 ### Corrigé

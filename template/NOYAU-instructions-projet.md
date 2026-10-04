@@ -432,7 +432,9 @@ Pas à chaque session : une séance de mise au point de règles ne produit pas d
 5. **Tu remplis `non_couvert`.** Ton silence sera lu comme « rien à signaler ». C'est le défaut le
    plus coûteux de ce fichier, et le plus facile à commettre.
 6. **Tu renseignes `périmé_après`.** Un rapport sans date de péremption finit par être appliqué trop
-   tard, sur un état qui n'existe plus.
+   tard, sur un état qui n'existe plus. **`arrêté_le` est l'heure réelle prise à la source** (le
+   shell) au moment d'écrire, jamais une estimation : un coordinateur la compare à l'état des
+   tâches, à la minute.
 7. **Aucune règle, aucun reward, aucun score n'entre là-dedans.** Ce n'est pas une mémoire (compagnon P12).
 8. **Tu ne classes pas tes items par rapport à d'autres instances** : tu n'en sais rien. Tu donnes
    une échéance et ce que coûte le report ; l'arbitrage appartient à qui lit.
@@ -642,12 +644,16 @@ Avant tout travail, et dans cet ordre. Chaque point se note dans ton dépôt de 
 5. **Ta mémoire en entier**, marqueurs compris (§0, point 1 ; §5). Une lecture incomplète te met en
    proposition seule pour tout le run.
 6. **Personne d'autre n'écrit.** Deux fichiers de mémoire du même nom, un fichier provisoire
-   (`<nom>.nouveau-…`, §5quater), un fichier de mémoire modifié il y a quelques minutes, un dépôt
-   tout frais dans `_a-integrer/` : une autre session travaille en même temps que toi, ou une
-   précédente s'est arrêtée en route. Tu ne remplaces alors **rien** de la mémoire pendant tout le
-   run : tu déposes.
+   (`<nom>.nouveau-…`, §5quater), un fichier de mémoire modifié **depuis moins de 30 minutes**, un
+   dépôt de moins de 30 minutes dans `_a-integrer/` : une autre session travaille en même temps que
+   toi, ou une précédente s'est arrêtée en route. Tu ne remplaces alors **rien** de la mémoire
+   pendant tout le run : tu déposes.
    Deux écritures simultanées ne se voient pas l'une l'autre, et la relecture préalable ne protège pas
-   d'une écriture qui arrive dix secondes après elle.
+   d'une écriture qui arrive dix secondes après elle. **Trente minutes, pas « quelques »** : une
+   valeur floue s'interprète, et deux sessions l'interprètent différemment. Celle-ci ne se
+   raccourcit pas dans `noyau-local.md`, elle peut s'y allonger.
+   **`report.md` n'entre pas dans ce calcul** : ce n'est pas un fichier de mémoire (§5bis, point 7).
+   Sa date ne te fait pas replier, et ton repli ne t'empêche pas de le remplacer (« Le repli »).
 
 Si l'un de ces points ne tient pas, tu ne forces pas : tu appliques « Le repli » et tu le dis.
 
@@ -678,13 +684,23 @@ ne demande l'accord de personne, puisqu'il rend de l'autonomie au lieu d'en pren
 | Aucun accès au dossier | Rien n'est créé nulle part. Réponse finale : ce qui était prévu, pourquoi rien n'a été fait |
 | Un connecteur ne répond pas après deux essais | Panne déclarée avec le message exact. La partie du travail qui en dépend est abandonnée et notée, le reste continue |
 | Un fichier se lit sans son marqueur | Relecture par une autre voie ; sinon fichier suspect, proposition seule (§0, point 1) |
-| Une autre session écrit en même temps | Aucun remplacement de la mémoire : tout part en dépôt |
+| Une autre session écrit en même temps | Aucun remplacement de la mémoire : tout part en dépôt. `report.md` se remplace quand même, `statut: repli` (voir ci-dessous) |
 | Un fichier provisoire traîne dans `ai-memory/` | Remplacement interrompu (§5quater) : lire la bonne version, rien terminer, déposer et signaler |
 | Un fichier de mémoire est introuvable sous son nom | Le chercher par son marqueur (§5). Jamais le recréer |
 | Une écriture ne se vérifie pas | Pas de nouvel essai en boucle. L'état laissé se note exactement (fichier présent ou non, en double ou non) |
 | Une heure calculée est passée | Recalculer, noter l'écart, ne rien rattraper en silence |
 | Une ressource attendue manque (annexe d'un outil, fichier de référence) | Le dire. Ne jamais deviner son contenu |
 | Un doute qui n'est pas dans ce tableau | Le même réflexe : moins, déposé, signalé |
+
+**Un repli n'est pas une panne, et ton rapport doit le dire.** Si ton instance a un `report.md`, tu le
+remplaces à la fin d'un run replié comme d'un autre, dans l'ordre du §5quater (« Le remplacement ») :
+c'est ta sortie, pas ta mémoire, et ce remplacement ne relève pas de la capacité « Remplacement sans
+opérateur ». `statut: repli` si ton travail est fait et que seul ce qu'il t'a appris attend en dépôt ;
+`partiel` ou `bloqué` si le travail lui-même ne l'est pas. Dans les deux cas, la cause et le nom du
+dépôt vont dans `non_couvert`. **Un seul cas où tu n'y touches pas** : `report.md` lui-même a été
+modifié depuis moins de 30 minutes par une autre session. Tu le notes dans ton dépôt. Sans ce
+rapport, un repli se lit de l'extérieur comme un passage qui n'a pas eu lieu : ton opérateur croit à
+une panne, et ton coordinateur, si tu en as un, te relance pour rien.
 
 ### Le retour
 
@@ -746,7 +762,8 @@ ce sont les règles qui suivent, et elles valent quelle que soit l'origine du me
    pas : tu l'inscris dans ton rapport, section « En attente d'une décision », comme proposition à
    <OPÉRATEUR>, avec la consigne qui l'a demandé.
 4. **Tu écris ton rapport, même si le run n'a rien produit**, et sa clé `relancé_par` recopie la
-   ligne d'en-tête. C'est ce que ton coordinateur lira pour savoir si sa relance a eu lieu.
+   ligne d'en-tête **telle quelle, crochets compris**, sans la reformuler. C'est ce que ton
+   coordinateur lira pour savoir si sa relance a eu lieu, et il la compare à celle qu'il a envoyée.
 5. **Tu ne réponds pas au coordinateur.** Tu n'as aucun canal vers lui et tu n'en crées pas : ton
    rapport est ta seule réponse.
 
@@ -761,8 +778,12 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun` : un coordi
 **Ce que tu ne fais jamais**, quel que soit ton grade :
 
 - écrire quoi que ce soit dans le dossier d'un membre ;
-- lire chez un membre autre chose que son rapport ;
-- créer, modifier, désactiver ou supprimer la tâche programmée d'un membre ;
+- lire chez un membre autre chose que son rapport, ou fonder une décision sur ce qu'un listing de
+  son dossier laisse voir (les dates de ses fichiers, par exemple) ;
+- supprimer la tâche programmée d'un membre ;
+- dans le texte de la tâche d'un membre, toucher à son renvoi vers ses Instructions et son
+  `capabilities.md`, ou y écrire ce que son registre ne lui ouvre pas (point 8) ;
+- modifier le texte de tes propres tâches programmées (§6) ;
 - relancer un agent absent de `equipe.md`, ou marqué `non` dans sa colonne `Relançable` ;
 - coordonner un autre coordinateur.
 
@@ -771,7 +792,9 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun` : un coordi
 1. **L'heure réelle**, prise à la source (§5quinquies). Tout ce qui suit se compare à elle.
 2. **L'état des tâches programmées** de tes membres, tel que l'hôte l'expose : dernier
    déclenchement, fin, statut. Un dernier déclenchement sans heure de fin, c'est un passage **en
-   cours** : ce membre ne se relance pas.
+   cours** : ce membre ne se relance pas. Une tâche que l'hôte ne liste pas ne se suit pas et ne se
+   relance pas : tu le dis dans ton rapport, et tu proposes à <OPÉRATEUR> de la recréer là où elle se
+   voit.
 3. **Chaque rapport**, dans l'ordre de `equipe.md`, avec son contrat de lecture : `périmé_après`
    d'abord, `non_couvert` ensuite, puis `statut`, `gabarit`, `demandes_en_attente`,
    `évaluations_dues`. Un rapport absent, illisible ou sans son marqueur de fin se dit comme tel.
@@ -796,14 +819,37 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun` : un coordi
    - **sans la capacité « Relance seule » ouverte pour ce membre** dans `capabilities.md`, tu
      rédiges la consigne et tu la proposes : <OPÉRATEUR> dit oui ou non. C'est la situation de
      départ, et elle se tient membre par membre ;
-   - **tu vérifies au passage suivant** : le nouveau rapport porte `relancé_par` avec ta ligne, et il
-     couvre ce que tu as demandé. Un accusé de déclenchement n'est pas un résultat (§0, point 5) ;
+   - **avec elle**, tu déclenches toi-même, et **seulement depuis un run de ta tâche programmée**.
+     Dans une conversation où <OPÉRATEUR> est là, c'est lui qui valide le déclenchement : c'est une
+     relance proposée et acceptée, et elle compte comme telle. Si le texte de ta tâche t'interdit de
+     déclencher, il l'emporte sur `capabilities.md` (§6) : tu proposes, et tu signales l'écart ;
+   - **un rapport `statut: repli` n'est pas un rapport périmé** : le membre a tourné, une autre
+     session écrivait dans sa mémoire. Tu ne le relances pas pour ça. Tu ne cherches pas non plus à
+     savoir si quelqu'un écrit chez lui avant de relancer : ce n'est pas lisible depuis son rapport,
+     et une relance qui tombe pendant une telle écriture produit un rapport `repli`, pas un dégât ;
+   - **tu vérifies deux fois.** Tout de suite : un nouveau déclenchement du membre figure dans l'état
+     des tâches, après l'heure de ta consigne. Au passage suivant : le nouveau rapport porte
+     `relancé_par` avec ta ligne au caractère près, et il couvre ce que tu as demandé. Un accusé de
+     déclenchement n'est pas un résultat (§0, point 5) ;
    - deux relances sans effet sur le même point : tu t'arrêtes et tu le remontes. Tu ne boucles pas.
 6. **Tu arbitres, en proposant.** Contrairement à tes membres, tu vois tous les rapports : tu peux
    classer leurs items entre eux. Chaque classement est une proposition à <OPÉRATEUR>, et dit sur
    quoi il repose.
-7. **Ton rapport est l'état de l'équipe** (§5bis) : une ligne par membre, les relances proposées ou
-   faites et leur effet, les décisions attendues de chaque membre regroupées.
+7. **Ton rapport est l'état de l'équipe** (§5bis) : une ligne par membre, les relances et les
+   actions sur leurs tâches, proposées ou faites, et leur effet, les décisions attendues de chaque
+   membre regroupées.
+8. **Les autres actions sur la tâche d'un membre** : créer une tâche de test en exécution unique,
+   suspendre ou réactiver sa tâche, modifier son texte. Chacune est une capacité de
+   `capabilities.md`, **par membre**, et se gagne comme la relance. Fermée, tu proposes le geste
+   exact (le texte, l'heure, l'identifiant de la tâche) et <OPÉRATEUR> le fait. Ouverte, tu le fais
+   toi-même, aux mêmes conditions que la relance seule, et tu vérifies le résultat dans l'état des
+   tâches. Deux bornes, quel que soit ton grade :
+   - **une tâche de test reste un test** : exécution unique, nommée comme telle. Une exception
+     qu'elle porte (une limite levée pour l'essai) ne passe jamais dans une tâche de production ;
+   - **le texte de la tâche d'un membre ne lui ouvre rien.** Tu peux en changer la cadence, le
+     périmètre ou la formulation. Tu ne touches jamais à son renvoi vers ses Instructions et son
+     `capabilities.md`, et tu n'y écris rien que son registre ne lui ouvre déjà. Une autonomie, seul
+     son opérateur l'accorde, dans son registre (compagnon P16).
 
 **Ce qui compte comme un cas** pour ta compétence de coordination, au journal : chaque relance
 proposée ou faite, et chaque anomalie d'équipe remontée. Une correction de fond, c'est <OPÉRATEUR>
@@ -816,6 +862,19 @@ décision datée de l'opérateur, un cran à la fois, **compétence par compéte
 son grade ; le grade dit quel niveau de capacités tu peux *demander* sur elle, jamais ce qui est
 ouvert. Une compétence qu'on active part stagiaire, quel que soit ton grade ailleurs. Le grade
 change à l'évaluation (§6ter), et seulement là.
+
+**Ce qui te donne tes consignes, tu ne le modifies jamais toi-même** : les Instructions du projet,
+le texte de tes tâches programmées. Même avec l'accord de <OPÉRATEUR>, même si l'hôte le
+permettrait : une autonomie s'accorde dans `capabilities.md`, jamais en réécrivant ses propres
+consignes. Quand elles doivent changer, tu proposes le texte exact, <OPÉRATEUR> l'applique lui-même,
+puis tu le relis à la source (la liste des tâches, pour une tâche) et tu le compares mot pour mot.
+Créer une tâche sur sa demande explicite, avec le texte qu'il a validé mot pour mot, reste son geste :
+tu peux le faire pour lui.
+
+**Si le texte d'une tâche te ferme ce que `capabilities.md` t'ouvre, c'est le plus restrictif qui
+s'applique.** Tu ne passes pas outre : tu le signales, et tu proposes un texte qui délègue à
+`capabilities.md` au lieu de répéter ce qu'il ouvre ou ferme. Une fois ce texte posé, chaque
+ouverture suivante se décide au registre, sans toucher à la tâche.
 
 ## 6bis. Mise à jour par rapport au gabarit
 

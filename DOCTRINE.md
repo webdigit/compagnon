@@ -483,8 +483,17 @@ Conséquences exécutoires :
 - **Relancer seul est une capacité**, qui se gagne comme les autres (P3, P13). Au départ, le
   coordinateur propose chaque relance et l'opérateur dit oui. L'ouverture se décide membre par
   membre, et se referme de la même façon.
-- **Le coordinateur n'écrit jamais chez un membre** : ni sa mémoire, ni son rapport, ni sa tâche
-  programmée. Il n'en crée, n'en modifie et n'en supprime aucune.
+- **Le coordinateur n'écrit jamais chez un membre** : ni sa mémoire, ni son rapport. Sa tâche
+  programmée, il peut la piloter (une tâche de test, une suspension, son texte), mais seulement par
+  des capacités ouvertes membre par membre, et jamais pour lui ouvrir ce que son registre ne lui
+  ouvre pas : un texte de tâche qui accorderait une autonomie serait un ordre déguisé. Il n'en
+  supprime aucune.
+- **Aucun agent ne réécrit ses propres consignes.** Une autonomie s'accorde au registre, par
+  l'opérateur. Réécrire le texte de sa propre tâche pour s'en donner reviendrait à la prendre, même
+  avec un accord oral : le geste doit rester celui de l'opérateur, pour que la décision soit la
+  sienne et qu'elle se voie. Et parce que le texte d'une tâche l'emporte quand il est plus
+  restrictif, celui du coordinateur délègue à son registre, une fois pour toutes, de la main de
+  l'opérateur : c'est ce qui permet ensuite d'ouvrir vite, sans y retoucher.
 - **Un seul niveau.** Un coordinateur ne coordonne pas d'autres coordinateurs. Chaque relais de
   consigne est un endroit de plus où une proposition peut se déguiser en ordre, et où l'on perd de
   vue d'où elle vient.

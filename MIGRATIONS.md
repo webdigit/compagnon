@@ -147,6 +147,63 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.22.1 → 0.23.0
+
+### Ce qui change
+
+La première relance autonome d'une équipe compagnon (04/10/2026) a montré que la règle ne suffisait
+pas : le texte de la tâche du coordinateur l'interdisait, et un membre replié passait pour absent.
+
+- **Un repli se dit.** Un membre replié remplace quand même son `report.md`, `statut: repli`. La
+  fenêtre d'écrivain concurrent vaut 30 minutes, et `report.md` n'en fait pas partie.
+- **Un agent ne modifie jamais ses propres consignes** (NOYAU §6). Le texte d'une tâche plus
+  restrictif que `capabilities.md` l'emporte, d'où un texte de tâche coordinateur qui délègue au
+  registre.
+- **Le coordinateur peut gagner d'autres actions sur la tâche d'un membre** (test, suspension,
+  texte), capacité par capacité, membre par membre (§5septies, point 8).
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §5bis point 6, §5quinquies point 6 et « Le repli », §5sexies point 4,
+  §5septies (interdits, points 2, 5, 7 et 8), §6.
+- **`noyau-local.md`** : si une spécificité fixe une fenêtre d'écrivain concurrent plus courte que
+  30 minutes, elle n'a plus d'effet. Proposer à l'opérateur de la retirer ou de l'allonger.
+- **`report.md`**, s'il existe : rien. `repli` servira au premier run replié.
+- **`capabilities.md`** : son bandeau « Grades par compétence » gagne un paragraphe sur l'ouverture
+  hors grade. Zone manuelle : proposer à l'opérateur de le reprendre, tel quel, depuis le gabarit.
+- **Si l'instance a un `equipe.md`** (coordinateur) : proposer à l'opérateur, sans rien écrire
+  dans `capabilities.md` qui est une zone manuelle, les lignes Tâche de test, Suspension et Texte de
+  tâche de chaque membre relançable (`INSTALLATION-ASSISTEE.md`, module équipe), et la correction
+  des interdits de coordination. Relire le texte de ses tâches programmées dans la liste des
+  tâches, le comparer au texte modèle de la question 6, et proposer le remplacement s'il diffère.
+  Vérifier que la colonne `Tâche programmée` d'`equipe.md` porte des identifiants que la liste
+  montre, et signaler ceux qu'elle ne montre pas. Le bandeau d'`equipe.md` change aussi (tâches non
+  listées, identifiants) : zone manuelle, proposer de le reprendre depuis le gabarit.
+- **`VERSION.md`** : passer la version courante à 0.23.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+**Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+`[fin de noyau-local.md]`.
+
+**Chez un coordinateur seulement** : valider ou non les lignes proposées dans `capabilities.md`,
+et **remplacer lui-même, dans les réglages de chaque tâche du coordinateur**, le texte que l'agent
+lui a proposé. L'agent ne peut pas le faire (NOYAU §6).
+
+### Comment vérifier
+
+**Le texte** : le §5quinquies du NOYAU recollé dit « 30 minutes », et le §6 contient « Ce qui te
+donne tes consignes ». `VERSION.md` porte 0.23.0.
+
+**Chez un coordinateur** : le texte de ses tâches, relu dans la liste, délègue à `capabilities.md`
+et ne contient ni « tu proposes » ni « tu ne déclenches jamais ».
+
+**La suite** : le premier run replié d'un membre laisse un `report.md` `statut: repli`.
+
+---
+
 ## 0.22.0 → 0.22.1
 
 ### Ce qui change
