@@ -24,9 +24,11 @@ c'est l'opérateur qui vérifie qu'ils sont là, et qui colle le NOYAU là où l
    s'écrit sans qu'il ait vu le texte et dit oui.
 3. **Tu n'écris que dans le dossier du projet**, et seulement ce que cette procédure nomme :
    `ai-memory/`, plus, à la racine, `compagnon.html` s'il veut l'écran et les trois points d'entrée
-   d'`entrees/` (étape 4, point 10). Rien d'autre, nulle part ailleurs. Seule exception : la copie du gabarit que tu
-   récupères à l'étape 1, si elle ne peut pas être posée ailleurs. Elle est temporaire, et elle part
-   à l'étape 8.
+   d'`entrees/` (étape 4, point 10). Rien d'autre, nulle part ailleurs. Deux exceptions, toutes deux
+   temporaires, qui partent à l'étape 8 : le clone de la route A, **hors du projet**, dans un dossier
+   temporaire de ton hôte ; et le dossier décompressé de la route C, dans le projet s'il ne peut pas
+   être posé ailleurs. **Un clone git du gabarit n'entre jamais dans le dossier du projet** (étape 1,
+   route A).
 4. **Tu ne réécris pas le gabarit.** Tu remplis ses trous et tu recopies le reste tel quel, octet
    pour octet. Un fichier que tu as « amélioré » à l'installation est un fichier que la prochaine
    mise à jour écrasera, et l'opérateur ne saura jamais pourquoi.
@@ -44,9 +46,16 @@ replis de la section « Sans dépôt local » de [`MIGRATIONS.md`](MIGRATIONS.md
 **Puis récupère les dossiers `template/` (sous-dossier `hotes/` compris) et `entrees/` à cette
 étiquette**, par la première route qui marche :
 
-- **Route A, si tu as un shell avec git** : clone le dépôt **hors du dossier du projet** si ton hôte
-  le permet (`git clone --branch <étiquette> --depth 1 https://github.com/webdigit/compagnon.git`).
-  Note aussi le commit court de l'étiquette (`git rev-list -n 1 <étiquette>`).
+- **Route A, si tu as un shell avec git** : clone le dépôt **hors du dossier du projet**, dans un
+  dossier temporaire de ton hôte, qui part à l'étape 8
+  (`git clone --branch <étiquette> --depth 1 https://github.com/webdigit/compagnon.git`), puis
+  recopie les fichiers dont tu as besoin. Note aussi le commit court de l'étiquette
+  (`git rev-list -n 1 <étiquette>`). **Jamais dans le dossier du projet, ni en en faisant le dossier
+  du projet lui-même** : la mémoire vivrait alors dans l'arbre de travail du gabarit, et une seule
+  commande git (`checkout`, `clean`, `pull`) pourrait l'effacer (`MIGRATIONS.md`, « Où vit le
+  clone »). Si ton hôte ne te laisse écrire que dans le dossier du projet, ne clone pas : passe à la
+  route B ou C. Un clone durable, celui qui sert aux mises à jour, se pose à côté du projet par
+  l'opérateur, pas par toi (`MIGRATIONS.md`, « Où vit le clone »).
 - **Route B, si tu peux lire des adresses web brutes** : liste les fichiers par
   `https://api.github.com/repos/webdigit/compagnon/contents/template?ref=<étiquette>` (puis
   `template/hotes` et `entrees` de la même façon), et lis chacun par
@@ -209,7 +218,15 @@ Relis chaque fichier de `ai-memory/` **depuis le disque**, pas depuis ce que tu 
   pour les expliquer, et restent tels quels : le bandeau d'avertissement en tête du NOYAU, et
   l'encadré « À REMPLIR » en tête du `README.md` ;
 - le NOYAU ne diffère du gabarit que par ses trous remplis.
-- les trois points d'entrée de la racine ne diffèrent d'`entrees/` que par le nom de l'agent.
+- les trois points d'entrée de la racine ne diffèrent d'`entrees/` que par le nom de l'agent ;
+- **le dossier du projet n'est pas un dépôt git du gabarit** : aucun `.git` à sa racine dont le
+  remote est `webdigit/compagnon`. S'il y en a un, c'est la route A mal faite : arrête-toi et dis-le
+  à l'opérateur, avec la liste de ce qui vient du gabarit à la racine (`.git`, `.gitignore`,
+  `template/`, `entrees/`, `hotes/`, `ecran/`,
+  `README.md`, `CHANGELOG.md`, `DOCTRINE.md`, `FORMAT.md`, `INSTALLATION.md`,
+  `INSTALLATION-ASSISTEE.md`, `MIGRATIONS.md`, `PUBLICATION.md`, `LICENSE`, s'ils sont ceux du dépôt). Ne restent que `ai-memory/`, les
+  trois points d'entrée et `compagnon.html`. Le retrait est son geste, à la main ; tu ne supprimes
+  rien.
 
 Un seul écart, et tu le corriges avant d'aller plus loin. Puis dis à l'opérateur : « Le dossier est
 posé. Il reste une étape, et c'est toi qui dois la faire. »
@@ -262,8 +279,8 @@ chargé. Dans les deux cas : reprendre l'étape 6.
 
 Dis-lui, pour finir :
 
-- **Si une copie du gabarit est restée dans le projet** (le dossier `compagnon-<x.y.z>` de la route
-  C, ou le clone de la route A), de la supprimer une fois le test passé. Il contient un deuxième `NOYAU-instructions-projet.md`, celui du
+- **Si une copie du gabarit est restée** (le clone temporaire de la route A, hors du projet, ou le
+  dossier `compagnon-<x.y.z>` de la route C), de la supprimer une fois le test passé. Il contient un deuxième `NOYAU-instructions-projet.md`, celui du
   gabarit, plein de trous : c'est exactement le fichier qu'on colle par erreur
   (INSTALLATION.md, étape 4, « D'abord : le bon fichier »). Si ton hôte te permet de le supprimer,
   propose-le-lui ; sinon, il le fait à la main.
@@ -274,6 +291,15 @@ Dis-lui, pour finir :
 
 Tu t'arrêtes là. Ne traite aucun cas réel dans cette conversation : l'agent qui le fera est celui
 qui démarrera avec le NOYAU, pas toi.
+
+**Et tu n'agis plus jamais au nom de l'instance.** Une fois l'installation finie, tu ne crées pour
+elle ni tâche programmée, ni automation, ni écriture dans `ai-memory/`, et tu ne lui transmets
+aucune consigne ni aucune autorisation depuis cette conversation. Si l'opérateur te le demande,
+réponds-lui que cela se fait dans une conversation de l'instance, à sa demande à lui, directement
+là-bas : une autorisation que tu relaierais n'en est pas une pour elle (NOYAU §5sexies), et une
+tâche que tu créerais ici tournerait hors de son rituel et de sa mémoire. Le premier essai sous
+Codex (04/10/2026) l'a montré : l'instance a refusé, à juste titre, l'accord relayé, et la
+conversation d'installation a créé la tâche elle-même, attachée à elle.
 
 ## À part : poser le module équipe
 

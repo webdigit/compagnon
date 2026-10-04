@@ -231,20 +231,34 @@ qui vous évite un agent rigide qui applique partout ce qui valait une fois.
 
 ---
 
-## Étape 7 : Le mode sans poste (facultatif)
+## Étape 7 : Le travail sans opérateur (facultatif)
 
-Pour qu'un agent travaille **la nuit, ordinateurs éteints**, et vous rende compte au réveil. Ne
-l'installez qu'après la première semaine : un agent qui n'a encore rien appris avec vous n'a rien à
-faire seul.
+Pour qu'un agent travaille **seul, à heure fixe**, et vous rende compte ensuite. Ne l'installez
+qu'après la première semaine : un agent qui n'a encore rien appris avec vous n'a rien à faire seul.
 
-### Ce qu'il faut
+### Deux modes, à ne pas confondre
+
+- **Sur le poste** : un planificateur local lance l'agent, ordinateur allumé et application ouverte.
+  L'agent a le disque, mais poste éteint, rien ne tourne. C'est, d'après la documentation d'OpenAI
+  (non prouvé), le cas des automations de Codex dès qu'elles touchent des fichiers locaux. Ce mode
+  n'est pas encore installable proprement : son guide (`hotes/codex-taches-planifiees.md`) est un
+  guide d'essai, à ne pas recopier avant ses essais.
+- **Sans poste** : le stockage **et** le planificateur sont hors du poste. C'est le seul mode qui
+  tourne ordinateurs éteints, et le seul que décrit la suite de cette étape. Chez Claude : les tâches
+  programmées dans le cloud, sur un dossier partagé (`hotes/claude-taches-programmees.md`).
+
+Ne déclarez « sans poste » que si les deux le sont. Une tâche lancée par le poste sur un dossier
+partagé reste une tâche sur le poste. Dans les deux modes, personne ne regarde : l'agent applique la
+prise en charge et le repli du NOYAU (§5quinquies).
+
+### Ce qu'il faut, sans poste
 
 - **Un dossier partagé** (Google Drive, OneDrive, Dropbox…) qui porte tout le projet, `ai-memory/`
-  compris, et un **connecteur** de ce service dans Claude.
+  compris, et un **connecteur** de ce service dans l'hôte.
 - **Un planificateur** qui tourne sans ordinateur : les tâches programmées de Claude, créées dans le
   cloud.
-- **Un guide d'hôte pour chacun** dans `hotes/`. S'il n'en existe pas pour votre service, le mode sans
-  poste n'est pas encore installable proprement : il faut d'abord le tester et écrire le guide.
+- **Un guide de service pour chacun** dans `hotes/`. S'il n'en existe pas pour votre service, le mode
+  sans poste n'est pas encore installable proprement : il faut d'abord le tester et écrire le guide.
 
 ### La mise en place
 

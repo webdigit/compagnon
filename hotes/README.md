@@ -1,8 +1,11 @@
 # compagnon : guides d'hôte
 
-> **À qui s'adresse ce dossier.** À qui installe une instance qui doit travailler **sans poste
-> allumé** : une tâche programmée de nuit, dans le cloud, sur un dossier partagé. Une instance ne le
-> lit pas en session : elle lit son `procedures.md`, dans lequel ces recettes ont été recopiées.
+> **À qui s'adresse ce dossier.** À qui installe une instance qui doit travailler **seule, à heure
+> fixe** : sans poste allumé (une tâche programmée de nuit, dans le cloud, sur un dossier partagé),
+> ou sur le poste, par un planificateur local. Une instance ne le
+> lit pas en session : elle lit son `procedures.md`, dans lequel ces recettes ont été recopiées. Seule
+> exception, un **guide d'essai** : la fiche d'hôte le cite, et personne ne le recopie avant que ses
+> essais soient passés.
 
 **À ne pas confondre avec `template/hotes/`.** Ici, un guide détaillé par **service** (un stockage,
 un planificateur), recopié dans `procedures.md` à l'installation du mode sans poste. Là, une fiche
@@ -16,10 +19,15 @@ quand l'outil change est une procédure.
 
 ## Les guides
 
-| Guide | Ce qu'il couvre |
-|---|---|
-| `google-drive.md` | Le dossier partagé sur Google Drive, par le connecteur Google Drive de Claude |
-| `claude-taches-programmees.md` | Les tâches programmées de Claude qui tournent dans le cloud, sans ordinateur |
+| Guide | Sorte | Environnement | Ce qu'il couvre |
+|---|---|---|---|
+| `google-drive.md` | stockage | sans poste | Le dossier partagé sur Google Drive, par le connecteur Google Drive de Claude |
+| `claude-taches-programmees.md` | planificateur | sans poste (cloud) | Les tâches programmées de Claude qui tournent dans le cloud, sans ordinateur |
+| `codex-taches-planifiees.md` | planificateur | sur le poste | Les automations de Codex, poste allumé et application ouverte. Guide d'essai, rien de prouvé |
+
+**L'environnement compte autant que la sorte.** Un run « sans poste » exige un stockage **et** un
+planificateur sans poste. Un planificateur sur le poste fait tourner l'agent sans opérateur, mais pas
+ordinateur éteint (`INSTALLATION.md`, étape 7).
 
 Un run de nuit a toujours besoin de deux choses : **où il travaille** (un stockage) et **ce qui le
 lance** (un planificateur). Il faut donc un guide de chaque sorte.

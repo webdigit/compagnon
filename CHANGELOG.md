@@ -10,6 +10,50 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.25.0] - 2026-10-04
+
+### Ajouté
+
+- **`hotes/codex-taches-planifiees.md`** : guide d'essai des automations de Codex. Elles tournent sur
+  le poste, s'attachent à une conversation, et le test « unique » du 04/10 reposait sur une
+  désactivation demandée par le texte, non constatée. Rien de prouvé ; six essais à mener.
+- **NOYAU §5sexies, « Une autre conversation est un autre agent »** : même sur le même hôte, même si
+  c'est celle qui a installé l'instance. Un accord rapporté n'est pas un accord : l'instance prépare
+  et propose, elle n'exécute rien et n'écrit rien en mémoire sur sa foi.
+- **NOYAU §5quinquies, « Sans poste veut dire deux choses à la fois »** : stockage et planificateur
+  hors du poste. Un run lancé par un planificateur du poste est un run sans opérateur sur le poste.
+- **`INSTALLATION-ASSISTEE.md`, étape 8** : une fois l'installation finie, l'installateur n'agit plus
+  au nom de l'instance (ni tâche, ni automation, ni écriture, ni consigne relayée).
+- **`INSTALLATION-ASSISTEE.md`, étape 5** : le dossier du projet n'est pas un clone git du gabarit.
+- **Fiches d'hôte** : Codex (automations sur le poste, conversation cible, message venu d'une autre
+  conversation, pas de travail sans poste établi) ; Claude (tâches Cowork dans le cloud à partir du
+  06/10/2026).
+
+### Changé
+
+- **`INSTALLATION-ASSISTEE.md`, étape 1, route A** : le clone se fait toujours hors du dossier du
+  projet ; si l'hôte ne permet d'écrire que dans le projet, routes B ou C. La règle 3 ne tolère plus
+  dans le projet que le dossier décompressé de la route C.
+- **`INSTALLATION.md`, étape 7** : « Le travail sans opérateur », en deux modes, sur le poste et sans
+  poste ; seul le second est décrit ensuite.
+- **`hotes/README.md`** : le catalogue dit la sorte et l'environnement de chaque guide.
+- **`hotes/claude-taches-programmees.md`** : le changement d'offre annoncé pour le 06/10/2026, à
+  revérifier.
+
+### La leçon
+
+L'agent installé a mieux tenu que celui qui l'installait. Léo a refusé deux fois un accord rapporté
+par une autre conversation, ce que le gabarit attendait sans l'avoir écrit pour ce cas. La
+conversation d'installation, elle, n'avait aucune limite écrite après la pose : elle a laissé un
+clone du gabarit autour de la mémoire, puis créé elle-même la tâche que l'instance refusait. Une
+consigne qui ne dit pas quand elle cesse de s'appliquer s'applique trop longtemps. Et « sans poste »
+se disait d'un run, alors qu'il faut le dire de deux choses : où il travaille, et ce qui le lance.
+
+Origine : instance d'essai Léo, première installation et premier test de tâche sous Codex,
+04/10/2026, et proposition de Codex « séparer les guides d'hôte » du même jour. Décisions de JC le
+même jour : limites de l'installateur, distinction poste / sans poste, fiche Codex complétée, guide
+de tâches Codex écrit à partir de ce qui a été constaté.
+
 ## [0.24.0] - 2026-10-04
 
 ### Ajouté

@@ -68,7 +68,9 @@
 - **Les tâches programmées** : les créer et les lister avec leurs heures de début et de fin. Prouvé
   (instance d'essai, septembre 2026). Les relancer avec une consigne : constaté une fois
   (04/10/2026). Recettes : guide `hotes/claude-taches-programmees.md` du dépôt, recopié dans
-  `procedures.md` à l'installation du mode sans poste.
+  `procedures.md` à l'installation du mode sans poste. Annoncé pour le 06/10/2026 : les nouvelles
+  tâches Cowork tourneront dans le cloud et ne pourront pas être liées à un dossier du poste. Non
+  prouvé (aide de Claude, lue le 04/10/2026).
 - **La mémoire de compte** de l'opérateur, lisible selon la règle d'isolation de l'instance. Prouvé
   (instances en service, depuis août 2026).
 - **Le web** : l'API GitHub a déjà refusé une lecture depuis une session Cowork, quand `git

@@ -10,6 +10,12 @@
 > complétée par la première relance autonome, le 04/10/2026 (Vincent relançant Triage, poste éteint),
 > comme « Le texte d'une tâche ».
 
+> **Changement annoncé le 06/10/2026.** D'après l'aide de Claude (lue le 04/10/2026), à cette date
+> l'option « Only on your computer » des réglages disparaît : les nouvelles tâches Cowork tournent
+> dans le cloud, celles déjà lancées sur l'ordinateur y restent, et une tâche ne peut pas être liée à
+> un dossier du poste. Ce qui suit sur « dans le cloud » et sur la liaison au poste date d'avant :
+> à revérifier après le 06/10. Non prouvé.
+
 ---
 
 ## Créer une tâche qui tourne sans ordinateur

@@ -41,6 +41,12 @@
 
 ### Ce que cet hôte expose
 
+- **Les automations**, attachées chacune à une conversation, sa conversation cible. Constaté une fois.
+  Elles tournent **sur le poste** : ordinateur allumé et application ouverte dès qu'elles touchent des
+  fichiers locaux. Non prouvé (documentation OpenAI, lue le 04/10/2026). Ce qu'on en sait et les
+  essais à mener : guide `hotes/codex-taches-planifiees.md` du dépôt.
+- **Une conversation peut écrire dans une autre.** Le message arrive marqué « Envoyé par ChatGPT à
+  partir d'une autre tâche ». Constaté une fois.
 - **Les connecteurs** que l'opérateur a configurés dans Codex. Ce ne sont pas ceux de son compte
   Claude. Constaté une fois.
 - **Le web** : l'API GitHub a répondu là où une première lecture de `raw.githubusercontent` avait
@@ -50,9 +56,13 @@
 
 - **Les tâches programmées de Claude** : ni liste, ni heures de début et de fin, ni relance. Un
   déclenchement ne se vérifie pas depuis cet hôte. Constaté une fois.
+- **La liste des automations avec leurs heures de début et de fin** : non établie. Non prouvé.
 - **Les skills de Claude** : une procédure qui renvoie à une skill ne donne pas son contenu sous
   Codex. Constaté une fois.
 - **La mémoire de compte de Claude.** Constaté une fois.
+- **Le travail sans poste** sur un dossier local : non établi. Une tâche web de Codex tourne dans le
+  cloud et ne travaille pas dans un dossier du poste. Non prouvé (documentation OpenAI, lue le
+  04/10/2026).
 
 ## Constaté ici
 
