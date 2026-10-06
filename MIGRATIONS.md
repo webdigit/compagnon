@@ -147,6 +147,102 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.25.2 → 0.26.0
+
+### Ce qui change
+
+Le 06/10/2026, une tâche programmée dans le cloud a remplacé `report.md` d'une instance par le
+connecteur Google Drive, dans l'ordre du §5quater. Le Drive en ligne était juste ; sur le poste, le
+client de synchronisation a matérialisé le fichier sous `report (1).md`, sans aucun `report.md`
+local. La session suivante l'a trouvé par son marqueur, comme prévu, puis l'a signalé, comme prévu
+aussi : l'opérateur a dû renommer à la main. Ce n'était pas la première fois.
+
+- **L'agent rend lui-même son vrai nom à un fichier qu'une synchronisation a renommé**, quand le cas
+  est net, et seulement alors : huit conditions, vérifiées dans le même run, dont l'absence de toute
+  autre écriture depuis 30 minutes (le fichier altéré compris) et, pour un dossier synchronisé, la
+  contre-preuve dans le stockage partagé. Puis il vérifie, des deux côtés (NOYAU §5, nouveau « Un nom
+  altéré »).
+- **Ce qui n'est pas net reste signalé**, sans geste : vrai nom et variante coexistants (archivage du
+  doublon identique proposé, conflit signalé s'ils diffèrent), plusieurs variantes, variante sans
+  marqueur, fichier sans marqueur par nature.
+- **Le geste relève du niveau 1**, « Mise à jour de la mémoire », avec ou sans opérateur. Ce n'est pas
+  un remplacement : aucun contenu ne change, et il se défait par le geste inverse.
+- **Rien ne se rétablit en silence** : ligne `RENOMMÉ` (ou `NOM ALTÉRÉ` quand il ne l'est pas) au bloc
+  de fin de session, entrée dans « Détails » du journal, compte rendu du dépôt sans opérateur.
+- **Un remplacement par le connecteur se vérifie aussi côté poste**, quand un poste est relié
+  (§5quater, étape 6).
+- **Une variante qui coexiste avec le vrai nom** fait replier un run sans opérateur, comme deux
+  fichiers du même nom (§5quinquies, point 6).
+- **Guides et fiche** : `hotes/google-drive.md` (cause constatée, étape 10 de la procédure de
+  remplacement, nouvelle procédure « Rétablir un nom altéré »), `hotes/README.md` (formes connues par
+  service), fiche `hotes/claude.md` (renommer sans copier ; une tâche dans le cloud ne voit pas les
+  noms du poste).
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 1 (dernier paragraphe), §4bis point 9, §5 (deux lignes du bloc de
+  fin de session, « Le marqueur dit aussi quel fichier c'est », le nouveau « Un nom altéré », la
+  phrase « Une session sans cas… » du journal), §5quater (« Le remplacement », étape 6 ; « Laquelle,
+  et quand », nouveau point), §5quinquies (point 6 de la prise en charge, tableau du repli).
+- **`hotes/claude.md`** : remplacer la partie « Du gabarit » par celle de cette étiquette, sans
+  toucher à « Constaté ici ». `hotes/codex.md` et `hotes/gemini.md` : rien. Une fiche qui ne dit pas
+  comment renommer sans copier laisse la condition 8 du §5 non tenue : sous cet hôte, l'agent
+  signale, il ne renomme pas.
+- **`capabilities.md`** : zone manuelle. **Proposer** à l'opérateur le nouveau texte de la colonne
+  « Ce que ça permet » de « Mise à jour de la mémoire », au niveau 1, tel qu'il est dans le gabarit
+  de cette étiquette, et ne l'écrire que sur son accord. S'il refuse, proposer à la place, dans
+  `noyau-local.md`, bloc du §5 : « Un nom altéré ne se rétablit jamais seul : je le signale et je
+  propose le geste. » C'est un durcissement, permis. **Tant qu'il n'a pas tranché, tout nom altéré
+  est signalé, sans geste.**
+- **`procedures.md`**, si l'instance a recopié la procédure de remplacement du guide Google Drive :
+  **proposer** d'y ajouter l'étape 10 et la ligne « Fragile » de cette étiquette, et d'ajouter la
+  procédure « Rétablir un nom altéré par la synchronisation (côté poste) », identifiants de
+  l'instance remplis, en gardant ses propres lignes « Fragile » et « Dernière exécution vérifiée ».
+  Rien ne s'y écrit sans lui.
+- **État des lieux, en lecture seule** : dans `ai-memory/` (sous-dossiers compris, `_archive/` exclu),
+  `_a-integrer/` et `_ecran/`, chaque fichier dont le marqueur nomme un autre fichier que lui (hors
+  provisoires `*.nouveau-*`), et chaque fichier dont le nom porte « (1) », « (2) » ou une mention de
+  conflit. Pour chacun : son marqueur, l'existence ou non du vrai nom, les conditions du §5 qui
+  tiennent et celles qui manquent. **Ne rien renommer pendant la migration** : la règle s'applique à
+  partir de la session suivante, NOYAU recollé et ligne de `capabilities.md` tranchée.
+- **`VERSION.md`** : passer la version courante à 0.26.0, mettre à jour la ligne **Alignée sur**, et
+  ajouter la ligne d'historique. Si un écart déclaré portait sur des fichiers « (1) » renommés à la
+  main, le marquer couvert par la 0.26.0.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`. Tant qu'il n'est pas recollé, l'agent continue de signaler sans
+  rétablir.
+- **Trancher la ligne « Mise à jour de la mémoire »** de `capabilities.md` : accepter le nouveau
+  texte, ou le refuser (l'agent pose alors le durcissement dans `noyau-local.md`, et il faut
+  recoller une seconde fois).
+- **Valider ou non** les ajouts proposés à `procedures.md`.
+- **Pour les fichiers de l'état des lieux** : rien à faire à la main. La première session qui suit le
+  recollage les rétablit si tout est net, et signale les autres, une ligne chacun.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « Un nom altéré » et « le fichier au nom altéré compris ».
+`VERSION.md` porte 0.26.0. `capabilities.md` porte la nouvelle ligne, ou `noyau-local.md` le
+durcissement.
+
+**La suite** : au prochain fichier `<nom> (1).md` trouvé sur le poste, le bloc de fin de session porte
+une ligne `RENOMMÉ`, avec « stockage partagé vérifié », et le journal de la session son entrée dans
+« Détails » ; ou une ligne `NOM ALTÉRÉ` qui nomme la condition manquante. Le premier rétablissement
+sur un dossier Google Drive dit si le Drive a gardé le même identifiant : c'est la question T21 du
+guide, et la réponse remonte au dépôt (ligne `ÉCART`, ou « Constaté ici » de la fiche).
+
+### Ce que cette migration ne fait pas
+
+Elle ne renomme rien et ne recrée rien. Elle ne touche pas à `_archive/`, où rien ne se renomme
+jamais, ni à un fichier sans marqueur par nature (`_ecran/*.js`), qui reste signalé. Elle n'ouvre rien
+au-delà du niveau 1, et « Remplacement sans opérateur » ne change pas. Le contrat de l'écran ne change
+pas : `compagnon.html` reste celui de la 0.25.2.
+
+---
+
 ## 0.25.1 → 0.25.2
 
 ### Ce qui change

@@ -100,7 +100,7 @@ rendre un jugement sans évaluation._
 | Production de brouillons | Produire, avec ce sur quoi il s'est basé et ce dont il n'est pas sûr. **Non envoyés, non déposés** | de base | ✅ OUVERT | toutes |
 | Variantes | Proposer 2 ou 3 formulations sur un sujet à enjeu, une seule sur du transactionnel | de base | ✅ OUVERT | toutes |
 | Propositions d'action | *Proposer* une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT | toutes |
-| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles | de base | ✅ OUVERT | toutes |
+| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles. **Y compris rendre son vrai nom à un fichier qu'une synchronisation a renommé**, avec ou sans opérateur, aux seules conditions du NOYAU §5 (« Un nom altéré ») | de base | ✅ OUVERT | toutes |
 | Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | ✅ OUVERT | toutes |
 | Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | ✅ OUVERT | toutes |
 

@@ -32,6 +32,22 @@ ordinateur éteint (`INSTALLATION.md`, étape 7).
 Un run de nuit a toujours besoin de deux choses : **où il travaille** (un stockage) et **ce qui le
 lance** (un planificateur). Il faut donc un guide de chaque sorte.
 
+## Les noms qu'une synchronisation altère
+
+Un client de synchronisation sur le poste règle un doublon de nom, même passager, en renommant l'un
+des deux fichiers. Le fichier de mémoire devient introuvable sous son nom. Le NOYAU (§5, « Un nom
+altéré ») dit quand l'agent rétablit lui-même le nom et quand il se contente de signaler ; c'est le
+marqueur de fin qui fait foi, la forme du nom n'est qu'un indice. Les formes connues, par service :
+
+| Service | Forme du nom altéré | Statut |
+|---|---|---|
+| Google Drive pour ordinateur | `<nom> (1).<ext>` | Prouvé sur Mac (26/09/2026) ; constaté une fois avec le nom provisoire du remplacement (06/10/2026). Détail dans `google-drive.md` |
+| OneDrive | `<nom> (1).<ext>`, ou un suffixe portant le nom du poste | Non prouvé : aucune instance n'y a tourné |
+| Dropbox | `<nom> (conflicted copy <date>).<ext>`, `<nom> (copie en conflit …).<ext>` | Non prouvé : aucune instance n'y a tourné |
+
+Une forme constatée sur un autre service s'ajoute ici, avec son statut, et le jour où ce service a
+son guide, sa ligne y part.
+
 ## Comment on s'en sert
 
 1. **À l'installation du mode sans poste** (`INSTALLATION.md`, étape 7), on recopie dans le

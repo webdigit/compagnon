@@ -58,6 +58,15 @@
 - **Du conteneur vers le poste** : un fichier déjà transféré sous le même nom dans la session peut
   repartir avec son ancien contenu, et l'outil répond quand même qu'il est écrit. Un nom jamais
   utilisé, puis l'empreinte comparée. Constaté une fois (03/10/2026).
+- **Renommer sans copier, sur le poste** : `mv -n "<nom altéré>" "<vrai nom>"` au shell du poste.
+  `-n` ne remplace jamais un fichier existant, mais saute la collision sans le dire : la liste du
+  dossier, relue après, dit seule si le renommage a eu lieu. Prouvé pour le déplacement dans un
+  dossier connecté (dépôt du gabarit, septembre 2026). Qu'un renommage fait sur le poste se reporte
+  sur le stockage partagé sous le même identifiant : non prouvé, c'est la vérification du NOYAU §5
+  (« Un nom altéré ») qui le constatera.
+- **Renommer sans copier, sans poste** : `update_file` du connecteur Google Drive, titre seul.
+  Prouvé (archivages et renommages de la procédure de remplacement, instance d'essai, septembre
+  2026). Que l'identifiant reste le même : non prouvé comme tel.
 - **Supprimer** est fermé par défaut sur le poste, et s'ouvre dossier par dossier, sur une demande
   que l'opérateur accepte. Prouvé (instances en service, septembre 2026).
 - **Git sur le poste** : une commande git lancée depuis le shell de la session, même en lecture,
@@ -82,6 +91,10 @@
   s'y lit que par ce que l'opérateur colle ou dépose. Constaté une fois (02/10/2026).
 - **Une tâche programmée dans le cloud** n'a pas de poste : elle n'a que le stockage partagé, souvent
   en création seule (NOYAU §5quater). Prouvé (instance d'essai, 26/09/2026).
+- **Une tâche programmée dans le cloud ne voit pas les noms du poste.** Un fichier que la
+  synchronisation du poste a matérialisé sous `<nom> (1).md` reste `<nom>.md` pour elle, et elle ne
+  peut ni le voir ni le rétablir : seule une session reliée au poste le voit, au rituel (NOYAU §0,
+  point 1). Constaté une fois (instance en service, 06/10/2026).
 
 ## Constaté ici
 

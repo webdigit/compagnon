@@ -6,7 +6,7 @@
 >
 > **Source** : l'instance Pilote, projet « TEST SYNCHRO DRIVE », essais du 24 au 26/09/2026 (tests T1
 > à T14). Statuts : voir `hotes/README.md`. **État des connaissances au 26/09/2026**, à compléter par
-> les tests en cours.
+> les tests en cours ; noms altérés côté poste, au 06/10/2026.
 
 ---
 
@@ -72,9 +72,22 @@ pas de troisième voie.
   a résolu le doublon passager par un suffixe, et ne le retire pas une fois l'ancienne archivée. Une
   session locale ne trouve alors plus `<nom>.md`, et l'écran ne charge plus `_ecran/etat.js`. Prouvé
   (six fichiers, dont `etat.js` et `attente.js`, 26/09/2026 ; titres Drive vérifiés corrects le même
-  jour). **Remède** : le nom provisoire du NOYAU §5quater, qui supprime le doublon passager. Non
-  prouvé (test T20). **En attendant**, en local : chercher un fichier par son marqueur, jamais
-  recréer un fichier introuvable (NOYAU §5).
+  jour).
+- **Le nom provisoire réduit le « (1) », il ne le supprime pas.** Avec l'ordre du NOYAU §5quater
+  (nouvelle version sous `<nom>.nouveau-…`, ancienne archivée, puis renommage), le Mac a affiché
+  `<nom>.md` sans suffixe : constaté une fois (Pilote, 27/09/2026, deux fichiers). Mais le
+  06/10/2026, après un remplacement de `report.md` fait dans cet ordre par une tâche programmée dans
+  le cloud, le poste a matérialisé `report (1).md`, sans aucun `report.md` local, alors que le Drive
+  en ligne ne portait qu'un `report.md`, correct. Constaté une fois (instance en service). Cause
+  supposée, non vérifiée : le client du poste applique le renommage du provisoire avant d'avoir
+  retiré l'ancien `report.md` local, et règle ce doublon passager par un suffixe. **Conséquences** :
+  une tâche dans le cloud ne voit rien, puisque le Drive est juste ; c'est la session suivante sur
+  le poste qui trouve le fichier par son marqueur et lui rend son nom, aux conditions du NOYAU §5
+  (« Un nom altéré »), puis le remplacement par le connecteur se vérifie aussi côté poste quand un
+  poste est relié (NOYAU §5quater, étape 6 ; procédure ci-dessous, étape 10).
+- **Un « (1) » peut disparaître seul** quand une session télécharge le fichier par le connecteur.
+  Constaté une fois (Pilote, 27/09/2026). C'est une raison de plus pour ne rien renommer pendant
+  que la synchronisation travaille (NOYAU §5, condition 6).
 - **PC Windows** : pas d'erreur de ce type sur un fichier créé par le connecteur. **Constaté une
   fois** (test T16 à faire).
 - **Écrire par le poste ou par le connecteur revient au même** une fois la synchronisation faite.
@@ -148,11 +161,31 @@ Préconditions : prise en charge tenue (NOYAU §5quinquies), en particulier le p
 7. Relister : plus aucun fichier du vrai nom dans le dossier. Sinon : arrêt, dépôt, rien renommer.
 8. update_file du provisoire : titre <nom>.<ext>.
 9. Relister : exactement un fichier du vrai nom (l'ID du provisoire), aucun provisoire ; l'ancien est dans l'archive avec son marqueur.
-Vérification : étapes 5, 7 et 9. Un seul écart : pas de nouvel essai, dépôt, et l'état laissé se note (quel fichier porte quel nom).
-Fragile : l'ID change ; entre 6 et 8, aucun fichier ne porte le vrai nom (la mémoire est le provisoire, NOYAU §5quater, « remplacement interrompu »).
+10. Si un poste est relié (dossier connecté, synchronisé par Google Drive pour ordinateur) : côté poste, relever le dossier toutes les minutes, cinq minutes au plus, jusqu'à voir la version archivée dans _archive/ai-memory/<AAAA-MM>/ et plus aucun provisoire. Puis : un seul <nom>.<ext> sur le poste, empreinte (sha256sum) égale à celle de la copie éditée. Un <nom> (1).<ext> à sa place : procédure « Rétablir un nom altéré » ci-dessous. Pas rattrapé en cinq minutes : le noter, ne rien renommer.
+Vérification : étapes 5, 7, 9 et 10. Un seul écart : pas de nouvel essai, dépôt, et l'état laissé se note (quel fichier porte quel nom, sur le Drive et sur le poste).
+Fragile : l'ID change ; entre 6 et 8, aucun fichier ne porte le vrai nom (la mémoire est le provisoire, NOYAU §5quater, « remplacement interrompu ») ; le poste peut matérialiser <nom> (1).<ext> alors que le Drive est juste (constaté une fois, 06/10/2026).
 Dernière exécution vérifiée : <date>.
 Périme le : <date + 3 mois>.
-Origine : guide d'hôte compagnon google-drive.md (Pilote PR008, ordre revu en 0.16.1).
+Origine : guide d'hôte compagnon google-drive.md (Pilote PR008, ordre revu en 0.16.1, étape 10 en 0.26.0).
+```
+
+```
+## PR### : Rétablir un nom altéré par la synchronisation (côté poste)
+Déclencheur : au rituel ou après un remplacement, un fichier du périmètre porte en dernière ligne le marqueur d'un autre nom (<nom> (1).md, par exemple), ou un fichier attendu est introuvable sous son nom.
+Autonomie : N1, « Mise à jour de la mémoire », avec ou sans opérateur, aux seules conditions du NOYAU §5 (« Un nom altéré »). Une condition manque : proposer (opérateur présent) ou noter dans le dépôt (sans lui).
+Préconditions : session reliée au poste, dossier connecté ; connecteur Google Drive joignable (sans lui, la condition 7 du NOYAU ne tient pas : signaler, ne rien renommer).
+Étapes :
+1. Poste : lister le dossier où le vrai nom est attendu ; tail -n 1 de chaque fichier. Noter : aucun <nom>.<ext> ; un seul fichier porte [fin de <nom>.<ext>], provisoires et versions -avant- comprises ; aucun <nom>.nouveau-* ; dates de modification (stat), aucune à moins de 30 minutes, fichier altéré compris, hors remplacement fait par cette session.
+2. Poste : sha256sum et taille du fichier altéré.
+3. Drive : lister le dossier par son ID (toutes les pages) ; exactement un <nom>.<ext>, aucun titre au nom altéré ; noter son ID ; download_file_content, décoder, sha256sum : égale à celle de l'étape 2.
+4. Poste : mv -n "<nom altéré>" "<nom>.<ext>".
+5. Poste : relister ; un seul <nom>.<ext>, plus de nom altéré, tail -n 1 = marqueur, sha256sum et taille inchangées.
+6. Drive, une à deux minutes plus tard : relister ; un seul <nom>.<ext>, même ID qu'à l'étape 3, aucun titre au nom altéré.
+Vérification : étapes 5 et 6. Un écart : aucun nouvel essai ; noter quel fichier porte quel nom, sur le poste et sur le Drive, et le signaler.
+Fragile : le report du renommage local sur le Drive sous le même ID n'est pas encore prouvé (à constater au premier passage, étape 6) ; Google Drive pour ordinateur peut encore traiter la synchronisation précédente (d'où les 30 minutes).
+Dernière exécution vérifiée : <date>.
+Périme le : <date + 3 mois>.
+Origine : guide d'hôte compagnon google-drive.md (0.26.0, après le report (1).md du 06/10/2026).
 ```
 
 ```
@@ -180,5 +213,5 @@ Origine : guide d'hôte compagnon google-drive.md (Pilote PR005, T6).
 | Le PC lit-il toujours sans erreur un fichier créé par le connecteur ? | T16 |
 | Écrire par le poste ou par le connecteur : même visibilité, en combien de temps ? | T17 |
 | Un dossier rattaché à un projet claude.ai ne l'est-il qu'à un seul ordinateur à la fois ? | T15 |
-| Avec le nom provisoire, le Mac affiche-t-il bien `<nom>.md` sans suffixe après le renommage ? | T20 |
-| Renommer à la main, sur le Mac, `<nom> (1).md` en `<nom>.md` laisse-t-il le titre Drive et l'ID inchangés ? | T21 |
+| Avec le nom provisoire, le poste affiche-t-il toujours `<nom>.md` sans suffixe ? Oui une fois (Mac, 27/09), non une fois (06/10) : à quelles conditions le « (1) » revient-il ? | T20 |
+| Renommer sur le poste `<nom> (1).md` en `<nom>.md` laisse-t-il le titre Drive et l'ID inchangés ? Le premier rétablissement par l'agent le constatera (procédure « Rétablir un nom altéré », étape 6) | T21 |

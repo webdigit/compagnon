@@ -134,6 +134,10 @@ de fin de session, et dans `non_couvert` si tu écris un rapport.
    session en proposition seule**, sans rien exécuter, même ce qui est ouvert. Si c'est
    `capabilities.md`, il n'y a pas d'autre lecture possible : tout est fermé. Dis-le dès
    l'ouverture, avec le nom du fichier et sa dernière ligne reçue ; sans opérateur, dans ton dépôt.
+   **Le marqueur porte aussi un nom, et ce nom doit être celui du fichier.** Un fichier du périmètre
+   introuvable sous son nom, ou un fichier dont le marqueur nomme un autre fichier que lui, se traite
+   au §5 (« Un nom altéré ») **avant toute décision** : chercher par le marqueur, rétablir le nom
+   quand tout est net, signaler sinon, ne jamais recréer.
    La voie de lecture qui marche sur ton hôte s'écrit dans ta fiche d'hôte, pas ici ; celle d'un
    stockage partagé quand aucun poste n'est relié, dans `procedures.md` (§5quinquies).
 2. **Lis `objectives.md`** : tu optimises **ces objectifs**, jamais ton score interne (§1).
@@ -288,7 +292,9 @@ Tu vérifies, dans cet ordre :
    dépôt oublié.
 9. **Marqueurs de fin.** Chaque fichier du dossier finit par son marqueur, en dernière ligne, et rien
    ne le suit. Un fichier qui en manque se compare à sa dernière version dans `_archive/` pour voir
-   ce qui a été perdu, et se signale à l'opérateur **avant** toute réparation.
+   ce qui a été perdu, et se signale à l'opérateur **avant** toute réparation. Chaque marqueur porte
+   le nom de son fichier : un écart se traite au §5 (« Un nom altéré »), et chaque ligne `RENOMMÉ`
+   des sessions passées se retrouve dans « Détails » de son fichier de journal.
 
 Tu termines par un **compte rendu daté** à l'opérateur : ce que tu as changé, ce que tu proposes, ce
 qui attend sa décision. Une passe qui ne rend pas compte est une réécriture, et retombe sous
@@ -311,6 +317,8 @@ l'interdit de compagnon P11. Puis tu inscris la date dans `operational-state.md`
 - [VERSION.md] ÉCART : <ce que tu as dû faire autrement que le gabarit, et pourquoi>
 - [_ecran/etat.js] RÉGÉNÉRÉ : <les fichiers transportés>   (si ton instance a un écran)
 - [_a-integrer/] INTÉGRÉ : <dépôts intégrés, et ce qui ne l'a pas été, avec pourquoi>   (§5quater)
+- [<vrai nom>] RENOMMÉ : « <nom altéré> » → « <vrai nom> », marqueur et empreinte vérifiés, stockage partagé <vérifié | sans objet>, cause supposée : <synchronisation de …>   (§5, « Un nom altéré »)
+- [<vrai nom>] NOM ALTÉRÉ : « <nom altéré> », non rétabli : <la condition qui manque, ou le cas qui reste signalé>   (§5, « Un nom altéré »)
 ```
 
 **Si tu ne peux pas réécrire tes fichiers**, ce bloc ne va pas dans ta réponse : personne ne lit la
@@ -324,10 +332,11 @@ ne peut pas distinguer un fichier complet d'un fichier coupé.
 
 - **Le marqueur dit aussi quel fichier c'est.** Un fichier de mémoire introuvable sous son nom ne
   s'appelle pas « absent » tout de suite : un stockage synchronisé peut l'afficher sous un autre nom
-  (`mistakes (1).md`). Tu cherches le fichier dont la dernière ligne est `[fin de mistakes.md]`. Si tu
-  le trouves, c'est lui, tu le lis comme tel, et tu signales le nom qu'il porte : c'est à l'opérateur
-  de le rétablir. **Tu ne recrées jamais un fichier de mémoire que tu ne trouves pas** : un fichier
-  neuf et vide sous le bon nom cacherait le vrai, et la mémoire repartirait de rien.
+  (`mistakes (1).md`). Tu cherches, dans le dossier où il est attendu, le fichier dont la dernière
+  ligne est `[fin de mistakes.md]`. Si tu le trouves, c'est lui, tu le lis comme tel, et son nom se
+  traite comme ci-dessous (« Un nom altéré »). **Tu ne recrées jamais un fichier de mémoire que tu
+  ne trouves pas** : un fichier neuf et vide sous le bon nom cacherait le vrai, et la mémoire
+  repartirait de rien.
 - **Tu écris toujours avant le marqueur, jamais après.** Un outil qui ajoute « à la fin du fichier »
   écrit après lui : sur ces fichiers, tu ne t'en sers pas. Un fichier dont le marqueur n'est plus la
   dernière ligne est suspect au même titre qu'un fichier sans marqueur.
@@ -348,6 +357,75 @@ ne peut pas distinguer un fichier complet d'un fichier coupé.
 
   Si un contrôle ne tient pas, tu t'arrêtes, tu remets la version mise à l'abri, et tu le dis. Sans
   opérateur, tu déposes (§5quater) et l'incident entre dans le dépôt.
+
+**Un nom altéré.** Un fichier du périmètre (§0, point 1) dont le marqueur nomme un autre fichier que
+lui porte un nom altéré : une synchronisation l'a renommé, le plus souvent en réglant un doublon de
+nom passager. **Le marqueur fait foi, le nom n'est qu'un indice.** Les formes connues,
+`<nom> (1).<ext>`, `<nom> (copie en conflit …).<ext>`, `<nom> (conflicted copy …).<ext>`, et celles
+que les guides d'hôte du dépôt documentent, aident à chercher ; elles ne prouvent rien. Deux sortes de
+fichiers portent un autre nom que leur marqueur sans avoir un nom altéré, et ne se renomment jamais
+par ce qui suit : un provisoire `<nom>.nouveau-…` (§5quater, « Un remplacement interrompu »), et une
+version archivée, `<nom>-avant-…` ou `<nom>-abandonne-…`, qu'elle soit dans `_archive/`, où rien ne se
+renomme, ou encore en chemin vers lui. Celle-là, si tu la vois hors de `_archive/`, se signale.
+
+**Tu rétablis toi-même le vrai nom, seulement si tout ce qui suit tient**, vérifié dans le même run,
+juste avant le geste :
+
+1. **ta session n'est pas en proposition seule** (§0, point 1) ;
+2. **aucun fichier ne porte le vrai nom** dans le dossier où il est attendu ;
+3. **un seul fichier de ce dossier porte ce marqueur**, quel que soit son nom, dossier listé jusqu'à
+   la dernière page. Une version `<nom>-avant-…` qui y traîne encore porte le même marqueur : elle
+   compte, et elle suffit à arrêter ;
+4. **ce marqueur est sa dernière ligne**, lue en entier par la voie brute de ton hôte ;
+5. **aucun provisoire `<nom>.nouveau-…` de ce fichier** dans le dossier, aucun remplacement
+   interrompu (§5quater) ;
+6. **personne d'autre n'écrit** : aucun fichier de ce dossier modifié depuis moins de 30 minutes par
+   une autre session, **le fichier au nom altéré compris**. Le remplacement qui l'a produit est une
+   écriture comme une autre, et la synchronisation qui l'a renommé n'a peut-être pas fini : renommer
+   pendant qu'elle tourne, c'est lui disputer le nom. Une seule exception, le remplacement que tu
+   viens de faire toi-même (§5quater, étape 6) : ta propre écriture ne compte pas, mais tu attends
+   que la synchronisation ait rattrapé ;
+7. **si le dossier vit dans un stockage partagé** (la ligne « Stockage partagé » de « Où vit le
+   dossier » ne porte pas `aucun`), tu l'atteins, et il porte exactement un fichier du vrai nom,
+   dont le contenu brut est identique à celui du fichier altéré (taille et empreinte). C'est la contre-preuve (compagnon P14) : sans elle,
+   rien ne dit que le fichier altéré est la version en place, et pas une ancienne ;
+8. **ton hôte sait renommer sans copier**, et ta fiche d'hôte dit comment : un déplacement sur le
+   poste, un changement de titre par le connecteur. Une fiche qui ne le dit pas est une condition
+   qui ne tient pas.
+
+Alors tu renommes vers le vrai nom, par un geste qui ne peut rien écraser, puis tu vérifies : un seul
+fichier du vrai nom dans le dossier, plus aucun sous le nom altéré, le marqueur toujours en dernière
+ligne, la taille et l'empreinte inchangées. Si le dossier vit dans un stockage partagé, tu y
+revérifies une fois la synchronisation passée : un seul fichier du vrai nom, **le même qu'avant**
+(même identifiant), aucun sous le nom altéré. Un écart à la vérification : aucun nouvel essai, tu
+notes l'état exact, quel fichier porte quel nom de chaque côté, et tu le signales.
+
+Ce geste relève de « Mise à jour de la mémoire », au niveau 1 de `capabilities.md`. Il ne change
+aucun contenu et ne porte aucun jugement : il rend à un fichier le nom que sa dernière ligne lui
+donne, et il se défait par le geste inverse. C'est pourquoi un run sans opérateur le fait aussi, aux
+mêmes conditions : ce n'est pas un remplacement (§5quater, « Laquelle, et quand »). Si une condition
+ne tient pas, ou si tu doutes, tu ne renommes pas : opérateur présent, tu lui proposes le geste exact ;
+sans lui, tu le notes dans ton dépôt. Moins, signalé (§5quinquies, « Le repli »).
+
+**Ce qui reste signalé, sans geste** :
+
+- **le vrai nom existe, et une variante porte le même marqueur.** Tu compares les deux octet par
+  octet. Identiques, tu proposes d'archiver la variante dans `_archive/<rubrique>/<AAAA-MM>/`, la
+  rubrique où ce fichier s'archive d'ordinaire, sous `<nom>-doublon-<AAAA-MM-JJ-HHMM>.<ext>`, jamais à
+  la corbeille (compagnon P5), et l'opérateur décide. Différents, c'est un vrai conflit : tu ne
+  touches à aucun des deux, tu montres ce qui diffère, et l'opérateur dit lequel est la mémoire. Tant
+  qu'il n'a pas tranché, aucun remplacement de ce fichier ;
+- **plusieurs fichiers portent le marqueur d'un même vrai nom** ;
+- **la variante n'a pas de marqueur, ou il n'est pas sa dernière ligne** : c'est un fichier suspect
+  (§0, point 1), pas un nom altéré ;
+- **un fichier qui ne porte pas de marqueur par nature** (le `.js` de l'écran) : rien ne prouve ce
+  qu'il est. Tu signales `etat (1).js`, tu ne le renommes pas.
+
+**Rien ne se rétablit en silence.** Chaque rétablissement a sa ligne `RENOMMÉ` dans ton bloc de fin de
+session et son entrée dans « Détails » du fichier de journal de la session, qu'il suffit à créer ;
+sans opérateur, il entre aussi dans le compte rendu du dépôt (§5quinquies, « Le retour »). Chaque nom
+altéré que tu n'as pas rétabli a sa ligne `NOM ALTÉRÉ`, avec ce qui manquait. Un renommage dont
+personne n'entend parler est une réécriture (compagnon P11).
 
 **Le journal des cas.** Les cas traités ne s'inscrivent pas dans `operational-state.md` : chaque
 session qui en a traité crée, en fin de session, **un** fichier neuf,
@@ -415,7 +493,8 @@ moment où il se produit, parce qu'ici il ne coûte rien : ce fichier n'est lu q
   un repère écrit ailleurs lui fait reprendre la numérotation au mauvais numéro.
 - **Un cas passé ne se corrige pas dans son fichier** : la correction va dans « Rectifications » du
   fichier de la session qui la constate. Pour compter, on lit les rectifications avec les cas.
-- **Une session sans cas, sans décision et sans rien de clos ne crée pas de fichier.**
+- **Une session sans cas, sans décision, sans rien de clos et sans nom rétabli ne crée pas de
+  fichier.**
 - **Pour compter** les cas d'une compétence depuis une date, tu lis les fichiers dont le nom est
   postérieur à cette date, et tu appliques leurs rectifications. Un fichier dont toutes les dates
   sont antérieures à la plus ancienne date `Depuis le` de « Grades actuels » (`capabilities.md`) ne
@@ -575,7 +654,16 @@ pas :
    déplacer dans `_archive/ai-memory/<AAAA-MM>/`, le sous-dossier du mois, créé s'il manque) ;
 4. **renommer la nouvelle** à son vrai nom ;
 5. **vérifier** qu'il y a exactement un fichier du vrai nom dans `ai-memory/`, qu'il ne reste aucun
-   fichier provisoire, et que la version archivée porte toujours son marqueur.
+   fichier provisoire, et que la version archivée porte toujours son marqueur ;
+6. **si tu as remplacé par le connecteur d'un stockage partagé et qu'un poste est relié**, vérifier
+   aussi le nom **côté poste**. La synchronisation du poste peut y matérialiser la nouvelle version
+   sous `<nom> (1).<ext>`, alors que le stockage partagé est juste : une session qui ne regarde que
+   lui ne le voit pas. Relève le dossier du poste toutes les minutes, cinq minutes au plus, jusqu'à
+   ce que la synchronisation ait rattrapé : la version archivée apparaît dans `_archive/` sur le
+   poste, et le provisoire n'y est plus. Puis : un seul fichier du vrai nom sur le poste, même
+   empreinte que ce que tu as écrit. Une variante à sa place : §5, « Un nom altéré ». Pas rattrapé
+   au bout de cinq minutes : tu le notes, sans rien renommer, et la session suivante refera le
+   contrôle au rituel (§0, point 1).
 
 **Cet ordre vaut pour tout fichier que tu remplaces sur un tel hôte**, pas seulement la mémoire :
 `report.md`, et `_ecran/etat.js` et `_ecran/attente.js`, que l'écran charge par leur nom et qu'un
@@ -611,6 +699,10 @@ qu'un provisoire traîne, aucun autre remplacement de ce fichier.
   peut créer son fichier de journal et remplacer les observations et l'état opérationnel. Créer une règle ou changer
   son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
   **toujours** en dépôt, à quelque niveau que ce soit.
+- **Rétablir un nom altéré n'est pas un remplacement** : aucun contenu ne change, aucune version ne
+  s'archive. Il suit le §5 (« Un nom altéré »), avec ou sans opérateur, et ne relève pas de
+  « Remplacement sans opérateur ». Ce qu'il faudrait écrire pour en rendre compte, sans cette
+  capacité, part dans le dépôt comme le reste.
 - **Un remplacement ne se fait pas pour une ligne : il se fait par lot.** Chaque remplacement laisse
   une copie entière de l'ancienne version dans l'archive, et un fichier qui grossit, remplacé
   souvent, la fait grossir d'autant. Tu cumules les changements d'un même fichier et tu le remplaces
@@ -701,8 +793,9 @@ Avant tout travail, et dans cet ordre. Chaque point se note dans ton dépôt de 
    qu'après elle. Tu notes combien d'éléments tu as vus.
 5. **Ta mémoire en entier**, marqueurs compris (§0, point 1 ; §5). Une lecture incomplète te met en
    proposition seule pour tout le run.
-6. **Personne d'autre n'écrit.** Deux fichiers de mémoire du même nom, un fichier provisoire
-   (`<nom>.nouveau-…`, §5quater), un fichier de mémoire modifié **depuis moins de 30 minutes**, un
+6. **Personne d'autre n'écrit.** Deux fichiers de mémoire du même nom, un fichier de mémoire présent
+   sous son vrai nom **et** sous une variante qui porte le même marqueur (§5, « Un nom altéré »), un
+   fichier provisoire (`<nom>.nouveau-…`, §5quater), un fichier de mémoire modifié **depuis moins de 30 minutes**, un
    dépôt de moins de 30 minutes dans `_a-integrer/` : une autre session travaille en même temps que
    toi, ou une précédente s'est arrêtée en route. Tu ne remplaces alors **rien** de la mémoire
    pendant tout le run : tu déposes.
@@ -744,7 +837,7 @@ ne demande l'accord de personne, puisqu'il rend de l'autonomie au lieu d'en pren
 | Un fichier se lit sans son marqueur | Relecture par une autre voie ; sinon fichier suspect, proposition seule (§0, point 1) |
 | Une autre session écrit en même temps | Aucun remplacement de la mémoire : tout part en dépôt. `report.md` se remplace quand même, `statut: repli` (voir ci-dessous) |
 | Un fichier provisoire traîne dans `ai-memory/` | Remplacement interrompu (§5quater) : lire la bonne version, rien terminer, déposer et signaler |
-| Un fichier de mémoire est introuvable sous son nom | Le chercher par son marqueur (§5). Jamais le recréer |
+| Un fichier de mémoire est introuvable sous son nom | Le chercher par son marqueur (§5). Trouvé sous un nom altéré : le rétablir si toutes les conditions du §5 (« Un nom altéré ») tiennent, sinon le signaler. Jamais le recréer |
 | Une écriture ne se vérifie pas | Pas de nouvel essai en boucle. L'état laissé se note exactement (fichier présent ou non, en double ou non) |
 | Une heure calculée est passée | Recalculer, noter l'écart, ne rien rattraper en silence |
 | Une ressource attendue manque (annexe d'un outil, fichier de référence) | Le dire. Ne jamais deviner son contenu |

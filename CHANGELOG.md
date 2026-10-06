@@ -10,6 +10,45 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.26.0] - 2026-10-06
+
+### Ajouté
+
+- **NOYAU §5, « Un nom altéré »** : l'agent rend lui-même son vrai nom à un fichier qu'une
+  synchronisation a renommé (`report (1).md`), avec ou sans opérateur, quand huit conditions tiennent
+  ensemble : session hors proposition seule, vrai nom absent, un seul porteur du marqueur, marqueur
+  en dernière ligne, aucun provisoire, aucune autre écriture depuis 30 minutes (le fichier altéré
+  compris), contre-preuve dans le stockage partagé (contenu identique), hôte qui renomme sans copier.
+  Vérification des deux côtés, même identifiant. Lignes `RENOMMÉ` et `NOM ALTÉRÉ` au bloc de fin de
+  session, entrée au journal.
+- **NOYAU §5quater, étape 6 du remplacement** : un remplacement par le connecteur se vérifie aussi
+  côté poste quand un poste est relié.
+- **`hotes/google-drive.md`** : le « (1) » constaté malgré le nom provisoire, l'étape 10 de la
+  procédure de remplacement, la procédure « Rétablir un nom altéré par la synchronisation (côté
+  poste) ». **`hotes/README.md`** : les formes connues d'un nom altéré, par service.
+- **Fiche `hotes/claude.md`** : renommer sans copier, sur le poste et par le connecteur ; une tâche
+  dans le cloud ne voit pas les noms du poste.
+
+### Changé
+
+- **`capabilities.md`, niveau 1** : « Mise à jour de la mémoire » couvre le rétablissement d'un nom
+  altéré, aux seules conditions du NOYAU §5.
+- **NOYAU §5quinquies, point 6** : une variante qui coexiste avec le vrai nom fait replier, comme deux
+  fichiers du même nom. Le tableau du repli renvoie au rétablissement.
+- **NOYAU §0 point 1, §4bis point 9** : le marqueur porte le nom du fichier, et un écart se traite au
+  §5.
+
+### La leçon
+
+Signaler ce qu'on sait réparer, c'est déplacer le travail sans le réduire. La 0.16.1 avait bien
+séparé « trouver » (par le marqueur) de « réparer » (par l'opérateur), parce qu'on ne savait pas encore
+ce qu'il fallait vérifier pour que la réparation soit sûre. Une fois les vérifications connues, les
+laisser à l'opérateur ne le protège de rien : il les fait à la main, moins bien que l'agent, ou ne
+les fait pas. Ce qui reste à l'opérateur, c'est le cas qui n'est pas net.
+
+Origine : instance en service, `report.md` remplacé par une tâche programmée dans le cloud, retrouvé
+`report (1).md` sur le poste le 06/10/2026 ; demande de JC le même jour.
+
 ## [0.25.2] - 2026-10-04
 
 ### Ajouté
