@@ -60,7 +60,7 @@ replis de la section « Sans dépôt local » de [`MIGRATIONS.md`](MIGRATIONS.md
   `https://api.github.com/repos/webdigit/compagnon/contents/template?ref=<étiquette>` (puis
   `template/hotes` et `entrees` de la même façon), et lis chacun par
   `https://raw.githubusercontent.com/webdigit/compagnon/refs/tags/<étiquette>/<dossier>/<fichier>`.
-  ⚠️ **Il te faut le texte exact.** Un outil qui résume, reformule ou abrège la page ne convient
+  **Il te faut le texte exact.** Un outil qui résume, reformule ou abrège la page ne convient
   pas, même s'il en donne l'essentiel : le gabarit recopié serait faux sans que rien ne le montre.
   Si c'est le seul outil web que tu as, passe à la route C.
 - **Route C, sinon** : demande à l'opérateur de télécharger la version publiée. Dis-lui exactement
@@ -366,27 +366,27 @@ déjà en service. Les cinq règles du début valent ici aussi, à commencer par
 
      | Capacité | Ce que ça permet | Condition | Statut | Compétence |
      |---|---|---|---|---|
-     | État de l'équipe | Lire le `report.md` de chaque membre de `equipe.md` et l'état de sa tâche programmée tel que l'hôte l'expose. Signaler qui n'a pas tourné, qui est périmé, partiel, en retard de version ou attend une décision. **Rien d'autre n'est lu chez un membre** | de base | ✅ OUVERT | `<C0x>` |
-     | Proposition de relance | Rédiger la consigne de relance d'un membre et la soumettre à l'opérateur. **Proposer, jamais déclencher** | de base | ✅ OUVERT | `<C0x>` |
+     | État de l'équipe | Lire le `report.md` de chaque membre de `equipe.md` et l'état de sa tâche programmée tel que l'hôte l'expose. Signaler qui n'a pas tourné, qui est périmé, partiel, en retard de version ou attend une décision. **Rien d'autre n'est lu chez un membre** | de base | OUVERT | `<C0x>` |
+     | Proposition de relance | Rédiger la consigne de relance d'un membre et la soumettre à l'opérateur. **Proposer, jamais déclencher** | de base | OUVERT | `<C0x>` |
 
    - au niveau 2, **deux lignes par membre relançable**, verrouillées :
 
      | Capacité | Ce que ça permet | Condition | Statut | Compétence |
      |---|---|---|---|---|
-     | Relance seule · `<membre>` | Déclencher la tâche programmée de `<membre>` sans demander, avec une consigne à l'en-tête fixe, dans les limites du NOYAU §5septies | grade junior sur `<C0x>` · 5 relances de ce membre proposées et acceptées sans correction de fond · aucune erreur ouverte ni corrigée sur `<C0x>` · accord | 🔒 VERROUILLÉ | `<C0x>` |
-     | Tâche de test · `<membre>` | Créer une copie de la tâche de `<membre>` en exécution unique, nommée comme un test, pour vérifier un réglage. Aucune exception de test ne passe en production (NOYAU §5septies, point 8) | grade junior sur `<C0x>` · 3 tâches de test de ce membre proposées et acceptées sans correction de fond · accord | 🔒 VERROUILLÉ | `<C0x>` |
+     | Relance seule · `<membre>` | Déclencher la tâche programmée de `<membre>` sans demander, avec une consigne à l'en-tête fixe, dans les limites du NOYAU §5septies | grade junior sur `<C0x>` · 5 relances de ce membre proposées et acceptées sans correction de fond · aucune erreur ouverte ni corrigée sur `<C0x>` · accord | VERROUILLÉ | `<C0x>` |
+     | Tâche de test · `<membre>` | Créer une copie de la tâche de `<membre>` en exécution unique, nommée comme un test, pour vérifier un réglage. Aucune exception de test ne passe en production (NOYAU §5septies, point 8) | grade junior sur `<C0x>` · 3 tâches de test de ce membre proposées et acceptées sans correction de fond · accord | VERROUILLÉ | `<C0x>` |
 
    - au niveau 3, **une ligne par membre relançable**, verrouillée :
 
      | Capacité | Ce que ça permet | Condition | Statut | Compétence |
      |---|---|---|---|---|
-     | Suspension · `<membre>` | Suspendre ou réactiver la tâche programmée de `<membre>`, avec le motif dans le rapport. Jamais la supprimer | grade medior sur `<C0x>` · « Relance seule » ouverte pour ce membre · accord | 🔒 VERROUILLÉ | `<C0x>` |
+     | Suspension · `<membre>` | Suspendre ou réactiver la tâche programmée de `<membre>`, avec le motif dans le rapport. Jamais la supprimer | grade medior sur `<C0x>` · « Relance seule » ouverte pour ce membre · accord | VERROUILLÉ | `<C0x>` |
 
    - au niveau 4, **une ligne par membre relançable**, verrouillée :
 
      | Capacité | Ce que ça permet | Condition | Statut | Compétence |
      |---|---|---|---|---|
-     | Texte de tâche · `<membre>` | Modifier le texte de la tâche programmée de `<membre>` : cadence, périmètre, formulation. **Jamais son renvoi vers ses Instructions et son `capabilities.md`, et rien que son registre ne lui ouvre pas** (NOYAU §5septies, point 8) | grade senior sur `<C0x>` · « Suspension » ouverte pour ce membre · accord | 🔒 VERROUILLÉ | `<C0x>` |
+     | Texte de tâche · `<membre>` | Modifier le texte de la tâche programmée de `<membre>` : cadence, périmètre, formulation. **Jamais son renvoi vers ses Instructions et son `capabilities.md`, et rien que son registre ne lui ouvre pas** (NOYAU §5septies, point 8) | grade senior sur `<C0x>` · « Suspension » ouverte pour ce membre · accord | VERROUILLÉ | `<C0x>` |
 
      Ces grades sont ceux à partir desquels le coordinateur peut **demander** la capacité. Rappelle
      à l'opérateur qu'il peut en ouvrir une **hors grade**, par décision datée et sous conditions

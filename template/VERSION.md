@@ -36,9 +36,21 @@ les notes, jamais par un script (compagnon P11). Puis mettre ce fichier à jour,
 |---|---|---|
 | `<jj/mm/aaaa>` | (aucune) → `<version>` | Pose initiale de l'instance. |
 
+> **Plafond : 12 Ko**, lu à chaque session (NOYAU §5, « La lecture de run et son budget »). À la
+> rotation, sortent les lignes d'historique au-delà des cinq dernières. Un écart assumé ne sort
+> jamais.
+
 ## Écarts assumés par rapport au gabarit
 
 Aucun à ce jour. Si cette instance diverge volontairement du gabarit sur un point, il se note ici,
 avec sa raison. **Un écart non écrit est un écart qui sera écrasé à la prochaine migration.**
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 [fin de VERSION.md]

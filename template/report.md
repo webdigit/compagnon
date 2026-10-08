@@ -105,7 +105,7 @@ extérieur, et la plus tentante à laisser vide.>`
 
 ---
 
-_Rapport produit en fin de run, après le bloc `🧠 MISE À JOUR MÉMOIRE` : ce qui vient d'être appris
+_Rapport produit en fin de run, après le bloc `MISE À JOUR MÉMOIRE` : ce qui vient d'être appris
 peut changer ce qu'on conclut. Voir NOYAU §5bis._
 
 [fin de report.md]

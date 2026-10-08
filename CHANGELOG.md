@@ -10,6 +10,63 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.27.0] - 2026-10-08
+
+### Ajouté
+
+- **NOYAU §5, « Aucun emoji »** : aucun fichier du périmètre du marqueur n'en porte. Définition
+  par blocs Unicode, suppression d'un emoji trouvé, mot de remplacement sur accord quand il porte
+  seul un sens, rien dans `_archive/`. Ligne `EMOJI RETIRÉ`.
+- **NOYAU §5, « Une lecture incomplète »** : elle se constate fichier par fichier, après toutes les
+  voies ; tout ce qui est lisible se lit ; un fichier incomplet ne fonde rien ; aucun qualificatif
+  d'état (« en retard », « à faire », « urgent », « sans réponse »…) sur ce qui n'a pas été recoupé
+  avec la mémoire ; deux sessions de suite incomplètes sur un même fichier sont un défaut à
+  remonter. Ligne `LECTURE INCOMPLÈTE`.
+- **NOYAU §5, « La lecture de run et son budget »** : la liste des fichiers lus à chaque session,
+  un plafond par fichier (12 à 40 Ko) et 150 Ko en tout, ce qui sort à la rotation et ce qui ne sort
+  jamais, la rotation en cinq étapes avec l'opérateur vers un fichier de rotation sous
+  `_archive/ai-memory/<AAAA-MM>/`. Lignes `ROTATION` et `VOLUME`.
+- **NOYAU §0, point 3quater** (tailles au rituel), **§4, gâchette (d)** (trop gros après rotation :
+  consolidation), **§5bis, point 11** (le non recoupé va dans « Non couvert »).
+- **Section « Rotations »** dans huit fichiers de `template/` ; **fiche et dossier** d'une erreur
+  dans `mistakes.md`.
+- **Fiche `hotes/claude.md`** : sortie longue enregistrée en fichier, lire pour décider et lire pour
+  réécrire, contrôle de queue, recherche des emojis. **`hotes/google-drive.md`** : cause de la
+  lecture qui coupe, où arrive le contenu, procédure de lecture réécrite en deux branches, tests L1
+  à L7 et questions L8 à L10. **Modèle de `procedures.md`** : la lecture sans poste y vit.
+
+### Changé
+
+- **Le gabarit ne porte plus d'emoji** : statuts de `capabilities.md` (`OUVERT`, `DEMANDÉ`,
+  `VERROUILLÉ`, `SUR ACCORD`), bloc `MISE À JOUR MÉMOIRE`, bandeaux, installation.
+- **NOYAU §5, contrôle 1 de la réécriture complète** : la lecture doit être brute ; un texte rendu
+  par un outil ne fonde jamais une réécriture.
+- **NOYAU §0 point 1, §5quinquies point 5 et tableau du repli** : toutes les voies, dans leur ordre,
+  avant de conclure ; la taille n'est jamais un motif.
+- **NOYAU §4bis, point 7** : le volume se mesure, en octets, contre des plafonds.
+- **NOYAU §5quater, dépôt** : « ce que tu as lu » porte la taille et la voie de chaque fichier.
+- **Bandeaux** d'`operational-state.md`, `learned-rules.md`, `mistakes.md`, `examples.md`,
+  `objectives.md`, `procedures.md`, `capabilities.md`, `VERSION.md` : leur plafond et ce qui sort.
+- **`FORMAT.md`** : `_archive/` non transporté, fiche d'erreur, statuts sans emoji, section
+  « Rotations » ignorée. Contrat inchangé (version 5).
+
+### La leçon
+
+Une consigne d'intégrité qui n'a pas de chemin pour être tenue produit l'abandon, pas la prudence.
+Le NOYAU exigeait une lecture complète, marqueur compris, sans dire comment l'obtenir sur un fichier
+de 144 Ko ni ce qu'on a le droit d'affirmer sans elle. Le run a donc fait les deux pires choses à la
+fois : il n'a pas lu ce qui était lisible, et il a affirmé un retard qu'il ne pouvait pas recouper.
+Les deux défauts tenaient au gabarit : la cause de la coupure était un caractère que le gabarit
+posait lui-même dans ses statuts, et la mémoire grossissait sans plafond parce que « pénible »
+n'est pas un seuil. Une voie de lecture ne s'inscrit qu'après avoir été essayée sur de vrais
+fichiers : la consigne précédente interdisait l'outil qui marche une fois les emojis retirés, et
+recommandait celui dont la sortie ne peut pas être décodée quand le fichier est petit.
+
+Origine : instance GESTION PLANNING, run planifié du 08/10/2026 (rapport `partiel`, faux retard sur
+un dossier traité la veille), deuxième run de suite ; tests de lecture du même jour sur ses
+fichiers, en lecture seule. Décisions de JC le même jour : aucun emoji dans les `.md`, tout emoji
+détecté supprimé ; `read_file_content` pour lire, la voie brute pour réécrire ; aucune régression.
+
 ## [0.26.0] - 2026-10-06
 
 ### Ajouté

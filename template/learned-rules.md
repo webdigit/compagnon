@@ -2,6 +2,12 @@
 
 > **Statut : mémoire AUTO-ÉCRITE.** L'agent crée et met à jour les règles ici, selon le NOYAU. Toute
 > écriture est listée en fin de session et relue par l'opérateur.
+>
+> **Plafond : 40 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
+> À la rotation, seules les règles `archivé` sortent, entières. Au-delà, ce qui remplit le fichier
+> est vivant, et seule la consolidation le réduit (NOYAU §4, gâchette (d)). Une règle tient en
+> quelques lignes : son récit d'origine va dans « Détails » du journal de la session, et la ligne
+> `Origine` y renvoie.
 
 Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont dans
 `procedures.md` (compagnon P7). Le critère, à trancher sans réfléchir : si la chose change quand
@@ -38,10 +44,10 @@ Dernière conf: date.
 `active → en-consolidation` si confiance < 0,35, ou 2 des 3 derniers usages ≤ -1, ou un exemple la
 contredit. `en-consolidation → archivé` : remplacée, avec lien, date et motif.
 
-> ⚠️ **Une règle provisoire s'applique, mais ne prouve rien.** Elle ne peut pas être citée à l'appui
+> **Une règle provisoire s'applique, mais ne prouve rien.** Elle ne peut pas être citée à l'appui
 > d'une demande de montée d'autonomie.
 >
-> ⚠️ **Une règle provisoire depuis longtemps n'est pas une règle jeune.** C'est le signe qu'aucun
+> **Une règle provisoire depuis longtemps n'est pas une règle jeune.** C'est le signe qu'aucun
 > cas comparable ne s'est représenté, donc que le motif n'est pas là où on le croyait. La date du
 > statut est ce qui rend cette différence visible.
 
@@ -83,6 +89,16 @@ Score cumul  : +2 · Score récent : +2 · Confiance : **non établie** (1 occur
 | ID | Objet | État |
 |---|---|---|
 | C-01 | `<les deux sources qui se contredisent>` | **Ouverte** |
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 

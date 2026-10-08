@@ -43,9 +43,42 @@
   déménagement. Constaté une fois (04/10/2026).
 - **L'outil de lecture de fichiers peut couper un gros fichier** sans le dire ; la fin se revérifie au
   shell. Prouvé (instance en service, 09 et 15/09/2026).
-- **Sans poste** : le connecteur Google Drive, contenu brut par `download_file_content`. La recette
-  est dans `procedures.md` si le mode sans poste est installé (`INSTALLATION.md`, étape 7), sinon
-  dans le guide `hotes/google-drive.md` du dépôt. Prouvé (instance d'essai, 24 au 26/09/2026).
+- **Sans poste** : le connecteur Google Drive. La recette complète est dans `procedures.md` si le
+  mode sans poste est installé (`INSTALLATION.md`, étape 7), sinon dans le guide
+  `hotes/google-drive.md` du dépôt. Ce qui suit est ce qu'il faut savoir avant de l'ouvrir.
+- **Une sortie d'outil trop longue est enregistrée dans un fichier** du conteneur de la session, au
+  lieu d'arriver dans la conversation : le message dit « Output has been saved to <chemin> », au
+  format JSON. Le shell du conteneur le lit (`jq`, `python3`). Vaut pour les deux outils de lecture
+  du connecteur. Constaté une fois (session Cowork dans le cloud, 08/10/2026 : `download_file_content`
+  sur 87, 109 et 144 Ko, `read_file_content` sur les mêmes). En tâche programmée : non prouvé, le
+  premier run le constate et l'écrit sous « Constaté ici ». Le seuil n'est pas mesuré : un fichier
+  de 16 Ko est arrivé dans la conversation, un de 87 Ko dans un fichier.
+- **Lire pour décider : `read_file_content` d'abord.** Il rend du texte, pas le fichier : `\#`,
+  `\*`, `\[`, `\_` ajoutés devant la ponctuation de Markdown, suites d'espaces réduites à une, deux
+  espaces et un retour ajoutés en fin de ligne, emojis illisibles. La lecture est complète si sa
+  dernière ligne, une fois les `\` retirés, est le marqueur. **Les emojis le coupent** : sur quatre
+  fichiers d'une instance, la fin a manqué dès qu'il y en avait (environ deux à trois caractères
+  perdus par emoji, marqueur compris), et le fichier sans aucun emoji (109 Ko) est arrivé entier.
+  D'où le NOYAU §5, « Aucun emoji ». Constaté une fois (08/10/2026, six fichiers, 7 à 144 Ko).
+- **Lire pour réécrire : `download_file_content`, décodé au shell.** C'est la seule voie brute.
+  Quand la sortie est enregistrée dans un fichier, le décodage donne le fichier exact : taille égale
+  à celle du listage, marqueur en dernière ligne. Constaté une fois (08/10/2026, trois fichiers de
+  87 à 144 Ko, tailles exactes). Quand le base64 arrive dans la conversation (petit fichier), il ne
+  se décode qu'en le recopiant dans le shell : **ne recopie jamais un base64 entier**, une erreur de
+  copie ne se voit pas. Sans voie brute, pas de réécriture : dépôt (NOYAU §5quater).
+- **Contrôle de queue**, quand `read_file_content` n'a pas rendu le marqueur et que le base64 est
+  dans la conversation : recopie seulement ses 128 derniers caractères (des groupes de quatre,
+  alignés sur la fin) et décode-les (`printf '%s' '<...>' | base64 -d`). Ils doivent finir par le
+  marqueur, et leur début recouvrir la fin du texte de `read_file_content` sur au moins vingt
+  caractères, `\` retirés et espaces réduits des deux côtés. Les deux ensemble font une lecture
+  complète, bonne pour décider, jamais pour réécrire. Pas de recouvrement : lecture incomplète.
+  Constaté une fois (08/10/2026, `capabilities.md`, 14 Ko : 64 caractères décodés, marqueur et
+  recouvrement présents).
+- **Chercher les emojis** (NOYAU §5, « Aucun emoji ») : au shell, sur une copie locale ou un fichier
+  du poste,
+  `python3 -c "import re,sys; p=re.compile('[\U00010000-\U0010FFFF\u2300-\u23FF\u2600-\u27BF\u2B00-\u2BFF\uFE0F\u200D]'); [print(f, len(p.findall(open(f,encoding='utf-8').read()))) for f in sys.argv[1:]]" *.md`.
+  Sans copie locale, le texte de `read_file_content` montre ceux qui sont au-delà de U+FFFF sous une forme illisible (`ð`) : c'est un
+  indice, pas un compte. Prouvé (gabarit 0.27.0, 08/10/2026).
 - **Deux systèmes de fichiers** : le conteneur cloud de la session et le poste ne se voient pas. Un
   fichier écrit dans l'un n'existe pas dans l'autre tant qu'il n'a pas été transféré. Prouvé
   (instances en service, septembre 2026).

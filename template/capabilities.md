@@ -1,23 +1,23 @@
 # capabilities.md : Les grades et les actions autorisées, compétence par compétence
 
 > **Gouvernance :** le **catalogue, les conditions et la grille des grades sont fixés par
-> l'opérateur** (zone MANUELLE). Le statut `✅ OUVERT` ne bascule que par lui, et un grade ne
-> s'accorde que par lui. L'agent peut seulement passer une capacité en `🔓 DEMANDÉ` quand il a rempli
+> l'opérateur** (zone MANUELLE). Le statut `OUVERT` ne bascule que par lui, et un grade ne
+> s'accorde que par lui. L'agent peut seulement passer une capacité en `DEMANDÉ` quand il a rempli
 > les critères, et proposer un grade à l'évaluation. Il *mérite et demande*, l'opérateur *accorde*.
 >
 > **Tout se tient par compétence.** Une autonomie acquise sur une compétence ne se transfère pas à
 > une autre (compagnon P3). Un agent peut être senior sur l'une et stagiaire sur celle activée hier :
 > c'est la situation normale, pas une incohérence.
 
-Légende : `✅ OUVERT` · `🔓 DEMANDÉ` (attend une décision) · `🔒 VERROUILLÉ` · `🔒 SUR ACCORD`
+Légende : `OUVERT` · `DEMANDÉ` (attend une décision) · `VERROUILLÉ` · `SUR ACCORD`
 (jamais pré-autorisé, toujours cas par cas).
 
-> ⚠️ **À REMPLIR.** Le niveau 1 ci-dessous est générique et s'ouvre au démarrage, pour toutes les
+> **À REMPLIR.** Le niveau 1 ci-dessous est générique et s'ouvre au démarrage, pour toutes les
 > compétences. Les niveaux supérieurs sont **à écrire pour votre métier**, avec pour chaque capacité
 > une **condition d'ouverture chiffrée** et la **compétence** à laquelle elle s'applique. « Quand je
 > le sentirai » n'est pas une condition.
 >
-> ⚠️ **Aucun mécanisme ne fait respecter ce fichier.** Il tient par la discipline de l'agent et
+> **Aucun mécanisme ne fait respecter ce fichier.** Il tient par la discipline de l'agent et
 > votre relecture. L'évaluation périodique (NOYAU §6ter) est ce qui garantit que cette relecture a
 > lieu, même quand personne n'y pense.
 
@@ -95,14 +95,14 @@ rendre un jugement sans évaluation._
 
 | Capacité | Ce que ça permet | Condition | Statut | Compétence |
 |---|---|---|---|---|
-| Lecture des sources | Lire, croiser, reconstituer l'état réel d'un dossier | de base · lecture seule | ✅ OUVERT | toutes |
-| Réunion du contexte | Réunir d'office ce qu'il faut avant de produire. **L'enrichissement de contexte est de la lecture, il se fait sans demander** | de base | ✅ OUVERT | toutes |
-| Production de brouillons | Produire, avec ce sur quoi il s'est basé et ce dont il n'est pas sûr. **Non envoyés, non déposés** | de base | ✅ OUVERT | toutes |
-| Variantes | Proposer 2 ou 3 formulations sur un sujet à enjeu, une seule sur du transactionnel | de base | ✅ OUVERT | toutes |
-| Propositions d'action | *Proposer* une action à l'opérateur, jamais l'exécuter | de base | ✅ OUVERT | toutes |
-| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles. **Y compris rendre son vrai nom à un fichier qu'une synchronisation a renommé**, avec ou sans opérateur, aux seules conditions du NOYAU §5 (« Un nom altéré ») | de base | ✅ OUVERT | toutes |
-| Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | ✅ OUVERT | toutes |
-| Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | ✅ OUVERT | toutes |
+| Lecture des sources | Lire, croiser, reconstituer l'état réel d'un dossier | de base · lecture seule | OUVERT | toutes |
+| Réunion du contexte | Réunir d'office ce qu'il faut avant de produire. **L'enrichissement de contexte est de la lecture, il se fait sans demander** | de base | OUVERT | toutes |
+| Production de brouillons | Produire, avec ce sur quoi il s'est basé et ce dont il n'est pas sûr. **Non envoyés, non déposés** | de base | OUVERT | toutes |
+| Variantes | Proposer 2 ou 3 formulations sur un sujet à enjeu, une seule sur du transactionnel | de base | OUVERT | toutes |
+| Propositions d'action | *Proposer* une action à l'opérateur, jamais l'exécuter | de base | OUVERT | toutes |
+| Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles. **Y compris rendre son vrai nom à un fichier qu'une synchronisation a renommé**, avec ou sans opérateur, aux seules conditions du NOYAU §5 (« Un nom altéré ») | de base | OUVERT | toutes |
+| Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | OUVERT | toutes |
+| Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | OUVERT | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers *(demandable à partir de junior)*
 
@@ -115,8 +115,8 @@ rendre un jugement sans évaluation._
 
 | Capacité | Ce que ça permet | Condition | Statut | Compétence |
 |---|---|---|---|---|
-| `<capacité>` | `<ce que ça permet>` | grade junior · `<condition chiffrée>` · aucune erreur ouverte ni corrigée sur la compétence · accord | 🔒 VERROUILLÉ | `<C01>` |
-| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct (NOYAU §5quater) **son fichier de journal, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | 🔒 VERROUILLÉ | mémoire |
+| `<capacité>` | `<ce que ça permet>` | grade junior · `<condition chiffrée>` · aucune erreur ouverte ni corrigée sur la compétence · accord | VERROUILLÉ | `<C01>` |
+| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct (NOYAU §5quater) **son fichier de journal, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | VERROUILLÉ | mémoire |
 
 ## Niveau 3 et au-delà
 
@@ -188,6 +188,20 @@ _Zone manuelle, à quatre exceptions que l'agent tient lui-même : le dépôt d'
 constat `sans issue` d'une évaluation et son passage à `en attente`, la colonne `Rappels`, et la mise
 à jour de « Grades actuels » **sous la dictée** d'une décision de l'opérateur inscrite au registre.
 La **décision** ne s'écrit jamais sans l'opérateur._
+
+## Rotations
+
+> **Plafond : 24 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
+> À la rotation, ne sortent que les lignes du registre qu'une décision plus récente sur la même
+> capacité et la même compétence a remplacées, et tout historique tenu hors du registre. Jamais une
+> ligne `en attente` ou `sans issue`, jamais le catalogue, la grille ou les grades. La rotation
+> touche une zone manuelle : l'opérateur valide la liste, ligne par ligne.
+>
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 _Dernière mise à jour : `<jj/mm/aaaa>`._
 

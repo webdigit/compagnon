@@ -63,7 +63,7 @@ réel avant que le système commence à valoir quelque chose.
 ## Bien s'en servir
 
 - **Clôturez chaque conversation.** Avant de la quitter, dites « clôture ». L'agent produit son bloc
-  `🧠 MISE À JOUR MÉMOIRE` : ce qu'il a appris, ce qu'il a écrit, ce qui attend votre décision. Une
+  `MISE À JOUR MÉMOIRE` : ce qu'il a appris, ce qu'il a écrit, ce qui attend votre décision. Une
   conversation fermée sans ce bloc n'a rien appris. Relisez-le : c'est là que la complaisance se
   voit.
 - **Clôturez avant que la conversation déborde.** Quand une conversation s'allonge, l'outil résume

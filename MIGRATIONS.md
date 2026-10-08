@@ -147,6 +147,138 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.26.0 → 0.27.0
+
+### Ce qui change
+
+Le 08/10/2026, une instance en service qui tourne sans poste (tâche programmée dans le cloud,
+stockage Google Drive) a rendu son deuxième rapport `partiel` de suite. Sa mémoire faisait 87, 109
+et 144 Ko sur ses trois plus gros fichiers. Le run ne les a pas lus, jugés trop lourds, ni les
+petits fichiers lisibles, ni ses dépôts. Puis il a signalé « en retard » un dossier que l'opérateur
+avait traité la veille. Les tests du même jour (guide `hotes/google-drive.md`, L1 à L7) ont montré
+trois choses : les gros fichiers se lisaient en entier (la sortie de l'outil part dans un fichier
+que le shell décode) ; l'outil de lecture texte coupe la fin d'un fichier, marqueur compris, dès
+qu'il porte des emojis, quelle que soit sa taille ; et rien ne disait ce qu'un run peut encore
+affirmer quand une lecture manque.
+
+- **Aucun emoji dans les fichiers du périmètre du marqueur** (NOYAU §5, « Aucun emoji »). Un emoji
+  trouvé se supprime ; s'il porte seul un sens (un statut, une priorité), un mot le remplace sur
+  accord. Le gabarit n'en porte plus : statuts de `capabilities.md` (`OUVERT`, `DEMANDÉ`,
+  `VERROUILLÉ`, `SUR ACCORD`), bloc `MISE À JOUR MÉMOIRE`, bandeaux.
+- **La lecture de run a un budget** (NOYAU §5, « La lecture de run et son budget ») : un plafond par
+  fichier lu à chaque session (de 12 à 40 Ko) et 150 Ko en tout. Au-dessus, une **rotation** est
+  due : ce qui n'est plus l'état présent sort, à l'identique, dans un fichier de rotation sous
+  `_archive/ai-memory/<AAAA-MM>/`, avec l'opérateur. Ce qui freine, attend ou décide ne sort jamais.
+  Une erreur `corrigée` garde sa **fiche** et ne sort que son **dossier**. Ce qui reste trop gros
+  après rotation relève de la consolidation (§4, gâchette (d)).
+- **Contrôle de volume** au rituel (§0, point 3quater) et dans la passe de contrôle (§4bis, point 7),
+  chiffré : tailles, plafonds, total.
+- **Une lecture incomplète se constate et se borne** (NOYAU §5, « Une lecture incomplète ») : toutes
+  les voies tentées avant de conclure, tout ce qui est lisible lu, aucun « en retard », « à faire »,
+  « urgent » ou « sans réponse » sur ce qui n'a pas été recoupé avec la mémoire. Ces constats vont
+  dans « Non couvert » (§5bis, point 11).
+- **La voie de lecture** : lire pour décider par le texte (`read_file_content` sur Google Drive),
+  complet si le marqueur est là ; lire pour réécrire par la seule voie brute
+  (`download_file_content` décodé au shell). Un texte rendu ne fonde jamais une réécriture
+  (contrôle 1 du §5). Fiche `hotes/claude.md`, guide `hotes/google-drive.md` et sa procédure de
+  lecture réécrite, modèle de `procedures.md`.
+- **Une section « Rotations »** en fin de `operational-state.md`, `learned-rules.md`, `mistakes.md`,
+  `examples.md`, `objectives.md`, `capabilities.md`, `procedures.md` et `VERSION.md`.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : les avertissements d'en-tête (sans emoji) ; §0 points 1 (fin), 3, 6 et
+  nouveau 3quater ; §4 (gâchette (d)) ; §4bis
+  points 1, 5 et 7 ; §5 (bloc de fin de session : quatre lignes nouvelles et deux sans emoji ;
+  contrôle 1 de la réécriture complète ; trois paragraphes nouveaux, « Aucun emoji », « Une lecture
+  incomplète », « La lecture de run et son budget » ; ligne `DEMANDÉ`) ; §5bis (nouveau point 11) ;
+  §5quater (points 2 et 4 du dépôt ; « Laquelle, et quand ») ; §5quinquies (point 5 de la
+  prise en charge, tableau du repli) ; §6bis (une mention du bloc, sans emoji).
+- **`hotes/claude.md`** : remplacer la partie « Du gabarit » par celle de cette étiquette, sans
+  toucher à « Constaté ici ». `hotes/codex.md`, `hotes/gemini.md` : rien.
+- **État des lieux, en lecture seule, avant toute écriture.** Dans `ai-memory/` (sous-dossiers
+  compris, `_archive/` exclu) et `_a-integrer/` : pour chaque fichier, sa taille, et son nombre
+  d'emojis par la commande de la fiche d'hôte. Pour chaque fichier de la lecture de run, son
+  plafond, l'écart, et le total. Le présenter à l'opérateur en un tableau.
+- **Emojis.** Ceux que le gabarit avait posés (les statuts de `capabilities.md`, le bloc
+  `MISE À JOUR MÉMOIRE`, les `⚠️` des bandeaux, le titre du `README.md` d'`ai-memory/`) : les
+  retirer, en laissant le mot. Dans `capabilities.md`, zone manuelle, **proposer** la liste et ne
+  l'écrire que sur accord. Ceux du contenu de l'instance : les **supprimer**, fichier par fichier,
+  par modification localisée ; un emoji qui porte seul un sens (un marqueur de priorité, un statut
+  maison) se remplace par le mot que l'opérateur valide, entre crochets. Ligne `EMOJI RETIRÉ` par
+  fichier. **Rien dans `_archive/`.**
+- **Bandeaux et sections.** Remplacer, dans chaque fichier listé ci-dessus, le paragraphe de
+  rotation du bandeau par celui de cette étiquette (ajouter le paragraphe « Plafond » là où il n'y
+  en avait pas) et ajouter la section « Rotations », `_Aucune._`, juste avant les lignes de pied et
+  le marqueur. Modifications localisées, marqueur relu après chacune.
+- **`procedures.md`**, si la ligne « Stockage partagé » du NOYAU ne porte pas `aucun` :
+  **proposer** de remplacer la procédure « Lire intégralement un fichier texte du Drive » par celle
+  du guide de cette étiquette (identifiants de l'instance remplis, ses propres lignes « Fragile » et
+  « Dernière exécution vérifiée » gardées), son déclencheur à l'index, et l'étape 2 de la procédure
+  de remplacement. **Si `procedures.md` n'existe pas** alors que l'instance a un stockage partagé :
+  proposer de le créer depuis le modèle avec les procédures du guide. Rien ne s'y écrit sans
+  accord.
+- **Le texte de la tâche programmée**, s'il y en a une : le lire tel que l'hôte l'expose. S'il
+  prescrit une voie de lecture, interdit `read_file_content` ou dit de renoncer à un fichier trop
+  gros, **proposer** à l'opérateur un texte qui renvoie à `procedures.md` et au NOYAU (§6 : tu ne
+  modifies jamais toi-même ce qui te donne tes consignes).
+- **Les rotations ne se font pas pendant la migration.** Pour chaque fichier au-dessus de son
+  plafond, préparer la liste exacte de ce qui sortirait selon le tableau du NOYAU §5, et, pour
+  `learned-rules.md`, compter ce qui resterait par statut. Les proposer à l'opérateur, dans cet
+  ordre : `operational-state.md` (le plus souvent des photos et états datés, sortie sans jugement),
+  `mistakes.md` (les dossiers), `examples.md`, `objectives.md`, `VERSION.md`, `capabilities.md`,
+  `learned-rules.md` (les seules règles `archivé`). Chacune se fait ensuite, sur son accord, selon
+  le NOYAU §5 : un fichier de rotation neuf, puis la réécriture du fichier vivant, et le contrôle
+  que **chaque ligne de l'ancienne version se retrouve, à l'identique, dans l'un ou l'autre**.
+  Aucune ligne perdue : c'est ce contrôle qui le prouve. Un fichier encore au-dessus de son plafond
+  après sa rotation devient un point chaud « consolidation due », que la passe du §4 traite avec
+  l'opérateur.
+- **`VERSION.md`** : passer la version courante à 0.27.0, mettre à jour **Alignée sur**, ajouter la
+  ligne d'historique. Un écart déclaré sur la lecture des gros fichiers ou sur des emojis : le
+  marquer couvert par la 0.27.0.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`. Tant qu'il ne l'est pas, les sessions appliquent l'ancien texte : pas de
+  budget, pas de règle sur la lecture incomplète.
+- **Valider** le retrait des emojis dans `capabilities.md`, et le mot qui remplace chaque emoji
+  porteur de sens.
+- **Valider ou non** les ajouts à `procedures.md`, et sa création s'il manquait.
+- **Accepter ou non chaque rotation**, fichier par fichier, sur la liste que l'agent présente. Une
+  rotation refusée reste signalée à chaque ouverture de session : un fichier au-dessus de son
+  plafond n'est pas un état normal.
+- **Appliquer lui-même** le nouveau texte de la tâche programmée, si l'agent en propose un, puis le
+  lui faire relire.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « Une lecture incomplète » et « La lecture de run et son
+budget ». `VERSION.md` porte 0.27.0. La commande de la fiche d'hôte donne `0` sur chaque `.md` du
+périmètre, `_archive/` exclu. Chaque fichier listé porte sa section « Rotations ».
+
+**Les rotations** : chacune a sa ligne `ROTATION` au bloc de fin de session, son fichier dans
+`_archive/ai-memory/<AAAA-MM>/` avec son marqueur, sa ligne dans « Rotations », et la décision de
+l'opérateur au journal. Le tableau des tailles, refait par la passe du §4bis, montre chaque fichier
+sous son plafond, ou un point chaud « consolidation due ».
+
+**La suite** : le premier run sans opérateur note, dans « ce que tu as lu » de son dépôt, chaque
+fichier avec sa taille, la voie qui a donné le marqueur, et aucune ligne `LECTURE INCOMPLÈTE` ; s'il
+en porte une, elle nomme les voies tentées. Il dit aussi, sous « Constaté ici » de la fiche, si une
+sortie longue y est enregistrée dans un fichier (question L8 du guide).
+
+### Ce que cette migration ne fait pas
+
+Elle ne fait aucune rotation : elle les prépare. Elle ne change aucun contenu, hormis le retrait des
+emojis, et ne déplace rien. Elle ne touche pas à `_archive/`, dont les pièces gardent leurs emojis.
+Elle n'introduit aucun condensé de la mémoire : le fichier vivant, ramené sous son plafond, est la
+seule lecture de run. Elle n'ouvre aucune capacité, et « Remplacement sans opérateur » ne change
+pas. Le contrat de l'écran ne change pas (version 5) : `compagnon.html` reste celui de la 0.26.0,
+lit les statuts sans emoji à l'identique, et ignore la section « Rotations ».
+
+---
+
 ## 0.25.2 → 0.26.0
 
 ### Ce qui change

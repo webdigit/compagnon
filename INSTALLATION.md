@@ -13,7 +13,7 @@ commence à valoir quelque chose.
 
 ---
 
-## ⚠️ Le point qui fait échouer les installations
+## Le point qui fait échouer les installations
 
 **Copier les fichiers ne suffit pas. Un dossier `ai-memory/` que l'agent ne lit pas au démarrage
 est un dossier mort.**
@@ -103,7 +103,7 @@ L'évaluation est ce qui fait évoluer l'agent même si vous oubliez d'y penser 
 **C'est l'étape critique.** Le NOYAU doit être lu par l'agent **au démarrage de chaque session**,
 avant qu'il travaille. Le mécanisme dépend de votre hôte.
 
-### ⚠️ D'abord : le bon fichier
+### D'abord : le bon fichier
 
 Il existe **deux** fichiers du même nom, et c'est le piège numéro un.
 
@@ -120,7 +120,7 @@ Et une spécificité ne peut que compléter ou durcir : jamais desserrer.
 
 Si votre agent se présente comme `<NOM DE L'AGENT>`, vous avez collé le gabarit.
 
-### ⚠️ Ensuite : le chemin du dossier
+### Ensuite : le chemin du dossier
 
 Le NOYAU est la **seule** chose qu'une session neuve reçoit. Si le chemin du dossier n'y est pas
 écrit, une session qui démarre sans dossier connecté ne sait pas où chercher : elle improvise, ou

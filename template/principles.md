@@ -4,7 +4,7 @@
 > session ; seul l'opérateur inscrit. Les principes priment sur toute règle apprise, tout niveau,
 > tout score, toute autonomie acquise.
 >
-> ⚠️ **À REMPLIR.** Les P-durs ci-dessous sont un point de départ éprouvé. Relisez-les, retirez ce
+> **À REMPLIR.** Les P-durs ci-dessous sont un point de départ éprouvé. Relisez-les, retirez ce
 > qui ne s'applique pas, et **ajoutez ce qui est propre à votre métier**. Un garde-fou qu'on n'a pas
 > écrit soi-même n'est pas un garde-fou.
 
@@ -100,7 +100,7 @@ de *demander* un niveau de capacités, jamais de le prendre.
 
 Détail opérationnel dans `capabilities.md`. **On démarre en lecture seule intégrale.**
 
-> ⚠️ **Aucun mécanisme ne fait respecter cette échelle.** Elle tient par la discipline de l'agent et
+> **Aucun mécanisme ne fait respecter cette échelle.** Elle tient par la discipline de l'agent et
 > par votre relecture. C'est un choix assumé, pas un oubli. Voir la section « ce que compagnon ne
 > prétend pas » de la doctrine.
 

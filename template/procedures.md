@@ -34,6 +34,14 @@ dossier que l'hôte peut changer : elle dit comment le retrouver.
 Une entrée peut donc tenir en trois lignes qui pointent vers une documentation d'outil, une skill ou
 un manuel. Ce qui est interdit, c'est d'en faire une seconde copie qui divergera.
 
+**Sans poste, la lecture de la mémoire est une procédure d'ici.** Une instance dont le dossier vit
+dans un stockage partagé (ligne « Stockage partagé » du NOYAU) porte dans ce fichier, recopiée du
+guide d'hôte du dépôt (`hotes/google-drive.md`, par exemple), la procédure « Lire intégralement un
+fichier texte » : ses deux branches, lire pour décider et lire pour réécrire, dans leur ordre. C'est
+elle que suit la prise en charge d'un run sans opérateur (NOYAU §5quinquies, point 5), et elle se
+tient à jour par les constats de l'instance. Si elle manque, la fiche d'hôte suffit à lire, mais
+l'absence se signale en ouverture de session.
+
 ## Comment ce fichier se lit
 
 L'**index** ci-dessous est lu au démarrage de chaque session, avec le reste du dossier. Les
@@ -47,6 +55,7 @@ C'est tout l'intérêt de l'index : savoir qu'une procédure existe coûte deux 
 | ID | Procédure | Déclencheur | Autonomie requise | Dernière exécution vérifiée |
 |---|---|---|---|---|
 | PR001 | `<titre>` | `<ce qui la déclenche>` | `<niveau ou capacité>` | `<jj/mm/aaaa>` |
+| PR002 | `<Lire intégralement un fichier texte du stockage partagé>` | `<toute lecture de mémoire sans poste>` | `<N1, lecture seule>` | `<jj/mm/aaaa>` |
 
 ## Schéma d'une entrée
 
@@ -79,6 +88,7 @@ que s'il ne contient que des fautes réelles.
 
 ## Rotation
 
+**Plafond : 16 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
 Ce fichier grossit plus vite que les autres : une chaîne technique se documente en dizaines de
 lignes. Quand une entrée devient longue, elle **sort** en `procedures/<nom>.md` et ne laisse ici
 qu'une ligne d'index et un renvoi. L'index, lui, reste court par construction, et c'est lui qui est
@@ -125,6 +135,16 @@ Dernière exécution vérifiée : `<jj/mm/aaaa>`, 47 lignes exportées contre 47
 Périme le    : `<jj/mm/aaaa + 3 mois>`.
 
 Origine      : ← [E00X]
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 

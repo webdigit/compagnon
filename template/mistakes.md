@@ -13,12 +13,18 @@
 > cas comparable s'est représenté ensuite et la règle a tenu. Écrire une règle ne prouve pas qu'elle
 > sera appliquée, et c'est la même exigence que compagnon P9 pour les règles, appliquée ici.
 >
-> **Rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui lui donne son effet,
-> et c'est ce qui le condamne s'il grossit sans fin. La date portée par le statut est ce qui rend
-> « depuis longtemps » lisible au lieu de se rejuger à chaque lecture. Une erreur **résolue**
-> depuis longtemps, qui
-> n'éclaire plus aucune décision, se dépose dans `_archive/` avec sa date, et une ligne ici dit
-> qu'elle y est. Une erreur `ouverte` ou `corrigée` ne part jamais : ce serait desserrer le frein.
+> **Plafond : 24 Ko, et rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui
+> lui donne son effet, et c'est ce qui le condamne s'il grossit sans fin (NOYAU §5, « La lecture de
+> run et son budget »). Une erreur a deux parts. Sa **fiche** : le titre, `Cause racine`, `Règle
+> générée`, `Sévérité`, `Catégorie`, `Statut`, `Récidive` et `Date`, ce qui freine et ce qui
+> rapproche une récidive. Son **dossier** : `Fait`, `Pourquoi faux` et `Ce que je n'ai PAS fait`,
+> le récit. À la rotation, le dossier d'une erreur `corrigée` sort dans le fichier de rotation, tel
+> quel, et sa fiche reste ici, recopiée à l'identique, avec une seule ligne nouvelle à la place du
+> dossier : `Fait : dossier complet dans <chemin du fichier de rotation>`. Rien n'est résumé. Une
+> erreur **résolue** depuis longtemps, qui n'éclaire plus aucune décision, sort entière. Une erreur
+> `ouverte` ne sort pas, et la fiche d'une erreur `corrigée` non plus : ce serait desserrer le
+> frein. La date portée par le statut rend « depuis longtemps » lisible au lieu de se rejuger à
+> chaque lecture.
 >
 > Rien ne s'efface (compagnon P5) : déposer dans l'archive n'est pas supprimer.
 
@@ -85,6 +91,16 @@ Date          : `<jj/mm/aaaa>`.
 > ils ne bloquent pas ses montées de niveau.
 
 - `<date>` : `<incident>`. Fonde **H-0X**.
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 

@@ -6,7 +6,8 @@
 >
 > **Source** : l'instance Pilote, projet « TEST SYNCHRO DRIVE », essais du 24 au 26/09/2026 (tests T1
 > à T14). Statuts : voir `hotes/README.md`. **État des connaissances au 26/09/2026**, à compléter par
-> les tests en cours ; noms altérés côté poste, au 06/10/2026.
+> les tests en cours ; noms altérés côté poste, au 06/10/2026 ; voies de lecture, au 08/10/2026
+> (tests L1 à L7, instance GESTION PLANNING, lecture seule).
 
 ---
 
@@ -15,7 +16,7 @@
 | Geste | Possible ? | Statut |
 |---|---|---|
 | Lister un dossier par son identifiant | Oui, en plusieurs pages | Prouvé (T1, T2a, T10) |
-| Lire un fichier `.md` ou `.txt` | Oui, deux outils, dont un qui peut couper la fin | Prouvé (T2a) |
+| Lire un fichier `.md` ou `.txt` | Oui, deux outils : l'un rend du texte retouché, et le coupe s'il porte des emojis ; l'autre rend le fichier exact, en base64 | Prouvé (T2a) ; mécanisme constaté une fois (L1 à L7, 08/10/2026) |
 | Créer un fichier texte | Oui, à condition de désactiver la conversion | Prouvé (T1 à T14) |
 | **Réécrire le contenu d'un fichier existant** | **Non.** La mise à jour ne change que le titre et le dossier parent | Prouvé (v2 de la synthèse Pilote) |
 | Renommer, déplacer | Oui | Prouvé (archivages PR008) |
@@ -34,11 +35,27 @@ pas de troisième voie.
    être très courte (5 éléments sur 29, avec une taille de page demandée de 100). Même une recherche
    par identifiant **et** par titre peut renvoyer le bon fichier en page 2. **Un fichier n'est absent
    qu'après la dernière page.** Prouvé, six fois.
-2. **La lecture qui coupe.** L'outil de lecture texte (`read_file_content`) rend parfois un `.md` sans
-   sa dernière ligne, et les emojis illisibles. Le fichier est sain : le téléchargement brut
-   (`download_file_content`, base64 à décoder) rend tout. **Toute lecture qui fonde une décision ou
-   une réécriture passe par le téléchargement brut**, et se vérifie par le marqueur de fin. Prouvé
-   (T2a, quatre fichiers touchés).
+2. **La lecture qui coupe, et pourquoi.** L'outil de lecture texte (`read_file_content`) rend
+   parfois un `.md` sans sa fin, marqueur compris. Le fichier est sain : le téléchargement brut
+   (`download_file_content`) rend tout. Prouvé (T2a, quatre fichiers). **La cause constatée : les
+   emojis.** Le 08/10/2026, sur six fichiers d'une instance en service : `mistakes.md` (109 Ko, aucun
+   emoji au-delà de U+FFFF) et `objectives.md` (8 Ko, aucun) sont arrivés entiers ; `report.md` (1
+   emoji), `learned-rules.md` (4), `operational-state.md` (6) et `capabilities.md` (11) ont perdu
+   leur fin, marqueur compris, environ deux à trois caractères par emoji. La taille n'y est pour
+   rien. Constaté une fois (L1 à L4) ; mécanisme exact supposé. D'où la règle du NOYAU §5, « Aucun
+   emoji ».
+   **Ce que rend `read_file_content`, même entier** : du texte retouché, pas le fichier. `\` ajouté
+   devant `#`, `*`, `[`, `_`, `` ` ``, `>` ; suites d'espaces réduites à une ; deux espaces et un
+   retour en fin de ligne ; emojis au-delà de U+FFFF illisibles (`ð`). Comparé ligne à ligne au
+   fichier brut, `learned-rules.md` diffère sur 112 blocs, même `\` retirés. **Il suffit pour lire et
+   décider, si son marqueur est là ; il ne fonde jamais une réécriture.** Constaté une fois (L2).
+2bis. **Où arrive le contenu.** Une sortie trop longue n'arrive pas dans la conversation : l'hôte
+   Claude l'enregistre dans un fichier JSON du conteneur et donne son chemin. Le shell la lit. Pour
+   `download_file_content`, le décodage donne alors le fichier exact (taille égale à celle du
+   listage, marqueur en dernière ligne : 87, 109 et 144 Ko, L5). Une sortie courte arrive dans la
+   conversation : le base64 d'un petit fichier (14 et 16 Ko, L6) ne se décode qu'en le recopiant, ce
+   qu'on ne fait jamais en entier. Seuil non mesuré, entre 16 et 87 Ko. Constaté une fois, en
+   session Cowork dans le cloud ; en tâche programmée, non prouvé.
 3. **Les écritures simultanées.** Google Drive accepte deux fichiers du même nom dans un même
    dossier. Deux sessions qui remplacent le même fichier à dix secondes d'écart créent deux versions,
    et la seconde peut archiver celle que la première venait d'écrire. Constaté deux fois le
@@ -118,17 +135,24 @@ Origine : guide d'hôte compagnon google-drive.md.
 
 ```
 ## PR### : Lire intégralement un fichier texte du Drive
-Déclencheur : lire un fichier de mémoire ou de travail via le connecteur.
+Déclencheur : toute lecture de mémoire par le connecteur, au rituel ou en cours de run (lire pour décider), et toute lecture qui précède une réécriture, un remplacement ou une rotation (lire pour réécrire).
 Autonomie : N1, lecture seule.
-Étapes :
-1. download_file_content(fileId) ; décoder le base64 dans le shell (base64 -d).
-2. Vérifier : taille décodée = fileSize du Drive, et dernière ligne = [fin de <nom>] pour un fichier de mémoire.
-3. read_file_content n'est acceptable que pour survoler un fichier dont la fin ne compte pas.
-Vérification : taille et marqueur.
-Fragile : read_file_content peut couper la dernière ligne et abîmer les emojis.
+Préconditions : l'ID du fichier et son fileSize, pris au listage (PR « Lister un dossier Drive »).
+Étapes, pour LIRE ET DÉCIDER (dans l'ordre, chaque voie tentée avant de conclure) :
+1. read_file_content(fileId). Si la sortie est enregistrée dans un fichier : jq -r .fileContent <chemin> > <copie>.txt, puis lire <copie>.txt.
+2. Complet si la dernière ligne, \ retirés, est [fin de <nom>]. Ce texte sert à lire ; il ne sert jamais à réécrire.
+3. Marqueur absent : download_file_content(fileId). Sortie enregistrée dans un fichier : passer à l'étape 5, c'est une lecture brute complète.
+4. Base64 arrivé dans la conversation : contrôle de queue. Recopier seulement ses 128 derniers caractères, printf '%s' '<...>' | base64 -d. Complet si ces octets finissent par le marqueur ET recouvrent la fin du texte de l'étape 1 sur au moins 20 caractères (\ retirés, espaces réduits des deux côtés). Ne jamais recopier un base64 entier.
+5. Rien de tout cela : lecture incomplète (NOYAU §5, « Une lecture incomplète ») ; noter chaque voie et ce qu'elle a rendu.
+Étapes, pour LIRE ET RÉÉCRIRE :
+1. download_file_content(fileId), sortie enregistrée dans un fichier ; python3 -c "import json,base64,sys; d=json.load(open(sys.argv[1])); open(sys.argv[2],'wb').write(base64.b64decode(d['content']))" <chemin> <copie>.md
+2. Vérifier : wc -c <copie>.md = fileSize ; tail -n 1 <copie>.md = [fin de <nom>].
+3. Base64 arrivé dans la conversation : pas de voie brute. Pas de réécriture : dépôt (NOYAU §5quater).
+Vérification : le marqueur, et pour la voie brute la taille exacte.
+Fragile : un emoji dans le fichier coupe read_file_content (NOYAU §5, « Aucun emoji ») ; le seuil d'enregistrement en fichier dépend de l'hôte et n'est pas mesuré ; jamais comparer deux lectures par read_file_content entre elles.
 Dernière exécution vérifiée : <date>.
 Périme le : <date + 3 mois>.
-Origine : guide d'hôte compagnon google-drive.md.
+Origine : guide d'hôte compagnon google-drive.md (0.27.0, tests L1 à L7 du 08/10/2026).
 ```
 
 ```
@@ -153,7 +177,7 @@ Autonomie : NOYAU §5quater. Opérateur présent : remplacement. Personne : « R
 Préconditions : prise en charge tenue (NOYAU §5quinquies), en particulier le point 6 : un seul fichier de ce nom, aucun fichier <nom>.nouveau-*, pas modifié à l'instant par une autre session.
 Étapes :
 1. Relister (toutes les pages) ; noter l'ID de l'ancien. Deux fichiers du nom visé, ou un <nom>.nouveau-* présent : arrêt, dépôt.
-2. download_file_content de l'ancien, décodé ; garder cette copie intacte ; vérifier taille et marqueur.
+2. download_file_content de l'ancien, sortie enregistrée dans un fichier, décodé au shell (PR « Lire intégralement », lire pour réécrire) ; garder cette copie intacte ; vérifier taille et marqueur. Base64 arrivé dans la conversation : arrêt, dépôt.
 3. Éditer une copie par script (jamais retaper un fichier de mémoire de tête), avant le marqueur. Le marqueur garde le vrai nom.
 4. Heure : TZ=<fuseau> date '+%Y-%m-%d-%H%M'. create_file sous le nom provisoire <nom>.nouveau-<AAAA-MM-JJ-HHMM>.<ext>, même parent, conversion désactivée.
 5. Vérifier avant tout archivage : le provisoire est à la bonne taille ; téléchargement brut identique octet pour octet à la copie éditée ; diff avec l'ancien : seules les lignes voulues changent, le marqueur est la dernière ligne.
@@ -215,3 +239,20 @@ Origine : guide d'hôte compagnon google-drive.md (Pilote PR005, T6).
 | Un dossier rattaché à un projet claude.ai ne l'est-il qu'à un seul ordinateur à la fois ? | T15 |
 | Avec le nom provisoire, le poste affiche-t-il toujours `<nom>.md` sans suffixe ? Oui une fois (Mac, 27/09), non une fois (06/10) : à quelles conditions le « (1) » revient-il ? | T20 |
 | Renommer sur le poste `<nom> (1).md` en `<nom>.md` laisse-t-il le titre Drive et l'ID inchangés ? Le premier rétablissement par l'agent le constatera (procédure « Rétablir un nom altéré », étape 6) | T21 |
+| En tâche programmée, une sortie longue du connecteur est-elle aussi enregistrée dans un fichier lisible au shell ? Le premier run après la 0.27.0 le constate | L8 |
+| À partir de quelle taille la sortie part-elle dans un fichier ? Entre 16 et 87 Ko constaté | L9 |
+| La perte de `read_file_content` est-elle exactement proportionnelle au nombre d'emojis, et seulement à ceux au-delà de U+FFFF ? Six fichiers vont dans ce sens | L10 |
+
+### Tests de lecture du 08/10/2026 (L1 à L7)
+
+Instance GESTION PLANNING, fichiers réels, lecture seule, session Cowork dans le cloud, hôte Claude.
+
+| Test | Geste | Résultat |
+|---|---|---|
+| L1 | `read_file_content`, `objectives.md` (7,8 Ko, emojis du plan de base seulement) | Texte dans la conversation, retouché (`\#`, `\*`), marqueur présent : complet |
+| L2 | `read_file_content`, `learned-rules.md` (144 Ko, 4 emojis au-delà de U+FFFF) | Sortie enregistrée en fichier JSON ; texte coupé à `[fin de learned-` ; 112 blocs différents du brut, `\` retirés |
+| L3 | `read_file_content`, `operational-state.md` (88 Ko, 6) et `mistakes.md` (109 Ko, 0) | Le premier coupé à `[fin de operat` ; le second entier, marqueur présent |
+| L4 | `read_file_content`, `capabilities.md` (14 Ko, 11) et `report.md` (7 Ko, 1) | Les deux dans la conversation, marqueur perdu, statuts en `ð` |
+| L5 | `download_file_content`, `learned-rules.md`, `operational-state.md`, `mistakes.md` | Sorties enregistrées en fichier ; décodées au shell : 143 901, 87 711 et 109 033 octets, égaux au listage, marqueur présent |
+| L6 | `download_file_content`, `objectives.md`, `capabilities.md`, `examples.md` (8, 14 et 16 Ko) | Base64 dans la conversation, non décodable sans recopie |
+| L7 | Contrôle de queue sur `capabilities.md` : 64 derniers caractères du base64 recopiés et décodés | `0.9.0 → 0.22.1)._` puis `[fin de capabilities.md]` : marqueur présent, recouvrement avec la fin du texte de L4 |

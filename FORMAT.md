@@ -64,6 +64,7 @@ personne n'y voie une panne.
 | `procedures.md` | **non** | chemins, comptes, parfois des identifiants |
 | `hotes/*.md` | **non** | outils et chemins du poste ; rien que l'écran affiche (0.24.0) |
 | `examples.md` | **non** | non affiché |
+| `_archive/**` (dont les fichiers de rotation, 0.27.0) | **non** | l'écran montre ce que l'agent lit à chaque session, pas l'historique |
 
 Le motif du tri n'est pas le poids : `etat.js` complet reste indolore. Le motif est l'exposition.
 `etat.js` est conçu pour être autoportant, donc c'est le fichier qui part par mail sans qu'on y
@@ -71,6 +72,12 @@ pense. Autant qu'il ne contienne ni le NOYAU ni les procédures.
 
 L'écran affiche en pied de page ce qu'il a reçu et ce qu'il n'a pas reçu, pour qu'une absence se
 voie au lieu de disparaître en silence.
+
+**Depuis la 0.27.0, ce qui a fait l'objet d'une rotation n'est plus transporté** : il est dans
+`_archive/`, et la section « Rotations » de chaque fichier dit où. Une règle archivée, le dossier
+d'une erreur corrigée, une vieille progression ne s'affichent donc plus. C'est voulu : l'écran
+montre la lecture de run, celle sur laquelle l'agent décide. Rien de ce qui freine ou attend ne
+sort par une rotation (NOYAU §5), donc rien de ce que l'écran existe pour montrer.
 
 ### Le témoin d'attente (contrat 3)
 
@@ -113,6 +120,10 @@ en un paragraphe, et plusieurs clés sur une même ligne séparées par `·`.
 `Règle générée`, `Sévérité`, `Catégorie`, `Statut`, `Récidive`, `Date`. Le titre du bloc est
 `## M### : <titre>`.
 
+Depuis la 0.27.0, une erreur `corrigée` peut n'avoir plus que sa **fiche** : `Pourquoi faux` et `Ce
+que je n'ai PAS fait` sont sortis par rotation, et `Fait` porte `dossier complet dans <chemin>`. Une
+clé absente ne s'affiche pas ; aucune clé nouvelle n'est introduite, le contrat ne change pas.
+
 ## 6. Les vocabulaires figés
 
 Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
@@ -122,7 +133,7 @@ Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
 | Statut d'une règle | `hypothèse`, `provisoire`, `active`, `en-consolidation`, `archivé` | premier mot du champ, gras ou non ; ce qui suit entre parenthèses est libre |
 | Statut d'une erreur | `ouverte`, `corrigée`, `résolue` | idem |
 | Date d'un statut | la mention `depuis le <jj/mm/aaaa>` accolée au statut | l'écran en tire l'ancienneté, mesurée par rapport à `arrete_le` et non par rapport à maintenant : il décrit un moment figé |
-| Statut d'une capacité | le mot `OUVERT`, `DEMANDÉ`, `VERROUILLÉ` ou `SUR ACCORD` | lu sur le mot, pas sur l'emoji : les emoji peuvent changer sans rien casser |
+| Statut d'une capacité | le mot `OUVERT`, `DEMANDÉ`, `VERROUILLÉ` ou `SUR ACCORD` | lu sur le mot, pas sur l'emoji. Depuis la 0.27.0, le gabarit n'en porte plus aucun (NOYAU §5, « Aucun emoji ») ; une instance plus ancienne qui en a encore s'affiche à l'identique |
 | Décision au registre | la mention `en attente` ; depuis le contrat 5, une cellule qui commence par `sans issue` | `sans issue` : l'évaluation est inscrite mais n'attend aucune décision ; elle ne compte pas dans « Évaluations dues » et n'est pas signalée comme non inscrite. Tout autre texte est affiché tel quel |
 | Évaluation au registre | la cellule `Capacité` commence par `Évaluation`, suivie de l'identifiant de la compétence | la ligne va dans la file « Évaluations dues » au lieu de « Capacités demandées » |
 | Grade | `stagiaire`, `junior`, `medior`, `senior`, `expert`, ou `non évaluée` | premier mot de la cellule, gras ou non ; le grade est relié à la grille par ce mot |
@@ -183,7 +194,8 @@ réservés : `Identité`, `Entretien`, `Points chauds`, `Journal des cas`, `Moti
 `Hypothèses`, `Contradictions`, `Interdits`, `Registre`, `Écarts`, `Historique`, `En un
 paragraphe`, `Fait`, `À faire`, `En attente d'une décision`, `Non couvert`, et
 `Niveau <n> : <titre>`, et depuis la version 2 du contrat `La grille` (en début de titre) et
-`Grades actuels`.
+`Grades actuels`. La section `Rotations` (0.27.0) ne porte aucun de ces mots, et l'écran ne la lit
+pas.
 
 ## 8bis. Les compétences
 

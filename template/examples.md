@@ -2,6 +2,9 @@
 
 > **Statut : mémoire AUTO-ÉCRITE.** Un exemple sert à raisonner « ce cas ressemble à E00X ». Il garde
 > le détail que la règle a dû abandonner en se généralisant.
+>
+> **Plafond : 16 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
+> À la rotation, sortent les exemples qu'aucune règle vivante ne cite, les plus anciens d'abord.
 
 ## Schéma d'une entrée
 
@@ -42,6 +45,16 @@ Ce qu'on en retient :
 Liens        : ← [R001, M001]
 
 Date         : `<jj/mm/aaaa>`.
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 

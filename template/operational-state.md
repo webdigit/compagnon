@@ -5,8 +5,10 @@
 > sa trace va dans « Clos » du fichier de journal de la session (NOYAU §5). Sans cette discipline,
 > le fichier grossit jusqu'à ne plus être relu, et cesse d'être un état.
 >
-> **Rotation** : archivez dans `_archive/` par trimestre, ou dès que la lecture complète devient
-> pénible. Un état qu'on ne lit plus en entier ne sert plus à rien.
+> **Plafond : 16 Ko.** Ce fichier est lu en entier à chaque session (NOYAU §5, « La lecture de run
+> et son budget »). Au-dessus, sa rotation est due : tout ce qui n'est pas l'état présent (photos et
+> états datés, sections closes, récits) sort, avec l'opérateur, dans un fichier de rotation. Un état
+> qu'on ne lit plus en entier ne sert plus à rien.
 > **Le journal des cas ne vit plus ici** (depuis compagnon 0.17.0) : il vit dans `journal/`, un
 > fichier par session. Un état qui porte son historique grossit à chaque session, et chaque
 > remplacement recopie tout cet historique dans l'archive.
@@ -41,7 +43,7 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 
 - **Signalement des corrections** : `<comment l'opérateur signale qu'il corrige>`
 - **Ce qui se soumet avant d'agir** : `<la liste>`
-- **Fin de session** : bloc `🧠 MISE À JOUR MÉMOIRE` obligatoire. **C'est le maillon faible connu :
+- **Fin de session** : bloc `MISE À JOUR MÉMOIRE` obligatoire. **C'est le maillon faible connu :
   rien ne force l'agent à le produire.**
 
 ## Entretien
@@ -88,6 +90,16 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > l'apprentissage.
 
 - `<motif>` → **R00X** (son compte d'occurrences vit dans `learned-rules.md`)
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 

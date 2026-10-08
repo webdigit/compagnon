@@ -5,7 +5,7 @@
 > **puis** les quatre mémoires d'apprentissage et `operational-state.md`, **puis** l'**index** de
 > `procedures.md` et `report.md`, s'ils existent. Sans cette lecture, ce dossier est inerte.
 >
-> ⚠️ **À REMPLIR** : remplacez `<NOM DE L'AGENT>`, `<OPÉRATEUR>` et `<COMPÉTENCE 01>` partout dans
+> **À REMPLIR** : remplacez `<NOM DE L'AGENT>`, `<OPÉRATEUR>` et `<COMPÉTENCE 01>` partout dans
 > ce dossier. Les exemples fictifs sont signalés, ils sont à remplacer par vos vrais cas.
 
 ## Ce que c'est
@@ -14,10 +14,10 @@ Un système de mémoire qui permet à <NOM DE L'AGENT> de **<COMPÉTENCE 01, en 
 **d'apprendre** de session en session : il observe le feedback de <OPÉRATEUR>, met à jour sa
 mémoire, et fait mieux la fois suivante. Il gagne en autonomie à mesure qu'il fait ses preuves.
 
-⚠️ Les objectifs sont de la **qualité opérationnelle**, pas des indicateurs d'activité. Voir
+Les objectifs sont de la **qualité opérationnelle**, pas des indicateurs d'activité. Voir
 `objectives.md`.
 
-## 🗺️ Carte des supports : où vit quoi
+## Carte des supports : où vit quoi
 
 Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 

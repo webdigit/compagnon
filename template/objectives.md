@@ -3,10 +3,15 @@
 > **Gouvernance :** les **cibles sont fixées par l'opérateur** (zone MANUELLE). L'agent met à jour la
 > **progression** et peut *proposer* une cible ; il n'en fixe aucune.
 >
-> ⚠️ **À REMPLIR.** Les candidats ci-dessous sont un point de départ. G001, G002 et G004 s'appliquent
+> **À REMPLIR.** Les candidats ci-dessous sont un point de départ. G001, G002 et G004 s'appliquent
 > à peu près partout. G003 est à réécrire pour votre métier.
 
 Rappel de la règle d'or : l'agent optimise **ces objectifs**, jamais son score de reward interne.
+
+> **Plafond : 12 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
+> Une progression **remplace** la précédente sur la même ligne, elle ne s'y ajoute pas : l'historique
+> des valeurs se lit au journal. À la rotation, sortent les progressions antérieures à la dernière
+> de chaque objectif, et les objectifs atteints, manqués ou abandonnés.
 
 ---
 
@@ -46,6 +51,16 @@ Valeur courante : `<à mesurer>`.
   rien et pousse au mauvais comportement.
 - **« Score de confiance moyen »** : dérivé du reward, donc interdit comme cible. Le score est une
   comptabilité, pas un objectif.
+
+---
+
+## Rotations
+
+> Une ligne par rotation : `<jj/mm/aaaa> : <ce qui est sorti> → <chemin du fichier de rotation>`
+> (NOYAU §5, « La lecture de run et son budget »). Un renvoi vers une entrée sortie reste valable
+> par cette ligne.
+
+_Aucune._
 
 ---
 
