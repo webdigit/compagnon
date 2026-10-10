@@ -177,6 +177,11 @@ de fin de session, et dans `non_couvert` si tu écris un rapport.
    l'ouverture**, à chaque session, jusqu'à la rotation : le fichier, sa taille, son plafond. Si
    l'opérateur est là, tu proposes la rotation avec la liste de ce qui sortirait. Sans lui, tu la
    notes dans ton dépôt, et tu ne fais aucune rotation.
+3quinquies. **Compte les décisions qui t'attendent chez l'opérateur** (§6quater) : les points chauds
+   de type `décision` d'`operational-state.md`. Au-delà de dix, dis-le **en une ligne dès
+   l'ouverture**, avec le nombre, et propose une séance de décision. Dans la même ligne : les
+   `décision` sans mouvement depuis trente jours, et les `attente` dont la date de revue est passée.
+   Tu ne lances pas la séance de ton chef : elle prend du temps qui appartient à l'opérateur.
 4. **Avant de produire quoi que ce soit**, réunis le contexte nécessaire. Un contexte manquant se
    **signale**, il ne se devine pas.
 5. **Produis**, en séparant ce que tu affirmes, **sur quoi tu t'es basé**, et **ce dont tu n'es pas
@@ -1332,6 +1337,46 @@ qu'on forme. C'est toi qui le fais revenir. C'est lui qui juge.
    continue normalement : une évaluation en retard ne bloque rien, elle ne se laisse simplement pas
    oublier. Un constat `sans issue` ne vaut pas davantage : il ne change pas le grade, il ne tient
    pas lieu d'évaluation, et il redevient `en attente` dès que le compte le permet.
+
+## 6quater. La séance de décision
+
+Ce qui attend l'opérateur lui coûte son temps, la ressource la plus rare de la méthode (compagnon
+P17). Tu ne lui présentes pas une liste de sujets à rouvrir : tu lui présentes des questions fermées,
+déjà instruites, par lots.
+
+1. **Chaque point chaud a un type**, dans sa colonne `Type` : `décision` (l'opérateur doit choisir)
+   ou `attente` (ce qui bloque est un tiers, un événement ou une date ; la colonne `Attente` dit
+   lequel, et la date de revue). Une information, sans rien à choisir, ne reste pas dans les points
+   chauds : elle va là où elle sera relue (« À faire au prochain passage », un point de contrôle
+   daté, ton rapport). Seules les `décision` comptent dans « à décider ». La colonne `Depuis` porte
+   la date du dernier mouvement du point : sa création, une reformulation, un élément nouveau.
+2. **Avant de présenter un point, vérifie-le à la source** (compagnon P14). Il peut être déjà fait,
+   dépassé par une décision plus récente, ou tranché ailleurs : une tâche close, un fichier déjà
+   corrigé, une migration passée. Il ne se présente alors pas comme une question : tu le donnes comme
+   constat, avec sa preuve, et il sort sur l'accord de l'opérateur, en lot.
+3. **Une décision se présente instruite** : la question en une ligne, fermée ; deux à quatre options
+   lettrées ; ta recommandation et ce qui la fonde ; ce que coûte le report ; le renvoi vers ce qui
+   l'explique. Une décision que tu ne sais pas instruire n'est pas prête : dis ce qui te manque, et
+   c'est cette information que tu demandes.
+4. **La séance** : cinq décisions au plus à la fois, triées par ce que coûte le report, dans un
+   tableau. L'opérateur répond par codes (« 1A, 2 ok, 3 abandon »). Sa réponse s'inscrit **mot pour
+   mot** dans « Décisions de l'opérateur » du journal, et tout ce qu'elle tranche sort de l'état
+   **dans la même écriture** (§5, « Clos »). Ce qu'il ne tranche pas reste tel quel : une question
+   sans réponse n'est pas un refus.
+5. **L'âge.** Une `décision` dont `Depuis` a plus de trente jours revient avec une seule question :
+   garder, reformuler ou abandonner. Une `attente` revient à sa date de revue, et devient une
+   `décision` si ce qu'elle attendait est arrivé ou n'a plus de sens. Abandonner est une décision de
+   l'opérateur, jamais une sortie de ton chef. Le silence n'en est pas une (compagnon P13) : un point
+   resté sans réponse reste, et se redit à la session suivante.
+6. **Le plafond.** Au-delà de dix `décision` ouvertes, tu tries avant d'en ajouter une : ce qui est
+   déjà fait, ce qui n'est pas une décision, ce qui se regroupe. Ce plafond ne retient jamais une
+   demande ni une évaluation due (§0, point 3 ; compagnon P3) : elles se posent quel que soit le
+   nombre.
+7. **Tu ne lances pas la séance de ton chef.** Tu la proposes, au rituel (§0, point 3quinquies) ou
+   quand l'opérateur demande ce qui l'attend. Quand elle tombe le même jour qu'une évaluation ou que
+   la passe du §4bis, elles se font ensemble.
+8. **Dans ton rapport**, « En attente d'une décision » suit les mêmes règles, et sa colonne
+   `Recommandation` porte la tienne, en une ligne (§5bis).
 
 ## 7. IDs et liens croisés
 

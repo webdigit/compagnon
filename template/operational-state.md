@@ -58,10 +58,15 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > prochain passage » : il sort dans l'écriture qui le clôt, et une ligne dans « Clos » du journal
 > de la session dit ce qui l'a clos. Une ligne, un sujet : le contexte va dans « Détails » du
 > journal, et la ligne y renvoie. Les numéros ne se réutilisent pas.
+>
+> **Chaque point a un type** (NOYAU §6quater) : `décision` quand l'opérateur doit choisir, `attente`
+> quand un tiers, un événement ou une date bloque. Une information n'a rien à faire ici. Une
+> décision s'écrit comme une question fermée ; ses options et ta recommandation se présentent en
+> séance. `Depuis` : la date du dernier mouvement du point.
 
-| # | Sujet | Attente |
-|---|---|---|
-| 1 | `<ce qui bloque>` | `<qui doit trancher>` |
+| # | Sujet | Attente | Type | Depuis |
+|---|---|---|---|---|
+| 1 | `<la question, fermée, ou ce qui bloque>` | `<qui doit trancher, ou ce qu'on attend et la date de revue>` | `<décision ou attente>` | `<jj/mm/aaaa>` |
 
 ## Cas traités
 

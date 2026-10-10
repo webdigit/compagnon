@@ -139,6 +139,7 @@ Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
 | Grade | `stagiaire`, `junior`, `medior`, `senior`, `expert`, ou `non évaluée` | premier mot de la cellule, gras ou non ; le grade est relié à la grille par ce mot |
 | Cadence d'un grade | « `<n>` jours, semaines, mois ou ans » et « `<n>` cas », dans n'importe quel ordre | l'écran calcule la prochaine échéance ; une partie absente ne déclenche rien |
 | État d'une contradiction | la mention `Ouverte` | |
+| Type d'un point chaud | `décision` ou `attente` (0.28.0) | premier mot de la cellule. Seules les `décision` comptent dans « à décider ». Un tableau sans cette colonne, ou une cellule vide : le point compte comme avant |
 
 **Le cas le plus important du contrat : la confiance.** Le champ a deux formes, et deux seulement.
 
@@ -169,13 +170,13 @@ L'écran lit les tableaux **par position de colonne**, pas par intitulé. Les in
 | `capabilities.md`, registre | date, capacité, décision, par, rappels (plusieurs dates séparées par des virgules) |
 | `learned-rules.md`, hypothèses | id, hypothèse, origine, occurrences |
 | `learned-rules.md`, contradictions | id, objet, état |
-| `operational-state.md`, points chauds | numéro, sujet, attente |
+| `operational-state.md`, points chauds | numéro, sujet, attente, type (facultative, 0.28.0), depuis (facultative, 0.28.0) |
 | `operational-state.md` (avant 0.17.0) et chaque `journal/*.md`, journal des cas | numéro, date, sujet, corrections, trace, compétence |
 | `VERSION.md`, écarts | référence, écart, raison |
 | `VERSION.md`, historique | date, de vers, ce qui a été fait |
 | `report.md`, fait | numéro, objet, référence, vérifié par, validé par |
 | `report.md`, à faire | numéro, objet, référence, échéance, si repoussé, validé par |
-| `report.md`, en attente | numéro, sujet, ce qui manque |
+| `report.md`, en attente | numéro, sujet, ce qui manque, recommandation (facultative, 0.28.0) |
 
 **Les lignes d'exemple du gabarit sont ignorées.** Une ligne est tenue pour un exemple dès qu'**une
 seule** de ses cellules est un emplacement à remplir, c'est-à-dire du texte entièrement entouré de

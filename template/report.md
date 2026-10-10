@@ -93,9 +93,9 @@ interne.>`
 > niveau d'autonomie, une règle contradictoire) n'est pas ici : c'est dans `operational-state.md`,
 > section « Points chauds ». Deux files distinctes, deux lecteurs distincts (compagnon P7).
 
-| # | Sujet | Ce qui manque pour trancher |
-|---|---|---|
-| 01 | `<le sujet>` | `<l'information ou l'arbitrage attendu>` |
+| # | Sujet | Ce qui manque pour trancher | Recommandation |
+|---|---|---|---|
+| 01 | `<le sujet>` | `<l'information ou l'arbitrage attendu>` | `<l'option que l'agent recommande, et pourquoi, en une ligne>` |
 
 ## Non couvert
 

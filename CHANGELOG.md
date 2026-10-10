@@ -10,6 +10,32 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.28.0] - 2026-10-10
+
+### Ajouté
+
+- **Principe P17**, « Une décision se présente instruite, ou elle ne se présente pas » : le temps de
+  l'opérateur est la ressource la plus rare de la méthode ; ce que l'agent lui soumet est une
+  question fermée, vérifiée à la source, avec options, recommandation et coût du report.
+- **NOYAU §6quater, « La séance de décision »** : points chauds typés (`décision`, `attente`),
+  vérification à la source avant présentation, décision instruite, séance de cinq au plus avec
+  réponse par codes inscrite mot pour mot, âge de revue à trente jours, plafond de dix décisions
+  ouvertes qui ne retient ni demande ni évaluation.
+- **NOYAU §0, point 3quinquies** : le compte des décisions ouvertes au rituel, en une ligne.
+
+### Modifié
+
+- **`template/operational-state.md`** : points chauds en cinq colonnes, `Type` et `Depuis` ajoutées
+  à la fin, et bandeau complété.
+- **`template/report.md`** : colonne `Recommandation` à la fin de « En attente d'une décision ».
+- **`FORMAT.md`** : vocabulaire figé `Type d'un point chaud` ; colonnes nouvelles déclarées
+  facultatives. Contrat de l'écran inchangé (version 5).
+
+### Origine
+
+Une instance en service, le 10/10/2026 : seize points chauds, dont six dépassés, deux déjà faits et
+trois sans choix à faire, réglés en une séance de questions fermées.
+
 ## [0.27.0] - 2026-10-08
 
 ### Ajouté

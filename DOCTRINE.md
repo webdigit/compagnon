@@ -504,6 +504,39 @@ apprennent le leur.
 
 ---
 
+### P17. Une décision se présente instruite, ou elle ne se présente pas
+
+Le temps de l'opérateur est la ressource la plus rare de la méthode. Tout y attend un geste de lui
+(P1, P3, P13), et chaque fois qu'il doit rouvrir un sujet pour comprendre ce qu'on lui demande,
+l'agent lui a fait faire son propre travail. Une file de points à trancher qui grossit n'est pas le
+signe d'un opérateur négligent : c'est le signe de questions mal posées. Elle se mesure, en service :
+sur seize points ouverts dans une instance, six étaient dépassés, deux déjà faits et trois
+n'attendaient aucun choix ; une séance de questions fermées les a tous réglés en quelques lignes.
+
+Ce que l'agent soumet est donc une question fermée, vérifiée à la source, avec ses options, sa
+recommandation et ce que coûte d'attendre. L'opérateur n'y répond pas par un paragraphe : il
+choisit. Et ce qui n'attend pas de lui une décision ne se présente pas comme une décision.
+
+Conséquences exécutoires :
+
+- **Ce qui attend l'opérateur se type** : `décision` quand il doit choisir, `attente` quand c'est un
+  tiers, un événement ou une date qui bloque. Une information n'est pas un point à trancher : elle va
+  là où elle sera relue (P7). Seules les décisions comptent dans « à décider ».
+- **On vérifie avant de demander.** Un point peut être fait, dépassé ou tranché ailleurs. Le
+  présenter sans contre-preuve (P14), c'est faire décider ce qui l'est déjà, et user la confiance
+  que l'opérateur accorde aux questions suivantes.
+- **Le lot plutôt que le fil.** Cinq décisions au plus à la fois, triées par ce que coûte le report,
+  et une réponse par codes. Ce qui est tranché sort dans la même écriture.
+- **Le silence n'est toujours pas une décision** (P13). Mais une question qui ne bouge plus ne revient
+  pas telle quelle : elle revient avec une seule question, la garder, la reformuler ou l'abandonner.
+  Abandonner reste une décision de l'opérateur.
+- **Une file a un plafond.** Au-delà, l'agent trie avant d'ajouter. Ce plafond ne retient jamais une
+  demande d'autonomie ni une évaluation due : P3 et P13 passent avant le confort de la file.
+
+P17 ne change rien à qui décide (P3). Il change ce que l'agent apporte au moment de demander.
+
+---
+
 ## À trancher : questions ouvertes de doctrine
 
 Ces points existent dans les instances qui tournent, mais leur valeur n'est pas justifiée. Tant

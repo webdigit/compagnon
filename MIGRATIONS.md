@@ -147,6 +147,72 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.27.0 → 0.28.0
+
+### Ce qui change
+
+Le 10/10/2026, l'opérateur d'une instance en service a dit que statuer lui prenait trop de temps :
+seize points chauds l'attendaient. Une séance de questions fermées les a réglés en quelques lignes,
+et elle a montré pourquoi la file avait grossi : six points étaient dépassés, deux déjà faits, trois
+n'attendaient aucun choix, et les autres se présentaient comme des sujets à rouvrir, pas comme des
+questions. Rien dans le gabarit ne disait comment présenter une décision.
+
+- **Principe P17** (`DOCTRINE.md`) : une décision se présente instruite, ou elle ne se présente pas.
+- **NOYAU §6quater, « La séance de décision »** : chaque point chaud a un type (`décision` ou
+  `attente`) ; on le vérifie à la source avant de le présenter ; une décision arrive instruite
+  (question fermée, options, recommandation, coût du report) ; cinq au plus par séance, réponse par
+  codes inscrite mot pour mot ; âge de revue à trente jours ; plafond de dix décisions ouvertes, qui
+  ne retient jamais une demande ni une évaluation.
+- **NOYAU §0, point 3quinquies** : au rituel, le compte des décisions ouvertes, les vieilles et les
+  attentes échues, en une ligne.
+- **Points chauds** (`operational-state.md`) : deux colonnes à la fin, `Type` et `Depuis`.
+- **Rapport** (`report.md`), « En attente d'une décision » : une colonne `Recommandation` à la fin.
+- **`FORMAT.md`** : le vocabulaire `Type d'un point chaud`, et les colonnes nouvelles, facultatives.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 (nouveau point 3quinquies) ; nouvelle section §6quater.
+- **`operational-state.md`** : remplacer le bandeau de la section « Points chauds » par celui de
+  cette étiquette, et ajouter au tableau les colonnes `Type` et `Depuis`, **vides**. Modification
+  localisée, marqueur relu après. Aucun type ni aucune date ne s'inventent.
+- **`report.md`**, s'il existe : ajouter la colonne `Recommandation` au tableau « En attente d'une
+  décision », vide sur les lignes existantes. Le prochain rapport la remplit.
+- **Préparer le typage, sans l'écrire.** Pour chaque point chaud ouvert : le vérifier à la source
+  (NOYAU §6quater, point 2), puis proposer son type, sa date `Depuis` (la plus récente qu'on trouve
+  dans le point ou au journal ; à défaut, laisser vide), et, pour une `décision`, la question fermée
+  avec ses options et ta recommandation. Ce qui est déjà fait, dépassé ou sans choix à faire est
+  proposé à la sortie, avec sa preuve. Présenter le tout comme une séance (cinq à la fois).
+- **`VERSION.md`** : passer la version courante à 0.28.0, mettre à jour **Alignée sur**, ajouter la
+  ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`. Tant qu'il ne l'est pas, les sessions ne connaissent pas la séance de
+  décision.
+- **Trancher la séance de typage**, par codes. Ce qu'il tranche sort ou se type dans la même
+  écriture ; ce qu'il laisse reste non typé, et compte comme avant.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « La séance de décision » et le point 3quinquies.
+`VERSION.md` porte 0.28.0. Le tableau des points chauds a cinq colonnes, celui du rapport quatre.
+
+**La suite** : à la session suivante, l'ouverture donne en une ligne le nombre de `décision`
+ouvertes ; une séance proposée présente cinq questions fermées au plus, chacune avec sa
+recommandation ; la réponse de l'opérateur figure mot pour mot dans « Décisions de l'opérateur ».
+
+### Ce que cette migration ne fait pas
+
+Elle ne type aucun point de son chef et ne sort rien de l'état sans l'accord de l'opérateur. Elle
+ne touche pas à `_archive/` ni aux journaux passés. Elle n'ouvre aucune capacité. Le contrat de
+l'écran ne change pas (version 5) : `compagnon.html` lit les colonnes par position, ignore les
+nouvelles et compte encore tous les points chauds ; il apprendra à ne compter que les `décision`
+dans une version suivante.
+
+---
+
 ## 0.26.0 → 0.27.0
 
 ### Ce qui change
