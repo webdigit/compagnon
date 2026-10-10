@@ -10,6 +10,16 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.28.1] - 2026-10-10
+
+### Modifié
+
+- **Écran `compagnon.html`, contrat 6** : colonnes `Type` et `Depuis` des points chauds lues ;
+  seules les `décision` comptent, sous « décisions à prendre » ; les `attente` s'affichent à part ;
+  une décision de plus de trente jours est marquée « revue due ». Colonne `Recommandation` du
+  rapport affichée. Lecture inchangée pour une instance sans ces colonnes.
+- **`FORMAT.md`** : contrat 6, et la lecture du type et de l'ancienneté d'un point chaud.
+
 ## [0.28.0] - 2026-10-10
 
 ### Ajouté

@@ -626,7 +626,12 @@ var PARSE = (function () {
       var tP = tableau(sP.corps);
       if (tP) out.pointsChauds = tP.lignes
         .filter(function (l) { return !estExemple(l); })
-        .map(function (l) { return { num: l[0], sujet: l[1], attente: l[2] }; });
+        .map(function (l) {
+          /* contrat 6 (compagnon 0.28.0) : colonnes Type et Depuis, facultatives. Un type absent
+             ou inconnu compte comme une décision, comme avant. */
+          var t = sansGras(l[3] || "").trim().toLowerCase().split(/\s+/)[0] || "";
+          return { num: l[0], sujet: l[1], attente: l[2], type: t, depuis: sansGras(l[4] || "").trim() };
+        });
     }
 
     /* Le fichier de journal (0.17.0) s'ouvre sur un titre « Journal des cas : <date> » sans
@@ -735,7 +740,7 @@ var PARSE = (function () {
       var tD = tableau(sD.corps);
       if (tD) out.attente = tD.lignes
         .filter(function (l) { return !estExemple(l); })
-        .map(function (l) { return { num: l[0], sujet: l[1], manque: l[2] }; });
+        .map(function (l) { return { num: l[0], sujet: l[1], manque: l[2], reco: l[3] || "" }; });
     }
 
     var sN = sectionDont(secs, /non\s+couvert/i);
@@ -763,6 +768,9 @@ var PARSE = (function () {
       return !evalInscrites.concat(evalVeille).some(function (r) { return cleCompetence(String(r.capacite).replace(/^\W*évaluation\s*·?\s*/i, "")) === x.cle; });
     });
     var chauds = (p.etat && p.etat.pointsChauds) || [];
+    /* contrat 6 : seules les décisions comptent dans la file ; les attentes s'affichent à part. */
+    var decisions = chauds.filter(function (c) { return c.type !== "attente"; });
+    var attentes = chauds.filter(function (c) { return c.type === "attente"; });
     var metier = (p.rapport && p.rapport.attente) || [];
     function file(cle, liste, sing, plur) {
       return { cle: cle, n: liste.length, label: liste.length > 1 ? plur : sing };
@@ -776,7 +784,7 @@ var PARSE = (function () {
         file("freins", freins, "erreur<br>qui freine", "erreurs<br>qui freinent"),
         file("a-confirmer", provisoires, "règle à<br>confirmer", "règles à<br>confirmer"),
         file("contradictions", contradictions, "contradiction<br>ouverte", "contradictions<br>ouvertes"),
-        file("points-chauds", chauds, "point<br>chaud", "points<br>chauds"),
+        file("points-chauds", decisions, "décision<br>à prendre", "décisions<br>à prendre"),
         file("metier", metier, "arbitrage<br>métier", "arbitrages<br>métier")
       ],
       provisoires: provisoires,
@@ -787,6 +795,8 @@ var PARSE = (function () {
       evalVeille: evalVeille,
       echeances: ech,
       chauds: chauds,
+      decisions: decisions,
+      attentes: attentes,
       metier: metier
     };
   }
@@ -1096,10 +1106,21 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
     h.push('<span class="compte">ce qui bloque l\'agent</span><span class="pousse">' + btnSrc("operational-state.md") + "</span></header>");
     if (!p.etat) h.push(absent("operational-state.md", etat));
     else if (!s.chauds.length) h.push('<p class="vide-msg">Aucun point chaud déclaré.</p>');
-    else s.chauds.forEach(function (c) {
-      h.push('<div class="item"><p class="det" style="margin-top:0">' + inl(c.sujet) +
-        '</p><p class="det" style="color:var(--ink-3)">À trancher par <em>' + e(c.attente) + "</em></p></div>");
-    });
+    else {
+      /* contrat 6 : les décisions d'abord, puis les attentes. Une décision sans mouvement depuis
+         trente jours revient en revue (NOYAU §6quater, point 5), mesurée par rapport à arrete_le. */
+      s.decisions.concat(s.attentes).forEach(function (c) {
+        var j = c.depuis ? PARSE.joursEntre(c.depuis, etat.arrete_le) : null;
+        var revue = c.type !== "attente" && j !== null && j > 30;
+        var tete = c.type === "attente" ? '<span class="st">attente</span>'
+          : '<span class="st bleu">décision</span>';
+        if (revue) tete += ' <span class="st rouge">revue due</span>';
+        if (c.depuis) tete += ' <span class="conf">' + e(anciennete(c.depuis, etat.arrete_le) || ("depuis le " + c.depuis)) + "</span>";
+        h.push('<div class="item"><div class="ligne1">' + tete + '</div><p class="det">' + inl(c.sujet) +
+          '</p><p class="det" style="color:var(--ink-3)">' + (c.type === "attente" ? "Attente : " : "À trancher par ") +
+          "<em>" + inl(c.attente) + "</em></p></div>");
+      });
+    }
     h.push("</article>");
 
     /* métier */
@@ -1109,7 +1130,8 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
     else if (!s.metier.length) h.push('<p class="vide-msg">Rien en attente côté métier.</p>');
     else s.metier.forEach(function (m) {
       h.push('<div class="item"><p class="det" style="margin-top:0"><em>' + inl(m.sujet) +
-        '</em></p><p class="det">Ce qui manque pour trancher : ' + inl(m.manque) + "</p></div>");
+        '</em></p><p class="det">Ce qui manque pour trancher : ' + inl(m.manque) + "</p>" +
+        (m.reco ? '<p class="det">Recommandation : ' + inl(m.reco) + "</p>" : "") + "</div>");
     });
     h.push("</article>");
 

@@ -147,6 +147,38 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.28.0 → 0.28.1
+
+### Ce qui change
+
+L'écran apprend la séance de décision de la 0.28.0 (contrat 6, `FORMAT.md`). Il lit les colonnes
+`Type` et `Depuis` des points chauds : seules les `décision` comptent dans la file « décisions à
+prendre », les `attente` s'affichent à part, et une décision sans mouvement depuis trente jours est
+marquée « revue due », mesurée par rapport à `arrete_le`. Il affiche la colonne `Recommandation` de
+« En attente d'une décision » du rapport. Une instance sans ces colonnes s'affiche comme avant.
+
+### Ce que l'agent fait seul
+
+- **`compagnon.html`**, s'il est à la racine du projet : le remplacer par celui de cette étiquette
+  (`ecran/compagnon.html`). C'est du code, pas de la mémoire : il se remplace en entier, sans
+  marqueur. Vérifier la copie par sa taille et son empreinte, comparées à l'original.
+- **`VERSION.md`** : version courante 0.28.1, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Le NOYAU ne change pas : pas de recollage.
+
+### Comment vérifier
+
+À la prochaine régénération de `_ecran/etat.js`, l'écran affiche « décisions à prendre » au lieu de
+« points chauds », et le compte n'inclut pas les points typés `attente`.
+
+### Ce que cette migration ne fait pas
+
+Elle ne touche à aucun fichier de mémoire ni à `_ecran/etat.js`. Elle ne type aucun point.
+
+---
+
 ## 0.27.0 → 0.28.0
 
 ### Ce qui change

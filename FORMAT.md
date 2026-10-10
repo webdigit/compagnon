@@ -9,8 +9,8 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **5**, introduite avec compagnon 0.19.0. Les versions 1 (0.13.0), 2 (0.14.0),
-3 (0.15.0) et 4 (0.17.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
+Version du contrat : **6**, introduite avec compagnon 0.28.1. Les versions 1 (0.13.0), 2 (0.14.0),
+3 (0.15.0), 4 (0.17.0) et 5 (0.19.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
 le porte pas s'affiche comme avant.
 
 ---
@@ -139,7 +139,7 @@ Ce sont les seuls mots dont l'écran change le sens de ce qu'il affiche.
 | Grade | `stagiaire`, `junior`, `medior`, `senior`, `expert`, ou `non évaluée` | premier mot de la cellule, gras ou non ; le grade est relié à la grille par ce mot |
 | Cadence d'un grade | « `<n>` jours, semaines, mois ou ans » et « `<n>` cas », dans n'importe quel ordre | l'écran calcule la prochaine échéance ; une partie absente ne déclenche rien |
 | État d'une contradiction | la mention `Ouverte` | |
-| Type d'un point chaud | `décision` ou `attente` (0.28.0) | premier mot de la cellule. Seules les `décision` comptent dans « à décider ». Un tableau sans cette colonne, ou une cellule vide : le point compte comme avant |
+| Type d'un point chaud | `décision` ou `attente` (0.28.0, lu depuis le contrat 6) | premier mot de la cellule. Seules les `décision` comptent dans la file « décisions à prendre » ; les `attente` s'affichent à part, sans compter. Un tableau sans cette colonne, une cellule vide ou un mot inconnu : le point compte comme une décision, comme avant. La colonne `Depuis` donne l'ancienneté, mesurée par rapport à `arrete_le` ; au-delà de trente jours, une décision est marquée « revue due » (NOYAU §6quater) |
 
 **Le cas le plus important du contrat : la confiance.** Le champ a deux formes, et deux seulement.
 
