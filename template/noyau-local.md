@@ -27,6 +27,10 @@ appliques le NOYAU, et tu le signales à l'opérateur.
 > l'appliquer. Si une règle du NOYAU est trop stricte pour votre métier, c'est un défaut du gabarit :
 > il se remonte en amont, il ne se contourne pas en local.
 >
+> **Plafond : 12 Ko.** Il se lit avec le NOYAU, dans le même contexte, à chaque session (NOYAU §5,
+> « La lecture de run et son budget »). Au-dessus, l'agent le signale et propose ce qui pourrait en
+> sortir : c'est vous qui l'allégez, puis qui recollez.
+>
 > **Rangé par section du NOYAU.** Chaque bloc dit quelle section il complète. C'est ce qui permet à
 > l'agent de retrouver la spécificité au moment du geste qu'elle gouverne, et à une migration de
 > voir si la section complétée a changé de sens.

@@ -4,7 +4,8 @@
 > écriture est listée en fin de session et relue par l'opérateur.
 >
 > **Plafond : 40 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
-> À la rotation, seules les règles `archivé` sortent, entières. Au-delà, ce qui remplit le fichier
+> À la rotation, seules les règles `archivé` sortent, entières, et sans nouvel accord : leur
+> archivage a été tranché en consolidation. Au-delà, ce qui remplit le fichier
 > est vivant, et seule la consolidation le réduit (NOYAU §4, gâchette (d)). Une règle tient en
 > quelques lignes : son récit d'origine va dans « Détails » du journal de la session, et la ligne
 > `Origine` y renvoie.

@@ -21,9 +21,12 @@
 > le récit. À la rotation, le dossier d'une erreur `corrigée` sort dans le fichier de rotation, tel
 > quel, et sa fiche reste ici, recopiée à l'identique, avec une seule ligne nouvelle à la place du
 > dossier : `Fait : dossier complet dans <chemin du fichier de rotation>`. Rien n'est résumé. Une
-> erreur **résolue** depuis longtemps, qui n'éclaire plus aucune décision, sort entière. Une erreur
-> `ouverte` ne sort pas, et la fiche d'une erreur `corrigée` non plus : ce serait desserrer le
-> frein. La date portée par le statut rend « depuis longtemps » lisible au lieu de se rejuger à
+> erreur **résolue** sort entière : sans nouvel accord quand son passage à `résolue` renvoie à une
+> décision de l'opérateur, sur accord sinon. **L'historique d'un statut**, les lignes des statuts
+> antérieurs sous la ligne du statut en cours, sort lui aussi sans nouvel accord : le statut suivant
+> l'a tranché. Une erreur
+> `ouverte` ne sort pas, et la fiche d'une erreur `corrigée` non plus, hors, pour l'une et
+> l'autre, l'historique de leur statut : ce serait desserrer le frein. La date portée par le statut rend « depuis longtemps » lisible au lieu de se rejuger à
 > chaque lecture.
 >
 > Rien ne s'efface (compagnon P5) : déposer dans l'archive n'est pas supprimer.
@@ -41,7 +44,11 @@ Sévérité      : -1 correction mineure · -2 mauvaise décision · -3 violatio
 Catégorie     : mots-clés.
 Statut        : ouverte | corrigée | résolue, suivi de « depuis le <jj/mm/aaaa> ». Voir le bandeau :
                 « corrigée » n'est pas « résolue ». La date est celle du **dernier changement de
-                statut**, pas celle de l'incident, qui vit à la ligne `Date`.
+                statut**, pas celle de l'incident, qui vit à la ligne `Date`. **Une ligne** : le
+                statut en cours, sa date, et le renvoi à ce qui l'a posé. Un statut remplacé ne
+                s'empile pas ici : il part dans « Détails » du journal de la session qui le change.
+                Le passage à `résolue` desserre le frein : tu le proposes, l'opérateur le tranche
+                (`← journal/<fichier>, D<n>`).
 Récidive      : si le même mécanisme se reproduit, on ne crée pas une entrée neuve qu'on referme
                 aussitôt. On **rouvre celle-ci**, et la récidive vaut contradiction contre la règle
                 issue, qui retombe en hypothèse (compagnon P9).
@@ -78,8 +85,7 @@ Sévérité      : **-2** (engagement pris auprès d'un tiers, rétractation né
 
 Catégorie     : engagement ; vérification ; sources périmées.
 
-Statut        : **corrigée** depuis le `<jj/mm/aaaa>`. Résolue seulement si la règle tient au
-                prochain cas du même type.
+Statut        : **corrigée** depuis le `<jj/mm/aaaa>` (← `journal/<fichier>`, D1).
 
 Date          : `<jj/mm/aaaa>`.
 

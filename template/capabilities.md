@@ -116,7 +116,7 @@ rendre un jugement sans évaluation._
 | Capacité | Ce que ça permet | Condition | Statut | Compétence |
 |---|---|---|---|---|
 | `<capacité>` | `<ce que ça permet>` | grade junior · `<condition chiffrée>` · aucune erreur ouverte ni corrigée sur la compétence · accord | VERROUILLÉ | `<C01>` |
-| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct (NOYAU §5quater) **son fichier de journal, les observations et l'état opérationnel, rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | VERROUILLÉ | mémoire |
+| Remplacement sans opérateur | La nuit ou en tâche programmée, écrire en direct (NOYAU §5quater) **son fichier de journal, les observations et l'état opérationnel, et la part tranchée d'une rotation (NOYAU §5, « Ce qui sort sans nouvel accord »), rien d'autre**. Les jugements vont toujours en dépôt | 5 dépôts consécutifs intégrés sans correction · aucune erreur ouverte ni corrigée sur l'écriture de la mémoire · au moins une compétence junior · accord | VERROUILLÉ | mémoire |
 
 ## Niveau 3 et au-delà
 

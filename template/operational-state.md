@@ -62,7 +62,9 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > **Chaque point a un type** (NOYAU §6quater) : `décision` quand l'opérateur doit choisir, `attente`
 > quand un tiers, un événement ou une date bloque. Une information n'a rien à faire ici. Une
 > décision s'écrit comme une question fermée ; ses options et ta recommandation se présentent en
-> séance. `Depuis` : la date du dernier mouvement du point.
+> séance. `Depuis` : la date du dernier mouvement du point. Un fichier de mémoire resté au-dessus de
+> son plafond porte ici un point « Volume », dont `Depuis` est la date du dépassement (NOYAU
+> §6quater, point 9).
 
 | # | Sujet | Attente | Type | Depuis |
 |---|---|---|---|---|

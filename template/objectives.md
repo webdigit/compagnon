@@ -10,8 +10,9 @@ Rappel de la règle d'or : l'agent optimise **ces objectifs**, jamais son score 
 
 > **Plafond : 12 Ko**, lu en entier à chaque session (NOYAU §5, « La lecture de run et son budget »).
 > Une progression **remplace** la précédente sur la même ligne, elle ne s'y ajoute pas : l'historique
-> des valeurs se lit au journal. À la rotation, sortent les progressions antérieures à la dernière
-> de chaque objectif, et les objectifs atteints, manqués ou abandonnés.
+> des valeurs se lit au journal. À la rotation, sortent sans nouvel accord les progressions
+> antérieures à la dernière de chaque objectif ; sur accord, les objectifs atteints, manqués ou
+> abandonnés.
 
 ---
 

@@ -147,6 +147,88 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.28.1 → 0.29.0
+
+### Ce qui change
+
+Le 12/10/2026, une instance en service lisait environ 570 Ko à chaque session : 447 Ko de mémoire
+pour un budget de 150, plus 124 Ko d'instructions hors budget. Ses rotations avaient pourtant été
+faites. Ce qui restait était vivant : 58 erreurs qui freinaient toutes, 36 règles dont une seule
+active. La rotation ne déplace que ce qui est tranché. Seules des décisions de l'opérateur (fermer,
+rassembler, retirer) font baisser un tel fichier, et rien ne les préparait.
+
+- **NOYAU §5, « Ce qui sort sans nouvel accord »** : une erreur `résolue` dont le passage renvoie à
+  une décision de l'opérateur, une règle `archivé`, l'historique d'un statut, les progressions
+  d'objectif remplacées et l'historique de `VERSION.md` au-delà de cinq lignes sortent sans lui
+  redemander. Le registre de `capabilities.md` reste sur accord.
+- **NOYAU §6quater, point 9** : un fichier resté au-dessus de son plafond porte un point chaud
+  `décision` « Volume », et sa séance arrive préparée (liste exacte, questions de consolidation par
+  famille).
+- **NOYAU §0, point 3quater** : la part tranchée sort sans demander ; au-delà du double du plafond
+  avec un point « Volume » ouvert depuis sept jours, la séance se propose en tête de session ; `noyau-local.md` est
+  plafonné à 12 Ko ; le NOYAU est compté sans alerte.
+- **NOYAU §5quater** : sans opérateur, la part tranchée se fait si « Remplacement sans opérateur »
+  est ouvert, et se prépare au dépôt sinon.
+- **`mistakes.md`** : `Statut` tient en une ligne ; le passage à `résolue` se propose, l'opérateur
+  le tranche.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+  Passages qui changent : §0 point 3quater ; §4bis point 7 ; §5 (bloc de fin de session, « La
+  lecture de run et son budget », « Ce qui sort sans nouvel accord ») ; §5quater (« Laquelle, et
+  quand », « Intégrer » point 4bis) ; §6quater point 9.
+- **Bandeaux**, modification localisée, marqueur relu après :
+  - `mistakes.md` : le bandeau, et la ligne `Statut` du schéma d'une entrée ;
+  - `learned-rules.md`, `objectives.md`, `VERSION.md` : la phrase de rotation ;
+  - `operational-state.md` : le bandeau des points chauds.
+- **`capabilities.md`** : ne pas modifier la ligne « Remplacement sans opérateur » du catalogue,
+  zone manuelle. Proposer à l'opérateur le texte de cette étiquette, qui y ajoute « la part tranchée
+  d'une rotation ». Tant qu'il ne l'a pas accepté, un run sans opérateur prépare cette part au dépôt,
+  même si la capacité est ouverte.
+- **`noyau-local.md` n'est pas touché** : c'est la zone de l'opérateur, aucune migration n'y écrit.
+- **État des lieux, en lecture seule** : la taille de chaque fichier de la lecture de run, de
+  `noyau-local.md` et du NOYAU, leurs plafonds et les totaux. Pour chaque fichier au-dessus, ce
+  qui sortirait sans nouvel accord, en octets.
+- **Aucune rotation pendant la migration.** La session suivante la fera au rituel (§0, point
+  3quater), une fois le NOYAU recollé.
+- **`VERSION.md`** : version courante 0.29.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`. Tant qu'il ne l'est pas, rien ne sort sans accord.
+- **Accepter ou refuser** l'ajout de « la part tranchée d'une rotation » à la ligne « Remplacement
+  sans opérateur » du catalogue. Sans réponse, rien ne change : la nuit prépare, le jour applique.
+- **Si `noyau-local.md` dépasse 12 Ko** : décider ce qui en sort, sur la proposition de l'agent,
+  puis recoller. Ce n'est pas urgent : l'agent le rappellera à chaque session.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « Ce qui sort sans nouvel accord » et le point 9 du
+§6quater. `VERSION.md` porte 0.29.0.
+
+**La suite** : à la première session après le recollage, l'ouverture dit en une ligne chaque
+fichier au-dessus de son plafond. Le bloc de fin de session porte une ligne `ROTATION automatique`
+pour chaque fichier où quelque chose de tranché est sorti. Chaque fichier resté au-dessus a son
+point chaud « Volume ».
+
+### À quoi s'attendre sur une instance très au-dessus
+
+La sortie automatique ne ramène pas une telle instance sous ses plafonds. Sur la première instance
+mesurée, elle ôte environ 26 Ko à `mistakes.md` (l'historique des statuts), sur 160. Le reste
+baisse avec les séances de volume : fermer ce qui est résolu, rassembler les erreurs de même cause,
+trancher les règles provisoires. Une séance porte cinq décisions au plus. Prévoir plusieurs
+séances, et les commencer par le fichier qui dépasse le plus.
+
+### Ce que cette migration ne fait pas
+
+Elle ne fait aucune rotation, ne crée aucun point chaud et ne touche pas à `noyau-local.md`. Elle
+ne raccourcit aucune fiche : l'historique d'un statut sort par la rotation, à l'identique, et une
+ligne `Statut` déjà longue n'est pas réécrite.
+
+---
+
 ## 0.28.0 → 0.28.1
 
 ### Ce qui change

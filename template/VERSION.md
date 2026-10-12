@@ -37,8 +37,8 @@ les notes, jamais par un script (compagnon P11). Puis mettre ce fichier à jour,
 | `<jj/mm/aaaa>` | (aucune) → `<version>` | Pose initiale de l'instance. |
 
 > **Plafond : 12 Ko**, lu à chaque session (NOYAU §5, « La lecture de run et son budget »). À la
-> rotation, sortent les lignes d'historique au-delà des cinq dernières. Un écart assumé ne sort
-> jamais.
+> rotation, sortent sans nouvel accord les lignes d'historique au-delà des cinq dernières. Un écart
+> assumé ne sort jamais.
 
 ## Écarts assumés par rapport au gabarit
 

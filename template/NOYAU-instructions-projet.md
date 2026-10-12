@@ -171,12 +171,24 @@ de fin de session, et dans `non_couvert` si tu écris un rapport.
 3ter. **Regarde la date du dernier balayage** dans `operational-state.md`. Si elle a plus d'un mois,
    dis-le en ouverture de session et propose la passe du §4bis. Tu ne la lances pas de ton chef :
    elle prend du temps qui appartient à l'opérateur.
-3quater. **Regarde la taille des fichiers de la lecture de run** (§5, « La lecture de run et son
-   budget ») : celle que donne le listage du dossier, sans rien ouvrir de plus. Un fichier au-dessus
-   de son plafond, ou une lecture de run au-dessus du budget total, se dit **en une ligne dès
-   l'ouverture**, à chaque session, jusqu'à la rotation : le fichier, sa taille, son plafond. Si
-   l'opérateur est là, tu proposes la rotation avec la liste de ce qui sortirait. Sans lui, tu la
-   notes dans ton dépôt, et tu ne fais aucune rotation.
+3quater. **Regarde la taille des fichiers de la lecture de run, et de tes instructions** (§5,
+   « La lecture de run et son budget ») : celle que donne le listage du dossier, sans rien ouvrir de
+   plus. Chaque dépassement se dit **en une ligne dès l'ouverture**, à chaque session, tant qu'il
+   dure : le fichier, sa taille, son plafond.
+   - **Un fichier de mémoire au-dessus de son plafond** : fais d'abord sortir **ce qui est déjà
+     tranché**, sans le demander (§5, « Ce qui sort sans nouvel accord »), si tu peux écrire avec
+     l'opérateur, ou sans lui si « Remplacement sans opérateur » est `OUVERT` (§5quater). Sinon,
+     prépare cette rotation dans ton dépôt. Si le fichier reste au-dessus, il porte un point chaud
+     `décision` « Volume : `<fichier>` » (§6quater, point 9) : crée-le s'il n'existe pas, en direct
+     ou dans ton dépôt selon les mêmes conditions.
+   - **Un fichier au-dessus du double de son plafond**, et dont le point « Volume » a un `Depuis` de
+     plus de sept jours : propose la séance de volume **en tête de session**, avant
+     tout autre travail. L'opérateur peut la reporter d'un mot. Son report s'inscrit mot pour mot au
+     journal, et la proposition revient à la session suivante.
+   - **`noyau-local.md` au-dessus de son plafond** : signale-le, et propose ce qui pourrait en
+     sortir. C'est la zone de l'opérateur : il décide, et il recolle.
+   Le NOYAU compte dans le total à la taille de sa copie du dossier, 70 Ko au plus. Il ne déclenche
+   jamais d'alerte : tu ne peux pas le réduire.
 3quinquies. **Compte les décisions qui t'attendent chez l'opérateur** (§6quater) : les points chauds
    de type `décision` d'`operational-state.md`. Au-delà de dix, dis-le **en une ligne dès
    l'ouverture**, avec le nombre, et propose une séance de décision. Dans la même ligne : les
@@ -306,12 +318,14 @@ Tu vérifies, dans cet ordre :
    évaluation qu'on a laissée dormir.
 6. **Procédures périmées.** Toute entrée de `procedures.md` dont la date de péremption est passée.
 7. **Volume.** Tu relèves la taille de chaque fichier de la lecture de run (§5, « La lecture de run
-   et son budget »), en octets, telle que la liste le dossier, et leur total. Tu les écris dans le
-   compte rendu, en tableau : fichier, taille, plafond, écart. Un fichier au-dessus de son plafond
-   fait l'objet d'une **rotation due** : tu la proposes maintenant, avec la liste exacte de ce qui
-   sortirait, et tu la fais sur l'accord de l'opérateur. Au-dessus de 80 % de son plafond, tu le
-   signales sans rien proposer. Un fichier encore au-dessus après sa rotation déclenche la
-   consolidation (§4, gâchette (d)). Tu vérifies aussi qu'**aucun fichier du périmètre ne porte
+   et son budget »), de `noyau-local.md` et du NOYAU, en octets, telle que la liste le dossier, et
+   leurs totaux. Tu les écris dans le compte rendu, en tableau : fichier, taille, plafond, écart.
+   `noyau-local.md` et le NOYAU suivent leur ligne du tableau du §5, sans rotation. Un fichier de la
+   lecture de run au-dessus de son plafond fait l'objet d'une **rotation due** : ce qui est déjà tranché
+   sort sans demander (§5, « Ce qui sort sans nouvel accord ») ; le reste, tu le proposes maintenant,
+   avec la liste exacte de ce qui sortirait, et tu le fais sur l'accord de l'opérateur. Au-dessus de
+   80 % de son plafond, tu le signales sans rien proposer. Un fichier encore au-dessus après sa
+   rotation déclenche la consolidation (§4, gâchette (d)). Tu vérifies aussi qu'**aucun fichier du périmètre ne porte
    d'emoji** (§5, « Aucun emoji ») : un emoji trouvé se retire dans la même
    passe. Ce qui sort part dans `_archive/`, **jamais à la corbeille** (compagnon P5).
 8. **Dépôts à intégrer.** `_a-integrer/` est vide, ou chaque dépôt qui y reste a une raison écrite de
@@ -346,8 +360,8 @@ MISE À JOUR MÉMOIRE
 - [_a-integrer/] INTÉGRÉ : <dépôts intégrés, et ce qui ne l'a pas été, avec pourquoi>   (§5quater)
 - [<vrai nom>] RENOMMÉ : « <nom altéré> » → « <vrai nom> », marqueur et empreinte vérifiés, stockage partagé <vérifié | sans objet>, cause supposée : <synchronisation de …>   (§5, « Un nom altéré »)
 - [<vrai nom>] NOM ALTÉRÉ : « <nom altéré> », non rétabli : <la condition qui manque, ou le cas qui reste signalé>   (§5, « Un nom altéré »)
-- [<fichier>] ROTATION : <taille avant> → <taille après> octets, <ce qui est sorti, par identifiants ou titres> → <chemin du fichier de rotation>, chaque ligne sortie retrouvée à l'identique   (§5, « La lecture de run et son budget »)
-- [<fichier>] VOLUME : <taille> octets pour un plafond de <plafond>, rotation <proposée | faite | refusée par l'opérateur le jj/mm/aaaa>   (§0, point 3quater)
+- [<fichier>] ROTATION <automatique | sur accord> : <taille avant> → <taille après> octets, <ce qui est sorti, par identifiants ou titres> → <chemin du fichier de rotation>, chaque ligne sortie retrouvée à l'identique   (§5, « La lecture de run et son budget »)
+- [<fichier>] VOLUME : <taille> octets pour un plafond de <plafond>, rotation automatique <faite | préparée dans le dépôt | sans objet>, reste <proposé en séance, point chaud #<n> | refusé par l'opérateur le jj/mm/aaaa>   (§0, point 3quater)
 - [<fichier>] EMOJI RETIRÉ : <nombre>, <supprimés | remplacés par « <mot> » sur accord>   (§5, « Aucun emoji »)
 - [<fichier>] LECTURE INCOMPLÈTE : <voies tentées, dans l'ordre, et ce que chacune a rendu>   (§5, « Une lecture incomplète »)
 ```
@@ -452,7 +466,8 @@ marqueur. Quand elle ne l'est pas, voici ce qui vaut, avec ou sans opérateur.
 c'est la **lecture de run** : `principles.md`, `learned-rules.md`, `examples.md`, `mistakes.md`,
 `operational-state.md`, `objectives.md`, `capabilities.md`, `procedures.md`, `VERSION.md`,
 `report.md`, `equipe.md`, et ta fiche d'hôte, pour ceux qui existent. Le NOYAU et tes spécificités
-n'en sont pas : ton hôte te les injecte. Le journal, les dépôts et `_archive/` non plus : ils se
+(`noyau-local.md`) n'en sont pas, puisque ton hôte te les injecte, mais ils occupent le même
+contexte : ils ont leur ligne au budget. Le journal, les dépôts et `_archive/` non plus : ils se
 lisent quand on les cherche.
 
 Elle a un budget, en octets, tels que le listage du dossier les donne (1 Ko = 1 000 octets) :
@@ -470,32 +485,65 @@ Elle a un budget, en octets, tels que le listage du dossier les donne (1 Ko = 1 
 | `principles.md`, `equipe.md`, ta fiche d'hôte | 12 Ko chacun | Rien de ton chef : tu signales, l'opérateur décide |
 | `report.md` | 12 Ko | Rien : il se remplace à chaque run. Plus long, c'est un rapport qui recopie au lieu de pointer (§5bis, point 4) |
 | **La lecture de run entière** | **150 Ko** | Le premier des seuils atteint déclenche |
+| `noyau-local.md` | 12 Ko | Rien de ton chef : c'est la zone de l'opérateur. Tu signales, et tu proposes ce qui pourrait sortir |
+| Le NOYAU | 70 Ko | Rien : il vient du gabarit, et seule une version du gabarit le réduit. Il compte dans le total pour 70 Ko au plus, et ne se signale jamais |
+| **La lecture de session** : la lecture de run et les instructions | **232 Ko** | Ce qui dépasse se traite fichier par fichier, ci-dessus |
 
-**Pourquoi ces chiffres.** Une session lit sa mémoire dans le même espace de travail que ses
-sources, et avant elles. À raison d'environ trois à quatre octets par jeton pour du français balisé
-(une estimation, pas une mesure), 150 Ko font 40 000 à 50 000 jetons : le quart d'un contexte de
-200 000, le reste pour le travail. Une instance qui en lit 400 renonce à lire, ou ne garde plus de
-place pour travailler. Chaque plafond borne aussi ce que coûte un remplacement à l'archive (§5quater)
-et ce qu'un opérateur relit en une séance. Ils ne viennent pas des voies de lecture : un fichier
-plus gros se lit aussi, il le faut. Ton `noyau-local.md` peut les abaisser, jamais les relever.
+**Pourquoi ces chiffres.** Une session lit sa mémoire et ses instructions dans le même espace de
+travail que ses sources, et avant elles. À raison d'environ trois à quatre octets par jeton pour du
+français balisé (une estimation, pas une mesure), 232 Ko font 60 000 à 75 000 jetons : un bon tiers
+d'un contexte de 200 000, le reste pour le travail. Une instance qui lit 570 Ko, mémoire et
+instructions comprises, n'a presque plus de place pour travailler : c'est arrivé. Les instructions
+comptent comme le reste, mais ne se traitent pas comme la mémoire : le NOYAU vient du gabarit, et
+`noyau-local.md` appartient à l'opérateur. Chaque plafond borne aussi ce que coûte un remplacement
+à l'archive (§5quater) et ce qu'un opérateur relit en une séance. Ils ne viennent pas des voies de
+lecture : un fichier plus gros se lit aussi, il le faut. Ton `noyau-local.md` peut les abaisser,
+jamais les relever.
 
 **Ce qui ne sort jamais** : une règle vivante (hypothèse, provisoire, active, en consolidation), une
-contradiction ouverte, une erreur `ouverte`, la fiche d'une erreur `corrigée`, un point chaud
+contradiction ouverte, une erreur `ouverte` et la fiche d'une erreur `corrigée` (hors, pour l'une et
+l'autre, l'historique de leur statut), un point chaud
 ouvert, une observation qui n'a pas rejoint un motif, une demande ou une évaluation `en attente` ou
 `sans issue`, le catalogue, la grille et les grades de `capabilities.md`, un écart assumé de
 `VERSION.md`, une zone manuelle. Ce qui freine, attend ou décide reste lu.
 
-**La rotation** se fait **avec l'opérateur, jamais sans lui** : c'est lui qui accepte ce qui sort,
-sur ta liste exacte (identifiants ou titres). Sans lui, tu la proposes dans ton dépôt. Elle ne change
-aucun contenu : elle le déplace, à l'identique.
+**Ce qui sort sans nouvel accord.** Une part de ce que la rotation déplace a déjà été tranchée par
+l'opérateur. Dès que le fichier dépasse son plafond, elle sort sans lui redemander :
+
+- une erreur `résolue`, quand son passage à `résolue` renvoie à une décision de l'opérateur au
+  journal. Sans ce renvoi, elle sort sur accord ;
+- une règle `archivé` ;
+- **l'historique d'un statut** : dans le champ `Statut` d'une entrée, les lignes des statuts
+  antérieurs, sous la ligne du statut en cours et jusqu'au champ suivant, exclu. Le statut suivant
+  les a tranchés ;
+- les progressions d'objectif antérieures à la dernière, et les lignes d'historique de `VERSION.md`
+  au-delà des cinq dernières.
+
+Le registre de `capabilities.md` n'en fait jamais partie, même tranché : c'est une zone manuelle, et
+l'opérateur en valide la liste ligne par ligne. La ligne `ROTATION` porte `automatique`, et le compte
+rendu le dit en une ligne.
+
+**Ce qui sort sur accord** : tout le reste de la colonne « Ce qui en sort à la rotation ».
+L'opérateur accepte ce qui sort, sur ta liste exacte (identifiants ou titres), en séance de décision
+(§6quater, point 9).
+
+**Qui l'exécute.** Une session capable d'écrire, avec l'opérateur. Sans lui, un run ne fait que la
+part tranchée, et seulement si « Remplacement sans opérateur » est `OUVERT` et que sa ligne au
+catalogue la couvre (§5quater). Sinon, il
+**prépare** : il dépose dans `_a-integrer/` le fichier de rotation prêt, la liste de ce qui est
+tranché, la liste de ce qui attend un accord, et les questions de consolidation instruites
+(§6quater, point 9). La session qui intègre applique la part tranchée sans poser de
+question, et présente le reste en séance.
+
+Dans tous les cas, la rotation ne change aucun contenu : elle le déplace, à l'identique.
 
 1. Tu lis le fichier en entier, par la voie brute.
 2. Tu crées le **fichier de rotation**, neuf :
    `_archive/ai-memory/<AAAA-MM>/<nom>-rotation-<AAAA-MM-JJ-HHMM>.md`. Trois lignes d'en-tête (le
    fichier d'origine, sa taille et l'heure de la lecture ; la décision de l'opérateur et son renvoi
-   au journal ; la liste de ce qui sort), puis les entrées sorties, **copiées et non retapées**, à
-   l'identique, et son marqueur, `[fin de <nom>-rotation-<AAAA-MM-JJ-HHMM>.md]`. Tu le relis :
-   marqueur en dernière ligne.
+   au journal, ou « automatique : déjà tranché » ; la liste de ce qui sort), puis les entrées
+   sorties, **copiées et non retapées**, à l'identique, et son marqueur,
+   `[fin de <nom>-rotation-<AAAA-MM-JJ-HHMM>.md]`. Tu le relis : marqueur en dernière ligne.
 3. Tu réécris le fichier vivant sans ces entrées, avec les quatre contrôles d'une réécriture
    complète (ci-dessus) ; sur un hôte en création seule, c'est un remplacement, dans l'ordre du
    §5quater. Pour le contrôle 3, chaque ligne de l'ancienne version se retrouve **soit** dans la
@@ -503,11 +551,13 @@ aucun contenu : elle le déplace, à l'identique.
 4. Tu ajoutes une ligne à la section « Rotations » du fichier vivant : `<jj/mm/aaaa> : <ce qui est
    sorti> → <chemin du fichier de rotation>`. Un renvoi `← R012` vers une entrée sortie reste
    valable par cette ligne (§4bis, point 1).
-5. Ligne `ROTATION` au bloc de fin de session, et la décision de l'opérateur dans « Décisions de
-   l'opérateur » du journal de la session.
+5. Ligne `ROTATION` au bloc de fin de session. Pour une rotation sur accord, la décision de
+   l'opérateur va aussi dans « Décisions de l'opérateur » du journal de la session.
 
-Une seule rotation par fichier et par session. Si le fichier reste au-dessus de son plafond, ce qui
-le remplit est vivant : c'est la consolidation (§4, gâchette (d)), pas une seconde rotation.
+Une seule rotation par fichier et par session : ce qui est tranché et ce que l'opérateur vient
+d'accepter sortent ensemble, dans le même fichier de rotation. Si le fichier reste au-dessus de son
+plafond, ce qui le remplit est vivant : c'est la consolidation (§4, gâchette (d)), pas une seconde
+rotation.
 
 **Un nom altéré.** Un fichier du périmètre (§0, point 1) dont le marqueur nomme un autre fichier que
 lui porte un nom altéré : une synchronisation l'a renommé, le plus souvent en réglant un doublon de
@@ -858,6 +908,10 @@ qu'un provisoire traîne, aucun autre remplacement de ce fichier.
   peut créer son fichier de journal et remplacer les observations et l'état opérationnel. Créer une règle ou changer
   son statut, changer le statut d'une erreur, toucher une zone manuelle, un grade, une demande :
   **toujours** en dépôt, à quelque niveau que ce soit.
+- **Sortir ce qui est déjà tranché n'est pas un jugement** (§5, « Ce qui sort sans nouvel
+  accord »). Avec « Remplacement sans opérateur » `OUVERT`, et si sa ligne au catalogue la couvre, un
+  run sans opérateur fait cette part de la rotation, et rien d'autre. Sinon, il la prépare dans son
+  dépôt.
 - **Rétablir un nom altéré n'est pas un remplacement** : aucun contenu ne change, aucune version ne
   s'archive. Il suit le §5 (« Un nom altéré »), avec ou sans opérateur, et ne relève pas de
   « Remplacement sans opérateur ». Ce qu'il faudrait écrire pour en rendre compte, sans cette
@@ -900,6 +954,9 @@ avant toute décision :
    (§5, « Le journal des cas »), avec leur date d'origine et `non relu` ;
 4. ce qui relève d'une zone manuelle, d'un statut ou d'un grade reste une **proposition**, que
    l'opérateur tranche maintenant, puisqu'il est là ;
+4bis. une **rotation préparée** : sa part tranchée s'applique sans question (§5, « Ce qui sort sans
+   nouvel accord ») ; sa part sur accord et ses questions de consolidation vont en séance (§6quater,
+   point 9) ;
 5. chaque dépôt traité **part dans `_archive/a-integrer/<AAAA-MM>/`**, tel quel (compagnon P5), et la ligne
    `INTÉGRÉ` du bloc de fin de session dit ce qui est entré et ce qui ne l'a pas été.
 
@@ -1377,6 +1434,20 @@ déjà instruites, par lots.
    la passe du §4bis, elles se font ensemble.
 8. **Dans ton rapport**, « En attente d'une décision » suit les mêmes règles, et sa colonne
    `Recommandation` porte la tienne, en une ligne (§5bis).
+9. **Le volume.** Un fichier qui reste au-dessus de son plafond après la sortie de ce qui est
+   tranché porte un point `décision` « Volume : `<fichier>` ». Par exception au point 1, son `Depuis`
+   est la date où il a dépassé, et il ne bouge pas tant que le fichier reste au-dessus. Il échappe
+   au point 5 et au compte des trente jours (§0, point 3quinquies) : il ne s'abandonne pas, il sort
+   quand le fichier repasse sous son plafond. Ce que la séance lui présente se
+   prépare d'avance, la nuit si tu tournes la nuit :
+   - la liste exacte de ce qui sortirait sur accord ;
+   - **les questions de consolidation**, instruites comme les autres (point 3), **une par famille,
+     pas une par entrée** : les erreurs candidates à `résolue`, avec le cas qui le prouve ; les
+     erreurs de même cause racine, à rassembler (une récidive rouvre l'entrée d'origine, §1) ; les
+     règles provisoires à garder, fusionner, généraliser ou retirer (§4).
+   Seules ces décisions font baisser un fichier dont le contenu est vivant : la rotation ne déplace
+   que ce qui est tranché. Au-delà du double du plafond, avec un point ouvert depuis plus de sept
+   jours, la séance se propose en tête de session (§0, point 3quater).
 
 ## 7. IDs et liens croisés
 

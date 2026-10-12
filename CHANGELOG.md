@@ -10,6 +10,49 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.29.0] - 2026-10-12
+
+### Ajouté
+
+- **NOYAU §5, « Ce qui sort sans nouvel accord »** : ce que l'opérateur a déjà tranché sort de la
+  lecture de run sans lui redemander, dès qu'un fichier dépasse son plafond. Cela couvre une erreur
+  `résolue` dont le passage renvoie à sa décision, une règle `archivé`, l'historique d'un statut
+  (les statuts antérieurs empilés sous le statut en cours), les progressions d'objectif remplacées et
+  l'historique de `VERSION.md` au-delà de cinq lignes. Le registre de `capabilities.md` reste sur
+  accord : c'est une zone manuelle.
+- **NOYAU §6quater, point 9, « Le volume »** : un fichier resté au-dessus de son plafond porte un
+  point chaud `décision` « Volume ». Ce que sa séance présente se prépare d'avance : la liste de ce
+  qui sortirait sur accord, et les questions de consolidation, une par famille (erreurs candidates à
+  `résolue`, erreurs de même cause racine, règles provisoires).
+- **Escalade** (NOYAU §0, point 3quater) : au-delà du double du plafond depuis plus de sept jours,
+  la séance de volume se propose en tête de session. L'opérateur peut la reporter d'un mot.
+- **Budget des instructions** (NOYAU §5) : `noyau-local.md` plafonné à 12 Ko, le NOYAU compté (70 Ko
+  visés, compté pour 70 au plus), et une lecture de session de 232 Ko au plus, mémoire et instructions comprises.
+
+### Modifié
+
+- **NOYAU §0, point 3quater** : la sortie de ce qui est tranché se fait sans demander, avec
+  l'opérateur, ou sans lui si « Remplacement sans opérateur » est ouvert et la couvre ; sinon, elle
+  se prépare au dépôt. `noyau-local.md` est contrôlé ; le NOYAU
+  est compté sans alerte.
+- **NOYAU §4bis, point 7, et bloc de fin de session** : `ROTATION automatique | sur accord`, et une
+  ligne `VOLUME` qui dit ce qui a été fait et ce qui attend.
+- **NOYAU §5quater** : un run sans opérateur fait la part tranchée de la rotation seulement si
+  « Remplacement sans opérateur » est ouvert, et la prépare sinon. À l'intégration, une rotation
+  préparée applique sa part tranchée sans question (point 4bis).
+- **`mistakes.md`** : la ligne `Statut` tient en une ligne (statut en cours, date, renvoi) ; un
+  statut remplacé part au journal. Le passage à `résolue` se propose, l'opérateur le tranche.
+  L'exemple fictif suit le schéma.
+- **`capabilities.md`**, catalogue : « Remplacement sans opérateur » couvre aussi la part tranchée
+  d'une rotation. Sur une instance existante, l'élargissement attend la confirmation de l'opérateur.
+- **Bandeaux** de `learned-rules.md`, `objectives.md`, `VERSION.md`, `operational-state.md` (points
+  chauds) et `noyau-local.md` : ce qui sort sans nouvel accord, le point « Volume », le plafond des
+  spécificités.
+
+### Coût
+
+- Le NOYAU passe de 109,0 à 113,3 Ko. Sa réécriture en phrases courtes est prévue en 0.30.0.
+
 ## [0.28.1] - 2026-10-10
 
 ### Modifié
