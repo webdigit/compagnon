@@ -147,6 +147,60 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.29.0 → 0.30.0
+
+### Ce qui change
+
+Le NOYAU pesait 113 Ko, lus à chaque session dans le même contexte que la mémoire. Il en pèse 80
+(-29 % de jetons), sans consigne retirée. Trois moyens :
+
+- **Phrases courtes.** Une consigne par phrase, conditions, portées, ordres et renvois gardés.
+  Chaque section a été vérifiée consigne par consigne, par un relecteur distinct de celui qui l'a
+  réécrite.
+- **Les justifications sortent** dans `NOYAU-pourquoi.md`, sous le même numéro de section. Il ne
+  commande rien et se lit à la demande.
+- **Cinq sections deviennent des modules**, dans `noyau/`, lus seulement sur leur déclencheur :
+  `ecran.md` (§5ter), `sans-poste.md` (§5quinquies), `relance.md` (§5sexies, la relance du
+  coordinateur), `coordination.md` (§5septies), `migration.md` (§6bis, la procédure). Chaque section
+  garde dans le NOYAU un talon qui dit quand lire son module, et ce qui doit rester toujours présent
+  (la règle générale du §5sexies, les interdits du coordinateur, le déclencheur et la veille du §6bis).
+  Les titres et les numéros de points ne changent pas : « NOYAU §5septies, point 8 » renvoie au module.
+- **Budget** (§5) : le NOYAU compte pour 85 Ko au plus, la lecture de session pour 247 Ko au plus.
+- **Défaut corrigé au passage** : une relance du coordinateur arrive à la suite du texte de la tâche,
+  pas en premier message. Le §0 dit maintenant « un message de ton run ».
+
+### Ce que l'agent fait seul
+
+- **NOYAU** : le remplacer en entier par celui de cette étiquette, trous remplis à l'identique.
+- **`NOYAU-pourquoi.md`** et **`noyau/`** (cinq fichiers) : les poser depuis cette étiquette, à
+  l'identique. Ce sont des fichiers du gabarit, comme le NOYAU : ils ne se modifient pas en local,
+  et chaque migration les remplace en entier. Vérifier pour chacun le marqueur en dernière ligne.
+- **`noyau-local.md` n'est pas touché.** Ses blocs gardent leur section : un bloc « Complément au
+  §5septies » s'applique quand le module de la coordination s'applique.
+- **`VERSION.md`** : version courante 0.30.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`. Le NOYAU collé est plus court d'un tiers environ.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « Modules du NOYAU » dans la liste des fichiers, et le §5ter
+ne fait plus que trois lignes. Le dossier contient `NOYAU-pourquoi.md` et `noyau/` avec cinq fichiers,
+chacun terminé par son marqueur. `VERSION.md` porte 0.30.0.
+
+**La suite** : au premier run sans opérateur, le run lit `noyau/sans-poste.md` avant tout le reste.
+Un coordinateur lit `noyau/coordination.md` avant son passage.
+
+### Ce que cette migration ne fait pas
+
+Elle ne touche à aucun fichier de mémoire, ni à `noyau-local.md`, ni aux points d'entrée. Elle ne
+change aucune consigne : seule leur forme et leur emplacement changent, à une correction près (la
+reconnaissance d'une relance, ci-dessus).
+
+---
+
 ## 0.28.1 → 0.29.0
 
 ### Ce qui change

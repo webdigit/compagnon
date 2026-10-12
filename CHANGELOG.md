@@ -10,6 +10,27 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.30.0] - 2026-10-12
+
+### Modifié
+
+- **NOYAU réécrit en phrases courtes** : une consigne par phrase, conditions, portées, ordres et
+  renvois gardés. 113,3 Ko → 80,0 Ko, 36 263 → 25 862 jetons (-29 %, tokenizer Claude du
+  SDK 0.34.2). Chaque section vérifiée consigne par consigne par un relecteur distinct.
+- **Budget** (§5) : NOYAU compté pour 85 Ko au plus, lecture de session 247 Ko au plus.
+- **§0, point 0** : une relance se reconnaît à une ligne `[consigne de` dans un message du run, pas
+  seulement dans le premier (elle arrive à la suite du texte de la tâche).
+- **§6** : les modules de `noyau/` et `NOYAU-pourquoi.md` ne se modifient pas en local.
+
+### Ajouté
+
+- **`NOYAU-pourquoi.md`** : les justifications du NOYAU, sous le même numéro de section, lues à la
+  demande. Il ne commande rien.
+- **`noyau/`, modules lus sur déclencheur** : `ecran.md` (§5ter), `sans-poste.md` (§5quinquies),
+  `relance.md` (§5sexies, suite), `coordination.md` (§5septies), `migration.md` (§6bis, suite). Le
+  NOYAU garde pour chacun un talon : quand le lire, et ce qui doit rester toujours présent.
+- **`template/README.md`** : les deux nouvelles entrées dans le tableau des fichiers.
+
 ## [0.29.0] - 2026-10-12
 
 ### Ajouté
