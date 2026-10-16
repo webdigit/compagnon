@@ -7,7 +7,7 @@
 > À la rotation, seules les règles `archivé` sortent, entières, et sans nouvel accord : leur
 > archivage a été tranché en consolidation. Au-delà, ce qui remplit le fichier
 > est vivant, et seule la consolidation le réduit (NOYAU §4, gâchette (d)). Une règle tient en
-> quelques lignes : son récit d'origine va dans « Détails » du journal de la session, et la ligne
+> 1 Ko environ, quelques lignes : son récit d'origine va dans « Détails » du journal de la session, et la ligne
 > `Origine` y renvoie.
 
 Ce fichier accumule les **règles de jugement**. Les **procédures d'outil** vont dans

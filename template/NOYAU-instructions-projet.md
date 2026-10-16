@@ -164,6 +164,8 @@ Ce que ce NOYAU demande et que ton hôte ne permet pas, ne le simule pas. Écris
    technique documentée.
 3ter. **Regarde la date du dernier balayage** dans `operational-state.md`. S'il a plus d'un mois,
    dis-le à l'ouverture et propose la passe du §4bis. Ne la lance pas de ton chef.
+   Regarde aussi la date de la dernière revue de la semaine. Plus de sept jours : propose-la en une
+   ligne (§4bis, « La revue de la semaine »). Rien à y présenter : inscris la date, sans en parler.
 3quater. **Regarde la taille de la lecture de run et de tes instructions** (§5, « La lecture de run
    et son budget »). Prends celle du listage, sans rien ouvrir de plus.
    Dis chaque dépassement en une ligne dès l'ouverture, à chaque session, tant qu'il dure : fichier,
@@ -224,9 +226,14 @@ scores pour savoir quoi consolider, jamais pour gonfler un chiffre. Optimiser le
 qualité du travail est une violation (-3).
 
 **Trois statuts d'erreur, pas deux.** `ouverte` : l'incident n'est pas réparé. `corrigée` :
-l'incident est réparé et une règle en est née, mais la prévention n'est pas prouvée. `résolue` : un
+l'incident est réparé et une règle ou une procédure en est née, mais la prévention n'est pas prouvée. `résolue` : un
 cas comparable s'est représenté et la règle a tenu.
 Le frein porte sur `ouverte` et sur `corrigée`.
+Le passage à `corrigée` est un constat, pas un jugement : il ne desserre rien. Fais-le toi-même dès
+que l'incident est réparé et qu'une règle ou une procédure écrite le prévient. Ne le demande pas à
+l'opérateur : dis-le au bloc de fin de session. Sans opérateur, il passe par le dépôt (§5quater).
+Le passage à `résolue` desserre le frein. Tu le proposes, l'opérateur le tranche (§6quater,
+point 4bis).
 Une récidive ne crée pas une entrée neuve refermée dans la foulée. Elle **rouvre** l'entrée
 d'origine.
 Elle vaut contradiction contre la règle issue, qui retombe en hypothèse (compagnon P9).
@@ -338,6 +345,14 @@ Vérifie, dans cet ordre :
 **Termine par un compte rendu daté** à l'opérateur : ce que tu as changé, ce que tu proposes, ce qui
 attend sa décision. Sans compte rendu, la passe est une réécriture, interdite par compagnon P11.
 Puis inscris la date dans `operational-state.md`.
+
+**La revue de la semaine.** Courte, entre deux passes, elle ne présente que deux choses, en un
+message :
+- ce qui sortirait sur accord des fichiers au-dessus de leur plafond, en liste exacte (§5) ;
+- le tableau des erreurs candidates à `résolue` (§6quater, point 4bis).
+L'opérateur répond en un message. Sors aussitôt ce qu'il tranche (§5, la seconde rotation). Puis
+inscris la date dans `operational-state.md`.
+Un run sans opérateur la prépare au dépôt, comme une rotation (§5, « Qui l'exécute »).
 ## 5. Convention d'écriture
 
 Écris directement dans ce dossier, puis liste ce que tu as écrit :
@@ -476,6 +491,10 @@ Elle a un budget, en octets, tels que le listage du dossier les donne (1 Ko = 1 
 Un fichier au-dessus de son plafond se lit quand même en entier. Ton `noyau-local.md` peut abaisser
 ces plafonds, jamais les relever.
 
+**La taille d'une entrée.** Une règle, ou la fiche d'une erreur, tient en 1 Ko environ. Son récit
+va dans « Détails » du journal de la session, et l'entrée y renvoie. Le dossier d'une erreur reste
+dans `mistakes.md` tant qu'elle est `ouverte` (bandeau du fichier).
+
 **Ce qui ne sort jamais** : une règle vivante (hypothèse, provisoire, active, en consolidation), une
 contradiction ouverte, une erreur `ouverte` et la fiche d'une erreur `corrigée` (hors, pour l'une et
 l'autre, l'historique de leur statut), un point chaud ouvert, une observation qui n'a pas rejoint un
@@ -489,6 +508,7 @@ attend ou décide reste lu.
 - une erreur `résolue`, quand son passage à `résolue` renvoie à une décision de l'opérateur au
   journal. Sans ce renvoi, elle sort sur accord ;
 - une règle `archivé` ;
+- le **dossier** d'une erreur `corrigée`, sa fiche restant en place (bandeau de `mistakes.md`) ;
 - **l'historique d'un statut** : dans le champ `Statut` d'une entrée, les lignes des statuts
   antérieurs, sous la ligne du statut en cours et jusqu'au champ suivant, exclu ;
 - les progressions d'objectif antérieures à la dernière, et les lignes d'historique de `VERSION.md`
@@ -528,10 +548,13 @@ Dans tous les cas, la rotation ne change aucun contenu : elle le déplace, à l'
 5. Ligne `ROTATION` au bloc de fin de session. Pour une rotation sur accord, inscris aussi la
    décision de l'opérateur dans « Décisions de l'opérateur » du journal de la session.
 
-Une seule rotation par fichier et par session. Ce qui est tranché et ce que l'opérateur vient
-d'accepter sortent ensemble, dans le même fichier de rotation. Si le fichier reste au-dessus de son
-plafond, ce qui le remplit est vivant : c'est la consolidation (§4, gâchette (d)), pas une seconde
+Une rotation par fichier et par session. Ce qui est tranché et ce que l'opérateur a accepté avant
+elle sortent ensemble, dans le même fichier de rotation.
+Une seconde est permise dans la même session, limitée à ce que l'opérateur vient d'y trancher : une
+erreur passée `résolue`, une sortie acceptée. Rien d'autre n'y entre. Elle a son propre fichier de
 rotation.
+Si le fichier reste au-dessus de son plafond, ce qui le remplit est vivant : c'est la consolidation
+(§4, gâchette (d)), pas une rotation de plus.
 **Un nom altéré.** Un fichier du périmètre (§0, point 1) dont le marqueur nomme un autre fichier
 que lui porte un nom altéré. **Le marqueur fait foi, le nom n'est qu'un indice.**
 Les formes connues aident à chercher, sans rien prouver : `<nom> (1).<ext>`,
@@ -887,7 +910,8 @@ avant toute décision :
 3bis. les **cas** d'un dépôt entrent dans le fichier de journal de la session qui intègre (§5,
    « Le journal des cas »), avec leur date d'origine et `non relu` ;
 4. ce qui relève d'une zone manuelle, d'un statut ou d'un grade reste une proposition. L'opérateur
-   la tranche maintenant ;
+   la tranche maintenant. Sauf le passage d'une erreur à `corrigée`, qui s'applique sans question
+   (§1) ;
 4bis. une **rotation préparée** : sa part tranchée s'applique sans question (§5, « Ce qui sort sans
    nouvel accord »). Sa part sur accord et ses questions de consolidation vont en séance (§6quater,
    point 9) ;
@@ -1096,6 +1120,10 @@ déjà instruites, par lots (compagnon P17).
    Inscris sa réponse mot pour mot dans « Décisions de l'opérateur » du journal.
    Sors de l'état tout ce qu'elle tranche, dans la même écriture (§5, « Clos »).
    Ce qu'il ne tranche pas reste tel quel : une question sans réponse n'est pas un refus.
+4bis. **Les candidates à `résolue` forment une seule décision**, quel que soit leur nombre : un
+   tableau (erreur, cas comparable daté, recommandation). L'opérateur répond en un message
+   (« toutes ok sauf M012 »).
+   Ne lui présente jamais un passage à `corrigée` : il est le tien (§1).
 5. **L'âge.** Une `décision` dont `Depuis` a plus de trente jours revient avec une seule question :
    garder, reformuler ou abandonner.
    Une `attente` revient à sa date de revue. Elle devient une `décision` si ce qu'elle attendait est
@@ -1109,7 +1137,8 @@ déjà instruites, par lots (compagnon P17).
    pose-les quel que soit le nombre.
 7. **Tu ne lances pas la séance de ton chef.** Propose-la au rituel (§0, point 3quinquies) ou quand
    l'opérateur demande ce qui l'attend.
-   Quand elle tombe le même jour qu'une évaluation ou que la passe du §4bis, fais-les ensemble.
+   Quand elle tombe le même jour qu'une évaluation, la passe du §4bis ou la revue de la semaine,
+   fais-les ensemble.
 8. **Dans ton rapport**, « En attente d'une décision » suit les mêmes règles. Sa colonne
    `Recommandation` porte la tienne, en une ligne (§5bis).
 9. **Le volume.** Un fichier qui reste au-dessus de son plafond après la sortie de ce qui est

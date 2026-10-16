@@ -147,6 +147,61 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.30.0 → 0.31.0
+
+### Ce qui change
+
+Le 16/10/2026, une séance d'allègement a demandé à l'opérateur douze décisions d'erreurs une à une,
+dont sept passages de `ouverte` à `corrigée`, qui ne desserrent rien. La même instance lisait
+environ 400 Ko pour un budget de 150 : des entrées anciennes de 2 à 8 Ko, aucune passe en deux mois,
+et ce que l'opérateur venait de trancher restait une session de plus.
+
+- **NOYAU §1** : `corrigée` est posé par l'agent (règle ou procédure écrite), et dit au bloc de fin
+  de session. `résolue` reste à l'opérateur.
+- **NOYAU §6quater, point 4bis** : les candidates à `résolue` en un seul tableau, une seule réponse.
+- **NOYAU §4bis et §0, point 3ter** : la revue de la semaine.
+- **NOYAU §5** : la taille d'une entrée (1 Ko environ) ; le dossier d'une erreur `corrigée` sort
+  sans nouvel accord ; une seconde rotation, limitée à ce qui vient d'être tranché.
+- **NOYAU §5quater, « Intégrer », point 4** : un passage à `corrigée` déposé s'intègre sans question.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** et **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de cette étiquette, trous
+  remplis à l'identique. `noyau/` ne change pas.
+- **Bandeaux**, modification localisée, marqueur relu après :
+  - `mistakes.md` : le bandeau (« Trois statuts », la phrase de rotation) et la ligne `Statut` du
+    schéma ;
+  - `learned-rules.md` : la phrase « Une règle tient en » ;
+  - `operational-state.md` : la ligne « Dernière revue de la semaine » dans « Entretien », à
+    **jamais**.
+- **Aucune entrée existante n'est réécrite.** Une erreur `ouverte` déjà réparée avec sa règle ou sa
+  procédure passe `corrigée` à la session suivante, par l'agent, et le bloc de fin de session le dit.
+  Le dossier d'une `corrigée` sort à la prochaine rotation automatique, si le fichier dépasse.
+- **`VERSION.md`** : version courante 0.31.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`.
+- **Si ton `noyau-local.md` appliquait déjà ces corrections** (chez Vincent, depuis le 16/10/2026) :
+  l'agent te propose d'en retirer le bloc, que le NOYAU couvre désormais. Tu décides et tu recolles.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « La revue de la semaine » et « 4bis. **Les candidates à
+`résolue` ». `operational-state.md` porte la ligne de la revue. `VERSION.md` porte 0.31.0.
+
+**La suite** : à la première séance, aucune question ne porte sur un passage à `corrigée` ; les
+candidates à `résolue` arrivent en un tableau. Une erreur tranchée `résolue` sort dans la même
+session, par une seconde rotation.
+
+### Ce que cette migration ne fait pas
+
+Elle ne change aucun plafond, ni le frein : `corrigée` freine toujours. Elle ne passe aucune erreur
+en `résolue` et ne résume aucune entrée.
+
+---
+
 ## 0.29.0 → 0.30.0
 
 ### Ce qui change

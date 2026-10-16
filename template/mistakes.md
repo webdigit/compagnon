@@ -9,17 +9,20 @@
 > Une récidive rend due, tout de suite, l'évaluation de la compétence (NOYAU §6ter).
 >
 > **Trois statuts, pas deux.** `ouverte` : l'incident n'est pas réparé. `corrigée` : il l'est, la
-> cause est nommée, une règle en est née, mais **la prévention n'est pas prouvée**. `résolue` : un
+> cause est nommée, une règle ou une procédure en est née, mais **la prévention n'est pas prouvée**. `résolue` : un
 > cas comparable s'est représenté ensuite et la règle a tenu. Écrire une règle ne prouve pas qu'elle
 > sera appliquée, et c'est la même exigence que compagnon P9 pour les règles, appliquée ici.
+> Le passage à `corrigée` est un constat de l'agent, qui ne desserre rien : il le pose seul et le
+> dit au bloc de fin de session. Le passage à `résolue` desserre le frein : l'agent le propose,
+> l'opérateur le tranche, dans un seul tableau (NOYAU §6quater, point 4bis).
 >
 > **Plafond : 24 Ko, et rotation.** Ce fichier se lit **en entier** à chaque session : c'est ce qui
 > lui donne son effet, et c'est ce qui le condamne s'il grossit sans fin (NOYAU §5, « La lecture de
 > run et son budget »). Une erreur a deux parts. Sa **fiche** : le titre, `Cause racine`, `Règle
 > générée`, `Sévérité`, `Catégorie`, `Statut`, `Récidive` et `Date`, ce qui freine et ce qui
 > rapproche une récidive. Son **dossier** : `Fait`, `Pourquoi faux` et `Ce que je n'ai PAS fait`,
-> le récit. À la rotation, le dossier d'une erreur `corrigée` sort dans le fichier de rotation, tel
-> quel, et sa fiche reste ici, recopiée à l'identique, avec une seule ligne nouvelle à la place du
+> le récit. Une fiche tient en 1 Ko environ. À la rotation, le dossier d'une erreur `corrigée` sort
+> dans le fichier de rotation, tel quel et sans nouvel accord, et sa fiche reste ici, recopiée à l'identique, avec une seule ligne nouvelle à la place du
 > dossier : `Fait : dossier complet dans <chemin du fichier de rotation>`. Rien n'est résumé. Une
 > erreur **résolue** sort entière : sans nouvel accord quand son passage à `résolue` renvoie à une
 > décision de l'opérateur, sur accord sinon. **L'historique d'un statut**, les lignes des statuts
@@ -47,8 +50,9 @@ Statut        : ouverte | corrigée | résolue, suivi de « depuis le <jj/mm/aaa
                 statut**, pas celle de l'incident, qui vit à la ligne `Date`. **Une ligne** : le
                 statut en cours, sa date, et le renvoi à ce qui l'a posé. Un statut remplacé ne
                 s'empile pas ici : il part dans « Détails » du journal de la session qui le change.
-                Le passage à `résolue` desserre le frein : tu le proposes, l'opérateur le tranche
-                (`← journal/<fichier>, D<n>`).
+                Le passage à `corrigée` est le tien : incident réparé, règle ou procédure écrite
+                qui le prévient (`← journal/<fichier>`). Le passage à `résolue` desserre le
+                frein : tu le proposes, l'opérateur le tranche (`← journal/<fichier>, D<n>`).
 Récidive      : si le même mécanisme se reproduit, on ne crée pas une entrée neuve qu'on referme
                 aussitôt. On **rouvre celle-ci**, et la récidive vaut contradiction contre la règle
                 issue, qui retombe en hypothèse (compagnon P9).
@@ -85,7 +89,7 @@ Sévérité      : **-2** (engagement pris auprès d'un tiers, rétractation né
 
 Catégorie     : engagement ; vérification ; sources périmées.
 
-Statut        : **corrigée** depuis le `<jj/mm/aaaa>` (← `journal/<fichier>`, D1).
+Statut        : **corrigée** depuis le `<jj/mm/aaaa>` (← `journal/<fichier>`).
 
 Date          : `<jj/mm/aaaa>`.
 

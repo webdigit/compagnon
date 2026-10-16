@@ -115,6 +115,10 @@ Sans ce troisième état, le seul geste disponible après une correction est de 
 desserre tout seul, sans que personne ne l'ait décidé. Un système qui ne laisse qu'une sortie n'a pas
 à s'étonner qu'on la prenne.
 
+Les deux passages n'ont pas le même auteur. Passer à *corrigée* est un constat, qui ne desserre
+rien : l'agent le fait seul. Passer à *résolue* desserre le frein : l'agent le propose, l'opérateur
+le tranche.
+
 ### P5. On n'efface jamais
 
 Une règle remplacée passe en archive, avec le lien vers ce qui la remplace, la date et le motif.

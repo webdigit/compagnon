@@ -10,6 +10,33 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.31.0] - 2026-10-16
+
+### Modifié
+
+- **NOYAU §1** : le passage d'une erreur à `corrigée` revient à l'agent. C'est un constat qui ne
+  desserre rien : incident réparé, règle **ou procédure** écrite qui le prévient. Il le dit au bloc
+  de fin de session, et ne le demande pas. Sans opérateur, il passe par le dépôt, et s'intègre sans
+  question (§5quater, « Intégrer », point 4). Le passage à `résolue` reste à l'opérateur.
+- **NOYAU §5, « Ce qui sort sans nouvel accord »** : le dossier d'une erreur `corrigée`, sa fiche
+  restant en place.
+- **NOYAU §5, la rotation** : une seconde rotation est permise dans la session, limitée à ce que
+  l'opérateur vient d'y trancher.
+- **`mistakes.md`**, **`learned-rules.md`** : bandeau et schéma alignés ; une fiche ou une règle
+  tient en 1 Ko environ.
+- **DOCTRINE, P4** : les deux passages n'ont pas le même auteur.
+
+### Ajouté
+
+- **NOYAU §6quater, point 4bis** : les candidates à `résolue` forment une seule décision, un tableau
+  (erreur, cas comparable daté, recommandation) auquel l'opérateur répond en un message.
+- **NOYAU §4bis, « La revue de la semaine »** : rotations sur accord et tableau des `résolue`, en un
+  message. Proposée au rituel (§0, point 3ter) au-delà de sept jours, tue s'il n'y a rien à
+  présenter. Date dans « Entretien » d'`operational-state.md`.
+- **NOYAU §5, « La taille d'une entrée »** : 1 Ko environ, le récit au journal.
+
+Remontées C5 et C6 de l'instance Vincent (16/10/2026). Les plafonds ne changent pas.
+
 ## [0.30.0] - 2026-10-12
 
 ### Modifié

@@ -64,6 +64,10 @@
   (corollaire non négociable de la règle d'or).
 - **Le frein et les principes.** Une violation de principe freine toutes les compétences parce qu'un
   principe n'appartient à aucune.
+- **`corrigée` revient à l'agent.** Ce passage ne desserre rien : le frein porte encore. Le demander
+  à l'opérateur lui coûte une décision qui ne décide rien (compagnon P17). Constaté le 16/10/2026 :
+  douze décisions d'erreurs demandées une à une, dont sept passages à `corrigée`. Une procédure vaut
+  une règle ici, parce qu'une erreur d'outil donne une procédure (compagnon P7).
 
 ## §3. Maturation
 
@@ -86,6 +90,9 @@
   trop gros, bien avant sa taille.
 - **Point 4.** Une entrée `corrigée` qui dort maintient le frein sans que personne ne l'ait décidé.
 - **Point 5.** Une demande qu'on oublie décourage la demande suivante.
+- **La revue de la semaine.** Rien ne sort sans décision, et une passe mensuelle finit par ne plus se
+  faire. Constaté le 16/10/2026 : aucune passe en deux mois, environ 400 Ko de lecture de run pour
+  150. Une revue courte et fréquente fait sortir au fil de l'eau.
 ## §5. Convention d'écriture
 
 - **Le bloc hors de la réponse.** Personne ne lit la réponse d'une tâche programmée à trois heures du
@@ -119,6 +126,13 @@
   l'opérateur. Pour l'historique d'un statut, le statut suivant a tranché les précédents.
 - **Le registre de `capabilities.md`.** C'est une zone manuelle, et l'opérateur en valide la liste
   ligne par ligne.
+- **La taille d'une entrée.** Les entrées anciennes, des récits de 2 à 8 Ko, remplissaient les
+  fichiers ; les récentes tiennent en 1 à 2 Ko. Les plafonds ne bougent pas : ils mesurent un coût
+  réel, la lecture complète à chaque session.
+- **Le dossier d'une erreur `corrigée`.** La fiche freine, et elle reste. Déplacer le dossier ne
+  desserre rien.
+- **La seconde rotation.** Sans elle, ce que l'opérateur vient de trancher attend une session de
+  plus, relu en entier pour rien.
 ## §5. Convention d'écriture (fin : de « Un nom altéré » à `_archive/`)
 
 - **Un nom altéré, l'origine.** Une synchronisation a renommé le fichier, le plus souvent en réglant
@@ -280,6 +294,8 @@
   méthode (compagnon P17).
 - **Point 2, exemples.** Un point déjà fait ou tranché ailleurs : une tâche close, un fichier déjà
   corrigé, une migration passée.
+- **Point 4bis.** Chaque candidate porte sa preuve, le cas comparable daté : l'opérateur la vérifie
+  d'un coup d'œil. Une par une, sept erreurs font sept décisions pour un seul geste.
 - **Point 9.** Seules les décisions de consolidation font baisser un fichier dont le contenu est
   vivant : la rotation ne déplace que ce qui est tranché.
 

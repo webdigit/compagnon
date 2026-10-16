@@ -51,6 +51,8 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 - **Dernier balayage complet (NOYAU §4bis)** : `<jj/mm/aaaa>`, ou **jamais**.
 - Au-delà d'un mois, l'agent le signale en ouverture de session et **propose** la passe. Il ne la
   lance pas de son chef : elle prend du temps qui appartient à l'opérateur.
+- **Dernière revue de la semaine (NOYAU §4bis)** : `<jj/mm/aaaa>`, ou **jamais**. Au-delà de sept
+  jours, l'agent la propose en une ligne.
 
 ## Points chauds : ce qui attend une décision
 
