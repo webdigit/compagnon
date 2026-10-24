@@ -59,6 +59,7 @@ personne n'y voie une panne.
 | `VERSION.md` | oui | version du gabarit et écarts |
 | `report.md` | oui, s'il existe | rapport de sortie, facultatif |
 | `equipe.md` | **non** | lu par le coordinateur seul ; l'écran ne l'affiche pas (0.22.0) |
+| `paire.md` | **non** | réglage de la paire, zone manuelle ; l'écran ne l'affiche pas (0.32.0) |
 | `NOYAU-instructions-projet.md` | **non** | volumineux, et le plus spécifique du métier |
 | `noyau-local.md` | **non** | même raison que le NOYAU, dont il est la suite |
 | `procedures.md` | **non** | chemins, comptes, parfois des identifiants |

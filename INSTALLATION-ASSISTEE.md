@@ -455,3 +455,80 @@ suivante.
    rapport du coordinateur qui consigne la relance.
 8. **La copie de test s'éteint**, supprimée ou expirée. Une exception écrite pour le test (la limite
    d'une relance par jour levée, par exemple) ne passe jamais dans la tâche de production.
+
+---
+
+## À part : poser une paire
+
+Cette procédure ne fait pas partie de l'installation ordinaire. Elle se suit quand l'opérateur veut
+que deux agents **travaillent ensemble** sur un même travail : l'un le demande et le revoit, l'autre
+le réalise. Les cinq règles du début valent ici aussi, à commencer par une question à la fois.
+
+**Elle se fait deux fois, une dans chaque projet**, dans une session de chacun des deux agents.
+Aucun agent n'écrit chez un autre, et l'installateur pas davantage : depuis le projet de l'un, tu
+n'écris rien chez l'autre.
+
+**Avant tout, trois vérifications**, et une seule réponse négative arrête la procédure :
+
+- **Ce sont deux projets distincts**, chacun avec sa mémoire. Un projet, un agent (compagnon P18).
+  Si l'opérateur veut deux agents dans un même dossier, explique-lui pourquoi la méthode le refuse,
+  et propose de créer un second projet. Un second hôte sur la même mémoire n'est pas une paire.
+- **Les deux agents tournent sur des hôtes qui lisent le dossier de l'autre** : même stockage
+  partagé, ou chemins accessibles des deux côtés. Vérifie-le en listant le dossier du collègue,
+  sans rien y ouvrir.
+- **L'opérateur sait ce qu'il pose** : explique-lui en trois lignes que chaque agent écrira dans son
+  propre dossier d'échange et relèvera celui de l'autre sans l'attendre ; qu'aucun n'ouvrira la
+  mémoire de l'autre ; et que tout ce qui engage (pousser, déployer, envoyer, écrire dans un système
+  externe) reste derrière son accord, même après une revue acceptée.
+
+### Les questions
+
+1. **Qui est le pilote.** Celui qui demande, revoit et clôt. L'autre est l'exécutant. Un
+   coordinateur peut être pilote ; deux agents simples aussi.
+2. **Le chantier.** Le dossier sur lequel la paire travaille, s'il y en a un : un dépôt, un dossier
+   de projet. Il n'est le dossier d'aucun des deux agents. S'il est aujourd'hui rangé dans le projet
+   de l'un d'eux, propose de l'en sortir avant de continuer. Sans chantier, la réponse est « aucun ».
+3. **Ce qui reste à l'opérateur**, au-delà des interdits absolus : propose la liste (pousser,
+   déployer, envoyer, écrire dans un système externe), il la complète.
+4. **Le relais.** Un coordinateur qui peut débloquer une mission arrêtée, s'il en existe un qui suit
+   les deux agents. Le plus souvent : « aucun ».
+5. **La cadence**, et la tâche programmée qui portera la relève. Propose-la, avec son texte, comme
+   pour toute tâche (`hotes/`). Ne la crée pas de ton initiative. Rappelle que la cadence minimale
+   dépend de l'hôte.
+
+### Ce que tu écris, dans le projet de cette session seulement
+
+1. **`ai-memory/paire.md`**, depuis le gabarit de la même étiquette, rempli de ses réponses. Zone
+   manuelle : tu écris sous sa dictée. Le rôle est celui de **cet** agent.
+2. **`../handoff/<collègue>/`**, vide, à la racine du projet, à côté d'`ai-memory/`. Si
+   `../handoff/` existe déjà pour un autre collègue, ajoute seulement le sous-dossier : un agent peut
+   avoir plusieurs paires, une ligne de `paire.md` chacune.
+3. **`report.md`**, s'il n'existe pas encore : c'est là que le pilote porte une mission arrêtée.
+4. **`VERSION.md`** : une ligne d'historique, « paire posée avec <collègue>, rôle <rôle> », datée.
+
+Relis chaque fichier depuis le disque, marqueur de fin compris (Étape 5).
+
+### Puis, dans le projet du collègue
+
+Rédige le texte que l'opérateur collera dans une session du collègue :
+
+> « Pose une paire avec <nom de cet agent> : suis « À part : poser une paire »
+> d'`INSTALLATION-ASSISTEE.md`. Ton rôle : <l'autre rôle>. Chantier : <le même>. Relais : <le même>.
+> Ce qu'il t'adresse : <chemin ou identifiant de ../handoff/<nom du collègue>/ chez cet agent>. »
+
+Les deux `paire.md` doivent dire la même chose, chacun de son côté. Tant que le second n'est pas
+posé, le premier agent relève un dossier qui n'existe pas : il le dit dans son rapport, il ne le crée
+pas.
+
+### Si un relais est nommé : chez le coordinateur
+
+Dans une session du coordinateur, et seulement là, ajoute à son `capabilities.md`, au niveau 2 puis
+au niveau 3, une ligne par paire, verrouillée :
+
+| Capacité | Ce que ça permet | Condition | Statut | Compétence |
+|---|---|---|---|---|
+| Relais · `<pilote>`/`<exécutant>` | Reformuler ou découper une mission arrêtée de cette paire, une fois par mission, par un complément dans `../handoff/<pilote>-<exécutant>/` chez lui (NOYAU §5septies, point 9) | grade junior sur `<C0x>` · 3 relais de cette paire proposés et acceptés sans correction de fond · aucune erreur ouverte ni corrigée sur `<C0x>` · accord | VERROUILLÉ | `<C0x>` |
+| Abandon · `<pilote>`/`<exécutant>` | Abandonner ou reporter une mission arrêtée de cette paire, avec le motif dans son rapport | grade medior sur `<C0x>` · « Relais » ouvert pour cette paire · accord | VERROUILLÉ | `<C0x>` |
+
+Fermées, ces capacités laissent le coordinateur **proposer** chaque relais à l'opérateur. Aucune ne
+lui permet d'accepter un travail avec ses limites : cela reste à l'opérateur.

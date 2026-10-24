@@ -147,6 +147,62 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.31.0 → 0.32.0
+
+### Ce qui change
+
+Deux instances peuvent désormais travailler en paire (compagnon P18). Rien ne change pour une
+instance qui ne travaille avec personne, sauf le texte du NOYAU, qui gagne de quoi reconnaître une
+paire.
+
+- **NOYAU** : couche « Paire » ; §0, point 1 (le marqueur des fichiers d'échange) et point 3sexies
+  (la relève) ; `paire.md` dans la lecture de run et son budget ; §5sexies (la demande du pilote,
+  seconde exception) ; §5octies (nouveau).
+- **`noyau/en-paire.md`** : nouveau module. **`noyau/coordination.md`** : point 9, le relais d'une
+  paire.
+- **`paire.md`** : nouveau fichier du gabarit, zone manuelle, seulement chez un agent en paire.
+- **`NOYAU-pourquoi.md`** : §5octies. **`README.md`** du gabarit : couche PAIRE.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** et **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de cette étiquette, trous
+  remplis à l'identique.
+- **`noyau/`** : ajouter `en-paire.md`, remplacer `coordination.md` en entier. Les autres modules ne
+  changent pas.
+- **`README.md`** de l'instance : ajouter le bloc « Couche PAIRE » de cette étiquette avant la
+  couche ÉCRAN, et « travail en paire » dans la ligne `noyau/`.
+- **Ne pas créer `paire.md`** : il ne se pose que par « À part : poser une paire »
+  d'`INSTALLATION-ASSISTEE.md`, sur décision de l'opérateur.
+- **Si l'instance échange déjà avec un autre agent par des fichiers** (une spécificité de
+  `noyau-local.md`, un dossier d'échange existant), le signaler à l'opérateur et lui proposer de
+  poser la paire, en reportant ce que disait la spécificité. Si cet échange fait écrire l'agent chez
+  l'autre, ou partager un projet avec lui, le dire aussi : c'est contraire à compagnon P18, et le
+  module ne le reprendra pas.
+- **`VERSION.md`** : version courante 0.32.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`.
+- **Pour poser une paire**, s'il le veut : suivre « À part : poser une paire », une fois dans chacun
+  des deux projets. Sinon : rien.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « ## 5octies. Travailler en paire » et « 3sexies. ».
+`noyau/en-paire.md` existe et finit par `[fin de en-paire.md]`. `noyau/coordination.md` contient
+« Le relais d'une paire ». `VERSION.md` porte 0.32.0.
+
+**La suite** : sans `paire.md`, aucune session ne parle de paire. Avec, la relève se fait avant le
+travail, et un run qui ne trouve rien n'écrit rien.
+
+### Ce que cette migration ne fait pas
+
+Elle ne pose aucune paire, ne crée aucun dossier d'échange et n'ouvre aucune capacité. Elle ne change
+ni les plafonds, ni le frein de `mistakes.md`, ni la relance du coordinateur.
+
+---
+
 ## 0.30.0 → 0.31.0
 
 ### Ce qui change

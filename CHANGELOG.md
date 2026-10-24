@@ -10,6 +10,47 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.32.0] - 2026-10-24
+
+### Ajouté
+
+- **compagnon P18 : en paire, chacun écrit chez soi et lit chez l'autre** (`DOCTRINE.md`). Deux
+  instances travaillent ensemble sur un même travail, l'une pilote, l'autre exécute. Un projet, un
+  agent. Chacune publie dans son propre dossier d'échange, un sous-dossier par collègue, et chaque collègue
+  ne relève que le sien. Un agent peut avoir plusieurs paires. Le chantier n'est à
+  personne. La boucle s'accorde d'emblée, une revue de pair est une observation, un frein l'arrête à
+  trois refus de suite.
+- **Module paire, facultatif** : `template/paire.md` (zone manuelle), `template/noyau/en-paire.md`
+  (NOYAU §5octies) : trois lieux, le dossier d'échange (nommage, en-tête, marqueur), la mission et
+  sa preuve exigée, la relève sans fichier d'état, le frein et l'escalade, le relais, ce qui arrive
+  d'un collègue.
+- **NOYAU** : couche « Paire », §0 point 3sexies (la relève), §5octies (déclencheur et interdits),
+  `paire.md` dans la lecture de run et son budget, le marqueur des fichiers d'échange (§0, point 1).
+- **NOYAU §5sexies** : la demande du pilote, seconde exception bornée à côté de la relance.
+- **`noyau/coordination.md`, point 9** : le relais d'une paire, depuis le rapport du pilote seul.
+- **`INSTALLATION-ASSISTEE.md`** : « À part : poser une paire », une fois dans chaque projet, et les
+  capacités de relais chez le coordinateur.
+
+### Modifié
+
+- **DOCTRINE, P12** : le dossier d'échange, seule extension de ce qui sort d'une instance ; deux
+  exceptions bornées à « une consigne d'agent est une proposition ».
+- **`NOYAU-pourquoi.md`** : §5octies. **`template/README.md`** : couche PAIRE.
+
+### La leçon
+
+Le modèle n'a pas été conçu, il a été relevé. Sur un projet de l'opérateur, deux agents de code
+tenaient depuis quatre jours un dossier d'échange (quarante et une missions, un fichier toutes les
+quatre minutes en médiane), relevé seul toutes les cinq minutes. Il tenait parce que tout ce qui
+engage restait derrière l'accord de l'opérateur. Il lui manquait trois choses que compagnon savait
+déjà : un frein (une mission y a produit quarante-sept fichiers), une autorité qui ne glisse pas vers
+le pair (la revue reste une observation), et une frontière entre la mémoire et ce qu'on publie. La
+première version de la conception faisait écrire un agent chez l'autre ; c'est l'opérateur qui a
+retourné le sens : chacun écrit chez soi.
+
+Origine : JC, 24/10/2026, à partir d'une évaluation d'Orca écartée comme modèle. Quinze décisions
+prises une à une le même jour (page Notion « Module collaboration entre pairs (handoff) »).
+
 ## [0.31.0] - 2026-10-16
 
 ### Modifié

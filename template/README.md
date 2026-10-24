@@ -83,6 +83,17 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 > Ce fichier n'existe que chez un agent qui en coordonne d'autres (NOYAU §5septies). De ses
 > membres, il ne lit que le rapport. Il ne leur écrit jamais (compagnon P12, P16).
 
+**Couche PAIRE** (un agent qui travaille avec un autre)
+
+| Fichier | Rôle | Écriture |
+|---|---|---|
+| `paire.md` | Les collègues de cet agent : leur dossier d'échange, son rôle (pilote ou exécutant), le chantier, le relais | **Opérateur** (zone manuelle) · **facultatif** |
+| `../handoff/` | Le dossier d'échange, hors de ce dossier, à la racine du projet : un sous-dossier par collègue, un fichier par message, jamais réécrit | Auto (agent), lui seul |
+
+> Chaque agent écrit chez lui et lit chez son collègue, jamais l'inverse. Un projet, un agent : le
+> collègue vit dans un autre projet, avec sa propre mémoire. Ce que la paire produit pour le projet
+> va dans le chantier, qui n'est le dossier d'aucun agent (NOYAU §5octies, compagnon P18).
+
 **Couche ÉCRAN** (hors de ce dossier, à la racine du projet)
 
 | Fichier | Rôle | Écriture |
@@ -123,7 +134,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 |---|---|---|
 | `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration. **Le texte du gabarit, trous remplis, rien d'autre** | **Manuelle**, à charger au démarrage |
 | `NOYAU-pourquoi.md` | Les **raisons** des consignes du NOYAU et de ses modules, section par section. Ne commande rien | **Vient du dépôt**, remplacé en migrant · lu à la demande |
-| `noyau/` | Les **modules** du NOYAU : sections lues seulement sur leur déclencheur (écran, travail sans poste, relance, coordination, migration). Le NOYAU dit quand lire chacun | **Vient du dépôt**, remplacé en migrant · lu sur déclencheur |
+| `noyau/` | Les **modules** du NOYAU : sections lues seulement sur leur déclencheur (écran, travail sans poste, relance, coordination, travail en paire, migration). Le NOYAU dit quand lire chacun | **Vient du dépôt**, remplacé en migrant · lu sur déclencheur |
 | `noyau-local.md` | Les **spécificités** de l'instance, rangées par section du NOYAU. Complètent ou durcissent, ne desserrent jamais | **Opérateur** (l'agent propose), chargé à la suite du NOYAU, **jamais touché par une migration** |
 | `VERSION.md` | La version du gabarit et l'historique des migrations | Auto, sur migration |
 

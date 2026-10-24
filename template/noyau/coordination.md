@@ -90,8 +90,22 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
      `capabilities.md`. N'y écris rien que son registre ne lui ouvre déjà. Seul son opérateur
      accorde une autonomie, dans son registre (compagnon P16).
 
+9. **Le relais d'une paire.** Deux de tes membres peuvent travailler en paire et te nommer
+   `Relais` dans leur `paire.md` (compagnon P18). Quand le rapport du pilote porte une mission
+   suspendue, `décision opérateur nécessaire`, tu peux la débloquer avant <OPÉRATEUR> :
+   - **seulement depuis ce rapport.** Il recopie le blocage, les options et la recommandation. N'ouvre
+     ni le dossier d'échange d'un membre, ni le chantier ;
+   - **jamais si tu es toi-même le pilote** de cette paire : la décision va à <OPÉRATEUR> ;
+   - **une fois par mission.** Si elle se bloque encore, elle va à <OPÉRATEUR> ;
+   - **ta réponse est un `complement`** dans ton propre `../handoff/<pilote>-<exécutant>/`, au format de
+     `noyau/en-paire.md`. Tu n'écris jamais chez eux ;
+   - **reformuler ou découper la mission** (pour le même exécutant, jamais vers un autre agent), l'abandonner ou la reporter : chacune est une capacité de
+     `capabilities.md`, **par paire**. Fermée, propose le complément à <OPÉRATEUR>. Ouverte, dépose-le
+     toi-même, et dis-le dans ton rapport ;
+   - **accepter le travail avec ses limites, jamais** : c'est valider, et cela reste à <OPÉRATEUR>.
+
 **Ce qui compte comme un cas** pour ta compétence de coordination, au journal : chaque relance
-proposée ou faite, et chaque anomalie d'équipe remontée. Une correction de fond, c'est <OPÉRATEUR>
+proposée ou faite, chaque relais de paire, et chaque anomalie d'équipe remontée. Une correction de fond, c'est <OPÉRATEUR>
 qui juge la relance inutile ou mal ciblée, ou l'anomalie fausse.
 
 [fin de coordination.md]

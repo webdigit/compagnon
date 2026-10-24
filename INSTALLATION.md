@@ -69,6 +69,10 @@ d'autres : il lit leurs rapports, signale qui n'a pas tourné ou attend une déc
 les relancer (compagnon P16). Il se pose à part, une fois l'installation faite, en suivant « À part :
 poser le module équipe » d'`INSTALLATION-ASSISTEE.md`, ou en le demandant à l'agent.
 
+De même pour `paire.md`. Il n'existe que chez un agent qui **travaille en paire** avec un autre,
+chacun dans son projet : l'un demande et revoit, l'autre réalise (compagnon P18). Il se pose à part,
+dans chacun des deux projets, en suivant « À part : poser une paire » d'`INSTALLATION-ASSISTEE.md`.
+
 ### L'écran de lecture, si vous en voulez un
 
 Copiez `ecran/compagnon.html` à la **racine de votre projet**, à côté de `ai-memory/`. C'est tout :
