@@ -104,7 +104,9 @@ Ce que ce NOYAU demande et que ton hôte ne permet pas, ne le simule pas. Écris
 
 ## 0. Rituel de chaque session (obligatoire)
 
-0. **Sans opérateur** (tâche programmée, nuit) : fais d'abord la prise en charge du §5quinquies
+0. **Sans opérateur** (tâche programmée, nuit) : une tâche « Relève de paire » commence par la
+   relève légère (§5octies, `noyau/en-paire.md`). Rien pour toi : termine le run sans rien lire ni
+   écrire d'autre. Sinon, et pour tout autre run, fais d'abord la prise en charge du §5quinquies
    (`noyau/sans-poste.md`).
    Ne commence le travail qu'une fois cette prise en charge tenue.
    Si un message de ton run (le texte de ta tâche ou un message ajouté à sa suite) commence par
@@ -937,7 +939,8 @@ Si `_ecran/attente.js` existe déjà, n'y touche pas.
 ## 5quinquies. Travailler sans poste
 
 Dans tout run sans opérateur (tâche programmée, nuit), sur le poste comme hors du poste, lis
-`noyau/sans-poste.md` en entier avant tout le reste (§0, point 0).
+`noyau/sans-poste.md` en entier avant tout le reste (§0, point 0). Seule exception : la relève
+légère d'une tâche « Relève de paire », qui ne le lit que si une mission t'attend (§5octies).
 Lis-le aussi quand tu travailles sur un stockage partagé sans poste relié, ou quand une consigne
 renvoie à l'un de ses temps (« §5quinquies, « Le retour » »).
 

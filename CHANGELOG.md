@@ -10,6 +10,33 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.33.0] - 2026-10-24
+
+### Ajouté
+
+- **La relève légère** (`noyau/en-paire.md`, NOYAU §5octies) : une tâche programmée dédiée à la
+  relève d'une paire, facultative, dont le texte commence par « Relève de paire ». Elle lit
+  `paire.md` et les derniers fichiers d'échange, rien d'autre. Rien pour l'agent : elle s'arrête
+  sans rien lire ni écrire, et surtout sans réécrire `report.md`. Une mission en attente : rituel
+  complet.
+- **`INSTALLATION-ASSISTEE.md`**, « À part : poser une paire », question 5 : le texte de cette tâche.
+
+### Modifié
+
+- **NOYAU §0, point 0**, et **§5quinquies** : la relève légère passe avant la prise en charge sans
+  poste, seule exception à « lire `noyau/sans-poste.md` avant tout le reste ».
+- **`paire.md`**, « Ma cadence » ; **`NOYAU-pourquoi.md`**, §5octies.
+
+### La leçon
+
+En 0.32.0, la relève ne se faisait qu'au début des runs habituels de l'agent. Un exécutant qui
+tourne une fois par jour faisait d'une mission de cinq échanges une affaire d'une semaine. Une tâche
+dédiée règle la cadence, à deux conditions : ne pas payer la lecture de toute la mémoire à chaque
+passage à vide, et ne pas effacer le dernier vrai rapport par un rapport vide.
+
+Origine : JC, 24/10/2026, en préparant la première paire réelle (Vincent pilote, Amandine
+exécutante).
+
 ## [0.32.0] - 2026-10-24
 
 ### Ajouté

@@ -270,6 +270,7 @@
 - **Le frein à trois.** Au-delà, deux agents qui ne se comprennent pas consomment sans avancer. Seul un humain sait si c'est la demande ou la réponse qui a tort.
 - **La revue, une observation.** Le reward vient de l'opérateur (compagnon P1). Un pair qui en donnerait apprendrait à l'autre ses propres erreurs, sans que personne les voie.
 - **La décision citée mot pour mot.** L'opérateur n'a pas à connaître la convention, et ses mots ne doivent pas changer en passant par un agent.
+- **La relève légère.** Une tâche qui tourne souvent et trouve le plus souvent rien ne doit pas lire toute la mémoire à chaque fois. Et un rapport vide effacerait le dernier vrai travail pour qui suit l'agent.
 - **La relève à vide ne s'écrit pas.** Un run qui ne trouve rien n'a rien à dire, et un fichier d'état de relève serait un fichier de plus à garder juste.
 
 ## §6. Autonomie

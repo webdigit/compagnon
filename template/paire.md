@@ -43,7 +43,9 @@ document vit alors là où son lecteur le cherche (NOYAU §5octies).>`
 
 ## Ma cadence
 
-`<Quand je relève le dossier de mon collègue, et par quelle tâche programmée.>`
+`<Quand je relève le dossier de mon collègue : à chacun de mes runs habituels, et, si besoin, par
+une tâche dédiée « Relève de paire » (nom, identifiant, cadence). Une tâche dédiée fait la relève
+légère : sans rien pour moi, elle ne lit ni n'écrit rien d'autre (NOYAU §5octies).>`
 
 ---
 

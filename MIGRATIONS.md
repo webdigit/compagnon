@@ -147,6 +147,47 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.32.0 → 0.33.0
+
+### Ce qui change
+
+Une paire peut avoir une tâche programmée dédiée à sa relève, qui ne lit presque rien quand rien ne
+l'attend. Rien ne change pour une instance sans `paire.md`, sauf le texte du NOYAU.
+
+- **NOYAU §0, point 0**, et **§5quinquies** : la relève légère d'une tâche « Relève de paire ».
+- **`noyau/en-paire.md`** : section « La relève légère ».
+- **`paire.md`** du gabarit : « Ma cadence ». **`NOYAU-pourquoi.md`** : §5octies.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** et **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de cette étiquette, trous
+  remplis à l'identique.
+- **`noyau/en-paire.md`** : le remplacer en entier. Les autres modules ne changent pas.
+- **`paire.md`**, s'il existe : zone manuelle, n'y touche pas. Si sa section « Ma cadence » est
+  encore au texte du gabarit 0.32.0, propose à l'opérateur le nouveau texte.
+- **`VERSION.md`** : version courante 0.33.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`.
+- **S'il veut une tâche de relève** pour une paire : la créer avec le texte de la question 5 de
+  « À part : poser une paire », chez chacun des deux agents qui en a besoin. Sinon : rien.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « une tâche « Relève de paire » commence par la relève
+légère ». `noyau/en-paire.md` contient « ### La relève légère ». `VERSION.md` porte 0.33.0.
+
+**La suite** : un run de relève sans mission en attente ne laisse aucune trace dans le dossier ;
+`report.md` garde la date de son dernier vrai run.
+
+### Ce que cette migration ne fait pas
+
+Elle ne crée aucune tâche programmée et ne touche à aucune paire posée.
+
+---
+
 ## 0.31.0 → 0.32.0
 
 ### Ce qui change

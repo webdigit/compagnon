@@ -492,9 +492,17 @@ n'écris rien chez l'autre.
    déployer, envoyer, écrire dans un système externe), il la complète.
 4. **Le relais.** Un coordinateur qui peut débloquer une mission arrêtée, s'il en existe un qui suit
    les deux agents. Le plus souvent : « aucun ».
-5. **La cadence**, et la tâche programmée qui portera la relève. Propose-la, avec son texte, comme
+5. **La cadence.** La relève se fait déjà au début de chaque run habituel de l'agent. Si ce rythme
+   est trop lent pour la paire, propose une **tâche dédiée**, facultative, avec son texte, comme
    pour toute tâche (`hotes/`). Ne la crée pas de ton initiative. Rappelle que la cadence minimale
-   dépend de l'hôte.
+   dépend de l'hôte. **Son texte est celui-ci**, à adapter seulement pour le nom :
+
+   > Relève de paire de <NOM DE L'AGENT>. Commence par la relève légère du NOYAU §5octies
+   > (`noyau/en-paire.md`), avant tout le reste. Rien pour toi : termine le run sans rien lire ni
+   > écrire d'autre, et réponds en une ligne. Une mission où la main est à toi : rituel complet,
+   > traite-la dans les limites de `capabilities.md`, puis ton `report.md` et une réponse finale de
+   > trois lignes (NOYAU §5quinquies, « Le retour »).
+   > Tu ne modifies jamais le texte de tes propres tâches programmées.
 
 ### Ce que tu écris, dans le projet de cette session seulement
 

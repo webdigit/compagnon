@@ -92,6 +92,24 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 4. **Rien à toi sur aucune mission** : passe à ton travail habituel, ou termine le run. Une relève à
    vide ne s'écrit nulle part.
 
+### La relève légère
+
+Une tâche programmée peut être dédiée à la relève (`paire.md`, « Ma cadence »). Son texte commence
+par « Relève de paire ». Elle tourne souvent, et trouve le plus souvent rien : elle ne paie donc pas
+le rituel entier pour rien.
+
+1. **Avant tout le reste**, point 0 du rituel compris : trouve ton dossier comme le dit « Où vit le
+   dossier », lis ce module et `paire.md` en entier, marqueurs compris. Un marqueur absent : arrête
+   le run et dis-le dans ta réponse finale, sans rien écrire.
+2. **Fais la relève**, points 1 à 3 ci-dessus. Ne lis rien d'autre : ni ta mémoire, ni ton rapport.
+3. **Rien à toi** : termine le run. N'écris rien, nulle part, et surtout pas `report.md` : il porte
+   ton dernier vrai travail, et un rapport vide l'effacerait pour qui te suit. Ta réponse finale
+   tient en une ligne : « Relève à vide », avec l'heure.
+4. **Une mission où la main est à toi** : reprends le rituel au point 0, en entier, comme pour tout
+   run sans opérateur. Traite la mission, puis écris ton rapport.
+5. **Ton run habituel tourne déjà** : si tu dois écrire et qu'une autre session vient d'écrire dans
+   ta mémoire, c'est le repli ordinaire (§5quinquies). La relève ne crée aucune règle à part.
+
 ### Le frein
 
 1. **Trois revues `corrections demandées` d'affilée** sur une même mission, et le pilote s'arrête.
