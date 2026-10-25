@@ -10,6 +10,38 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.34.0] - 2026-10-25
+
+### Ajouté
+
+- **La double recopie** (fiche `hotes/claude.md`, guide `hotes/google-drive.md`, procédure « Lire
+  intégralement ») : la lecture exacte d'un petit fichier du Drive sans poste. Le base64 et le texte
+  de `read_file_content` sont recopiés dans le shell, l'un décodé, l'autre restauré ; la lecture est
+  exacte si les deux concordent, avec la taille du listage et le marqueur. Recettes `restaurer.py` et
+  `comparer.py` dans la procédure.
+- **Tests L11 à L14** au guide Google Drive.
+
+### Modifié
+
+- **Le seuil est connu** : une sortie d'outil de plus de 50 000 caractères part dans un fichier
+  (documentation de l'hôte), soit environ 37 Ko de fichier par `download_file_content`. Il ne se
+  règle pas. La question L9 est close.
+- **Ce que rend `read_file_content`** : liste des caractères échappés complétée (`-`, `.`, `<`, `]`),
+  retraits de début de ligne réduits eux aussi, dernier retour à la ligne retiré.
+- **« Ne recopie jamais un base64 entier »** devient : une recopie seule ne prouve rien, la double
+  recopie si. Le contrôle de queue reste, pour décider seulement.
+- **Le connecteur ne donne aucune empreinte** (`md5Checksum` absent) : constaté et écrit.
+
+### La leçon
+
+Sans poste, un petit fichier était plus difficile à lire exactement qu'un gros : son base64 arrive
+dans la conversation, et la règle interdisait de le recopier, faute de pouvoir prouver la copie. Le
+Drive n'offre que la taille comme preuve. La preuve vient donc d'ailleurs : deux recopies de deux
+formes différentes du même fichier ne se trompent pas au même endroit.
+
+Origine : Amandine (Triage Email Siftbox), qui ne parvenait pas à tout lire en session cloud ;
+tests de JC et Claude, 25/10/2026.
+
 ## [0.33.0] - 2026-10-24
 
 ### Ajouté

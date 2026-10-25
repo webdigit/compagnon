@@ -46,34 +46,53 @@
 - **Sans poste** : le connecteur Google Drive. La recette complète est dans `procedures.md` si le
   mode sans poste est installé (`INSTALLATION.md`, étape 7), sinon dans le guide
   `hotes/google-drive.md` du dépôt. Ce qui suit est ce qu'il faut savoir avant de l'ouvrir.
-- **Une sortie d'outil trop longue est enregistrée dans un fichier** du conteneur de la session, au
-  lieu d'arriver dans la conversation : le message dit « Output has been saved to <chemin> », au
-  format JSON. Le shell du conteneur le lit (`jq`, `python3`). Vaut pour les deux outils de lecture
-  du connecteur. Constaté une fois (session Cowork dans le cloud, 08/10/2026 : `download_file_content`
-  sur 87, 109 et 144 Ko, `read_file_content` sur les mêmes). En tâche programmée : non prouvé, le
-  premier run le constate et l'écrit sous « Constaté ici ». Le seuil n'est pas mesuré : un fichier
-  de 16 Ko est arrivé dans la conversation, un de 87 Ko dans un fichier.
-- **Lire pour décider : `read_file_content` d'abord.** Il rend du texte, pas le fichier : `\#`,
-  `\*`, `\[`, `\_` ajoutés devant la ponctuation de Markdown, suites d'espaces réduites à une, deux
-  espaces et un retour ajoutés en fin de ligne, emojis illisibles. La lecture est complète si sa
-  dernière ligne, une fois les `\` retirés, est le marqueur. **Les emojis le coupent** : sur quatre
-  fichiers d'une instance, la fin a manqué dès qu'il y en avait (environ deux à trois caractères
-  perdus par emoji, marqueur compris), et le fichier sans aucun emoji (109 Ko) est arrivé entier.
-  D'où le NOYAU §5, « Aucun emoji ». Constaté une fois (08/10/2026, six fichiers, 7 à 144 Ko).
-- **Lire pour réécrire : `download_file_content`, décodé au shell.** C'est la seule voie brute.
-  Quand la sortie est enregistrée dans un fichier, le décodage donne le fichier exact : taille égale
-  à celle du listage, marqueur en dernière ligne. Constaté une fois (08/10/2026, trois fichiers de
-  87 à 144 Ko, tailles exactes). Quand le base64 arrive dans la conversation (petit fichier), il ne
-  se décode qu'en le recopiant dans le shell : **ne recopie jamais un base64 entier**, une erreur de
-  copie ne se voit pas. Sans voie brute, pas de réécriture : dépôt (NOYAU §5quater).
-- **Contrôle de queue**, quand `read_file_content` n'a pas rendu le marqueur et que le base64 est
-  dans la conversation : recopie seulement ses 128 derniers caractères (des groupes de quatre,
-  alignés sur la fin) et décode-les (`printf '%s' '<...>' | base64 -d`). Ils doivent finir par le
-  marqueur, et leur début recouvrir la fin du texte de `read_file_content` sur au moins vingt
-  caractères, `\` retirés et espaces réduits des deux côtés. Les deux ensemble font une lecture
-  complète, bonne pour décider, jamais pour réécrire. Pas de recouvrement : lecture incomplète.
-  Constaté une fois (08/10/2026, `capabilities.md`, 14 Ko : 64 caractères décodés, marqueur et
-  recouvrement présents).
+- **Une sortie d'outil de plus de 50 000 caractères est enregistrée dans un fichier** du conteneur
+  de la session, au lieu d'arriver dans la conversation : le message dit « Output has been saved to
+  <chemin> », au format JSON. Le shell du conteneur le lit (`jq`, `python3`). En dessous, elle arrive
+  dans la conversation. Ce seuil est celui de la documentation de l'hôte, et rien ne le règle : on ne
+  force pas une sortie courte à partir dans un fichier. Le base64 grossit le fichier d'un tiers :
+  par `download_file_content`, un fichier de moins de 37 Ko environ arrive dans la conversation.
+  Constaté (session Cowork dans le cloud, 08 et 25/10/2026 : 4,9 à 16 Ko dans la conversation,
+  50 à 144 Ko dans un fichier). En tâche programmée : même moteur, non constaté ; le premier run le
+  constate et l'écrit sous « Constaté ici ».
+- **Le connecteur ne donne pas d'empreinte.** Ni `get_file_metadata` ni `search_files` ne renvoient
+  `md5Checksum`. La seule preuve venue du Drive est la taille, `fileSize`. Constaté une fois
+  (25/10/2026).
+- **Ce que rend `read_file_content`** : du texte, pas le fichier. Un `\` devant la ponctuation de
+  Markdown (constatés : `#`, `*`, `-`, `.`, `<`, `>`, `[`, `]`, `_`, `` ` ``), deux espaces en fin
+  de chaque ligne, les suites d'espaces réduites à une (alignements et retraits compris), le dernier
+  retour à la ligne retiré. **Les emojis le coupent** : environ deux à trois caractères perdus par
+  emoji, marqueur compris (NOYAU §5, « Aucun emoji »). Constaté (08/10/2026, six fichiers ;
+  25/10/2026, trois fichiers).
+- **Lire pour décider : `read_file_content` d'abord.** La lecture est complète si sa dernière ligne,
+  une fois les `\` retirés, est le marqueur. Sinon, lire exactement (ci-dessous) ou faire le contrôle
+  de queue.
+- **Lire exactement**, pour réécrire, et pour décider quand le texte est incomplet. Ce qui suit est la
+  voie brute de cet hôte sans poste. Dans l'ordre, la première qui tient :
+  1. **Sortie dans un fichier** : décoder le base64 de `download_file_content` au shell. Exact si la
+     taille est égale à `fileSize` et la dernière ligne est le marqueur. Constaté (08 et 25/10/2026,
+     quatre fichiers de 50 à 144 Ko, empreinte identique au fichier du poste pour l'un).
+  2. **Sortie dans la conversation : la double recopie.** Recopier le base64 en entier dans un
+     fichier du conteneur, par l'outil d'écriture de fichiers et jamais par `echo`, puis le décoder.
+     Recopier de même le texte de `read_file_content`, puis le restaurer (procédure « Lire
+     intégralement » de `procedures.md`, sinon celle du guide `hotes/google-drive.md` du dépôt). Trois preuves, toutes : taille du décodé
+     égale à `fileSize` ; marqueur en dernière ligne ; décodé et restauré identiques, ou identiques
+     aux espaces près. Une seule manque : une recopie est fausse ; recommencer une fois, puis
+     passer au point 3. Deux recopies de deux formes différentes qui concordent ne se trompent pas
+     au même endroit. Constaté une fois (25/10/2026, `VERSION.md`, 4 890 octets : décodé et
+     restauré identiques, empreinte identique au fichier du poste).
+  3. **Rien ne tient** : pas de réécriture, dépôt (NOYAU §5quater). Pour décider : contrôle de queue,
+     sinon lecture incomplète.
+  La double recopie coûte deux fois la taille du fichier en sortie. Elle ne se fait que pour un
+  fichier qu'on doit lire exactement.
+- **Contrôle de queue**, pour décider seulement, quand `read_file_content` n'a pas rendu le marqueur
+  et que le base64 est dans la conversation : recopie seulement ses 128 derniers caractères (des
+  groupes de quatre, alignés sur la fin) et décode-les (`printf '%s' '<...>' | base64 -d`). Ils
+  doivent finir par le marqueur, et leur début recouvrir la fin du texte de `read_file_content` sur
+  au moins vingt caractères, `\` retirés et espaces réduits des deux côtés. Les deux ensemble font une
+  lecture complète, bonne pour décider, jamais pour réécrire. Pas de recouvrement : lecture
+  incomplète. Constaté une fois (08/10/2026, `capabilities.md`, 14 Ko : 64 caractères décodés,
+  marqueur et recouvrement présents).
 - **Chercher les emojis** (NOYAU §5, « Aucun emoji ») : au shell, sur une copie locale ou un fichier
   du poste,
   `python3 -c "import re,sys; p=re.compile('[\U00010000-\U0010FFFF\u2300-\u23FF\u2600-\u27BF\u2B00-\u2BFF\uFE0F\u200D]'); [print(f, len(p.findall(open(f,encoding='utf-8').read()))) for f in sys.argv[1:]]" *.md`.

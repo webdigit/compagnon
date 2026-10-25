@@ -147,6 +147,51 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.33.0 → 0.34.0
+
+### Ce qui change
+
+Sans poste, un fichier de mémoire de moins de 37 Ko environ peut se lire exactement par la double
+recopie, donc se réécrire, au lieu de passer en dépôt faute de voie brute. Le NOYAU ne change pas.
+
+- **Fiche `hotes/claude.md`**, « Du gabarit », « Lire un fichier en entier » : le seuil, l'absence
+  d'empreinte, « Lire exactement » et la double recopie.
+- **Guide `hotes/google-drive.md`** : pièges 2 et 2bis, procédure « Lire intégralement » (branche
+  « LIRE EXACTEMENT » et ses deux scripts), tests L11 à L14.
+
+### Ce que l'agent fait seul
+
+- **`hotes/claude.md`** : remplacer la partie « Du gabarit » par celle de cette étiquette, sans
+  toucher à « Constaté ici ». `hotes/codex.md`, `hotes/gemini.md` : rien.
+- **`VERSION.md`** : version courante 0.34.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'agent propose
+
+- **`procedures.md`**, si la ligne « Stockage partagé » du NOYAU ne porte pas `aucun` : remplacer la
+  branche « LIRE ET RÉÉCRIRE » de la procédure « Lire intégralement » par la branche « LIRE
+  EXACTEMENT » du guide de cette étiquette, scripts compris, en gardant les identifiants de
+  l'instance et ses propres lignes « Fragile » et « Dernière exécution vérifiée ». Rien ne s'y écrit
+  sans accord.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien, sauf accepter ou non la proposition sur `procedures.md`. Le NOYAU ne change pas : pas de
+recollage.
+
+### Comment vérifier
+
+**Le texte** : `hotes/claude.md` contient « La double recopie » ; `procedures.md`, après accord,
+contient « LIRE EXACTEMENT » et `restaurer.py`. `VERSION.md` porte 0.34.0.
+
+**La suite** : le premier run sans poste qui doit réécrire un petit fichier le fait au lieu de
+déposer, et écrit sous « Constaté ici » ce que la double recopie a rendu.
+
+### Ce que cette migration ne fait pas
+
+Elle ne touche à aucun contenu de la mémoire et ne reformate aucun fichier.
+
+---
+
 ## 0.32.0 → 0.33.0
 
 ### Ce qui change

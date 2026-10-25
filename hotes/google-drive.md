@@ -7,7 +7,8 @@
 > **Source** : l'instance Pilote, projet « TEST SYNCHRO DRIVE », essais du 24 au 26/09/2026 (tests T1
 > à T14). Statuts : voir `hotes/README.md`. **État des connaissances au 26/09/2026**, à compléter par
 > les tests en cours ; noms altérés côté poste, au 06/10/2026 ; voies de lecture, au 08/10/2026
-> (tests L1 à L7, instance GESTION PLANNING, lecture seule).
+> (tests L1 à L7, instance GESTION PLANNING, lecture seule) ; lecture exacte des petits fichiers, au
+> 25/10/2026 (tests L11 à L14, instances GESTION PLANNING et Triage Email Siftbox, lecture seule).
 
 ---
 
@@ -16,7 +17,7 @@
 | Geste | Possible ? | Statut |
 |---|---|---|
 | Lister un dossier par son identifiant | Oui, en plusieurs pages | Prouvé (T1, T2a, T10) |
-| Lire un fichier `.md` ou `.txt` | Oui, deux outils : l'un rend du texte retouché, et le coupe s'il porte des emojis ; l'autre rend le fichier exact, en base64 | Prouvé (T2a) ; mécanisme constaté une fois (L1 à L7, 08/10/2026) |
+| Lire un fichier `.md` ou `.txt` | Oui, deux outils : l'un rend du texte retouché, et le coupe s'il porte des emojis ; l'autre rend le fichier exact, en base64. Aucune empreinte : la seule preuve est la taille (`fileSize`) | Prouvé (T2a) ; mécanisme constaté une fois (L1 à L7, 08/10/2026) ; double recopie constatée une fois (L11 à L14, 25/10/2026) |
 | Créer un fichier texte | Oui, à condition de désactiver la conversion | Prouvé (T1 à T14) |
 | **Réécrire le contenu d'un fichier existant** | **Non.** La mise à jour ne change que le titre et le dossier parent | Prouvé (v2 de la synthèse Pilote) |
 | Renommer, déplacer | Oui | Prouvé (archivages PR008) |
@@ -45,17 +46,27 @@ pas de troisième voie.
    rien. Constaté une fois (L1 à L4) ; mécanisme exact supposé. D'où la règle du NOYAU §5, « Aucun
    emoji ».
    **Ce que rend `read_file_content`, même entier** : du texte retouché, pas le fichier. `\` ajouté
-   devant `#`, `*`, `[`, `_`, `` ` ``, `>` ; suites d'espaces réduites à une ; deux espaces et un
-   retour en fin de ligne ; emojis au-delà de U+FFFF illisibles (`ð`). Comparé ligne à ligne au
-   fichier brut, `learned-rules.md` diffère sur 112 blocs, même `\` retirés. **Il suffit pour lire et
-   décider, si son marqueur est là ; il ne fonde jamais une réécriture.** Constaté une fois (L2).
+   devant la ponctuation de Markdown (constatés : `#`, `*`, `-`, `.`, `<`, `>`, `[`, `]`, `_`,
+   `` ` ``) ; suites d'espaces réduites à une, alignements et retraits de début de ligne compris ;
+   deux espaces en fin de chaque ligne, dernier retour à la ligne retiré ; emojis au-delà de U+FFFF
+   illisibles (`ð`). Comparé ligne à ligne au fichier brut, `learned-rules.md` diffère sur 112 blocs,
+   même `\` retirés. **Il suffit pour lire et décider, si son marqueur est là. Seul, il ne fonde
+   jamais une réécriture** : il sert de seconde forme à la double recopie (point 2bis). Constaté une
+   fois (L2) ; liste des caractères et retraits, constaté une fois (L12, L13).
 2bis. **Où arrive le contenu.** Une sortie trop longue n'arrive pas dans la conversation : l'hôte
    Claude l'enregistre dans un fichier JSON du conteneur et donne son chemin. Le shell la lit. Pour
    `download_file_content`, le décodage donne alors le fichier exact (taille égale à celle du
-   listage, marqueur en dernière ligne : 87, 109 et 144 Ko, L5). Une sortie courte arrive dans la
-   conversation : le base64 d'un petit fichier (14 et 16 Ko, L6) ne se décode qu'en le recopiant, ce
-   qu'on ne fait jamais en entier. Seuil non mesuré, entre 16 et 87 Ko. Constaté une fois, en
-   session Cowork dans le cloud ; en tâche programmée, non prouvé.
+   listage, marqueur en dernière ligne : 87, 109 et 144 Ko, L5). **Le seuil est de 50 000
+   caractères** de sortie, selon la documentation de l'hôte, et il ne se règle pas. Le base64
+   grossit d'un tiers : un fichier de moins de 37 Ko environ arrive dans la conversation par
+   `download_file_content` (4,9, 14 et 16 Ko, L6 et L11 ; 50 Ko dans un fichier, L13). Ce base64 ne se
+   décode qu'en le recopiant, et une recopie seule ne prouve rien : le connecteur ne donne aucune
+   empreinte pour la comparer. **La double recopie** en fait une lecture exacte : recopier le base64
+   et le texte de `read_file_content`, décoder l'un, restaurer l'autre, et exiger qu'ils concordent,
+   avec la taille du listage et le marqueur. Deux recopies de deux formes différentes ne se trompent
+   pas au même endroit. Constaté une fois (L11 : décodé et restauré identiques, empreinte identique
+   au fichier du poste). En session Cowork dans le cloud ; en tâche programmée, même moteur, non
+   constaté.
 3. **Les écritures simultanées.** Google Drive accepte deux fichiers du même nom dans un même
    dossier. Deux sessions qui remplacent le même fichier à dix secondes d'écart créent deux versions,
    et la seconde peut archiver celle que la première venait d'écrire. Constaté deux fois le
@@ -144,15 +155,29 @@ Préconditions : l'ID du fichier et son fileSize, pris au listage (PR « Lister 
 3. Marqueur absent : download_file_content(fileId). Sortie enregistrée dans un fichier : passer à l'étape 5, c'est une lecture brute complète.
 4. Base64 arrivé dans la conversation : contrôle de queue. Recopier seulement ses 128 derniers caractères, printf '%s' '<...>' | base64 -d. Complet si ces octets finissent par le marqueur ET recouvrent la fin du texte de l'étape 1 sur au moins 20 caractères (\ retirés, espaces réduits des deux côtés). Ne jamais recopier un base64 entier.
 5. Rien de tout cela : lecture incomplète (NOYAU §5, « Une lecture incomplète ») ; noter chaque voie et ce qu'elle a rendu.
-Étapes, pour LIRE ET RÉÉCRIRE :
-1. download_file_content(fileId), sortie enregistrée dans un fichier ; python3 -c "import json,base64,sys; d=json.load(open(sys.argv[1])); open(sys.argv[2],'wb').write(base64.b64decode(d['content']))" <chemin> <copie>.md
-2. Vérifier : wc -c <copie>.md = fileSize ; tail -n 1 <copie>.md = [fin de <nom>].
-3. Base64 arrivé dans la conversation : pas de voie brute. Pas de réécriture : dépôt (NOYAU §5quater).
-Vérification : le marqueur, et pour la voie brute la taille exacte.
-Fragile : un emoji dans le fichier coupe read_file_content (NOYAU §5, « Aucun emoji ») ; le seuil d'enregistrement en fichier dépend de l'hôte et n'est pas mesuré ; jamais comparer deux lectures par read_file_content entre elles.
+Étapes, pour LIRE EXACTEMENT (avant une réécriture, un remplacement ou une rotation ; et pour décider quand le texte est incomplet) :
+1. download_file_content(fileId). Sortie enregistrée dans un fichier : python3 -c "import json,base64,sys; d=json.load(open(sys.argv[1])); open(sys.argv[2],'wb').write(base64.b64decode(d['content']))" <chemin> <copie>.md ; passer à l'étape 4.
+2. Base64 arrivé dans la conversation : double recopie. Recopier le base64 en entier dans <copie>.b64, par l'outil d'écriture de fichiers (jamais echo ni printf), puis : base64 -d <copie>.b64 > <copie>.md. Recopier de même le texte de read_file_content (étape 1 de la lecture pour décider) dans <texte>.txt ; s'il était enregistré dans un fichier : jq -r .fileContent <chemin> > <texte>.txt.
+3. Restaurer le texte, puis comparer (scripts ci-dessous) : python3 -I restaurer.py <texte>.txt <restaure>.md ; python3 -I comparer.py <copie>.md <restaure>.md. Attendu : « identiques » ou « identiques aux espaces pres ».
+4. Vérifier : wc -c <copie>.md = fileSize ; tail -n 1 <copie>.md = [fin de <nom>]. Après une double recopie, plus le résultat de l'étape 3.
+5. Une preuve manque après une double recopie : recommencer une fois. Puis, rien ne tient : pas de réécriture, dépôt (NOYAU §5quater) ; pour décider, lecture incomplète.
+Scripts, à écrire tels quels par l'outil d'écriture de fichiers :
+restaurer.py
+    import re, sys
+    t = open(sys.argv[1], encoding='utf-8').read()
+    r = '\n'.join(l[:-2] if l.endswith('  ') else l for l in t.split('\n'))
+    r = re.sub(r'\\([!-/:-@\[-`{-~])', r'\1', r).rstrip('\n') + '\n'
+    open(sys.argv[2], 'w', encoding='utf-8', newline='').write(r)
+comparer.py
+    import re, sys
+    a = open(sys.argv[1], encoding='utf-8').read(); b = open(sys.argv[2], encoding='utf-8').read()
+    n = lambda x: re.sub(r'[ \t]+', ' ', x)
+    print('identiques' if a == b else ('identiques aux espaces pres' if n(a) == n(b) else 'DIFFERENTS'))
+Vérification : le marqueur, la taille exacte, et pour la double recopie la concordance des deux formes.
+Fragile : un emoji dans le fichier coupe read_file_content (NOYAU §5, « Aucun emoji ») et rend la double recopie impossible ; le seuil de 50 000 caractères est celui de l'hôte, il peut changer ; jamais comparer deux lectures par read_file_content entre elles ; la double recopie coûte deux fois la taille du fichier, elle ne se fait que pour une lecture exacte.
 Dernière exécution vérifiée : <date>.
 Périme le : <date + 3 mois>.
-Origine : guide d'hôte compagnon google-drive.md (0.27.0, tests L1 à L7 du 08/10/2026).
+Origine : guide d'hôte compagnon google-drive.md (0.27.0, tests L1 à L7 du 08/10/2026 ; 0.34.0, tests L11 à L14 du 25/10/2026).
 ```
 
 ```
@@ -240,7 +265,6 @@ Origine : guide d'hôte compagnon google-drive.md (Pilote PR005, T6).
 | Avec le nom provisoire, le poste affiche-t-il toujours `<nom>.md` sans suffixe ? Oui une fois (Mac, 27/09), non une fois (06/10) : à quelles conditions le « (1) » revient-il ? | T20 |
 | Renommer sur le poste `<nom> (1).md` en `<nom>.md` laisse-t-il le titre Drive et l'ID inchangés ? Le premier rétablissement par l'agent le constatera (procédure « Rétablir un nom altéré », étape 6) | T21 |
 | En tâche programmée, une sortie longue du connecteur est-elle aussi enregistrée dans un fichier lisible au shell ? Le premier run après la 0.27.0 le constate | L8 |
-| À partir de quelle taille la sortie part-elle dans un fichier ? Entre 16 et 87 Ko constaté | L9 |
 | La perte de `read_file_content` est-elle exactement proportionnelle au nombre d'emojis, et seulement à ceux au-delà de U+FFFF ? Six fichiers vont dans ce sens | L10 |
 
 ### Tests de lecture du 08/10/2026 (L1 à L7)
@@ -256,3 +280,16 @@ Instance GESTION PLANNING, fichiers réels, lecture seule, session Cowork dans l
 | L5 | `download_file_content`, `learned-rules.md`, `operational-state.md`, `mistakes.md` | Sorties enregistrées en fichier ; décodées au shell : 143 901, 87 711 et 109 033 octets, égaux au listage, marqueur présent |
 | L6 | `download_file_content`, `objectives.md`, `capabilities.md`, `examples.md` (8, 14 et 16 Ko) | Base64 dans la conversation, non décodable sans recopie |
 | L7 | Contrôle de queue sur `capabilities.md` : 64 derniers caractères du base64 recopiés et décodés | `0.9.0 → 0.22.1)._` puis `[fin de capabilities.md]` : marqueur présent, recouvrement avec la fin du texte de L4 |
+
+### Tests de lecture du 25/10/2026 (L11 à L14)
+
+Session Cowork dans le cloud reliée au poste, hôte Claude, fichiers réels, lecture seule. Vérité
+terrain : l'empreinte md5 du même fichier sur le poste (miroir Google Drive pour ordinateur).
+Réponse à L9 : le seuil est de 50 000 caractères de sortie (documentation de l'hôte).
+
+| Test | Geste | Résultat |
+|---|---|---|
+| L11 | `VERSION.md` de GESTION PLANNING (4 890 octets) : base64 recopié et décodé ; texte de `read_file_content` recopié et restauré | Les deux dans la conversation. Décodé : 4 890 octets, marqueur, empreinte égale à celle du poste. Restauré : identique au décodé, octet pour octet |
+| L12 | `read_file_content`, `objectives.md` de Triage Email Siftbox (4 838 octets) | Dans la conversation ; alignements `Axe        :` réduits à un espace : restauration inexacte, identique aux espaces près |
+| L13 | Les deux outils, `mistakes.md` de Triage Email Siftbox (50 100 octets) | Les deux enregistrés dans un fichier (51 489 et 66 904 caractères). Décodé : empreinte égale à celle du poste. Restauré : 49 139 octets, alignements et retraits réduits, identique aux espaces près |
+| L14 | `get_file_metadata`, `search_files` | Aucun `md5Checksum` : `fileSize` seul |
