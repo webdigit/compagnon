@@ -147,6 +147,66 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.36.0 → 0.37.0
+
+### Ce qui change
+
+Le canal de décision s'ouvre par la relation entre un membre et son coordinateur, sans ligne de
+`paire.md`. Rien ne change pour une instance qui n'est ni coordinateur ni coordonnée, ni pour une
+vraie paire.
+
+- **NOYAU** : champ « Son dossier d'échange » sous « Coordonné par » ; §0 point 3sexies, §5sexies,
+  §5octies, §6quater point 7.
+- **`noyau/en-paire.md`** : « Le canal de décision », point 1 réécrit ; relève et relève légère.
+- **`noyau/coordination.md`** : point 10.
+- **`equipe.md`** (gabarit) : colonnes `Décisions` et `Ce qu'il m'adresse`.
+- **`paire.md`** (gabarit) : colonne `Décisions` et rôle `aucun` retirés.
+
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`** et **`noyau/coordination.md`** : les remplacer en entier par ceux de cette
+  étiquette.
+- **`VERSION.md`** : version courante 0.37.0, **Alignée sur**, ligne d'historique.
+- **La copie du NOYAU** : préparer le texte à recoller, celui de cette étiquette, avec les trous déjà
+  remplis de la copie actuelle, et « Son dossier d'échange » rempli comme ci-dessous. `noyau-local.md`
+  ne change pas.
+
+### Ce que l'agent propose
+
+- **La valeur de « Son dossier d'échange »**. Sans coordinateur : `aucun`. Chez un membre coordonné :
+  l'adresse du sous-dossier que son coordinateur lui adresse, `../handoff/<nom du membre>/` chez
+  lui. Si une ligne de `paire.md` vers ce coordinateur la donne déjà (colonne `Ce qu'il m'adresse`),
+  la reprendre. Sinon, la demander à <OPÉRATEUR> : ne jamais la deviner.
+- **Chez le coordinateur, `equipe.md`** (zone manuelle) : ajouter les colonnes `Décisions` et `Ce
+  qu'il m'adresse`. Proposer `oui` pour chaque membre, sauf avis contraire de <OPÉRATEUR>, et
+  l'adresse de son `../handoff/<nom du coordinateur>/`, reprise de `paire.md` si elle y est.
+- **`paire.md`** (zone manuelle) : la colonne `Décisions` ne compte plus. Proposer de la retirer, et
+  de retirer les lignes dont `Mon rôle` porte `aucun` : elles ne servaient qu'au canal. Un `paire.md`
+  qui n'a plus de ligne peut être retiré.
+- **Chez un membre coordonné** : ouvrir la capacité « Mise à jour à la demande du coordinateur », si
+  ce n'est pas fait. Avec elle, les migrations suivantes passent par le coordinateur.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU** dans les Instructions de chaque projet, avec le champ « Son dossier
+  d'échange ». C'est ce geste qui ouvre le canal côté membre.
+- **Valider les colonnes de `equipe.md`** chez le coordinateur.
+
+### Comment vérifier
+
+**Le texte** : la copie du NOYAU contient « **Son dossier d'échange** ». `noyau/en-paire.md`
+contient « Le canal s'ouvre par la relation ». `VERSION.md` porte 0.37.0.
+
+**La suite** : un membre coordonné sans `paire.md` ouvre sa mission `D` au prochain point
+`décision` ; le coordinateur la lit à l'adresse de `equipe.md` et la présente en séance.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucune capacité. Elle n'efface aucune mission en cours : une mission `D` ou `U` ouverte
+sous la 0.36.0 continue dans le même sous-dossier. Elle ne touche pas aux vraies paires.
+
+---
+
 ## 0.35.0 → 0.36.0
 
 ### Ce qui change

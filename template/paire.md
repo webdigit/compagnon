@@ -20,19 +20,18 @@
 > la même chose, chacun de son côté : un écart entre eux se signale à <OPÉRATEUR>, il ne se tranche
 > pas.
 >
-> **La colonne `Décisions` ouvre le canal de décision** entre un membre et son coordinateur
-> (NOYAU §5octies) : `je lui pose mes questions` chez le membre, `il me pose ses questions` chez le
-> coordinateur, `non` partout ailleurs. L'écrire, c'est accepter que le coordinateur redescende tes
-> décisions, accords compris. Pour cette seule fin, `Mon rôle` peut porter `aucun`.
+> **Le canal de décision ne se déclare pas ici.** Il s'ouvre par la relation entre un membre et son
+> coordinateur, déclarée dans les Instructions du membre et dans `equipe.md` (NOYAU §5octies). Une
+> ligne ici ne sert que si les deux agents travaillent aussi en paire.
 >
 > **Les chemins se donnent tels qu'on les lit depuis le cloud** quand la paire tourne sans poste :
 > un identifiant de stockage, pas un nom (NOYAU §5quinquies).
 
 ## Mes paires
 
-| Collègue | Son projet | Ce qu'il m'adresse | Mon rôle | Chantier | Relais | Décisions | Depuis le |
-|---|---|---|---|---|---|---|---|
-| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage>` | `<chemin ou identifiant de son ../handoff/<mon nom>/>` | `pilote`, `exécutant` ou `aucun` | `<chemin ou identifiant du chantier, ou « aucun »>` | `<nom du coordinateur et chemin de son ../handoff/<pilote>-<exécutant>/, ou « aucun »>` | `je lui pose mes questions`, `il me pose ses questions` ou `non` | `<jj/mm/aaaa>` |
+| Collègue | Son projet | Ce qu'il m'adresse | Mon rôle | Chantier | Relais | Depuis le |
+|---|---|---|---|---|---|---|
+| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage>` | `<chemin ou identifiant de son ../handoff/<mon nom>/>` | `pilote` ou `exécutant` | `<chemin ou identifiant du chantier, ou « aucun »>` | `<nom du coordinateur et chemin de son ../handoff/<pilote>-<exécutant>/, ou « aucun »>` | `<jj/mm/aaaa>` |
 
 ## Le chantier
 

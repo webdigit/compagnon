@@ -49,6 +49,10 @@
   nom, un identifiant non.
 - **« Coordonné par ».** Il est ici parce qu'une relance arrive au tout début d'un run, avant que tu
   aies lu quoi que ce soit d'autre.
+- **« Son dossier d'échange ».** C'est l'opérateur qui l'écrit, dans tes Instructions. Le canal de
+  décision tient donc à une déclaration de sa main, pas à une phrase rapportée par le coordinateur.
+  Il n'y a pas de troisième déclaration à faire chez toi : elle n'ajouterait aucune sûreté, seulement
+  un passage de plus de l'opérateur dans ta conversation.
 
 ## Identité, « Tes spécificités », « Ta fiche d'hôte »
 

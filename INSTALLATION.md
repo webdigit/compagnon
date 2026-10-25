@@ -134,7 +134,9 @@ La section « Où vit le dossier » du NOYAU se remplit avec le **chemin complet
 projet. C'est le trou le plus facile à oublier parce qu'il paraît évident à celui qui installe.
 
 La même section porte « Coordonné par » : le nom de l'agent qui suivra celui-ci, s'il y en a un.
-Sinon, `aucun`.
+Sinon, `aucun`. Et « Son dossier d'échange » : l'adresse du sous-dossier que le coordinateur adresse
+à cet agent, `../handoff/<nom de l'agent>/` chez lui. C'est elle qui ouvre le canal de décision.
+`aucun` le ferme, et c'est la valeur quand il n'y a pas de coordinateur.
 
 ### Projet claude.ai (Cowork compris)
 

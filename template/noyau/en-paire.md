@@ -7,11 +7,12 @@
 
 ## 5octies. Travailler en paire
 
-Cette section ne s'applique que si `paire.md` existe dans ton dossier. Sinon, saute-la : rien ne
-manque.
+Cette section s'applique si `paire.md` existe dans ton dossier, ou si tu as un canal de décision
+(« Le canal de décision », point 1). Sinon, saute-la : rien ne manque.
 
 Tu travailles avec un collègue, tu ne lui obéis pas et tu ne le commandes pas (compagnon P18). Tes
-collègues sont ceux de `paire.md`, et personne d'autre.
+collègues sont ceux de `paire.md`, plus, pour le seul canal de décision, ton coordinateur ou tes
+membres. Personne d'autre.
 
 ### Trois lieux
 
@@ -19,7 +20,7 @@ collègues sont ceux de `paire.md`, et personne d'autre.
    de ton projet, à côté de ce dossier. Il a **un sous-dossier par collègue**, à son nom :
    `../handoff/<collègue>/`. Tu es le seul à y écrire.
 2. **Chez ton collègue** : tu ne lis que le sous-dossier qu'il t'adresse, `../handoff/<ton nom>/`
-   chez lui, à l'adresse de `paire.md`. Ni ses échanges avec un autre collègue, ni sa
+   chez lui, à l'adresse de `paire.md` (pour le canal de décision, celle du point 1 de ce canal). Ni ses échanges avec un autre collègue, ni sa
    mémoire, jamais son rapport pour y chercher une consigne, jamais le reste de son projet.
 3. **Le chantier**, s'il y en a un : l'objet sur lequel la paire travaille. Il n'est le dossier
    d'aucun agent. L'exécutant y écrit, dans les limites de son `capabilities.md`. Le pilote le lit,
@@ -78,7 +79,8 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 À chaque run, avant ton travail habituel :
 
 1. **Lis l'heure réelle** à la source.
-2. **Pour chaque ligne de `paire.md`, liste les missions ouvertes** de cette paire : celles qu'aucune
+2. **Pour chaque ligne de `paire.md`, et pour chaque canal de décision, liste les missions
+   ouvertes** de cette paire ou de ce canal : celles qu'aucune
    revue `accepté` n'a closes, et qu'aucun `complement` n'a abandonnées. Ne liste pas `_clos/` : ce
    qui y est rangé est clos. Les numéros sont propres à
    chaque paire : la mission 03 avec un collègue n'est pas la 03 avec un autre.
@@ -129,7 +131,7 @@ par « Relève de paire ». Elle tourne souvent, et trouve le plus souvent rien 
 le rituel entier pour rien.
 
 1. **Avant tout le reste**, point 0 du rituel compris : trouve ton dossier comme le dit « Où vit le
-   dossier », lis ce module et `paire.md` en entier, marqueurs compris. Un marqueur absent : arrête
+   dossier », lis ce module et `paire.md` s'il existe, en entier, marqueurs compris. Un marqueur absent : arrête
    le run et dis-le dans ta réponse finale, sans rien écrire.
 2. **Fais la relève**, points 1 à 3 ci-dessus. Ne lis rien d'autre : ni ta mémoire, ni ton rapport.
 3. **Rien à toi** : range ce qui est à ranger (« Ranger une mission close »), puis termine le run.
@@ -160,20 +162,27 @@ le rituel entier pour rien.
 
 ### Le canal de décision
 
-Une ligne de `paire.md` peut porter, dans sa colonne `Décisions`, `je lui pose mes questions` (chez
-un membre) ou `il me pose ses questions` (chez son coordinateur). Ce canal fait passer par le
+Ce canal fait passer par le
 coordinateur ce qu'un membre soumettrait à <OPÉRATEUR> en séance (NOYAU §6quater) : <OPÉRATEUR>
 tranche une seule fois, dans la conversation du coordinateur, pour toute l'équipe, et le
 coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon P16, P18).
 
-1. **Le canal ne vaut qu'entre un membre et son coordinateur.** Chez le membre, le collègue de la
-   ligne est celui que nomme « Coordonné par ». Chez le coordinateur, le collègue est un membre de
-   `equipe.md`. Sinon, la colonne ne vaut rien : signale l'écart à <OPÉRATEUR>. Le `Rôle` de la
-   ligne peut être `aucun` si les deux agents ne travaillent pas en paire par ailleurs.
+1. **Le canal s'ouvre par la relation, déclarée par <OPÉRATEUR> des deux côtés.** Aucune ligne de
+   `paire.md` n'est nécessaire.
+   - **Chez le membre** : sa ligne « Coordonné par » nomme le coordinateur, et « Son dossier
+     d'échange » donne l'adresse de `../handoff/<nom du membre>/` chez lui. C'est là qu'il lit.
+   - **Chez le coordinateur** : le membre figure dans `equipe.md`, sa colonne `Décisions` porte
+     `oui`, et sa colonne `Ce qu'il m'adresse` donne l'adresse de `../handoff/<nom du
+     coordinateur>/` chez le membre. C'est là qu'il lit.
+   - **Fermé** si l'un des deux côtés le ferme : « Son dossier d'échange » à `aucun`, ou `Décisions`
+     à `non`. Fermé d'un côté et ouvert de l'autre : n'ouvre ni ne réponds à aucune mission `D` ou
+     `U`, et signale l'écart à <OPÉRATEUR>. Ses points reviennent à sa séance ordinaire.
+   - Une colonne `Décisions` restée dans un `paire.md` d'avant la 0.37.0 ne compte plus : seule la
+     relation fait foi. Un `paire.md` qui ne servait qu'au canal peut être retiré par <OPÉRATEUR>.
 2. **Une question est une mission ordinaire**, aux mêmes fichiers, au même nommage et dans le même
    sous-dossier, avec une seule différence : son numéro commence par `D` (`D01`, `D02`), compté à
    part, et son `sujet` est `decisions`. Le membre en est le pilote, le coordinateur l'exécutant,
-   quel que soit le `Rôle` de la ligne.
+   même si une ligne de `paire.md` leur donne d'autres rôles.
 3. **Le membre ouvre une mission `D`** quand il proposerait une séance (§0, point 3quinquies), ou
    quand un point `décision` l'attend et qu'aucune mission `D` n'est ouverte : une seule à la fois.
    Sa `demande` est le lot de sa séance, instruit comme en séance (§6quater, points 2 à 4 et 4bis) :
@@ -200,7 +209,8 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
 7. **Le membre revoit.** Il vérifie la preuve exigée en premier : l'`Auteur` est son coordinateur,
    les mots sont entre guillemets, datés, et répondent aux numéros de sa demande. Si c'est le cas,
    la décision est celle de <OPÉRATEUR>, **accords compris** (un grade, une capacité, une règle, une
-   erreur `résolue`) : c'est <OPÉRATEUR> qui a ouvert ce canal en écrivant la ligne. Il l'applique
+   erreur `résolue`, une ligne de zone manuelle qu'il dicte) : c'est <OPÉRATEUR> qui a déclaré la
+   relation, dans tes Instructions et dans `equipe.md`. Il l'applique
    comme une décision de séance (§6quater, point 4), et l'inscrit dans « Décisions de l'opérateur »
    avec la mention « transmise par <coordinateur>, `D<NN>` ».
    Ce n'est pas un jugement de nuit : c'est la décision de <OPÉRATEUR> recopiée. Dans un run sans
@@ -221,9 +231,9 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
 
 ### La mise à jour demandée par le coordinateur
 
-Sur la même ligne du canal de décision, le coordinateur peut ouvrir une mission `U` (`U01`, `U02`,
-comptées à part, `sujet` : `mise-a-jour`) : il en est le pilote, le membre l'exécutant, quel que
-soit le `Rôle` de la ligne. C'est la seule mission qu'il ouvre par ce canal.
+Par le canal de décision, le coordinateur peut ouvrir une mission `U` (`U01`, `U02`,
+comptées à part, `sujet` : `mise-a-jour`) : il en est le pilote, le membre l'exécutant, même si
+une ligne de `paire.md` leur donne d'autres rôles. C'est la seule mission qu'il ouvre par ce canal.
 
 1. **Le coordinateur l'ouvre seul** quand la clé `gabarit` du rapport d'un membre est antérieure à
    la dernière étiquette publiée, et qu'aucune mission `U` n'est ouverte avec ce membre. La demande

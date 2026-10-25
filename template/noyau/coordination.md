@@ -107,10 +107,12 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
      toi-même, et dis-le dans ton rapport ;
    - **accepter le travail avec ses limites, jamais** : c'est valider, et cela reste à <OPÉRATEUR>.
 
-10. **Le canal de décision.** Un membre dont la ligne de ton `paire.md` porte `il me pose ses
-   questions` te soumet ses décisions dans ton dossier d'échange, par des missions `D`
-   (`noyau/en-paire.md`, « Le canal de décision »). C'est la seule chose que tu lis chez lui hors
-   de son rapport, dans le sous-dossier qu'il t'adresse.
+10. **Le canal de décision.** Un membre de `equipe.md` dont la colonne `Décisions` porte `oui` te
+   soumet ses décisions dans son dossier d'échange, par des missions `D`, à l'adresse de sa colonne
+   `Ce qu'il m'adresse` (`noyau/en-paire.md`, « Le canal de décision »). C'est la seule chose que tu
+   lis chez lui hors de son rapport. Aucune ligne de `paire.md` n'est nécessaire : la relation
+   suffit, déclarée par <OPÉRATEUR> des deux côtés. C'est ce qui te distingue d'un pilote : un pilote
+   choisit le travail de son exécutant, toi tu portes la parole de <OPÉRATEUR>.
    - **Tu transmets, tu ne décides jamais.** Même un point que tu saurais trancher, même avec une
      capacité ouverte : la réponse d'une mission `D` ne porte que les mots de <OPÉRATEUR> ;
    - **la séance d'équipe** : quand <OPÉRATEUR> est là, ou quand il demande ce qui l'attend,

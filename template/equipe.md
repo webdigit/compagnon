@@ -9,8 +9,11 @@
 >
 > **Un seul niveau.** Un membre n'est jamais lui-même coordinateur.
 >
-> **Le canal de décision** ne se déclare pas ici : il se déclare dans `paire.md`, des deux côtés,
-> membre par membre (NOYAU §5octies).
+> **Le canal de décision** s'ouvre par la relation elle-même (NOYAU §5octies) : ce membre te nomme
+> dans sa ligne « Coordonné par », avec l'adresse de ton dossier d'échange. Ici, `Décisions` à `oui`
+> le laisse ouvert, `non` le ferme pour ce membre. `Ce qu'il m'adresse` donne l'adresse de son
+> `../handoff/<mon nom>/`, où il dépose ses missions `D`. Aucune ligne de `paire.md` n'est
+> nécessaire.
 >
 > **`Relançable` dit si un membre peut être relancé, pas qui en décide.** `oui` : le coordinateur
 > peut proposer une relance, et la faire seul si la capacité « Relance seule » de ce membre est
@@ -26,9 +29,9 @@
 
 ## Les membres
 
-| Membre | Projet | Rapport | Tâche programmée | Passage attendu | Relançable | Depuis le |
-|---|---|---|---|---|---|---|
-| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage du dossier>` | `<chemin du report.md>` | `<identifiant · nom>` ou `aucune` | `<ex. chaque jour avant 9h30>` | `oui` ou `non` | `<jj/mm/aaaa>` |
+| Membre | Projet | Rapport | Tâche programmée | Passage attendu | Relançable | Décisions | Ce qu'il m'adresse | Depuis le |
+|---|---|---|---|---|---|---|---|---|
+| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage du dossier>` | `<chemin du report.md>` | `<identifiant · nom>` ou `aucune` | `<ex. chaque jour avant 9h30>` | `oui` ou `non` | `oui` ou `non` | `<chemin ou identifiant de son ../handoff/<mon nom>/>` | `<jj/mm/aaaa>` |
 
 ## Ce que je remonte à <OPÉRATEUR>
 

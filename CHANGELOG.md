@@ -10,6 +10,43 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.37.0] - 2026-10-25
+
+### Modifié
+
+- **Le canal de décision s'ouvre par la relation** (`noyau/en-paire.md`, NOYAU §5octies) : un membre
+  dont les Instructions nomment son coordinateur, avec l'adresse du dossier d'échange de celui-ci, a
+  le canal ouvert. Plus aucune ligne de `paire.md` n'est nécessaire, ni chez le membre ni chez le
+  coordinateur. Il se ferme d'un côté ou de l'autre : « Son dossier d'échange » à `aucun` chez le
+  membre, `Décisions` à `non` dans `equipe.md`.
+- **NOYAU, « Où vit le dossier »** : un champ « Son dossier d'échange » sous « Coordonné par ».
+- **NOYAU §0 point 3sexies, §5sexies, §5octies, §6quater point 7** : le canal de décision ne dépend
+  plus de `paire.md`.
+- **`equipe.md`** : colonnes `Décisions` et `Ce qu'il m'adresse`.
+- **`paire.md`** : la colonne `Décisions` et le rôle `aucun` sortent. Une ligne de `paire.md` ne sert
+  plus qu'à une vraie paire.
+- **`noyau/coordination.md`, point 10** : le canal se lit dans `equipe.md`.
+- **DOCTRINE, P18** : pourquoi la relation suffit, et ce qui place le coordinateur au-dessus d'un
+  pilote.
+- **`PUBLICATION.md`, R9** : un changement va dans un module, sauf s'il ne peut pas.
+
+### Pourquoi le NOYAU change (R9)
+
+La condition d'application de §5octies, la relève du §0 et l'exception de §5sexies doivent être lues
+avant le module : elles disent s'il faut l'ouvrir. Le champ « Son dossier d'échange » doit être de la
+main de l'opérateur, et seules les Instructions le sont. Tout le reste est dans les modules.
+
+### La leçon
+
+La 0.36.0 ouvrait le canal par une ligne de `paire.md`, des deux côtés. Or c'est une zone manuelle :
+l'opérateur devait passer dans la conversation de chaque membre pour l'écrire, alors que le canal
+existe pour lui éviter ces passages. Un coordinateur a refusé à juste titre de faire descendre un
+accord explicite, faute de cette ligne. La relation était pourtant déjà déclarée deux fois, de la
+main de l'opérateur. Une troisième déclaration n'ajoutait aucune sûreté.
+
+Origine : JC, 25/10/2026 : « un coordinateur devrait avoir des droits supérieurs au pilote. Par
+rapport aux agents qu'il contrôle. »
+
 ## [0.36.0] - 2026-10-25
 
 ### Ajouté

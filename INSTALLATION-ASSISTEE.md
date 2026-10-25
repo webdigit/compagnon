@@ -409,7 +409,8 @@ Aucun agent n'écrit chez un autre, et tu ne fais pas exception. Pour chaque mem
 que l'opérateur collera dans une session de ce membre** :
 
 > « Ton coordinateur est désormais <nom du coordinateur>. Remplis la ligne « Coordonné par » de ton
-> NOYAU avec ce nom, vérifie que ton `report.md` porte les clés de relevé de la version en cours,
+> NOYAU avec ce nom, et « Son dossier d'échange » avec <adresse de son ../handoff/<nom du membre>/>
+> (ou `aucun` si je ne veux pas que mes décisions passent par lui), vérifie que ton `report.md` porte les clés de relevé de la version en cours,
 > puis rappelle-moi de recoller le NOYAU et les spécificités. »
 
 L'opérateur le fait membre par membre, puis recolle. Tant qu'un membre n'a pas fait ce geste, il

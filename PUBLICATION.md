@@ -120,6 +120,20 @@ _Posée le 03/10/2026 (0.22.0) : compagnon P12 interdisait au coordinateur la m�
 sans que leur rapport porte ce dont il avait besoin. Le premier coordinateur réel a lu cinq
 `VERSION.md`._
 
+## R9. Un changement va dans un module, sauf s'il ne peut pas
+
+Chaque modification du NOYAU coûte à l'opérateur un recollage dans les Instructions de chaque
+projet : c'est le seul geste de mise à jour qu'aucun agent ne peut faire à sa place. Les modules de
+`noyau/`, eux, sont remplacés par l'agent pendant sa migration, sans rien demander.
+
+Avant de toucher au NOYAU, se demander si le changement peut vivre dans un module. Le NOYAU ne garde
+que ce qui doit être lu avant qu'un module le soit : un déclencheur, une condition d'application, une
+exception de §5sexies, un champ de « Où vit le dossier ». Le reste va dans le module que le
+déclencheur désigne. Une version qui touche le NOYAU dit pourquoi dans son `CHANGELOG.md`.
+
+_Posée le 25/10/2026 (0.37.0) : l'opérateur, qui fait tourner plusieurs agents, recolle le NOYAU
+partout à chaque version qui le modifie. Moins il change, moins la maintenance passe par lui._
+
 ---
 
 ## Avant de publier : la liste
@@ -136,3 +150,5 @@ sans que leur rapport porte ce dont il avait besoin. Le premier coordinateur ré
 9. Les trois points d'entrée d'`entrees/` sont identiques, une fois retirées les lignes `@`, la
    ligne `Hôte` et la ligne de la liste qui nomme la fiche (`entrees/README.md`). Ils partent dans les instances
    sans passer par `template/` : leur diff compte comme celui de `template/` (R6).
+10. Le NOYAU n'a changé que pour ce qui ne pouvait pas aller dans un module, et le `CHANGELOG.md`
+   dit pourquoi (R9).

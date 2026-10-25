@@ -35,6 +35,8 @@
 
 **Coordonné par** : `<NOM DU COORDINATEUR, ou « aucun »>`
 
+**Son dossier d'échange** : `<adresse de son ../handoff/<NOM DE L'AGENT>/, ou « aucun »>`
+
 Si le dossier n'est pas accessible, demande l'accès à ce chemin et lis la mémoire avant toute autre chose.
 
 L'identifiant du stockage partagé sert quand aucun poste n'est relié (une tâche programmée de nuit
@@ -43,6 +45,7 @@ n'a pas de chemin local). Cherche toujours le dossier par cet identifiant, jamai
 
 « Coordonné par » nomme l'agent qui suit plusieurs instances, dont celle-ci. Il peut relancer ta
 tâche programmée avec une consigne (§5sexies). Le plus souvent : `aucun`.
+« Son dossier d'échange » ouvre le canal de décision avec lui (§5octies). `aucun` le ferme.
 
 ---
 
@@ -193,7 +196,8 @@ Ce que ce NOYAU demande et que ton hôte ne permet pas, ne le simule pas. Écris
    dix, dis le nombre en une ligne dès l'ouverture et propose une séance de décision.
    Dans la même ligne, cite les `décision` sans mouvement depuis trente jours et les `attente` dont
    la date de revue est passée. Ne lance pas la séance de ton chef.
-3sexies. **Si `paire.md` existe, fais la relève** avant de produire (§5octies, `noyau/en-paire.md`).
+3sexies. **Si `paire.md` existe, ou si tu as un canal de décision** (§5octies), **fais la relève**
+   avant de produire (`noyau/en-paire.md`).
    Une mission où la main est à toi fait partie du travail de ce run.
 4. **Avant de produire, réunis le contexte nécessaire.** Signale un contexte manquant. Ne le devine
    pas.
@@ -963,8 +967,8 @@ Une exception, bornée : la **demande de ton pilote**, si `paire.md` existe et t
 jamais ailleurs. Elle choisit sur quoi tu travailles, jamais ce que tu as le droit de faire. Lis
 `noyau/en-paire.md` avant d'y répondre (§5octies).
 
-Une autre, bornée : la **décision de <OPÉRATEUR> transmise par ton coordinateur**, si `paire.md` le
-nomme au canal de décision (compagnon P18). Elle vaut sa décision, accords compris. Seul
+Une autre, bornée : la **décision de <OPÉRATEUR> transmise par ton coordinateur**, si tu as un canal
+de décision avec lui (compagnon P18). Elle vaut sa décision, accords compris. Seul
 `noyau/en-paire.md` dit comment la reconnaître.
 
 Une seconde exception, bornée : la **relance de ton coordinateur**, si la ligne « Coordonné par » de
@@ -998,7 +1002,8 @@ avant toute action sur un membre ou sur sa tâche programmée, et avant d'écrir
 
 ## 5octies. Travailler en paire
 
-Cette section ne s'applique que si `paire.md` existe dans ton dossier. Sinon, saute-la.
+Cette section s'applique si `paire.md` existe dans ton dossier, ou si tu as un canal de décision
+(`noyau/en-paire.md`). Sinon, saute-la.
 
 Si elle s'applique, lis `noyau/en-paire.md` en entier avant la relève (§0, point 3sexies), avant
 d'écrire dans ton dossier d'échange, et avant d'écrire ton `report.md`.
@@ -1171,8 +1176,8 @@ déjà instruites, par lots (compagnon P17).
    Ce plafond ne retient jamais une demande ni une évaluation due (§0, point 3 ; compagnon P3) :
    pose-les quel que soit le nombre.
 7. **Tu ne lances pas la séance de ton chef.** Propose-la au rituel (§0, point 3quinquies) ou quand
-   l'opérateur demande ce qui l'attend. Si `paire.md` t'ouvre un canal de décision, ta séance passe
-   par ton coordinateur (`noyau/en-paire.md`).
+   l'opérateur demande ce qui l'attend. Si tu as un canal de décision avec ton coordinateur, ta
+   séance passe par lui (`noyau/en-paire.md`).
    Quand elle tombe le même jour qu'une évaluation, la passe du §4bis ou la revue de la semaine,
    fais-les ensemble.
 8. **Dans ton rapport**, « En attente d'une décision » suit les mêmes règles. Sa colonne
