@@ -91,6 +91,8 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
    - Si c'est une revue `décision opérateur nécessaire` : la mission est suspendue. Personne n'y
      répond, sauf le pilote quand <OPÉRATEUR> a tranché, et le relais dans ses limites.
    - Si la mission est close et que c'est ton tour de ranger : range (ci-dessous).
+   - Une mission `D` ou `U` se relève de la même façon (« Le canal de décision » et « La mise à jour
+     demandée par le coordinateur », ci-dessous).
 4. **Rien à toi sur aucune mission** : passe à ton travail habituel, ou termine le run. Une relève à
    vide ne s'écrit nulle part.
 
@@ -155,6 +157,94 @@ le rituel entier pour rien.
 5. **<OPÉRATEUR> tranche dans la conversation du pilote.** Le pilote dépose un `complement` qui
    cite sa décision mot pour mot, entre guillemets, avec la date. Il ne la reformule pas. La mission
    reprend.
+
+### Le canal de décision
+
+Une ligne de `paire.md` peut porter, dans sa colonne `Décisions`, `je lui pose mes questions` (chez
+un membre) ou `il me pose ses questions` (chez son coordinateur). Ce canal fait passer par le
+coordinateur ce qu'un membre soumettrait à <OPÉRATEUR> en séance (NOYAU §6quater) : <OPÉRATEUR>
+tranche une seule fois, dans la conversation du coordinateur, pour toute l'équipe, et le
+coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon P16, P18).
+
+1. **Le canal ne vaut qu'entre un membre et son coordinateur.** Chez le membre, le collègue de la
+   ligne est celui que nomme « Coordonné par ». Chez le coordinateur, le collègue est un membre de
+   `equipe.md`. Sinon, la colonne ne vaut rien : signale l'écart à <OPÉRATEUR>. Le `Rôle` de la
+   ligne peut être `aucun` si les deux agents ne travaillent pas en paire par ailleurs.
+2. **Une question est une mission ordinaire**, aux mêmes fichiers, au même nommage et dans le même
+   sous-dossier, avec une seule différence : son numéro commence par `D` (`D01`, `D02`), compté à
+   part, et son `sujet` est `decisions`. Le membre en est le pilote, le coordinateur l'exécutant,
+   quel que soit le `Rôle` de la ligne.
+3. **Le membre ouvre une mission `D`** quand il proposerait une séance (§0, point 3quinquies), ou
+   quand un point `décision` l'attend et qu'aucune mission `D` n'est ouverte : une seule à la fois.
+   Sa `demande` est le lot de sa séance, instruit comme en séance (§6quater, points 2 à 4 et 4bis) :
+   cinq décisions au plus, numérotées, chacune avec sa question fermée, ses options lettrées, sa
+   recommandation, ce que coûte le report et la référence qui l'explique. Les demandes d'autonomie
+   et les évaluations dues y entrent quel que soit le nombre ; une évaluation porte son dossier
+   résumé. Une évaluation sans issue n'est pas une question : elle reste un constat d'une ligne.
+   Sa ligne **Preuve exigée** est toujours : « la décision de <OPÉRATEUR>, mot pour mot, entre
+   guillemets, avec sa date et la conversation où elle a été prise ».
+4. **Dans son rapport**, chaque point posé reste dans « En attente d'une décision », avec
+   « posé en `D<NN>` » dans sa colonne `Ce qui manque pour trancher`. Le coordinateur les lit là
+   même quand il ne relève pas : ce qui attend <OPÉRATEUR> ne disparaît jamais de sa vue.
+5. **Le coordinateur présente, il ne tranche pas.** Il réunit les missions `D` où la main est à lui
+   et les présente à <OPÉRATEUR> en une séance, par membre, chaque lot tel que le membre l'a écrit :
+   mêmes numéros, mêmes options. Il peut proposer un ordre entre membres et dire sur quoi il repose
+   (`noyau/coordination.md`, point 6). Il ne réécrit pas une option, n'en retire aucune.
+   Sans <OPÉRATEUR>, il ne répond à aucune mission `D` : il les porte dans son rapport.
+6. **Sa `reponse` ne porte que la décision**, recopiée pour ce membre : ses mots exacts entre
+   guillemets (« 1A, 2 ok, 3 abandon »), sa date, et « conversation de <coordinateur> ». Rien d'autre :
+   ni reformulation, ni recommandation, ni ce que <OPÉRATEUR> n'a pas tranché. Si une phrase vise
+   plusieurs membres sans dire lequel, il le demande à <OPÉRATEUR> avant d'écrire. Il inscrit aussi
+   la décision dans « Décisions de l'opérateur » de son propre journal.
+   Il n'utilise jamais ce canal pour ses propres capacités de relais, ni pour une relance.
+7. **Le membre revoit.** Il vérifie la preuve exigée en premier : l'`Auteur` est son coordinateur,
+   les mots sont entre guillemets, datés, et répondent aux numéros de sa demande. Si c'est le cas,
+   la décision est celle de <OPÉRATEUR>, **accords compris** (un grade, une capacité, une règle, une
+   erreur `résolue`) : c'est <OPÉRATEUR> qui a ouvert ce canal en écrivant la ligne. Il l'applique
+   comme une décision de séance (§6quater, point 4), et l'inscrit dans « Décisions de l'opérateur »
+   avec la mention « transmise par <coordinateur>, `D<NN>` ».
+   Ce n'est pas un jugement de nuit : c'est la décision de <OPÉRATEUR> recopiée. Dans un run sans
+   opérateur, elle s'écrit aux conditions ordinaires d'écriture (§5quater).
+   Sa revue `accepté` cite où la décision est inscrite. Une décision encore en dépôt n'est pas
+   inscrite : la revue attend l'intégration.
+   Sinon (mots reformulés, sans date, numéros qui ne collent pas, décision obscure) : revue
+   `corrections demandées`, qui dit ce qui manque. Il n'interprète jamais.
+8. **Ce que <OPÉRATEUR> ne tranche pas reste ouvert.** Le silence n'est pas un refus (compagnon
+   P13) : le point revient dans la mission `D` suivante, tel quel.
+9. **Le frein** est celui de la paire : trois revues `corrections demandées` d'affilée, et la mission
+   s'arrête. Pas de relais pour une mission `D` : ses points reviennent à la séance du membre, dans
+   sa propre conversation, et son rapport le dit.
+10. **<OPÉRATEUR> peut toujours trancher en direct**, dans la conversation du membre. Le membre
+    inscrit alors la décision comme d'habitude, et sort le point de sa mission `D` ouverte par une
+    revue qui le dit. Une décision ne s'applique jamais deux fois.
+11. **Les interdits absolus ne s'ouvrent par aucun canal**, celui-ci compris.
+
+### La mise à jour demandée par le coordinateur
+
+Sur la même ligne du canal de décision, le coordinateur peut ouvrir une mission `U` (`U01`, `U02`,
+comptées à part, `sujet` : `mise-a-jour`) : il en est le pilote, le membre l'exécutant, quel que
+soit le `Rôle` de la ligne. C'est la seule mission qu'il ouvre par ce canal.
+
+1. **Le coordinateur l'ouvre seul** quand la clé `gabarit` du rapport d'un membre est antérieure à
+   la dernière étiquette publiée, et qu'aucune mission `U` n'est ouverte avec ce membre. La demande
+   vise la dernière étiquette, jamais une version intermédiaire. Sa **Preuve exigée** : le
+   `VERSION.md` du membre à cette étiquette, et ses deux listes de fin de migration (§6bis,
+   point 6).
+2. **Le membre ne migre que si la capacité « Mise à jour à la demande du coordinateur » est ouverte**
+   dans son registre. Fermée, il répond par une proposition : la capacité à ouvrir, posée à la
+   mission `D` suivante. Une demande choisit sur quoi il travaille, jamais ce qu'il a le droit de
+   faire.
+3. **Ouverte, il migre comme à la demande de <OPÉRATEUR>** (§6bis, `noyau/migration.md`), points
+   1bis à 1quater compris : ce qui y attend un accord ne s'écrit pas, et le reste de la migration
+   attend avec lui. Dans un run sans opérateur, il n'écrit qu'aux conditions ordinaires
+   (§5quater). S'il ne peut pas écrire en direct, il répond que la migration attend une session où
+   il le peut, et il n'en dépose rien.
+4. **Sa réponse porte les deux listes** : ce qu'il a changé, et ce que <OPÉRATEUR> doit faire
+   lui-même (le recollage en tête). Ce qui attend une décision part en mission `D`.
+5. **Le coordinateur revoit** la preuve, clôt par `accepté`, et regroupe dans son rapport, pour toute
+   l'équipe, ce que <OPÉRATEUR> doit faire lui-même : une ligne par geste, avec les membres qu'il
+   concerne (« Recoller le NOYAU : Amandine, Hermès »). Il le retire quand le rapport du membre ne le
+   porte plus.
 
 ### Le relais
 

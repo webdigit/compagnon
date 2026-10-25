@@ -9,6 +9,9 @@
 >
 > **Un seul niveau.** Un membre n'est jamais lui-même coordinateur.
 >
+> **Le canal de décision** ne se déclare pas ici : il se déclare dans `paire.md`, des deux côtés,
+> membre par membre (NOYAU §5octies).
+>
 > **`Relançable` dit si un membre peut être relancé, pas qui en décide.** `oui` : le coordinateur
 > peut proposer une relance, et la faire seul si la capacité « Relance seule » de ce membre est
 > ouverte dans `capabilities.md`. Même chose pour les autres actions sur sa tâche (test, suspension,

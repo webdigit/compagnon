@@ -10,6 +10,45 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.36.0] - 2026-10-25
+
+### Ajouté
+
+- **Le canal de décision** (`noyau/en-paire.md`, NOYAU §5octies) : les questions qu'un membre
+  soumettrait à l'opérateur en séance montent chez son coordinateur par une mission `D` du dossier
+  d'échange. L'opérateur tranche une fois, dans la conversation du coordinateur, pour toute
+  l'équipe. Le coordinateur recopie sa décision mot pour mot, le membre l'applique, accords compris,
+  et clôt par une revue `accepté`. Même fichiers, même relève, même frein, même rangement que la
+  paire : rien de nouveau à apprendre.
+- **`paire.md`** : colonne `Décisions` (`je lui pose mes questions`, `il me pose ses questions`,
+  `non`), et `Mon rôle` peut porter `aucun`.
+- **`noyau/coordination.md`, point 10** : le coordinateur transmet, il ne tranche jamais ; son
+  rapport liste les décisions transmises et leur état, les accords en premier.
+- **La mise à jour demandée par le coordinateur** (`noyau/en-paire.md`) : le coordinateur ouvre
+  seul une mission `U` chez un membre en retard de version ; le membre migre si sa capacité « Mise à
+  jour à la demande du coordinateur » est ouverte, et sa réponse rapporte ce que l'opérateur doit
+  faire lui-même, que le coordinateur regroupe pour toute l'équipe.
+- **`capabilities.md`**, niveau 1 : cette capacité, verrouillée par défaut, toutes compétences.
+- **DOCTRINE, P18** : « Un guichet, jamais un décideur ».
+
+### Modifié
+
+- **NOYAU §5sexies** : une troisième exception, la décision transmise par le coordinateur.
+- **NOYAU §5septies et §6quater, point 7** : le coordinateur lit aussi le sous-dossier qu'un membre
+  lui adresse ; la séance d'un membre passe par son coordinateur quand le canal est ouvert.
+
+### La leçon
+
+Avec plusieurs agents, l'opérateur passait de conversation en conversation pour trancher, et les
+questions sans issue s'y mêlaient aux vraies. Un coordinateur qui ne lit que des rapports pouvait
+les voir, pas les faire trancher. Il manquait un chemin de retour. Plutôt qu'un mécanisme de plus,
+le dossier d'échange de la paire le porte déjà : chacun écrit chez soi, l'autre vient lire, la
+preuve exigée est la phrase de l'opérateur. « Un accord rapporté n'est pas un accord » garde sa
+force partout ailleurs : ici, c'est l'opérateur qui a ouvert le canal, membre par membre.
+
+Origine : JC, 25/10/2026 : « tout puisse remonter au niveau du coordinateur et c'est au niveau du
+coordinateur que je gère ça ».
+
 ## [0.35.0] - 2026-10-25
 
 ### Ajouté

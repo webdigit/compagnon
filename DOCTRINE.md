@@ -585,6 +585,12 @@ Conséquences exécutoires :
 - **Un relais, jamais un juge.** Un coordinateur peut débloquer une mission arrêtée, une fois, s'il
   n'est pas partie à la paire, et dans ce que son registre lui ouvre. Accepter un travail en deçà de
   ce qui était demandé, c'est valider : cela reste à l'opérateur.
+- **Un guichet, jamais un décideur.** Un opérateur qui suit plusieurs agents ne doit pas aller chez
+  chacun pour trancher. Le canal de décision fait monter les questions d'un membre chez son
+  coordinateur et redescendre la décision par le même dossier d'échange. Un accord rapporté n'est
+  d'ordinaire pas un accord ; celui-ci l'est, parce que l'opérateur a lui-même ouvert le canal, membre
+  par membre, et que la preuve exigée est sa phrase exacte. Le coordinateur transmet : il ne tranche
+  rien, même ce qu'il saurait trancher.
 
 P18 ne crée aucune autorité entre agents. Il leur donne un lieu pour se parler qui n'est la mémoire
 d'aucun.

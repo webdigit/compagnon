@@ -147,6 +147,64 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.35.0 → 0.36.0
+
+### Ce qui change
+
+Un membre peut faire trancher ses décisions chez son coordinateur, par le dossier d'échange. Rien ne
+change pour une instance qui n'est ni coordinateur ni coordonnée, ni pour une paire sans canal.
+
+- **NOYAU** : §5sexies (troisième exception), §5septies (lecture du sous-dossier adressé), §6quater
+  point 7 (séance par le coordinateur).
+- **`noyau/en-paire.md`** : section « Le canal de décision », relève.
+- **`noyau/coordination.md`** : point 7, point 10, liste « Ce que tu ne fais jamais ».
+- **`paire.md`** (gabarit) : colonne `Décisions`, rôle `aucun`.
+- **`noyau/en-paire.md`** : section « La mise à jour demandée par le coordinateur » (missions `U`).
+- **NOYAU §6bis** : une mission `U` vaut la demande de l'opérateur si le registre l'ouvre.
+- **`capabilities.md`** (gabarit) : capacité « Mise à jour à la demande du coordinateur », niveau 1.
+
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`** et **`noyau/coordination.md`** : les remplacer en entier par ceux de cette
+  étiquette.
+- **`VERSION.md`** : version courante 0.36.0, **Alignée sur**, ligne d'historique.
+- **`capabilities.md`** : ajouter au niveau 1 la ligne « Mise à jour à la demande du
+  coordinateur », `VERROUILLÉ`. Ajouter une ligne fermée ne change rien à ce qui est ouvert.
+
+### Ce que l'agent propose
+
+- **Chez un membre coordonné** : ouvrir la capacité « Mise à jour à la demande du coordinateur ».
+  Une fois ouverte, les migrations suivantes ne demandent plus rien à l'opérateur, sauf ce que
+  chacune lui réserve.
+- **`paire.md` existant** (zone manuelle) : ajouter la colonne `Décisions`, à `non` sur chaque
+  ligne. Rien ne change tant que l'opérateur ne l'écrit pas autrement.
+- **Chez un membre coordonné** : la ligne à ajouter pour ouvrir le canal vers son coordinateur
+  (créer `paire.md` s'il n'existe pas), avec `Mon rôle` à `aucun` s'ils ne travaillent pas en paire.
+  **Chez le coordinateur** : la ligne symétrique. Le canal ne s'ouvre que si l'opérateur écrit les
+  deux.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU** dans les Instructions de chaque projet.
+- **Écrire les lignes du canal**, des deux côtés, pour chaque membre qu'il veut faire passer par son
+  coordinateur. C'est ce geste qui donne à la décision transmise sa valeur.
+
+### Comment vérifier
+
+**Le texte** : `noyau/en-paire.md` contient « ### Le canal de décision ». Le NOYAU contient « la
+décision transmise par ton coordinateur ». `VERSION.md` porte 0.36.0.
+
+**La suite** : au premier point `décision` d'un membre coordonné, une mission `D01` apparaît dans
+son sous-dossier d'échange vers le coordinateur ; le coordinateur la présente en séance ; après la
+réponse, le membre clôt par une revue `accepté` qui cite où la décision est inscrite.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucun canal : la colonne `Décisions` reste à `non` tant que l'opérateur ne l'écrit pas.
+Elle ne déplace aucun point chaud et n'efface rien.
+
+---
+
 ## 0.34.0 → 0.35.0
 
 ### Ce qui change

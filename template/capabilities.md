@@ -103,6 +103,7 @@ rendre un jugement sans évaluation._
 | Mise à jour de la mémoire | Faire grandir ce dossier, hors zones manuelles. **Y compris rendre son vrai nom à un fichier qu'une synchronisation a renommé**, avec ou sans opérateur, aux seules conditions du NOYAU §5 (« Un nom altéré ») | de base | OUVERT | toutes |
 | Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | OUVERT | toutes |
 | Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | OUVERT | toutes |
+| Mise à jour à la demande du coordinateur | Migrer vers la dernière étiquette quand son coordinateur ouvre une mission `U` (NOYAU §5octies), sans attendre que <OPÉRATEUR> le demande. **Ce qui attend un accord pendant la migration l'attend toujours** | coordinateur nommé · canal de décision ouvert · accord | VERROUILLÉ | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers *(demandable à partir de junior)*
 
