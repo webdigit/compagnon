@@ -53,6 +53,11 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
   lance pas de son chef : elle prend du temps qui appartient à l'opérateur.
 - **Dernière revue de la semaine (NOYAU §4bis)** : `<jj/mm/aaaa>`, ou **jamais**. Au-delà de sept
   jours, l'agent la propose en une ligne.
+- **Registre de `capabilities.md`** : `en attente` ou `rien en attente`. `en attente` dès qu'il
+  porte une demande `DEMANDÉ` ou une évaluation `en attente`. Rien d'autre ne se recopie ici, ni
+  les demandes ni leurs dates (compagnon P7) : le registre fait foi. Corrige cette ligne à chaque
+  session qui a lu `capabilities.md` et l'a trouvée fausse. Le parcours discussion la lit pour son
+  rappel (`noyau/discussion.md`).
 
 ## Points chauds : ce qui attend une décision
 

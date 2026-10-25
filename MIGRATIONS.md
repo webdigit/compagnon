@@ -147,6 +147,56 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.38.0 → 0.39.0
+
+### Ce qui change
+
+Avec l'opérateur, une discussion sans cas ni action suit un parcours court, et finit en une ligne
+quand elle n'a rien à garder. Le §5bis du NOYAU passe dans un module. Rien ne change pour un run
+sans opérateur ni pour une session de travail, sauf le texte du NOYAU.
+
+- **NOYAU** : §0 point 0 (le parcours discussion) et point 6 (la clôture légère) ; §5bis réduit à
+  son renvoi.
+- **`noyau/discussion.md`** et **`noyau/rapport.md`** : nouveaux modules. `rapport.md` porte le
+  texte du §5bis, inchangé.
+- **`operational-state.md`** du gabarit : ligne « Registre de `capabilities.md` » dans
+  « Entretien ».
+- **`NOYAU-pourquoi.md`** : §0 et §5bis. **`README.md`** du gabarit : la liste des modules.
+
+### Ce que l'agent fait seul
+
+- **NOYAU** et **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de cette étiquette, trous
+  remplis à l'identique.
+- **`noyau/`** : ajouter `discussion.md` et `rapport.md`. Les autres modules ne changent pas.
+- **`operational-state.md`** : ajouter la ligne « Registre de `capabilities.md` » à la fin
+  d'« Entretien », avec son texte du gabarit. La remplir d'après `capabilities.md`, lu en entier
+  dans la session de migration : `en attente` si le registre porte une demande `DEMANDÉ` ou une
+  évaluation `en attente`, `rien en attente` sinon.
+- **`README.md`** de l'instance : la liste des modules, s'il en a une.
+- **`VERSION.md`** : version courante 0.39.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller, NOYAU puis spécificités**, et vérifier que le texte collé finit par
+  `[fin de noyau-local.md]`.
+
+### Comment vérifier
+
+**Le texte** : le NOYAU recollé contient « peut suivre le parcours discussion » et son §5bis renvoie
+à `noyau/rapport.md`. Les deux modules finissent par leur marqueur. La ligne « Registre » dit la
+même chose que le registre. `VERSION.md` porte 0.39.0.
+
+**La suite** : une question simple sur le projet, sans rien à garder, finit par « Clôture légère :
+rien à garder » et ne laisse aucune trace dans le dossier ; `report.md` garde la date de son dernier
+vrai run. Le rapport suivant d'un run de travail garde l'en-tête et les titres du gabarit.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucune capacité et ne change rien aux runs sans opérateur. Elle ne touche pas au
+registre de `capabilities.md`.
+
+---
+
 ## 0.37.0 → 0.38.0
 
 ### Ce qui change

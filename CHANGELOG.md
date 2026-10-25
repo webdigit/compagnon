@@ -10,6 +10,52 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.39.0] - 2026-10-25
+
+### Ajouté
+
+- **Le parcours discussion** (`noyau/discussion.md`, NOYAU §0 point 0) : avec l'opérateur, une
+  session qui porte sur la mémoire, le fonctionnement ou le projet, sans cas ni action, lit la fiche
+  d'hôte, les quatre mémoires d'apprentissage et `operational-state.md`, puis fait les points 3ter,
+  3quater et 3quinquies. Le reste s'ouvre quand la question le concerne. Dans le doute, ou si
+  `_a-integrer/` n'est pas vide : rituel entier.
+- **La bascule** : une action hors de la conversation, une affirmation sur les droits actuels, une
+  demande d'autonomie, un cas, un topo, une passe, une séance, une migration, une mission ou une
+  consigne d'un autre agent font passer au rituel entier avant le geste. `capabilities.md` ne
+  s'ouvre jamais seul.
+- **La clôture légère étendue** à la discussion : une seule ligne, rien d'écrit, `report.md`
+  intact. Une liste fermée de cas impose la clôture complète. Une observation n'en est un que si
+  elle mérite sa ligne O (§3).
+- **`operational-state.md`, ligne « Registre de `capabilities.md` »** : `en attente` ou
+  `rien en attente`, sans recopier les demandes ni leurs dates. La discussion en tire son rappel.
+
+### Modifié
+
+- **NOYAU §5bis** : son corps passe tel quel dans `noyau/rapport.md`, lu avant d'écrire `report.md`.
+  Il ne reste au NOYAU que le renvoi, comme pour le §5ter.
+- **NOYAU §0 point 6** : le bloc `MISE À JOUR MÉMOIRE` reste obligatoire, sauf clôture légère.
+
+### Assoupli, et dit tel quel
+
+En discussion, le point 3 du §0 ne se fait pas : pas de recalcul des échéances, pas d'inscription
+des évaluations devenues dues, pas de date dans `Rappels`. Le rappel dit seulement qu'une attente
+était enregistrée à la dernière lecture du registre. C'est un affaiblissement de compagnon P13 borné
+à ce parcours : tout travail passe par le rituel entier, qui refait le calcul.
+
+### Pourquoi
+
+Une question simple sur le projet payait le rituel d'un cas de travail, puis la chaîne de clôture
+entière : l'entretien du système passait devant le service rendu. Le NOYAU change parce que le choix
+du parcours se fait avant qu'aucun module ne soit lu (R9) : il ne porte que le déclencheur et ses
+deux exclusions. Il était à son plafond ; le déplacement du §5bis paie l'ajout et laisse de la marge,
+sans relever le plafond.
+
+Leçon : un parcours court n'est sûr que si sa sortie est une liste fermée et que le doute renvoie au
+parcours long. L'index par compétence, proposé en même temps, a été écarté : il ajoutait une
+dépendance dont la fiabilité restait à démontrer.
+
+Origine : échange de JC avec Vincent sous Codex, 25/10/2026, puis relecture.
+
 ## [0.38.0] - 2026-10-25
 
 ### Ajouté

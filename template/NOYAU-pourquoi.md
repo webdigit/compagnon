@@ -7,6 +7,9 @@
 ## §0. Rituel de chaque session
 
 - **Point 0, les dépôts.** Sans eux, tu referais demain ce qu'une session de nuit a déjà appris.
+- **Point 0, le parcours discussion.** Une question sur le projet ne doit pas payer la lecture d'un cas de travail. Mais le choix se fait après lecture du module, et dans le doute le rituel entier gagne : un parcours trop court ne se voit pas, une lecture de trop ne coûte que du temps.
+- **Le parcours discussion, `capabilities.md`.** Une affirmation sur un droit faite sans le registre sous les yeux est une autorisation devinée. D'où la bascule plutôt qu'une lecture isolée : le registre ouvre aussi les rappels et le frein.
+- **Le parcours discussion, le rappel.** Il dit qu'une attente était enregistrée, pas qu'elle est échue : il n'a pas refait le calcul. C'est un assouplissement assumé de compagnon P13, borné au parcours qui ne travaille pas.
 - **Point 1, `report.md`.** C'est ce que tu as annoncé la dernière fois.
 - **Point 1, le marqueur.** Un marqueur absent dit que la fin du fichier ne t'est pas parvenue. Un fichier lu en partie ne fonde rien, parce qu'on ne sait
   pas ce qui manque.
@@ -25,6 +28,7 @@
 - **Point 5, la valeur qui tranche.** La dire permet à l'opérateur de corriger l'arbitrage autant que
   le résultat. Une valeur souvent corrigée est une valeur mal dite.
 - **Point 6.** Une session qui se termine sans ce bloc n'a rien appris.
+- **Point 6, la clôture légère.** Un échange sans rien à garder ne doit pas produire un bloc, un journal et un écran vides. La liste des cas qui imposent la clôture complète est fermée, pour que la simplicité ne serve jamais d'excuse à oublier une correction.
 - **Point 7.** Ce que tu viens d'apprendre peut changer ce que tu conclus. L'en-tête et les titres
   du rapport sont des clés, pas une mise en forme.
 - **Point 8.** L'état transporte ce que les étapes précédentes viennent d'écrire.
@@ -169,6 +173,7 @@
 - **`_archive/`, l'ancien reste où il est.** Ranger l'ancien serait le modifier.
 ## §5bis. Le rapport de sortie
 
+- **Dans un module.** Ces consignes ne gouvernent qu'un geste, écrire `report.md`. Lues au moment de l'écrire, elles sont sous les yeux quand elles servent, et le NOYAU garde sa place pour ce qui doit être lu avant tout module.
 - **Point 3.** Un lecteur extérieur ne peut pas distinguer ta proposition de la décision de
   l'opérateur si tu ne l'écris pas.
 - **Point 5, `non_couvert`.** Ton silence sera lu comme « rien à signaler ». C'est le défaut le plus

@@ -136,7 +136,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 |---|---|---|
 | `NOYAU-instructions-projet.md` | Rituel de session, barème, maturation, migration. **Le texte du gabarit, trous remplis, rien d'autre** | **Manuelle**, à charger au démarrage |
 | `NOYAU-pourquoi.md` | Les **raisons** des consignes du NOYAU et de ses modules, section par section. Ne commande rien | **Vient du dépôt**, remplacé en migrant · lu à la demande |
-| `noyau/` | Les **modules** du NOYAU : sections lues seulement sur leur déclencheur (écran, travail sans poste, relance, coordination, travail en paire, migration). Le NOYAU dit quand lire chacun | **Vient du dépôt**, remplacé en migrant · lu sur déclencheur |
+| `noyau/` | Les **modules** du NOYAU : sections lues seulement sur leur déclencheur (parcours discussion, rapport de sortie, écran, travail sans poste, relance, coordination, travail en paire, migration). Le NOYAU dit quand lire chacun | **Vient du dépôt**, remplacé en migrant · lu sur déclencheur |
 | `noyau-local.md` | Les **spécificités** de l'instance, rangées par section du NOYAU. Complètent ou durcissent, ne desserrent jamais | **Opérateur** (l'agent propose), chargé à la suite du NOYAU, **jamais touché par une migration** |
 | `VERSION.md` | La version du gabarit et l'historique des migrations | Auto, sur migration |
 
