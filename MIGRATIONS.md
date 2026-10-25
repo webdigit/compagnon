@@ -147,6 +147,49 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.39.0 → 0.40.0
+
+### Ce qui change
+
+La vue de coordination porte une case « ok » sur les décisions qui peuvent descendre par le canal,
+et prépare le texte que l'opérateur colle chez le coordinateur. Le canal accepte un point désigné par
+son sujet. Rien ne change pour une instance qui n'est ni coordinateur ni membre coordonné.
+
+- **`ecran/coordination.html`** et **`ecran/equipe.js`** (exemple) : la case « ok » et le texte à
+  coller.
+- **`noyau/en-paire.md`** : section « Le canal de décision », points 6 et 7.
+- **`FORMAT.md`** : section 12.
+
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`**, s'il existe : le remplacer en entier par celui de cette étiquette. Les
+  autres modules ne changent pas.
+- **`coordination.html`**, s'il est à la racine du projet : le remplacer par celui de cette
+  étiquette. `_ecran/equipe.js` ne change pas de format.
+- **`compagnon.html`** : inchangé, rien à faire.
+- **`VERSION.md`** : version courante 0.40.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Le NOYAU ne change pas : pas de recollage.
+
+### Comment vérifier
+
+**Le texte** : `noyau/en-paire.md` contient « par leur sujet tel que son rapport l'écrit ».
+`VERSION.md` porte 0.40.0.
+
+**La suite** : chez un coordinateur, `coordination.html` montre une colonne « Votre réponse ». Une
+décision d'un membre à `Décisions` `oui`, posée en `D<NN>` et recommandée, porte une case « ok ».
+Une fois collée chez le coordinateur, la réponse de la mission `D` porte la ligne entre guillemets,
+et le membre la revoit `accepté`.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucun canal et ne change pas qui décide. La vue n'écrit rien : seule la conversation
+du coordinateur porte la décision.
+
+---
+
 ## 0.38.0 → 0.39.0
 
 ### Ce qui change

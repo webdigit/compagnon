@@ -10,6 +10,45 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.40.0] - 2026-10-25
+
+### Ajouté
+
+- **Une réponse « ok » dans la vue de coordination** (`ecran/coordination.html`) : chaque décision
+  qui peut descendre par le canal porte une case « ok », qui suit la recommandation de l'agent. Les
+  cases cochées donnent un texte à coller dans la conversation du coordinateur, une ligne par point :
+  `Comptoir · D02 · Remise Bertin : ok`. La vue copie ce texte dans le presse-papier et le montre ;
+  elle n'écrit rien et n'envoie rien.
+- **La raison, quand la case manque** : « à trancher dans sa conversation » (pas de canal),
+  « pas encore posé en D » (aucune mission ne l'attend), « pas de recommandation à suivre ».
+
+### Modifié
+
+- **`noyau/en-paire.md`, point 6** : le coordinateur reconnaît ces lignes et recopie à chaque
+  membre les siennes, telles quelles.
+- **`noyau/en-paire.md`, point 7** : le membre accepte un point désigné par son sujet, tel que son
+  rapport l'écrit, et plus seulement par son numéro dans la demande.
+- **`FORMAT.md`, section 12** : la mention « posé en `D<NN>` » devient contractuelle, et la règle
+  des cases est écrite.
+
+### Pourquoi
+
+Avec plusieurs agents, suivre une recommandation demandait de retrouver chaque point dans la
+conversation du coordinateur et de le désigner par le numéro de son lot, que la vue ne connaît pas.
+Un bouton qui écrirait la décision dans un fichier aurait ouvert un chemin où un accord passe hors
+conversation : le canal exige les mots de l'opérateur, datés, dans la conversation du coordinateur.
+La case ne tranche donc rien. Elle prépare les mots, et c'est le collage qui en fait une décision.
+
+Le numéro d'un point dans le rapport (`#`) n'est pas celui de son lot : le membre numérote sa
+demande à part. La ligne désigne donc le point par sa mission et son sujet, et le point 7 l'accepte.
+Le NOYAU ne change pas (R9).
+
+Leçon : une vue peut préparer une décision, jamais la porter. Ce qui en fait une décision, c'est
+l'endroit où l'opérateur la dit.
+
+Origine : JC, 25/10/2026, sur `coordination.html` : un bouton « ok » pour les recommandations de
+l'agent.
+
 ## [0.39.0] - 2026-10-25
 
 ### Ajouté

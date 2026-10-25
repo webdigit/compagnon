@@ -17,6 +17,10 @@
   Ce que la page reçoit : equipe.md et le report.md du coordinateur, puis le
   report.md de chaque membre, recopiés verbatim. Aucune mémoire de membre
   (compagnon P12). Tout ce qui s'affiche se calcule ici, depuis ces textes.
+
+  Elle n'écrit rien. Les cases « ok » des décisions préparent un texte que
+  l'opérateur colle lui-même dans la conversation du coordinateur : c'est là,
+  et seulement là, qu'il devient sa décision (noyau/en-paire.md, points 6 et 7).
   Contrat : FORMAT.md, section 12.
 -->
 <style>
@@ -142,6 +146,16 @@
   .alerte-bloc strong { display: block; font-family: var(--slab); font-size: 16px; margin-bottom: 3px; }
   .info-bloc { margin-top: 22px; background: var(--surface-sunk); color: var(--ink-2); border-radius: 3px; padding: 14px 18px; font-size: 14px; }
   .info-bloc strong { display: block; font-family: var(--slab); font-size: 16px; color: var(--ink); margin-bottom: 3px; }
+
+  /* réponses aux décisions */
+  td.reponse { white-space: nowrap; }
+  .ok { display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font-weight: 500; }
+  .ok input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+  .reponses { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-2); }
+  .action { font: inherit; font-size: 14px; font-weight: 500; background: var(--accent); color: var(--ground); border: 1px solid var(--accent); padding: 6px 14px; border-radius: 2px; cursor: pointer; }
+  .action:hover { filter: brightness(1.08); }
+  .action:disabled { background: transparent; color: var(--ink-3); border-color: var(--rule-strong); cursor: default; filter: none; }
+  .copie-etat { font-size: 13px; color: var(--ink-2); margin: 10px 0 0; min-height: 1.4em; }
 
   .src-btn { font-family: var(--mono); font-size: 11.5px; background: transparent; border: 1px solid var(--rule-strong); color: var(--ink-2); padding: 4px 10px; border-radius: 2px; cursor: pointer; white-space: nowrap; }
   .src-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
@@ -412,6 +426,18 @@ var LIRE = (function () {
       "il n'y a rien à montrer.</div>";
   }
 
+  /* Une décision ne reçoit « ok » ici que si elle peut descendre par le canal :
+     le membre a Décisions à oui, le point est posé dans une mission D, et
+     l'agent recommande quelque chose. Sinon, la raison, en clair. */
+  function reponsePossible(x) {
+    var eq = x.m.eq;
+    if (!eq || eq.lectureSeule || !eq.decisions) return { raison: "à trancher dans sa conversation" };
+    var m = String(x.d.manque || "").match(/pos[ée]\s+en\s+`?(D\d+)`?/i);
+    if (!m) return { raison: "pas encore posé en D" };
+    if (!LIRE.nettoie(x.d.reco)) return { raison: "pas de recommandation à suivre" };
+    return { mission: m[1].toUpperCase() };
+  }
+
   /* Statut d'un membre, en une pastille. */
   function pastille(m) {
     if (m.lecture !== "lu") return '<span class="st gris">' + e(m.lecture === "absent" ? "pas de rapport" : m.lecture === "illisible" ? "illisible" : "non lu") + "</span>";
@@ -507,13 +533,25 @@ var LIRE = (function () {
     /* décisions */
     h.push('<section class="bloc" id="decisions"><div class="titre-section"><h2>Ce qui attend votre décision</h2>' +
       '<span class="note">Recopié des rapports. Aucun agent ne tranche ceci.</span></div>');
+    var ouiPossibles = [];
     if (!decisions.length) h.push('<p class="vide-msg">Aucun rapport lu ne porte de décision en attente.</p>');
     else {
-      h.push('<div class="tableau-enveloppe"><table class="pile"><thead><tr><th>Agent</th><th>Sujet</th><th>Ce qui manque pour trancher</th><th>Recommandation de l\'agent</th></tr></thead><tbody>');
+      h.push('<div class="tableau-enveloppe"><table class="pile"><thead><tr><th>Agent</th><th>Sujet</th><th>Ce qui manque pour trancher</th><th>Recommandation de l\'agent</th><th>Votre réponse</th></tr></thead><tbody>');
       decisions.forEach(function (x) {
-        h.push('<tr><td class="agent" data-l="">' + e(x.m.nom) + '</td><td data-l="">' + inl(x.d.sujet) + '</td><td data-l="Ce qui manque">' + inl(x.d.manque) + "</td>" + (LIRE.nettoie(x.d.reco) ? '<td data-l="Recommandation">' + inl(x.d.reco) + "</td>" : '<td data-l=""></td>') + "</tr>");
+        var rep = reponsePossible(x);
+        var cel;
+        if (rep.mission) {
+          ouiPossibles.push({ nom: x.m.nom, mission: rep.mission, sujet: LIRE.nettoie(x.d.sujet) });
+          cel = '<label class="ok"><input type="checkbox" data-ok="' + (ouiPossibles.length - 1) + '"> ok</label>';
+        } else cel = '<span class="discret">' + e(rep.raison) + "</span>";
+        h.push('<tr><td class="agent" data-l="">' + e(x.m.nom) + '</td><td data-l="">' + inl(x.d.sujet) + '</td><td data-l="Ce qui manque">' + inl(x.d.manque) + "</td>" + (LIRE.nettoie(x.d.reco) ? '<td data-l="Recommandation">' + inl(x.d.reco) + "</td>" : '<td data-l=""></td>') +
+          '<td class="reponse" data-l="Votre réponse">' + cel + "</td></tr>");
       });
       h.push("</tbody></table></div>");
+      if (ouiPossibles.length) {
+        h.push('<div class="reponses"><span id="nb-ok">Cochez « ok » pour suivre la recommandation de l\'agent.</span>' +
+          '<button class="action" id="preparer" disabled>Préparer le texte à coller</button></div>');
+      }
     }
 
     /* échéances */
@@ -599,6 +637,7 @@ var LIRE = (function () {
 
     document.getElementById("app").innerHTML = h.join("");
     ETAT._membres = membres;
+    ETAT._oui = ouiPossibles;
     brancher();
   }
 
@@ -633,10 +672,62 @@ var LIRE = (function () {
     if (m.source) h.push("<h3>Rapport tel que recopié</h3><pre>" + e(m.source) + "</pre>");
     ouvrir(m.nom, h.join(""));
   }
+  /* --- réponses « ok » ------------------------------------------- */
+  function cochees() {
+    return Array.prototype.slice.call(document.querySelectorAll("[data-ok]:checked"))
+      .map(function (c) { return ETAT._oui[+c.getAttribute("data-ok")]; });
+  }
+  function texteReponses(liste) {
+    return liste.map(function (r) { return r.nom + " · " + r.mission + " · " + r.sujet + " : ok"; }).join("\n");
+  }
+  function majCompte() {
+    var n = cochees().length, b = document.getElementById("preparer"), s = document.getElementById("nb-ok");
+    if (!b) return;
+    b.disabled = !n;
+    s.textContent = n ? n + " réponse" + (n > 1 ? "s" : "") + " prête" + (n > 1 ? "s" : "") + "."
+                      : "Cochez « ok » pour suivre la recommandation de l'agent.";
+  }
+  function copier(texte, fini) {
+    function repli() {
+      var ta = document.createElement("textarea");
+      ta.value = texte; ta.setAttribute("readonly", "");
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (x) { ok = false; }
+      document.body.removeChild(ta);
+      fini(ok);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(texte).then(function () { fini(true); }, repli);
+    else repli();
+  }
+  function preparer() {
+    var texte = texteReponses(cochees());
+    if (!texte) return;
+    var chez = ETAT.coordinateur ? e(ETAT.coordinateur) : "votre coordinateur";
+    ouvrir("À coller chez " + (ETAT.coordinateur || "le coordinateur"),
+      '<p class="avert">Collez ce texte dans la conversation ' + (ETAT.coordinateur ? de(ETAT.coordinateur) : "du coordinateur") +
+      ". Il ne devient votre décision qu'une fois là : " + chez + " le recopie mot pour mot à chaque agent, ligne par ligne. " +
+      "Rien n'a été envoyé ni écrit. Vous pouvez compléter avant d'envoyer.</p>" +
+      '<pre id="texte-ok">' + e(texte) + "</pre>" +
+      '<p class="copie-etat" id="copie-etat" role="status"></p>' +
+      '<button class="action" id="recopier">Copier</button>');
+    function etat(ok) {
+      document.getElementById("copie-etat").textContent = ok ? "Copié dans le presse-papier."
+        : "Copie automatique refusée par le navigateur : sélectionnez le texte et copiez-le.";
+    }
+    copier(texte, etat);
+    document.getElementById("recopier").addEventListener("click", function () { copier(texte, etat); });
+  }
+
   function brancher() {
     panneau = document.getElementById("panneau");
     voile = document.getElementById("voile");
+    document.getElementById("app").addEventListener("change", function (ev) {
+      if (ev.target.hasAttribute && ev.target.hasAttribute("data-ok")) majCompte();
+    });
     document.getElementById("app").addEventListener("click", function (ev) {
+      if (ev.target.closest("#preparer")) { preparer(); return; }
       var b = ev.target.closest("[data-src]");
       if (b) {
         if (b.getAttribute("data-src") === "equipe") source("equipe.md", ETAT.equipe, "Le fichier d'équipe, zone manuelle de l'opérateur, tel que recopié.");

@@ -121,7 +121,7 @@ Quatorze demandes lues, trois devis à préparer. Le devis Bertin attend votre a
 
 | # | Sujet | Ce qui manque pour trancher | Recommandation |
 |---|---|---|---|
-| 01 | Remise Bertin | Votre accord sur 8 % | Accorder : client récurrent, marge tenue |
+| 01 | Remise Bertin | Votre accord sur 8 %, posé en \`D02\` | Accorder : client récurrent, marge tenue |
 | 02 | Demandes hors zone | Une règle : répondre ou décliner | Décliner poliment au-delà de 50 km |
 
 [fin de report.md]

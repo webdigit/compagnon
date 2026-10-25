@@ -299,7 +299,15 @@ Ce que la vue lit dans ces textes, et qui devient donc contractuel :
   suivie de `UTC` est lue en UTC, toute autre en heure locale ;
 - les sections « En un paragraphe », « À faire » et « En attente d'une décision », par le début de
   leur titre, et leurs tableaux par nom de colonne : `Sujet`, `Ce qui manque`, `Recommandation` ;
-  `Objet`, `Référence`, `Échéance`, `Si c'est repoussé`.
+  `Objet`, `Référence`, `Échéance`, `Si c'est repoussé` ;
+- dans `Ce qui manque`, la mention « posé en `D<NN>` » (`noyau/en-paire.md`, point 4).
+
+**La vue n'écrit rien.** Une décision porte une case « ok » quand trois conditions tiennent : le
+membre a `Décisions` à `oui`, le point est posé dans une mission `D`, et il a une recommandation.
+Sinon, la case laisse la raison. Les cases cochées donnent un texte, une ligne par point,
+`<membre> · D<NN> · <sujet> : ok`, que l'opérateur colle dans la conversation du coordinateur.
+C'est là qu'il devient sa décision (`noyau/en-paire.md`, points 6 et 7). Rien n'est mémorisé
+d'une ouverture à l'autre.
 
 Le reste est calculé dans le navigateur, et ne s'écrit nulle part : un rapport est périmé quand
 `arrete_le` dépasse son `périmé_après` ; une échéance est dépassée quand elle précède `arrete_le` ;

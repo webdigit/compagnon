@@ -205,9 +205,13 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
    ni reformulation, ni recommandation, ni ce que <OPÉRATEUR> n'a pas tranché. Si une phrase vise
    plusieurs membres sans dire lequel, il le demande à <OPÉRATEUR> avant d'écrire. Il inscrit aussi
    la décision dans « Décisions de l'opérateur » de son propre journal.
+   <OPÉRATEUR> peut coller les lignes que prépare la vue de coordination
+   (`Comptoir · D02 · Remise Bertin : ok`). Chacune nomme le membre, la mission et le point : il
+   recopie à chaque membre ses lignes à lui, telles quelles. « ok » suit la recommandation du membre.
    Il n'utilise jamais ce canal pour ses propres capacités de relais, ni pour une relance.
 7. **Le membre revoit.** Il vérifie la preuve exigée en premier : l'`Auteur` est son coordinateur,
-   les mots sont entre guillemets, datés, et répondent aux numéros de sa demande. Si c'est le cas,
+   les mots sont entre guillemets, datés, et répondent aux points de sa demande, par leur numéro ou
+   par leur sujet tel que son rapport l'écrit. Si c'est le cas,
    la décision est celle de <OPÉRATEUR>, **accords compris** (un grade, une capacité, une règle, une
    erreur `résolue`, une ligne de zone manuelle qu'il dicte) : c'est <OPÉRATEUR> qui a déclaré la
    relation, dans tes Instructions et dans `equipe.md`. Il l'applique
@@ -217,7 +221,7 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
    opérateur, elle s'écrit aux conditions ordinaires d'écriture (§5quater).
    Sa revue `accepté` cite où la décision est inscrite. Une décision encore en dépôt n'est pas
    inscrite : la revue attend l'intégration.
-   Sinon (mots reformulés, sans date, numéros qui ne collent pas, décision obscure) : revue
+   Sinon (mots reformulés, sans date, points qui ne collent pas, décision obscure) : revue
    `corrections demandées`, qui dit ce qui manque. Il n'interprète jamais.
 8. **Ce que <OPÉRATEUR> ne tranche pas reste ouvert.** Le silence n'est pas un refus (compagnon
    P13) : le point revient dans la mission `D` suivante, tel quel.
