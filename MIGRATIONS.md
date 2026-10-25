@@ -147,6 +147,46 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.34.0 → 0.35.0
+
+### Ce qui change
+
+Les fichiers d'une mission close se rangent dans `_clos/`. Rien ne change pour une instance sans
+`paire.md`. Le NOYAU ne change pas.
+
+- **`noyau/en-paire.md`** : section « Ranger une mission close », relève et numérotation.
+- **`noyau/coordination.md`**, point 9 : le relais range en dernier.
+
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`** et **`noyau/coordination.md`** : les remplacer en entier par ceux de cette
+  étiquette. Les autres modules ne changent pas.
+- **`VERSION.md`** : version courante 0.35.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'agent propose
+
+- **Les missions déjà closes**, s'il y a un dossier d'échange : la liste des fichiers que le
+  rangement déplacerait dans `_clos/`, dans l'ordre de la section (l'exécutant d'abord). Rien ne se
+  déplace pendant la migration sans accord ; ensuite, la relève range d'elle-même.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien. Le NOYAU ne change pas : pas de recollage.
+
+### Comment vérifier
+
+**Le texte** : `noyau/en-paire.md` contient « ### Ranger une mission close ». `VERSION.md` porte
+0.35.0.
+
+**La suite** : après la première mission acceptée, ses fichiers sont dans `_clos/` chez l'exécutant,
+puis chez le pilote, et la relève suivante ne les liste plus.
+
+### Ce que cette migration ne fait pas
+
+Elle n'efface aucun fichier d'échange et ne touche à aucune mission ouverte.
+
+---
+
 ## 0.33.0 → 0.34.0
 
 ### Ce qui change

@@ -10,6 +10,30 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.35.0] - 2026-10-25
+
+### Ajouté
+
+- **Ranger une mission close** (`noyau/en-paire.md`, NOYAU §5octies) : chaque agent déplace ses
+  propres fichiers d'une mission close dans `_clos/` de son sous-dossier d'échange. L'exécutant
+  range dès qu'il a lu la clôture, le pilote quand l'exécutant a rangé, le relais en dernier. Rien
+  ne s'efface, rien ne s'écrit ailleurs.
+
+### Modifié
+
+- **La relève** ne liste pas `_clos/` ; **le numéro d'une mission** compte les missions rangées.
+- **`noyau/coordination.md`, point 9** : le relais range ses compléments en dernier.
+
+### La leçon
+
+Sans rangement, chaque relève listait toutes les missions jamais menées, alors qu'une mission close
+ne sert plus qu'à la recherche. Supprimer aurait effacé des preuves (P5) ; ranger garde tout et ne
+laisse sous les yeux de la relève que ce qui vit. L'ordre exécutant, pilote, relais vient de la
+règle « chacun écrit chez soi » : si le pilote rangeait d'abord, l'exécutant ne verrait jamais la
+revue qui clôt sa mission.
+
+Origine : JC, 25/10/2026, sur le poids à venir des dossiers d'échange.
+
 ## [0.34.0] - 2026-10-25
 
 ### Ajouté

@@ -98,7 +98,8 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
    - **jamais si tu es toi-même le pilote** de cette paire : la décision va à <OPÉRATEUR> ;
    - **une fois par mission.** Si elle se bloque encore, elle va à <OPÉRATEUR> ;
    - **ta réponse est un `complement`** dans ton propre `../handoff/<pilote>-<exécutant>/`, au format de
-     `noyau/en-paire.md`. Tu n'écris jamais chez eux ;
+     `noyau/en-paire.md`. Tu n'écris jamais chez eux. Une fois la mission close et rangée chez l'un et
+     l'autre, range tes compléments dans `_clos/` (`noyau/en-paire.md`, « Ranger une mission close ») ;
    - **reformuler ou découper la mission** (pour le même exécutant, jamais vers un autre agent), l'abandonner ou la reporter : chacune est une capacité de
      `capabilities.md`, **par paire**. Fermée, propose le complément à <OPÉRATEUR>. Ouverte, dépose-le
      toi-même, et dis-le dans ton rapport ;

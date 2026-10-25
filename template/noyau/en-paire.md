@@ -50,7 +50,7 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 ### La mission
 
 1. **Le pilote ouvre** une mission par une demande, et lui donne son numéro : le suivant de ses
-   missions avec ce collègue.
+   missions avec ce collègue, missions rangées comprises (`_clos/`, ci-dessous).
    **Une mission, un exécutant.** Elle ne se délègue jamais à plusieurs agents, ni en entier ni par
    morceaux. Découper une mission, c'est la reprendre en plusieurs missions pour le même exécutant.
    Un pilote peut avoir plusieurs exécutants, une paire chacun, à condition que leurs missions soient
@@ -79,7 +79,8 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 
 1. **Lis l'heure réelle** à la source.
 2. **Pour chaque ligne de `paire.md`, liste les missions ouvertes** de cette paire : celles qu'aucune
-   revue `accepté` n'a closes, et qu'aucun `complement` n'a abandonnées. Les numéros sont propres à
+   revue `accepté` n'a closes, et qu'aucun `complement` n'a abandonnées. Ne liste pas `_clos/` : ce
+   qui y est rangé est clos. Les numéros sont propres à
    chaque paire : la mission 03 avec un collègue n'est pas la 03 avec un autre.
 3. **Pour chacune, regarde le fichier le plus récent**, entre le sous-dossier que tu adresses à ce
    collègue, celui qu'il t'adresse, et celui du relais pour cette paire s'il est intervenu.
@@ -89,8 +90,35 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
      fait foi.
    - Si c'est une revue `décision opérateur nécessaire` : la mission est suspendue. Personne n'y
      répond, sauf le pilote quand <OPÉRATEUR> a tranché, et le relais dans ses limites.
+   - Si la mission est close et que c'est ton tour de ranger : range (ci-dessous).
 4. **Rien à toi sur aucune mission** : passe à ton travail habituel, ou termine le run. Une relève à
    vide ne s'écrit nulle part.
+
+### Ranger une mission close
+
+Une mission close ne sert plus à la relève. Ses fichiers se rangent, pour que le dossier d'échange
+ne liste que ce qui vit. Ils ne s'effacent jamais : ce sont les preuves de ce qui a été demandé,
+livré et accepté (compagnon P5).
+
+1. **Tu ne ranges que tes fichiers**, ceux de cette mission dans le sous-dossier que tu adresses à
+   ce collègue. Ils vont dans `_clos/` de ce même sous-dossier (`../handoff/<collègue>/_clos/`),
+   créé s'il manque. Un déplacement, sous le même nom, contenu et marqueur intacts : jamais une
+   copie suivie d'un effacement, jamais une modification.
+2. **Dans cet ordre**, pour qu'aucun des deux ne manque la clôture :
+   - **l'exécutant** range dès qu'il a lu ce qui clôt la mission, la revue `accepté` ou le
+     `complement` qui cite l'abandon ;
+   - **le pilote** range quand le sous-dossier que l'exécutant lui adresse ne porte plus aucun
+     fichier de cette mission hors de `_clos/` ;
+   - **le relais**, s'il est intervenu, range ses compléments quand ni l'un ni l'autre n'en a plus
+     hors de `_clos/`.
+3. **Ranger n'est pas un message.** Cela ne s'écrit nulle part, ni dans ta mémoire ni dans ton
+   rapport. Une relève légère range aussi, puis s'arrête comme une relève à vide.
+4. **Un rangement oublié ne trompe personne.** La relève voit qu'une mission est close par sa revue
+   `accepté` ou son abandon, rangée ou non. Ranger allège, ce n'est jamais une condition. Si ton hôte
+   ne sait pas déplacer le fichier ou créer `_clos/`, ne range pas, et dis-le dans ton rapport.
+5. **Ce qui est rangé ne revient pas.** Un fichier de `_clos/` se relit pour une recherche (une
+   preuve, un défaut constaté après coup), jamais pour la relève. Une mission rouverte est une
+   nouvelle mission, qui cite l'ancienne par le nom de sa revue.
 
 ### La relève légère
 
@@ -102,7 +130,8 @@ le rituel entier pour rien.
    dossier », lis ce module et `paire.md` en entier, marqueurs compris. Un marqueur absent : arrête
    le run et dis-le dans ta réponse finale, sans rien écrire.
 2. **Fais la relève**, points 1 à 3 ci-dessus. Ne lis rien d'autre : ni ta mémoire, ni ton rapport.
-3. **Rien à toi** : termine le run. N'écris rien, nulle part, et surtout pas `report.md` : il porte
+3. **Rien à toi** : range ce qui est à ranger (« Ranger une mission close »), puis termine le run.
+   N'écris rien d'autre, nulle part, et surtout pas `report.md` : il porte
    ton dernier vrai travail, et un rapport vide l'effacerait pour qui te suit. Ta réponse finale
    tient en une ligne : « Relève à vide », avec l'heure.
 4. **Une mission où la main est à toi** : reprends le rituel au point 0, en entier, comme pour tout
