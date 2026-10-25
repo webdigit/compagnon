@@ -147,6 +147,61 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.37.0 → 0.38.0
+
+### Ce qui change
+
+Un coordinateur peut montrer toute son équipe sur une page : `coordination.html`, à côté de
+`compagnon.html`. Elle lit `_ecran/equipe.js`, que le coordinateur réécrit à chaque passage avec
+`equipe.md`, son rapport et le rapport de chaque membre, recopiés entiers. Rien ne change pour une
+instance qui n'est pas coordinateur, ni pour un membre : la vue ne lit que ce qu'il écrit déjà.
+
+- **`ecran/coordination.html`** et **`ecran/equipe.js`** (exemple) : nouveaux fichiers du dépôt.
+- **`noyau/coordination.md`** : point 11, la vue de coordination.
+- **`equipe.md`** (gabarit) : le membre en lecture seule, pour voir tout le parc.
+- **`README.md`** du gabarit : deux lignes dans la couche ÉCRAN.
+- **`FORMAT.md`** : contrat 7, section 12.
+
+### Ce que l'agent fait seul
+
+- **`noyau/coordination.md`**, s'il existe : le remplacer en entier par celui de cette étiquette.
+  Les autres modules ne changent pas.
+- **`compagnon.html`**, s'il est à la racine du projet : inchangé depuis la 0.28.1, rien à faire.
+- **`README.md`** de l'instance : ajouter les deux lignes `coordination.html` et `_ecran/equipe.js`
+  à la couche ÉCRAN, s'il en a une.
+- **`VERSION.md`** : version courante 0.38.0, **Alignée sur**, ligne d'historique.
+
+### Ce que l'agent propose
+
+- **Chez un coordinateur** : poser la vue. Copier `ecran/coordination.html` de cette étiquette à la
+  racine du projet, puis l'annoncer à <OPÉRATEUR> : elle se remplira au passage suivant. Ne pas la
+  poser sans son accord ; elle ne coûte qu'une écriture par passage, mais c'est sa vue.
+- **Chez un coordinateur, `equipe.md`** (zone manuelle) : si <OPÉRATEUR> veut voir tout son parc,
+  proposer une ligne en lecture seule pour chaque agent compagnon qui n'est pas membre (`Relançable`
+  et `Décisions` à `non`, `Tâche programmée` à `sans objet (lecture seule)`). Il les nomme ; ne
+  jamais les deviner.
+
+### Ce que l'opérateur doit faire lui-même
+
+Rien d'obligatoire. Le NOYAU ne change pas : pas de recollage. Il valide la pose de la vue et les
+éventuelles lignes en lecture seule.
+
+### Comment vérifier
+
+**Le texte** : `noyau/coordination.md` contient « La vue de coordination ». `VERSION.md` porte
+0.38.0.
+
+**La suite** : après le passage suivant du coordinateur, `_ecran/equipe.js` existe, son `arrete_le`
+est l'heure de ce passage, et `coordination.html` ouvert d'un double-clic montre chaque membre de
+`equipe.md`, y compris ceux dont le rapport manque.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucune capacité. Elle n'étend pas ce qu'un coordinateur lit chez ses membres : leur
+rapport, comme avant (compagnon P12). Elle n'ajoute rien à ce qu'un membre écrit.
+
+---
+
 ## 0.36.0 → 0.37.0
 
 ### Ce qui change

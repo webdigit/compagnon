@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vue de coordination compagnon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<!--
+  coordination.html : la vue de coordination d'une équipe compagnon.
+
+  Vient du dépôt (ecran/), se copie à la racine d'un COORDINATEUR, à côté de
+  compagnon.html, et se remplace en migrant. Elle ne lit que _ecran/equipe.js,
+  que le coordinateur régénère à chaque passage (NOYAU §5septies, point 11).
+
+  Ce que la page reçoit : equipe.md et le report.md du coordinateur, puis le
+  report.md de chaque membre, recopiés verbatim. Aucune mémoire de membre
+  (compagnon P12). Tout ce qui s'affiche se calcule ici, depuis ces textes.
+  Contrat : FORMAT.md, section 12.
+-->
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #ECEDF0; --surface: #F8F9FB; --surface-sunk: #E3E5EB;
+    --ink: #15171D; --ink-2: #565C6B; --ink-3: #6E7586;
+    --rule: #D1D4DE; --rule-strong: #B4B9C8;
+    --accent: #3D4C8C; --accent-soft: #E0E3F2;
+    --brique: #9E3B2E; --brique-soft: #F4E2DE;
+    --ambre: #7F560A; --ambre-soft: #F5E9D2;
+    --vert: #3B6740; --vert-soft: #E0EBE0;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --slab: "Zilla Slab", "IBM Plex Serif", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #14161B; --surface: #1C1F26; --surface-sunk: #24282F;
+      --ink: #E7E9EF; --ink-2: #A2A9B8; --ink-3: #8A91A1;
+      --rule: #2F343E; --rule-strong: #434A57;
+      --accent: #93A0E4; --accent-soft: #232842;
+      --brique: #DE8878; --brique-soft: #3A241F;
+      --ambre: #D9A63C; --ambre-soft: #362B14;
+      --vert: #85B98A; --vert-soft: #1E2C20;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #14161B; --surface: #1C1F26; --surface-sunk: #24282F;
+    --ink: #E7E9EF; --ink-2: #A2A9B8; --ink-3: #8A91A1;
+    --rule: #2F343E; --rule-strong: #434A57;
+    --accent: #93A0E4; --accent-soft: #232842;
+    --brique: #DE8878; --brique-soft: #3A241F;
+    --ambre: #D9A63C; --ambre-soft: #362B14;
+    --vert: #85B98A; --vert-soft: #1E2C20;
+  }
+
+  * { box-sizing: border-box; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); scrollbar-color: var(--rule-strong) var(--ground); }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent-soft); color: var(--ink); }
+  [hidden] { display: none !important; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 0 72px; }
+  h1, h2, h3 { font-family: var(--slab); font-weight: 600; text-wrap: balance; margin: 0; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  code { font-family: var(--mono); font-size: .9em; background: var(--surface-sunk); padding: 1px 4px; border-radius: 2px; }
+
+  /* cartouche */
+  .cartouche { border-bottom: 1px solid var(--rule); padding-block: 36px 24px; display: flex; flex-wrap: wrap; gap: 22px 48px; align-items: flex-end; justify-content: space-between; }
+  .cartouche h1 { font-size: clamp(30px, 5vw, 42px); line-height: 1.05; letter-spacing: -.015em; }
+  .cartouche .sub { color: var(--ink-2); margin: 8px 0 0; max-width: 54ch; }
+  .meta { display: grid; grid-template-columns: auto auto; gap: 3px 18px; margin: 0; }
+  .meta dt { color: var(--ink-3); font-size: 12.5px; align-self: baseline; }
+  .meta dd { margin: 0; font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .demo-note { display: inline-block; margin-top: 14px; font-size: 12.5px; color: var(--ink-2); background: var(--surface-sunk); padding: 5px 11px; border-radius: 2px; }
+
+  /* barre des compteurs */
+  .etat { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ground); border-bottom: 1px solid var(--rule); margin-inline: -20px; padding-inline: 20px; }
+  .etat-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; }
+  .compteur { display: flex; align-items: baseline; gap: 8px; padding: 12px 16px 12px 0; margin-right: 16px; text-decoration: none; color: inherit; border-right: 1px solid var(--rule); }
+  .compteur:last-child { border-right: 0; }
+  .compteur .n { font-family: var(--mono); font-size: 22px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+  .compteur .l { font-size: 13px; color: var(--ink-2); }
+  .compteur.alerte .n { color: var(--brique); }
+  .compteur.zero .n, .compteur.zero .l { color: var(--ink-3); }
+  .compteur:hover .l { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* sections */
+  section.bloc { padding-top: 52px; scroll-margin-top: 64px; }
+  .titre-section { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
+  .titre-section h2 { font-size: 22px; letter-spacing: -.01em; }
+  .titre-section .note { font-size: 13px; color: var(--ink-2); margin-left: auto; }
+  .intro { color: var(--ink-2); max-width: 70ch; margin: 12px 0 0; font-size: 14px; }
+  h3.sous { font-size: 16.5px; margin-top: 30px; display: flex; gap: 10px; align-items: baseline; }
+  h3.sous .compte { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--ink-3); }
+
+  /* tableaux */
+  .tableau-enveloppe { overflow-x: auto; margin-top: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 16px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-size: 12px; font-weight: 500; color: var(--ink-3); border-bottom-color: var(--rule-strong); white-space: nowrap; }
+  td.date { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.agent { white-space: nowrap; font-weight: 500; }
+  td .fin { display: block; color: var(--ink-2); font-size: 13px; margin-top: 3px; }
+  td.ref { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
+  tr:last-child td { border-bottom: 0; }
+  .ligne-agent { cursor: pointer; }
+  .ligne-agent:hover td { background: var(--surface); }
+  .ligne-agent td:first-child { padding-left: 8px; }
+  .ligne-agent:hover td:first-child { box-shadow: inset 2px 0 0 var(--accent); }
+  .nom-btn { font: inherit; font-weight: 600; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+  .nom-btn:hover { color: var(--accent); }
+  .projet { display: block; font-size: 12.5px; color: var(--ink-3); font-weight: 400; }
+  .discret { color: var(--ink-3); font-size: 13px; }
+  .vide-msg { font-size: 14px; color: var(--ink-3); margin: 14px 0 0; }
+
+  .st { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 2px; white-space: nowrap; font-weight: 500; }
+  .st.rouge { background: var(--brique-soft); color: var(--brique); }
+  .st.ambre { background: var(--ambre-soft); color: var(--ambre); }
+  .st.vert { background: var(--vert-soft); color: var(--vert); }
+  .st.bleu { background: var(--accent-soft); color: var(--accent); }
+  .st.gris { background: var(--surface-sunk); color: var(--ink-2); }
+  .roles { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  /* listes d'autonomie */
+  .liste { list-style: none; padding: 0; margin: 10px 0 0; }
+  .liste li { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+  .liste li:last-child { border-bottom: 0; }
+  .liste .qui { font-weight: 500; }
+  @media (max-width: 640px) { .liste li { grid-template-columns: 1fr; gap: 2px; } }
+
+  .resume { margin-top: 16px; max-width: 75ch; font-size: 15px; }
+  .resume p { margin: 0 0 10px; }
+
+  .alerte-bloc { margin-top: 22px; background: var(--brique-soft); color: var(--brique); border-radius: 3px; padding: 14px 18px; font-size: 14px; }
+  .alerte-bloc strong { display: block; font-family: var(--slab); font-size: 16px; margin-bottom: 3px; }
+  .info-bloc { margin-top: 22px; background: var(--surface-sunk); color: var(--ink-2); border-radius: 3px; padding: 14px 18px; font-size: 14px; }
+  .info-bloc strong { display: block; font-family: var(--slab); font-size: 16px; color: var(--ink); margin-bottom: 3px; }
+
+  .src-btn { font-family: var(--mono); font-size: 11.5px; background: transparent; border: 1px solid var(--rule-strong); color: var(--ink-2); padding: 4px 10px; border-radius: 2px; cursor: pointer; white-space: nowrap; }
+  .src-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  /* panneau latéral */
+  .panneau { position: fixed; inset: 0 0 0 auto; width: min(720px, 100%); background: var(--surface); border-left: 1px solid var(--rule-strong); box-shadow: -12px 0 40px rgba(0,0,0,.16); display: flex; flex-direction: column; z-index: 60; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .panneau > header { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--rule); }
+  .panneau h2 { font-size: 19px; }
+  .panneau .fermer { margin-left: auto; background: transparent; border: 0; cursor: pointer; color: var(--ink-2); padding: 4px; display: grid; place-items: center; border-radius: 2px; }
+  .panneau .fermer:hover { color: var(--ink); background: var(--surface-sunk); }
+  .panneau .corps { overflow: auto; flex: 1; padding: 16px 20px 40px; }
+  .panneau .corps h3 { font-size: 15px; margin: 22px 0 6px; }
+  .panneau .corps h3:first-child { margin-top: 0; }
+  .panneau .corps ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--ink-2); }
+  .panneau .corps li { margin-bottom: 4px; }
+  .panneau pre { margin: 8px 0 0; padding: 14px 16px; background: var(--surface-sunk); border-radius: 2px; font-family: var(--mono); font-size: 12px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .panneau .avert { font-size: 13px; color: var(--ink-2); margin: 0 0 4px; }
+  .voile { position: fixed; inset: 0; background: rgba(21,23,29,.42); z-index: 50; border: 0; }
+
+  footer.pied { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--ink-3); display: grid; gap: 8px; }
+  footer.pied .ligne { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+
+  @media (max-width: 720px) {
+    .etat { position: static; }
+    .titre-section .note { margin-left: 0; }
+    .etat-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; padding-block: 6px; }
+    .compteur { border-right: 0; margin: 0; padding: 7px 0; }
+    .compteur .n { font-size: 19px; }
+    table.pile thead { display: none; }
+    table.pile, table.pile tbody, table.pile tr, table.pile td { display: block; width: 100%; }
+    table.pile tr { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    table.pile tr:last-child { border-bottom: 0; }
+    table.pile td { border: 0; padding: 2px 0; white-space: normal; }
+    table.pile td[data-l]:not([data-l=""])::before { content: attr(data-l) " : "; color: var(--ink-3); font-size: 12.5px; }
+    .ligne-agent td:first-child { padding-left: 0; }
+    .ligne-agent:hover td:first-child { box-shadow: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .panneau:not([hidden]) { animation: entre .2s cubic-bezier(.16,1,.3,1); }
+    @keyframes entre { from { transform: translateX(24px); opacity: .4; } to { transform: none; opacity: 1; } }
+    .src-btn, .nom-btn { transition: color .15s ease, background-color .15s ease, border-color .15s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app">
+  <header class="cartouche"><div><h1>Chargement</h1><p class="sub">Lecture de l'état de l'équipe.</p></div></header>
+</div>
+
+<button class="voile" id="voile" hidden aria-label="Fermer le panneau"></button>
+<aside class="panneau" id="panneau" hidden aria-labelledby="panneau-titre" role="dialog">
+  <header>
+    <h2 id="panneau-titre">Agent</h2>
+    <button class="fermer" id="fermer" aria-label="Fermer">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </header>
+  <div class="corps" id="panneau-corps"></div>
+</aside>
+
+<script>
+/* == LIRE : lecture des textes transportés. Aucune dépendance au DOM. == */
+var LIRE = (function () {
+  "use strict";
+
+  function nettoie(s) { return String(s == null ? "" : s).replace(/\*\*/g, "").replace(/`/g, "").trim(); }
+
+  /* Un emplacement à remplir du gabarit : <...>, ou une valeur à options « a | b ». */
+  function estTrou(v) {
+    var t = nettoie(v);
+    return !t || /^<[^>]*>$/.test(t) || /^_ex/i.test(t);
+  }
+
+  /* Date et heure écrites aaaa-mm-jj [hh:mm] ou jj/mm/aaaa. */
+  function quand(s) {
+    var t = String(s == null ? "" : s);
+    var a = t.match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+    var utc = /\bUTC\b|Z\b/.test(t);
+    if (a) return utc ? new Date(Date.UTC(+a[1], +a[2] - 1, +a[3], +(a[4] || 0), +(a[5] || 0)))
+                      : new Date(+a[1], +a[2] - 1, +a[3], +(a[4] || 0), +(a[5] || 0));
+    var b = t.match(/(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2})[:h](\d{2}))?/);
+    if (b) return new Date(+b[3], +b[2] - 1, +b[1], +(b[4] || 0), +(b[5] || 0));
+    return null;
+  }
+
+  function version(s) {
+    var m = String(s || "").match(/(\d+)\.(\d+)\.(\d+)/);
+    return m ? [+m[1], +m[2], +m[3]] : null;
+  }
+  function compareVersions(a, b) {
+    for (var i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] < b[i] ? -1 : 1;
+    return 0;
+  }
+
+  /* Front-matter : clés simples, listes à puces indentées. Seul le premier
+     deux-points sépare la clé de la valeur (FORMAT.md, section 10). */
+  function front(md) {
+    var t = String(md || "").replace(/^﻿/, "");
+    var m = t.match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n|$)/);
+    if (!m) return null;
+    var out = {}, cle = null;
+    m[1].split(/\r?\n/).forEach(function (l) {
+      var p = l.match(/^\s+-\s+(.*)$/);
+      if (p && cle) {
+        if (!Array.isArray(out[cle])) out[cle] = out[cle] ? [out[cle]] : [];
+        out[cle].push(p[1].trim());
+        return;
+      }
+      var k = l.match(/^([^\s:][^:]*):\s?(.*)$/);
+      if (k) { cle = k[1].trim(); out[cle] = k[2].trim(); }
+    });
+    return out;
+  }
+
+  function liste(v) {
+    var a = Array.isArray(v) ? v : (v ? [v] : []);
+    return a.map(nettoie).filter(function (x) { return x && !estTrou(x) && !/^aucune?\.?$/i.test(x) && !/^«?\s*aucune?\s*»?$/i.test(x); });
+  }
+
+  function sections(md) {
+    var out = [{ titre: "", corps: [] }], dansBloc = false;
+    String(md || "").split(/\r?\n/).forEach(function (l) {
+      if (/^\s*```/.test(l)) dansBloc = !dansBloc;
+      var m = dansBloc ? null : l.match(/^#{2}\s+(.*)$/);
+      if (m) out.push({ titre: m[1].trim(), corps: [] });
+      else out[out.length - 1].corps.push(l);
+    });
+    return out.map(function (s) { return { titre: s.titre, corps: s.corps.join("\n") }; });
+  }
+  function section(secs, motif) {
+    for (var i = 0; i < secs.length; i++) if (motif.test(secs[i].titre)) return secs[i];
+    return null;
+  }
+
+  /* Premier tableau d'un texte, lu par nom de colonne. */
+  function tableau(texte) {
+    var ent = null, lignes = [];
+    var ls = String(texte || "").split(/\r?\n/);
+    for (var i = 0; i < ls.length; i++) {
+      var l = ls[i].trim();
+      if (l.indexOf("|") !== 0) { if (ent) break; else continue; }
+      if (/^[\s|:-]+$/.test(l)) continue;
+      var c = l.replace(/^\|/, "").replace(/\|$/, "").split("|").map(function (x) { return x.trim(); });
+      if (!ent) ent = c; else lignes.push(c);
+    }
+    if (!ent) return null;
+    /* Une ligne dont une cellule est un emplacement à remplir est une ligne d'exemple du gabarit. */
+    return { entetes: ent, lignes: lignes.filter(function (c) {
+      return !c.some(function (x) { return /^<[^>]*>$/.test(nettoie(x)) || /^_ex/i.test(nettoie(x)); });
+    }) };
+  }
+  function col(t, motif) {
+    if (!t) return -1;
+    for (var i = 0; i < t.entetes.length; i++) if (motif.test(t.entetes[i])) return i;
+    return -1;
+  }
+  function cell(l, i) { return i >= 0 && i < l.length ? l[i] : ""; }
+
+  function premierParagraphe(corps) {
+    return String(corps || "").split(/\n\s*\n/).map(function (p) { return p.trim(); })
+      .filter(function (p) { return p && !/^>/.test(p) && !/^\|/.test(p) && !/^`?</.test(p); })[0] || "";
+  }
+
+  /* --- un rapport de membre ------------------------------------- */
+  function rapport(md, ref) {
+    var f = front(md);
+    var secs = sections(md);
+    var r = { lisible: !!f, front: f || {}, marqueur: /\[fin de report\.md\]\s*$/.test(String(md || "").trim()) };
+    var st = nettoie(r.front["statut"]);
+    r.vierge = !f || estTrou(r.front["arrêté_le"]) || /\|/.test(st);
+    r.statut = r.vierge ? "jamais tourné" : (st || "statut absent");
+    r.arrete = r.vierge ? null : quand(r.front["arrêté_le"]);
+    r.perime = r.vierge ? null : quand(r.front["périmé_après"]);
+    r.estPerime = !!(r.perime && ref && ref > r.perime);
+    r.gabarit = estTrou(r.front["gabarit"]) ? null : nettoie(r.front["gabarit"]);
+    r.coordonnePar = estTrou(r.front["coordonné_par"]) ? null : nettoie(r.front["coordonné_par"]);
+    r.nonCouvert = liste(r.front["non_couvert"]);
+    r.demandes = liste(r.front["demandes_en_attente"]);
+    r.evaluations = liste(r.front["évaluations_dues"]);
+    var p = section(secs, /^en un paragraphe/i);
+    r.resume = p ? premierParagraphe(p.corps) : "";
+
+    var sd = section(secs, /^en attente d.une d[ée]cision/i);
+    var td = sd ? tableau(sd.corps) : null;
+    r.decisions = !td ? [] : td.lignes.map(function (l) {
+      return { num: cell(l, col(td, /^#$/)), sujet: cell(l, col(td, /sujet/i)),
+               manque: cell(l, col(td, /manque/i)), reco: cell(l, col(td, /recommand/i)) };
+    }).filter(function (d) { return nettoie(d.sujet); });
+
+    var sa = section(secs, /^[àa] faire/i);
+    var ta = sa ? tableau(sa.corps) : null;
+    r.aFaire = !ta ? [] : ta.lignes.map(function (l) {
+      var ech = cell(l, col(ta, /[ée]ch[ée]ance/i));
+      return { num: cell(l, col(ta, /^#$/)), objet: cell(l, col(ta, /objet/i)), ref: cell(l, col(ta, /r[ée]f[ée]rence/i)),
+               echeance: ech, date: quand(ech), report: cell(l, col(ta, /repouss/i)), valide: cell(l, col(ta, /valid/i)) };
+    }).filter(function (a) { return nettoie(a.objet); });
+    return r;
+  }
+
+  /* --- equipe.md ------------------------------------------------- */
+  function equipe(md) {
+    var s = section(sections(md), /^les membres/i);
+    var t = s ? tableau(s.corps) : null;
+    if (!t) return [];
+    return t.lignes.map(function (l) {
+      var projet = nettoie(cell(l, col(t, /^projet/i))).split(",")[0];
+      return {
+        nom: nettoie(cell(l, col(t, /^membre/i))),
+        projet: projet,
+        tache: cell(l, col(t, /t[âa]che/i)),
+        passage: nettoie(cell(l, col(t, /passage/i))),
+        relancable: /^oui/i.test(nettoie(cell(l, col(t, /relan/i)))),
+        decisions: /^oui/i.test(nettoie(cell(l, col(t, /^d[ée]cisions/i)))),
+        lectureSeule: /lecture seule/i.test(cell(l, col(t, /t[âa]che/i)))
+      };
+    }).filter(function (m) { return m.nom; });
+  }
+
+  return { rapport: rapport, equipe: equipe, front: front, quand: quand, version: version,
+           compareVersions: compareVersions, nettoie: nettoie, estTrou: estTrou };
+})();
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  var CHEMINS = ["_ecran/equipe.js", "equipe.js"];
+  var ETAT = null;
+
+  function charger(i) {
+    if (i >= CHEMINS.length) { rendreVide(); return; }
+    var s = document.createElement("script");
+    s.src = CHEMINS[i];
+    s.onload = function () { if (window.COMPAGNON_EQUIPE) demarrer(window.COMPAGNON_EQUIPE); else charger(i + 1); };
+    s.onerror = function () { charger(i + 1); };
+    document.head.appendChild(s);
+  }
+
+  function e(s) {
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function inl(s) {
+    return e(s).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/`([^`]+)`/g, "<code>$1</code>");
+  }
+  function jj(d) {
+    if (!d) return "";
+    function z(n) { return (n < 10 ? "0" : "") + n; }
+    return z(d.getDate()) + "/" + z(d.getMonth() + 1) + "/" + d.getFullYear();
+  }
+  function jjh(d) {
+    if (!d) return "";
+    function z(n) { return (n < 10 ? "0" : "") + n; }
+    return jj(d) + " " + z(d.getHours()) + ":" + z(d.getMinutes());
+  }
+  /* « de Vincent », « d'Atelier » */
+  function de(nom) { return (/^[aeiouyhâàéèêîïôûAEIOUYHÂÀÉÈÊÎÏÔÛ]/.test(String(nom || "")) ? "d'" : "de ") + e(nom); }
+  function jours(a, b) { return Math.round((b - a) / 86400000); }
+
+  function rendreVide() {
+    document.getElementById("app").innerHTML =
+      '<header class="cartouche"><div><h1>Rien à afficher</h1>' +
+      '<p class="sub">Aucun état d\'équipe n\'a été trouvé à côté de cette page.</p></div></header>' +
+      '<div class="info-bloc"><strong>Ce n\'est pas une panne</strong>' +
+      "Cette vue ne sert que chez un coordinateur. Elle lit <code>_ecran/equipe.js</code>, que le " +
+      "coordinateur écrit à la fin de chaque passage de coordination. Tant qu'il n'a pas fait de passage, " +
+      "il n'y a rien à montrer.</div>";
+  }
+
+  /* Statut d'un membre, en une pastille. */
+  function pastille(m) {
+    if (m.lecture !== "lu") return '<span class="st gris">' + e(m.lecture === "absent" ? "pas de rapport" : m.lecture === "illisible" ? "illisible" : "non lu") + "</span>";
+    var r = m.r;
+    if (r.vierge) return '<span class="st gris">jamais tourné</span>';
+    if (r.estPerime) return '<span class="st rouge">périmé</span>';
+    var s = r.statut.toLowerCase();
+    var c = /bloqu/.test(s) ? "rouge" : /partiel|repli/.test(s) ? "ambre" : /complet|tourn/.test(s) ? "vert" : "gris";
+    return '<span class="st ' + c + '">' + e(r.statut) + "</span>";
+  }
+
+  function demarrer(etat) {
+    ETAT = etat;
+    var ref = LIRE.quand(etat.arrete_le) || new Date();
+    var membresEq = LIRE.equipe(etat.equipe);
+    var parNom = {};
+    membresEq.forEach(function (m) { parNom[m.nom.toLowerCase()] = m; });
+
+    var refVersion = LIRE.version(etat.derniere_etiquette) || LIRE.version(etat.gabarit);
+
+    var membres = (etat.membres || []).map(function (x) {
+      var m = { nom: x.nom, lecture: x.lecture || (x.rapport ? "lu" : "absent"), motif: x.motif || "", source: x.rapport || "" };
+      m.eq = parNom[String(x.nom || "").toLowerCase()] || null;
+      if (m.lecture === "lu") {
+        m.r = LIRE.rapport(x.rapport, ref);
+        if (!m.r.lisible) m.lecture = "illisible";
+      }
+      if (m.r && m.r.gabarit && refVersion) {
+        var v = LIRE.version(m.r.gabarit);
+        m.retard = v ? LIRE.compareVersions(v, refVersion) < 0 : false;
+      } else if (m.r && m.lecture === "lu" && !m.r.vierge) {
+        m.retard = true; m.sansGabarit = true;
+      }
+      return m;
+    });
+    /* Un membre de equipe.md que le transport ne porte pas : on le montre, non lu. */
+    membresEq.forEach(function (q) {
+      if (!membres.some(function (m) { return String(m.nom).toLowerCase() === q.nom.toLowerCase(); })) {
+        membres.push({ nom: q.nom, lecture: "non transporté", motif: "Ce membre est dans equipe.md mais le passage ne l'a pas porté.", eq: q, source: "" });
+      }
+    });
+
+    var lus = membres.filter(function (m) { return m.lecture === "lu" && !m.r.vierge; });
+
+    var decisions = [], echeances = [], autonomie = [];
+    lus.forEach(function (m) {
+      m.r.decisions.forEach(function (d) { decisions.push({ m: m, d: d }); });
+      m.r.aFaire.forEach(function (a) { if (a.date) echeances.push({ m: m, a: a }); });
+      m.r.demandes.forEach(function (t) { autonomie.push({ m: m, type: "Demande", t: t }); });
+      m.r.evaluations.forEach(function (t) { autonomie.push({ m: m, type: "Évaluation", t: t }); });
+    });
+    echeances.sort(function (x, y) { return x.a.date - y.a.date; });
+    var depassees = echeances.filter(function (x) { return x.a.date < ref; });
+    var perimes = membres.filter(function (m) { return m.r && m.r.estPerime; });
+    var retards = membres.filter(function (m) { return m.retard; });
+    var sans = membres.filter(function (m) { return m.lecture !== "lu" || m.r.vierge; });
+
+    var coord = etat.rapport_coordinateur ? LIRE.rapport(etat.rapport_coordinateur, ref) : null;
+    var h = [];
+
+    /* cartouche */
+    h.push('<header class="cartouche"><div>');
+    h.push("<h1>Équipe " + (etat.coordinateur ? de(etat.coordinateur) : "du coordinateur") + "</h1>");
+    h.push('<p class="sub">' + membres.length + " agent" + (membres.length > 1 ? "s" : "") + ", vus par leur rapport de sortie. " +
+      "Rien ici ne vient de leur mémoire : ce qu'un rapport ne dit pas, cette vue ne le sait pas.</p>");
+    if (/exemple|fictif/i.test(etat.note || "")) h.push('<p class="demo-note">' + e(etat.note) + "</p>");
+    h.push('</div><dl class="meta">');
+    h.push("<dt>Opérateur</dt><dd>" + e(etat.operateur || "?") + "</dd>");
+    h.push("<dt>Coordinateur</dt><dd>" + e(etat.coordinateur || "?") + " · compagnon " + e(etat.gabarit || "?") + "</dd>");
+    if (etat.derniere_etiquette) h.push("<dt>Dernière étiquette</dt><dd>" + e(etat.derniere_etiquette) + "</dd>");
+    h.push("<dt>Passage du</dt><dd>" + e(etat.arrete_le || "inconnu") + "</dd>");
+    h.push("</dl></header>");
+
+    /* compteurs */
+    function compteur(n, label, ancre, alerte) {
+      return '<a class="compteur' + (n ? (alerte ? " alerte" : "") : " zero") + '" href="#' + ancre + '"><span class="n">' + n + '</span><span class="l">' + label + "</span></a>";
+    }
+    h.push('<div class="etat"><nav class="etat-inner" aria-label="Ce qui demande votre attention">');
+    h.push(compteur(decisions.length, "décision" + (decisions.length > 1 ? "s" : "") + " attendue" + (decisions.length > 1 ? "s" : ""), "decisions", true));
+    h.push(compteur(depassees.length, "échéance" + (depassees.length > 1 ? "s" : "") + " dépassée" + (depassees.length > 1 ? "s" : ""), "echeances", true));
+    h.push(compteur(autonomie.length, "demande" + (autonomie.length > 1 ? "s" : "") + " et évaluation" + (autonomie.length > 1 ? "s" : ""), "autonomie", false));
+    h.push(compteur(perimes.length, "rapport" + (perimes.length > 1 ? "s" : "") + " périmé" + (perimes.length > 1 ? "s" : ""), "agents", true));
+    h.push(compteur(retards.length, "en retard de version", "agents", false));
+    h.push(compteur(sans.length, "sans rapport exploitable", "agents", false));
+    h.push("</nav></div>");
+
+    var ageTransport = jours(ref, new Date());
+    if (ageTransport >= 2) {
+      h.push('<div class="alerte-bloc"><strong>Cet état date de ' + ageTransport + " jours</strong>" +
+        "Le coordinateur n'a pas réécrit la vue depuis le " + e(etat.arrete_le) + ". Tout ce qui suit décrit l'équipe à ce moment-là.</div>");
+    }
+
+    /* décisions */
+    h.push('<section class="bloc" id="decisions"><div class="titre-section"><h2>Ce qui attend votre décision</h2>' +
+      '<span class="note">Recopié des rapports. Aucun agent ne tranche ceci.</span></div>');
+    if (!decisions.length) h.push('<p class="vide-msg">Aucun rapport lu ne porte de décision en attente.</p>');
+    else {
+      h.push('<div class="tableau-enveloppe"><table class="pile"><thead><tr><th>Agent</th><th>Sujet</th><th>Ce qui manque pour trancher</th><th>Recommandation de l\'agent</th></tr></thead><tbody>');
+      decisions.forEach(function (x) {
+        h.push('<tr><td class="agent" data-l="">' + e(x.m.nom) + '</td><td data-l="">' + inl(x.d.sujet) + '</td><td data-l="Ce qui manque">' + inl(x.d.manque) + "</td>" + (LIRE.nettoie(x.d.reco) ? '<td data-l="Recommandation">' + inl(x.d.reco) + "</td>" : '<td data-l=""></td>') + "</tr>");
+      });
+      h.push("</tbody></table></div>");
+    }
+
+    /* échéances */
+    h.push('<h3 class="sous" id="echeances">Échéances proposées, par date <span class="compte">' + echeances.length + "</span></h3>");
+    h.push('<p class="intro">Les items « À faire » qui portent une date. Chaque agent ignore ceux des autres : le classement entre eux vous revient, ou au coordinateur, en proposition.</p>');
+    if (!echeances.length) h.push('<p class="vide-msg">Aucun item daté dans les rapports lus.</p>');
+    else {
+      h.push('<div class="tableau-enveloppe"><table class="pile"><thead><tr><th>Échéance</th><th>Agent</th><th>Objet</th><th>Si c\'est repoussé</th></tr></thead><tbody>');
+      echeances.forEach(function (x) {
+        var dep = x.a.date < ref;
+        h.push('<tr><td class="date" data-l="">' + e(jj(x.a.date)) + (dep ? '<span class="fin"><span class="st rouge">dépassée</span></span>' : "") +
+          '</td><td class="agent" data-l="">' + e(x.m.nom) + '</td><td data-l="">' + inl(x.a.objet) +
+          (LIRE.nettoie(x.a.ref) ? '<span class="fin">' + inl(x.a.ref) + "</span>" : "") +
+          '</td><td data-l="Si repoussé">' + inl(x.a.report) + "</td></tr>");
+      });
+      h.push("</tbody></table></div>");
+    }
+    h.push("</section>");
+
+    /* autonomie */
+    h.push('<section class="bloc" id="autonomie"><div class="titre-section"><h2>Autonomie et évaluations</h2>' +
+      '<span class="note">Un grade et une capacité ne s\'accordent que dans la conversation de l\'agent, ou par le canal de décision.</span></div>');
+    if (!autonomie.length) h.push('<p class="vide-msg">Aucune demande d\'autonomie ni évaluation due dans les rapports lus.</p>');
+    else {
+      h.push('<ul class="liste">');
+      autonomie.forEach(function (x) {
+        h.push('<li><span class="qui">' + e(x.m.nom) + ' <span class="discret">· ' + e(x.type) + "</span></span><span>" + inl(x.t) + "</span></li>");
+      });
+      h.push("</ul>");
+    }
+    h.push("</section>");
+
+    /* agents */
+    h.push('<section class="bloc" id="agents"><div class="titre-section"><h2>Les agents</h2>' +
+      '<span class="note">Cliquez un agent pour son rapport.</span></div>');
+    h.push('<div class="tableau-enveloppe"><table class="agents pile"><thead><tr><th>Agent</th><th>Dernier passage</th><th>État</th><th>Valable jusqu\'au</th><th>Gabarit</th><th>Relation</th></tr></thead><tbody>');
+    membres.forEach(function (m, i) {
+      var r = m.r;
+      var passage = r && !r.vierge && r.arrete ? jjh(r.arrete) : "";
+      var valid = "";
+      if (r && r.perime) {
+        valid = jjh(r.perime);
+        if (r.estPerime) {
+          var hs = Math.round((ref - r.perime) / 3600000);
+          valid += '<span class="fin">périmé depuis ' + (hs < 24 ? hs + " h" : Math.round(hs / 24) + " j") + "</span>";
+        }
+      }
+      var gab = r && r.gabarit ? e(r.gabarit) : (m.sansGabarit ? '<span class="discret">non déclaré</span>' : "");
+      if (m.retard) gab += ' <span class="st ambre">en retard</span>';
+      var roles = [];
+      if (m.eq) {
+        if (m.eq.lectureSeule) roles.push('<span class="st gris">lecture seule</span>');
+        else {
+          if (m.eq.relancable) roles.push('<span class="st bleu">relançable</span>');
+          if (m.eq.decisions) roles.push('<span class="st bleu">décisions</span>');
+          if (!m.eq.relancable && !m.eq.decisions) roles.push('<span class="st gris">lu seulement</span>');
+        }
+      }
+      var projet = m.eq && m.eq.projet && m.eq.projet.toLowerCase() !== String(m.nom).toLowerCase() ? '<span class="projet">' + e(m.eq.projet) + "</span>" : "";
+      h.push('<tr class="ligne-agent" data-i="' + i + '"><td data-l=""><button class="nom-btn" data-i="' + i + '">' + e(m.nom) + "</button>" + projet + "</td>" +
+        '<td class="date" data-l="Dernier passage">' + (passage || '<span class="discret">aucun</span>') + "</td>" +
+        '<td data-l="État">' + pastille(m) + (m.lecture !== "lu" && m.motif ? '<span class="fin">' + inl(m.motif) + "</span>" : "") + "</td>" +
+        '<td class="date" data-l="Valable jusqu\'au">' + (valid || '<span class="discret">sans objet</span>') + "</td>" +
+        '<td class="date" data-l="Gabarit">' + (gab || '<span class="discret">inconnu</span>') + "</td>" +
+        '<td data-l="Relation"><span class="roles">' + roles.join("") + "</span></td></tr>");
+    });
+    h.push("</tbody></table></div></section>");
+
+    /* rapport du coordinateur */
+    if (coord) {
+      h.push('<section class="bloc" id="coordinateur"><div class="titre-section"><h2>Le topo ' + (etat.coordinateur ? de(etat.coordinateur) : "du coordinateur") + "</h2>" +
+        '<span class="note">' + (coord.arrete ? "Passage du " + e(jjh(coord.arrete)) : "") + "</span></div>");
+      h.push('<div class="resume">' + (coord.resume ? "<p>" + inl(coord.resume) + "</p>" : '<p class="discret">Son rapport n\'a pas de paragraphe de synthèse.</p>') +
+        '<button class="src-btn" data-src="coord">report.md du coordinateur</button></div></section>');
+    }
+
+    /* pied */
+    h.push('<footer class="pied"><div>Vue calculée dans le navigateur à partir de <code>equipe.md</code> et des rapports recopiés tels quels par ' +
+      e(etat.coordinateur || "le coordinateur") + ". En cas d'écart, le fichier fait foi.</div>" +
+      '<div class="ligne"><button class="src-btn" data-src="equipe">equipe.md</button>' +
+      (etat.rapport_coordinateur ? '<button class="src-btn" data-src="coord">report.md du coordinateur</button>' : "") +
+      "<span>Schéma " + e(etat.schema || "?") + "</span></div></footer>");
+
+    document.getElementById("app").innerHTML = h.join("");
+    ETAT._membres = membres;
+    brancher();
+  }
+
+  /* --- panneau --------------------------------------------------- */
+  var panneau, voile, dernierFocus;
+  function ouvrir(titre, html) {
+    dernierFocus = document.activeElement;
+    document.getElementById("panneau-titre").textContent = titre;
+    document.getElementById("panneau-corps").innerHTML = html;
+    panneau.hidden = false; voile.hidden = false;
+    document.getElementById("fermer").focus();
+  }
+  function fermer() {
+    panneau.hidden = true; voile.hidden = true;
+    if (dernierFocus && dernierFocus.focus) dernierFocus.focus();
+  }
+  function source(titre, texte, note) {
+    ouvrir(titre, '<p class="avert">' + e(note) + "</p><pre>" + e(texte || "(vide)") + "</pre>");
+  }
+  function ficheAgent(m) {
+    var h = [];
+    if (m.lecture !== "lu") {
+      h.push("<h3>Pas de rapport lu</h3><p class=\"avert\">" + inl(m.motif || "Le coordinateur n'a pas pu lire ce rapport.") + "</p>");
+    } else {
+      var r = m.r;
+      h.push("<h3>En un paragraphe</h3><p class=\"avert\">" + (r.resume ? inl(r.resume) : "Ce rapport n'a pas de paragraphe de synthèse.") + "</p>");
+      if (r.nonCouvert.length) {
+        h.push("<h3>Non couvert</h3><ul>" + r.nonCouvert.map(function (x) { return "<li>" + inl(x) + "</li>"; }).join("") + "</ul>");
+      }
+      if (!r.marqueur) h.push('<h3>Marqueur de fin absent</h3><p class="avert">Le texte recopié ne se termine pas par <code>[fin de report.md]</code> : il a pu être lu incomplet.</p>');
+    }
+    if (m.source) h.push("<h3>Rapport tel que recopié</h3><pre>" + e(m.source) + "</pre>");
+    ouvrir(m.nom, h.join(""));
+  }
+  function brancher() {
+    panneau = document.getElementById("panneau");
+    voile = document.getElementById("voile");
+    document.getElementById("app").addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-src]");
+      if (b) {
+        if (b.getAttribute("data-src") === "equipe") source("equipe.md", ETAT.equipe, "Le fichier d'équipe, zone manuelle de l'opérateur, tel que recopié.");
+        else source("report.md du coordinateur", ETAT.rapport_coordinateur, "Le dernier rapport du coordinateur, tel que recopié.");
+        return;
+      }
+      var l = ev.target.closest("[data-i]");
+      if (l) ficheAgent(ETAT._membres[+l.getAttribute("data-i")]);
+    });
+    document.getElementById("fermer").addEventListener("click", fermer);
+    voile.addEventListener("click", fermer);
+    document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !panneau.hidden) fermer(); });
+  }
+
+  charger(0);
+})();
+</script>
+</body>
+</html>

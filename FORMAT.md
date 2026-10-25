@@ -9,8 +9,8 @@
 > l'identique. Ce contrat n'existe donc pas pour contraindre la mémoire, il existe pour que
 > l'accessoire ne devienne jamais une raison de ne pas faire évoluer le gabarit.
 
-Version du contrat : **6**, introduite avec compagnon 0.28.1. Les versions 1 (0.13.0), 2 (0.14.0),
-3 (0.15.0), 4 (0.17.0) et 5 (0.19.0) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
+Version du contrat : **7**, introduite avec compagnon 0.38.0 (la vue de coordination, section 12). Les versions 1 (0.13.0), 2 (0.14.0),
+3 (0.15.0), 4 (0.17.0), 5 (0.19.0) et 6 (0.28.1) restent lues sans erreur : tout ce que les suivantes ajoutent est facultatif, et un fichier qui ne
 le porte pas s'affiche comme avant.
 
 ---
@@ -58,7 +58,7 @@ personne n'y voie une panne.
 | `objectives.md` | oui | compétences visées |
 | `VERSION.md` | oui | version du gabarit et écarts |
 | `report.md` | oui, s'il existe | rapport de sortie, facultatif |
-| `equipe.md` | **non** | lu par le coordinateur seul ; l'écran ne l'affiche pas (0.22.0) |
+| `equipe.md` | **non** | lu par le coordinateur seul ; l'écran ne l'affiche pas (0.22.0). La vue de coordination le reçoit par `equipe.js` (section 12, 0.38.0) |
 | `paire.md` | **non** | réglage de la paire, zone manuelle ; l'écran ne l'affiche pas (0.32.0) |
 | `NOYAU-instructions-projet.md` | **non** | volumineux, et le plus spécifique du métier |
 | `noyau-local.md` | **non** | même raison que le NOYAU, dont il est la suite |
@@ -252,3 +252,56 @@ dans la 0.13.0 :
 
 Aucun n'était un défaut de l'écran. Tous étaient des endroits où le gabarit prévoyait une décision
 fondée sur la durée, sans écrire la durée.
+
+Trois constats relevés le 25/10/2026, en construisant la vue de coordination sur une équipe réelle
+de quatorze agents. Aucun n'est corrigé dans la 0.38.0 : ils sont écrits pour qu'une version
+suivante décide.
+
+- **Les heures des rapports ne parlent pas toutes le même fuseau.** Un run cloud écrit
+  `12:03 UTC`, une session sur le poste écrit l'heure locale sans le dire. La vue lit le suffixe
+  `UTC` quand il est là ; sans lui, une heure ambiguë est prise pour locale.
+- **La clé `gabarit` d'un rapport date du rapport.** Un membre migré depuis son dernier run reste
+  affiché en retard jusqu'au run suivant. C'est exact au sens du rapport, et trompeur au sens du
+  parc.
+- **Un membre sans rapport ne se voit que par son absence.** Ni sa version, ni ses décisions en
+  attente n'atteignent la vue tant qu'il n'écrit pas `report.md`.
+
+## 12. La vue de coordination (contrat 7)
+
+`ecran/coordination.html` est la vue d'une **équipe**. Elle ne se pose que chez un coordinateur, à
+côté de `compagnon.html`, et se remplace en migrant. Elle cherche son état à `_ecran/equipe.js`
+d'abord, puis à `equipe.js` à côté d'elle : le dépôt livre un `ecran/equipe.js` d'exemple, une équipe
+fictive, qui n'est pas copié dans une instance.
+
+`equipe.js` définit `window.COMPAGNON_EQUIPE`, avec ces clés :
+
+| Clé | Contenu |
+|---|---|
+| `schema` | `compagnon/equipe/1` |
+| `gabarit` | la version du coordinateur, celle de son `VERSION.md` |
+| `derniere_etiquette` | la dernière étiquette du dépôt relevée pendant ce passage, ou vide |
+| `coordinateur`, `operateur` | les noms, tels que le NOYAU les porte |
+| `arrete_le` | l'heure réelle du passage, `AAAA-MM-JJ HH:MM` |
+| `equipe` | `equipe.md`, entier, verbatim |
+| `rapport_coordinateur` | le `report.md` du coordinateur, entier, verbatim |
+| `membres` | une entrée par ligne de `equipe.md`, dans son ordre : `nom`, `lecture` (`lu`, `absent`, `illisible`, `non lu`), `motif` quand ce n'est pas `lu`, et `rapport`, entier, verbatim, quand c'est `lu` |
+
+La règle d'échappement est celle de la section 4. Ce qui est transporté d'un membre se limite à son
+`report.md` : sa mémoire n'y entre jamais, ni son dossier d'échange (compagnon P12).
+
+Ce que la vue lit dans ces textes, et qui devient donc contractuel :
+
+- dans `equipe.md`, le tableau de la section « Les membres », par nom de colonne : `Membre`,
+  `Projet` (jusqu'à la première virgule), `Tâche programmée` (la mention `lecture seule`),
+  `Relançable` et `Décisions` (`oui` en tête de cellule) ;
+- dans chaque rapport, le front-matter de la section 10, et les clés `statut`, `arrêté_le`,
+  `périmé_après`, `gabarit`, `non_couvert`, `demandes_en_attente`, `évaluations_dues`. Une heure
+  suivie de `UTC` est lue en UTC, toute autre en heure locale ;
+- les sections « En un paragraphe », « À faire » et « En attente d'une décision », par le début de
+  leur titre, et leurs tableaux par nom de colonne : `Sujet`, `Ce qui manque`, `Recommandation` ;
+  `Objet`, `Référence`, `Échéance`, `Si c'est repoussé`.
+
+Le reste est calculé dans le navigateur, et ne s'écrit nulle part : un rapport est périmé quand
+`arrete_le` dépasse son `périmé_après` ; une échéance est dépassée quand elle précède `arrete_le` ;
+un membre est en retard quand son `gabarit` est inférieur à `derniere_etiquette`, ou à défaut à la
+version du coordinateur ; un rapport encore plein de trous entre chevrons se lit `jamais tourné`.

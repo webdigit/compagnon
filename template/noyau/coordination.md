@@ -125,6 +125,27 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
      dernière étiquette, suis la route du §6bis, point 2. Tu ne rédiges jamais toi-même la
      migration d'un membre.
 
+11. **La vue de coordination.** Si `coordination.html` existe à la racine de ton projet, réécris
+   `_ecran/equipe.js` à la fin de chaque passage, après ton rapport. Sinon, saute ce point : rien ne
+   manque.
+   - **Recopie, ne résume pas.** `equipe.md` et ton `report.md` entiers, puis le `report.md` de
+     chaque membre, dans l'ordre de `equipe.md`, entier et tel que tu l'as lu. Le format est dans
+     `FORMAT.md`, section 12. Rien d'autre d'un membre : ni sa mémoire, ni son dossier d'échange ;
+   - **un membre dont tu n'as pas le rapport** figure quand même, avec la raison : `absent`,
+     `illisible`, ou `non lu` et le motif (son dossier n'est pas joignable depuis cet hôte, par
+     exemple). Ne le retire jamais : un trou se voit, une ligne manquante non ;
+   - **échappe** comme pour `_ecran/etat.js` (`noyau/ecran.md`, point 3), et date l'état :
+     `arrete_le` porte l'heure réelle du passage ;
+   - **`derniere_etiquette`** porte la dernière étiquette du gabarit si tu l'as relevée pendant ce
+     passage (route du §6bis, point 2). Sinon, laisse la clé vide : la vue compare alors à ta
+     propre version ;
+   - **ne touche jamais à `coordination.html`.** Il vient du dépôt et se remplace en migrant ;
+   - sur un hôte où tu remplaces un fichier sans pouvoir l'écraser, `_ecran/equipe.js` suit l'ordre
+     de remplacement du NOYAU (§5quater), comme `_ecran/etat.js`. Il n'a pas de marqueur de fin :
+     vérifie-le par sa taille et sa dernière ligne ;
+   - **si la réécriture échoue ou si tu la sautes**, dis-le dans ton `non_couvert`. La vue affiche
+     elle-même depuis quand elle n'a pas bougé.
+
 **Ce qui compte comme un cas** pour ta compétence de coordination, au journal : chaque relance
 proposée ou faite, chaque relais de paire, chaque décision transmise, et chaque anomalie d'équipe
 remontée. Une correction de fond, c'est <OPÉRATEUR>

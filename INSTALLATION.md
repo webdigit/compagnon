@@ -85,6 +85,13 @@ et c'est écrit sur la page pour que personne ne le prenne pour telle.
 Si vous n'en voulez pas, ne copiez rien. Une instance sans écran fonctionne à l'identique, et aucun
 autre fichier ne le réclame.
 
+**Chez un coordinateur**, copiez aussi `ecran/coordination.html` à côté de `compagnon.html`. C'est la
+vue de toute l'équipe : les décisions attendues de chaque agent sur une seule liste, les échéances
+par date, les rapports périmés, les retards de version. Le coordinateur écrit `_ecran/equipe.js` à
+chaque passage (`noyau/coordination.md`, point 11). La vue ne lit que les rapports des membres,
+jamais leur mémoire. Pour y voir un agent qui ne travaille pas avec le coordinateur, ajoutez-le à
+`equipe.md` en lecture seule.
+
 ## Étape 3 : Fixer l'échelle d'autonomie
 
 Dans `capabilities.md`. **Commencez en lecture seule intégrale.** Aucune écriture pré-autorisée,

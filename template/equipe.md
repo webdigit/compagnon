@@ -22,6 +22,12 @@
 > programmée est toujours `non`, et de même un membre dont l'hôte ne liste pas la tâche (une tâche
 > locale à l'application de bureau, par exemple) : elle ne se déclenche pas d'ailleurs.
 >
+> **Un membre en lecture seule** entre ici pour être vu, rien de plus : `Relançable` et `Décisions` à
+> `non`, `Tâche programmée` à `sans objet (lecture seule)`. Le coordinateur lit son rapport et le
+> signale comme les autres (périmé, absent, en retard de version), sans jamais agir sur lui. C'est ce
+> qui permet à la vue de coordination de montrer tout le parc d'un opérateur, pas seulement l'équipe
+> qui travaille (`noyau/coordination.md`, point 11).
+>
 > **La colonne `Tâche programmée` porte l'identifiant tel que la liste des tâches le donne.** C'est
 > de là que le coordinateur le tire pour déclencher : un nom ne suffit pas, deux tâches peuvent le
 > porter. Le dossier se donne de même par son identifiant de stockage quand il n'a pas de chemin

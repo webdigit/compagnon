@@ -100,6 +100,8 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 |---|---|---|
 | `../compagnon.html` | L'écran de lecture : ce dossier rendu lisible d'un double-clic | **Vient du dépôt**, remplacé en migrant · **facultatif** |
 | `../_ecran/etat.js` | Le transport : les fichiers ci-dessus recopiés entiers, pour que l'écran puisse les lire | Auto (agent), en fin de session |
+| `../coordination.html` | La vue de coordination, chez un coordinateur seulement : toute l'équipe sur une page, par ses rapports | **Vient du dépôt**, remplacé en migrant · **facultatif** |
+| `../_ecran/equipe.js` | Son transport : `equipe.md`, le rapport du coordinateur et celui de chaque membre, recopiés entiers | Auto (coordinateur), à chaque passage |
 
 > L'écran est un **accessoire de lecture, pas un organe** : une instance sans lui fonctionne à
 > l'identique. Il n'écrit rien, par aucun chemin, et ce qu'il affiche est calculé depuis les

@@ -10,6 +10,35 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.38.0] - 2026-10-25
+
+### Ajouté
+
+- **La vue de coordination** (`ecran/coordination.html`) : toute l'équipe d'un coordinateur sur une
+  page. En tête, les décisions attendues de chaque agent sur une seule liste, puis les échéances
+  « À faire » par date, les dépassées marquées. Ensuite les demandes d'autonomie et les évaluations
+  dues, puis une ligne par agent : dernier passage, état, validité du rapport, version du gabarit,
+  relation au coordinateur. Un clic ouvre le rapport recopié. Les décisions d'abord, comme l'écran
+  d'une instance (15/09/2026).
+- **`_ecran/equipe.js`** : son transport, réécrit par le coordinateur à chaque passage. `equipe.md`,
+  le rapport du coordinateur et celui de chaque membre, entiers et verbatim. Aucune mémoire de
+  membre : la vue sait ce que les rapports disent, rien de plus (compagnon P12).
+- **`noyau/coordination.md`, point 11** : quand et comment le réécrire ; un membre sans rapport y
+  figure quand même, avec la raison.
+- **`equipe.md`** : le membre en lecture seule. Il entre pour être vu, jamais pour être relancé ni
+  recevoir de décision. C'est ce qui donne à l'opérateur la vue de tout son parc.
+- **`FORMAT.md`, section 12** (contrat 7), et trois constats faits sur une équipe réelle, section 11.
+
+### Pourquoi
+
+L'écran d'une instance montre un agent. Avec quatorze agents, l'opérateur n'avait plus de vue
+d'ensemble : il devait ouvrir chaque écran pour savoir ce qui l'attendait. Le coordinateur lisait
+déjà tous les rapports à chaque passage ; la vue ne fait que poser sur une page ce qu'il lit. Le
+NOYAU ne change pas : la consigne vit dans le module lu sur déclencheur.
+
+Origine : JC, 25/10/2026 : « Cela commence à faire beaucoup d'agents et je n'ai pas de vue complète.
+À partir du moment où j'ai un coordinateur, il faudrait proposer une vue de coordination. »
+
 ## [0.37.0] - 2026-10-25
 
 ### Modifié
