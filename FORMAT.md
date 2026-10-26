@@ -293,7 +293,7 @@ Ce que la vue lit dans ces textes, et qui devient donc contractuel :
 
 - dans `equipe.md`, le tableau de la section « Les membres », par nom de colonne : `Membre`,
   `Projet` (jusqu'à la première virgule), `Tâche programmée` (la mention `lecture seule`),
-  `Relançable` et `Décisions` (`oui` en tête de cellule) ;
+  `Relançable` et `Décisions` (`oui` en tête de cellule). La colonne `Consignes` n'est pas lue ;
 - dans chaque rapport, le front-matter de la section 10, et les clés `statut`, `arrêté_le`,
   `périmé_après`, `gabarit`, `non_couvert`, `demandes_en_attente`, `évaluations_dues`. Une heure
   suivie de `UTC` est lue en UTC, toute autre en heure locale ;

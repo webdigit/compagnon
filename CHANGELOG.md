@@ -10,6 +10,36 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.41.0] - 2026-10-26
+
+### Ajouté
+
+- **La consigne déléguée** (`noyau/en-paire.md`, `noyau/coordination.md` point 12) : si l'opérateur
+  le délègue, membre par membre et des deux côtés (« Consignes du coordinateur » au registre du
+  membre, colonne `Consignes` d'`equipe.md`), une consigne du coordinateur vaut sa décision sur le
+  travail du membre. Missions `C`. Elle choisit ce que le membre fait, jamais ce qu'il a le droit de
+  faire. Retrait d'un mot, dans l'une ou l'autre conversation.
+- **La chaîne des questions** (`noyau/en-paire.md`, « La consigne du coordinateur », point 7) :
+  ce qu'une mission `C` fait demander au membre va au coordinateur, et à lui seul. Il tranche ce que
+  sa délégation couvre et porte le reste à l'opérateur. Exception : l'opérateur présent dans la
+  conversation du membre.
+- **Installation** : la question des consignes (`INSTALLATION.md`, étape 4 ;
+  `INSTALLATION-ASSISTEE.md`, questions 9bis et 4ter) ; la question du canal de décision au module
+  équipe (4bis), qui manquait depuis la 0.37.0.
+
+### Modifié
+
+- **DOCTRINE** : P12 (les exceptions, déléguées par l'opérateur), P16 (le quatrième geste, la
+  chaîne des questions), P18 (un décideur seulement par délégation).
+- **`noyau/en-paire.md`, point 10 du canal** : une décision prise en direct chez le membre
+  s'applique tout de suite.
+
+### La leçon
+
+Une décision déjà prise par l'opérateur coûtait trois allers-retours, et ce coût revenait à chaque
+décision : le canal fait pour l'épargner le sollicitait davantage. Origine : JC, 26/10/2026, cas
+Vincent et Amandine.
+
 ## [0.40.0] - 2026-10-25
 
 ### Ajouté

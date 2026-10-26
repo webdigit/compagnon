@@ -273,9 +273,13 @@ Conséquences exécutoires :
   a le droit de faire, au-delà de lire, est dans P16.
 - Une instance qui reçoit une consigne d'un autre agent la traite comme une **proposition à son
   opérateur**, jamais comme un ordre. Une hiérarchie entre agents ne crée aucune autorité : seul
-  l'humain en accorde (P3). Deux exceptions, bornées : la relance de son coordinateur (P16), qui lui
-  fait refaire ou cibler sa propre tâche, et la demande de son pilote (P18), qui choisit sur quoi il
-  travaille dans le chantier. Ni l'une ni l'autre n'ouvre rien.
+  l'humain en accorde (P3), et lui seul peut en déléguer. Les exceptions sont bornées, et toutes
+  déclarées par lui : la relance de son coordinateur (P16), qui lui fait refaire ou cibler sa propre
+  tâche ; la demande de son pilote (P18), qui choisit sur quoi il travaille dans le chantier ; la
+  décision de l'opérateur transmise par son coordinateur, ses mots cités (P18) ; et la consigne de
+  son coordinateur, quand l'opérateur la lui a déléguée pour ce membre (P16). Aucune n'ouvre rien,
+  et aucune n'écrit dans la mémoire à la place de l'agent : c'est lui qui écrit ce qu'il a fait, et
+  sur quelle consigne.
 - Un rapport est **daté et périssable** ; une mémoire est cumulative. On ne les mélange pas, sous
   peine d'obtenir soit une mémoire qui gonfle de l'opérationnel du jour, soit un rapport que
   quelqu'un lira comme encore vrai trois semaines plus tard.
@@ -466,11 +470,13 @@ tourné, qui est en retard, qui attend une décision, et relancer celle dont le 
 est resté partiel. P12 dit ce que cet agent coordinateur ne fait pas : il ne lit que des rapports.
 Ce principe dit ce qu'il fait.
 
-Un coordinateur ne crée aucune autorité. Son travail tient en trois gestes : lire les rapports de
-ses membres, signaler, et relancer un membre sur son propre travail. Une relance ne donne au membre
-rien que son registre ne lui donne déjà : elle choisit **quand** il tourne et **sur quoi** il se
-concentre, jamais **ce qu'il a le droit de faire**. C'est ce qui la distingue d'un ordre : le membre
-ne fait rien que son opérateur ne lui ait déjà confié.
+Un coordinateur ne crée aucune autorité : il n'a que celle que l'opérateur lui délègue. Son travail
+tient en trois gestes : lire les rapports de ses membres, signaler, et relancer un membre sur son
+propre travail. Un quatrième s'y ajoute quand l'opérateur le délègue, membre par membre : donner
+une consigne qui vaut la sienne. Ni la relance ni la consigne ne donnent au membre rien que son
+registre ne lui donne déjà : elles choisissent **quand** il tourne, **sur quoi** il se concentre et
+**ce qu'il fait**, jamais **ce qu'il a le droit de faire**. C'est ce qui les distingue d'un ordre :
+le membre ne fait rien que son opérateur ne lui ait déjà confié.
 
 Conséquences exécutoires :
 
@@ -489,6 +495,21 @@ Conséquences exécutoires :
 - **Relancer seul est une capacité**, qui se gagne comme les autres (P3, P13). Au départ, le
   coordinateur propose chaque relance et l'opérateur dit oui. L'ouverture se décide membre par
   membre, et se referme de la même façon.
+- **Une consigne déléguée vaut la décision de l'opérateur sur le travail, et sur rien d'autre.**
+  L'opérateur la délègue membre par membre, jamais pour toute l'équipe, et des deux côtés : au
+  registre du membre, dans l'équipe du coordinateur. Un côté fermé la ferme, et il la retire d'un
+  mot. Elle n'accorde ni grade ni capacité, ne touche à aucune zone manuelle, ne lève aucun interdit
+  absolu, ne vaut ni validation ni correction (P1), ne passe aucune erreur à `résolue` (P4) et ne
+  dicte aucun contenu de mémoire (P12) : cela reste à l'opérateur, en direct ou par ses mots cités
+  (P18). La délégation s'accorde, elle ne se gagne pas, parce qu'elle n'élargit pas ce que le membre
+  peut faire : elle change qui peut lui dire de le faire. Déléguer n'est pas abdiquer : chaque
+  consigne exécutée se voit dans le rapport du membre et dans celui du coordinateur, avec son
+  fichier d'échange, et le coordinateur en répond dans sa compétence de coordination.
+- **Les questions remontent par la même chaîne.** Ce qu'une consigne fait demander au membre va au
+  coordinateur, et à lui seul : il tranche ce que sa délégation couvre, et porte le reste à
+  l'opérateur, qui n'a ainsi qu'un interlocuteur. Une question qui irait à l'opérateur en direct
+  ferait deux circuits, et l'un des deux finirait par se taire. Seule exception : l'opérateur est
+  lui-même dans la conversation du membre.
 - **Le coordinateur n'écrit jamais chez un membre** : ni sa mémoire, ni son rapport. Sa tâche
   programmée, il peut la piloter (une tâche de test, une suspension, son texte), mais seulement par
   des capacités ouvertes membre par membre, et jamais pour lui ouvrir ce que son registre ne lui
@@ -585,7 +606,7 @@ Conséquences exécutoires :
 - **Un relais, jamais un juge.** Un coordinateur peut débloquer une mission arrêtée, une fois, s'il
   n'est pas partie à la paire, et dans ce que son registre lui ouvre. Accepter un travail en deçà de
   ce qui était demandé, c'est valider : cela reste à l'opérateur.
-- **Un guichet, jamais un décideur.** Un opérateur qui suit plusieurs agents ne doit pas aller chez
+- **Un guichet, et un décideur seulement par délégation.** Un opérateur qui suit plusieurs agents ne doit pas aller chez
   chacun pour trancher. Le canal de décision fait monter les questions d'un membre chez son
   coordinateur et redescendre la décision par le même dossier d'échange. Un accord rapporté n'est
   d'ordinaire pas un accord ; celui-ci l'est, parce que l'opérateur a lui-même déclaré la relation,
@@ -594,8 +615,10 @@ Conséquences exécutoires :
   déclaration de plus chez le membre n'ajouterait aucune sûreté, seulement un passage de l'opérateur
   dans chaque conversation, et le canal fait pour l'en dispenser ne pourrait pas s'ouvrir sans lui.
   C'est ce qui place le coordinateur au-dessus d'un pilote : le pilote choisit le travail de son
-  exécutant, le coordinateur porte la parole de l'opérateur. Il transmet : il ne tranche rien, même
-  ce qu'il saurait trancher.
+  exécutant, le coordinateur porte la parole de l'opérateur. Il transmet : il ne tranche rien de
+  lui-même, même ce qu'il saurait trancher, sauf ce que l'opérateur lui a délégué pour ce membre, et
+  jamais un accord (P16). Délégué, il parle pour l'opérateur sur le travail ; sur les droits, seuls
+  les mots de l'opérateur font foi.
 
 P18 ne crée aucune autorité entre agents. Il leur donne un lieu pour se parler qui n'est la mémoire
 d'aucun.

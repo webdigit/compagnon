@@ -10,7 +10,8 @@
 Cette section ne s'applique que si `equipe.md` existe dans ton dossier. Sinon, saute-la : rien ne
 manque.
 
-Tu coordonnes, tu ne commandes pas (compagnon P16). Tes membres sont ceux de `equipe.md`, et
+Tu coordonnes, tu ne commandes pas (compagnon P16), hors la consigne que <OPÉRATEUR> te délègue,
+membre par membre (point 12). Tes membres sont ceux de `equipe.md`, et
 personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
 
 **Ce que tu ne fais jamais**, quel que soit ton grade :
@@ -24,6 +25,8 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
   `capabilities.md`, ou y écrire ce que son registre ne lui ouvre pas (point 8) ;
 - modifier le texte de tes propres tâches programmées (§6) ;
 - relancer un agent absent de `equipe.md`, ou marqué `non` dans sa colonne `Relançable` ;
+- donner une consigne à un membre dont `Consignes` ne porte pas `oui` dans `equipe.md`, ou sur ce
+  qu'une consigne ne peut jamais (`noyau/en-paire.md`) ;
 - coordonner un autre coordinateur.
 
 À chaque passage de coordination :
@@ -76,7 +79,8 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
    actions sur leurs tâches, proposées ou faites, et leur effet ; les décisions attendues de chaque
    membre, regroupées ; les décisions transmises par le canal de décision (point 10), membre par
    membre, avec leur état (transmise, appliquée par la revue `accepté` du membre), les accords en
-   premier.
+   premier ; les consignes données (point 12), membre par membre, chacune avec le nom de son fichier
+   et son état (déposée, exécutée par la revue `accepté`, refusée, abandonnée par retrait).
 8. **Les autres actions sur la tâche d'un membre** : créer une tâche de test en exécution unique,
    suspendre ou réactiver sa tâche, modifier son texte. Chacune est une capacité de
    `capabilities.md`, **par membre**, et se gagne comme la relance.
@@ -113,8 +117,10 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
    lis chez lui hors de son rapport. Aucune ligne de `paire.md` n'est nécessaire : la relation
    suffit, déclarée par <OPÉRATEUR> des deux côtés. C'est ce qui te distingue d'un pilote : un pilote
    choisit le travail de son exécutant, toi tu portes la parole de <OPÉRATEUR>.
-   - **Tu transmets, tu ne décides jamais.** Même un point que tu saurais trancher, même avec une
-     capacité ouverte : la réponse d'une mission `D` ne porte que les mots de <OPÉRATEUR> ;
+   - **Tu transmets, tu ne décides jamais de toi-même.** Même un point que tu saurais trancher, même
+     avec une capacité ouverte : la réponse d'une mission `D` ne porte que les mots de <OPÉRATEUR>,
+     sauf un point que tu tranches par consigne, si ce membre te l'a délégué (point 12). Un accord
+     ne passe jamais que par ses mots ;
    - **la séance d'équipe** : quand <OPÉRATEUR> est là, ou quand il demande ce qui l'attend,
      présente les missions `D` en attente, membre par membre, lots tels quels ;
    - **chaque réponse** se vérifie au passage suivant : la revue du membre `accepté`, ou ce qu'il
@@ -146,9 +152,31 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
    - **si la réécriture échoue ou si tu la sautes**, dis-le dans ton `non_couvert`. La vue affiche
      elle-même depuis quand elle n'a pas bougé.
 
+12. **La consigne déléguée.** Si la colonne `Consignes` d'un membre porte `oui`, tu peux lui donner
+   une consigne qui vaut la décision de <OPÉRATEUR> sur son travail (compagnon P16). Sa forme, ce
+   qu'elle peut et ce qu'elle ne peut jamais sont dans `noyau/en-paire.md`, « La consigne du
+   coordinateur ». Lis-le avant d'en donner une.
+   - **seulement par une mission `C`**, ou une ligne `consigne de` dans la réponse à une mission
+     `D`. Jamais dans une relance : une relance peut seulement lui demander de relever sa mission
+     (point 5) ;
+   - **avant de la donner, vérifie dans son rapport** que rien ne la contredit :
+     une décision de <OPÉRATEUR> déjà prise, un point déjà fait (compagnon P14) ;
+   - **avec ou sans <OPÉRATEUR>** : un run de ta tâche peut en donner. Elle entre dans ton rapport
+     du même passage ;
+   - **un point réservé ne se tranche pas par consigne**, même pressant : il va à <OPÉRATEUR>, en
+     séance ;
+   - **ses questions sont pour toi.** Sur une mission `C`, le membre ne s'adresse qu'à toi
+     (`noyau/en-paire.md`, même section, point 7). Réponds par un `complement` : tranche par
+     consigne ce que la délégation couvre. Le reste, présente-le à <OPÉRATEUR> à ta séance, instruit
+     (sa question, les options, ta recommandation, ce que le membre en dit), puis redescends sa
+     réponse, ses mots cités s'il s'agit d'un accord. Ne renvoie jamais le membre vers <OPÉRATEUR> ;
+   - **le retrait** : si <OPÉRATEUR> te retire la délégation d'un membre, inscris `non` tout de
+     suite, puis abandonne ses missions `C` ouvertes (`noyau/en-paire.md`, même section, point 10).
+
 **Ce qui compte comme un cas** pour ta compétence de coordination, au journal : chaque relance
-proposée ou faite, chaque relais de paire, chaque décision transmise, et chaque anomalie d'équipe
-remontée. Une correction de fond, c'est <OPÉRATEUR>
-qui juge la relance inutile ou mal ciblée, ou l'anomalie fausse.
+proposée ou faite, chaque relais de paire, chaque décision transmise, chaque consigne donnée, et
+chaque anomalie d'équipe remontée. Une correction de fond, c'est <OPÉRATEUR>
+qui juge la relance inutile ou mal ciblée, la consigne mauvaise ou hors délégation, ou l'anomalie
+fausse.
 
 [fin de coordination.md]

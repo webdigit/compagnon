@@ -147,6 +147,85 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.40.0 → 0.41.0
+
+### Ce qui change
+
+Deux ajouts au canal de décision, rien d'autre. Rien ne change pour une instance qui n'est ni
+coordinateur ni coordonnée, ni pour une paire sans coordinateur.
+
+- **La consigne déléguée** : si <OPÉRATEUR> le délègue, membre par membre et des deux côtés, une
+  consigne du coordinateur vaut sa décision sur le travail du membre. Missions `C`.
+- **La chaîne des questions** : ce qu'une mission `C` fait demander au membre va au coordinateur,
+  qui tranche ou porte à <OPÉRATEUR>.
+- **Une décision prise en direct** chez le membre s'applique tout de suite, sans attendre le
+  coordinateur (`noyau/en-paire.md`, « Le canal de décision », point 10).
+- **NOYAU** : « Où vit le dossier » (une phrase), §5sexies, §5septies (une ligne), §5octies (une
+  ligne). **`noyau/en-paire.md`** : canal (points 1, 6, 7, 10), « La consigne du coordinateur ».
+  **`noyau/coordination.md`** : introduction, liste, points 7, 10, 12. **`noyau/relance.md`** : point 2. **`capabilities.md`** (gabarit) : « Consignes du
+  coordinateur », niveau 1. **`equipe.md`** (gabarit) : colonne `Consignes`.
+- **DOCTRINE** : P12, P16, P18.
+
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`**, **`noyau/coordination.md`**, **`noyau/relance.md`** et
+  **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de cette étiquette.
+- **`capabilities.md`**, chez un agent dont « Coordonné par » nomme un coordinateur : ajouter au
+  niveau 1 la ligne « Consignes du coordinateur », `VERROUILLÉ`. Ajouter une ligne fermée ne change
+  rien à ce qui est ouvert.
+- **`VERSION.md`** : version courante 0.41.0, **Alignée sur**, ligne d'historique.
+- **La copie du NOYAU** : préparer le texte à recoller, celui de cette étiquette, avec les trous déjà
+  remplis de la copie actuelle. `noyau-local.md` ne change pas.
+
+### Ce que l'agent propose : la question
+
+**Chez un membre coordonné**, au canal ouvert : poser dans sa mission `D` suivante, ou à <OPÉRATEUR>
+s'il est là, cette question, telle quelle, sans recommandation (c'est une délégation de son autorité,
+pas une capacité que l'agent mérite) :
+
+> « <coordinateur> peut-il me donner des consignes qui valent les tiennes ? Elles choisiraient ce
+> que je fais, jamais ce que j'ai le droit de faire : aucun grade, aucune capacité, aucun envoi ne
+> passerait par elles, et tu pourrais retirer cette délégation d'un mot. A : oui. B : non. »
+
+La réponse transmise par le coordinateur, avec les mots de <OPÉRATEUR>, ouvre la ligne : c'est un
+accord, et il passe par ses mots cités. Une réponse donnée pour toute l'équipe ne vaut pour aucun
+membre.
+
+**Chez le coordinateur** : ajouter à `equipe.md` (zone manuelle) la colonne `Consignes`, à `non`
+pour chaque membre. Quand <OPÉRATEUR> répond à la question d'un membre dans sa conversation, écrire
+`oui` ou `non` sous sa dictée, et transmettre la même réponse au membre. Une réponse, deux
+inscriptions.
+
+### Ce qui reste fermé tant que <OPÉRATEUR> n'a pas répondu
+
+Tout ce qui est nouveau pour la consigne : `Consignes` reste à `non`, la ligne reste `VERROUILLÉ`.
+Le coordinateur n'ouvre aucune mission `C`. Il ne tranche aucun point de mission `D` lui-même : ses
+réponses ne portent que les mots de <OPÉRATEUR>, comme sous la 0.40.0. Une consigne reçue reste une
+proposition.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU** dans les Instructions de chaque projet.
+- **Répondre à la question**, membre par membre, ou la laisser ouverte : le silence vaut `non`.
+
+### Comment vérifier
+
+**Le texte** : la copie du NOYAU contient « Consignes du coordinateur ». `noyau/en-paire.md`
+contient « ### La consigne du coordinateur ». `VERSION.md` porte 0.41.0.
+
+**La suite** : une première mission `C` exécutée par le membre, close par la revue `accepté` du
+coordinateur ; le rapport du membre porte `consigne de <coordinateur> · <fichier>` dans `Validé par`,
+celui du coordinateur la liste au point 7. La question que pose le membre sur cette mission arrive
+chez le coordinateur, pas dans le rapport du membre.
+
+### Ce que cette migration ne fait pas
+
+Elle n'ouvre aucune délégation. Elle ne touche à aucune mission `D` ou `U` en cours, ni aux vraies
+paires. Elle ne change pas la vue de coordination : celle-ci lit `equipe.md` par nom de colonne et
+ignore `Consignes`.
+
+---
+
 ## 0.39.0 → 0.40.0
 
 ### Ce qui change

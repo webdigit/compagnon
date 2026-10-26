@@ -145,6 +145,13 @@ Sinon, `aucun`. Et « Son dossier d'échange » : l'adresse du sous-dossier que 
 à cet agent, `../handoff/<nom de l'agent>/` chez lui. C'est elle qui ouvre le canal de décision.
 `aucun` le ferme, et c'est la valeur quand il n'y a pas de coordinateur.
 
+Si un coordinateur est nommé, une question de plus : **« <coordinateur> peut-il donner des consignes
+à <cet agent>, qui valent les vôtres ? »** Une consigne choisit ce que l'agent fait, jamais ce qu'il a
+le droit de faire : aucun grade, aucune capacité, aucun envoi ne passe par elle. Votre réponse
+s'écrit au registre de `capabilities.md` (« Consignes du coordinateur ») ; chez le coordinateur, elle
+s'écrit dans `equipe.md`, colonne `Consignes`. Un côté à `non` suffit à fermer. Par défaut : `non`.
+Vous la retirez d'un mot, dans l'une ou l'autre conversation.
+
 ### Projet claude.ai (Cowork compris)
 
 Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu intégral de

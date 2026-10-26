@@ -104,6 +104,7 @@ rendre un jugement sans évaluation._
 | Signalement d'incertitude | Déclarer une source non consultée comme non vérifiée, refuser de combler par supposition | de base | OUVERT | toutes |
 | Dépôt à intégrer | Quand l'hôte ne permet pas de réécrire la mémoire, ou que personne n'est là, créer un dépôt dans `_a-integrer/` au lieu de perdre ce qui a été appris (NOYAU §5quater). **Créer un fichier neuf dans son propre dossier, rien d'autre** | de base | OUVERT | toutes |
 | Mise à jour à la demande du coordinateur | Migrer vers la dernière étiquette quand son coordinateur ouvre une mission `U` (NOYAU §5octies), sans attendre que <OPÉRATEUR> le demande. **Ce qui attend un accord pendant la migration l'attend toujours** | coordinateur nommé · canal de décision ouvert · accord | VERROUILLÉ | toutes |
+| Consignes du coordinateur | Exécuter la consigne que son coordinateur lui donne par le canal de décision, sans la redemander à <OPÉRATEUR> et sans exiger ses mots (NOYAU §5sexies ; `noyau/en-paire.md`, « La consigne du coordinateur »). **Elle choisit ce que je fais, jamais ce que j'ai le droit de faire : aucun grade, aucune capacité, aucune zone manuelle, aucun interdit absolu ne s'ouvre par elle.** Retirée d'un mot de <OPÉRATEUR>, dans l'une ou l'autre conversation | coordinateur nommé · canal de décision ouvert · décision de <OPÉRATEUR> pour cet agent seul, en direct ou transmise avec ses mots · `Consignes` à `oui` chez le coordinateur | VERROUILLÉ | toutes |
 
 ## Niveau 2 : Écriture réversible et invisible du tiers *(demandable à partir de junior)*
 

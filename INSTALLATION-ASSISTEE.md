@@ -139,6 +139,11 @@ sienne avant de passer à la suivante.
    souvent, non : on écrit `aucun`, et la question est close. Si oui, son nom, tel que ce
    coordinateur se présente. Si c'est **celui-ci** qui doit en suivre d'autres, ce n'est pas cette
    question : c'est le module équipe, à poser après l'installation (« À part », en fin de document).
+9bis. **Ses consignes**, seulement si la question 9 a nommé un coordinateur. Pose-la telle quelle :
+   « <coordinateur> peut-il donner des consignes à <agent>, qui valent les tiennes ? Elles
+   choisiront ce que <agent> fait, jamais ce qu'il a le droit de faire : aucun grade, aucune
+   capacité, aucun envoi ne passera par elles, et tu pourras retirer cette délégation d'un mot. »
+   Sans réponse claire, c'est `non`. La réponse vaut pour cet agent seul.
 
 **Ce que tu ne demandes pas**, et que tu remplis toi-même :
 
@@ -177,7 +182,9 @@ Puis :
    01 (un identifiant court, par exemple `C01 : <la compétence en quelques mots>`), au grade
    stagiaire, datée du jour, `activation`. Au registre, date la ligne « Ensemble du niveau 1 » du
    jour et mets-y le nom de l'opérateur ; retire les lignes d'exemple qui la suivent, ce sont des
-   décisions que personne n'a prises. Dans « Interdits absolus », remplace `<vos interdits métier>`
+   décisions que personne n'a prises. Si la question 9bis a reçu `oui`, passe « Consignes du
+   coordinateur » en `OUVERT` et ajoute au registre sa ligne, datée du jour, au nom de l'opérateur,
+   avec `← installation, question 9bis` et ses mots. Dans « Interdits absolus », remplace `<vos interdits métier>`
    par ses P008 et P009, ou retire la ligne s'il n'en a donné aucun. Ne touche ni à la grille ni
    au reste du catalogue, dont les lignes modèles entre chevrons restent telles quelles.
 5. **`operational-state.md`** : la section « Identité et niveau », et « Rituel de collaboration »
@@ -330,6 +337,14 @@ déjà en service. Les cinq règles du début valent ici aussi, à commencer par
 4. **Les membres relançables.** Par défaut, `oui` pour chaque membre qui a une tâche programmée.
    L'opérateur peut en mettre à `non`. Rappelle-lui que `oui` veut dire « le coordinateur peut
    proposer de le relancer », pas « il le relancera seul ».
+4bis. **Le canal de décision**, membre par membre : ses décisions passeront-elles par le
+   coordinateur ? `oui` remplit `Décisions` et `Ce qu'il m'adresse` (`noyau/en-paire.md`, « Le
+   canal de décision »).
+4ter. **Les consignes**, pour chaque membre au canal ouvert, **un à la fois** : « <coordinateur>
+   peut-il donner des consignes à <membre>, qui valent les tiennes ? » Une réponse donnée pour
+   toute l'équipe ne vaut pour aucun : repose la question membre par membre. Sans réponse, `non`.
+   Rappelle-lui que le membre doit l'ouvrir aussi de son côté, à son registre, et qu'un côté fermé
+   ferme.
 5. **Ce que le coordinateur lui remonte**, et ce qu'il garde pour lui.
 6. **Sa cadence**, et la tâche programmée qui la portera. Elle se crée depuis le projet du
    coordinateur, dans le cloud (`hotes/claude-taches-programmees.md`). Ne la crée pas de ton

@@ -15,6 +15,12 @@
 > `../handoff/<mon nom>/`, où il dépose ses missions `D`. Aucune ligne de `paire.md` n'est
 > nécessaire.
 >
+> **La délégation des consignes** : `Consignes` à `oui` dit que mes consignes à ce membre valent
+> celles de <OPÉRATEUR> sur son travail, et sur rien d'autre (`noyau/en-paire.md`, « La consigne du
+> coordinateur »). Elle ne vaut que si `Décisions` porte `oui` et si le membre l'a ouverte de son
+> côté, à son registre. `non` la ferme. <OPÉRATEUR> la décide membre par membre, jamais pour toute
+> l'équipe d'un coup, et la retire d'un mot : je l'inscris alors tout de suite.
+>
 > **`Relançable` dit si un membre peut être relancé, pas qui en décide.** `oui` : le coordinateur
 > peut proposer une relance, et la faire seul si la capacité « Relance seule » de ce membre est
 > ouverte dans `capabilities.md`. Même chose pour les autres actions sur sa tâche (test, suspension,
@@ -22,8 +28,8 @@
 > programmée est toujours `non`, et de même un membre dont l'hôte ne liste pas la tâche (une tâche
 > locale à l'application de bureau, par exemple) : elle ne se déclenche pas d'ailleurs.
 >
-> **Un membre en lecture seule** entre ici pour être vu, rien de plus : `Relançable` et `Décisions` à
-> `non`, `Tâche programmée` à `sans objet (lecture seule)`. Le coordinateur lit son rapport et le
+> **Un membre en lecture seule** entre ici pour être vu, rien de plus : `Relançable`, `Décisions` et
+> `Consignes` à `non`, `Tâche programmée` à `sans objet (lecture seule)`. Le coordinateur lit son rapport et le
 > signale comme les autres (périmé, absent, en retard de version), sans jamais agir sur lui. C'est ce
 > qui permet à la vue de coordination de montrer tout le parc d'un opérateur, pas seulement l'équipe
 > qui travaille (`noyau/coordination.md`, point 11).
@@ -35,9 +41,9 @@
 
 ## Les membres
 
-| Membre | Projet | Rapport | Tâche programmée | Passage attendu | Relançable | Décisions | Ce qu'il m'adresse | Depuis le |
-|---|---|---|---|---|---|---|---|---|
-| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage du dossier>` | `<chemin du report.md>` | `<identifiant · nom>` ou `aucune` | `<ex. chaque jour avant 9h30>` | `oui` ou `non` | `oui` ou `non` | `<chemin ou identifiant de son ../handoff/<mon nom>/>` | `<jj/mm/aaaa>` |
+| Membre | Projet | Rapport | Tâche programmée | Passage attendu | Relançable | Décisions | Consignes | Ce qu'il m'adresse | Depuis le |
+|---|---|---|---|---|---|---|---|---|---|
+| `<nom>` | `<nom du projet, et chemin ou identifiant de stockage du dossier>` | `<chemin du report.md>` | `<identifiant · nom>` ou `aucune` | `<ex. chaque jour avant 9h30>` | `oui` ou `non` | `oui` ou `non` | `oui` ou `non` | `<chemin ou identifiant de son ../handoff/<mon nom>/>` | `<jj/mm/aaaa>` |
 
 ## Ce que je remonte à <OPÉRATEUR>
 

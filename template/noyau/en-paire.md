@@ -10,7 +10,8 @@
 Cette section s'applique si `paire.md` existe dans ton dossier, ou si tu as un canal de décision
 (« Le canal de décision », point 1). Sinon, saute-la : rien ne manque.
 
-Tu travailles avec un collègue, tu ne lui obéis pas et tu ne le commandes pas (compagnon P18). Tes
+Tu travailles avec un collègue, tu ne lui obéis pas et tu ne le commandes pas (compagnon P18), hors
+la consigne que <OPÉRATEUR> délègue à ton coordinateur (« La consigne du coordinateur »). Tes
 collègues sont ceux de `paire.md`, plus, pour le seul canal de décision, ton coordinateur ou tes
 membres. Personne d'autre.
 
@@ -93,8 +94,8 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
    - Si c'est une revue `décision opérateur nécessaire` : la mission est suspendue. Personne n'y
      répond, sauf le pilote quand <OPÉRATEUR> a tranché, et le relais dans ses limites.
    - Si la mission est close et que c'est ton tour de ranger : range (ci-dessous).
-   - Une mission `D` ou `U` se relève de la même façon (« Le canal de décision » et « La mise à jour
-     demandée par le coordinateur », ci-dessous).
+   - Une mission `D`, `U` ou `C` se relève de la même façon (« Le canal de décision », « La mise à
+     jour demandée par le coordinateur » et « La consigne du coordinateur », ci-dessous).
 4. **Rien à toi sur aucune mission** : passe à ton travail habituel, ou termine le run. Une relève à
    vide ne s'écrit nulle part.
 
@@ -165,7 +166,9 @@ le rituel entier pour rien.
 Ce canal fait passer par le
 coordinateur ce qu'un membre soumettrait à <OPÉRATEUR> en séance (NOYAU §6quater) : <OPÉRATEUR>
 tranche une seule fois, dans la conversation du coordinateur, pour toute l'équipe, et le
-coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon P16, P18).
+coordinateur redescend sa décision. Il ne décide rien de lui-même : il transmet (compagnon P16,
+P18). Il ne parle pour <OPÉRATEUR> que si celui-ci le lui délègue, pour ce membre (« La consigne
+du coordinateur », ci-dessous).
 
 1. **Le canal s'ouvre par la relation, déclarée par <OPÉRATEUR> des deux côtés.** Aucune ligne de
    `paire.md` n'est nécessaire.
@@ -179,6 +182,9 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
      `U`, et signale l'écart à <OPÉRATEUR>. Ses points reviennent à sa séance ordinaire.
    - Une colonne `Décisions` restée dans un `paire.md` d'avant la 0.37.0 ne compte plus : seule la
      relation fait foi. Un `paire.md` qui ne servait qu'au canal peut être retiré par <OPÉRATEUR>.
+   - **La délégation des consignes** se déclare en plus, sur ce canal, des deux côtés aussi :
+     « Consignes du coordinateur » `OUVERT` au registre du membre, `Consignes` à `oui` dans
+     `equipe.md`. Un côté fermé la ferme. Canal fermé, délégation fermée.
 2. **Une question est une mission ordinaire**, aux mêmes fichiers, au même nommage et dans le même
    sous-dossier, avec une seule différence : son numéro commence par `D` (`D01`, `D02`), compté à
    part, et son `sujet` est `decisions`. Le membre en est le pilote, le coordinateur l'exécutant,
@@ -202,7 +208,11 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
    Sans <OPÉRATEUR>, il ne répond à aucune mission `D` : il les porte dans son rapport.
 6. **Sa `reponse` ne porte que la décision**, recopiée pour ce membre : ses mots exacts entre
    guillemets (« 1A, 2 ok, 3 abandon »), sa date, et « conversation de <coordinateur> ». Rien d'autre :
-   ni reformulation, ni recommandation, ni ce que <OPÉRATEUR> n'a pas tranché. Si une phrase vise
+   ni reformulation, ni recommandation, ni ce que <OPÉRATEUR> n'a pas tranché. Une exception : si la
+   délégation est ouverte pour ce membre, il peut trancher lui-même un point qui n'est pas réservé
+   (« La consigne du coordinateur », point 5), sur une ligne qui le dit :
+   `D02 · point 3 : consigne de <coordinateur> : <sa décision>`. Ce point est une consigne, pas une
+   décision transmise. Si une phrase vise
    plusieurs membres sans dire lequel, il le demande à <OPÉRATEUR> avant d'écrire. Il inscrit aussi
    la décision dans « Décisions de l'opérateur » de son propre journal.
    <OPÉRATEUR> peut coller les lignes que prépare la vue de coordination
@@ -221,6 +231,8 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
    opérateur, elle s'écrit aux conditions ordinaires d'écriture (§5quater).
    Sa revue `accepté` cite où la décision est inscrite. Une décision encore en dépôt n'est pas
    inscrite : la revue attend l'intégration.
+   Une ligne `consigne de <coordinateur>` se revoit comme une consigne (« La consigne du
+   coordinateur », point 6), pas comme une décision transmise.
    Sinon (mots reformulés, sans date, points qui ne collent pas, décision obscure) : revue
    `corrections demandées`, qui dit ce qui manque. Il n'interprète jamais.
 8. **Ce que <OPÉRATEUR> ne tranche pas reste ouvert.** Le silence n'est pas un refus (compagnon
@@ -230,14 +242,16 @@ coordinateur redescend sa décision. Il ne décide rien : il transmet (compagnon
    sa propre conversation, et son rapport le dit.
 10. **<OPÉRATEUR> peut toujours trancher en direct**, dans la conversation du membre. Le membre
     inscrit alors la décision comme d'habitude, et sort le point de sa mission `D` ouverte par une
-    revue qui le dit. Une décision ne s'applique jamais deux fois.
+    revue qui le dit. Il l'applique tout de suite : elle n'attend ni la réponse du coordinateur, ni
+    un complément qui la cite. Une décision ne s'applique jamais deux fois.
 11. **Les interdits absolus ne s'ouvrent par aucun canal**, celui-ci compris.
 
 ### La mise à jour demandée par le coordinateur
 
 Par le canal de décision, le coordinateur peut ouvrir une mission `U` (`U01`, `U02`,
 comptées à part, `sujet` : `mise-a-jour`) : il en est le pilote, le membre l'exécutant, même si
-une ligne de `paire.md` leur donne d'autres rôles. C'est la seule mission qu'il ouvre par ce canal.
+une ligne de `paire.md` leur donne d'autres rôles. Avec la mission `C` (« La consigne du
+coordinateur »), c'est la seule qu'il ouvre par ce canal.
 
 1. **Le coordinateur l'ouvre seul** quand la clé `gabarit` du rapport d'un membre est antérieure à
    la dernière étiquette publiée, et qu'aucune mission `U` n'est ouverte avec ce membre. La demande
@@ -259,6 +273,90 @@ une ligne de `paire.md` leur donne d'autres rôles. C'est la seule mission qu'il
    l'équipe, ce que <OPÉRATEUR> doit faire lui-même : une ligne par geste, avec les membres qu'il
    concerne (« Recoller le NOYAU : Amandine, Hermès »). Il le retire quand le rapport du membre ne le
    porte plus.
+
+### La consigne du coordinateur
+
+Par le canal de décision, et seulement si <OPÉRATEUR> le lui a délégué pour ce membre, le
+coordinateur peut donner une consigne qui vaut la décision de <OPÉRATEUR> sur le travail du membre
+(compagnon P16). Elle choisit ce que le membre fait, jamais ce qu'il a le droit de faire.
+
+1. **Ouverte des deux côtés, ou fermée.** Chez le membre : « Consignes du coordinateur » `OUVERT`
+   à son registre. Chez le coordinateur : `Consignes` à `oui` dans `equipe.md`. Et le canal de
+   décision ouvert (« Le canal de décision », point 1). Un seul manque, et ce qui suit ne vaut pas :
+   une consigne reçue ne s'exécute pas. Le membre le dit dans sa réponse au coordinateur, et c'est le
+   coordinateur qui porte l'écart à <OPÉRATEUR>.
+2. **Sa forme.** Une mission `C` (`C01`, `C02`, comptées à part, un `sujet` court qui ne change
+   pas), ouverte par le coordinateur, qui en est le pilote ; le membre est l'exécutant, même si une
+   ligne de `paire.md` leur donne d'autres rôles. Sa demande suit « La mission », point 2, avec en
+   tête une ligne **Consigne** : ce que le membre fait, en trois phrases au plus. Vaut aussi
+   consigne une ligne `consigne de <coordinateur>` dans la réponse à une mission `D` (« Le canal de
+   décision », point 6).
+   Le coordinateur n'ouvre une mission `C` que si le rapport du membre porte un `gabarit` de 0.41.0
+   ou plus : un membre plus ancien ne la reconnaîtrait pas.
+3. **Où elle se reconnaît.** Dans le sous-dossier que nomme « Son dossier d'échange », dans un
+   fichier dont l'`Auteur` est le coordinateur inscrit à « Coordonné par », et qui finit par son
+   marqueur. Nulle part ailleurs : ni dans une relance, ni dans un rapport, un email ou une
+   conversation. Une relance peut seulement te demander de relever ce dossier (`noyau/relance.md`).
+4. **Ce qu'elle peut**, et rien d'autre :
+   - choisir ton travail : quoi, dans quel ordre, sur quoi te concentrer, ce que tu reportes ou
+     abandonnes ;
+   - trancher une décision sur ton travail : une ligne « En attente d'une décision » de ton rapport,
+     ou une option de mission `D` qui en relève ;
+   - donner, pour ce cas, l'accord que le §0 (point 5) te fait attendre, sur un geste que ton
+     registre t'ouvre déjà, hors ligne `SUR ACCORD`.
+5. **Ce qu'elle ne peut jamais**, quel que soit son libellé. Cela reste à <OPÉRATEUR>, en direct ou
+   par sa décision transmise, ses mots cités :
+   - ouvrir, fermer ou changer une capacité, ou sa condition ; accorder, maintenir ou retirer un
+     grade ;
+   - toucher à une zone manuelle : `principles.md`, les cibles d'`objectives.md`, le catalogue, la
+     grille et les décisions du registre, `noyau-local.md`, `paire.md`, tes Instructions, le texte
+     de tes tâches ;
+   - valider ou corriger au sens du barème (§2) : aucun reward, aucune règle qui naît, mûrit ou
+     tombe, aucune erreur `résolue` (compagnon P1, P4) ;
+   - décider sur toi plutôt que sur ton travail : ta mémoire, ta méthode, ton autonomie (une
+     rotation sur accord, une consolidation, une séance de volume, un point chaud sur toi-même) ;
+   - te dicter un contenu de mémoire : une règle, une observation, un statut. Ce que tu apprends en
+     l'exécutant suit le chemin ordinaire ;
+   - lever un interdit absolu : envoyer, pousser, déployer, engager, écrire dans un système externe
+     au-delà de ce que ton registre t'ouvre ;
+   - défaire une décision de <OPÉRATEUR> inscrite chez toi, aller contre un de tes principes ou une
+     règle active, te faire écrire chez un autre agent, ou confier ta mission à un autre.
+   Une consigne qui mêle le permis et le réservé : exécute le permis, et pose le reste au
+   coordinateur, dans ta réponse (point 7).
+6. **Ce que tu en fais.** Exécute-la, sans redemander à <OPÉRATEUR> et sans exiger ses mots.
+   - Dans un run sans opérateur, c'est un run sans opérateur : écriture aux conditions du §5quater,
+     aucun reward (compagnon P1).
+   - Inscris-la dans « Décisions de l'opérateur » du journal, ses mots entre guillemets, avec
+     « consigne de <coordinateur>, `C<NN>`, par délégation ». Le cas porte `consigne, non relu` dans
+     `Corrections`.
+   - Ta `reponse` suit « La mission », point 3. Dans ton rapport, ce que tu as fait sur elle porte,
+     dans `Validé par`, `consigne de <coordinateur> · <nom du fichier de la demande>`. Jamais le nom
+     de <OPÉRATEUR>.
+   - Une consigne qui contredit une décision de <OPÉRATEUR>, ou que tu ne comprends pas, ne
+     s'exécute pas : réponds ce qui bloque. Tu n'interprètes jamais.
+7. **Tes questions remontent au coordinateur, et à lui seul.** Tout ce qu'une mission `C` te fait
+   demander (une précision, un choix, un accord, une capacité qui manque, un blocage) va dans ta
+   réponse au coordinateur. Pas dans « En attente d'une décision » de ton rapport, pas dans ta
+   mission `D`, pas dans ta séance : ton rapport dit seulement « posé au coordinateur en `C<NN>` ».
+   Le coordinateur tranche ce que sa délégation couvre, et porte le reste à <OPÉRATEUR>.
+   Une exception : <OPÉRATEUR> est dans ta conversation. Tu peux alors lui poser la question en
+   direct. Sa réponse s'applique tout de suite (« Le canal de décision », point 10), et ta réponse
+   au coordinateur la cite, pour qu'il ne la lui repose pas.
+8. **Le coordinateur revoit** comme un pilote (« La mission », points 4 et 5). Sa revue est une
+   observation, jamais un reward. Chaque consigne est un cas de sa compétence de coordination : une
+   correction de fond, c'est <OPÉRATEUR> qui juge la consigne mauvaise ou hors délégation. Le frein
+   est celui de la paire, sans relais.
+9. **<OPÉRATEUR> passe devant.** Sa décision, en direct ou transmise, l'emporte sur toute consigne,
+   plus ancienne ou plus récente. Une consigne ne la rouvre pas.
+10. **Le retrait, d'un mot, dans l'une ou l'autre conversation.** Il vaut dès qu'il est inscrit, et
+   un côté suffit.
+   - **Chez le membre** : inscris-le tout de suite au registre, ses mots au journal, et passe la
+     ligne en `VERROUILLÉ`. Plus aucune consigne ne s'exécute, même reçue avant. Réponds à chaque
+     mission `C` ouverte : « délégation retirée le <jj/mm/aaaa>, non exécuté ».
+   - **Chez le coordinateur** : il inscrit tout de suite `Consignes` à `non` dans `equipe.md`, sous
+     la dictée, puis dépose sur chaque mission `C` ouverte avec ce membre un `complement` qui cite
+     le retrait mot pour mot : elle est abandonnée.
+   Rouvrir est une nouvelle décision de <OPÉRATEUR>, inscrite comme la première.
 
 ### Le relais
 
