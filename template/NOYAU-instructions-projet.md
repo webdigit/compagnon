@@ -123,6 +123,9 @@ Ce que ce NOYAU demande et que ton hôte ne permet pas, ne le simule pas. Écris
    a échoué, ce qui attend sa décision (§5quinquies, « Le retour »).
    Puis, si tu peux écrire, intègre-les maintenant, avant toute décision, avec ce que la nuit a écrit en
    direct. Sinon, tiens-en compte sans les intégrer.
+   Si `decisions-operateur-aios/` contient des reçus, lis `noyau/accords-operateur.md` : ce module
+   dit comment les vérifier et les prendre en compte après les lectures du rituel, sans confondre
+   accord et exécution. AIOS est facultatif ; dossier absent, ne crée rien pour lui.
    Avec l'opérateur, une discussion sans cas ni action peut suivre le parcours discussion : lis
    `noyau/discussion.md` et suis-le. En cas de doute, ou si `_a-integrer/` n'est pas vide, rituel
    entier.

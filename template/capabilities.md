@@ -153,6 +153,9 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 > `Rappels` est ce qui permet à l'agent de savoir s'il doit le faire (NOYAU §0, point 3). Une
 > demande sans réponse reste ouverte : elle ne s'éteint ni par le temps, ni parce que d'autres
 > attendent déjà (compagnon P3).
+> Prépare dès le dépôt ta recommandation motivée et le périmètre exact de l'accord dans la colonne
+> `Recommandation`. Si les preuves manquent, écris `non préparée : <ce qui manque>`, sans inventer
+> de choix. La présence d'une recommandation ne change aucun grade ni aucune capacité.
 >
 > **Une évaluation due s'inscrit de la même façon** : `Évaluation · <compétence>` dans la colonne
 > `Capacité`, décision `en attente`, le motif entre parenthèses (échéance de date, de volume, ou
@@ -179,12 +182,12 @@ grades. Recopiez-en ici la liste courte, pour qu'elle soit sous les yeux au mome
 > part entière, et l'écraser revient à effacer la trace de ce que la demande a coûté. Aucune
 > colonne ne compte ces dates : le compte se lit en les comptant (compagnon P7).
 
-| Date | Capacité | Décision | Par | Rappels |
-|---|---|---|---|---|
-| `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | |
-| `<jj/mm/aaaa>` | `<capacité demandée> · <C01>` | en attente | | `<jj/mm/aaaa>`, `<jj/mm/aaaa>` |
-| `<jj/mm/aaaa>` | `Évaluation · <C01> (échéance de volume)` | `junior accordé ← <M001 résolue, R001, R004> · journal/<fichier>, D1` | `<opérateur>` | `<jj/mm/aaaa>` |
-| `<jj/mm/aaaa>` | `Évaluation · <C02> (échéance de date)` | `sans issue : <junior demande 3 cas consécutifs sans correction de fond, 1>` | | `<jj/mm/aaaa>` |
+| Date | Capacité | Décision | Par | Rappels | Recommandation |
+|---|---|---|---|---|---|
+| `<jj/mm/aaaa>` | Ensemble du niveau 1 | Ouvert à la pose du dossier | `<opérateur>` | | |
+| `<jj/mm/aaaa>` | `<capacité demandée> · <C01>` | en attente | | `<jj/mm/aaaa>`, `<jj/mm/aaaa>` | `<option conseillée, preuves et périmètre exact de l'accord>` |
+| `<jj/mm/aaaa>` | `Évaluation · <C01> (échéance de volume)` | `junior accordé ← <M001 résolue, R001, R004> · journal/<fichier>, D1` | `<opérateur>` | `<jj/mm/aaaa>` | |
+| `<jj/mm/aaaa>` | `Évaluation · <C02> (échéance de date)` | `sans issue : <junior demande 3 cas consécutifs sans correction de fond, 1>` | | `<jj/mm/aaaa>` | |
 
 _Zone manuelle, à quatre exceptions que l'agent tient lui-même : le dépôt d'une ligne `en attente`, le
 constat `sans issue` d'une évaluation et son passage à `en attente`, la colonne `Rappels`, et la mise

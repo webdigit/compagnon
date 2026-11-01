@@ -147,6 +147,41 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## En préparation — recommandations prêtes et accords AIOS
+
+**Ce qui change.** Une décision doit porter sa recommandation dès son inscription, pas seulement
+pendant une séance. Les colonnes existantes gardent leur ordre ; les nouvelles sont ajoutées à
+droite. AIOS peut créer des reçus JSON facultatifs dans `ai-memory/decisions-operateur-aios/`.
+Ils enregistrent un accord, pas une action exécutée ni une modification automatique de grade.
+Cette section prépare une prochaine publication ; elle ne constitue pas une version étiquetée.
+
+**Ce que l'agent fait seul, après autorisation de migration.** Ajouter `Recommandation` puis
+`Portée de l'accord` après `Depuis` dans les points chauds ; ajouter `Portée de l'accord` après
+`Recommandation` dans le rapport s'il existe ; ajouter `Recommandation` après `Rappels` au registre
+de `capabilities.md`. Conserver toutes les lignes, leurs identifiants, dates et décisions.
+Préparer les recommandations des seuls points encore ouverts à partir de leurs preuves. Si les
+preuves manquent, écrire `non préparée : <ce qui manque>` : ne pas inventer une préférence.
+Ne pas créer de rapport pour une instance qui n'en a pas besoin.
+
+Copier le nouveau module `noyau/accords-operateur.md` et le déclencheur du §0 dans le NOYAU rempli,
+en préservant les valeurs de l'instance et `noyau-local.md`. Mettre à jour la carte du README.
+Ne pas créer de reçus ni leur dossier pendant la migration ; AIOS le crée au premier accord.
+Ne pas marquer une recommandation acceptée, une décision close ou un grade changé pour faire
+correspondre les nouveaux tableaux au gabarit.
+
+**Ce que l'opérateur doit faire lui-même.** Autoriser la migration proposée. Pour les projets qui
+utilisent un champ Instructions collé, remplacer ce champ par le NOYAU rempli puis le noyau local
+intégral, dans cet ordre, à partir du fichier prêt à copier s'il a été préparé. Ouvrir une nouvelle
+conversation. Pour un outil qui charge ces fichiers depuis le dossier, ouvrir une nouvelle session
+et vérifier le chargement du déclencheur. Aucune acceptation en lot n'est déduite de la migration.
+
+**Comment vérifier.** Les anciennes colonnes restent en place, aucune décision ni preuve n'a
+disparu, les marqueurs finaux sont présents, les recommandations manquantes sont déclarées sans
+préférence inventée, et le déclencheur désigne le module livré. Sur une instance fictive, un accord
+AIOS crée un reçu, sans changer le fichier source ; la session suivante lit le module, vérifie le
+point et journalise son intégration une seule fois. Un reçu visant un point changé doit demander
+une vérification, pas être appliqué. Une instance sans AIOS garde son fonctionnement ordinaire.
+
 ## 0.40.0 → 0.41.0
 
 ### Ce qui change

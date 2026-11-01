@@ -54,6 +54,7 @@ Règle d'or anti-silo (compagnon P7) : chaque chose a **un seul** propriétaire.
 | `journal/` | Ce que chaque session a fait : cas traités, décisions de l'opérateur mot pour mot, ce qui a été clos, le récit. Un fichier par session, créé une fois et jamais réécrit | Auto (agent), création seule |
 | `objectives.md` | Les cibles de qualité | Cibles = **opérateur** · Progression = auto |
 | `capabilities.md` | Les grades et les actions autorisées, compétence par compétence | Catalogue, grille, grades = **opérateur** · Demandes et évaluations dues = auto |
+| `decisions-operateur-aios/` | Accords explicites déposés par AIOS, JSON facultatifs, lus selon `noyau/accords-operateur.md` ; pas des actions exécutées | AIOS, création seule ; l'agent lit, ne réécrit pas les reçus |
 
 **Couche EXÉCUTION**
 

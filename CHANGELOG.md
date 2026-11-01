@@ -10,6 +10,20 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [Non publié]
+
+### Préparé
+
+- Recommandation motivée dès l'inscription d'une décision, avec la portée de l'accord dans les
+  points chauds et les rapports, et une recommandation préparée au registre des demandes.
+- Module facultatif `noyau/accords-operateur.md` pour lire les accords explicites déposés par AIOS,
+  les vérifier et les journaliser sans les confondre avec une action exécutée.
+- Le NOYAU reçoit uniquement le déclencheur de lecture de ce module au rituel de démarrage :
+  cette condition doit être connue avant que l'agent choisisse un parcours ou prenne une décision.
+  Le fonctionnement détaillé reste dans le module (règle de publication R9).
+
+Cette évolution n'est pas une version publiée et ne migre aucune instance en service.
+
 ## [0.41.0] - 2026-10-26
 
 ### Ajouté

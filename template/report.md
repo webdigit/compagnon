@@ -93,9 +93,15 @@ interne.>`
 > niveau d'autonomie, une règle contradictoire) n'est pas ici : c'est dans `operational-state.md`,
 > section « Points chauds ». Deux files distinctes, deux lecteurs distincts (compagnon P7).
 
-| # | Sujet | Ce qui manque pour trancher | Recommandation |
-|---|---|---|---|
-| 01 | `<le sujet>` | `<l'information ou l'arbitrage attendu>` | `<l'option que l'agent recommande, et pourquoi, en une ligne>` |
+> **Prépare la recommandation dès que tu inscris la décision**, sans attendre une séance : option
+> conseillée, justification courte, incertitudes importantes. `Portée de l'accord` précise ce que
+> l'acceptation autoriserait et ses limites. Si le contexte manque, écris `non préparée : <ce qui
+> manque>` ; demande cette information, sans inventer d'option. Une recommandation ne vaut pas accord.
+> Garde le numéro stable tant que la décision reste ouverte ; ne le réattribue pas à un autre sujet.
+
+| # | Sujet | Ce qui manque pour trancher | Recommandation | Portée de l'accord |
+|---|---|---|---|---|
+| 01 | `<le sujet>` | `<l'information ou l'arbitrage attendu>` | `<l'option que l'agent recommande, et pourquoi, en une ligne>` | `<ce que l'accord autorise, conséquences importantes et limites>` |
 
 ## Non couvert
 

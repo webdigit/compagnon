@@ -217,6 +217,20 @@ qu'`operational-state.md` porterait encore ; un même numéro n'est compté qu'u
 rectifications ne sont pas appliquées par l'écran. Quand le journal a été archivé en partie, ou
 qu'une rectification change un cas, le compte peut différer ; les fichiers font foi.
 
+## 8ter. Colonnes de préparation des décisions pour AIOS (évolution en préparation)
+
+Ces ajouts restent facultatifs et ne déplacent aucune colonne du contrat : `Recommandation` puis
+`Portée de l'accord` après `Depuis` dans les points chauds ; `Portée de l'accord` après la
+recommandation du rapport ; `Recommandation` après `Rappels` au registre. L'écran historique
+continue de lire ses colonnes existantes ; AIOS lit ces ajouts par leur nom. Une colonne absente
+n'est ni un accord ni une recommandation inventée. `non préparée : <motif>` signale explicitement
+qu'aucun choix ne peut encore être accepté.
+
+`decisions-operateur-aios/` n'est pas transporté dans les clichés d'écran. Ses reçus JSON sont
+facultatifs et distincts du journal ; le module `noyau/accords-operateur.md` règle leur lecture.
+AIOS ne supprime ni ne réécrit les sources en enregistrant un accord. La prise en compte et
+l'exécution sont deux étapes séparées, non déduites par l'écran.
+
 ## 9. Les identifiants
 
 `R###` pour une règle, `M###` pour une erreur, `P###` pour un principe dur, `H-##` pour une
