@@ -95,7 +95,8 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 > fait, et d'où il vient. Le récit, s'il en faut un, va dans « Détails » du journal de la session,
 > sous le même identifiant. Quand des observations convergent en hypothèse, elles sortent d'ici
 > dans la même écriture : l'hypothèse garde `← [O001, O002]`, et « Clos » du journal reçoit leurs
-> lignes.
+> lignes. **Au bout de trente jours sans second cas**, la ligne sort d'office (§3) : « Clos »
+> reçoit `sortie sans motif`. Elle ne devient pas une hypothèse.
 
 - `<O001 (jj/mm) : le fait, en une phrase ← [cas #, pièce]>`
 

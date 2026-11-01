@@ -70,6 +70,14 @@
 - **Les autres fiches.** La recette d'un autre hôte, suivie chez toi, cherche un outil que tu n'as
   pas, ou conclut à l'absence d'un fichier qu'elle a cherché au mauvais endroit.
 - **« Constaté ici ».** « Du gabarit » vient du dépôt, et une migration la remplace.
+- **Le recollage.** Après chaque migration, l'opérateur recollait à la main, et la copie chargée
+  restait parfois en retard. AIOS pose la copie et contrôle les deux marqueurs plus le dernier
+  paragraphe modifié. L'agent prépare, il ne pose pas : réécrire ses propres consignes est le
+  geste que le §6 interdit.
+- **Un geste que l'hôte refuse.** Le reconsigner à chaque run, sept fois, n'a jamais débloqué
+  `fire_trigger`. Deux constats dans le même contexte suffisent : le geste sort de ce que l'on
+  tente, jusqu'à un essai avec l'opérateur.
+
 ## §1. La règle d'or du score
 
 - **`mistakes.md`.** C'est le fichier qui a le plus de valeur et le moins de confort à écrire
@@ -83,6 +91,9 @@
 
 ## §3. Maturation
 
+- **O, échéance de sortie.** Une observation qui ne rejoint jamais un motif remplit l'état pour
+  rien, et finit par ne plus être lue. Trente jours sans second cas : elle n'était pas un motif.
+  La sortir, ce n'est pas juger : c'est refuser qu'une anecdote occupe la lecture de run.
 - **H → provisoire.** Une règle provisoire s'applique, mais elle ne prouve rien.
 - **provisoire → hypothèse.** Ce qui n'a jamais été mûr ne se consolide pas.
 - **La date suit le statut.** Elle n'a pas à être validée parce qu'elle ne fait que constater le
@@ -105,6 +116,8 @@
 - **La revue de la semaine.** Rien ne sort sans décision, et une passe mensuelle finit par ne plus se
   faire. Constaté le 16/10/2026 : aucune passe en deux mois, environ 400 Ko de lecture de run pour
   150. Une revue courte et fréquente fait sortir au fil de l'eau.
+- **Point 10.** La sortie à trente jours se fait à chaque lecture de l'état. Cette passe rattrape
+  celles qu'une session a laissées.
 ## §5. Convention d'écriture
 
 - **Le bloc hors de la réponse.** Personne ne lit la réponse d'une tâche programmée à trois heures du
@@ -115,6 +128,10 @@
 - **Le marqueur dit quel fichier c'est.** Un stockage synchronisé peut afficher un fichier sous un
   autre nom (`mistakes (1).md`). Un fichier neuf et vide sous le bon nom cacherait le vrai, et la
   mémoire repartirait de rien.
+- **Les heures.** Neuf fichiers d'échange datés en avance chez une exécutante, et l'ordre par nom
+  ne disait plus qui avait la main. L'heure prise de mémoire est toujours un peu trop tard, ou un
+  peu trop tôt. L'extraction depuis l'outil, juste avant, est le seul geste qui ne se trompe pas
+  de minute.
 - **Écrire avant le marqueur.** Un outil qui ajoute « à la fin du fichier » écrit après le marqueur.
 - **Aucun emoji.** Un outil de lecture qui rend du texte a déjà coupé la fin de fichiers à cause
   d'eux, marqueur compris : environ deux à trois caractères perdus par emoji. Un seul emoji peut
@@ -304,6 +321,9 @@
   aurait deux circuits à suivre, et ne saurait jamais lequel porte la question en retard. En
   direct, l'opérateur passe devant, parce qu'il est là.
 - **La relève à vide ne s'écrit pas.** Un run qui ne trouve rien n'a rien à dire, et un fichier d'état de relève serait un fichier de plus à garder juste.
+- **La mission de correction.** Une ligne fausse corrigée dans le topo du pilote n'apprend rien à
+  l'exécutant : il la refait le lendemain. La lui renvoyer, avec la preuve et la vérification, le
+  fait corriger chez lui. Le pilote n'écrit pas dans sa mémoire.
 
 ## §6. Autonomie
 

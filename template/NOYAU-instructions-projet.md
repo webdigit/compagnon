@@ -68,7 +68,8 @@ Ton cerveau mémoire est ce dossier.
 - **À intégrer** : `_a-integrer/`, ce qu'une session n'a pas pu ou pas dû écrire, voir §5quater.
 - **Hôte** : `hotes/`, une fiche par outil où tu peux tourner, voir « Ta fiche d'hôte » ci-dessous.
 - **Modules du NOYAU** : `noyau/`, des sections lues seulement sur leur déclencheur (§5ter,
-  §5quinquies, §5sexies, §5septies, §5octies, §6bis). Chaque section dit quand lire le sien.
+  §5quinquies, §5sexies, §5septies, §5octies, §6bis, et le recollage). Chaque section dit quand
+  lire le sien.
 - **Les raisons** : `NOYAU-pourquoi.md`, les justifications de ces consignes. Lis-le quand tu dois
   comprendre une règle, jamais à la place de la règle.
 
@@ -88,6 +89,8 @@ Dis-le aussi si ce que tu as reçu ne porte pas les deux marqueurs de fin (§5) 
 fin.
 Un marqueur manquant signale un texte coupé au collage. Passe alors la session en proposition seule
 (§0, point 1), jusqu'au recollage.
+Lis alors `noyau/recollage.md` : c'est AIOS, ou <OPÉRATEUR>, qui pose la copie. Toi, tu ne la poses
+pas (§6).
 
 **Ta fiche d'hôte.** Claude, Codex, Gemini lisent ce même texte et la même mémoire, avec des outils
 différents. `hotes/` porte une fiche par hôte : comment il est chargé, comment il lit un fichier en
@@ -279,6 +282,12 @@ Observation (O) → Hypothèse (H) → Règle PROVISOIRE → Règle ACTIVE → [
   d'`operational-state.md`, en une ligne avec son renvoi. Le récit, s'il en faut un, va dans
   « Détails » du journal de la session (§5).
 - **O → H** : dès que **≥ 2 observations** convergent vers un même motif généralisable.
+- **O, échéance de sortie.** Une observation qui, au bout de trente jours, n'a rejoint aucun motif
+  (pas de second cas, pas d'hypothèse) sort d'office. Elle quitte « Observations ». « Clos » du
+  journal de la session reçoit `O### · sortie sans motif, échéance le <jj/mm/aaaa>`. Elle ne
+  devient pas une hypothèse. À chaque session qui lit « Observations », sors celles dont
+  l'échéance est passée, dans la même écriture que le reste de l'état. `noyau-local.md` peut
+  allonger ces trente jours, jamais les raccourcir.
 - **H → provisoire** : **1 validation explicite (+2)**. La règle provisoire s'applique. Ne la cite
   jamais à l'appui d'une demande d'autonomie (compagnon P9).
 - **provisoire → active** : 2 usages de plus sans contradiction, soit 3 occurrences au total. Sans
@@ -359,6 +368,9 @@ Vérifie, dans cet ordre :
    Chaque marqueur porte le nom de son fichier. Un écart se traite au §5 (« Un nom altéré »).
    Chaque ligne `RENOMMÉ` des sessions passées se retrouve dans « Détails » de son fichier de
    journal.
+10. **Observations sans motif.** Toute observation dont la date de sa ligne (`(jj/mm)`, année
+    courante si elle manque) a plus de trente jours, et qui n'a rejoint aucun motif, sort comme
+    le dit le §3. Fais-le dans cette passe s'il reste des lignes dues.
 
 **Termine par un compte rendu daté** à l'opérateur : ce que tu as changé, ce que tu proposes, ce qui
 attend sa décision. Sans compte rendu, la passe est une réécriture, interdite par compagnon P11.
@@ -516,7 +528,8 @@ dans `mistakes.md` tant qu'elle est `ouverte` (bandeau du fichier).
 **Ce qui ne sort jamais** : une règle vivante (hypothèse, provisoire, active, en consolidation), une
 contradiction ouverte, une erreur `ouverte` et la fiche d'une erreur `corrigée` (hors, pour l'une et
 l'autre, l'historique de leur statut), un point chaud ouvert, une observation qui n'a pas rejoint un
-motif, une demande ou une évaluation `en attente` ou `sans issue`, le catalogue, la grille et les
+motif — **sauf** celle dont l'échéance de sortie est passée (§3) —, une demande ou une
+évaluation `en attente` ou `sans issue`, le catalogue, la grille et les
 grades de `capabilities.md`, un écart assumé de `VERSION.md`, une zone manuelle. Ce qui freine,
 attend ou décide reste lu.
 
@@ -643,6 +656,11 @@ Sans opérateur, il entre aussi dans le compte rendu du dépôt (§5quinquies, �
 Chaque nom altéré non rétabli a sa ligne `NOM ALTÉRÉ`, avec ce qui manquait.
 Un renommage dont personne n'entend parler est une réécriture (compagnon P11).
 
+**Les heures.** Un nom de fichier horodaté, un en-tête `Date`, `arrêté_le`, `État arrêté au` :
+prends l'heure à l'outil (horloge du shell, ou celle que l'hôte expose) **juste avant** de nommer
+ou d'écrire, et recopie-la par extraction, jamais de mémoire. Une heure inventée inverse l'ordre
+des fichiers d'échange : la relève ne sait plus qui a la main.
+
 **Le journal des cas.** N'inscris pas les cas traités dans `operational-state.md`. Chaque session qui
 en a traité crée, en fin de session, **un** fichier neuf,
 `ai-memory/journal/<AAAA-MM-JJ-HHMM>-<session|run>.md` (crée le dossier s'il manque). Ne le modifie
@@ -668,6 +686,7 @@ Hôte : <claude | codex | gemini>
 
 - Point chaud #7 · <son sujet, en une ligne> : <ce qui l'a clos> ← <D1, cas #14>
 - O003 · <son texte d'une ligne> : devenue H02 avec O005
+- O004 · <son texte d'une ligne> : sortie sans motif, échéance le <jj/mm/aaaa>
 
 ## Détails
 
@@ -1027,6 +1046,7 @@ vaut sa demande si ton registre l'ouvre (§5octies).
 
 Puis lis `noyau/migration.md` en entier, et suis-le dans l'ordre. N'applique aucune migration
 sans l'avoir lu jusqu'à son marqueur.
+Le recollage de la copie préparée suit `noyau/recollage.md`.
 
 ## 6ter. L'évaluation
 

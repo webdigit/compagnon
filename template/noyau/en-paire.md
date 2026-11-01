@@ -37,9 +37,10 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 1. **Un sous-dossier par collègue, un fichier par message**, jamais réécrit. Un message ne va qu'à
    un collègue : ce qui concerne deux paires s'écrit deux fois, une dans chaque sous-dossier. Une rectification est un nouveau fichier qui cite
    l'ancien.
-2. **Son nom** : `AAAA-MM-JJ_HHmmss_NN-type-sujet.md`. L'heure est celle d'Europe/Paris, prise à la
-   source (§5quinquies), avec les secondes. `NN` est le numéro de la mission. Le `sujet` est court,
-   en minuscules, et ne change pas d'un fichier à l'autre de la mission.
+2. **Son nom** : `AAAA-MM-JJ_HHmmss_NN-type-sujet.md`. L'heure est celle d'Europe/Paris, prise à
+   l'outil **juste avant** de nommer (§5, « Les heures »), avec les secondes, recopiée par
+   extraction, jamais de mémoire. `NN` est le numéro de la mission. Le `sujet` est court, en
+   minuscules, et ne change pas d'un fichier à l'autre de la mission.
 3. **Son type** : `demande`, `reponse`, `revue` ou `complement`.
 4. **Son en-tête**, en tête du fichier, une ligne chacun : `Date` (avec le décalage UTC), `Auteur`,
    `Mission`, `Répond à` (le nom exact du fichier précédent, sauf pour une demande), et pour une
@@ -79,7 +80,7 @@ personne : c'est du processus, ne l'écris pas. Jamais dans ta mémoire : elle s
 
 À chaque run, avant ton travail habituel :
 
-1. **Lis l'heure réelle** à la source.
+1. **Lis l'heure réelle** à l'outil, juste avant, par extraction (§5, « Les heures »).
 2. **Pour chaque ligne de `paire.md`, et pour chaque canal de décision, liste les missions
    ouvertes** de cette paire ou de ce canal : celles qu'aucune
    revue `accepté` n'a closes, et qu'aucun `complement` n'a abandonnées. Ne liste pas `_clos/` : ce
@@ -160,6 +161,25 @@ le rituel entier pour rien.
 5. **<OPÉRATEUR> tranche dans la conversation du pilote.** Le pilote dépose un `complement` qui
    cite sa décision mot pour mot, entre guillemets, avec la date. Il ne la reformule pas. La mission
    reprend.
+
+### La mission de correction
+
+Un pilote qui constate une erreur de fond dans ce que lui rend son exécutant (une ligne fausse
+d'un rapport, un « à faire » déjà traité, un fait démenti à la source) n'écrit pas chez
+l'exécutant et ne corrige pas en silence dans son propre topo.
+
+Il ouvre une mission, numéro suivant de cette paire, sujet `correction-<court>`. Sa demande
+porte, et rien d'autre :
+
+1. **la ligne fausse**, citée telle quelle, avec le fichier et sa date ;
+2. **la preuve** trouvée à la source, nommée ;
+3. **la vérification** qui l'aurait évitée.
+
+L'exécutant corrige chez lui : son rapport, et une entrée dans son `mistakes.md`. Sa réponse
+cite les deux. Le pilote revoit la preuve, puis clôt par `accepté`.
+
+C'est un geste du pilote, sans GO de <OPÉRATEUR> : il ne touche aucun droit, et il resserre.
+Le frein de la paire s'applique.
 
 ### Le canal de décision
 
