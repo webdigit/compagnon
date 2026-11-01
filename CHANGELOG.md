@@ -10,6 +10,30 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.42.0] - 2026-11-01
+
+### Ajouté
+
+- **La ligne `**Recommandation :**`** (NOYAU §6quater, point 3 ; rappel au §0, point 5) : toute
+  décision soumise à l'opérateur, où qu'elle soit posée (conversation, séance, rapport, dossier
+  d'échange), porte la recommandation de l'agent sur sa propre ligne, au libellé fixe. Sans
+  recommandation, la ligne dit « aucune » et pourquoi.
+- **La colonne `Recommandation` des points chauds** (`operational-state.md`, NOYAU §6quater,
+  point 1) : écrite dès qu'une `décision` naît, mise à jour à chaque mouvement, `sans objet` pour
+  une `attente`. Contrat d'écran : colonne facultative en sixième position (`FORMAT.md`).
+- **Écran** (`ecran/compagnon.html`) : la recommandation s'affiche sous chaque point `décision`.
+
+### Pourquoi le NOYAU change (R9)
+
+Une question posée en conversation n'est gouvernée par aucun module : le seul texte lu à cet
+instant est le NOYAU. Le changement tient en quelques lignes du §0 et du §6quater.
+
+### La leçon
+
+La recommandation n'était exigée qu'en séance et ne s'écrivait nulle part : elle se reconstruisait
+à chaque fois, se perdait entre deux sessions, et aucun outil ne pouvait l'afficher. Origine : JC,
+01/11/2026, pour le suivi des décisions dans Compagnon AIOS.
+
 ## [0.41.0] - 2026-10-26
 
 ### Ajouté

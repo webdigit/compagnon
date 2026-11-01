@@ -630,7 +630,10 @@ var PARSE = (function () {
           /* contrat 6 (compagnon 0.28.0) : colonnes Type et Depuis, facultatives. Un type absent
              ou inconnu compte comme une décision, comme avant. */
           var t = sansGras(l[3] || "").trim().toLowerCase().split(/\s+/)[0] || "";
-          return { num: l[0], sujet: l[1], attente: l[2], type: t, depuis: sansGras(l[4] || "").trim() };
+          /* compagnon 0.42.0 : colonne Recommandation, facultative, en sixième position. */
+          var r = sansGras(l[5] || "").trim();
+          return { num: l[0], sujet: l[1], attente: l[2], type: t, depuis: sansGras(l[4] || "").trim(),
+                   reco: /^(sans objet|-)?$/i.test(r) ? "" : r };
         });
     }
 
@@ -1118,7 +1121,9 @@ if (typeof module !== "undefined" && module.exports) { module.exports = PARSE; }
         if (c.depuis) tete += ' <span class="conf">' + e(anciennete(c.depuis, etat.arrete_le) || ("depuis le " + c.depuis)) + "</span>";
         h.push('<div class="item"><div class="ligne1">' + tete + '</div><p class="det">' + inl(c.sujet) +
           '</p><p class="det" style="color:var(--ink-3)">' + (c.type === "attente" ? "Attente : " : "À trancher par ") +
-          "<em>" + inl(c.attente) + "</em></p></div>");
+          "<em>" + inl(c.attente) + "</em></p>" +
+          (c.type !== "attente" && c.reco ? '<p class="det">Recommandation : ' + inl(c.reco) + "</p>" : "") +
+          "</div>");
       });
     }
     h.push("</article>");

@@ -171,7 +171,7 @@ L'écran lit les tableaux **par position de colonne**, pas par intitulé. Les in
 | `capabilities.md`, registre | date, capacité, décision, par, rappels (plusieurs dates séparées par des virgules) |
 | `learned-rules.md`, hypothèses | id, hypothèse, origine, occurrences |
 | `learned-rules.md`, contradictions | id, objet, état |
-| `operational-state.md`, points chauds | numéro, sujet, attente, type (facultative, 0.28.0), depuis (facultative, 0.28.0) |
+| `operational-state.md`, points chauds | numéro, sujet, attente, type (facultative, 0.28.0), depuis (facultative, 0.28.0), recommandation (facultative, 0.42.0) |
 | `operational-state.md` (avant 0.17.0) et chaque `journal/*.md`, journal des cas | numéro, date, sujet, corrections, trace, compétence |
 | `VERSION.md`, écarts | référence, écart, raison |
 | `VERSION.md`, historique | date, de vers, ce qui a été fait |

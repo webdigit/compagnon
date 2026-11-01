@@ -68,14 +68,15 @@ _État arrêté au `<jj/mm/aaaa, hh:mm>`._
 >
 > **Chaque point a un type** (NOYAU §6quater) : `décision` quand l'opérateur doit choisir, `attente`
 > quand un tiers, un événement ou une date bloque. Une information n'a rien à faire ici. Une
-> décision s'écrit comme une question fermée ; ses options et ta recommandation se présentent en
-> séance. `Depuis` : la date du dernier mouvement du point. Un fichier de mémoire resté au-dessus de
+> décision s'écrit comme une question fermée ; ses options se présentent en séance. `Recommandation` :
+> la tienne, en une ligne, écrite dès que le point naît et mise à jour quand il bouge (`sans objet` pour une
+> `attente`, NOYAU §6quater, points 1 et 3). `Depuis` : la date du dernier mouvement du point. Un fichier de mémoire resté au-dessus de
 > son plafond porte ici un point « Volume », dont `Depuis` est la date du dépassement (NOYAU
 > §6quater, point 9).
 
-| # | Sujet | Attente | Type | Depuis |
-|---|---|---|---|---|
-| 1 | `<la question, fermée, ou ce qui bloque>` | `<qui doit trancher, ou ce qu'on attend et la date de revue>` | `<décision ou attente>` | `<jj/mm/aaaa>` |
+| # | Sujet | Attente | Type | Depuis | Recommandation |
+|---|---|---|---|---|---|
+| 1 | `<la question, fermée, ou ce qui bloque>` | `<qui doit trancher, ou ce qu'on attend et la date de revue>` | `<décision ou attente>` | `<jj/mm/aaaa>` | `<l'option que tu recommandes, et pourquoi, en une ligne ; sans objet pour une attente>` |
 
 ## Cas traités
 

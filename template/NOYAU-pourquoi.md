@@ -337,6 +337,12 @@
 
 - **Introduction.** Ce qui attend l'opérateur lui coûte son temps, la ressource la plus rare de la
   méthode (compagnon P17).
+- **Point 1, la colonne `Recommandation`.** Présentée seulement en séance, la recommandation se
+  reconstruisait à chaque fois et se perdait entre deux sessions. Écrite dans le point, elle se
+  retrouve, et un outil qui lit les points chauds peut l'afficher (demande de JC, 01/11/2026).
+- **Point 3, le libellé fixe.** L'opérateur doit repérer d'un coup d'œil ce que l'agent recommande,
+  et le retrouver par une recherche. Un libellé qui varie ne se cherche pas. « Aucune » s'écrit
+  aussi : une recommandation absente doit se voir, pas se confondre avec un oubli.
 - **Point 2, exemples.** Un point déjà fait ou tranché ailleurs : une tâche close, un fichier déjà
   corrigé, une migration passée.
 - **Point 4bis.** Chaque candidate porte sa preuve, le cas comparable daté : l'opérateur la vérifie

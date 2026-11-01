@@ -147,6 +147,54 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.41.0 → 0.42.0
+
+### Ce qui change
+
+La recommandation de l'agent devient écrite et repérable. Rien d'autre.
+
+- **NOYAU** : §0, point 5 (une ligne de rappel) ; §6quater, point 1 (la colonne `Recommandation`)
+  et point 3 (la ligne `**Recommandation :**`, partout où une décision est posée).
+- **`operational-state.md`** (gabarit) : colonne `Recommandation` en fin du tableau des points
+  chauds, et son bandeau.
+- **`NOYAU-pourquoi.md`** : deux entrées au §6quater. **`FORMAT.md`** : la colonne, facultative.
+  **`ecran/compagnon.html`** : affiche la recommandation d'un point `décision`.
+
+### Ce que l'agent fait seul
+
+- **`NOYAU-pourquoi.md`** : le remplacer en entier par celui de cette étiquette.
+- **`operational-state.md`** : ajouter la colonne `Recommandation` en dernière position du tableau
+  des points chauds, et remplacer son bandeau par celui du gabarit. Pour chaque `attente`, écrire
+  `sans objet`. Pour chaque `décision`, écrire sa recommandation s'il sait l'instruire depuis ce
+  qu'il a lu ; sinon `aucune, il me manque <ce qui manque>`. C'est une écriture de structure et
+  d'instruction, pas une décision : elle ne tranche aucun point et n'en sort aucun.
+- **`_ecran/compagnon.html`**, si l'instance a un écran : le remplacer par celui de cette étiquette.
+- **`VERSION.md`** : version courante 0.42.0, **Alignée sur**, ligne d'historique.
+- **La copie du NOYAU** : préparer le texte à recoller, celui de cette étiquette, avec les trous déjà
+  remplis de la copie actuelle. `noyau-local.md` ne change pas.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Recoller le NOYAU** dans les Instructions de chaque projet. Tant qu'il ne l'est pas, la colonne
+  existe mais la ligne `**Recommandation :**` en conversation n'est pas exigée.
+
+### Comment vérifier
+
+**Le texte** : la copie du NOYAU contient « `**Recommandation :**` ». L'en-tête du tableau des
+points chauds finit par `| Recommandation |`. Aucune `décision` n'a la colonne vide. `VERSION.md`
+porte 0.42.0.
+
+**La suite** : la première décision posée en conversation après le recollage porte une ligne qui
+commence par `**Recommandation :**`.
+
+### Ce que cette migration ne fait pas
+
+Elle ne touche pas au registre de `capabilities.md` : une évaluation de grade ne porte pas de
+recommandation de l'agent sur son propre grade, qui reste accordé par l'opérateur. Elle ne change ni
+`report.md`, dont la colonne existe depuis la 0.28.0, ni la vue de coordination.
+
+---
+
 ## 0.40.0 → 0.41.0
 
 ### Ce qui change
