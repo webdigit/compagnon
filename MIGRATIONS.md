@@ -147,6 +147,49 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## En préparation — 0.43.0
+
+**Ce qui change.** Cinq ajouts, aucun retrait. Cette section prépare une prochaine publication ;
+elle ne constitue pas une version étiquetée.
+
+- **Les heures** : prises à l'outil, juste avant de nommer ou d'horodater, recopiées par
+  extraction.
+- **Le recollage** : AIOS pose la copie et contrôle ; à défaut, l'opérateur. L'agent ne pose
+  jamais.
+- **Un geste refusé deux fois** dans le même contexte : désactivé dans la fiche d'hôte, jusqu'à
+  un essai avec l'opérateur.
+- **Une observation sans motif** au bout de trente jours : sortie vers « Clos », sans hypothèse.
+- **Une mission de correction** : le pilote ouvre, l'exécutant corrige chez lui.
+
+**Ce que l'agent fait seul, après autorisation de migration.** Remplacer en entier
+`noyau/en-paire.md`, `noyau/sans-poste.md`, `noyau/rapport.md`, `noyau/coordination.md`,
+`NOYAU-pourquoi.md`. Copier le nouveau module `noyau/recollage.md`. Remplacer la partie
+« Du gabarit » de la fiche d'hôte (claude, codex ou gemini, celle de l'instance), sans toucher
+à « Constaté ici ». Remplacer le bandeau de « Observations » dans `operational-state.md` par
+celui du gabarit. Copier le déclencheur du recollage et les trois ajouts du NOYAU (§3 échéance,
+§4bis point 10, §5 « Les heures », exception de « Ce qui ne sort jamais ») dans le NOYAU rempli,
+en préservant les valeurs de l'instance et `noyau-local.md`. Mettre à jour la carte du README.
+`VERSION.md` : version courante, **Alignée sur**, ligne d'historique, seulement à la
+publication.
+
+Ne sors aucune observation pendant la migration : la première session qui lit « Observations »
+applique le §3. N'invente aucune ligne **Désactivé** : un refus déjà connu s'écrit à la session
+qui le reconstate, pas ici.
+
+**Ce que l'opérateur doit faire lui-même.** Autoriser la migration proposée. Pour les projets
+qui utilisent un champ Instructions collé : si AIOS a posé la copie et que les deux marqueurs
+sont là, rien. Sinon, recoller le NOYAU rempli puis `noyau-local.md`, dans cet ordre. Ouvrir
+une nouvelle conversation.
+
+**Comment vérifier.** La copie reçue porte les deux marqueurs. `noyau/en-paire.md` contient
+« ### La mission de correction ». `noyau/recollage.md` existe et finit par son marqueur. Le
+bandeau des observations dit « trente jours ». La fiche d'hôte contient « Un geste que l'hôte
+refuse ». Une observation plus vieille que trente jours sort à la première session, avec sa
+ligne dans « Clos ». Un nom de fichier d'échange porte l'heure extraite de l'outil, pas une
+heure de mémoire.
+
+---
+
 ## 0.41.0 → 0.42.0
 
 ### Ce qui change

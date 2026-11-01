@@ -159,6 +159,8 @@ Ouvrez le projet, section **Instructions du projet**, et **collez-y le contenu i
 sa suite**, le contenu intégral de `ai-memory/noyau-local.md`, titre compris : son en-tête dit à
 l'agent que ce sont les instructions propres à l'instance, à appliquer au même titre que le NOYAU.
 Le NOYAU d'abord, les spécificités ensuite : c'est cet ensemble que l'on appelle « recoller ».
+Si AIOS est là, c'est lui qui pose cette copie et en contrôle les deux marqueurs
+(`noyau/recollage.md`). Sinon, vous collez à la main. L'agent ne pose jamais la copie lui-même.
 
 Attention au piège : déposer le NOYAU comme *document* du projet ne suffit pas. Un document est
 consultable, il n'est pas injecté au démarrage. Seul le champ **Instructions** l'est.

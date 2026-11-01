@@ -28,8 +28,10 @@ guide d'hôte du dépôt (`hotes/`). Tiens-les ensuite à jour par tes propres e
 
 Fais-la avant tout travail, dans cet ordre. Note chaque point dans ton dépôt de fin de run.
 
-1. **L'heure réelle**, dans le fuseau de l'opérateur. Prends-la à la source (le shell), ne l'estime
-   pas. Reprends-la chaque fois qu'une heure sert à décider.
+1. **L'heure réelle**, dans le fuseau de l'opérateur. Prends-la à l'outil (le shell, ou l'horloge
+   que l'hôte expose) **juste avant** de t'en servir, et recopie-la par extraction, jamais de
+   mémoire (§5, « Les heures »). Reprends-la chaque fois qu'une heure sert à décider, à nommer
+   ou à horodater.
 2. **Par où tu accèdes au dossier**, par ordre de préférence : un poste relié avec le dossier
    connecté ; sinon le connecteur du stockage partagé, par l'identifiant de « Où vit le dossier » ;
    sinon rien.

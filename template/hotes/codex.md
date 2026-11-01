@@ -64,6 +64,19 @@
   cloud et ne travaille pas dans un dossier du poste. Non prouvé (documentation OpenAI, lue le
   04/10/2026).
 
+### Un geste que l'hôte refuse
+
+Un refus de l'hôte (un outil qui refuse, une erreur d'autorisation, un « Self-Modification »)
+s'écrit sous « Constaté ici », une ligne, avec le geste, le contexte (tâche programmée,
+conversation, connecteur) et la date.
+
+Un second refus du même geste dans le même contexte : la ligne devient **Désactivé**. Tu
+n'essaies plus ce geste dans ce contexte, jusqu'à ce qu'un essai avec l'opérateur présent
+montre que l'hôte l'accepte de nouveau. Alors la ligne passe à **Prouvé**, avec la date de
+l'essai.
+
+Un refus n'autorise aucun contournement. Le geste manquant se déclare non fait, avec sa raison.
+
 ## Constaté ici
 
 _Rien encore._

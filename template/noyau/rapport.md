@@ -21,8 +21,8 @@ Pas à chaque session : une séance de mise au point de règles ne produit pas d
    décidé (compagnon P3).
 4. **Pointe, ne recopie pas.** L'identifiant du système qui porte la donnée fait foi (compagnon P7).
 5. **Remplis `non_couvert`.**
-6. **Renseigne `périmé_après`.** `arrêté_le` est l'heure réelle prise à la source (le shell) au
-   moment d'écrire, à la minute près. Jamais une estimation.
+6. **Renseigne `périmé_après`.** `arrêté_le` est l'heure réelle prise à l'outil **juste avant**
+   d'écrire, recopiée par extraction, jamais de mémoire (§5, « Les heures »), à la minute près.
 7. **Aucune règle, aucun reward, aucun score n'entre dans le rapport** (compagnon P12).
 8. **Ne classe pas tes items par rapport à d'autres instances.** Donne une échéance et ce que coûte
    le report. Laisse l'arbitrage à qui lit.

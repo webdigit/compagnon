@@ -66,6 +66,9 @@ personne d'autre. Ta propre ligne « Coordonné par » porte `aucun`.
      Dans une conversation où <OPÉRATEUR> est là, c'est lui qui valide le déclenchement. Ce déclenchement compte comme une relance proposée et acceptée.
      Si le texte de ta tâche t'interdit de déclencher, il l'emporte sur `capabilities.md` (§6) :
      propose, et signale l'écart ;
+     Si ta fiche d'hôte porte **Désactivé** pour ce geste dans ce contexte (`fire_trigger` depuis
+     une tâche programmée, par exemple), ne l'essaie pas. Déclare-le non fait, avec la ligne de
+     la fiche ;
    - **un rapport `statut: repli` n'est pas un rapport périmé.** Ne relance pas pour ça. Ne cherche
      pas non plus à savoir si quelqu'un écrit chez le membre avant de relancer ;
    - **vérifie deux fois.** Tout de suite : un nouveau déclenchement du membre figure dans l'état

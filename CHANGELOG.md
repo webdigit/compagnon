@@ -10,6 +10,33 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [Non publié]
+
+### Préparé pour 0.43.0
+
+- **Les heures prises à l'outil** (NOYAU §5, « Les heures » ; `noyau/sans-poste.md`,
+  `noyau/en-paire.md`, `noyau/rapport.md`) : un nom de fichier horodaté ou un en-tête se copie
+  depuis l'horloge de l'outil, juste avant d'écrire, jamais de mémoire.
+- **Le recollage par AIOS** (`noyau/recollage.md`) : AIOS reconstruit la copie (NOYAU rempli puis
+  `noyau-local.md`), la pose, et contrôle les deux marqueurs plus le dernier paragraphe modifié.
+  Sans AIOS, l'opérateur colle comme avant. L'agent prépare, il ne pose pas.
+- **Un geste refusé par l'hôte** (fiches `hotes/`, `noyau/coordination.md`) : deux refus du même
+  geste dans le même contexte le désactivent jusqu'à un essai avec l'opérateur.
+- **L'échéance de sortie des observations** (NOYAU §3, §4bis point 10, `operational-state.md`) :
+  une observation sans second cas au bout de trente jours sort vers « Clos », sans devenir une
+  hypothèse.
+- **La mission de correction** (`noyau/en-paire.md`) : un pilote qui constate une erreur de fond
+  chez son exécutant ouvre une mission (`correction-<sujet>`) : ligne fausse, preuve, vérification.
+  L'exécutant corrige son rapport et son `mistakes.md`. Le pilote n'écrit jamais chez lui.
+
+### Pourquoi le NOYAU change (R9)
+
+Trois consignes seulement, chacune au moment où la décision se prend : nommer un fichier (§5),
+lire « Observations » (§3), constater un recollage incomplet. Le reste va dans les modules et
+les fiches d'hôte.
+
+Cette évolution n'est pas une version publiée et ne migre aucune instance en service.
+
 ## [0.42.0] - 2026-11-01
 
 ### Ajouté
