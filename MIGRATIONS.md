@@ -147,46 +147,65 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
-## En préparation — 0.43.0
+## 0.42.0 → 0.43.0
 
-**Ce qui change.** Cinq ajouts, aucun retrait. Cette section prépare une prochaine publication ;
-elle ne constitue pas une version étiquetée.
+### Ce qui change
+
+Cinq ajouts, aucun retrait.
 
 - **Les heures** : prises à l'outil, juste avant de nommer ou d'horodater, recopiées par
-  extraction.
+  extraction (NOYAU §5 ; `noyau/sans-poste.md`, `noyau/en-paire.md`, `noyau/rapport.md`).
 - **Le recollage** : AIOS pose la copie et contrôle ; à défaut, l'opérateur. L'agent ne pose
-  jamais.
+  jamais (`noyau/recollage.md`).
 - **Un geste refusé deux fois** dans le même contexte : désactivé dans la fiche d'hôte, jusqu'à
   un essai avec l'opérateur.
-- **Une observation sans motif** au bout de trente jours : sortie vers « Clos », sans hypothèse.
-- **Une mission de correction** : le pilote ouvre, l'exécutant corrige chez lui.
+- **Une observation sans motif** au bout de trente jours : sortie vers « Clos », sans hypothèse
+  (NOYAU §3, §4bis point 10).
+- **Une mission de correction** : le pilote ouvre, l'exécutant corrige chez lui
+  (`noyau/en-paire.md`).
+- **NOYAU** : §3 (échéance), §4bis point 10, §5 « Les heures », exception de « Ce qui ne sort
+  jamais », déclencheur du recollage. **`NOYAU-pourquoi.md`**. **`README.md`** (carte des
+  modules). **`INSTALLATION.md`** (AIOS peut poser la copie).
 
-**Ce que l'agent fait seul, après autorisation de migration.** Remplacer en entier
-`noyau/en-paire.md`, `noyau/sans-poste.md`, `noyau/rapport.md`, `noyau/coordination.md`,
-`NOYAU-pourquoi.md`. Copier le nouveau module `noyau/recollage.md`. Remplacer la partie
-« Du gabarit » de la fiche d'hôte (claude, codex ou gemini, celle de l'instance), sans toucher
-à « Constaté ici ». Remplacer le bandeau de « Observations » dans `operational-state.md` par
-celui du gabarit. Copier le déclencheur du recollage et les trois ajouts du NOYAU (§3 échéance,
-§4bis point 10, §5 « Les heures », exception de « Ce qui ne sort jamais ») dans le NOYAU rempli,
-en préservant les valeurs de l'instance et `noyau-local.md`. Mettre à jour la carte du README.
-`VERSION.md` : version courante, **Alignée sur**, ligne d'historique, seulement à la
-publication.
+### Ce que l'agent fait seul
+
+- **`noyau/en-paire.md`**, **`noyau/sans-poste.md`**, **`noyau/rapport.md`**,
+  **`noyau/coordination.md`** et **`NOYAU-pourquoi.md`** : les remplacer en entier par ceux de
+  cette étiquette.
+- **`noyau/recollage.md`** : le copier s'il manque.
+- **Fiche d'hôte** (claude, codex ou gemini, celle de l'instance) : remplacer la partie
+  « Du gabarit » par celle de cette étiquette, sans toucher à « Constaté ici ».
+- **`operational-state.md`** : remplacer le bandeau de « Observations » par celui du gabarit.
+- **`README.md`** : mettre à jour la carte des modules.
+- **`VERSION.md`** : version courante 0.43.0, **Alignée sur**, ligne d'historique.
+- **La copie du NOYAU** : préparer le texte à recoller, celui de cette étiquette, avec les trous
+  déjà remplis de la copie actuelle. `noyau-local.md` ne change pas.
 
 Ne sors aucune observation pendant la migration : la première session qui lit « Observations »
 applique le §3. N'invente aucune ligne **Désactivé** : un refus déjà connu s'écrit à la session
 qui le reconstate, pas ici.
 
-**Ce que l'opérateur doit faire lui-même.** Autoriser la migration proposée. Pour les projets
-qui utilisent un champ Instructions collé : si AIOS a posé la copie et que les deux marqueurs
-sont là, rien. Sinon, recoller le NOYAU rempli puis `noyau-local.md`, dans cet ordre. Ouvrir
-une nouvelle conversation.
+### Ce que l'opérateur doit faire lui-même
 
-**Comment vérifier.** La copie reçue porte les deux marqueurs. `noyau/en-paire.md` contient
-« ### La mission de correction ». `noyau/recollage.md` existe et finit par son marqueur. Le
-bandeau des observations dit « trente jours ». La fiche d'hôte contient « Un geste que l'hôte
-refuse ». Une observation plus vieille que trente jours sort à la première session, avec sa
-ligne dans « Clos ». Un nom de fichier d'échange porte l'heure extraite de l'outil, pas une
+- **Recoller le NOYAU** dans les Instructions de chaque projet, sauf si AIOS a posé la copie et
+  que les deux marqueurs sont là. Ouvrir une nouvelle conversation.
+
+### Comment vérifier
+
+**Le texte** : la copie du NOYAU contient « Les heures » et « échéance de sortie ».
+`noyau/en-paire.md` contient « ### La mission de correction ». `noyau/recollage.md` existe et
+finit par son marqueur. Le bandeau des observations dit « trente jours ». La fiche d'hôte
+contient « Un geste que l'hôte refuse ». `VERSION.md` porte 0.43.0.
+
+**La suite** : une observation plus vieille que trente jours sort à la première session, avec
+sa ligne dans « Clos ». Un nom de fichier d'échange porte l'heure extraite de l'outil, pas une
 heure de mémoire.
+
+### Ce que cette migration ne fait pas
+
+Elle n'installe pas AIOS. Sans lui, le recollage reste manuel. Elle ne clôt aucune observation
+et n'écrit aucune ligne **Désactivé**. Elle ne change ni l'écran, ni `report.md`, ni le canal
+de décision.
 
 ---
 

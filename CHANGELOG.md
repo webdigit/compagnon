@@ -10,9 +10,9 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
-## [Non publié]
+## [0.43.0] - 2026-11-01
 
-### Préparé pour 0.43.0
+### Ajouté
 
 - **Les heures prises à l'outil** (NOYAU §5, « Les heures » ; `noyau/sans-poste.md`,
   `noyau/en-paire.md`, `noyau/rapport.md`) : un nom de fichier horodaté ou un en-tête se copie
@@ -35,7 +35,11 @@ Trois consignes seulement, chacune au moment où la décision se prend : nommer 
 lire « Observations » (§3), constater un recollage incomplet. Le reste va dans les modules et
 les fiches d'hôte.
 
-Cette évolution n'est pas une version publiée et ne migre aucune instance en service.
+### La leçon
+
+Un geste qui se répète parce que rien ne le clôt (recoller, retenter, garder une observation,
+corriger en silence, inventer l'heure) n'est pas un oubli : c'est une sortie qui manquait. Origine :
+JC et Vincent, 01/11/2026.
 
 ## [0.42.0] - 2026-11-01
 
