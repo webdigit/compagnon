@@ -10,6 +10,38 @@ ne la change qu'en migrant explicitement.
 **Ce fichier et les étiquettes git sont la seule source du numéro de version.** Aucun autre document
 ne le duplique, pour qu'il ne puisse pas diverger (P7).
 
+## [0.44.0] - 2026-11-02
+
+### Ajouté
+
+- **La lecture confiée** (`noyau/sous-agents.md`, nouveau module ; fiches `hotes/`, section « Les
+  sous-agents ») : sur un hôte qui en offre, l'agent peut confier une lecture lourde et mécanique à
+  un sous-agent, souvent sur un modèle moins coûteux. Jamais une écriture, jamais un jugement,
+  jamais sa mémoire. Le brief est autoportant et chaque fait revient avec sa source. Ce qui revient
+  est une piste : un échantillon recoupé pour une liste, une contre-preuve complète pour une
+  absence (compagnon P14). Un type de sous-agent n'est un verrou que si la fiche le prouve ;
+  sinon l'interdit d'écrire tient par le brief, et l'agent ne prétend pas le contraire. Le module
+  ne nomme aucun modèle : chaque fiche dit lesquels existent chez son hôte. Pas une capacité : aucun grade, aucune ligne au
+  registre ; l'opérateur la ferme d'un mot ou par `noyau-local.md`.
+- **Fiches d'hôte** : Claude (l'outil `Agent`, ses modèles, aucun type en lecture seule, `fork`
+  qui n'économise rien) ; Codex (sous-agents, modèle par réglage, bac à sable hérité, aucun type en
+  lecture seule) ; Gemini (sous-agents par défaut, modèle par agent, lecture seule possible par la
+  liste `tools` d'un agent posé par l'opérateur). Codex et Gemini : lignes non prouvées, tirées de
+  la documentation de l'hôte, à constater au premier usage.
+
+### Pourquoi le NOYAU ne change pas (R9)
+
+Seul l'hôte sait s'il offre des sous-agents : le déclencheur va dans la fiche d'hôte, lue en entier
+avant le rituel, et la migration la remplace sans recollage. Le NOYAU de la 0.43.0 compte
+85 352 octets, au-dessus de son plafond de 85 Ko (1 Ko = 1 000 octets) : rien n'y entre tant qu'il
+n'est pas revenu dessous.
+
+### La leçon
+
+Une instance a proposé d'elle-même de confier ses lectures, et l'a bien bornée, à un mot près : elle
+promettait qu'un sous-agent sans outil d'écriture dans sa consigne ne pourrait pas écrire. Un
+interdit écrit dans un brief n'est pas un outil retiré. Origine : JC, 02/11/2026.
+
 ## [0.43.0] - 2026-11-01
 
 ### Ajouté

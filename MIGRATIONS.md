@@ -147,6 +147,51 @@ changé, il n'a pas migré, il a réécrit.
 
 ---
 
+## 0.43.0 → 0.44.0
+
+### Ce qui change
+
+Un ajout, aucun retrait. Le NOYAU ne change pas.
+
+- **La lecture confiée** : nouveau module `noyau/sous-agents.md`, déclenché par la fiche d'hôte.
+- **Fiches d'hôte** (claude, codex, gemini) : nouvelle section « Les sous-agents » dans la partie
+  « Du gabarit ».
+- **`README.md`** : la carte des modules nomme la lecture confiée.
+
+### Ce que l'agent fait seul
+
+- **`noyau/sous-agents.md`** : le copier depuis cette étiquette.
+- **Fiche d'hôte** (claude, codex ou gemini, celle de l'instance) : remplacer la partie
+  « Du gabarit » par celle de cette étiquette, sans toucher à « Constaté ici ».
+- **`README.md`** : mettre à jour la carte des modules.
+- **`VERSION.md`** : version courante 0.44.0, **Alignée sur**, ligne d'historique.
+
+Si `noyau-local.md` porte déjà une règle sur les sous-agents, ne la retire pas : elle reste, et
+elle prime si elle durcit le module. Si elle le desserre (un sous-agent qui écrit, un résultat
+utilisé sans vérification), elle n'a aucun effet : signale-la à l'opérateur et propose de la
+retirer.
+
+### Ce que l'opérateur doit faire lui-même
+
+- **Rien.** Le NOYAU ne change pas : pas de recollage. Ouvrir une nouvelle conversation suffit pour
+  que la fiche d'hôte remplacée soit lue.
+
+### Comment vérifier
+
+**Le texte** : `noyau/sous-agents.md` existe et finit par `[fin de sous-agents.md]`. La fiche
+d'hôte contient « ### Les sous-agents », avant « ### Un geste que l'hôte refuse », et finit par son
+marqueur. `VERSION.md` porte 0.44.0.
+
+**La suite** : à la première lecture confiée, la session lit le module avant de lancer le
+sous-agent. Une absence rapportée par un sous-agent est contre-prouvée avant d'être dite.
+
+### Ce que cette migration ne fait pas
+
+Elle ne lance aucun sous-agent, n'ouvre aucune capacité et n'écrit rien au registre de
+`capabilities.md`. Elle ne touche ni au NOYAU, ni à l'écran, ni à `report.md`.
+
+---
+
 ## 0.42.0 → 0.43.0
 
 ### Ce qui change

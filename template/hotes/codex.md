@@ -64,6 +64,22 @@
   cloud et ne travaille pas dans un dossier du poste. Non prouvé (documentation OpenAI, lue le
   04/10/2026).
 
+### Les sous-agents
+
+- **Avant d'en lancer un, lis `noyau/sous-agents.md` en entier.** Il dit ce qui se confie, et
+  comment vérifier ce qui revient. Ce qui suit dit seulement ce que l'outil permet.
+- **Codex lance des sous-agents** dans l'application de bureau, la CLI et l'extension d'IDE, quand
+  on le lui demande ou quand ses instructions le prévoient. Types intégrés : `default`, `worker`,
+  `explorer`. Non prouvé (documentation de l'hôte, lue le 02/11/2026) : aucune instance n'en a
+  lancé. Codex Cloud n'est pas cité.
+- **Le modèle** : celui de la session, sauf réglage (`agents.default_subagent_model`, ou `model`
+  dans un agent personnalisé) ou demande explicite dans le brief. La documentation recommande un
+  modèle rapide pour les tâches étroites (`gpt-6-luna` au 02/11/2026). Non prouvé (même source).
+- **Aucun type n'est en lecture seule.** Un sous-agent hérite du bac à sable de la session, et un
+  agent personnalisé ne peut pas le changer. La documentation le dit : une consigne de ne pas
+  modifier ne crée pas de bac à sable en lecture seule. Non prouvé (même source).
+- **En tâche planifiée** : non prouvé. Le premier run qui en lance un l'écrit sous « Constaté ici ».
+
 ### Un geste que l'hôte refuse
 
 Un refus de l'hôte (un outil qui refuse, une erreur d'autorisation, un « Self-Modification »)

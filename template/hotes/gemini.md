@@ -37,6 +37,22 @@
 
 - Rien de constaté.
 
+### Les sous-agents
+
+- **Avant d'en lancer un, lis `noyau/sous-agents.md` en entier.** Il dit ce qui se confie, et
+  comment vérifier ce qui revient. Ce qui suit dit seulement ce que l'outil permet.
+- **Gemini CLI lance des sous-agents**, activés par défaut, chacun avec son propre contexte. Types
+  intégrés : `codebase_investigator` (analyse de code), `generalist` (tous les outils de la
+  session), `cli_help`. Non prouvé (documentation de l'hôte, lue le 02/11/2026) : aucune instance
+  n'en a lancé.
+- **Le modèle** : celui de la session (`inherit`), sauf `model` dans l'agent personnalisé. Non
+  prouvé (même source).
+- **Un agent personnalisé peut être en lecture seule** : un fichier dans `.gemini/agents/` dont la
+  liste `tools` ne porte que des outils de lecture. Sans liste, il hérite de tous les outils. Non
+  prouvé (même source) : tant qu'un essai ne l'a pas montré, ce n'est pas un verrou. Ce fichier est
+  une configuration de l'hôte : tu ne le crées pas, tu le proposes à l'opérateur.
+- **En tâche programmée** : non prouvé. Le premier run qui en lance un l'écrit sous « Constaté ici ».
+
 ### Un geste que l'hôte refuse
 
 Un refus de l'hôte (un outil qui refuse, une erreur d'autorisation, un « Self-Modification »)

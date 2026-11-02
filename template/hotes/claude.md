@@ -148,6 +148,23 @@
   peut ni le voir ni le rétablir : seule une session reliée au poste le voit, au rituel (NOYAU §0,
   point 1). Constaté une fois (instance en service, 06/10/2026).
 
+### Les sous-agents
+
+- **Avant d'en lancer un, lis `noyau/sous-agents.md` en entier.** Il dit ce qui se confie, et
+  comment vérifier ce qui revient. Ce qui suit dit seulement ce que l'outil permet.
+- **L'outil `Agent`** lance un sous-agent avec un brief, et choisit son modèle (`model`) :
+  `haiku`, le moins coûteux, pour une lecture mécanique ; `sonnet`, l'intermédiaire, pour une
+  extraction qui demande de comprendre. Constaté une fois (02/11/2026, session Cowork dans le cloud,
+  description de l'outil).
+- **Aucun type n'est en lecture seule.** `Explore` n'a ni l'outil d'écriture de fichiers ni celui
+  de modification, mais garde le shell et les connecteurs, ceux qui écrivent compris.
+  `general-purpose` a tout. Constaté une fois (02/11/2026, description des types d'agent).
+  Prends `Explore` pour une lecture : c'est le moins outillé.
+- **`fork`** reprend toute ta conversation, sur ton propre modèle : il n'économise rien, il garde
+  seulement les sorties d'outil hors de ta conversation. Constaté une fois (02/11/2026, même
+  source).
+- **En tâche programmée** : non prouvé. Le premier run qui en lance un l'écrit sous « Constaté ici ».
+
 ### Un geste que l'hôte refuse
 
 Un refus de l'hôte (un outil qui refuse, une erreur d'autorisation, un « Self-Modification »)
